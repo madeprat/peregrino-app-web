@@ -437,6 +437,8 @@
     .donation-copy ul { margin: 20px 0 28px; padding: 0; list-style: none; }
     .donation-copy li { margin: 10px 0; padding-left: 34px; position: relative; color:#514b45; }
     .donation-copy li::before { content: "✓"; position:absolute; left:0; top:0; color:var(--verde); font-weight:900; }
+    .donation-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 22px; }
+    .donation-actions .btn.secondary { box-shadow: none; }
     .field { display: grid; gap: 8px; margin: 18px 0; }
     .field label { font-weight: 900; color: var(--azul-tinta); }
     .field input {
@@ -493,16 +495,16 @@
       .chat-bubble { padding: 16px 16px 16px 50px; }
       footer .wrap { flex-direction: column; align-items:flex-start; }
       .btn { width: 100%; }
-      .hero-actions .btn, .share-actions .btn { width: 100%; }
+      .hero-actions .btn, .share-actions .btn, .donation-actions .btn { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <!-- CAMBIAR ESTAS URLS -->
   <script>
     const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc";
     const PAYPAL_URL = "https://paypal.me/ingresoucha?locale.x=es_ES&country.x=ES";
     const LANDING_URL = window.location.href;
+    const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q";
     const SHARE_TEXT = "He encontrado Peregrino APP: una guía para vivir el Cuarto Día con oración, Rosario, Vía Crucis, Reunión de Grupo y seguimiento del Trípode. Échale un vistazo:";
   </script>
 
@@ -517,9 +519,10 @@
         <a href="#secretos">5 secretos</a>
         <a href="#tripode">Trípode</a>
         <a href="#app">La app</a>
+        <a href="#compartir">Canal</a>
         <a href="#sostener">Sostener</a>
       </nav>
-      <a class="btn" href="#descargar">Descargar</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank" rel="noopener">Descargar</a>
     </div>
   </header>
 
@@ -712,10 +715,11 @@
           <div>
             <span class="eyebrow">Cursillistas por el mundo</span>
             <h2>Compártelo con quien pueda necesitarlo</h2>
-            <p>Usa estos botones para compartir la landing en grupos de WhatsApp, Facebook o con el menú nativo del móvil.</p>
+            <p>Únete al canal de WhatsApp de Peregrino APP o comparte la landing en grupos de WhatsApp, Facebook o con el menú nativo del móvil.</p>
           </div>
           <div class="share-actions">
-            <button class="btn whatsapp" type="button" onclick="compartirWhatsApp()">WhatsApp</button>
+            <a class="btn whatsapp" href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" target="_blank" rel="noopener">Unirme al canal</a>
+            <button class="btn whatsapp" type="button" onclick="compartirWhatsApp()">Compartir por WhatsApp</button>
             <button class="btn facebook" type="button" onclick="compartirFacebook()">Facebook</button>
             <button class="btn secondary" type="button" onclick="compartirLanding()">Compartir</button>
           </div>
@@ -732,16 +736,19 @@
           <ul>
             <li>La app puede usarse sin obligación de donar.</li>
             <li>Tu colaboración ayuda a mantener nuevas funciones y contenidos.</li>
-            <li>Cada aportación ayuda a cuidar la app y preparar nuevas mejoras.</li>
+            <li>Después de donar, vuelve aquí y pulsa “Ya he donado” para obtener tu Código de Peregrino.</li>
           </ul>
-          <a class="btn gold" href="javascript:void(0)" onclick="irPayPal()">💛 Donar con PayPal</a>
+          <div class="donation-actions">
+            <a class="btn gold" href="https://paypal.me/ingresoucha?locale.x=es_ES&amp;country.x=ES" target="_blank" rel="noopener">💛 Donar con PayPal</a>
+            <a class="btn secondary" href="gracias.html">Ya he donado</a>
+          </div>
         </article>
 
         <article class="code-box">
           <span class="eyebrow">Gracias por colaborar</span>
           <h2>Tu ayuda mantiene encendida esta pequeña llama</h2>
           <p>Gracias a las aportaciones voluntarias, Peregrino APP puede seguir mejorando, incorporando contenidos útiles y acompañando a más cursillistas en su Cuarto Día.</p>
-          <p class="soft-note">La app seguirá siendo sencilla, cercana y pensada para ayudar, no para complicar el camino.</p>
+          <p class="soft-note">Cuando hayas realizado la donación, podrás generar tu Código de Peregrino con el mismo email usado en PayPal.</p>
         </article>
       </div>
     </section>
