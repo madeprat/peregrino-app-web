@@ -51,6 +51,28 @@
     }
 
     img { max-width: 100%; display: block; }
+
+    /* ── Placeholder para imágenes ausentes ─── */
+    .img-placeholder-wrap {
+      min-height: 280px;
+      width: 100%;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(29,46,122,.07), rgba(215,181,55,.09));
+      border: 2px dashed rgba(29,46,122,.22);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--azul);
+      font-size: .88rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 20px;
+    }
+    .img-placeholder-wrap .ph-icon { font-size: 2.2rem; opacity: .5; }
+    .img-placeholder-wrap .ph-name { color: var(--gris); font-family: monospace; font-size: .82rem; word-break: break-all; }
+
     a { color: inherit; }
     .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
 
@@ -213,7 +235,7 @@
     .hero-bottom {
       margin-top: 64px;
       padding: 26px 32px;
-      background: rgba(255,255,255,.1);
+      background: rgba(9,20,51,.52);
       border: 1px solid rgba(255,255,255,.18);
       border-radius: 32px 32px 0 0;
       backdrop-filter: blur(10px);
@@ -646,98 +668,83 @@
     }
     .donation-head p { color: rgba(255,255,255,.76); font-size: 1.1rem; line-height: 1.65; max-width: 620px; margin-inline: auto; }
 
-    /* Progress bar */
-    .progress-bar-wrap {
-      max-width: 680px;
-      margin: 0 auto 52px;
-      padding: 26px 30px;
-      border-radius: 28px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.14);
+    /* ── Donation slider ─────────────────────── */
+    .donation-slider-wrap {
+      max-width: 580px;
+      margin: 0 auto 48px;
+      text-align: center;
     }
-    .progress-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 12px;
-    }
-    .progress-label { font-weight: 900; font-size: 1rem; color: rgba(255,255,255,.9); }
-    .progress-target { font-size: .88rem; color: rgba(255,255,255,.58); }
-    .progress-track {
-      height: 10px;
-      background: rgba(255,255,255,.14);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--oro), #f0cc55);
-      border-radius: 999px;
-      transition: width 1.4s cubic-bezier(.22,.68,0,1.2);
-    }
-    .progress-tagline {
-      margin-top: 10px;
-      font-size: .9rem;
-      color: rgba(255,255,255,.62);
-    }
-    .progress-tagline strong { color: var(--oro); }
-
-    /* Kits grid */
-    .kits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 44px;
-    }
-    .kit-card {
-      padding: 28px 24px;
-      border-radius: 30px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.14);
-      cursor: pointer;
-      transition: background .2s ease, border-color .2s ease, transform .18s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .kit-card:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
-    .kit-card.active {
-      background: rgba(215,181,55,.18);
-      border-color: rgba(215,181,55,.6);
-    }
-    .kit-card::after {
-      content: "";
-      position: absolute;
-      right: -30px; bottom: -30px;
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.05);
-    }
-    .kit-icon { font-size: 2.2rem; margin-bottom: 14px; }
-    .kit-name { font-weight: 900; font-size: 1.1rem; margin-bottom: 4px; }
-    .kit-price {
+    .donation-amount-display {
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 2.2rem;
+      font-size: clamp(4.5rem, 12vw, 7rem);
       font-weight: 700;
       color: var(--oro);
       line-height: 1;
-      margin-bottom: 8px;
+      letter-spacing: -.04em;
+      margin-bottom: 6px;
+      transition: transform .12s ease;
     }
-    .kit-desc { color: rgba(255,255,255,.68); font-size: .9rem; line-height: 1.5; }
-    .kit-check {
-      display: none;
-      position: absolute;
-      top: 14px; right: 16px;
-      width: 26px; height: 26px;
+    .donation-amount-display.bump { transform: scale(1.06); }
+    .donation-amount-sub {
+      color: rgba(255,255,255,.48);
+      font-size: .9rem;
+      margin-bottom: 32px;
+    }
+    .slider-track-wrap {
+      position: relative;
+      padding: 8px 0 28px;
+    }
+    input[type="range"].donation-range {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"].donation-range::-webkit-slider-runnable-track {
+      height: 6px;
+      border-radius: 999px;
+    }
+    input[type="range"].donation-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 30px; height: 30px;
       border-radius: 50%;
       background: var(--oro);
-      color: var(--azul-tinta);
-      font-size: .85rem;
-      font-weight: 900;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 4px 16px rgba(215,181,55,.5);
+      cursor: pointer;
+      margin-top: -12px;
+      transition: transform .14s ease, box-shadow .14s ease;
     }
-    .kit-card.active .kit-check { display: flex; }
+    input[type="range"].donation-range:hover::-webkit-slider-thumb,
+    input[type="range"].donation-range:active::-webkit-slider-thumb {
+      transform: scale(1.18);
+      box-shadow: 0 6px 22px rgba(215,181,55,.65);
+    }
+    input[type="range"].donation-range::-moz-range-thumb {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--oro);
+      border: none;
+      box-shadow: 0 4px 16px rgba(215,181,55,.5);
+      cursor: pointer;
+    }
+    .slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding: 0 4px;
+    }
+    .slider-ticks span {
+      font-size: .78rem;
+      color: rgba(255,255,255,.34);
+      font-weight: 700;
+    }
+    .slider-ticks span.active-tick {
+      color: var(--oro);
+    }
 
     /* CTA zone */
     .donation-cta-zone {
@@ -859,7 +866,6 @@
       .chat-wall { grid-template-columns: 1fr; }
       .showcase-grid .show-card:nth-child(3),
       .pain-grid .pain-card:nth-child(3) { grid-column: auto; max-width: 100%; }
-      .kits-grid { grid-template-columns: 1fr; }
       .donation-section { padding: 64px 0 72px; }
       .btn-donate-main { width: 100%; padding: 18px 24px; font-size: 1.08rem; }
       .btn-ya-done { width: 100%; justify-content: center; }
@@ -882,6 +888,23 @@
   </style>
 </head>
 <body>
+
+  <!--
+  ════════════════════════════════════════════════════════
+  📸  IMÁGENES NECESARIAS — ponlas en la MISMA carpeta
+       que este index.html con exactamente estos nombres:
+
+    captura.png   → Hero principal (pantalla de inicio de la app)
+    captura1.png  → Hero secundaria (Mi Cuarto Día)
+    captura3.png  → Sección Candidatos — pantalla lista
+    captura4.png  → Sección Candidatos — oración por candidato
+    captura5.png  → Sección Oraciones — oraciones de mañana
+    captura7.png  → Sección Oraciones — Santo Rosario
+    captura8.png  → Sección Oraciones — Hora Apostólica
+
+  Si no las tienes aún, se mostrará un recuadro gris de placeholder.
+  ════════════════════════════════════════════════════════
+  -->
 
   <!-- ══════════ HEADER ══════════ -->
   <header>
@@ -1207,52 +1230,37 @@
       <div class="wrap donation-inner">
 
         <div class="donation-head">
-          <span class="eyebrow-light">Servicio y comunidad</span>
-          <h2 id="dona-titulo">Sostén el camino<br>del Peregrino</h2>
-          <p>Esta app nace del servicio y no tiene publicidad ni cuotas obligatorias. Pero mantenerla viva, actualizada y disponible para miles de cursillistas tiene un coste.<br><br>¿Quieres ser parte del equipo? Con tu donación, no solo mantienes los servidores — nos ayudas a añadir nuevas funciones. Al donar, recibirás la <strong style="color:var(--oro)">Insignia de Colaborador</strong> en tu perfil y desbloquearás detalles exclusivos en la interfaz.<br><br>¡Cristo cuenta contigo, y con tu ayuda también!</p>
+          <span class="eyebrow-light">Sé parte de la Nueva Evangelización</span>
+          <h2 id="dona-titulo">Esta app llega<br>a donde tú no puedes ir</h2>
+          <p>Cada vez que un cursillista abre Peregrino APP en Buenos Aires, en Manila o en Madrid, el Movimiento llega un poco más lejos. Esta herramienta existe gracias al trabajo y al sacrificio de una familia que cree que la fe merece las mejores herramientas del siglo XXI.<br><br>Si quieres ser parte de eso — si te importa que la llama del Cuarto Día no se enfríe — únete como <strong style="color:var(--oro)">Peregrino Colaborador</strong> y desbloquea funciones exclusivas dentro de la app. Tu aportación no es un donativo anónimo: es apostolado digital.</p>
         </div>
 
-        <!-- Progress bar -->
-        <div class="progress-bar-wrap" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso del objetivo mensual">
-          <div class="progress-meta">
-            <span class="progress-label">🎯 Objetivo del mes</span>
-            <span class="progress-target">100 € para el servidor</span>
-          </div>
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-          </div>
-          <p class="progress-tagline">Ya vamos al <strong id="progress-pct">67 %</strong> — ¡faltan <strong>33 €</strong> para llegar a la meta!</p>
-        </div>
-
-        <!-- Kits -->
-        <div class="kits-grid" role="group" aria-label="Elige tu Kit de Peregrino">
-          <div class="kit-card" data-amount="5" data-paypal="https://paypal.me/ingresoucha/5?locale.x=es_ES" onclick="seleccionarKit(this)" tabindex="0" role="button" aria-pressed="false">
-            <div class="kit-check">✓</div>
-            <div class="kit-icon">🪣</div>
-            <div class="kit-name">Kit Cantimplora</div>
-            <div class="kit-price">5 €</div>
-            <div class="kit-desc">Para los gastos básicos del servidor. Un café al mes por una app sin anuncios.</div>
-          </div>
-          <div class="kit-card active" data-amount="15" data-paypal="https://paypal.me/ingresoucha/15?locale.x=es_ES" onclick="seleccionarKit(this)" tabindex="0" role="button" aria-pressed="true">
-            <div class="kit-check">✓</div>
-            <div class="kit-icon">🦯</div>
-            <div class="kit-name">Kit Bastón</div>
-            <div class="kit-price">15 €</div>
-            <div class="kit-desc">Para que la app siga firme y en marcha, con actualizaciones y mejoras.</div>
-          </div>
-          <div class="kit-card" data-amount="50" data-paypal="https://paypal.me/ingresoucha/50?locale.x=es_ES" onclick="seleccionarKit(this)" tabindex="0" role="button" aria-pressed="false">
-            <div class="kit-check">✓</div>
-            <div class="kit-icon">🗺️</div>
-            <div class="kit-name">Kit Guía</div>
-            <div class="kit-price">50 €</div>
-            <div class="kit-desc">Para desarrollar nuevas funciones. Tú co-diseñas el camino de esta app.</div>
+        <!-- Slider de donación -->
+        <div class="donation-slider-wrap">
+          <div class="donation-amount-display" id="dona-display">10 €</div>
+          <div class="donation-amount-sub">elige cuánto quieres aportar</div>
+          <div class="slider-track-wrap">
+            <input
+              type="range"
+              class="donation-range"
+              id="dona-slider"
+              min="1" max="50" step="1" value="10"
+              aria-label="Importe de donación"
+            />
+            <div class="slider-ticks">
+              <span>1 €</span>
+              <span>5 €</span>
+              <span>10 €</span>
+              <span>20 €</span>
+              <span>50 €</span>
+            </div>
           </div>
         </div>
 
         <!-- Main CTA -->
         <div class="donation-cta-zone">
-          <a id="btn-donar" class="btn-donate-main" href="https://paypal.me/ingresoucha/15?locale.x=es_ES&country.x=ES" target="_blank" rel="noopener">
-            💛 Donar con PayPal — Kit Bastón (15 €)
+          <a id="btn-donar" class="btn-donate-main" href="https://paypal.me/ingresoucha/10?locale.x=es_ES&country.x=ES" target="_blank" rel="noopener">
+            💛 Donar 10 € con PayPal
           </a>
           <div class="donation-already">
             <span>¿Ya has donado?</span>
@@ -1260,9 +1268,9 @@
           </div>
           <div class="donation-perks">
             <span class="perk">Sin publicidad nunca</span>
-            <span class="perk">Insignia de Colaborador en la app</span>
-            <span class="perk">Detalles exclusivos en la interfaz</span>
+            <span class="perk">Código único · sin suscripciones</span>
             <span class="perk">Gratuita para todos</span>
+            <span class="perk">Apostolado digital real</span>
           </div>
         </div>
 
@@ -1315,48 +1323,32 @@
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(LANDING_URL), '_blank', 'noopener,noreferrer');
     }
 
-    // ── Kits de Peregrino ──────────────────────────────────────
-    const kitLabels = { 5: 'Kit Cantimplora (5 €)', 15: 'Kit Bastón (15 €)', 50: 'Kit Guía (50 €)' };
+    // ── Slider de donación ─────────────────────────────────────
+    const slider    = document.getElementById('dona-slider');
+    const display   = document.getElementById('dona-display');
     const btnDonar  = document.getElementById('btn-donar');
+    const PAYPAL_BASE = 'https://paypal.me/ingresoucha/';
 
-    function seleccionarKit(el) {
-      document.querySelectorAll('.kit-card').forEach(k => {
-        k.classList.remove('active');
-        k.setAttribute('aria-pressed', 'false');
-      });
-      el.classList.add('active');
-      el.setAttribute('aria-pressed', 'true');
-      const amount = el.dataset.amount;
-      const url    = el.dataset.paypal;
-      btnDonar.href        = url + '&country.x=ES';
-      btnDonar.textContent = `💛 Donar con PayPal — ${kitLabels[amount]}`;
+    function actualizarDonacion(val) {
+      display.textContent = val + ' €';
+      btnDonar.textContent = '💛 Donar ' + val + ' € con PayPal';
+      btnDonar.href = PAYPAL_BASE + val + '?locale.x=es_ES&country.x=ES';
+      // tick highlight
+      const ticks = document.querySelectorAll('.slider-ticks span');
+      const marks = [1, 5, 10, 20, 50];
+      ticks.forEach((t, i) => t.classList.toggle('active-tick', marks[i] === parseInt(val)));
+      // fill track visually
+      const pct = (val - 1) / (50 - 1) * 100;
+      slider.style.background =
+        'linear-gradient(to right, var(--oro) ' + pct + '%, rgba(255,255,255,.16) ' + pct + '%)';
+      // bump animation
+      display.classList.remove('bump');
+      void display.offsetWidth;
+      display.classList.add('bump');
     }
 
-    // Keyboard support for kits
-    document.querySelectorAll('.kit-card').forEach(el => {
-      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); seleccionarKit(el); } });
-    });
-
-    // ── Progress bar animate on scroll ─────────────────────────
-    const fillEl = document.getElementById('progress-fill');
-    const pctEl  = document.getElementById('progress-pct');
-    const TARGET_PCT = 67;
-
-    const progObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          fillEl.style.width = TARGET_PCT + '%';
-          let count = 0;
-          const tick = setInterval(() => {
-            count += 2;
-            if (count >= TARGET_PCT) { count = TARGET_PCT; clearInterval(tick); }
-            pctEl.textContent = count + ' %';
-          }, 28);
-          progObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    if (fillEl) progObserver.observe(fillEl.closest('.progress-bar-wrap'));
+    slider.addEventListener('input', () => actualizarDonacion(slider.value));
+    actualizarDonacion(slider.value); // init
 
     // Pain point cards → smooth scroll to relevant section
     document.querySelectorAll('.pain-arrow').forEach((el, i) => {
@@ -1384,6 +1376,19 @@
       el.style.transition = 'opacity .5s ease, transform .5s ease';
       observer.observe(el);
     });
+    // ── Placeholders para imágenes que no carguen ──────────
+    document.querySelectorAll('img[src]').forEach(img => {
+      img.addEventListener('error', function() {
+        const src = this.getAttribute('src');
+        const wrap = document.createElement('div');
+        wrap.className = 'img-placeholder-wrap';
+        wrap.innerHTML = '<span class="ph-icon">📱</span>'
+          + '<span>Imagen no encontrada</span>'
+          + '<span class="ph-name">' + src + '</span>';
+        this.parentNode.replaceChild(wrap, this);
+      });
+    });
+
   </script>
 </body>
 </html>
