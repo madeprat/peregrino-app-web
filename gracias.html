@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gracias | Código de Peregrino</title>
+  <meta name="description" content="Gracias por sostener Peregrino APP. Genera aquí tu Código de Peregrino con el email usado en la donación." />
+  <meta name="theme-color" content="#1d2e7a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul: #1d2e7a;
+      --azul-oscuro: #091433;
+      --azul-tinta: #121d4f;
+      --crema: #fff9e8;
+      --crema-2: #f7efd8;
+      --oro: #d7b537;
+      --verde: #124b35;
+      --texto: #26304f;
+      --gris: #766f67;
+      --blanco: #ffffff;
+      --sombra: 0 24px 70px rgba(9, 20, 51, .16);
+      --radio: 30px;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--texto);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(215,181,55,.20), transparent 28rem),
+        radial-gradient(circle at 85% 15%, rgba(29,46,122,.16), transparent 30rem),
+        linear-gradient(180deg, #fffdf5 0%, var(--crema) 54%, #ffffff 100%);
+      line-height: 1.55;
+    }
+
+    .wrap { width: min(var(--max), calc(100% - 34px)); margin-inline: auto; }
+
+    header {
+      padding: 22px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(255,249,232,.78);
+      border-bottom: 1px solid rgba(29,46,122,.08);
+    }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--azul); text-decoration: none; font-weight: 900; }
+    .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 15px; background: var(--azul); color: #fff; box-shadow: 0 12px 24px rgba(29,46,122,.18); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 14px 22px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--azul);
+      color: #fff;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(29,46,122,.22);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 20px 42px rgba(29,46,122,.28); }
+    .btn.gold { background: var(--oro); color: var(--azul-tinta); box-shadow: 0 16px 34px rgba(215,181,55,.24); }
+    .btn.secondary { background: #fff; color: var(--azul); border: 1px solid rgba(29,46,122,.15); }
+
+    main { padding: 74px 0 90px; }
+    .hero {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .thanks-card, .code-card {
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(29,46,122,.08);
+      border-radius: 38px;
+      padding: clamp(28px, 5vw, 54px);
+      box-shadow: var(--sombra);
+    }
+
+    .thanks-card {
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(29,46,122,.98), rgba(18,75,53,.94)),
+        radial-gradient(circle at 85% 10%, rgba(215,181,55,.22), transparent 20rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 560px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      font-weight: 900;
+      font-size: .86rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: "✦"; color: var(--oro); }
+
+    h1, h2 {
+      margin: 22px 0 16px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      line-height: .96;
+      letter-spacing: -.03em;
+    }
+    h1 { font-size: clamp(3rem, 7vw, 5.9rem); }
+    h2 { color: var(--azul-tinta); font-size: clamp(2.1rem, 4.8vw, 4rem); }
+    p { margin: 0 0 18px; color: var(--gris); font-size: 1.08rem; }
+    .thanks-card p { color: rgba(255,255,255,.78); font-size: 1.15rem; }
+
+    .steps { margin-top: 28px; display: grid; gap: 14px; }
+    .step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: center;
+      color: rgba(255,255,255,.86);
+    }
+    .step strong {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(255,255,255,.14);
+      color: var(--oro);
+    }
+
+    .field { display: grid; gap: 8px; margin: 22px 0 16px; }
+    .field label { font-weight: 900; color: var(--azul-tinta); }
+    .field input {
+      width: 100%;
+      min-height: 58px;
+      border-radius: 18px;
+      border: 1px solid rgba(29,46,122,.18);
+      padding: 0 16px;
+      font: inherit;
+      outline: none;
+      background: #fffdf7;
+    }
+    .field input:focus { border-color: var(--azul); box-shadow: 0 0 0 4px rgba(29,46,122,.08); }
+
+    .code-result {
+      display: none;
+      margin-top: 24px;
+      padding: 26px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--azul), var(--azul-tinta));
+      color: #fff;
+      text-align: center;
+    }
+    .code-result span { color: rgba(255,255,255,.72); }
+    .code-result strong {
+      display: block;
+      margin: 10px 0;
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      letter-spacing: .22em;
+      line-height: 1;
+    }
+
+    .privacy {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: var(--crema-2);
+      color: #5f5546;
+      font-size: .96rem;
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    .footer-note { margin-top: 28px; color: rgba(255,255,255,.62); font-size: .95rem; }
+
+    @media (max-width: 860px) {
+      main { padding: 38px 0 64px; }
+      .hero { grid-template-columns: 1fr; }
+      .thanks-card { min-height: auto; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 26px, var(--max)); }
+      .thanks-card, .code-card { border-radius: 28px; padding: 24px; }
+      .btn { width: 100%; }
+      .nav { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Volver a Peregrino APP">
+        <span class="brand-mark">⛪</span>
+        <span>Peregrino APP</span>
+      </a>
+      <a class="btn secondary" href="index.html">Volver a la web</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <section class="thanks-card" aria-labelledby="titulo-gracias">
+        <div>
+          <span class="eyebrow">Gracias por sostener el camino</span>
+          <h1 id="titulo-gracias">Tu ayuda mantiene encendida esta pequeña llama</h1>
+          <p>Gracias por colaborar voluntariamente con Peregrino APP. Este apoyo ayuda a seguir mejorando la app, mantener contenidos y cuidar nuevas funciones para vivir mejor el Cuarto Día.</p>
+        </div>
+
+        <div>
+          <div class="steps">
+            <div class="step"><strong>1</strong><span>Introduce el email que usaste en PayPal.</span></div>
+            <div class="step"><strong>2</strong><span>Genera tu Código de Peregrino.</span></div>
+            <div class="step"><strong>3</strong><span>Ábrelo en la app: Perfil → Sostén el Camino.</span></div>
+          </div>
+          <p class="footer-note">El código se genera en tu navegador. Esta página no almacena tu email.</p>
+        </div>
+      </section>
+
+      <section class="code-card" aria-labelledby="titulo-codigo">
+        <h2 id="titulo-codigo">Genera tu Código de Peregrino</h2>
+        <p>Usa el mismo email con el que hiciste la donación. El código debe coincidir con el que reconoce la app.</p>
+
+        <div class="field">
+          <label for="email-input">Email de la donación</label>
+          <input type="email" id="email-input" placeholder="tuemail@ejemplo.com" autocomplete="email" required />
+        </div>
+
+        <button class="btn" type="button" onclick="mostrarCodigo()">Obtener mi código</button>
+
+        <div id="resultado" class="code-result" aria-live="polite">
+          <span>Tu código personal</span>
+          <strong id="codigo-display"></strong>
+          <span>Introdúcelo en Peregrino → Perfil → Sostén el Camino</span>
+        </div>
+
+        <div class="privacy">
+          Importante: esta página no verifica automáticamente el pago. Es una solución sencilla para empezar. Más adelante, si quieres blindarlo, lo ideal sería validar el pago con un pequeño backend o con una integración oficial de PayPal.
+        </div>
+
+        <div class="actions">
+          <a class="btn gold" href="index.html">Volver a Peregrino APP</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Generador de código de colaborador — debe coincidir con la app Flutter.
+    const SALT = 'peregrino2026';
+    const ALFABETO = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+    function generarCodigoColaborador(email) {
+      const input = email.toLowerCase().trim() + SALT;
+      const mod = 1000000007;
+      let hash = 0;
+      for (let i = 0; i < input.length; i++) {
+        hash = (hash * 31 + input.charCodeAt(i)) % mod;
+      }
+      let code = '';
+      for (let i = 0; i < 5; i++) {
+        code += ALFABETO[hash % ALFABETO.length];
+        hash = Math.floor(hash / ALFABETO.length);
+      }
+      return code;
+    }
+
+    function mostrarCodigo() {
+      const emailInput = document.getElementById('email-input');
+      const email = emailInput.value;
+      if (!email || !emailInput.checkValidity()) {
+        emailInput.reportValidity();
+        return;
+      }
+      const codigo = generarCodigoColaborador(email);
+      document.getElementById('codigo-display').textContent = codigo;
+      document.getElementById('resultado').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
