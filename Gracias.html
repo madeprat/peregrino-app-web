@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias Peregrino! - Peregrino MCC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #1e293b; --accent: #f59e0b; --bg: #fdfbf7; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--primary); text-align: center; padding: 40px 20px; }
+        .card { max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        h1 { font-family: 'Playfair Display', serif; color: var(--primary); }
+        input { width: 100%; padding: 12px; margin: 20px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%; }
+        #resultado { margin-top: 20px; font-weight: bold; color: var(--accent); font-size: 1.2rem; display: none; padding: 15px; border: 2px dashed var(--accent); border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>¡Gracias por tu apoyo!</h1>
+        <p>Tu aportación ayuda a que la "mochila" de muchos peregrinos siga llena de recursos.</p>
+        <p>Introduce el email que usaste en PayPal para generar tu código de activación para la App:</p>
+        
+        <input type="email" id="email" placeholder="tu-email@ejemplo.com">
+        <button onclick="generarCodigo()">Generar mi código</button>
+        
+        <div id="resultado">
+            Tu código es: <span id="codigo"></span>
+            <br><small style="font-weight: normal; font-size: 0.8rem; color: #666;">Cópialo e introdúcelo en la sección 'Sostenimiento' de la App.</small>
+        </div>
+    </div>
+
+    <script>
+        function generarCodigo() {
+            const email = document.getElementById('email').value.toLowerCase().trim();
+            if(!email) return alert("Por favor, pon tu email");
+            
+            // Algoritmo sencillo (Misma lógica que en la App)
+            const salt = "PacoClio2026"; 
+            let hash = 0;
+            const str = email + salt;
+            for (let i = 0; i < str.length; i++) {
+                hash = ((hash << 5) - hash) + str.charCodeAt(i);
+                hash |= 0; 
+            }
+            const codigoFinal = "PR-" + Math.abs(hash).toString(16).toUpperCase().substring(0, 5);
+            
+            document.getElementById('codigo').innerText = codigoFinal;
+            document.getElementById('resultado').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
