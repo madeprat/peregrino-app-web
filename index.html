@@ -347,7 +347,6 @@
     }
     .code-result strong { display:block; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: .22em; margin: 10px 0; }
     .code-result span { color: rgba(255,255,255,.72); }
-    .warning { font-size: .9rem; color: #8b6b2a !important; background:#fff7d6; border-radius:18px; padding:14px 16px; }
 
     footer {
       padding: 42px 0;
@@ -389,7 +388,7 @@
 <body>
   <!-- CAMBIAR ESTAS URLS -->
   <script>
-    const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=TU_PAQUETE_ANDROID";
+    const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc";
     const PAYPAL_URL = "https://paypal.me/ingresoucha?locale.x=es_ES&country.x=ES";
     const LANDING_URL = window.location.href;
     const SHARE_TEXT = "He encontrado Peregrino APP: una guía para vivir el Cuarto Día con oración, Rosario, Vía Crucis, Reunión de Grupo y seguimiento del Trípode. Échale un vistazo:";
@@ -584,20 +583,18 @@
         </article>
 
         <article class="code-box">
-          <h2>Genera tu Código de Peregrino</h2>
-          <p>Introduce el email con el que hiciste la donación. El código se genera en tu navegador y después podrás introducirlo en la app.</p>
-          <div class="field">
-            <label for="email-input">Email de la donación</label>
-            <input type="email" id="email-input" placeholder="tuemail@ejemplo.com" autocomplete="email" />
-          </div>
-          <button class="btn" type="button" onclick="mostrarCodigo()">Obtener mi código</button>
-          <div id="resultado" class="code-result" aria-live="polite">
-            <span>Tu código personal</span>
-            <strong id="codigo-display"></strong>
-            <span>Introdúcelo en Peregrino → Perfil → Sostén el Camino</span>
-          </div>
-          <p class="warning">Nota: cambia la URL de Play Store al principio del archivo antes de publicarlo. El enlace de PayPal ya está configurado.</p>
+          <span class="eyebrow">Después de donar</span>
+          <h2>Recibirás tu Código de Peregrino en la página de gracias</h2>
+          <p>Para evitar que cualquiera genere un código sin pasar por la donación, este formulario no está visible en la landing principal.</p>
+          <p>La idea es sencilla: haces la donación voluntaria en PayPal y, al finalizar, vuelves a una página privada de agradecimiento donde introduces el email usado y generas tu código.</p>
+          <ul>
+            <li>Generación local en el navegador.</li>
+            <li>No se guarda tu email en esta web.</li>
+            <li>El código se introduce después en Peregrino APP.</li>
+          </ul>
+          <a class="btn gold" href="javascript:void(0)" onclick="irPayPal()">Continuar a PayPal</a>
         </article>
+
       </div>
     </section>
   </main>
@@ -610,42 +607,7 @@
   </footer>
 
   <script>
-    // Generador de código de colaborador — debe coincidir con la app Flutter.
-    const SALT = 'peregrino2026';
-    const ALFABETO = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-
-    function generarCodigoColaborador(email) {
-      const input = email.toLowerCase().trim() + SALT;
-      const mod = 1000000007;
-      let hash = 0;
-      for (let i = 0; i < input.length; i++) {
-        hash = (hash * 31 + input.charCodeAt(i)) % mod;
-      }
-      let code = '';
-      for (let i = 0; i < 5; i++) {
-        code += ALFABETO[hash % ALFABETO.length];
-        hash = Math.floor(hash / ALFABETO.length);
-      }
-      return code;
-    }
-
-    function mostrarCodigo() {
-      const emailInput = document.getElementById('email-input');
-      const email = emailInput.value;
-      if (!email || !emailInput.checkValidity()) {
-        emailInput.reportValidity();
-        return;
-      }
-      const codigo = generarCodigoColaborador(email);
-      document.getElementById('codigo-display').textContent = codigo;
-      document.getElementById('resultado').style.display = 'block';
-    }
-
     function irPlayStore() {
-      if (PLAY_STORE_URL.includes('TU_PAQUETE_ANDROID')) {
-        alert('Antes de publicar, cambia PLAY_STORE_URL por el enlace real de Google Play.');
-        return;
-      }
       window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
     }
 
