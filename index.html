@@ -277,6 +277,101 @@
     .screen h3 { margin: 20px 8px 6px; color: var(--azul-tinta); }
     .screen p { margin: 0 8px 8px; color: var(--gris); }
 
+    .chat-testimonials {
+      margin-top: 44px;
+      padding: 34px;
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(215,181,55,.22), transparent 20rem),
+        linear-gradient(135deg, #f7efd8 0%, #ffffff 100%);
+      border: 1px solid rgba(29,46,122,.08);
+      box-shadow: var(--sombra-suave);
+      position: relative;
+      overflow: hidden;
+    }
+    .chat-testimonials::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: rgba(29,46,122,.06);
+    }
+    .chat-header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+    .chat-header h3 {
+      margin: 0;
+      color: var(--azul-tinta);
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      line-height: 1.02;
+    }
+    .chat-header p {
+      margin: 0;
+      max-width: 520px;
+      color: var(--gris);
+    }
+    .chat-wall {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+    .chat-bubble {
+      position: relative;
+      padding: 18px 18px 18px 54px;
+      border-radius: 24px 24px 24px 8px;
+      background: #ffffff;
+      border: 1px solid rgba(29,46,122,.08);
+      box-shadow: 0 10px 28px rgba(9,20,51,.08);
+    }
+    .chat-bubble::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--azul), var(--morado));
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.55);
+    }
+    .chat-bubble:nth-child(even) {
+      border-radius: 24px 24px 8px 24px;
+      background: #fffdf5;
+    }
+    .chat-bubble:nth-child(2)::before { background: linear-gradient(135deg, var(--verde), #2e7a5d); }
+    .chat-bubble:nth-child(3)::before { background: linear-gradient(135deg, var(--naranja), #c76438); }
+    .chat-bubble:nth-child(4)::before { background: linear-gradient(135deg, var(--morado), #9345c9); }
+    .chat-bubble:nth-child(5)::before { background: linear-gradient(135deg, var(--rojo), #c85a42); }
+    .chat-name {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--azul-tinta);
+      font-weight: 900;
+      letter-spacing: .01em;
+    }
+    .chat-handle {
+      color: var(--gris);
+      font-weight: 800;
+      font-size: .92em;
+    }
+    .chat-bubble p {
+      margin: 0;
+      color: #514b45;
+      line-height: 1.58;
+    }
+
     .mid-cta {
       padding: 64px 0;
       background: var(--azul-tinta);
@@ -347,6 +442,7 @@
     }
     .code-result strong { display:block; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: .22em; margin: 10px 0; }
     .code-result span { color: rgba(255,255,255,.72); }
+    .warning { font-size: .9rem; color: #8b6b2a !important; background:#fff7d6; border-radius:18px; padding:14px 16px; }
 
     footer {
       padding: 42px 0;
@@ -362,6 +458,8 @@
       .secrets { grid-template-columns: repeat(2, 1fr); }
       .secret:last-child { grid-column: 1 / -1; }
       .showcase-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline:auto; }
+      .chat-wall { grid-template-columns: 1fr; }
+      .chat-header { display: grid; align-items: start; }
       .pillar-grid { grid-template-columns: 1fr; }
       .mid-cta .wrap, .share-card { grid-template-columns:1fr; display:grid; }
       .share-actions { justify-content: flex-start; }
@@ -378,7 +476,8 @@
       section { padding: 62px 0; }
       .secrets { grid-template-columns: 1fr; }
       .secret { min-height: auto; }
-      .donation-copy, .code-box, .share-card { padding: 24px; border-radius: 28px; }
+      .donation-copy, .code-box, .share-card, .chat-testimonials { padding: 24px; border-radius: 28px; }
+      .chat-bubble { padding: 16px 16px 16px 50px; }
       footer .wrap { flex-direction: column; align-items:flex-start; }
       .btn { width: 100%; }
       .hero-actions .btn, .share-actions .btn { width: 100%; }
@@ -388,8 +487,8 @@
 <body>
   <!-- CAMBIAR ESTAS URLS -->
   <script>
-    const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc";
-    const PAYPAL_URL = "https://paypal.me/ingresoucha/5";
+    const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=TU_PAQUETE_ANDROID";
+    const PAYPAL_URL = "https://www.paypal.com/donate/?hosted_button_id=TU_BOTON_PAYPAL";
     const LANDING_URL = window.location.href;
     const SHARE_TEXT = "He encontrado Peregrino APP: una guía para vivir el Cuarto Día con oración, Rosario, Vía Crucis, Reunión de Grupo y seguimiento del Trípode. Échale un vistazo:";
   </script>
@@ -538,6 +637,43 @@
             <p>Un esquema claro para ordenar la reunión, cuidar los tiempos y mantener el foco.</p>
           </article>
         </div>
+
+        <div class="chat-testimonials" aria-label="Testimonios estilo chat de Peregrino APP">
+          <div class="chat-header">
+            <div>
+              <span class="eyebrow">Esto es Peregrino</span>
+              <h3>Cuando el Cuarto Día se mete en la vida real</h3>
+            </div>
+            <p>Pequeños mensajes de cursillistas que reflejan para qué existe la app: cuidar el fuego cuando la rutina aprieta.</p>
+          </div>
+
+          <div class="chat-wall">
+            <article class="chat-bubble">
+              <span class="chat-name">Daniel <span class="chat-handle">(@Agobiado76)</span></span>
+              <p>“El trabajo y los niños se habían comido mi Trípode. Creía que no tenía tiempo para revisar mi piedad... pero con Peregrino APP, no necesito horas; tengo a mano un check-up diario en menos de un minuto.”</p>
+            </article>
+
+            <article class="chat-bubble">
+              <span class="chat-name">Gabriel <span class="chat-handle">(@elperegrinosolitario)</span></span>
+              <p>“Al salir de la clausura me sentía un bicho raro en casa. Nadie hablaba mi idioma. La app se convirtió en mi refugio para recordar que sigo en el camino, aunque mi entorno no sea cristiano.”</p>
+            </article>
+
+            <article class="chat-bubble">
+              <span class="chat-name">Sara <span class="chat-handle">(@peregrinadespistada)</span></span>
+              <p>“Siempre perdía la hoja de mi Reunión de Grupo y se me olvidaba por quién había prometido hacer palanca. Ahora lo llevo todo organizado en el móvil y mi compromiso es real, no de boquilla.”</p>
+            </article>
+
+            <article class="chat-bubble">
+              <span class="chat-name">Eva <span class="chat-handle">(@peregrinafría)</span></span>
+              <p>“Llevaba meses en los que mi Cuarto Día era pura inercia. Usar el Vía Crucis y el Rosario de la app me ha devuelto la emoción de los primeros días. Ha sido como un mini-cursillo diario.”</p>
+            </article>
+
+            <article class="chat-bubble">
+              <span class="chat-name">David <span class="chat-handle">(@lareudegrupo)</span></span>
+              <p>“Nuestra Reunión de Grupo era un caos, acabábamos hablando de fútbol. Pusimos el esquema de la app sobre la mesa y por fin volvimos a centrarnos en lo importante. Nos ha dado la vida.”</p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -568,38 +704,37 @@
       </div>
     </section>
 
-<section class="donation" id="sostener">
-  <div class="wrap donation-grid">
-    <article class="donation-copy">
-      <span class="eyebrow">Sostenimiento seguro</span>
-      <h2>Una donación voluntaria para sostener el camino</h2>
-      <p>
-        Peregrino APP nace como una herramienta sencilla para cursillistas.
-        La app puede usarse sin obligación de donar. Si te ayuda, puedes colaborar
-        voluntariamente para sostener su mejora, mantenimiento y nuevos contenidos.
-      </p>
+    <section class="donation" id="sostener">
+      <div class="wrap donation-grid">
+        <article class="donation-copy">
+          <span class="eyebrow">Sostenimiento seguro</span>
+          <h2>Una donación voluntaria para sostener el camino</h2>
+          <p>Peregrino APP nace como una herramienta sencilla para cursillistas. Si te ayuda, puedes colaborar voluntariamente para sostener su mejora y mantenimiento.</p>
+          <ul>
+            <li>La app puede usarse sin obligación de donar.</li>
+            <li>La colaboración ayuda a mantener nuevas funciones y contenidos.</li>
+            <li>Después de donar, puedes generar tu Código de Peregrino con el email usado.</li>
+          </ul>
+          <a class="btn gold" href="javascript:void(0)" onclick="irPayPal()">💛 Donar con PayPal</a>
+        </article>
 
-      <ul>
-        <li>La app puede usarse sin obligación de donar.</li>
-        <li>Tu colaboración ayuda a mantener nuevas funciones y contenidos.</li>
-        <li>Después de donar, PayPal te redirigirá a la página para generar tu Código de Peregrino.</li>
-      </ul>
-
-      <a class="btn gold" href="https://paypal.me/ingresoucha?locale.x=es_ES&country.x=ES" target="_blank" rel="noopener">
-        💛 Donar con PayPal
-      </a>
-    </article>
-
-    <article class="code-box">
-      <span class="eyebrow">Después de donar</span>
-      <h2>Recibirás tu Código de Peregrino</h2>
-      <p>
-        Al finalizar la donación, podrás generar tu código con el email utilizado.
-        Ese código se introduce después en la app desde la sección de sostenimiento.
-      </p>
-    </article>
-  </div>
-</section>
+        <article class="code-box">
+          <h2>Genera tu Código de Peregrino</h2>
+          <p>Introduce el email con el que hiciste la donación. El código se genera en tu navegador y después podrás introducirlo en la app.</p>
+          <div class="field">
+            <label for="email-input">Email de la donación</label>
+            <input type="email" id="email-input" placeholder="tuemail@ejemplo.com" autocomplete="email" />
+          </div>
+          <button class="btn" type="button" onclick="mostrarCodigo()">Obtener mi código</button>
+          <div id="resultado" class="code-result" aria-live="polite">
+            <span>Tu código personal</span>
+            <strong id="codigo-display"></strong>
+            <span>Introdúcelo en Peregrino → Perfil → Sostén el Camino</span>
+          </div>
+          <p class="warning">Nota: cambia las URL de Play Store y PayPal al principio del archivo antes de publicarlo.</p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -610,11 +745,50 @@
   </footer>
 
   <script>
+    // Generador de código de colaborador — debe coincidir con la app Flutter.
+    const SALT = 'peregrino2026';
+    const ALFABETO = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+    function generarCodigoColaborador(email) {
+      const input = email.toLowerCase().trim() + SALT;
+      const mod = 1000000007;
+      let hash = 0;
+      for (let i = 0; i < input.length; i++) {
+        hash = (hash * 31 + input.charCodeAt(i)) % mod;
+      }
+      let code = '';
+      for (let i = 0; i < 5; i++) {
+        code += ALFABETO[hash % ALFABETO.length];
+        hash = Math.floor(hash / ALFABETO.length);
+      }
+      return code;
+    }
+
+    function mostrarCodigo() {
+      const emailInput = document.getElementById('email-input');
+      const email = emailInput.value;
+      if (!email || !emailInput.checkValidity()) {
+        emailInput.reportValidity();
+        return;
+      }
+      const codigo = generarCodigoColaborador(email);
+      document.getElementById('codigo-display').textContent = codigo;
+      document.getElementById('resultado').style.display = 'block';
+    }
+
     function irPlayStore() {
+      if (PLAY_STORE_URL.includes('TU_PAQUETE_ANDROID')) {
+        alert('Antes de publicar, cambia PLAY_STORE_URL por el enlace real de Google Play.');
+        return;
+      }
       window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
     }
 
     function irPayPal() {
+      if (PAYPAL_URL.includes('TU_BOTON_PAYPAL')) {
+        alert('Antes de publicar, cambia PAYPAL_URL por tu enlace real de PayPal.');
+        return;
+      }
       window.open(PAYPAL_URL, '_blank', 'noopener,noreferrer');
     }
 
