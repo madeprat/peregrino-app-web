@@ -220,6 +220,32 @@
   </header>
 
   <main>
+    <div class="wrap" id="bienvenida" style="display:none; padding-top: 32px;">
+      <div style="
+        background: linear-gradient(135deg, rgba(29,46,122,.97), rgba(18,75,53,.93));
+        border-radius: 28px;
+        padding: clamp(24px,4vw,40px) clamp(20px,4vw,48px);
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 24px 70px rgba(9,20,51,.16);
+        margin-bottom: 32px;
+      ">
+        <div style="font-size: 3rem; margin-bottom: 12px;">🌈</div>
+        <h2 style="
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: clamp(1.8rem, 4vw, 2.8rem);
+          font-weight: 700; letter-spacing: -.02em;
+          line-height: 1.1; margin: 0 0 14px; color: #fff;
+        ">¡Gracias por tu ofrenda!</h2>
+        <p style="color:rgba(255,255,255,.78); font-size:1.05rem; line-height:1.7; max-width:520px; margin:0 auto 8px;">
+          Tu generosidad sostiene el camino y se multiplica en bendiciones<br/>para los cursillistas de todo el mundo. Oraré por ti. 🙏
+        </p>
+        <p style="color:rgba(255,255,255,.55); font-size:.92rem; margin:16px auto 0; max-width:480px; line-height:1.6;">
+          Introduce el email con el que donaste, genera tu código<br/>y ábrelo en la app:<br/>
+          <strong style="color:var(--oro);">Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?</strong>
+        </p>
+      </div>
+    </div>
     <div class="wrap hero">
       <section class="thanks-card" aria-labelledby="titulo-gracias">
         <div>
@@ -267,6 +293,19 @@
   </main>
 
   <script>
+    // Mostrar banner de bienvenida si vienen redirigidos desde PayPal
+    (function() {
+      const ref = document.referrer;
+      const params = new URLSearchParams(window.location.search);
+      const desdePaypal = ref.includes('paypal.com') || params.has('from');
+      if (desdePaypal) {
+        const banner = document.getElementById('bienvenida');
+        if (banner) banner.style.display = 'block';
+        // Scroll suave al banner
+        setTimeout(() => banner.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    })();
+
     // Generador de código de colaborador — debe coincidir con la app Flutter.
     const SALT = 'peregrino2026';
     const ALFABETO = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
