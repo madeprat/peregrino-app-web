@@ -266,11 +266,35 @@
 
       <section class="code-card" aria-labelledby="titulo-codigo">
         <h2 id="titulo-codigo">Genera tu Código de Peregrino</h2>
-        <p>Usa el mismo email con el que hiciste la donación. El código debe coincidir con el que reconoce la app.</p>
+        <p>Introduce el email con el que iniciaste sesión en PayPal.<br/>
+        <strong style="color:var(--azul-tinta);">Puede ser diferente al del móvil o al de Google Play.</strong></p>
+
+        <div style="
+          background: #eef6f0;
+          border: 1px solid rgba(18,75,53,.2);
+          border-radius: 16px;
+          padding: 14px 16px;
+          margin-bottom: 18px;
+          display: flex;
+          gap: 10px;
+          align-items: flex-start;
+        ">
+          <span style="font-size:1.2rem; flex-shrink:0;">🔒</span>
+          <div style="font-size:.9rem; color:#2a4a35; line-height:1.6;">
+            <strong>Tu email no sale de tu navegador.</strong>
+            Esta página no tiene servidor propio. El código se calcula aquí mismo, en tu dispositivo, y desaparece cuando cierras la pestaña. Nadie — ni nosotros — lo ve.<br/>
+            <span style="color:#4a7a5a; font-style:italic; font-size:.84rem;">¿No te lo crees? Desconecta el WiFi y prueba. Funciona igual.</span>
+          </div>
+        </div>
 
         <div class="field">
-          <label for="email-input">Email de la donación</label>
-          <input type="email" id="email-input" placeholder="tuemail@ejemplo.com" autocomplete="email" required />
+          <label for="email-input">Tu email de PayPal</label>
+          <input type="email" id="email-input"
+            placeholder="El email con el que entraste a PayPal"
+            autocomplete="email" required />
+          <span style="font-size:.82rem; color:var(--gris); margin-top:5px; display:block;">
+            ¿No recuerdas cuál es? Entra en <a href="https://www.paypal.com" target="_blank" style="color:var(--azul);">paypal.com</a> — aparece bajo tu nombre.
+          </span>
         </div>
 
         <button class="btn" type="button" onclick="mostrarCodigo()">Obtener mi código</button>
@@ -278,11 +302,7 @@
         <div id="resultado" class="code-result" aria-live="polite">
           <span>Tu código personal</span>
           <strong id="codigo-display"></strong>
-          <span>Introdúcelo en Peregrino → Perfil → Sostén el Camino</span>
-        </div>
-
-        <div class="privacy">
-          El código se genera únicamente a partir del email que utilizaste en la donación. Esta página no guarda ni envía tu email a ningún servidor.
+          <span>Introdúcelo en Peregrino → Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?</span>
         </div>
 
         <div class="actions">
