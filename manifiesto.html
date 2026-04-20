@@ -5,408 +5,281 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manifiesto · Peregrino APP</title>
   <meta name="description" content="Por qué existe Peregrino APP. El manifiesto de una familia cursillista que decidió poner la tecnología al servicio del Cuarto Día." />
-  <meta property="og:title" content="Manifiesto · Peregrino APP" />
-  <meta property="og:description" content="No somos una empresa. Somos una familia cursillista que se hizo una pregunta sencilla." />
-  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:        #0e1018;
-      --bg-card:   #14161f;
-      --gold:      #c9a56a;
-      --gold-dim:  #8a6d3f;
-      --cream:     #f0e6d3;
-      --muted:     #8a8580;
-      --border:    rgba(201,165,106,0.18);
-      --r1: #e8524a; --r2: #e8873a; --r3: #d4b43a;
-      --r4: #4caf72; --r5: #4a8fe8; --r6: #8b5cf6;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'Lora', Georgia, serif;
+      --cream:      #F5F0E6;
+      --cream-dark: #EDE6D5;
+      --white:      #FFFFFF;
+      --green:      #1E3A2F;
+      --green-mid:  #2D5040;
+      --green-lite: #3D6B55;
+      --gold:       #C8941A;
+      --gold-lite:  #E8B83A;
+      --ink:        #1A1A14;
+      --ink-mid:    #3D3D30;
+      --ink-soft:   #6B6B58;
+      --border:     rgba(30,58,47,0.12);
+      --border-gold:rgba(200,148,26,0.28);
+      --font-d: 'Playfair Display', Georgia, serif;
+      --font-b: 'Lora', Georgia, serif;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
-      background: var(--bg);
-      color: var(--cream);
-      font-family: var(--font-body);
-      font-size: 18px;
-      line-height: 1.8;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-b);
+      font-size: 17px; line-height: 1.85;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Rainbow stripe ── */
     .rainbow-bar {
       height: 4px;
-      background: linear-gradient(90deg,
-        var(--r1) 0%, var(--r2) 18%, var(--r3) 33%,
-        var(--r4) 50%, var(--r5) 68%, var(--r6) 100%);
+      background: linear-gradient(90deg,#e8524a 0%,#e8873a 18%,#d4b43a 33%,#4caf72 50%,#4a8fe8 68%,#8b5cf6 100%);
     }
 
-    /* ── Nav ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(14,16,24,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,240,230,0.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 58px;
     }
-
     .nav-brand {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: 0.02em;
-      text-decoration: none;
+      font-family: var(--font-d); font-size: 1.05rem; font-weight: 700;
+      color: var(--green); text-decoration: none;
     }
-
     .nav-back {
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
+      font-size: 0.8rem; color: var(--ink-soft);
+      text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--cream); }
+    .nav-back:hover { color: var(--green); }
     .nav-back::before { content: '← '; }
 
-    /* ── Hero ── */
+    /* Hero con degradado verde como el index */
     .hero {
-      max-width: 740px;
-      margin: 0 auto;
-      padding: 5rem 2rem 3rem;
+      background: linear-gradient(150deg, var(--green) 0%, var(--green-mid) 50%, #4a6b42 80%, var(--cream-dark) 100%);
+      padding: 6rem 2rem 5rem;
       text-align: center;
+      animation: fadeUp 0.8s ease both;
     }
-
-    .hero-eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
+    .hero-tag {
+      font-size: 0.7rem; letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 2rem;
+      color: rgba(245,240,230,0.5);
+      display: block; margin-bottom: 2rem;
     }
-
     .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: var(--cream);
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
+      font-family: var(--font-d);
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 700; line-height: 1.05;
+      color: #F5F0E6; letter-spacing: -0.01em;
+      max-width: 720px; margin: 0 auto 1.5rem;
     }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
+    .hero h1 em { font-style: italic; color: var(--gold-lite); }
     .hero-sub {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 440px;
-      margin: 0 auto;
-      line-height: 1.7;
+      font-size: 1rem; color: rgba(245,240,230,0.6);
+      max-width: 420px; margin: 0 auto; line-height: 1.75;
     }
 
     .divider {
-      width: 48px;
-      height: 1px;
-      background: var(--gold-dim);
-      margin: 3rem auto;
-      opacity: 0.5;
+      width: 40px; height: 2px;
+      background: var(--gold); opacity: 0.45;
+      margin: 3.5rem auto;
     }
 
-    /* ── Main prose ── */
     .prose {
-      max-width: 640px;
-      margin: 0 auto;
+      max-width: 640px; margin: 0 auto;
       padding: 0 2rem 6rem;
     }
 
     .section {
       margin-bottom: 4rem;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
     }
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .section.visible { opacity: 1; transform: translateY(0); }
 
     .section-label {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
+      font-size: 0.7rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
       margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      display: flex; align-items: center; gap: 0.75rem;
     }
     .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+      content: ''; flex: 1; height: 1px; background: var(--border-gold);
     }
 
     .prose p {
-      color: rgba(240,230,211,0.82);
-      margin-bottom: 1.4rem;
-      font-size: 1.05rem;
-      line-height: 1.85;
+      color: var(--ink-mid); font-size: 1.02rem;
+      line-height: 1.88; margin-bottom: 1.35rem;
     }
-
     .prose p:last-child { margin-bottom: 0; }
+    .prose em { color: var(--green-lite); font-style: italic; }
 
-    /* Pull quote */
     .pull {
-      border-left: 2px solid var(--gold);
+      border-left: 3px solid var(--gold);
       margin: 2.5rem 0;
-      padding: 0.25rem 0 0.25rem 1.75rem;
+      padding: 0.5rem 0 0.5rem 1.75rem;
+      background: linear-gradient(90deg, rgba(200,148,26,0.06), transparent);
     }
-
     .pull p {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--cream) !important;
-      line-height: 1.4;
-      margin: 0 !important;
+      font-family: var(--font-d);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 400; font-style: italic;
+      color: var(--green) !important;
+      line-height: 1.4; margin: 0 !important;
     }
 
-    /* Pillar cards */
     .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 1px;
-      background: var(--border);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      margin: 2rem 0;
+      border-radius: 10px; overflow: hidden; margin: 2rem 0;
     }
-
     .pillar {
-      background: var(--bg-card);
-      padding: 1.5rem 1rem;
-      text-align: center;
+      background: var(--white);
+      padding: 1.4rem 0.75rem; text-align: center;
     }
-
-    .pillar-icon {
-      font-size: 1.4rem;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
+    .pillar-icon { font-size: 1.3rem; display: block; margin-bottom: 0.4rem; }
     .pillar-name {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--gold);
-      display: block;
+      font-family: var(--font-d); font-size: 0.88rem; font-weight: 700;
+      color: var(--green); display: block;
     }
 
-    /* ── Closing block ── */
     .closing {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 3rem 2.5rem;
-      text-align: center;
-      margin: 4rem 0 0;
+      background: var(--green);
+      border-radius: 14px; padding: 3.5rem 2.5rem; text-align: center;
+      margin-top: 4rem;
     }
-
     .closing-word {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--gold);
-      letter-spacing: 0.04em;
-      display: block;
-      margin-bottom: 1rem;
-      line-height: 1;
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      font-weight: 700; font-style: italic;
+      color: var(--gold-lite); display: block;
+      line-height: 1; margin-bottom: 1rem;
     }
-
     .closing p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      max-width: 380px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
+      color: rgba(245,240,230,0.65); font-size: 0.9rem;
+      max-width: 360px; margin: 0 auto 2rem; line-height: 1.7;
     }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: var(--gold);
-      color: var(--bg);
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: opacity 0.2s, transform 0.2s;
+    .btn-gold {
+      display: inline-block; padding: 0.85rem 2.2rem;
+      background: var(--gold); color: white;
+      font-family: var(--font-b); font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; text-decoration: none;
+      border-radius: 4px; transition: background 0.2s, transform 0.15s;
     }
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-gold:hover { background: var(--gold-lite); transform: translateY(-2px); }
 
-    /* ── Footer ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.8rem;
-      line-height: 1.7;
+      border-top: 1px solid var(--border); padding: 2rem;
+      text-align: center; color: var(--ink-soft);
+      font-size: 0.78rem; line-height: 1.8;
     }
+    footer a { color: var(--green-lite); text-decoration: none; }
+    footer a:hover { color: var(--green); }
 
-    footer a { color: var(--gold-dim); text-decoration: none; }
-    footer a:hover { color: var(--gold); }
-
-    /* ── Fade-in on load ── */
-    .hero {
-      animation: fadeUp 0.9s ease both;
-    }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity:0; transform:translateY(28px); }
+      to   { opacity:1; transform:translateY(0); }
     }
 
-    /* ── Mobile ── */
     @media (max-width: 600px) {
+      .hero { padding: 4rem 1.25rem 3.5rem; }
+      nav   { padding: 0 1.25rem; }
       .prose { padding: 0 1.25rem 4rem; }
-      .hero  { padding: 3.5rem 1.25rem 2rem; }
-      nav    { padding: 0 1.25rem; }
-      .closing { padding: 2rem 1.5rem; }
+      .pillars { grid-template-columns: repeat(2,1fr); }
+      .closing { padding: 2.5rem 1.5rem; }
     }
   </style>
 </head>
 <body>
+<div class="rainbow-bar"></div>
+<nav>
+  <a class="nav-brand" href="https://madeprat.github.io/peregrino-app-web/">⛪ Peregrino APP</a>
+  <a class="nav-back" href="https://madeprat.github.io/peregrino-app-web/">Volver al inicio</a>
+</nav>
 
-  <div class="rainbow-bar"></div>
+<header class="hero">
+  <span class="hero-tag">Peregrino APP · Manifiesto</span>
+  <h1>Por qué existe<br/><em>esta aplicación</em></h1>
+  <p class="hero-sub">No somos una empresa. No tenemos inversores.<br/>Somos una familia cursillista.</p>
+</header>
 
-  <nav>
-    <a class="nav-brand" href="https://madeprat.github.io/peregrino-app-web/">⛪ Peregrino APP</a>
-    <a class="nav-back" href="https://madeprat.github.io/peregrino-app-web/">Volver al inicio</a>
-  </nav>
+<div class="divider"></div>
 
-  <!-- Hero -->
-  <header class="hero">
-    <p class="hero-eyebrow">Peregrino APP · Manifiesto</p>
-    <h1>Por qué existe<br /><em>esta aplicación</em></h1>
-    <p class="hero-sub">No somos una empresa. No tenemos inversores.<br/>Somos una familia cursillista.</p>
-  </header>
+<main class="prose">
+  <section class="section">
+    <p>Un día nos hicimos una pregunta sencilla: <em>¿por qué es tan fácil perder el Cuarto Día?</em></p>
+    <p>No por falta de fe. No por falta de ganas. Sino porque la vida es ruidosa, los días son cortos, y la constancia —esa virtud pequeña y tenaz que sostiene todo lo demás— necesita ayuda. Siempre la ha necesitado. Los cursillistas de los años cincuenta se escribían cartas. Nosotros tenemos teléfonos en el bolsillo. Nos pareció honesto intentar ponerlos al servicio del Señor.</p>
+    <p>Peregrino nació de esa convicción, y de ese atrevimiento.</p>
+  </section>
 
-  <div class="divider"></div>
+  <section class="section">
+    <p class="section-label">Lo que no pretendemos</p>
+    <p>No pretendemos ser tu comunidad. Tu Reunión de Grupo no cabe en una pantalla, y sería una mentira intentarlo. El calor de estar juntos, la mirada que sostiene, el abrazo después de compartir algo difícil: eso no lo puede dar ninguna aplicación, y no lo intentamos.</p>
+    <p>No pretendemos sustituir la oración. La oración es un encuentro personal con Dios, y ese encuentro ocurre en el silencio de tu corazón, no en una notificación.</p>
+    <div class="pull"><p>No pretendemos darte la fe. Eso ya lo tienes.</p></div>
+    <p>Lo que quizás necesitas —lo que muchos necesitamos— es un pequeño empujón para no olvidar que hoy también puedes orar, estudiar, actuar, acercarte a alguien que todavía no conoce a Cristo.</p>
+  </section>
 
-  <!-- Prose -->
-  <main class="prose">
-
-    <section class="section">
-      <p>Un día nos hicimos una pregunta sencilla: <em>¿por qué es tan fácil perder el Cuarto Día?</em></p>
-      <p>No por falta de fe. No por falta de ganas. Sino porque la vida es ruidosa, los días son cortos, y la constancia —esa virtud pequeña y tenaz que sostiene todo lo demás— necesita ayuda. Siempre la ha necesitado. Los cursillistas de los años cincuenta se escribían cartas. Nosotros tenemos teléfonos en el bolsillo. Nos pareció honesto intentar ponerlos al servicio del Señor.</p>
-      <p>Peregrino nació de esa convicción, y de ese atrevimiento.</p>
-    </section>
-
-    <section class="section">
-      <p class="section-label">Lo que no pretendemos</p>
-      <p>No pretendemos ser tu comunidad. Tu Reunión de Grupo no cabe en una pantalla, y sería una mentira intentarlo. El calor de estar juntos, la mirada que sostiene, el abrazo después de compartir algo difícil: eso no lo puede dar ninguna aplicación, y no lo intentamos.</p>
-      <p>No pretendemos sustituir la oración. La oración es un encuentro personal con Dios, y ese encuentro ocurre en el silencio de tu corazón, no en una notificación.</p>
-
-      <div class="pull">
-        <p>No pretendemos darte la fe. Eso ya lo tienes.</p>
-      </div>
-
-      <p>Lo que quizás necesitas —lo que muchos necesitamos— es un pequeño empujón para no olvidar que hoy también puedes orar, estudiar, actuar, acercarte a alguien que todavía no conoce a Cristo.</p>
-    </section>
-
-    <section class="section">
-      <p class="section-label">Lo que sí ofrecemos</p>
-      <p>Un lugar tranquilo donde rezar cuando el día empieza y todavía no has encontrado las palabras. El Padrenuestro, el Rosario, la Hora Apostólica, la Vía Crucis: oraciones que la Iglesia lleva siglos rezando, disponibles cuando las necesitas, sin distracciones, sin publicidad, sin que nadie te venda nada.</p>
-      <p>Un recordatorio suave de que el Cuarto Día tiene cuatro patas. Y que descuidar una es descuidar el equilibrio de todo.</p>
-
-      <div class="pillars" aria-label="Los cuatro pilares del Cuarto Día">
-        <div class="pillar"><span class="pillar-icon">🙏</span><span class="pillar-name">Oración</span></div>
-        <div class="pillar"><span class="pillar-icon">📚</span><span class="pillar-name">Estudio</span></div>
-        <div class="pillar"><span class="pillar-icon">🌱</span><span class="pillar-name">Acción</span></div>
-        <div class="pillar"><span class="pillar-icon">✝️</span><span class="pillar-name">Candidatos</span></div>
-      </div>
-
-      <p>Un espacio para los momentos en que vas en el metro, esperas en una sala, tienes cinco minutos entre reunión y reunión, y quieres que ese tiempo sirva para algo más que el scroll eterno.</p>
-      <p>Eso es Peregrino. Poco más, pero con intención.</p>
-    </section>
-
-    <section class="section">
-      <p class="section-label">Lo que nos mueve</p>
-      <p>No queremos que descargues esta aplicación para tenerla. Queremos que la uses para crecer. Hay una diferencia enorme entre las dos cosas.</p>
-      <p>Si un día te ayuda a rezar cuando no habrías rezado, habremos cumplido. Si te recuerda a alguien a quien llevas tiempo queriendo acercar al Cursillo, habremos cumplido. Si en un momento de sequedad espiritual te da una palabra que no esperabas y que te sostiene, habremos cumplido.</p>
-
-      <div class="pull">
-        <p>El Movimiento cambió vidas desde sus primeros días porque alguien creyó que la gracia podía trabajar a través de medios humanos sencillos.</p>
-      </div>
-
-      <p>Un fin de semana. Un coloquio. Una palanca. Una carta. Una llamada.</p>
-      <p>Esto es una palanca pequeña. La ponemos en tus manos.</p>
-    </section>
-
-    <section class="section">
-      <p class="section-label">Para terminar</p>
-      <p>Que <em>ultreya</em> no sea solo una palabra que decimos al despedirnos. Que sea lo que hacemos cada mañana cuando elegimos seguir adelante, con la vida que tenemos, en el mundo que nos ha tocado, fieles a lo que encontramos en aquel fin de semana que lo cambió todo.</p>
-      <p>Peregrino es gratuita. Lo será siempre. Porque algunas cosas no se venden.</p>
-    </section>
-
-    <!-- Closing CTA -->
-    <div class="closing section">
-      <span class="closing-word">Ultreya.</span>
-      <p>Descarga Peregrino APP gratis para Android y empieza a cuidar tu Cuarto Día, hoy.</p>
-      <a class="btn-primary" href="https://madeprat.github.io/peregrino-app-web/#sostener">Descargar gratis</a>
+  <section class="section">
+    <p class="section-label">Lo que sí ofrecemos</p>
+    <p>Un lugar tranquilo donde rezar cuando el día empieza y todavía no has encontrado las palabras. El Padrenuestro, el Rosario, la Hora Apostólica, la Vía Crucis: oraciones que la Iglesia lleva siglos rezando, disponibles cuando las necesitas, sin distracciones, sin publicidad, sin que nadie te venda nada.</p>
+    <p>Un recordatorio suave de que el Cuarto Día tiene cuatro patas. Y que descuidar una es descuidar el equilibrio de todo.</p>
+    <div class="pillars" aria-label="Los cuatro pilares del Cuarto Día">
+      <div class="pillar"><span class="pillar-icon">🙏</span><span class="pillar-name">Oración</span></div>
+      <div class="pillar"><span class="pillar-icon">📚</span><span class="pillar-name">Estudio</span></div>
+      <div class="pillar"><span class="pillar-icon">🌱</span><span class="pillar-name">Acción</span></div>
+      <div class="pillar"><span class="pillar-icon">✝️</span><span class="pillar-name">Candidatos</span></div>
     </div>
+    <p>Un espacio para los momentos en que vas en el metro, esperas en una sala, tienes cinco minutos entre reunión y reunión, y quieres que ese tiempo sirva para algo más que el scroll eterno.</p>
+    <p>Eso es Peregrino. Poco más, pero con intención.</p>
+  </section>
 
-  </main>
+  <section class="section">
+    <p class="section-label">Lo que nos mueve</p>
+    <p>No queremos que descargues esta aplicación para tenerla. Queremos que la uses para crecer. Hay una diferencia enorme entre las dos cosas.</p>
+    <p>Si un día te ayuda a rezar cuando no habrías rezado, habremos cumplido. Si te recuerda a alguien a quien llevas tiempo queriendo acercar al Cursillo, habremos cumplido. Si en un momento de sequedad espiritual te da una palabra que no esperabas y que te sostiene, habremos cumplido.</p>
+    <div class="pull"><p>El Movimiento cambió vidas porque alguien creyó que la gracia podía trabajar a través de medios humanos sencillos.</p></div>
+    <p>Un fin de semana. Un coloquio. Una palanca. Una carta. Una llamada.</p>
+    <p>Esto es una palanca pequeña. La ponemos en tus manos.</p>
+  </section>
 
-  <footer>
-    <p>
-      <a href="https://madeprat.github.io/peregrino-app-web/">Peregrino APP</a>
-      &nbsp;·&nbsp; Caminar por Cristo hacia el Padre
-      &nbsp;·&nbsp; Movimiento de Cursillos de Cristiandad
-    </p>
-    <p style="margin-top:0.5rem; font-size:0.72rem; opacity:0.5;">Apostolado digital de una familia cursillista · Gratuita · Sin anuncios</p>
-  </footer>
+  <section class="section">
+    <p class="section-label">Para terminar</p>
+    <p>Que <em>ultreya</em> no sea solo una palabra que decimos al despedirnos. Que sea lo que hacemos cada mañana cuando elegimos seguir adelante, con la vida que tenemos, en el mundo que nos ha tocado, fieles a lo que encontramos en aquel fin de semana que lo cambió todo.</p>
+    <p>Peregrino es gratuita. Lo será siempre. Porque algunas cosas no se venden.</p>
+  </section>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
+  <div class="closing section">
+    <span class="closing-word">Ultreya.</span>
+    <p>Descarga Peregrino APP gratis para Android y empieza a cuidar tu Cuarto Día, hoy.</p>
+    <a class="btn-gold" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar gratis</a>
+  </div>
+</main>
 
-    document.querySelectorAll('.section').forEach(s => observer.observe(s));
-  </script>
+<footer>
+  <p>
+    <a href="https://madeprat.github.io/peregrino-app-web/">Peregrino APP</a>
+    &nbsp;·&nbsp; Caminar por Cristo hacia el Padre
+    &nbsp;·&nbsp; Movimiento de Cursillos de Cristiandad
+  </p>
+  <p style="margin-top:0.4rem;opacity:0.45;font-size:0.7rem;">Apostolado digital de una familia cursillista · Gratuita · Sin anuncios</p>
+</footer>
 
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.section').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
