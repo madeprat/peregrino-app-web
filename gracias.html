@@ -403,8 +403,9 @@
               <div style="font-size:2.8rem;margin-bottom:8px;">🌈</div>
               <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 6px;">Peregrino APP · De Colores</p>
               <p id="tarjeta-para" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:700;color:#fff;margin:0 0 16px;line-height:1.2;"></p>
-              <p style="font-size:.82rem;color:rgba(255,255,255,.55);margin:0 0 6px;">Tu código De Colores</p>
-              <p id="tarjeta-codigo" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:3rem;font-weight:700;letter-spacing:.22em;color:var(--oro);margin:0 0 16px;line-height:1;"></p>
+              <p style="font-size:.82rem;color:rgba(255,255,255,.55);margin:0 0 4px;">Tu código De Colores</p>
+              <p id="tarjeta-codigo" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:3rem;font-weight:700;letter-spacing:.22em;color:var(--oro);margin:0 0 6px;line-height:1;"></p>
+              <p id="tarjeta-email" style="font-size:.78rem;color:rgba(255,255,255,.45);margin:0 0 16px;font-style:italic;"></p>
               <div id="tarjeta-mensaje-wrap" style="display:none;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;margin-bottom:16px;">
                 <p id="tarjeta-mensaje" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.78);margin:0;line-height:1.7;"></p>
               </div>
@@ -514,6 +515,7 @@
       para.textContent = nombre ? 'Para ' + nombre : 'Para ti, De Colores 🌈';
 
       document.getElementById('tarjeta-codigo').textContent = codigo;
+      document.getElementById('tarjeta-email').textContent  = 'Introduce este email en la app: ' + email;
 
       const msgWrap = document.getElementById('tarjeta-mensaje-wrap');
       const msgEl   = document.getElementById('tarjeta-mensaje');
@@ -546,12 +548,15 @@
       const para = nombre ? `Para ${nombre}` : 'Para ti';
       const intro = mensaje ? `"${mensaje}"\n\n` : '';
       const texto =
-        `🌈 ${para} — ¡De Colores!\n\n` +
+        `*${para} — De Colores!*\n\n` +
         `${intro}` +
-        `Te regalo el distintivo 🌈 De Colores en Peregrino APP.\n\n` +
-        `Tu código: *${codigo}*\n\n` +
-        `Actívalo en la app:\nPerfil → Sostén el Camino → ¿Ya hiciste una ofrenda?\n\n` +
-        `Descarga Peregrino APP gratis 👇\nhttps://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc`;
+        `Te regalo el distintivo De Colores en Peregrino APP.\n\n` +
+        `Tu codigo: *${codigo}*\n` +
+        `Tu email: *${document.getElementById('regalo-email').value.trim()}*\n\n` +
+        `Activalo en la app con ese email y ese codigo:\nPerfil → Sosten el Camino → ¿Ya hiciste una ofrenda?\n\n` +
+        `---\n` +
+        `Peregrino APP es gratuita. El distintivo se activa con una ofrenda libre — lo que cada uno sienta, sin precio fijo. Si quieres regalarle uno a alguien, entra en:\nhttps://madeprat.github.io/peregrino-app-web\n\n` +
+        `Descarga Peregrino APP gratis:\nhttps://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc`;
 
       const url = 'https://wa.me/?text=' + encodeURIComponent(texto);
       window.open(url, '_blank');
