@@ -268,118 +268,189 @@
     <div class="wrap hero">
       <section class="thanks-card" aria-labelledby="titulo-gracias">
         <div>
-          <span class="eyebrow">Gracias por sostener el camino</span>
-          <h1 id="titulo-gracias">Tu ayuda mantiene encendida esta pequeña llama</h1>
-        </div>
-
-        <div>
-          <div class="steps">
-            <div class="step"><strong>1</strong><span>Introduce el email que usaste en PayPal.</span></div>
-            <div class="step"><strong>2</strong><span>Genera tu Código de Peregrino.</span></div>
-            <div class="step"><strong>3</strong><span>Ábrelo en la app: Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?</span></div>
-          </div>
-          <p class="footer-note">El código se genera en tu navegador. Esta página no almacena tu email.</p>
+          <span class="eyebrow">Una oración por lo que has dado</span>
+          <p style="
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+            font-style: italic;
+            font-weight: 400;
+            color: rgba(255,255,255,.88);
+            line-height: 2;
+            margin: 28px 0 0;
+            letter-spacing: 0;
+          ">Señor, esta persona acaba de hacer algo hermoso.<br/>
+          Quizás pequeño para el mundo.<br/>
+          Pero tú mides diferente.<br/><br/>
+          Cuídala.<br/>
+          Bendice su casa, su familia, su Cuarto Día.<br/>
+          Que lo que dio con generosidad<br/>
+          vuelva a ella multiplicado en paz.</p>
+          <p style="
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--oro);
+            margin: 24px 0 0;
+            letter-spacing: .02em;
+          ">Amén. 🌈</p>
         </div>
       </section>
 
       <section class="code-card" aria-labelledby="titulo-codigo">
-        <h2 id="titulo-codigo">Genera tu Código de Peregrino</h2>
-        <p>Introduce el email con el que iniciaste sesión en PayPal.<br/>
-        <strong style="color:var(--azul-tinta);">Puede ser diferente al del móvil o al de Google Play.</strong></p>
 
+        <h2 id="titulo-codigo">Tu ofrenda tiene nombre</h2>
+
+        <!-- Toggle Para mí / Regalo -->
         <div style="
-          background: #eef6f0;
-          border: 1px solid rgba(18,75,53,.2);
-          border-radius: 16px;
-          padding: 14px 16px;
-          margin-bottom: 18px;
-          display: flex;
-          gap: 10px;
-          align-items: flex-start;
+          display: flex; gap: 8px;
+          background: rgba(29,46,122,.06);
+          border-radius: 14px; padding: 5px;
+          margin-bottom: 24px;
         ">
-          <span style="font-size:1.2rem; flex-shrink:0;">🔒</span>
-          <div style="font-size:.9rem; color:#2a4a35; line-height:1.6;">
-            <strong>Tu email no sale de tu navegador.</strong>
-            Esta página no tiene servidor propio. El código se calcula aquí mismo, en tu dispositivo, y desaparece cuando cierras la pestaña. Nadie — ni nosotros — lo ve.<br/>
-            <span style="color:#4a7a5a; font-style:italic; font-size:.84rem;">¿No te lo crees? Desconecta el WiFi y prueba. Funciona igual.</span>
+          <button id="tab-yo" onclick="cambiarTab('yo')" style="
+            flex:1; border:none; border-radius:10px; padding:10px;
+            background: var(--azul); color:#fff;
+            font-weight:900; font-size:.9rem; cursor:pointer;
+            transition: all .2s;
+          ">Para mí</button>
+          <button id="tab-regalo" onclick="cambiarTab('regalo')" style="
+            flex:1; border:none; border-radius:10px; padding:10px;
+            background: transparent; color: var(--azul);
+            font-weight:900; font-size:.9rem; cursor:pointer;
+            transition: all .2s;
+          ">🎁 Como regalo</button>
+        </div>
+
+        <!-- PANEL: Para mí -->
+        <div id="panel-yo">
+          <p style="margin-top:0;">Introduce el email con el que ofrendaste en PayPal.<br/>
+          <strong style="color:var(--azul-tinta);">Puede ser diferente al del móvil o al de Google Play.</strong></p>
+
+          <div style="background:#eef6f0;border:1px solid rgba(18,75,53,.2);border-radius:16px;padding:14px 16px;margin-bottom:18px;display:flex;gap:10px;align-items:flex-start;">
+            <span style="font-size:1.2rem;flex-shrink:0;">🔒</span>
+            <div style="font-size:.88rem;color:#2a4a35;line-height:1.6;">
+              <strong>Tu email no sale de tu navegador.</strong>
+              El código se calcula aquí mismo, en tu dispositivo, y desaparece cuando cierras la pestaña. Nadie — ni nosotros — lo ve.<br/>
+              <span style="color:#4a7a5a;font-style:italic;font-size:.82rem;">¿No te lo crees? Desconecta el WiFi y prueba. Funciona igual.</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email-input">Tu email de PayPal</label>
+            <input type="email" id="email-input"
+              placeholder="El email con el que entraste a PayPal"
+              autocomplete="email" />
+            <span style="font-size:.82rem;color:var(--gris);margin-top:5px;display:block;">
+              ¿No recuerdas cuál es? Entra en <a href="https://www.paypal.com" target="_blank" style="color:var(--azul);">paypal.com</a> — aparece bajo tu nombre.
+            </span>
+          </div>
+
+          <button class="btn" type="button" onclick="mostrarCodigo()">Obtener mi código</button>
+
+          <div id="resultado" class="code-result" aria-live="polite">
+            <span>Tu código personal</span>
+            <strong id="codigo-display"></strong>
+            <button id="btn-copiar" onclick="copiarCodigo()" style="margin-top:14px;background:var(--oro);color:var(--azul-tinta);border:none;border-radius:999px;padding:10px 24px;font-weight:900;font-size:.95rem;cursor:pointer;display:flex;align-items:center;gap:8px;margin-inline:auto;transition:transform .15s ease,opacity .15s ease;">
+              <span id="copiar-icono">📋</span>
+              <span id="copiar-texto">Copiar código</span>
+            </button>
+            <span style="margin-top:10px;display:block;">Pégalo en Peregrino → Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?</span>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.65);margin:18px 0 0;line-height:1.6;">Tu ofrenda mantiene encendida esta pequeña llama. 🕯️</p>
           </div>
         </div>
 
-        <div class="field">
-          <label for="email-input">Tu email de PayPal</label>
-          <input type="email" id="email-input"
-            placeholder="El email con el que entraste a PayPal"
-            autocomplete="email" required />
-          <span style="font-size:.82rem; color:var(--gris); margin-top:5px; display:block;">
-            ¿No recuerdas cuál es? Entra en <a href="https://www.paypal.com" target="_blank" style="color:var(--azul);">paypal.com</a> — aparece bajo tu nombre.
-          </span>
+        <!-- PANEL: Regalo -->
+        <div id="panel-regalo" style="display:none;">
+          <p style="margin-top:0;">
+            Dona en PayPal y regala el distintivo 🌈 De Colores a quien tú quieras.<br/>
+            <strong style="color:var(--azul-tinta);">Solo necesitas el email con el que tu amigo usa la app.</strong>
+          </p>
+
+          <div style="background: rgba(215,181,55,.1);border:1px solid rgba(215,181,55,.3);border-radius:16px;padding:14px 16px;margin-bottom:20px;font-size:.88rem;color:#5a4510;line-height:1.6;">
+            💡 <strong>¿Qué email es ese?</strong> El email de Google con el que tu amigo descargó Peregrino APP en su móvil. Puedes preguntárselo antes — o mandárselo como sorpresa si lo sabes.
+          </div>
+
+          <div class="field">
+            <label for="regalo-nombre">Su nombre <span style="font-weight:400;color:var(--gris);">(opcional)</span></label>
+            <input type="text" id="regalo-nombre" placeholder="María, Carlos, mamá…" />
+          </div>
+
+          <div class="field">
+            <label for="regalo-email">Su email de Google Play</label>
+            <input type="email" id="regalo-email"
+              placeholder="El email con el que usa la app"
+              autocomplete="off" />
+          </div>
+
+          <div class="field">
+            <label for="regalo-mensaje">Tu mensaje personal <span style="font-weight:400;color:var(--gris);">(opcional)</span></label>
+            <textarea id="regalo-mensaje" rows="3" placeholder="Por tu aniversario de Cursillo… porque pienso en ti… porque este camino lo hacemos juntos…" style="width:100%;border-radius:14px;border:1px solid rgba(29,46,122,.18);padding:12px 16px;font:inherit;font-size:.95rem;outline:none;resize:none;background:#fffdf7;line-height:1.6;"></textarea>
+          </div>
+
+          <button class="btn" type="button" onclick="generarRegalo()" style="width:100%;">🎁 Generar tarjeta de regalo</button>
+
+          <!-- Tarjeta de regalo -->
+          <div id="tarjeta-regalo" style="display:none; margin-top:28px;">
+            <div id="tarjeta-visual" style="
+              background: linear-gradient(135deg, rgba(29,46,122,.98), rgba(18,75,53,.94));
+              border-radius: 24px;
+              padding: 32px 28px;
+              text-align: center;
+              color: #fff;
+              position: relative;
+              overflow: hidden;
+            ">
+              <div style="font-size:2.8rem;margin-bottom:8px;">🌈</div>
+              <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 6px;">Peregrino APP · De Colores</p>
+              <p id="tarjeta-para" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:700;color:#fff;margin:0 0 16px;line-height:1.2;"></p>
+              <p style="font-size:.82rem;color:rgba(255,255,255,.55);margin:0 0 6px;">Tu código De Colores</p>
+              <p id="tarjeta-codigo" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:3rem;font-weight:700;letter-spacing:.22em;color:var(--oro);margin:0 0 16px;line-height:1;"></p>
+              <div id="tarjeta-mensaje-wrap" style="display:none;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;margin-bottom:16px;">
+                <p id="tarjeta-mensaje" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.78);margin:0;line-height:1.7;"></p>
+              </div>
+              <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin:0;line-height:1.5;">
+                Actívalo en la app:<br/>Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?
+              </p>
+            </div>
+
+            <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;">
+              <button onclick="copiarCodigoRegalo()" style="flex:1;min-width:140px;background:var(--oro);color:var(--azul-tinta);border:none;border-radius:999px;padding:12px 20px;font-weight:900;font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+                <span id="copiar-regalo-icono">📋</span>
+                <span id="copiar-regalo-texto">Copiar código</span>
+              </button>
+              <button onclick="compartirRegalo()" style="flex:1;min-width:140px;background:var(--azul);color:#fff;border:none;border-radius:999px;padding:12px 20px;font-weight:900;font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+                📲 Compartir por WhatsApp
+              </button>
+            </div>
+          </div>
         </div>
 
-        <button class="btn" type="button" onclick="mostrarCodigo()">Obtener mi código</button>
-
-        <div id="resultado" class="code-result" aria-live="polite">
-          <span>Tu código personal</span>
-          <strong id="codigo-display"></strong>
-          <button
-            id="btn-copiar"
-            onclick="copiarCodigo()"
-            style="
-              margin-top: 14px;
-              background: var(--oro);
-              color: var(--azul-tinta);
-              border: none;
-              border-radius: 999px;
-              padding: 10px 24px;
-              font-weight: 900;
-              font-size: .95rem;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              gap: 8px;
-              margin-inline: auto;
-              transition: transform .15s ease, opacity .15s ease;
-            "
-          >
-            <span id="copiar-icono">📋</span>
-            <span id="copiar-texto">Copiar código</span>
-          </button>
-          <span style="margin-top:10px; display:block;">Pégalo en Peregrino → Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?</span>
-
-          <div style="
-            margin-top: 24px;
-            padding: 20px 22px;
-            background: rgba(255,255,255,.08);
-            border-radius: 16px;
-            border-top: 1px solid rgba(255,255,255,.15);
-          ">
-            <p style="
-              font-family: 'Cormorant Garamond', Georgia, serif;
-              font-size: 1.05rem;
-              font-style: italic;
-              color: rgba(255,255,255,.75);
-              line-height: 1.85;
-              margin: 0 0 6px;
-            ">Señor, conoces el nombre de quien acaba de sostener este camino.<br/>
-            Conoces lo que ha dejado ir, y el corazón con que lo ha hecho.<br/>
-            Que esta ofrenda pequeña llegue a lugares que no imagina.<br/>
-            Que sirva para que otro cursillista, en algún rincón del mundo,<br/>
-            no pierda el hilo del Cuarto Día.<br/>
-            Que vuelva a quien la dio multiplicada<br/>
-            en paz, en constancia y en alegría.<br/>
-            Gracias, Señor, por las manos que sostienen esta llama.</p>
-            <p style="
-              font-family: 'Cormorant Garamond', Georgia, serif;
-              font-size: 1.1rem;
-              font-weight: 700;
-              color: var(--oro);
-              margin: 0;
-            ">Amén. 🌈</p>
+        <!-- Pasos — referencia discreta al final -->
+        <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(29,46,122,.08);">
+          <p style="font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);margin:0 0 12px;">Cómo funciona</p>
+          <div style="display:grid;gap:8px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--gris);">
+              <span style="background:var(--azul);color:#fff;border-radius:6px;width:20px;height:20px;display:grid;place-items:center;font-size:.72rem;font-weight:900;flex-shrink:0;">1</span>
+              <span>Dona en PayPal — libremente, lo que sientas.</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--gris);">
+              <span style="background:var(--azul);color:#fff;border-radius:6px;width:20px;height:20px;display:grid;place-items:center;font-size:.72rem;font-weight:900;flex-shrink:0;">2</span>
+              <span>Genera tu código — o el de alguien a quien quieras regalar el 🌈.</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--gris);">
+              <span style="background:var(--azul);color:#fff;border-radius:6px;width:20px;height:20px;display:grid;place-items:center;font-size:.72rem;font-weight:900;flex-shrink:0;">3</span>
+              <span>Actívalo en la app: Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?</span>
+            </div>
           </div>
         </div>
 
         <div class="actions">
           <a class="btn gold" href="index.html">Volver a Peregrino APP</a>
         </div>
+
+        <p style="font-size:.78rem;color:var(--gris);text-align:center;margin:16px 0 0;font-style:italic;">
+          El código se genera en tu navegador. Esta página no almacena tu email.
+        </p>
       </section>
     </div>
   </main>
@@ -415,6 +486,75 @@
         hash = Math.floor(hash / ALFABETO.length);
       }
       return code;
+    }
+
+    function cambiarTab(tab) {
+      const esYo = tab === 'yo';
+      document.getElementById('panel-yo').style.display      = esYo ? 'block' : 'none';
+      document.getElementById('panel-regalo').style.display  = esYo ? 'none'  : 'block';
+      document.getElementById('tab-yo').style.background     = esYo ? 'var(--azul)' : 'transparent';
+      document.getElementById('tab-yo').style.color          = esYo ? '#fff' : 'var(--azul)';
+      document.getElementById('tab-regalo').style.background = esYo ? 'transparent' : 'var(--azul)';
+      document.getElementById('tab-regalo').style.color      = esYo ? 'var(--azul)' : '#fff';
+    }
+
+    function generarRegalo() {
+      const emailInput = document.getElementById('regalo-email');
+      const email = emailInput.value.trim();
+      if (!email || !email.includes('@')) {
+        emailInput.reportValidity();
+        return;
+      }
+      const nombre   = document.getElementById('regalo-nombre').value.trim();
+      const mensaje  = document.getElementById('regalo-mensaje').value.trim();
+      const codigo   = generarCodigoColaborador(email);
+
+      // Rellenar tarjeta visual
+      const para = document.getElementById('tarjeta-para');
+      para.textContent = nombre ? 'Para ' + nombre : 'Para ti, De Colores 🌈';
+
+      document.getElementById('tarjeta-codigo').textContent = codigo;
+
+      const msgWrap = document.getElementById('tarjeta-mensaje-wrap');
+      const msgEl   = document.getElementById('tarjeta-mensaje');
+      if (mensaje) {
+        msgEl.textContent = '"' + mensaje + '"';
+        msgWrap.style.display = 'block';
+      } else {
+        msgWrap.style.display = 'none';
+      }
+
+      document.getElementById('tarjeta-regalo').style.display = 'block';
+      document.getElementById('tarjeta-regalo').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function copiarCodigoRegalo() {
+      const codigo = document.getElementById('tarjeta-codigo').textContent;
+      navigator.clipboard.writeText(codigo).then(() => {
+        const icono = document.getElementById('copiar-regalo-icono');
+        const texto = document.getElementById('copiar-regalo-texto');
+        icono.textContent = '✅'; texto.textContent = '¡Copiado!';
+        setTimeout(() => { icono.textContent = '📋'; texto.textContent = 'Copiar código'; }, 2500);
+      });
+    }
+
+    function compartirRegalo() {
+      const nombre  = document.getElementById('regalo-nombre').value.trim();
+      const codigo  = document.getElementById('tarjeta-codigo').textContent;
+      const mensaje = document.getElementById('regalo-mensaje').value.trim();
+
+      const para = nombre ? `Para ${nombre}` : 'Para ti';
+      const intro = mensaje ? `"${mensaje}"\n\n` : '';
+      const texto =
+        `🌈 ${para} — ¡De Colores!\n\n` +
+        `${intro}` +
+        `Te regalo el distintivo 🌈 De Colores en Peregrino APP.\n\n` +
+        `Tu código: *${codigo}*\n\n` +
+        `Actívalo en la app:\nPerfil → Sostén el Camino → ¿Ya hiciste una ofrenda?\n\n` +
+        `Descarga Peregrino APP gratis 👇\nhttps://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc`;
+
+      const url = 'https://wa.me/?text=' + encodeURIComponent(texto);
+      window.open(url, '_blank');
     }
 
     function copiarCodigo() {
