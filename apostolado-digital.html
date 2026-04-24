@@ -2,124 +2,174 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apostolado Digital · Peregrino APP</title>
-  <meta name="description" content="Cómo Peregrino APP te ayuda a hacer apostolado digital de forma natural, auténtica y actual." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #F5F0E6;
-      color: #1A1A14;
-      line-height: 1.8;
-    }
-    header {
-      background: linear-gradient(140deg,#1E3A2F,#2D5040);
-      color: white;
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem,6vw,4rem);
-      margin-bottom: 1rem;
-    }
-    .container {
-      max-width: 720px;
-      margin: auto;
-      padding: 3rem 1.5rem 5rem;
-    }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      margin-top: 3rem;
-      font-size: 1.8rem;
-      color: #1E3A2F;
-    }
-    p {
-      margin-bottom: 1.3rem;
-      font-size: 1.05rem;
-    }
-    .highlight {
-      background: #fff;
-      padding: 1.5rem;
-      border-left: 4px solid #C8941A;
-      margin: 2rem 0;
-      font-style: italic;
-    }
-    .cta {
-      background: #1E3A2F;
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-      border-radius: 12px;
-      margin-top: 4rem;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.9rem 2rem;
-      background: #C8941A;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-    }
-    img {
-      width: 100%;
-      border-radius: 14px;
-      margin: 2rem 0;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apostolado Digital · Peregrino APP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Lora', serif;
+  background:#F5F0E6;
+  color:#1A1A14;
+  overflow:hidden;
+}
+
+.rainbow-bar{
+  height:4px;
+  background:linear-gradient(90deg,#e8524a 0%,#e8873a 18%,#d4b43a 33%,#4caf72 50%,#4a8fe8 68%,#8b5cf6 100%);
+}
+
+nav{
+  position:fixed;
+  top:4px;
+  left:0;
+  right:0;
+  height:60px;
+  background:rgba(245,240,230,0.95);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 2rem;
+  border-bottom:1px solid rgba(0,0,0,0.08);
+  z-index:100;
+}
+
+nav a{
+  text-decoration:none;
+  color:#1E3A2F;
+  font-weight:600;
+}
+
+.slider{
+  display:flex;
+  height:100vh;
+  scroll-snap-type:x mandatory;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+}
+
+.slide{
+  min-width:100vw;
+  height:100vh;
+  padding:120px 10vw 80px;
+  scroll-snap-align:start;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.slide h1, .slide h2{
+  font-family:'Playfair Display', serif;
+  margin-bottom:1.5rem;
+  color:#1E3A2F;
+}
+
+.slide h1{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+}
+
+.slide h2{
+  font-size:clamp(2rem,5vw,3rem);
+}
+
+.slide p{
+  font-size:1.2rem;
+  max-width:700px;
+  line-height:1.7;
+  margin-bottom:1.2rem;
+}
+
+.highlight{
+  font-size:1.5rem;
+  font-style:italic;
+  color:#C8941A;
+  margin-top:1rem;
+}
+
+.cta{
+  margin-top:2rem;
+}
+
+.btn{
+  display:inline-block;
+  padding:1rem 2rem;
+  background:#C8941A;
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:600;
+}
+
+.hint{
+  position:fixed;
+  bottom:20px;
+  right:30px;
+  font-size:0.8rem;
+  opacity:0.6;
+}
+
+</style>
 </head>
+
 <body>
 
-<header>
+<div class="rainbow-bar"></div>
+
+<nav>
+  <a href="https://madeprat.github.io/peregrino-app-web/">⛪ Peregrino APP</a>
+  <a href="https://madeprat.github.io/peregrino-app-web/">← Volver</a>
+</nav>
+
+<div class="slider">
+
+<section class="slide">
   <h1>Rezar también puede ser visible</h1>
-  <p>Y eso no es postureo. Es testimonio.</p>
-</header>
+  <p>Durante años parecía que la fe debía vivirse en silencio.</p>
+  <p>Hoy muchos la viven con naturalidad, sin complejos y con alegría.</p>
+</section>
 
-<div class="container">
+<section class="slide">
+  <h2>No es postureo</h2>
+  <p>Cuando compartes que has rezado el Rosario, no estás presumiendo.</p>
+  <p>Estás diciendo algo mucho más sencillo:</p>
+  <div class="highlight">Hoy he elegido cuidar mi fe.</div>
+</section>
 
-  <p>Hay algo que está pasando. Ser cristiano ya no es algo que esconder. Al contrario: empieza a ser algo que muchos quieren vivir con naturalidad, sin complejos y con alegría.</p>
+<section class="slide">
+  <h2>Una semilla en el feed</h2>
+  <p>Una frase compartida puede tocar a alguien que está pasando un mal momento.</p>
+  <p>Sin discursos. Sin presión. Sin debate.</p>
+</section>
 
-  <p>La Generación Z no tiene miedo a compartir lo que cree. Comparte música. Comparte causas. Comparte pensamientos. ¿Por qué no compartir también la fe?</p>
+<section class="slide">
+  <h2>Peregrino lo hace fácil</h2>
+  <p>Terminas una oración.</p>
+  <p>La app genera una imagen cuidada con tu gracia del día.</p>
+  <p>Un botón. Y listo.</p>
+</section>
 
-  <h2>Una oración que no se queda en silencio</h2>
+<section class="slide">
+  <h2>Esto también es Cuarto Día</h2>
+  <p>El apostolado no siempre es una charla.</p>
+  <p>A veces es coherencia visible.</p>
+  <div class="highlight">Y eso puede ser más fuerte que mil palabras.</div>
+</section>
 
-  <p>Con Peregrino puedes rezar el Rosario, completar una oración o vivir tu revisión… y al terminar, compartir una frase que haya tocado tu corazón.</p>
-
-  <div class="highlight">
-    No para presumir. Sino para recordar que no caminamos solos.
-  </div>
-
-  <p>Una imagen cuidada. Una frase potente. Un gesto sencillo. Eso puede ser una semilla en el feed de alguien que lo necesita.</p>
-
-  <img src="CAPTURA_ROSARIO_1.png" alt="Rosario completado">
-  <img src="CAPTURA_GRACIA.png" alt="Gracia compartida">
-  <img src="CAPTURA_FOTO.png" alt="Foto con tu gracia">
-
-  <h2>Apostolado digital sin forzar nada</h2>
-
-  <p>No tienes que escribir discursos largos. No tienes que convencer a nadie. Solo vivir tu fe… y dejar que se note.</p>
-
-  <p>En un momento donde viene el Papa a España y hay una ola de fervor creciente, compartir algo auténtico puede ser más fuerte que cualquier campaña.</p>
-
-  <h2>Ser cristiano también mola</h2>
-
-  <p>Porque no somos felices porque no sufrimos; somos felices porque no sufrimos solos.</p>
-
-  <p>Y eso merece ser contado.</p>
-
+<section class="slide">
+  <h2>Haz visible tu fe</h2>
+  <p>No para hacer ruido.</p>
+  <p>Sino para sembrar.</p>
   <div class="cta">
-    <h2>Haz visible tu Cuarto Día</h2>
-    <p>Descarga Peregrino y empieza a compartir lo que vives.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar gratis</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino</a>
   </div>
+</section>
 
 </div>
+
+<div class="hint">Desliza →</div>
 
 </body>
 </html>
