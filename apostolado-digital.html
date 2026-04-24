@@ -1,173 +1,203 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apostolado Digital · Peregrino APP</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<title>Apostolado Digital | Peregrino APP</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+--azul:#1f2f6b;
+--beige:#f4efe6;
+--dorado:#c8a951;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+
 body{
-  font-family:'Lora', serif;
-  background:#0f1f18;
-  color:white;
-  overflow:hidden;
+background:var(--beige);
+overflow-x:hidden;
 }
 
-.slider{
-  height:100vh;
-  overflow-y:scroll;
-  scroll-snap-type:y mandatory;
-  scroll-behavior:smooth;
+/* NAV */
+.nav{
+position:fixed;
+top:0;
+width:100%;
+background:var(--beige);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 40px;
+z-index:1000;
+border-bottom:1px solid #e5dfd3;
 }
 
-.slide{
-  height:100vh;
-  scroll-snap-align:start;
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:3rem 2rem;
+.nav a{
+text-decoration:none;
+color:var(--azul);
+margin:0 12px;
+font-weight:500;
 }
 
-.slide::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.45);
+.nav .btn{
+background:var(--azul);
+color:white;
+padding:8px 18px;
+border-radius:25px;
 }
 
-.slide-content{
-  position:relative;
-  z-index:2;
-  max-width:800px;
+.bar{
+height:4px;
+background:linear-gradient(90deg,#d9534f,#f0ad4e,#5cb85c,#5bc0de,#9370db);
+position:fixed;
+top:60px;
+width:100%;
+z-index:999;
 }
 
-.slide h1, .slide h2{
-  font-family:'Playfair Display', serif;
-  margin-bottom:1.5rem;
+/* SNAP STORY */
+.story-container{
+margin-top:64px;
+height:100vh;
+overflow-y:scroll;
+scroll-snap-type:y mandatory;
 }
 
-.slide h1{
-  font-size:clamp(2.8rem,6vw,4.5rem);
+.section{
+position:relative;
+height:100vh;
+scroll-snap-align:start;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-align:center;
 }
 
-.slide h2{
-  font-size:clamp(2.2rem,5vw,3.5rem);
+.section img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+top:0;
+left:0;
+z-index:0;
 }
 
-.slide p{
-  font-size:1.2rem;
-  line-height:1.7;
-  margin-bottom:1.2rem;
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to top,rgba(0,0,0,0.75),rgba(0,0,0,0.2));
+z-index:1;
 }
 
-.highlight{
-  font-size:1.6rem;
-  font-style:italic;
-  color:#E8B83A;
-  margin-top:1rem;
+.content{
+position:relative;
+z-index:2;
+max-width:700px;
+padding:20px;
 }
 
-.bg1{background:url('CAPTURA_ROSARIO_1.png') center/cover no-repeat;}
-.bg2{background:url('CAPTURA_GRACIA.png') center/cover no-repeat;}
-.bg3{background:url('CAPTURA_GOTO.png') center/cover no-repeat;}
-.bg4{background:url('CAPTURA.png') center/cover no-repeat;}
-
-.btn{
-  display:inline-block;
-  margin-top:1.5rem;
-  padding:1rem 2rem;
-  background:#C8941A;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-  font-weight:600;
+.content h1{
+font-size:48px;
+margin-bottom:20px;
 }
 
-.hint{
-  position:fixed;
-  bottom:20px;
-  width:100%;
-  text-align:center;
-  font-size:0.8rem;
-  opacity:0.7;
-  z-index:10;
+.content p{
+font-size:20px;
+line-height:1.5;
 }
 
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:60px;
-  background:rgba(0,0,0,0.6);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 2rem;
-  z-index:20;
+.scroll-indicator{
+position:absolute;
+bottom:25px;
+font-size:14px;
+opacity:0.8;
 }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  font-weight:600;
+/* MOBILE */
+@media(max-width:768px){
+.content h1{font-size:32px;}
+.content p{font-size:18px;}
+.nav{padding:12px 20px;}
 }
-
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html">⛪ Peregrino APP</a>
-  <a href="index.html">← Volver</a>
-</nav>
+<div class="nav">
+<div><strong>Peregrino APP</strong></div>
+<div>
+<a href="index.html">Inicio</a>
+<a href="manifiesto.html">Manifiesto</a>
+<a href="apostolado-digital.html">Apostolado digital</a>
+<a href="#" class="btn">Descargar</a>
+</div>
+</div>
 
-<div class="slider">
+<div class="bar"></div>
 
-<section class="slide bg1">
-  <div class="slide-content">
-    <h1>Rezar también puede ser visible</h1>
-    <p>No para presumir.</p>
-    <p>Sino para sembrar.</p>
-  </div>
+<div class="story-container">
+
+<section class="section">
+<img src="foto_app1.png" alt="">
+<div class="overlay"></div>
+<div class="content">
+<h1>Rezar también puede ser visible</h1>
+<p>No para presumir. Sino para sembrar.</p>
+</div>
+<div class="scroll-indicator">Desliza ↓</div>
 </section>
 
-<section class="slide bg2">
-  <div class="slide-content">
-    <h2>Hoy he rezado el Rosario</h2>
-    <p>Y lo comparto.</p>
-    <div class="highlight">Porque no sufrimos solos.</div>
-  </div>
+<section class="section">
+<img src="foto_gracia1.png" alt="">
+<div class="overlay"></div>
+<div class="content">
+<h1>Tu gracia de hoy</h1>
+<p>Una frase. Un momento. Una luz que puedes compartir.</p>
+</div>
 </section>
 
-<section class="slide bg3">
-  <div class="slide-content">
-    <h2>Una historia puede tocar a alguien</h2>
-    <p>Sin discursos largos.</p>
-    <p>Sin presión.</p>
-    <p>Solo coherencia visible.</p>
-  </div>
+<section class="section">
+<img src="foto_gracia2.png" alt="">
+<div class="overlay"></div>
+<div class="content">
+<h1>Ser cristiano, sin esconderse</h1>
+<p>La fe no se impone. Se propone. Y hoy también se comparte.</p>
+</div>
 </section>
 
-<section class="slide bg4">
-  <div class="slide-content">
-    <h2>Haz visible tu Cuarto Día</h2>
-    <p>Si lo vives… compártelo.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino</a>
-  </div>
+<section class="section">
+<img src="foto_gracia3.png" alt="">
+<div class="overlay"></div>
+<div class="content">
+<h1>Apostolado digital</h1>
+<p>Un clic puede abrir conversaciones que nunca imaginaste.</p>
+</div>
+</section>
+
+<section class="section">
+<img src="foto_rezo2.png" alt="">
+<div class="overlay"></div>
+<div class="content">
+<h1>En tu día a día</h1>
+<p>En casa. En una cafetería. En silencio. Pero conectado.</p>
+</div>
+</section>
+
+<section class="section">
+<img src="foto_rosario1.png" alt="">
+<div class="overlay"></div>
+<div class="content">
+<h1>Comparte esperanza</h1>
+<p>No somos felices porque no sufrimos; somos felices porque no sufrimos solos.</p>
+</div>
 </section>
 
 </div>
-
-<div class="hint">Desliza hacia abajo ↓</div>
 
 </body>
 </html>
