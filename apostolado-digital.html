@@ -25,6 +25,19 @@ overflow:hidden;
 }
 .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; color: var(--azul); text-decoration: none; }
+    .brand-mark {
+      width: 42px; height: 42px;
+      display: grid; place-items: center;
+      border-radius: 14px;
+      background: var(--azul);
+      color: #fff;
+      font-size: 1.3rem;
+      box-shadow: 0 10px 22px rgba(29,46,122,.2);
+    }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a { text-decoration: none; font-weight: 800; color: #4c5167; padding: 6px 12px; border-radius: 999px; font-size: .92rem; }
+    .nav-links a:hover { color: var(--azul); background: rgba(29,46,122,.06); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; }    
 /* NAV */
 .nav{
 position:fixed;
