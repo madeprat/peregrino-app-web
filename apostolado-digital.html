@@ -154,7 +154,9 @@ opacity:0.8;
 <div>
 <a href="index.html">Inicio</a>
 <a href="https://madeprat.github.io/peregrino-app-web/manual-usuario-peregrino.html">La APP</a>
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn">Descargar</a>
+<div class="nav-cta">
+        <a class="btn" href="javascript:void(0)" onclick="irPlayStore()">▶ Descargar</a>
+</div>
 </div>
 </div>
 
@@ -242,4 +244,12 @@ De Colores.
 </div>
 
 </body>
+  <script>
+    const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc';
+    const PAYPAL_URL     = 'https://paypal.me/ingresoucha?locale.x=es_ES&country.x=ES';
+    function irPlayStore() {
+      window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
+    }
+  
+  </script>   
 </html>
