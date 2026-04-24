@@ -12,11 +12,16 @@
 --dorado:#c8a951;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
 
 body{
 background:var(--beige);
-overflow-x:hidden;
+overflow:hidden;
 }
 
 /* NAV */
@@ -56,17 +61,17 @@ width:100%;
 z-index:999;
 }
 
-/* SNAP STORY */
+/* STORY */
 .story-container{
 margin-top:64px;
-height:100vh;
+height:calc(100vh - 64px);
 overflow-y:scroll;
 scroll-snap-type:y mandatory;
 }
 
 .section{
 position:relative;
-height:100vh;
+height:100%;
 scroll-snap-align:start;
 display:flex;
 align-items:center;
@@ -89,7 +94,7 @@ z-index:0;
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(to top,rgba(0,0,0,0.75),rgba(0,0,0,0.2));
+background:linear-gradient(to top,rgba(0,0,0,0.75),rgba(0,0,0,0.3));
 z-index:1;
 }
 
@@ -108,6 +113,22 @@ margin-bottom:20px;
 .content p{
 font-size:20px;
 line-height:1.5;
+}
+
+.cta{
+margin-top:35px;
+display:inline-block;
+background:var(--dorado);
+color:#1f2f6b;
+padding:14px 32px;
+border-radius:30px;
+font-weight:600;
+text-decoration:none;
+transition:0.3s;
+}
+
+.cta:hover{
+transform:scale(1.05);
 }
 
 .scroll-indicator{
@@ -134,7 +155,7 @@ opacity:0.8;
 <a href="index.html">Inicio</a>
 <a href="manifiesto.html">Manifiesto</a>
 <a href="apostolado-digital.html">Apostolado digital</a>
-<a href="#" class="btn">Descargar</a>
+<a href="index.html#descargar" class="btn">Descargar</a>
 </div>
 </div>
 
@@ -180,7 +201,7 @@ opacity:0.8;
 </section>
 
 <section class="section">
-<img src="foto_rezo22.png" alt="">
+<img src="foto_rezo2.png" alt="">
 <div class="overlay"></div>
 <div class="content">
 <h1>En tu día a día</h1>
@@ -194,43 +215,28 @@ opacity:0.8;
 <div class="content">
 <h1>Comparte esperanza</h1>
 <p>No somos felices porque no sufrimos; somos felices porque no sufrimos solos.</p>
+</div>
+</section>
+
 <section class="section">
 <img src="foto_gracia1.png" alt="">
 <div class="overlay"></div>
 <div class="content">
 <h1>El Cuarto Día no se vive solo</h1>
-<p style="margin-bottom:30px;">
-Si esto te ha removido algo…  
-no lo guardes en el bolsillo.
+<p>
+Si esto te ha removido algo… no lo guardes en el bolsillo.
+</p>
+<p style="margin-top:15px;">
+Vive tu fe cada día. Y deja que otros vean que Cristo sigue vivo.
 </p>
 
-<p style="margin-bottom:40px;font-size:18px;opacity:0.9;">
-Descarga Peregrino APP.  
-Vive tu fe cada día.  
-Y deja que otros vean que Cristo sigue vivo.
-</p>
-
-<a href="index.html#descargar" 
-style="
-display:inline-block;
-background:var(--dorado);
-color:#1f2f6b;
-padding:14px 30px;
-border-radius:30px;
-font-weight:600;
-text-decoration:none;
-font-size:18px;
-transition:0.3s;
-">
+<a href="index.html#descargar" class="cta">
 Instalar ahora
 </a>
 
 <p style="margin-top:25px;font-size:14px;opacity:0.7;">
 De Colores.
 </p>
-
-</div>
-</section>
 </div>
 </section>
 
