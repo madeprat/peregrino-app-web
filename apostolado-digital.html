@@ -10,88 +10,122 @@
 --azul:#1f2f6b;
 --beige:#f4efe6;
 --dorado:#c8a951;
+--gris:#4c5167;
 }
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
-body{
-background:var(--beige);
+html,body{
+max-width:100%;
 overflow-x:hidden;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+background:var(--beige);
 }
-.wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
-.brand { display: flex; align-items: center; gap: 12px; font-weight: 900; color: var(--azul); text-decoration: none; }
-    .brand-mark {
-      width: 42px; height: 42px;
-      display: grid; place-items: center;
-      border-radius: 14px;
-      background: var(--azul);
-      color: #fff;
-      font-size: 1.3rem;
-      box-shadow: 0 10px 22px rgba(29,46,122,.2);
-    }
-    .nav-links { display: flex; align-items: center; gap: 8px; }
-    .nav-links a { text-decoration: none; font-weight: 800; color: #4c5167; padding: 6px 12px; border-radius: 999px; font-size: .92rem; }
-    .nav-links a:hover { color: var(--azul); background: rgba(29,46,122,.06); }
-    .nav-cta { display: flex; align-items: center; gap: 10px; }    
+
+/* WRAP */
+.wrap{
+width:min(1200px, calc(100% - 40px));
+margin:auto;
+}
+
 /* NAV */
-    .nav {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-.nav a{
-text-decoration:none;
-color:var(--azul);
-margin:0 12px;
-font-weight:500;
+.header{
+position:fixed;
+top:0;
+width:100%;
+background:var(--beige);
+z-index:1000;
+border-bottom:1px solid #e5dfd3;
 }
 
-.nav .btn{
+.nav{
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+font-weight:900;
+color:var(--azul);
+text-decoration:none;
+}
+
+.brand-mark{
+width:42px;
+height:42px;
+display:grid;
+place-items:center;
+border-radius:14px;
 background:var(--azul);
 color:white;
-padding:8px 18px;
-border-radius:25px;
+font-size:1.2rem;
 }
 
+.nav-links{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.nav-links a{
+text-decoration:none;
+font-weight:700;
+color:var(--gris);
+padding:6px 12px;
+border-radius:999px;
+font-size:.92rem;
+}
+
+.nav-links a:hover{
+color:var(--azul);
+background:rgba(29,46,122,.06);
+}
+
+.btn{
+background:var(--azul);
+color:white !important;
+padding:8px 18px;
+border-radius:25px;
+font-weight:700;
+}
+
+/* COLOR BAR */
 .bar{
 height:4px;
 background:linear-gradient(90deg,#d9534f,#f0ad4e,#5cb85c,#5bc0de,#9370db);
-position:fixed;
-top:60px;
-width:100%;
-z-index:999;
+margin-top:70px;
 }
 
 /* STORY */
 .story-container{
-margin-top:64px;
-height:calc(100vh - 64px);
+height:calc(100vh - 74px);
 overflow-y:scroll;
 scroll-snap-type:y mandatory;
 }
 
 .section{
 position:relative;
-height:100%;
+height:100vh;
 scroll-snap-align:start;
 display:flex;
 align-items:center;
 justify-content:center;
-color:white;
 text-align:center;
+color:white;
 }
 
 .section img{
 position:absolute;
-width:100%;
+width:100vw;
 height:100%;
 object-fit:cover;
 top:0;
@@ -103,7 +137,7 @@ z-index:0;
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(to top,rgba(0,0,0,0.75),rgba(0,0,0,0.3));
+background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.3));
 z-index:1;
 }
 
@@ -131,9 +165,9 @@ background:var(--dorado);
 color:#1f2f6b;
 padding:14px 32px;
 border-radius:30px;
-font-weight:600;
+font-weight:700;
 text-decoration:none;
-transition:0.3s;
+transition:.3s;
 }
 
 .cta:hover{
@@ -144,39 +178,55 @@ transform:scale(1.05);
 position:absolute;
 bottom:25px;
 font-size:14px;
-opacity:0.8;
+opacity:.8;
 }
 
 /* MOBILE */
-@media(max-width:768px){
-.content h1{font-size:32px;}
-.content p{font-size:18px;}
-.nav{padding:12px 20px;}
-.nav-links {display: none;}
-.nav-cta {margin-left: auto;}    
+@media(max-width:900px){
+
+.nav-links{
+display:none;
+}
+
+.content h1{
+font-size:32px;
+}
+
+.content p{
+font-size:18px;
+}
+
+.section{
+height:100vh;
+}
+
 }
 </style>
-    <div class="wrap nav">
-      <a class="brand" href="https://madeprat.github.io/peregrino-app-web/index.html" aria-label="Peregrino APP">
-        <span class="brand-mark">⛪</span>
-        <span>Peregrino APP</span>
-      </a>
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a href="manifiesto.html">Manifiesto →</a>
-        <a href="apostolado-digital.html">Apostolado digital</a>
-        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
-        <a href="#tripode">Trípode</a>
-        <a href="#candidatos">Candidatos</a>
-        <a href="#oraciones">Oraciones</a>
-        <a href="#sostener">Ofrendas</a>
-      </nav>
-      <div class="nav-cta">
-        <a class="btn" href="javascript:void(0)" onclick="irPlayStore()">▶ Descargar</a>
-      </div>
-    </div>
 </head>
 
 <body>
+
+<header class="header">
+<div class="wrap nav">
+
+<a class="brand" href="index.html">
+<span class="brand-mark">⛪</span>
+<span>Peregrino APP</span>
+</a>
+
+<nav class="nav-links">
+<a href="manifiesto.html">Manifiesto →</a>
+<a href="apostolado-digital.html">Apostolado digital</a>
+<a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+<a href="#tripode">Trípode</a>
+<a href="#candidatos">Candidatos</a>
+<a href="#oraciones">Oraciones</a>
+<a href="#sostener">Ofrendas</a>
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn">Descargar</a>
+</nav>
+
+</div>
+</header>
 
 <div class="bar"></div>
 
@@ -238,13 +288,11 @@ opacity:0.8;
 </section>
 
 <section class="section">
-<img src="foto_rezo222.png" alt="">
+<img src="foto_gracia1.png" alt="">
 <div class="overlay"></div>
 <div class="content">
 <h1>El Cuarto Día no se vive solo</h1>
-<p>
-Si esto te ha removido algo… no lo guardes en el bolsillo.
-</p>
+<p>Si esto te ha removido algo… no lo guardes en el bolsillo.</p>
 <p style="margin-top:15px;">
 Vive tu fe cada día. Y deja que otros vean que Cristo sigue vivo.
 </p>
@@ -253,21 +301,14 @@ Vive tu fe cada día. Y deja que otros vean que Cristo sigue vivo.
 Instalar ahora
 </a>
 
-<p style="margin-top:25px;font-size:14px;opacity:0.7;">
+<p style="margin-top:25px;font-size:14px;opacity:.7;">
 De Colores.
 </p>
+
 </div>
 </section>
 
 </div>
 
 </body>
-  <script>
-    const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc';
-    const PAYPAL_URL     = 'https://paypal.me/ingresoucha?locale.x=es_ES&country.x=ES';
-    function irPlayStore() {
-      window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
-    }
-  
-  </script>   
 </html>
