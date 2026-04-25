@@ -10,6 +10,7 @@
 <style>
 :root{
   --bg:#070b13;
+  --bg2:#0b1220;
   --gold:#d4af37;
   --gold2:#f2d36b;
   --text:#f5f3ee;
@@ -17,7 +18,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Inter',sans-serif;
-  background:linear-gradient(180deg,#070b13,#0b1220);
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
   color:var(--text);
   overflow-x:hidden;
 }
@@ -26,12 +27,22 @@ section{
   display:flex;
   align-items:center;
   justify-content:center;
+  padding:100px 20px;
   text-align:center;
-  padding:80px 20px;
+  position:relative;
+}
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.fade.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 .hero{
   background:
-  linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
   url('hero-peregrino.jpg') center/cover no-repeat;
 }
 h1{
@@ -43,7 +54,7 @@ h1{
 p{
   max-width:700px;
   margin:20px auto;
-  opacity:.8;
+  opacity:.85;
 }
 .btn{
   display:inline-block;
@@ -56,23 +67,53 @@ p{
   transition:.3s;
 }
 .btn:hover{
-  transform:translateY(-3px);
+  transform:translateY(-4px);
   box-shadow:0 20px 40px rgba(212,175,55,.3);
 }
-.donation-box{
-  background:rgba(255,255,255,.05);
-  padding:40px;
+.phone-wrap{
+  margin-top:40px;
+  position:relative;
+}
+.phone-main{
+  width:240px;
   border-radius:30px;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
+.phone-side{
+  width:200px;
+  border-radius:25px;
+  position:absolute;
+  right:-80px;
+  top:80px;
+  transform:rotate(8deg);
+  box-shadow:0 40px 80px rgba(0,0,0,.5);
+}
+.visual{
+  background:
+  linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+  url('foto_app1.png') center/cover no-repeat;
+}
+.donation-section{
+  background:
+  radial-gradient(circle at top,rgba(212,175,55,.25),transparent),
+  linear-gradient(180deg,#0b1220,#05070c);
+}
+.donation-box{
+  background:rgba(255,255,255,.06);
+  padding:50px;
+  border-radius:40px;
   backdrop-filter:blur(20px);
-  max-width:500px;
+  max-width:600px;
   width:100%;
 }
 .amount{
-  font-size:4rem;
-  font-weight:800;
+  font-size:5rem;
+  font-weight:900;
   color:var(--gold2);
   margin:20px 0;
+  transition:.2s;
 }
+.amount.bump{transform:scale(1.05)}
 input[type=range]{
   width:100%;
   margin:20px 0;
@@ -84,22 +125,24 @@ input[type=range]{
   display:none;
   align-items:center;
   justify-content:center;
-  text-align:center;
   padding:40px;
   z-index:1000;
 }
 .overlay-box{
   background:#0b1220;
-  padding:40px;
-  border-radius:30px;
-  max-width:400px;
+  padding:50px;
+  border-radius:40px;
+  max-width:420px;
+  text-align:center;
 }
 .overlay-box h3{
   font-family:'Playfair Display',serif;
-  margin-bottom:15px;
+  margin-bottom:20px;
 }
-.overlay-box button{
-  margin-top:20px;
+footer{
+  padding:40px;
+  text-align:center;
+  opacity:.6;
 }
 </style>
 </head>
@@ -107,17 +150,29 @@ input[type=range]{
 <body>
 
 <section class="hero">
-  <div>
+  <div class="fade">
     <h1>Cuidar el Cuarto Día</h1>
     <p>Peregrino APP acompaña tu vida cristiana después del Cursillo. Oración, Trípode y perseverancia diaria.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank">Descargar</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank">Descargar gratis</a>
+
+    <div class="phone-wrap">
+      <img src="captura.png" class="phone-main">
+      <img src="captura1.png" class="phone-side">
+    </div>
   </div>
 </section>
 
-<section>
-  <div class="donation-box">
-    <h2 style="font-family:'Playfair Display',serif;font-size:2rem;">Sostén este apostolado digital</h2>
-    <p>Si esta app te ayuda, puedes mantenerla gratuita y sin anuncios con una ofrenda libre.</p>
+<section class="visual">
+  <div class="fade">
+    <h2 style="font-family:'Playfair Display',serif;font-size:3rem;">La tecnología también puede servir a la gracia</h2>
+    <p>Una app pensada con belleza, silencio y respeto. No distrae. Acompaña.</p>
+  </div>
+</section>
+
+<section class="donation-section">
+  <div class="donation-box fade">
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.5rem;">Sostén este apostolado digital</h2>
+    <p>Si te ayuda, puedes mantenerla gratuita y sin anuncios con una ofrenda libre.</p>
 
     <div class="amount" id="amount">10 €</div>
 
@@ -131,22 +186,39 @@ input[type=range]{
   </div>
 </section>
 
+<footer>
+Peregrino APP · De Colores 🌈
+</footer>
+
 <div class="overlay" id="overlay">
   <div class="overlay-box">
     <h3>Gracias por sostener Peregrino</h3>
-    <p>Se abrirá PayPal en una nueva pestaña.<br><br>
-    Cuando termines tu ofrenda, vuelve aquí para generar tu Código de Peregrino.</p>
+    <p>Se ha abierto PayPal en una nueva pestaña.<br><br>
+    Cuando termines tu ofrenda, vuelve aquí para generar tu código.</p>
     <a href="gracias.html" class="btn">Obtener mi Código</a><br><br>
-    <button onclick="cerrarOverlay()" style="background:none;border:none;color:#aaa;margin-top:10px;">Cerrar</button>
+    <button onclick="cerrarOverlay()" style="background:none;border:none;color:#aaa;margin-top:15px;">Cerrar</button>
   </div>
 </div>
 
 <script>
+const faders=document.querySelectorAll('.fade');
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+   if(entry.isIntersecting){
+     entry.target.classList.add('visible');
+   }
+ });
+},{threshold:0.3});
+faders.forEach(el=>observer.observe(el));
+
 const slider=document.getElementById('slider');
 const amount=document.getElementById('amount');
 
 slider.addEventListener('input',()=>{
   amount.textContent=slider.value+" €";
+  amount.classList.remove('bump');
+  void amount.offsetWidth;
+  amount.classList.add('bump');
 });
 
 function donar(){
