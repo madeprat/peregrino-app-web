@@ -1,246 +1,283 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Peregrino App</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Peregrino APP | Tu compañero del Cuarto Día</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
-html{
-scroll-behavior:smooth;
+:root{
+  --azul:#1d2e7a;
+  --oro:#d7b537;
+  --gris:#6b7280;
 }
 
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-font-family:'Inter',sans-serif;
-background:#111;
-color:#fff;
-line-height:1.6;
-overflow-x:hidden;
+  font-family:Inter,system-ui;
+  color:#111;
+  background:#ffffff;
+  overflow-x:hidden;
 }
 
-/* HERO */
+section{
+  padding:120px 20px;
+  text-align:center;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+}
+
+h1,h2{
+  font-family:"Cormorant Garamond",serif;
+  letter-spacing:-.03em;
+}
+
+h1{
+  font-size:clamp(3rem,7vw,5.5rem);
+  line-height:1;
+}
+
+h2{
+  font-size:clamp(2.2rem,5vw,3.5rem);
+  margin-bottom:20px;
+}
+
+p.lead{
+  font-size:1.2rem;
+  color:var(--gris);
+  max-width:700px;
+  margin:20px auto 40px;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  padding:16px 32px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  margin:10px;
+  transition:.2s ease;
+}
+
+.btn-primary{
+  background:var(--azul);
+  color:white;
+}
+
+.btn-secondary{
+  border:1px solid #ddd;
+  color:#111;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
 
 .hero{
-position:relative;
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-overflow:hidden;
+  padding-top:160px;
 }
 
 .hero img{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
+  max-width:420px;
+  width:100%;
+  margin:60px auto 0;
+  display:block;
 }
 
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.75));
+.lanzamiento{
+  background:#fafafa;
 }
 
-.hero-content{
-position:relative;
-z-index:2;
-max-width:900px;
-padding:0 20px;
+.countdown{
+  font-size:2.5rem;
+  font-weight:700;
+  color:var(--azul);
+  margin-top:20px;
 }
 
-.hero h1{
-font-size:3rem;
-font-weight:600;
-margin-bottom:20px;
+.visual-section{
+  padding-top:150px;
+  padding-bottom:150px;
 }
 
-.hero p{
-opacity:.85;
-margin-bottom:40px;
+.visual-section img{
+  max-width:500px;
+  width:100%;
+  margin:60px auto;
+  display:block;
 }
 
-.button{
-display:inline-block;
-padding:14px 32px;
-border-radius:40px;
-text-decoration:none;
-font-weight:600;
-transition:.3s ease;
+.donation{
+  background:#f9fafb;
 }
 
-.primary{
-background:#fff;
-color:#000;
+.slider{
+  width:100%;
+  max-width:400px;
+  margin:40px auto;
 }
 
-.secondary{
-border:1px solid #fff;
-color:#fff;
-margin-top:15px;
+input[type=range]{
+  width:100%;
 }
 
-.button:hover{
-opacity:.85;
+.donate-amount{
+  font-size:3rem;
+  font-weight:700;
+  margin-bottom:10px;
 }
-
-/* SECTIONS */
-
-.section{
-padding:100px 20px;
-max-width:1000px;
-margin:auto;
-text-align:center;
-}
-
-.section h2{
-font-size:2rem;
-margin-bottom:20px;
-}
-
-.section p{
-opacity:.85;
-margin-bottom:30px;
-}
-
-.cards{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
-margin-top:40px;
-}
-
-.card{
-flex:1 1 250px;
-background:#1c1c1c;
-padding:30px;
-border-radius:12px;
-text-decoration:none;
-color:#fff;
-transition:.3s ease;
-}
-
-.card:hover{
-background:#262626;
-}
-
-/* OFRENDA */
-
-.ofrenda{
-background:#0e0e0e;
-}
-
-/* FOOTER */
 
 footer{
-padding:40px 20px;
-text-align:center;
-font-size:.9rem;
-opacity:.6;
-}
-
-/* BACK TO TOP */
-
-.top-button{
-position:fixed;
-bottom:30px;
-right:30px;
-background:#fff;
-color:#000;
-padding:10px 16px;
-border-radius:30px;
-text-decoration:none;
-font-size:.8rem;
-display:none;
+  padding:60px 20px;
+  text-align:center;
+  font-size:.9rem;
+  color:var(--gris);
 }
 
 @media(max-width:768px){
-.hero h1{font-size:2.2rem;}
-.cards{flex-direction:column;}
+  section{padding:80px 20px;}
 }
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
+<section class="hero">
+<div class="container">
+<h1>El Cuarto Día<br>no termina.<br>Se vive.</h1>
 
-<section class="hero" id="top">
-<img src="hero-peregrino.jpg" alt="Guía del Peregrino">
-<div class="hero-content">
-<h1>La Guía del Peregrino.<br>Ahora en tu bolsillo.</h1>
-<p>Vive tu Cuarto Día con lo esencial siempre contigo.</p>
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="button primary">Instalar la app</a>
-<br>
-<a href="#manifiesto" class="button secondary">Leer el manifiesto</a>
+<p class="lead">
+Peregrino APP nace de la experiencia real de un cursillista
+que quiere cuidar su Trípode, sus candidatos
+y su oración cada día.
+</p>
+
+<a class="btn btn-primary" href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" target="_blank">
+Unirme al canal
+</a>
+
+<a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank">
+Descargar ahora
+</a>
+
+<img src="cristo_peregrino.jpeg" alt="Peregrino APP">
 </div>
 </section>
 
-<!-- QUÉ ES -->
 
-<section class="section">
-<h2>Sencillo. Fiel. Esencial.</h2>
-<p>Peregrino acompaña tu Cuarto Día sin sustituir nada. Solo sostiene lo que ya vives.</p>
-
-<a href="manual-usuario-peregrino.html" class="button secondary">Ver Manual</a>
-</section>
-
-<!-- MCC -->
-
-<section class="section" id="manifiesto">
-<h2>Un camino que no empieza en una app</h2>
-<p>Peregrino nace del Movimiento de Cursillos de Cristiandad.</p>
-
-<div class="cards">
-<a href="que-es-el-mcc.html" class="card">¿Qué es el MCC?</a>
-<a href="reunion-de-grupo.html" class="card">Reunión de Grupo</a>
-<a href="quiero-vivir-un-cursillo.html" class="card">Quiero vivir un Cursillo</a>
+<section class="lanzamiento">
+<div class="container">
+<h2>Lanzamiento en mayo</h2>
+<p class="lead">
+Cuenta atrás para el lanzamiento en mayo
+</p>
+<div class="countdown" id="countdown"></div>
 </div>
 </section>
 
-<!-- REFUERZO INSTALAR -->
 
-<section class="section">
-<h2>Lleva contigo lo esencial.</h2>
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="button primary">Instalar Peregrino</a>
+<section class="visual-section">
+<div class="container">
+<h2>Tu Trípode siempre contigo</h2>
+<p class="lead">
+Piedad, Estudio y Acción.
+Anótalo cada día. Revísalo en tu Reunión de Grupo.
+</p>
+<img src="captura.png" alt="">
+</div>
 </section>
 
-<!-- OFRENDA -->
 
-<section class="section ofrenda">
-<h2>Sostener lo que ayuda</h2>
-<p>Peregrino es una iniciativa personal al servicio del Movimiento.  
-Si te ayuda y quieres sostenerla, puedes hacerlo libremente.</p>
-
-<a href="TU_ENLACE_DE_OFRENDA_AQUI" class="button secondary">Hacer una ofrenda</a>
+<section class="visual-section">
+<div class="container">
+<h2>Reza por personas concretas</h2>
+<p class="lead">
+Pon nombre a tu apostolado.
+Acompaña procesos reales.
+Celebra cuando alguien vive su Cursillo.
+</p>
+<img src="captura3.png" alt="">
+</div>
 </section>
 
-<!-- FOOTER -->
+
+<section class="visual-section">
+<div class="container">
+<h2>Todas las oraciones del Movimiento</h2>
+<p class="lead">
+Rosario. Ángelus. Hora Apostólica.
+Siempre disponibles.
+</p>
+<img src="captura7.png" alt="">
+</div>
+</section>
+
+
+<section class="donation">
+<div class="container">
+<h2>Sé parte del apostolado digital</h2>
+
+<p class="lead">
+Si esta app te ayuda y quieres que siga siendo gratuita,
+puedes dejar una ofrenda.
+Como gesto de gratitud recibirás tu código de Peregrino.
+</p>
+
+<div class="donate-amount" id="amount">10 €</div>
+
+<input type="range" min="1" max="50" value="10" class="slider" id="slider">
+
+<a id="donarBtn" class="btn btn-primary" target="_blank">
+Donar 10 €
+</a>
+
+<br><br>
+
+<a href="gracias.html" class="btn btn-secondary">
+Ya he donado · Obtener mi código
+</a>
+
+</div>
+</section>
+
 
 <footer>
-© Peregrino App · De Colores
+Peregrino APP · Iniciativa personal e independiente · MCC
 </footer>
 
-<!-- BACK TO TOP BUTTON -->
-
-<a href="#top" class="top-button" id="backToTop">↑ Arriba</a>
 
 <script>
-const btn = document.getElementById("backToTop");
-window.addEventListener("scroll", function() {
-if(window.scrollY > 600){
-btn.style.display="block";
-}else{
-btn.style.display="none";
+const endDate = new Date("May 31, 2026 23:59:59").getTime();
+const countdownEl = document.getElementById("countdown");
+
+setInterval(()=>{
+const now = new Date().getTime();
+const distance = endDate - now;
+
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+
+countdownEl.innerHTML = days+"d "+hours+"h "+minutes+"m";
+},1000);
+
+
+const slider = document.getElementById("slider");
+const amount = document.getElementById("amount");
+const btn = document.getElementById("donarBtn");
+
+function update(val){
+amount.textContent = val+" €";
+btn.textContent = "Donar "+val+" €";
+btn.href = "https://paypal.me/ingresoucha/"+val+"?locale.x=es_ES&country.x=ES";
 }
-});
+update(slider.value);
+slider.oninput = ()=>update(slider.value);
 </script>
 
 </body>
