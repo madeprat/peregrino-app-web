@@ -51,8 +51,13 @@ h1{
   font-weight:800;
   letter-spacing:-.05em;
 }
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:20px;
+}
 p{
-  max-width:700px;
+  max-width:750px;
   margin:20px auto;
   opacity:.85;
 }
@@ -70,12 +75,18 @@ p{
   transform:translateY(-4px);
   box-shadow:0 20px 40px rgba(212,175,55,.3);
 }
+.countdown{
+  margin-top:20px;
+  font-weight:800;
+  font-size:1.3rem;
+  color:var(--gold2);
+}
 .phone-wrap{
-  margin-top:40px;
+  margin-top:50px;
   position:relative;
 }
 .phone-main{
-  width:240px;
+  width:250px;
   border-radius:30px;
   box-shadow:0 40px 80px rgba(0,0,0,.6);
 }
@@ -83,7 +94,7 @@ p{
   width:200px;
   border-radius:25px;
   position:absolute;
-  right:-80px;
+  right:-90px;
   top:80px;
   transform:rotate(8deg);
   box-shadow:0 40px 80px rgba(0,0,0,.5);
@@ -135,14 +146,15 @@ input[type=range]{
   max-width:420px;
   text-align:center;
 }
-.overlay-box h3{
-  font-family:'Playfair Display',serif;
-  margin-bottom:20px;
-}
 footer{
-  padding:40px;
+  padding:50px;
   text-align:center;
-  opacity:.6;
+  background:#05070c;
+}
+footer a{
+  color:var(--gold2);
+  text-decoration:none;
+  margin:0 10px;
 }
 </style>
 </head>
@@ -152,8 +164,12 @@ footer{
 <section class="hero">
   <div class="fade">
     <h1>Cuidar el Cuarto Día</h1>
-    <p>Peregrino APP acompaña tu vida cristiana después del Cursillo. Oración, Trípode y perseverancia diaria.</p>
+    <p>De Colores no es un recuerdo. Es una forma de vivir cada día después del Cursillo.</p>
     <a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank">Descargar gratis</a>
+
+    <div class="countdown" id="countdown">
+      Cuenta atrás para el lanzamiento en mayo
+    </div>
 
     <div class="phone-wrap">
       <img src="captura.png" class="phone-main">
@@ -162,32 +178,40 @@ footer{
   </div>
 </section>
 
+<section>
+  <div class="fade">
+    <h2>No sustituye la Reunión de Grupo</h2>
+    <p>No sustituye la Ultreya. No sustituye la vida sacramental. Solo quiere ayudarte a no perder el hilo.</p>
+  </div>
+</section>
+
 <section class="visual">
   <div class="fade">
-    <h2 style="font-family:'Playfair Display',serif;font-size:3rem;">La tecnología también puede servir a la gracia</h2>
-    <p>Una app pensada con belleza, silencio y respeto. No distrae. Acompaña.</p>
+    <h2>La tecnología también puede servir a la gracia</h2>
+    <p>Una app pensada con belleza, silencio y respeto.</p>
   </div>
 </section>
 
 <section class="donation-section">
   <div class="donation-box fade">
-    <h2 style="font-family:'Playfair Display',serif;font-size:2.5rem;">Sostén este apostolado digital</h2>
+    <h2>Sé parte de esta misión</h2>
     <p>Si te ayuda, puedes mantenerla gratuita y sin anuncios con una ofrenda libre.</p>
 
     <div class="amount" id="amount">10 €</div>
-
     <input type="range" min="1" max="50" value="10" id="slider">
-
     <button class="btn" onclick="donar()">Donar con PayPal</button>
-
-    <p style="font-size:.9rem;opacity:.6;margin-top:20px;">
-      Después podrás generar tu Código de Peregrino.
-    </p>
   </div>
 </section>
 
 <footer>
-Peregrino APP · De Colores 🌈
+  <p><strong>Peregrino APP</strong> · De Colores 🌈</p>
+  <div style="margin-top:20px;">
+    <a href="manifiesto.html">Manifiesto</a>
+    <a href="que-es-el-mcc.html">Qué es el MCC</a>
+    <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+    <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+    <a href="gracias.html">Obtener Código</a>
+  </div>
 </footer>
 
 <div class="overlay" id="overlay">
@@ -195,25 +219,20 @@ Peregrino APP · De Colores 🌈
     <h3>Gracias por sostener Peregrino</h3>
     <p>Se ha abierto PayPal en una nueva pestaña.<br><br>
     Cuando termines tu ofrenda, vuelve aquí para generar tu código.</p>
-    <a href="gracias.html" class="btn">Obtener mi Código</a><br><br>
-    <button onclick="cerrarOverlay()" style="background:none;border:none;color:#aaa;margin-top:15px;">Cerrar</button>
+    <a href="gracias.html" class="btn">Obtener mi Código</a>
   </div>
 </div>
 
 <script>
-const faders=document.querySelectorAll('.fade');
 const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-   if(entry.isIntersecting){
-     entry.target.classList.add('visible');
-   }
+ entries.forEach(e=>{
+   if(e.isIntersecting)e.target.classList.add('visible');
  });
-},{threshold:0.3});
-faders.forEach(el=>observer.observe(el));
+},{threshold:.3});
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
 const slider=document.getElementById('slider');
 const amount=document.getElementById('amount');
-
 slider.addEventListener('input',()=>{
   amount.textContent=slider.value+" €";
   amount.classList.remove('bump');
@@ -223,14 +242,17 @@ slider.addEventListener('input',()=>{
 
 function donar(){
   const valor=slider.value;
-  const url="https://paypal.me/ingresoucha/"+valor+"?locale.x=es_ES&country.x=ES";
-  window.open(url,'_blank');
+  window.open("https://paypal.me/ingresoucha/"+valor+"?locale.x=es_ES&country.x=ES",'_blank');
   document.getElementById('overlay').style.display='flex';
 }
 
-function cerrarOverlay(){
-  document.getElementById('overlay').style.display='none';
-}
+const target=new Date("May 3, 2026 00:00:00").getTime();
+setInterval(()=>{
+ const now=new Date().getTime();
+ const d=Math.floor((target-now)/(1000*60*60*24));
+ document.getElementById("countdown").innerHTML=
+ "Cuenta atrás para el lanzamiento en mayo — "+d+" días";
+},1000);
 </script>
 
 </body>
