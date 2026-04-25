@@ -1,402 +1,235 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Manual de usuario | Peregrino APP</title>
-  <meta name="description" content="Manual de usuario de Peregrino APP: guía para configurar la app, rezar, revisar el Trípode, preparar la Reunión de Grupo y acompañar candidatos en oración." />
-  <meta name="theme-color" content="#07224D" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --azul:#07224D;
-      --azul-2:#0B3B78;
-      --azul-3:#174D9C;
-      --dorado:#D7A84A;
-      --dorado-2:#F1D28A;
-      --crema:#FFF8EA;
-      --crema-2:#F7EFE2;
-      --texto:#24324A;
-      --muted:#64748B;
-      --linea:rgba(7,34,77,.12);
-      --verde:#2D6A4F;
-      --rojo:#8B1A1A;
-      --sombra:0 18px 45px rgba(7,34,77,.12);
-      --radius:22px;
-      --max:1120px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--texto);
-      background:
-        radial-gradient(circle at 15% 8%, rgba(215,168,74,.20), transparent 30%),
-        radial-gradient(circle at 90% 18%, rgba(23,77,156,.16), transparent 34%),
-        linear-gradient(180deg,#fff 0%,var(--crema) 52%,#fff 100%);
-      line-height:1.65;
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
-    .topbar{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter:blur(16px);
-      background:rgba(255,255,255,.86);
-      border-bottom:1px solid var(--linea);
-    }
-    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 22px;max-width:var(--max);margin:0 auto}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;color:var(--azul)}
-    .brand-mark{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--azul),var(--azul-3));color:var(--dorado)}
-    .nav{display:flex;gap:14px;align-items:center;font-size:13px;color:var(--muted);font-weight:700;flex-wrap:wrap;justify-content:flex-end}
-    .nav a{text-decoration:none}.nav a:hover{color:var(--azul)}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      border:0;border-radius:999px;padding:12px 18px;font-weight:800;text-decoration:none;
-      background:var(--azul);color:white;box-shadow:0 10px 24px rgba(7,34,77,.18)
-    }
-    .btn.secondary{background:white;color:var(--azul);border:1px solid var(--linea);box-shadow:none}
-    .btn.gold{background:linear-gradient(135deg,var(--dorado),var(--dorado-2));color:var(--azul)}
-    .hero{padding:74px 0 34px}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-3);background:rgba(23,77,156,.08);padding:8px 12px;border-radius:999px}
-    h1,h2,h3{font-family:Cinzel,Georgia,serif;color:var(--azul);line-height:1.12;margin:0 0 14px}
-    h1{font-size:clamp(38px,6vw,72px);letter-spacing:-.04em;margin-top:18px}
-    h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.03em;margin-top:8px}
-    h3{font-size:22px;margin-top:0}
-    .lead{font-size:clamp(18px,2vw,21px);color:#41506A;max-width:720px;margin:0 0 26px}
-    .hero-card{
-      background:linear-gradient(160deg,var(--azul) 0%,var(--azul-2) 65%,#143A6B 100%);
-      color:white;border-radius:32px;padding:28px;box-shadow:var(--sombra);position:relative;overflow:hidden
-    }
-    .hero-card:before{content:"";position:absolute;inset:-80px -120px auto auto;width:260px;height:260px;border-radius:50%;background:rgba(215,168,74,.25)}
-    .hero-card h2{color:white;font-size:28px}.hero-card p{color:rgba(255,255,255,.82);margin:0 0 18px}
-    .mini-list{display:grid;gap:10px;margin-top:18px}.mini-item{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:12px}.mini-item strong{display:block;color:white}.mini-item span{color:rgba(255,255,255,.75);font-size:14px}
-    .toc{padding:14px 0 44px}.toc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.toc a{display:block;text-decoration:none;background:white;border:1px solid var(--linea);border-radius:18px;padding:16px;font-weight:800;color:var(--azul);box-shadow:0 8px 28px rgba(7,34,77,.06)}.toc span{display:block;font-weight:500;color:var(--muted);font-size:13px;margin-top:4px}
-    section{padding:48px 0}.section-card{background:rgba(255,255,255,.76);border:1px solid var(--linea);border-radius:30px;padding:30px;box-shadow:0 14px 38px rgba(7,34,77,.07)}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .card{background:white;border:1px solid var(--linea);border-radius:var(--radius);padding:22px;box-shadow:0 8px 26px rgba(7,34,77,.06)}
-    .card h3{font-size:20px}.muted{color:var(--muted)}
-    .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:rgba(215,168,74,.16);color:var(--azul);font-weight:800;font-size:13px;padding:7px 11px;margin:0 8px 8px 0}
-    .steps{counter-reset:step;display:grid;gap:14px}.step{counter-increment:step;display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;background:white;border:1px solid var(--linea);border-radius:18px;padding:16px}.step:before{content:counter(step);width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--azul),var(--azul-3));color:white;display:grid;place-items:center;font-weight:900}.step h3{margin-bottom:4px;font-family:Inter,sans-serif;font-size:16px}.step p{margin:0;color:var(--muted);font-size:15px}
-    .notice{background:linear-gradient(135deg,rgba(215,168,74,.18),rgba(255,255,255,.88));border:1px solid rgba(215,168,74,.35);border-radius:22px;padding:20px}.notice strong{color:var(--azul)}
-    .feature-list{display:grid;gap:12px;padding:0;margin:16px 0 0;list-style:none}.feature-list li{position:relative;padding-left:28px}.feature-list li:before{content:"✓";position:absolute;left:0;top:0;color:var(--verde);font-weight:900}
-    details{background:white;border:1px solid var(--linea);border-radius:18px;padding:16px 18px;margin:10px 0}summary{cursor:pointer;font-weight:900;color:var(--azul)}details p{margin:12px 0 0;color:var(--muted)}
-    .table-wrap{overflow:auto;border-radius:20px;border:1px solid var(--linea);background:white}table{width:100%;border-collapse:collapse;min-width:760px}th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--linea);vertical-align:top}th{background:#F8FAFC;color:var(--azul);font-size:13px;text-transform:uppercase;letter-spacing:.06em}td{font-size:15px}tr:last-child td{border-bottom:0}
-    .cta{background:linear-gradient(135deg,var(--azul),var(--azul-2));color:white;border-radius:32px;padding:34px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.cta h2{color:white}.cta p{color:rgba(255,255,255,.82);margin:0}.cta-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-    .footer{padding:34px 0;color:var(--muted);font-size:13px;border-top:1px solid var(--linea);margin-top:28px}
-    .small{font-size:13px;color:var(--muted)}
-    @media (max-width:900px){.hero-grid,.grid-2,.grid-3,.grid-4,.cta{grid-template-columns:1fr}.toc-grid{grid-template-columns:1fr 1fr}.cta-actions{justify-content:flex-start}.nav{display:none}.hero{padding-top:48px}}
-    @media (max-width:560px){.wrap,.topbar-inner{padding-left:16px;padding-right:16px}.toc-grid{grid-template-columns:1fr}.section-card,.hero-card,.cta{border-radius:24px;padding:22px}.card{padding:18px}h1{font-size:40px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual | Peregrino APP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#0c1222;
+--bg-deep:#090f1c;
+--gold:#c6a348;
+--light:#f5f3ee;
+--muted:#b8bcc6;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Inter,system-ui;
+background:linear-gradient(180deg,var(--bg) 0%,var(--bg-deep) 100%);
+color:var(--light);
+overflow-x:hidden;
+}
+
+section{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 20px;
+position:relative;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+h1,h2{
+font-family:"Cormorant Garamond",serif;
+letter-spacing:-.03em;
+}
+
+h1{
+font-size:clamp(3.5rem,7vw,5.5rem);
+line-height:1.05;
+}
+
+h2{
+font-size:clamp(2.5rem,5vw,4rem);
+}
+
+p.lead{
+margin-top:20px;
+font-size:1.2rem;
+color:var(--muted);
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.btn{
+display:inline-block;
+margin:30px 10px 0;
+padding:14px 32px;
+border-radius:999px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.btn-primary{
+background:var(--gold);
+color:#000;
+}
+
+.btn-secondary{
+border:1px solid rgba(255,255,255,.3);
+color:var(--light);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+opacity:.9;
+}
+
+.full-image{
+background-size:cover;
+background-position:center;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(9,15,28,.6),rgba(9,15,28,.85));
+}
+
+.content{
+position:relative;
+z-index:2;
+}
+
+.gold{
+color:var(--gold);
+}
+
+footer{
+padding:60px 20px;
+text-align:center;
+color:var(--muted);
+font-size:.9rem;
+}
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="https://madeprat.github.io/peregrino-app-web/" aria-label="Volver a Peregrino APP">
-        <span class="brand-mark">⛪</span><span>Peregrino APP</span>
-      </a>
-      <nav class="nav" aria-label="Navegación del manual">
-        <a href="#empezar">Empezar</a>
-        <a href="#oraciones">Oraciones</a>
-        <a href="#reunion">Reunión</a>
-        <a href="#candidatos">Candidatos</a>
-        <a href="#faq">Ayuda</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <span class="eyebrow">Manual de usuario</span>
-          <h1>Cómo usar Peregrino APP en tu Cuarto Día</h1>
-          <p class="lead">Esta guía te acompaña paso a paso para configurar la app, rezar, revisar tu Trípode, preparar la Reunión de Grupo y llevar en oración a tus candidatos.</p>
-          <div>
-            <a class="btn gold" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank" rel="noopener">Descargar en Android</a>
-            <a class="btn secondary" href="https://madeprat.github.io/peregrino-app-web/">Volver a la web</a>
-          </div>
-          <p class="small" style="margin-top:14px">Guía orientativa basada en la versión inicial de la app. Algunas funciones pueden aparecer con candado según tu versión o colaboración.</p>
-        </div>
-        <aside class="hero-card">
-          <h2>Cómo sacar el máximo partido a cada sección</h2>
-          <p>Este manual no explica por qué vivir el Cuarto Día. Explica cómo usar cada función de la app para ayudarte a hacerlo mejor, con orden y constancia.</p>
-          <div class="mini-list">
-            <div class="mini-item"><span>✝️</span><div><strong>Piedad</strong><span>Oraciones, Rosario, Laudes, Completas, Examen, Vía Crucis y Hora Apostólica.</span></div></div>
-            <div class="mini-item"><span>📖</span><div><strong>Estudio</strong><span>Registro de lo que lees, aprendes y preparas para tu revisión semanal.</span></div></div>
-            <div class="mini-item"><span>🌱</span><div><strong>Acción</strong><span>Candidatos, plan apostólico, ambiente y compromisos concretos.</span></div></div>
-          </div>
-        </aside>
-      </div>
-    </section>
+<!-- INTRO -->
+<section>
+<div class="container">
+<h1>Cómo vivir<br>Peregrino</h1>
+<p class="lead">
+No es un manual técnico.
+Es una guía para usar la app
+como apoyo real en tu Cuarto Día.
+</p>
 
-    <div class="toc wrap">
-      <div class="toc-grid">
-        <a href="#empezar">1. Primeros pasos<span>Configuración y navegación principal.</span></a>
-        <a href="#oraciones">2. Oraciones<span>Cómo rezar, escuchar y guardar.</span></a>
-        <a href="#tripode">3. Trípode<span>Revisión diaria y semanal.</span></a>
-        <a href="#reunion">4. Reunión de Grupo<span>Guía, turnos, tiempo y cierre.</span></a>
-        <a href="#candidatos">5. Candidatos<span>Orar, sembrar e invitar.</span></a>
-        <a href="#peregrinar">6. Peregrinar<span>Apuntes personales del camino.</span></a>
-        <a href="#planes">7. Funciones con candado<span>Qué significan Palmero, Bordón y Apóstol.</span></a>
-        <a href="#faq">8. Preguntas frecuentes<span>Audio, WhatsApp, datos y errores.</span></a>
-      </div>
-    </div>
+<a href="index.html" class="btn btn-secondary">Volver a la web</a>
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank" class="btn btn-primary">
+Descargar la app
+</a>
+</div>
+</section>
 
-    <section id="empezar">
-      <div class="wrap section-card">
-        <span class="pill">🌈 Antes de caminar</span>
-        <h2>1. Primeros pasos</h2>
-        <p class="muted">Al abrir Peregrino APP por primera vez, la app te guía por una configuración inicial. Después entrarás en la pantalla principal con cinco pestañas inferiores.</p>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Configura tu perfil cursillista</h3>
-            <p>Introduce tus datos básicos: nombre, apellidos, diócesis, ciudad o sector si procede, fecha de tu Cursillo si la quieres conservar y preferencias de recordatorios.</p>
-            <ul class="feature-list">
-              <li>La fecha de tu Cursillo permite recordar aniversarios.</li>
-              <li>Las horas de mañana y noche sirven para ordenar tu vida diaria.</li>
-              <li>El día de Reunión de Grupo ayuda a preparar invitaciones y recordatorios.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Muévete por las cinco pestañas</h3>
-            <p>La barra inferior organiza la app en Inicio, Oraciones, Trípode, Palancas y Peregrinar.</p>
-            <div class="grid-2" style="gap:10px;margin-top:12px">
-              <span class="pill">Inicio</span><span class="pill">Oraciones</span>
-              <span class="pill">Trípode</span><span class="pill">Palancas</span>
-              <span class="pill">Peregrinar</span>
-            </div>
-          </div>
-        </div>
-        <div class="notice" style="margin-top:18px"><strong>Consejo:</strong> no intentes rellenarlo todo perfecto el primer día. Empieza con lo mínimo, reza, revisa tu Trípode y deja que la app se convierta poco a poco en una costumbre.</div>
-      </div>
-    </section>
+<!-- ORACIÓN -->
+<section class="full-image" style="background-image:url('persona_rosario.jpg')">
+<div class="overlay"></div>
+<div class="content container">
+<h2>Empieza rezando.</h2>
+<p class="lead">
+Oraciones organizadas por momentos del día.
+Rosario completo paso a paso.
+Laudes, Completas, Examen.
+Lo esencial.
+</p>
+</div>
+</section>
 
-    <section id="oraciones">
-      <div class="wrap section-card">
-        <span class="pill">🙏 Oración diaria</span>
-        <h2>2. Cómo usar Oraciones</h2>
-        <p class="muted">La pestaña Oraciones reúne textos para distintos momentos del día y varias guías completas. Arriba verás accesos rápidos para entrar en Laudes, Rosario, Completas y Examen.</p>
-        <div class="grid-4">
-          <div class="card"><h3>Mañana</h3><p>Oraciones para comenzar el día, incluida la Oración de la Mañana y Laudes.</p></div>
-          <div class="card"><h3>Mediodía</h3><p>Ángelus y Regina Coeli, según el tiempo litúrgico.</p></div>
-          <div class="card"><h3>Durante el día</h3><p>Meditación, Santa Misa y otros textos para sostener la jornada.</p></div>
-          <div class="card"><h3>Noche</h3><p>Completas y oración serena para cerrar el día.</p></div>
-        </div>
-        <div class="grid-2" style="margin-top:18px">
-          <div class="card">
-            <h3>Rezar una oración sencilla</h3>
-            <div class="steps">
-              <div class="step"><div><h3>Entra en Oraciones</h3><p>Elige la pestaña que corresponda: Mañana, Mediodía, Durante el día, Devociones, Noche o Confesión.</p></div></div>
-              <div class="step"><div><h3>Toca la oración</h3><p>Se abrirá la pantalla de lectura. Puedes marcarla como favorita para volver a ella más rápido.</p></div></div>
-              <div class="step"><div><h3>Guárdala en tu Piedad</h3><p>En oraciones como Laudes, Completas o Misa, podrás registrar que la has rezado para que aparezca en tu revisión de Piedad.</p></div></div>
-            </div>
-          </div>
-          <div class="card">
-            <h3>Usar el modo litúrgico</h3>
-            <p>Algunas oraciones se muestran por secciones para que puedas rezarlas con más calma. En estas pantallas puedes avanzar por partes, escuchar una sección si el audio está disponible y ajustar la lectura a tu ritmo.</p>
-            <ul class="feature-list">
-              <li>Útil para Laudes, Completas y Examen de Conciencia.</li>
-              <li>Permite una lectura más ordenada y pausada.</li>
-              <li>Al terminar, puedes recibir una “gracia de hoy” y compartirla.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- TRÍPODE -->
+<section class="full-image" style="background-image:url('persona_tripode.jpg')">
+<div class="overlay"></div>
+<div class="content container">
+<h2>Revisa tu Trípode.</h2>
+<p class="lead">
+Piedad.
+Estudio.
+Acción.
 
-    <section id="rosario">
-      <div class="wrap section-card">
-        <span class="pill">📿 Santo Rosario</span>
-        <h2>3. Rosario guiado paso a paso</h2>
-        <p class="muted">La app permite rezar el Rosario completo con misterios de Gozo, Dolor, Gloria o Luz. También sugiere el misterio del día según el calendario semanal.</p>
-        <div class="grid-3">
-          <div class="card"><h3>Elige misterios</h3><p>Puedes aceptar la sugerencia del día o cambiar manualmente el tipo de misterios desde el índice.</p></div>
-          <div class="card"><h3>Continúa o empieza de nuevo</h3><p>Si dejas el Rosario a medias, la app puede mostrar una sesión guardada para continuar donde ibas o empezar uno nuevo.</p></div>
-          <div class="card"><h3>Usa Anterior y Siguiente</h3><p>Avanza por la Señal de la Cruz, Acto de Contrición, intenciones, misterios, letanías y oración final.</p></div>
-        </div>
-        <div class="table-wrap" style="margin-top:18px">
-          <table>
-            <thead><tr><th>Botón o función</th><th>Para qué sirve</th><th>Uso recomendado</th></tr></thead>
-            <tbody>
-              <tr><td>Índice</td><td>Abre la lista de partes del Rosario y permite saltar a una sección.</td><td>Cuando rezas en grupo o necesitas retomar una parte concreta.</td></tr>
-              <tr><td>Lectura en voz alta</td><td>Lee el contenido de la pantalla si tu versión lo tiene activado.</td><td>Para rezar caminando, en familia o con personas mayores.</td></tr>
-              <tr><td>Modo guiado</td><td>Ayuda a avanzar con menos toques durante el rezo.</td><td>Para una experiencia más acompañada y menos manual.</td></tr>
-              <tr><td>Intenciones</td><td>Permite escribir o presentar las intenciones del día.</td><td>Antes de comenzar los misterios.</td></tr>
-              <tr><td>Gracia de hoy</td><td>Al finalizar, muestra una cita o gracia bíblica vinculada a la oración.</td><td>Para guardar, compartir o llevar a la revisión del día.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
+No escribas cosas perfectas.
+Escribe cosas reales.
+</p>
+</div>
+</section>
 
-    <section id="tripode">
-      <div class="wrap section-card">
-        <span class="pill">✝️ 📖 🌱 Trípode</span>
-        <h2>4. Revisar tu Trípode</h2>
-        <p class="muted">El Trípode es el corazón práctico del Cuarto Día: lo que miras cada semana termina modelando lo que vives. La app está pensada para que llegues a tu Reunión de Grupo con la vida revisada, concreta y sincera.</p>
-        <div class="grid-3">
-          <div class="card"><h3>Piedad</h3><p>Anota tu relación con Dios: oración, sacramentos, Rosario, Laudes, Misa, Completas, Examen, Vía Crucis o adoración.</p></div>
-          <div class="card"><h3>Estudio</h3><p>Registra lo que has leído, escuchado o aprendido: Biblia, formación, doctrina, documentos, charlas o material del Movimiento.</p></div>
-          <div class="card"><h3>Acción</h3><p>Concreta tu apostolado: testimonio, caridad, servicio, ambiente, invitación a un Cursillo o acompañamiento de candidatos.</p></div>
-        </div>
-        <div class="notice" style="margin-top:18px"><strong>Cómo usarlo bien:</strong> escribe frases breves y reales. No se trata de hacer un informe bonito, sino de reconocer por dónde está pasando Dios en tu semana y qué paso concreto vas a dar.</div>
-      </div>
-    </section>
+<!-- REUNIÓN -->
+<section class="full-image" style="background-image:url('reunion_grupo.jpg')">
+<div class="overlay"></div>
+<div class="content container">
+<h2>Ordena tu Reunión de Grupo.</h2>
+<p class="lead">
+La app guía los pasos.
+Pero la vida sigue siendo lo esencial.
+Amistad.
+Sinceridad.
+Compromiso.
+</p>
+</div>
+</section>
 
-    <section id="reunion">
-      <div class="wrap section-card">
-        <span class="pill">🤝 Reunión de Grupo</span>
-        <h2>5. Guiar una Reunión de Grupo</h2>
-        <p class="muted">La pantalla de Reunión Activa funciona como un “maestro de ceremonias”: ordena los pasos, reparte turnos, controla el tiempo si quieres y ayuda a cerrar con compromiso.</p>
-        <div class="steps">
-          <div class="step"><div><h3>Añade participantes</h3><p>Introduce los nombres de quienes van a compartir. La reunión necesita al menos dos personas.</p></div></div>
-          <div class="step"><div><h3>Activa o desactiva el temporizador</h3><p>El timer reparte el tiempo entre los participantes en los pasos con turnos. Si estorba, puedes ocultarlo.</p></div></div>
-          <div class="step"><div><h3>Avanza con el botón principal</h3><p>El botón cambia según el momento: pasa al siguiente hermano, cierra el paso o avanza a la siguiente parte.</p></div></div>
-          <div class="step"><div><h3>Define una Acción de Grupo</h3><p>En el paso correspondiente, escribe el compromiso común. La app lo guardará como acción grupal.</p></div></div>
-          <div class="step"><div><h3>Cierra y comparte</h3><p>Al terminar, puedes revelar una gracia de reunión y compartir un resumen sencillo del encuentro.</p></div></div>
-        </div>
-        <h3 style="margin-top:24px">Orden sugerido de la reunión</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Paso</th><th>Qué se revisa</th><th>Duración orientativa</th></tr></thead>
-            <tbody>
-              <tr><td>1. Oración inicial</td><td>Invocación al Espíritu Santo.</td><td>5 min</td></tr>
-              <tr><td>2. Revisión del plan anterior</td><td>Qué se cumplió y qué fruto hubo.</td><td>10 min</td></tr>
-              <tr><td>3. Piedad</td><td>Vida de oración y sacramentos.</td><td>10 min</td></tr>
-              <tr><td>4. Estudio</td><td>Formación, lectura y crecimiento en la fe.</td><td>10 min</td></tr>
-              <tr><td>5. Acción</td><td>Apostolado en los ambientes.</td><td>10 min</td></tr>
-              <tr><td>6. Nuevo plan apostólico</td><td>Compromiso personal para la semana.</td><td>10 min</td></tr>
-              <tr><td>7. Acción del Grupo</td><td>Compromiso o gesto común.</td><td>5 min</td></tr>
-              <tr><td>8. Oración final</td><td>Cierre en común y envío.</td><td>5 min</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="notice" style="margin-top:18px"><strong>Importante:</strong> la app ayuda a cuidar el orden, pero la reunión no es una pantalla. Lo esencial sigue siendo la amistad, la sinceridad, el sigilo y la vida compartida.</div>
-      </div>
-    </section>
+<!-- CANDIDATOS -->
+<section>
+<div class="container">
+<h2>Pon nombre a tu apostolado.</h2>
+<p class="lead">
+Añade candidatos.
+Reza por ellos.
+Invita con prudencia.
 
-    <section id="candidatos">
-      <div class="wrap section-card">
-        <span class="pill">🌱 Palancas / Candidatos</span>
-        <h2>6. Candidatos en Oración</h2>
-        <p class="muted">Esta sección sirve para poner nombre a tu oración apostólica: personas de tus ambientes que llevas en el corazón y por quienes rezas para que, si Dios quiere, puedan vivir un Cursillo.</p>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Añadir un candidato</h3>
-            <div class="steps">
-              <div class="step"><div><h3>Pulsa “Añadir”</h3><p>Escribe el nombre de la persona.</p></div></div>
-              <div class="step"><div><h3>Elige su ambiente</h3><p>Familia, trabajo/estudio, amigos/vecinos, parroquia/iglesia, comunidad/sociedad u otro.</p></div></div>
-              <div class="step"><div><h3>Añade una nota personal</h3><p>Es opcional, pero ayuda a recordar por qué la llevas en oración y cómo acompañarla.</p></div></div>
-            </div>
-          </div>
-          <div class="card">
-            <h3>Qué puedes hacer con cada candidato</h3>
-            <ul class="feature-list">
-              <li>Rezar por esa persona con una oración personalizada.</li>
-              <li>Editar su nombre, ambiente o nota.</li>
-              <li>Usar “Sembrar e invitar” para preparar una invitación humana y prudente.</li>
-              <li>Marcar que ya vivió su Cursillo y guardar la fecha.</li>
-              <li>Añadir su aniversario al calendario como recordatorio anual.</li>
-            </ul>
-          </div>
-        </div>
-        <h3 style="margin-top:24px">Sembrar e invitar</h3>
-        <p class="muted">La función “Sembrar e invitar” prepara una invitación editable para WhatsApp y genera un enlace personalizado. La app no envía nada automáticamente: tú revisas el mensaje, lo cambias si quieres y decides si lo mandas.</p>
-        <div class="grid-4">
-          <div class="card"><h3>Rezar</h3><p>Vuelve a poner a esa persona ante Dios antes de actuar.</p></div>
-          <div class="card"><h3>Compartir invitación</h3><p>Abre un texto editable para WhatsApp.</p></div>
-          <div class="card"><h3>Vista previa</h3><p>Muestra cómo verá la persona la página personalizada.</p></div>
-          <div class="card"><h3>Copiar enlace</h3><p>Guarda la URL para pegarla por el canal que prefieras.</p></div>
-        </div>
-      </div>
-    </section>
+La app nunca envía nada automáticamente.
+Siempre decides tú.
+</p>
+</div>
+</section>
 
-    <section id="peregrinar">
-      <div class="wrap section-card">
-        <span class="pill">📝 Peregrinar</span>
-        <h2>7. Apuntes del camino</h2>
-        <p class="muted">La sección Peregrinar está pensada como un cuaderno sencillo del camino. Puedes usarla para conservar reflexiones personales, versículos que te acompañan y el estado interior con el que vas viviendo tu Cuarto Día.</p>
-        <div class="grid-3">
-          <div class="card"><h3>Reflexión</h3><p>Escribe lo que necesitas recordar, agradecer o revisar.</p></div>
-          <div class="card"><h3>Versículo favorito</h3><p>Guarda una Palabra que te haya sostenido en el día.</p></div>
-          <div class="card"><h3>Estado de ánimo</h3><p>Observa cómo vas caminando, sin juzgarte, para volver a empezar cuando haga falta.</p></div>
-        </div>
-      </div>
-    </section>
+<!-- FUNCIONES BLOQUEADAS -->
+<section>
+<div class="container">
+<h2>Funciones con candado</h2>
+<p class="lead">
+Algunas herramientas avanzadas están asociadas
+a colaboración.
 
-    <section id="planes">
-      <div class="wrap section-card">
-        <span class="pill">🔒 Funciones con candado</span>
-        <h2>8. Qué significa encontrar una función bloqueada</h2>
-        <p class="muted">Peregrino APP puede mostrar algunas funciones avanzadas con candado. Cuando ocurra, la propia app te enviará a la pantalla de colaboración o sostén correspondiente.</p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Nivel</th><th>Funciones que pueden aparecer asociadas</th><th>Cómo entenderlo</th></tr></thead>
-            <tbody>
-              <tr><td>Palmero</td><td>Audio del Rosario.</td><td>Ayuda a rezar en voz alta o con acompañamiento.</td></tr>
-              <tr><td>Bordón</td><td>Recordatorios, audio en Reunión de Grupo y mensajes para saludar candidatos enviados.</td><td>Funciones de perseverancia y acompañamiento.</td></tr>
-              <tr><td>Apóstol</td><td>Acceso total, audio en Vía Crucis y Hora Apostólica, calendario de reunión y devociones propias.</td><td>Funciones más completas para sostener la vida espiritual y comunitaria.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="notice" style="margin-top:18px"><strong>Nota:</strong> las funciones gratuitas y de colaboración pueden ajustarse con el tiempo. Este manual explica el comportamiento previsto en la versión revisada.</div>
-      </div>
-    </section>
+Si aparece un candado,
+la app te explicará cómo activarlo.
+</p>
+</div>
+</section>
 
-    <section id="faq">
-      <div class="wrap section-card">
-        <span class="pill">❓ Ayuda rápida</span>
-        <h2>9. Preguntas frecuentes</h2>
-        <details open>
-          <summary>No se escucha el audio. ¿Qué hago?</summary>
-          <p>Comprueba el volumen del móvil, que no esté en silencio y que la función de audio esté disponible en tu versión. En algunas pantallas verás un candado si el audio requiere una colaboración concreta.</p>
-        </details>
-        <details>
-          <summary>¿Peregrino APP envía mensajes de WhatsApp automáticamente?</summary>
-          <p>No. La app prepara el texto y abre WhatsApp o copia el contenido, pero tú decides si lo envías. Esto es especialmente importante en las invitaciones a candidatos.</p>
-        </details>
-        <details>
-          <summary>¿Qué pasa si cierro el Rosario a medias?</summary>
-          <p>La app puede guardar el progreso del Rosario que estabas rezando. Al volver, podrás continuar la sesión guardada o empezar una nueva.</p>
-        </details>
-        <details>
-          <summary>¿Dónde se guardan mis registros?</summary>
-          <p>Los datos personales que aparecen en esta versión —configuración, candidatos, Trípode, check-ins, devociones y gracias— se guardan en el dispositivo. Si cambias de móvil o borras datos de la app, podrías perderlos salvo que uses una función de respaldo disponible.</p>
-        </details>
-        <details>
-          <summary>¿Puedo usar la app sin conexión?</summary>
-          <p>Muchas oraciones y registros están dentro de la app y pueden consultarse sin conexión. Las funciones que abren enlaces externos, WhatsApp, PayPal, Google Play o páginas web necesitan conexión a internet.</p>
-        </details>
-        <details>
-          <summary>¿La app sustituye mi Reunión de Grupo?</summary>
-          <p>No. Peregrino APP no sustituye tu vida, tu grupo ni tu apostolado. Solo ayuda a ordenar, recordar y sostener lo que ya estás llamado a vivir.</p>
-        </details>
-      </div>
-    </section>
+<!-- CIERRE -->
+<section>
+<div class="container">
+<h2 class="gold">Lo importante</h2>
+<p class="lead">
+Peregrino no sustituye tu vida.
+No sustituye tu grupo.
+No sustituye tu parroquia.
 
-    <section class="wrap">
-      <div class="cta">
-        <div>
-          <h2>¿Listo para caminar mejor tu Cuarto Día?</h2>
-          <p>Descarga la app, compártela con tu grupo y úsala como una pequeña ayuda para rezar, revisar y volver a empezar.</p>
-        </div>
-        <div class="cta-actions">
-          <a class="btn gold" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank" rel="noopener">Descargar gratis</a>
-          <a class="btn secondary" href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" target="_blank" rel="noopener">Canal de WhatsApp</a>
-        </div>
-      </div>
-    </section>
-  </main>
+Solo quiere ayudarte a caminar mejor.
+</p>
 
-  <footer class="footer">
-    <div class="wrap">
-      <strong>Peregrino APP</strong><br />
-      Caminar por Cristo hacia el Padre. Manual preparado para usuarios del Cuarto Día.
-    </div>
-  </footer>
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank" class="btn btn-primary">
+Descargar ahora
+</a>
+</div>
+</section>
+
+<footer>
+Peregrino APP · Iniciativa personal e independiente · De Colores
+</footer>
+
 </body>
 </html>
