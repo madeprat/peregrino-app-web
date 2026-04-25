@@ -3,263 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Peregrino APP</title>
+<title>Peregrino App</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html,body{
-font-family:'Inter',sans-serif;
-overflow-x:hidden;
-background:#000;
-color:#fff;
-scroll-behavior:smooth;
+body {
+  font-family: 'Inter', sans-serif;
+  background: #111;
+  color: white;
 }
 
-/* SNAP SCROLL */
-body{
-scroll-snap-type:y mandatory;
-overflow-y:scroll;
-height:100vh;
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
 }
 
-/* SECTION */
-.section{
-position:relative;
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-scroll-snap-align:start;
-overflow:hidden;
+.hero img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* IMAGE */
-.section img{
-position:absolute;
-width:100%;
-height:110%;
-object-fit:cover;
-top:-5%;
-left:0;
-z-index:0;
-transition:transform 6s ease;
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
 }
 
-/* PARALLAX ZOOM */
-.section.active img{
-transform:scale(1.08);
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 900px;
+  margin: auto;
 }
 
-/* OVERLAY */
-.overlay{
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(to top,rgba(0,0,0,0.85),rgba(0,0,0,0.35));
-z-index:1;
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
 }
 
-/* CONTENT */
-.content{
-position:relative;
-z-index:2;
-max-width:900px;
-padding:20px;
-opacity:0;
-transform:translateY(30px);
-transition:all 1.2s ease;
+.hero p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 40px;
+  opacity: 0.9;
 }
 
-.section.active .content{
-opacity:1;
-transform:translateY(0);
+.cta-button {
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: white;
+  color: black;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: 0.3s ease;
 }
 
-h1{
-font-size:clamp(36px,6vw,80px);
-font-weight:800;
-letter-spacing:-1px;
-margin-bottom:20px;
+.cta-button:hover {
+  background: #e5e5e5;
 }
 
-p{
-font-size:clamp(18px,2.5vw,26px);
-font-weight:300;
-opacity:.9;
-}
-
-.light{
-background:#f4efe6;
-color:#1f2f6b;
-}
-
-.light .overlay{
-display:none;
-}
-
-.light .content{
-color:#1f2f6b;
-}
-
-/* TRIPODE */
-.tripode{
-font-size:clamp(40px,6vw,90px);
-font-weight:800;
-line-height:1.2;
-}
-
-/* CTA */
-.cta{
-display:inline-block;
-margin-top:40px;
-padding:18px 48px;
-background:#c8a951;
-color:#1f2f6b;
-border-radius:50px;
-font-weight:700;
-text-decoration:none;
-font-size:20px;
-transition:.3s;
-}
-
-.cta:hover{
-transform:scale(1.08);
-}
-
-/* SCROLL HINT */
-.scroll-hint{
-position:absolute;
-bottom:30px;
-font-size:14px;
-opacity:.6;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{opacity:.3}
-50%{opacity:.8}
-100%{opacity:.3}
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.section{
-padding:20px;
-}
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="section">
-<img src="foto_rosario1.png">
-<div class="overlay"></div>
-<div class="content">
-<h1>El Cuarto Día no se apaga.</h1>
-<p>Cristo sigue vivo.</p>
-</div>
-<div class="scroll-hint">Desliza ↓</div>
+<section class="hero">
+  <img src="hero-peregrino.jpg" alt="Guía del Peregrino sobre mesa con café y móvil">
+
+  <div class="hero-content">
+    <h1>La Guía del Peregrino.<br>Ahora en tu bolsillo.</h1>
+    <p>Vive tu Cuarto Día con lo esencial siempre contigo.</p>
+    <a href="#descargar" class="cta-button">Instala la app</a>
+  </div>
 </section>
-
-<!-- VISUAL -->
-<section class="section">
-<img src="foto_gracia3.png">
-<div class="overlay"></div>
-<div class="content">
-<h1>Siempre contigo.</h1>
-</div>
-</section>
-
-<!-- IDENTIDAD -->
-<section class="section">
-<img src="foto_gracia1.png">
-<div class="overlay"></div>
-<div class="content">
-<h1>No es otra app.</h1>
-</div>
-</section>
-
-<!-- LIBRO AZUL -->
-<section class="section">
-<img src="foto_gracia2.png">
-<div class="overlay"></div>
-<div class="content">
-<h1>Es tu Libro Azul.</h1>
-<p>En tu bolsillo.</p>
-</div>
-</section>
-
-<!-- ACLARACIÓN -->
-<section class="section">
-<img src="foto_rezo2.png">
-<div class="overlay"></div>
-<div class="content">
-<h1>No sustituye nada.</h1>
-<p>Solo acompaña.</p>
-</div>
-</section>
-
-<!-- TRÍPODE -->
-<section class="section light">
-<div class="content">
-<div class="tripode">
-Piedad.<br>
-Estudio.<br>
-Acción.
-</div>
-</div>
-</section>
-
-<!-- VIDA -->
-<section class="section">
-<img src="foto_app1.png">
-<div class="overlay"></div>
-<div class="content">
-<h1>Tu vida de colores.</h1>
-<p>En tu bolsillo.</p>
-</div>
-</section>
-
-<!-- FINAL -->
-<section class="section">
-<img src="foto_gracia1.png">
-<div class="overlay"></div>
-<div class="content">
-<h1>Si esto te removió…</h1>
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="cta">
-Instalar ahora
-</a>
-<p style="margin-top:25px;font-size:14px;opacity:.6;">
-De Colores.
-</p>
-</div>
-</section>
-
-<script>
-const sections = document.querySelectorAll('.section');
-
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add('active');
-}
-});
-},{ threshold: 0.6 });
-
-sections.forEach(section => {
-observer.observe(section);
-});
-</script>
 
 </body>
 </html>
