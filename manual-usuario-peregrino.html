@@ -12,9 +12,8 @@ body{
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 background:#0b1220;
 color:#f5f3ee;
-scroll-behavior:smooth;
-overflow-x:hidden;
 line-height:1.8;
+scroll-behavior:smooth;
 }
 
 /* NAV */
@@ -27,8 +26,8 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 40px;
-background:rgba(8,12,20,.75);
-backdrop-filter:blur(10px);
+background:rgba(8,12,20,.85);
+backdrop-filter:blur(12px);
 z-index:1000;
 }
 
@@ -37,113 +36,83 @@ color:white;
 text-decoration:none;
 font-weight:600;
 opacity:.85;
+margin-left:25px;
 }
 
 .nav a:hover{opacity:1;}
 
-/* HERO */
-.hero{
-min-height:60vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:120px 20px 80px;
-background:
-linear-gradient(rgba(8,12,20,.65),rgba(8,12,20,.9)),
-url("foto_app1.png") center/cover no-repeat;
-}
-
-.hero h1{
-font-size:clamp(2.5rem,6vw,4rem);
-font-weight:700;
-}
-
-.hero em{
-color:#d4af37;
-font-style:normal;
-}
-
-/* SECTION */
-.section{
-max-width:900px;
+.container{
+max-width:950px;
 margin:auto;
-padding:120px 20px;
+padding:140px 20px 100px;
 }
 
-.section h2{
-font-size:clamp(1.8rem,4vw,2.8rem);
-color:#d4af37;
-margin-bottom:30px;
-}
-
-.section p{
-margin-bottom:20px;
-opacity:.85;
-font-size:1.05rem;
-}
-
-/* STEP BLOCK */
-.step{
-margin-bottom:40px;
-padding-left:20px;
-border-left:3px solid #d4af37;
-}
-
-.step strong{
-display:block;
-margin-bottom:8px;
-color:#d4af37;
-}
-
-/* IMAGE BLOCK */
-.image-block{
-min-height:60vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:80px 20px;
-background-size:cover;
-background-position:center;
-position:relative;
-}
-
-.image-block::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(rgba(8,12,20,.75),rgba(8,12,20,.9));
-}
-
-.image-block .content{
-position:relative;
-z-index:2;
-max-width:700px;
-}
-
-.image-block h2{
-color:#d4af37;
-font-size:clamp(2rem,4vw,3rem);
+h1{
+font-size:clamp(2.8rem,6vw,4rem);
 margin-bottom:20px;
 }
 
-/* CTA */
-.cta{
-min-height:60vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:80px 20px;
+h2{
+color:#d4af37;
+margin-top:80px;
+margin-bottom:25px;
+font-size:clamp(1.8rem,4vw,2.5rem);
+}
+
+p{
+margin-bottom:18px;
+opacity:.9;
+}
+
+/* ACCORDION */
+details{
 background:#111a30;
+border-radius:18px;
+padding:20px 24px;
+margin-bottom:16px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+summary{
+cursor:pointer;
+font-weight:700;
+color:#d4af37;
+font-size:1.1rem;
+}
+
+details p{
+margin-top:15px;
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+.table th,
+.table td{
+border-bottom:1px solid rgba(255,255,255,.08);
+padding:12px;
+text-align:left;
+}
+
+.table th{
+color:#d4af37;
+font-weight:600;
+}
+
+.notice{
+background:#16213a;
+padding:20px;
+border-radius:16px;
+margin-top:20px;
 }
 
 .btn{
 display:inline-block;
-margin:14px;
-padding:16px 34px;
+margin-top:30px;
+padding:14px 30px;
 border-radius:40px;
 text-decoration:none;
 font-weight:600;
@@ -158,6 +127,7 @@ transition:.3s;
 background:transparent;
 border:1px solid rgba(255,255,255,.4);
 color:white;
+margin-left:10px;
 }
 
 .btn-secondary:hover{
@@ -174,72 +144,134 @@ color:black;
 <a href="manifiesto.html">Manifiesto</a>
 </div>
 
-<section class="hero">
-<div>
-<h1>Manual de <em>Usuario</em></h1>
-<p style="opacity:.85;margin-top:15px;">Cómo usar Peregrino con sencillez.</p>
-</div>
-</section>
+<div class="container">
 
-<section class="section">
-<h2>Cómo empezar</h2>
+<h1>Manual de Usuario</h1>
+<p>Guía completa para usar Peregrino APP en tu Cuarto Día.</p>
 
-<div class="step">
-<strong>1 · Descarga la app</strong>
-<p>Instálala desde Google Play y ábrela por primera vez.</p>
-</div>
+<h2>1. Primeros pasos</h2>
 
-<div class="step">
-<strong>2 · Explora el menú principal</strong>
-<p>Encontrarás oración, recursos, apostolado digital y herramientas para tu Cuarto Día.</p>
-</div>
+<details open>
+<summary>Configuración inicial</summary>
+<p>Introduce tus datos básicos: nombre, diócesis, fecha de Cursillo y preferencias de recordatorios.</p>
+<p>La fecha de tu Cursillo permite recordar aniversarios. Los recordatorios ayudan a ordenar tu día.</p>
+</details>
 
-<div class="step">
-<strong>3 · Empieza hoy</strong>
-<p>No necesitas configuraciones complejas. Solo abrir y usar.</p>
-</div>
+<details>
+<summary>Navegación principal</summary>
+<p>La barra inferior incluye:</p>
+<ul>
+<li>Inicio</li>
+<li>Oraciones</li>
+<li>Trípode</li>
+<li>Palancas</li>
+<li>Peregrinar</li>
+</ul>
+</details>
 
-</section>
+<h2>2. Oraciones</h2>
 
-<section class="image-block" style="background-image:url('foto_rosario1.png')">
-<div class="content">
-<h2>Oración diaria</h2>
-<p>Accede rápidamente a recursos de oración cuando lo necesites.</p>
-</div>
-</section>
+<details>
+<summary>Cómo rezar una oración</summary>
+<p>Entra en la sección correspondiente y selecciona la oración deseada. Puedes marcarla como favorita.</p>
+</details>
 
-<section class="section">
-<h2>Apostolado digital</h2>
-<p>Desde la app puedes generar imágenes y compartir lo que vives en tus redes.</p>
-<p>No es exhibición. Es testimonio.</p>
-</section>
+<details>
+<summary>Rosario guiado</summary>
 
-<section class="image-block" style="background-image:url('foto_gracia1.png')">
-<div class="content">
-<h2>Reunión de Grupo</h2>
-<p>La app no sustituye la amistad real. Solo la acompaña.</p>
-</div>
-</section>
+<table class="table">
+<tr><th>Función</th><th>Descripción</th></tr>
+<tr><td>Índice</td><td>Permite saltar entre partes del Rosario.</td></tr>
+<tr><td>Modo guiado</td><td>Avanza automáticamente por secciones.</td></tr>
+<tr><td>Lectura en voz alta</td><td>Disponible según versión.</td></tr>
+<tr><td>Sesión guardada</td><td>Permite continuar un Rosario interrumpido.</td></tr>
+<tr><td>Gracia final</td><td>Texto bíblico para compartir.</td></tr>
+</table>
 
-<section class="section">
-<h2>Ofrendas y badge</h2>
-<p>Peregrino es gratuita.</p>
-<p>Si decides hacer una ofrenda libre, recibirás un badge exclusivo dentro de la app como agradecimiento.</p>
-<p>No desbloquea funciones. Es simplemente un gesto de gratitud.</p>
-</section>
+</details>
 
-<section class="cta">
-<h2>¿Todo claro?</h2>
+<h2>3. Trípode</h2>
 
+<details>
+<summary>Piedad</summary>
+<p>Registra tu oración diaria, sacramentos y prácticas espirituales.</p>
+</details>
+
+<details>
+<summary>Estudio</summary>
+<p>Anota lo que lees o estudias para tu formación cristiana.</p>
+</details>
+
+<details>
+<summary>Acción</summary>
+<p>Revisa tu apostolado concreto en tus ambientes.</p>
+</details>
+
+<h2>4. Reunión de Grupo</h2>
+
+<details>
+<summary>Pasos de la reunión</summary>
+
+<table class="table">
+<tr><th>Paso</th><th>Contenido</th></tr>
+<tr><td>Oración inicial</td><td>Invocación al Espíritu Santo.</td></tr>
+<tr><td>Revisión del plan anterior</td><td>Evaluar compromisos.</td></tr>
+<tr><td>Piedad</td><td>Vida de oración.</td></tr>
+<tr><td>Estudio</td><td>Formación.</td></tr>
+<tr><td>Acción</td><td>Apostolado.</td></tr>
+<tr><td>Acción de Grupo</td><td>Compromiso común.</td></tr>
+<tr><td>Oración final</td><td>Cierre.</td></tr>
+</table>
+
+</details>
+
+<h2>5. Candidatos</h2>
+
+<details>
+<summary>Añadir y acompañar candidatos</summary>
+<p>Puedes registrar personas por las que rezas, añadir notas y preparar invitaciones.</p>
+</details>
+
+<details>
+<summary>Sembrar e invitar</summary>
+<p>La app prepara un mensaje editable para WhatsApp. Tú decides si enviarlo.</p>
+</details>
+
+<h2>6. Funciones con candado</h2>
+
+<details>
+<summary>Palmero, Bordón y Apóstol</summary>
+<p>Algunas funciones avanzadas pueden estar bloqueadas según versión o colaboración.</p>
+<p>No afectan al uso básico gratuito de la app.</p>
+</details>
+
+<h2>7. Preguntas frecuentes</h2>
+
+<details>
+<summary>¿Se guardan mis datos?</summary>
+<p>Los registros se almacenan en tu dispositivo.</p>
+</details>
+
+<details>
+<summary>¿La app envía mensajes automáticamente?</summary>
+<p>No. Siempre decides antes de enviar.</p>
+</details>
+
+<details>
+<summary>¿Sustituye la Reunión de Grupo?</summary>
+<p>No. Solo acompaña.</p>
+</details>
+
+<div style="margin-top:80px;">
 <a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn">
 Descargar Peregrino
 </a>
-
 <a href="index.html" class="btn btn-secondary">
 Volver al inicio
 </a>
+</div>
 
-</section>
+</div>
 
 </body>
 </html>
