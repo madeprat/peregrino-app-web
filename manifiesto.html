@@ -17,6 +17,30 @@ overflow-x:hidden;
 line-height:1.9;
 }
 
+/* NAV */
+.nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 30px;
+background:rgba(8,12,20,.75);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:600;
+opacity:.85;
+}
+
+.nav a:hover{opacity:1;}
+
 /* HERO */
 .hero{
 min-height:100vh;
@@ -24,7 +48,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:80px 20px;
+padding:100px 20px;
 background:
 linear-gradient(rgba(8,12,20,.65),rgba(8,12,20,.9)),
 url("hero-peregrino.jpg") center/cover no-repeat;
@@ -33,7 +57,6 @@ url("hero-peregrino.jpg") center/cover no-repeat;
 .hero h1{
 font-size:clamp(3rem,6vw,5rem);
 font-weight:700;
-letter-spacing:-1px;
 }
 
 .hero em{
@@ -41,11 +64,11 @@ color:#d4af37;
 font-style:normal;
 }
 
-/* SECCIONES */
+/* SECCIONES TEXTO */
 .section{
-max-width:750px;
+max-width:800px;
 margin:auto;
-padding:140px 20px;
+padding:120px 20px;
 opacity:0;
 transform:translateY(60px);
 transition:all 1.2s cubic-bezier(.16,1,.3,1);
@@ -64,18 +87,44 @@ font-size:1.1rem;
 
 .pull{
 font-size:clamp(1.6rem,3vw,2.2rem);
-font-weight:500;
 margin:60px 0;
 color:#d4af37;
-line-height:1.4;
 }
 
-.gold{
+/* SECCIÓN CON IMAGEN */
+.image-section{
+min-height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 20px;
+background-size:cover;
+background-position:center;
+position:relative;
+}
+
+.image-section::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(8,12,20,.7),rgba(8,12,20,.9));
+}
+
+.image-content{
+position:relative;
+z-index:2;
+max-width:700px;
+}
+
+.image-content h2{
 color:#d4af37;
+font-size:clamp(2rem,4vw,3rem);
+margin-bottom:20px;
 }
 
 /* CIERRE */
-.closing{
+.cta{
 min-height:80vh;
 display:flex;
 flex-direction:column;
@@ -83,19 +132,20 @@ align-items:center;
 justify-content:center;
 text-align:center;
 padding:80px 20px;
-background:linear-gradient(180deg,#0b1220,#111a30);
+background:
+linear-gradient(rgba(8,12,20,.7),rgba(8,12,20,.9)),
+url("foto_app1.png") center/cover no-repeat;
 }
 
-.closing h2{
-font-size:clamp(3rem,8vw,6rem);
-font-weight:700;
+.cta h2{
+font-size:clamp(3rem,8vw,5rem);
 color:#d4af37;
 margin-bottom:20px;
 }
 
 .btn{
 display:inline-block;
-margin-top:30px;
+margin:12px;
 padding:16px 34px;
 border-radius:40px;
 text-decoration:none;
@@ -105,54 +155,58 @@ color:black;
 transition:.3s;
 }
 
-.btn:hover{
-background:white;
+.btn:hover{background:white;}
+
+.btn-secondary{
+background:transparent;
+border:1px solid rgba(255,255,255,.4);
+color:white;
 }
 
-.top-button{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#d4af37;
+.btn-secondary:hover{
+background:white;
 color:black;
-padding:12px 18px;
-border-radius:50%;
-font-weight:bold;
-text-decoration:none;
-z-index:100;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
+<div class="nav">
+<a href="index.html">← Inicio</a>
+<a href="que-es-el-mcc.html">Qué es el MCC</a>
+</div>
+
 <section class="hero">
 <div>
 <h1>Esto nació<br><em>de un Cuarto Día real</em></h1>
 </div>
 </section>
 
-<!-- TEXTO -->
 <section class="section">
 <p>Un día nos hicimos una pregunta muy concreta:</p>
 <div class="pull">¿Cómo cuidar lo que vivimos en aquel fin de semana?</div>
-<p>No porque la gracia desaparezca. Sino porque el ruido diario ocupa espacio. Y cuando no cuidamos lo pequeño, lo grande se enfría sin darnos cuenta.</p>
-<p>Los primeros cursillistas se escribían cartas. Nosotros llevamos el móvil en el bolsillo. Solo quisimos hacer lo mismo: usar lo que tenemos para no olvidar lo esencial.</p>
+<p>No porque la gracia desaparezca. Sino porque el ruido diario ocupa espacio.</p>
+<p>Cuando no cuidamos lo pequeño, lo grande se enfría sin darnos cuenta.</p>
+</section>
+
+<section class="image-section" style="background-image:url('foto_rosario1.png')">
+<div class="image-content">
+<h2>No venimos a darte la fe.</h2>
+<p>Venimos a ayudarte a cuidarla.</p>
+</div>
 </section>
 
 <section class="section">
 <p>No pretendemos sustituir tu Reunión de Grupo.</p>
 <p>No pretendemos reemplazar tu oración.</p>
-<div class="pull">No venimos a darte la fe. Venimos a ayudarte a cuidarla.</div>
-<p>A veces solo hace falta un pequeño recordatorio para volver a empezar hoy.</p>
+<div class="pull">La gracia siempre ha trabajado con cosas pequeñas.</div>
 </section>
 
-<section class="section">
-<p>Ofrecemos un espacio sencillo para rezar cuando el día empieza torcido o termina cansado.</p>
-<p>Un recordatorio humilde de que el Cuarto Día se sostiene en cosas pequeñas vividas con fidelidad.</p>
-<div class="pull">La gracia siempre ha trabajado con cosas pequeñas.</div>
-<p>Un encuentro. Una amistad. Una conversación sincera.</p>
+<section class="image-section" style="background-image:url('foto_gracia1.png')">
+<div class="image-content">
+<h2>Una amistad.<br>Un encuentro.<br>Una conversación sincera.</h2>
+</div>
 </section>
 
 <section class="section">
@@ -160,20 +214,21 @@ z-index:100;
 <p>Porque lo que nace del encuentro no se vende.</p>
 </section>
 
-<!-- CIERRE -->
-<section class="closing">
+<section class="cta">
 <h2>Ultreya.</h2>
 <p style="opacity:.7;">Empieza hoy a cuidar tu Cuarto Día.</p>
+
 <a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn">
 Descargar Peregrino
 </a>
-</section>
 
-<a href="#" class="top-button">↑</a>
+<a href="index.html" class="btn btn-secondary">
+Volver al inicio
+</a>
+</section>
 
 <script>
 const sections = document.querySelectorAll(".section");
-
 const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -182,10 +237,7 @@ observer.unobserve(entry.target);
 }
 });
 },{threshold:0.15});
-
-sections.forEach(section=>{
-observer.observe(section);
-});
+sections.forEach(section=>observer.observe(section));
 </script>
 
 </body>
