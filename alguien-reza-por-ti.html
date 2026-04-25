@@ -229,6 +229,62 @@ entry.target.classList.add("visible");
 },{threshold:0.2});
 fades.forEach(el=>observer.observe(el));
 </script>
+<script>
+(function(){
 
+function cleanName(value){
+if(!value) return '';
+return value
+.replace(/[<>]/g,'')
+.replace(/\s+/g,' ')
+.trim()
+.slice(0,40);
+}
+
+const params=new URLSearchParams(window.location.search);
+const name=cleanName(params.get('nombre') || params.get('para') || params.get('n'));
+
+if(name){
+
+// Cambiar título
+document.title = name + ', alguien está rezando por ti · Peregrino APP';
+
+// Hero
+const hero = document.querySelector("h1");
+if(hero){
+hero.innerHTML = name + ', alguien está rezando por ti';
+}
+
+// Antes de nada
+const intro = document.querySelector("#leer p");
+if(intro){
+intro.innerText = name + ', esta página no ha llegado a ti por casualidad fría, ni como un anuncio, ni como una campaña.';
+}
+
+// Por qué alguien te envía esto
+const blocks = document.querySelectorAll("section");
+blocks.forEach(section=>{
+if(section.innerHTML.includes("Si esta invitación ha llegado hasta ti")){
+section.innerHTML = section.innerHTML.replace(
+"Si esta invitación ha llegado hasta ti, quizá alguien está pidiendo a Dios que te ilumine, que te acompañe y que te muestre si este camino puede ser también para ti.",
+name + ", si esta invitación ha llegado hasta ti, quizá alguien está pidiendo a Dios que te ilumine, que te acompañe y que te muestre si este camino puede ser también para ti."
+);
+}
+});
+
+// Cierre final
+blocks.forEach(section=>{
+if(section.innerHTML.includes("Quizá esta invitación ha llegado a ti por algo.")){
+section.innerHTML = section.innerHTML.replace(
+"Quizá esta invitación ha llegado a ti por algo.",
+name + ", quizá esta invitación ha llegado a ti por algo."
+);
+}
+});
+
+}
+
+})();
+</script>
 </body>
 </html>
