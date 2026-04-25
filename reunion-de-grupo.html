@@ -1,412 +1,258 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reunión de Grupo · Peregrino APP</title>
-  <meta name="description" content="¿Llegas al jueves sin saber qué decir? El Trípode digital de Peregrino APP te ayuda a llegar a la Reunión de Grupo con la semana en la mano." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream:       #F5F0E6;
-      --cream-dark:  #EDE6D5;
-      --white:       #FFFFFF;
-      --green:       #1E3A2F;
-      --green-mid:   #2D5040;
-      --green-lite:  #3D6B55;
-      --gold:        #C8941A;
-      --gold-lite:   #E8B83A;
-      --ink:         #1A1A14;
-      --ink-mid:     #3D3D30;
-      --ink-soft:    #6B6B58;
-      --border:      rgba(30,58,47,0.12);
-      --border-gold: rgba(200,148,26,0.28);
-      --dot-p:       #C8941A;
-      --dot-e:       #3D6B55;
-      --dot-a:       #4a8fe8;
-      --font-d: 'Playfair Display', Georgia, serif;
-      --font-b: 'Lora', Georgia, serif;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream);
-      color: var(--ink); font-family: var(--font-b);
-      font-size: 17px; line-height: 1.85;
-      -webkit-font-smoothing: antialiased;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reunión de Grupo · Peregrino</title>
 
-    .rainbow-bar {
-      height: 4px;
-      background: linear-gradient(90deg,#e8524a 0%,#e8873a 18%,#d4b43a 33%,#4caf72 50%,#4a8fe8 68%,#8b5cf6 100%);
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(245,240,230,0.96);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 58px;
-    }
-    .nav-brand {
-      font-family: var(--font-d); font-size: 1.05rem; font-weight: 700;
-      color: var(--green); text-decoration: none;
-    }
-    .nav-back {
-      font-size: 0.8rem; color: var(--ink-soft);
-      text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--green); }
-    .nav-back::before { content: '← '; }
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+background:#0b1220;
+color:#f5f3ee;
+scroll-behavior:smooth;
+overflow-x:hidden;
+line-height:1.9;
+}
 
-    /* Hero */
-    .hero {
-      background: linear-gradient(150deg, var(--green) 0%, var(--green-mid) 50%, #4a6b42 80%, var(--cream-dark) 100%);
-      padding: 6rem 2rem 5rem; text-align: center;
-      animation: fadeUp 0.8s ease both;
-    }
-    .hero-tag {
-      display: inline-block; font-size: 0.7rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: rgba(245,240,230,0.5);
-      border: 1px solid rgba(245,240,230,0.2);
-      border-radius: 2rem; padding: 0.28rem 1rem; margin-bottom: 2.2rem;
-    }
-    .hero h1 {
-      font-family: var(--font-d);
-      font-size: clamp(2.6rem, 7vw, 5rem);
-      font-weight: 700; line-height: 1.08;
-      color: #F5F0E6; max-width: 700px; margin: 0 auto 1.5rem;
-    }
-    .hero h1 em { font-style: italic; color: var(--gold-lite); }
-    .hero-lead {
-      font-size: 1rem; color: rgba(245,240,230,0.6);
-      max-width: 480px; margin: 0 auto 3rem; line-height: 1.75;
-    }
-    .hero-btns {
-      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
-    }
-    .btn-gold {
-      display: inline-block; padding: 0.9rem 2.2rem;
-      background: var(--gold); color: white;
-      font-family: var(--font-b); font-size: 0.86rem;
-      font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; text-decoration: none;
-      border-radius: 4px; transition: background 0.2s, transform 0.15s;
-    }
-    .btn-gold:hover { background: var(--gold-lite); transform: translateY(-2px); }
-    .btn-ghost {
-      display: inline-block; padding: 0.9rem 2rem;
-      background: transparent; color: rgba(245,240,230,0.7);
-      font-family: var(--font-b); font-size: 0.86rem;
-      text-decoration: none;
-      border: 1px solid rgba(245,240,230,0.25); border-radius: 4px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-ghost:hover { color: #F5F0E6; border-color: rgba(245,240,230,0.5); }
+/* NAV */
+.nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 30px;
+background:rgba(8,12,20,.75);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
 
-    /* Sections */
-    .block {
-      max-width: 700px; margin: 0 auto; padding: 5rem 2rem;
-    }
-    .block-center { text-align: center; }
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:600;
+opacity:.85;
+}
 
-    .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+.nav a:hover{opacity:1;}
 
-    .sec-label {
-      font-size: 0.7rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--gold);
-      display: block; margin-bottom: 2rem; text-align: center;
-    }
+/* HERO */
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 20px;
+background:
+linear-gradient(rgba(8,12,20,.65),rgba(8,12,20,.9)),
+url("foto_gracia1.png") center/cover no-repeat;
+}
 
-    /* Pain */
-    .pain-q {
-      font-family: var(--font-d);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700; font-style: italic;
-      color: var(--green); text-align: center;
-      line-height: 1.2; margin-bottom: 2rem;
-    }
-    .pain-body {
-      color: var(--ink-mid); font-size: 1rem;
-      line-height: 1.85; text-align: center;
-      max-width: 520px; margin: 0 auto;
-    }
-    .pain-body p { margin-bottom: 1rem; }
+.hero h1{
+font-size:clamp(3rem,6vw,5rem);
+font-weight:700;
+}
 
-    /* Week visual */
-    .week-wrap { padding: 0 2rem 5rem; max-width: 760px; margin: 0 auto; }
-    .days {
-      display: grid; grid-template-columns: repeat(7, 1fr);
-      gap: 8px; margin-bottom: 1rem;
-    }
-    .day {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 8px; padding: 1rem 0.4rem; text-align: center;
-    }
-    .day.filled { background: var(--cream-dark); }
-    .day.reunion { border-color: var(--gold); background: rgba(200,148,26,0.08); }
-    .day-name {
-      font-size: 0.62rem; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--ink-soft);
-      display: block; margin-bottom: 0.6rem;
-    }
-    .day.reunion .day-name { color: var(--gold); font-weight: 500; }
-    .day-dots { display: flex; flex-direction: column; gap: 4px; align-items: center; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
-    .dot.p { background: var(--dot-p); }
-    .dot.e { background: var(--dot-e); }
-    .dot.a { background: var(--dot-a); }
-    .week-legend {
-      text-align: center; font-size: 0.82rem;
-      color: var(--ink-soft); font-style: italic;
-    }
+.hero em{
+color:#d4af37;
+font-style:normal;
+}
 
-    /* Feature grid */
-    .feat-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr));
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-    }
-    .feat {
-      background: var(--white); padding: 2rem 1.5rem;
-    }
-    .feat-icon { font-size: 1.6rem; display: block; margin-bottom: 0.9rem; }
-    .feat-title {
-      font-family: var(--font-d); font-size: 1.15rem; font-weight: 700;
-      color: var(--green); display: block; margin-bottom: 0.5rem;
-    }
-    .feat p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; }
+.hero p{
+max-width:700px;
+margin-top:25px;
+opacity:.85;
+font-size:1.1rem;
+}
 
-    /* Pull quote */
-    .pull {
-      border-left: 3px solid var(--gold); padding: 0.5rem 0 0.5rem 1.75rem;
-      background: linear-gradient(90deg, rgba(200,148,26,0.06), transparent);
-      margin: 0;
-    }
-    .pull p {
-      font-family: var(--font-d);
-      font-size: clamp(1.3rem, 3vw, 1.9rem);
-      font-weight: 400; font-style: italic;
-      color: var(--green); line-height: 1.35;
-    }
+/* SECCIONES */
+.section{
+max-width:800px;
+margin:auto;
+padding:120px 20px;
+opacity:0;
+transform:translateY(60px);
+transition:all 1.2s cubic-bezier(.16,1,.3,1);
+}
 
-    /* Voices */
-    .voices-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 16px;
-    }
-    .voice {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.5rem;
-    }
-    .voice p {
-      font-size: 0.9rem; color: var(--ink-mid);
-      line-height: 1.75; font-style: italic; margin-bottom: 0.9rem;
-    }
-    .voice-author {
-      font-size: 0.72rem; letter-spacing: 0.08em;
-      color: var(--gold); text-transform: uppercase;
-    }
+.section.visible{
+opacity:1;
+transform:translateY(0);
+}
 
-    /* CTA box */
-    .cta-box {
-      background: var(--green); border-radius: 14px;
-      padding: 3.5rem 2.5rem; text-align: center;
-    }
-    .cta-title {
-      font-family: var(--font-d);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700; color: #F5F0E6;
-      margin-bottom: 1rem; line-height: 1.15;
-    }
-    .cta-title em { font-style: italic; color: var(--gold-lite); }
-    .cta-sub {
-      font-size: 0.9rem; color: rgba(245,240,230,0.6);
-      margin-bottom: 2rem; line-height: 1.7;
-    }
-    .cta-small {
-      margin-top: 1rem; font-size: 0.72rem;
-      color: rgba(245,240,230,0.4); letter-spacing: 0.05em;
-    }
+.section h2{
+color:#d4af37;
+margin-bottom:25px;
+font-size:clamp(2rem,4vw,3rem);
+}
 
-    footer {
-      border-top: 1px solid var(--border); padding: 2rem;
-      text-align: center; color: var(--ink-soft); font-size: 0.78rem; line-height: 1.8;
-    }
-    footer a { color: var(--green-lite); text-decoration: none; }
-    footer a:hover { color: var(--green); }
+.section p{
+margin-bottom:24px;
+opacity:.85;
+font-size:1.1rem;
+}
 
-    .divider { width: 40px; height: 2px; background: var(--gold); opacity: 0.4; margin: 0 auto; }
+.pull{
+font-size:clamp(1.6rem,3vw,2.2rem);
+margin:60px 0;
+color:#d4af37;
+}
 
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(28px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
+/* SECCIÓN CON FOTO */
+.image-section{
+min-height:85vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 20px;
+background-size:cover;
+background-position:center;
+position:relative;
+}
 
-    @media (max-width: 600px) {
-      .hero { padding: 4rem 1.25rem 3.5rem; }
-      nav   { padding: 0 1.25rem; }
-      .block, .week-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .days { gap: 4px; }
-      .day  { padding: 0.7rem 0.2rem; }
-      .day-name { font-size: 0.55rem; }
-      .cta-box { padding: 2.5rem 1.5rem; }
-    }
-  </style>
+.image-section::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(8,12,20,.7),rgba(8,12,20,.9));
+}
+
+.image-content{
+position:relative;
+z-index:2;
+max-width:700px;
+}
+
+.image-content h2{
+color:#d4af37;
+font-size:clamp(2rem,4vw,3rem);
+margin-bottom:20px;
+}
+
+/* CTA */
+.cta{
+min-height:80vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:80px 20px;
+background:
+linear-gradient(rgba(8,12,20,.7),rgba(8,12,20,.9)),
+url("foto_app1.png") center/cover no-repeat;
+}
+
+.cta h2{
+font-size:clamp(2.5rem,6vw,4rem);
+color:#d4af37;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+margin:12px;
+padding:16px 34px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+background:#d4af37;
+color:black;
+transition:.3s;
+}
+
+.btn:hover{background:white;}
+
+.btn-secondary{
+background:transparent;
+border:1px solid rgba(255,255,255,.4);
+color:white;
+}
+
+.btn-secondary:hover{
+background:white;
+color:black;
+}
+</style>
 </head>
+
 <body>
 
-<div class="rainbow-bar"></div>
-<nav>
-  <a class="nav-brand" href="https://madeprat.github.io/peregrino-app-web/">⛪ Peregrino APP</a>
-  <a class="nav-back" href="https://madeprat.github.io/peregrino-app-web/">Volver al inicio</a>
-</nav>
+<div class="nav">
+<a href="index.html">← Inicio</a>
+<a href="que-es-el-mcc.html">Qué es el MCC</a>
+</div>
 
-<!-- Hero -->
-<header class="hero">
-  <span class="hero-tag">Reunión de Grupo</span>
-  <h1>La Reunión<br/>empieza el <em>lunes,</em><br/>no el jueves.</h1>
-  <p class="hero-lead">¿Llegas al jueves sin saber qué decir? No porque la semana haya sido vacía. Sino porque no la has ido recogiendo.</p>
-  <div class="hero-btns">
-    <a class="btn-gold" href="https://madeprat.github.io/peregrino-app-web/#sostener">Descargar gratis para Android</a>
-    <a class="btn-ghost" href="#tripode">Ver el Trípode</a>
-  </div>
-</header>
-
-<!-- Pain -->
-<section class="block block-center reveal">
-  <span class="sec-label">Lo que nos pasa a todos</span>
-  <p class="pain-q">"¿Y tu semana?"</p>
-  <div class="pain-body">
-    <p>El silencio de tres segundos que todos conocemos. No porque no hayas vivido nada. Sino porque la semana se fue de las manos sin que la recogieras.</p>
-    <p>El Cuarto Día no se pierde de golpe. Se va diluyendo, día a día, en silencio.</p>
-  </div>
+<section class="hero">
+<div>
+<h1>Reunión de <em>Grupo</em></h1>
+<p>No es una reunión más.  
+Es amistad concreta que sostiene la fe.</p>
+</div>
 </section>
 
-<div class="divider"></div>
-
-<!-- Week strip -->
-<section class="week-wrap reveal" id="tripode">
-  <span class="sec-label" style="display:block;text-align:center;margin-bottom:2rem;">Tu semana, recogida cada día</span>
-  <div class="days" aria-label="Visualización del trípode semanal">
-    <div class="day filled">
-      <span class="day-name">Lun</span>
-      <div class="day-dots"><div class="dot p"></div><div class="dot e"></div><div class="dot a"></div></div>
-    </div>
-    <div class="day filled">
-      <span class="day-name">Mar</span>
-      <div class="day-dots"><div class="dot p"></div><div class="dot e"></div><div class="dot"></div></div>
-    </div>
-    <div class="day filled">
-      <span class="day-name">Mié</span>
-      <div class="day-dots"><div class="dot p"></div><div class="dot"></div><div class="dot a"></div></div>
-    </div>
-    <div class="day filled">
-      <span class="day-name">Jue</span>
-      <div class="day-dots"><div class="dot p"></div><div class="dot e"></div><div class="dot a"></div></div>
-    </div>
-    <div class="day filled">
-      <span class="day-name">Vie</span>
-      <div class="day-dots"><div class="dot p"></div><div class="dot e"></div><div class="dot"></div></div>
-    </div>
-    <div class="day">
-      <span class="day-name">Sáb</span>
-      <div class="day-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-    </div>
-    <div class="day reunion">
-      <span class="day-name">Reunión</span>
-      <div class="day-dots"><div class="dot p"></div><div class="dot e"></div><div class="dot a"></div></div>
-    </div>
-  </div>
-  <p class="week-legend">🟡 Piedad &nbsp;·&nbsp; 🟢 Estudio &nbsp;·&nbsp; 🔵 Acción</p>
+<section class="section">
+<h2>¿Qué es realmente?</h2>
+<p>Un pequeño grupo de amigos que comparten su vida cristiana con sinceridad.</p>
+<p>No es una clase. No es una charla. No es una estructura fría.</p>
+<div class="pull">Es amistad que se compromete.</div>
 </section>
 
-<!-- Features -->
-<section class="block reveal">
-  <span class="sec-label">Qué cambia con Peregrino APP</span>
-  <div class="feat-grid">
-    <div class="feat">
-      <span class="feat-icon">📋</span>
-      <span class="feat-title">Trípode digital</span>
-      <p>Anota tu Piedad, Estudio y Acción cada día. Dos líneas. Lo que sea. Cuando llegue el jueves, tu semana ya estará ahí.</p>
-    </div>
-    <div class="feat">
-      <span class="feat-icon">🙏</span>
-      <span class="feat-title">Candidatos por nombre</span>
-      <p>Las personas de tu ambiente, guardadas. Cada vez que abres la app, están ahí. No en la cabeza — en oración.</p>
-    </div>
-    <div class="feat">
-      <span class="feat-icon">📖</span>
-      <span class="feat-title">Guía de Reunión</span>
-      <p>Los cuatro puntos de la Reunión de Grupo siempre a mano. Sin improvisar. Sin llegar con las manos vacías.</p>
-    </div>
-    <div class="feat">
-      <span class="feat-icon">✝️</span>
-      <span class="feat-title">Sin conexión</span>
-      <p>Todo funciona sin internet. En el metro, en el hospital, en el campo. El Cuarto Día no espera a tener WiFi.</p>
-    </div>
-  </div>
+<section class="image-section" style="background-image:url('foto_rosario1.png')">
+<div class="image-content">
+<h2>Se comparte el Trípode</h2>
+<p>Piedad. Estudio. Acción.</p>
+<p>No para impresionar.  
+Sino para ayudarse a perseverar.</p>
+</div>
 </section>
 
-<!-- Pull quote -->
-<section class="block reveal" style="padding-top:0;">
-  <blockquote class="pull">
-    <p>No queremos que descargues esta app para tenerla. Queremos que la uses para llegar distinto al jueves.</p>
-  </blockquote>
+<section class="section">
+<h2>¿Por qué es tan importante?</h2>
+<p>Porque el Cuarto Día no se sostiene solo.</p>
+<p>Todos necesitamos que alguien nos pregunte:  
+“¿Cómo estás viviendo tu fe?”</p>
+<div class="pull">La fe compartida se fortalece.</div>
 </section>
 
-<!-- Voices -->
-<section class="block reveal" style="padding-top:0;">
-  <span class="sec-label">Lo que dicen otros cursillistas</span>
-  <div class="voices-grid">
-    <div class="voice">
-      <p>"Llevo un mes anotando el trípode cada día. Dos líneas. Lo que sea. El jueves llego distinto. No sé explicarlo mejor."</p>
-      <span class="voice-author">Carlos R. · Diócesis de Valencia</span>
-    </div>
-    <div class="voice">
-      <p>"Gracias a la app, mi reunión de grupo volvió a tener sentido. Llego con mi trípode de toda la semana y ya no improviso."</p>
-      <span class="voice-author">María José · Ultreya Madrid</span>
-    </div>
-    <div class="voice">
-      <p>"Tenía a tres personas en la cabeza desde el Cursillo. Pero en la cabeza no es lo mismo que en oración. Las puse por nombre y desde entonces las rezo."</p>
-      <span class="voice-author">Roberto M. · Secretario de grupo</span>
-    </div>
-  </div>
+<section class="image-section" style="background-image:url('hero-peregrino.jpg')">
+<div class="image-content">
+<h2>No sustituye la gracia.</h2>
+<p>Pero ayuda a no olvidarla.</p>
+</div>
 </section>
 
-<!-- CTA -->
-<section class="block reveal" style="padding-top:0;">
-  <div class="cta-box">
-    <h2 class="cta-title">La semana que viene,<br/>llega <em>con algo.</em></h2>
-    <p class="cta-sub">Gratuita. Sin anuncios. Hecha por una familia cursillista como apostolado.</p>
-    <a class="btn-gold" href="https://madeprat.github.io/peregrino-app-web/#sostener">Descargar gratis para Android</a>
-    <p class="cta-small">Gratuita · Sin anuncios · Para Android</p>
-  </div>
-</section>
+<section class="cta">
+<h2>Vivirlo es diferente a entenderlo.</h2>
 
-<footer>
-  <p>
-    <a href="https://madeprat.github.io/peregrino-app-web/">Peregrino APP</a>
-    &nbsp;·&nbsp;
-    <a href="https://madeprat.github.io/peregrino-app-web/manifiesto.html">Manifiesto</a>
-    &nbsp;·&nbsp; Movimiento de Cursillos de Cristiandad
-  </p>
-  <p style="margin-top:0.4rem;opacity:0.4;font-size:0.7rem;">Apostolado digital de una familia cursillista · Gratuita · Sin anuncios</p>
-</footer>
+<a href="quiero-vivir-un-cursillo.html" class="btn">
+Quiero dar el paso
+</a>
+
+<a href="index.html" class="btn btn-secondary">
+Volver a la App
+</a>
+</section>
 
 <script>
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+const sections = document.querySelectorAll(".section");
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+observer.unobserve(entry.target);
+}
+});
+},{threshold:0.15});
+sections.forEach(section=>observer.observe(section));
 </script>
+
 </body>
 </html>
