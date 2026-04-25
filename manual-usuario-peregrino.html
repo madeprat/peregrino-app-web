@@ -1,235 +1,245 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manual | Peregrino APP</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Usuario · Peregrino</title>
 
 <style>
-:root{
---bg:#0c1222;
---bg-deep:#090f1c;
---gold:#c6a348;
---light:#f5f3ee;
---muted:#b8bcc6;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-*{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Inter,system-ui;
-background:linear-gradient(180deg,var(--bg) 0%,var(--bg-deep) 100%);
-color:var(--light);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+background:#0b1220;
+color:#f5f3ee;
+scroll-behavior:smooth;
 overflow-x:hidden;
+line-height:1.8;
 }
 
-section{
-min-height:100vh;
+/* NAV */
+.nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 40px;
+background:rgba(8,12,20,.75);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:600;
+opacity:.85;
+}
+
+.nav a:hover{opacity:1;}
+
+/* HERO */
+.hero{
+min-height:60vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:100px 20px;
+padding:120px 20px 80px;
+background:
+linear-gradient(rgba(8,12,20,.65),rgba(8,12,20,.9)),
+url("foto_app1.png") center/cover no-repeat;
+}
+
+.hero h1{
+font-size:clamp(2.5rem,6vw,4rem);
+font-weight:700;
+}
+
+.hero em{
+color:#d4af37;
+font-style:normal;
+}
+
+/* SECTION */
+.section{
+max-width:900px;
+margin:auto;
+padding:120px 20px;
+}
+
+.section h2{
+font-size:clamp(1.8rem,4vw,2.8rem);
+color:#d4af37;
+margin-bottom:30px;
+}
+
+.section p{
+margin-bottom:20px;
+opacity:.85;
+font-size:1.05rem;
+}
+
+/* STEP BLOCK */
+.step{
+margin-bottom:40px;
+padding-left:20px;
+border-left:3px solid #d4af37;
+}
+
+.step strong{
+display:block;
+margin-bottom:8px;
+color:#d4af37;
+}
+
+/* IMAGE BLOCK */
+.image-block{
+min-height:60vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:80px 20px;
+background-size:cover;
+background-position:center;
 position:relative;
 }
 
-.container{
-max-width:900px;
-margin:auto;
+.image-block::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(8,12,20,.75),rgba(8,12,20,.9));
 }
 
-h1,h2{
-font-family:"Cormorant Garamond",serif;
-letter-spacing:-.03em;
-}
-
-h1{
-font-size:clamp(3.5rem,7vw,5.5rem);
-line-height:1.05;
-}
-
-h2{
-font-size:clamp(2.5rem,5vw,4rem);
-}
-
-p.lead{
-margin-top:20px;
-font-size:1.2rem;
-color:var(--muted);
+.image-block .content{
+position:relative;
+z-index:2;
 max-width:700px;
-margin-left:auto;
-margin-right:auto;
+}
+
+.image-block h2{
+color:#d4af37;
+font-size:clamp(2rem,4vw,3rem);
+margin-bottom:20px;
+}
+
+/* CTA */
+.cta{
+min-height:60vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:80px 20px;
+background:#111a30;
 }
 
 .btn{
 display:inline-block;
-margin:30px 10px 0;
-padding:14px 32px;
-border-radius:999px;
+margin:14px;
+padding:16px 34px;
+border-radius:40px;
 text-decoration:none;
 font-weight:600;
+background:#d4af37;
+color:black;
 transition:.3s;
 }
 
-.btn-primary{
-background:var(--gold);
-color:#000;
-}
+.btn:hover{background:white;}
 
 .btn-secondary{
-border:1px solid rgba(255,255,255,.3);
-color:var(--light);
+background:transparent;
+border:1px solid rgba(255,255,255,.4);
+color:white;
 }
 
-.btn:hover{
-transform:translateY(-3px);
-opacity:.9;
-}
-
-.full-image{
-background-size:cover;
-background-position:center;
-}
-
-.overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(rgba(9,15,28,.6),rgba(9,15,28,.85));
-}
-
-.content{
-position:relative;
-z-index:2;
-}
-
-.gold{
-color:var(--gold);
-}
-
-footer{
-padding:60px 20px;
-text-align:center;
-color:var(--muted);
-font-size:.9rem;
+.btn-secondary:hover{
+background:white;
+color:black;
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<section>
-<div class="container">
-<h1>Cómo vivir<br>Peregrino</h1>
-<p class="lead">
-No es un manual técnico.
-Es una guía para usar la app
-como apoyo real en tu Cuarto Día.
-</p>
+<div class="nav">
+<a href="index.html">← Inicio</a>
+<a href="manifiesto.html">Manifiesto</a>
+</div>
 
-<a href="index.html" class="btn btn-secondary">Volver a la web</a>
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank" class="btn btn-primary">
-Descargar la app
+<section class="hero">
+<div>
+<h1>Manual de <em>Usuario</em></h1>
+<p style="opacity:.85;margin-top:15px;">Cómo usar Peregrino con sencillez.</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Cómo empezar</h2>
+
+<div class="step">
+<strong>1 · Descarga la app</strong>
+<p>Instálala desde Google Play y ábrela por primera vez.</p>
+</div>
+
+<div class="step">
+<strong>2 · Explora el menú principal</strong>
+<p>Encontrarás oración, recursos, apostolado digital y herramientas para tu Cuarto Día.</p>
+</div>
+
+<div class="step">
+<strong>3 · Empieza hoy</strong>
+<p>No necesitas configuraciones complejas. Solo abrir y usar.</p>
+</div>
+
+</section>
+
+<section class="image-block" style="background-image:url('foto_rosario1.png')">
+<div class="content">
+<h2>Oración diaria</h2>
+<p>Accede rápidamente a recursos de oración cuando lo necesites.</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Apostolado digital</h2>
+<p>Desde la app puedes generar imágenes y compartir lo que vives en tus redes.</p>
+<p>No es exhibición. Es testimonio.</p>
+</section>
+
+<section class="image-block" style="background-image:url('foto_gracia1.png')">
+<div class="content">
+<h2>Reunión de Grupo</h2>
+<p>La app no sustituye la amistad real. Solo la acompaña.</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Ofrendas y badge</h2>
+<p>Peregrino es gratuita.</p>
+<p>Si decides hacer una ofrenda libre, recibirás un badge exclusivo dentro de la app como agradecimiento.</p>
+<p>No desbloquea funciones. Es simplemente un gesto de gratitud.</p>
+</section>
+
+<section class="cta">
+<h2>¿Todo claro?</h2>
+
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn">
+Descargar Peregrino
 </a>
-</div>
-</section>
 
-<!-- ORACIÓN -->
-<section class="full-image" style="background-image:url('persona_rosario.jpg')">
-<div class="overlay"></div>
-<div class="content container">
-<h2>Empieza rezando.</h2>
-<p class="lead">
-Oraciones organizadas por momentos del día.
-Rosario completo paso a paso.
-Laudes, Completas, Examen.
-Lo esencial.
-</p>
-</div>
-</section>
-
-<!-- TRÍPODE -->
-<section class="full-image" style="background-image:url('persona_tripode.jpg')">
-<div class="overlay"></div>
-<div class="content container">
-<h2>Revisa tu Trípode.</h2>
-<p class="lead">
-Piedad.
-Estudio.
-Acción.
-
-No escribas cosas perfectas.
-Escribe cosas reales.
-</p>
-</div>
-</section>
-
-<!-- REUNIÓN -->
-<section class="full-image" style="background-image:url('reunion_grupo.jpg')">
-<div class="overlay"></div>
-<div class="content container">
-<h2>Ordena tu Reunión de Grupo.</h2>
-<p class="lead">
-La app guía los pasos.
-Pero la vida sigue siendo lo esencial.
-Amistad.
-Sinceridad.
-Compromiso.
-</p>
-</div>
-</section>
-
-<!-- CANDIDATOS -->
-<section>
-<div class="container">
-<h2>Pon nombre a tu apostolado.</h2>
-<p class="lead">
-Añade candidatos.
-Reza por ellos.
-Invita con prudencia.
-
-La app nunca envía nada automáticamente.
-Siempre decides tú.
-</p>
-</div>
-</section>
-
-<!-- FUNCIONES BLOQUEADAS -->
-<section>
-<div class="container">
-<h2>Funciones con candado</h2>
-<p class="lead">
-Algunas herramientas avanzadas están asociadas
-a colaboración.
-
-Si aparece un candado,
-la app te explicará cómo activarlo.
-</p>
-</div>
-</section>
-
-<!-- CIERRE -->
-<section>
-<div class="container">
-<h2 class="gold">Lo importante</h2>
-<p class="lead">
-Peregrino no sustituye tu vida.
-No sustituye tu grupo.
-No sustituye tu parroquia.
-
-Solo quiere ayudarte a caminar mejor.
-</p>
-
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" target="_blank" class="btn btn-primary">
-Descargar ahora
+<a href="index.html" class="btn btn-secondary">
+Volver al inicio
 </a>
-</div>
-</section>
 
-<footer>
-Peregrino APP · Iniciativa personal e independiente · De Colores
-</footer>
+</section>
 
 </body>
 </html>
