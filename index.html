@@ -1,97 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Peregrino APP</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peregrino App</title>
 
 <style>
-:root{
---bg:#0c1222;
---bg-deep:#090f1c;
---gold:#c6a348;
---light:#f5f3ee;
---muted:#b8bcc6;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Inter,system-ui;
-background:linear-gradient(180deg,var(--bg) 0%,var(--bg-deep) 100%);
-color:var(--light);
-overflow-x:hidden;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+background:#0b1220;
+color:white;
 scroll-behavior:smooth;
+overflow-x:hidden;
 }
 
 section{
+position:relative;
 min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:100px 20px;
+padding:60px 20px;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to bottom, rgba(8,12,20,.6), rgba(8,12,20,.85));
+z-index:1;
+}
+
+.content{
 position:relative;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-}
-
-h1,h2{
-font-family:"Cormorant Garamond",serif;
-letter-spacing:-.03em;
+z-index:2;
+max-width:900px;
 }
 
 h1{
-font-size:clamp(3.5rem,7vw,6rem);
-line-height:1.05;
+font-size:clamp(2.5rem,6vw,5rem);
+font-weight:700;
+letter-spacing:-1px;
 }
 
 h2{
-font-size:clamp(2.5rem,5vw,4rem);
+font-size:clamp(1.8rem,4vw,3rem);
+font-weight:600;
+margin-bottom:20px;
 }
 
-p.lead{
-margin-top:20px;
+p{
 font-size:1.2rem;
-color:var(--muted);
-max-width:700px;
-margin-left:auto;
-margin-right:auto;
+opacity:.85;
+margin-bottom:30px;
 }
 
 .btn{
 display:inline-block;
-margin:20px 10px 0;
 padding:14px 32px;
-border-radius:999px;
+border-radius:40px;
 text-decoration:none;
 font-weight:600;
-transition:.3s;
+margin:10px;
+transition:.3s ease;
 }
 
 .btn-primary{
-background:var(--gold);
-color:#000;
+background:#d4af37;
+color:black;
+}
+
+.btn-primary:hover{
+background:white;
 }
 
 .btn-secondary{
-border:1px solid rgba(255,255,255,.3);
-color:var(--light);
+border:1px solid rgba(255,255,255,.4);
+color:white;
 }
 
-.btn:hover{
-transform:translateY(-3px);
-opacity:.9;
+.btn-secondary:hover{
+background:white;
+color:black;
 }
 
 .hero{
 background:
-linear-gradient(rgba(9,15,28,.65),rgba(9,15,28,.85)),
-url("hero_persona.jpg") center/cover no-repeat;
+linear-gradient(rgba(9,15,28,.6),rgba(9,15,28,.85)),
+url("hero-peregrino.jpg") center/cover no-repeat;
 }
 
 .full-image{
@@ -99,57 +101,17 @@ background-size:cover;
 background-position:center;
 }
 
-.overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(rgba(9,15,28,.5),rgba(9,15,28,.85));
-}
-
-.content{
-position:relative;
-z-index:2;
-}
-
-.gold{
-color:var(--gold);
-}
-
-.countdown{
-margin-top:30px;
-font-size:2.2rem;
-font-weight:600;
-letter-spacing:.05em;
-}
-
-.ofrenda{
-background:linear-gradient(180deg,#0f1629 0%,#0c1222 100%);
-}
-
-.slider{
-width:100%;
-max-width:400px;
-margin:40px auto;
-}
-
-input[type=range]{
-width:100%;
-}
-
-.donate-amount{
-font-size:3rem;
-margin-bottom:15px;
-color:var(--gold);
-}
-
-footer{
-padding:60px 20px;
-text-align:center;
-color:var(--muted);
-font-size:.9rem;
-}
-
-@media(max-width:768px){
-section{padding:80px 20px}
+.top-button{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#d4af37;
+color:black;
+padding:12px 18px;
+border-radius:50%;
+font-weight:bold;
+text-decoration:none;
+z-index:100;
 }
 </style>
 </head>
@@ -158,113 +120,84 @@ section{padding:80px 20px}
 
 <!-- HERO -->
 <section class="hero">
-<div class="content container">
+<div class="content">
 <h1>El Cuarto Día<br>no termina.</h1>
-<h2 class="gold">Se vive.</h2>
-<p class="lead">
-Peregrino APP nace de la experiencia real de un cursillista
-que quiere vivir su fe con orden, profundidad y belleza.
-</p>
-
-<a href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" class="btn btn-primary" target="_blank">
-Unirme al lanzamiento
-</a>
-
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn btn-secondary" target="_blank">
-Descargar ahora
-</a>
+<p>Se vive.</p>
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn btn-primary">Descargar</a>
 </div>
 </section>
 
 <!-- TRÍPODE -->
-<section class="full-image" style="background-image:url('persona_tripode.jpg')">
+<section class="full-image" style="background-image:url('foto_app1.png')">
 <div class="overlay"></div>
-<div class="content container">
+<div class="content">
 <h2>Tu Trípode.<br>Siempre contigo.</h2>
+<p>Oración, Estudio y Acción integrados en tu día.</p>
 </div>
 </section>
 
 <!-- ORACIÓN -->
-<section class="full-image" style="background-image:url('persona_rosario.jpg')">
+<section class="full-image" style="background-image:url('foto_rosario1.png')">
 <div class="overlay"></div>
-<div class="content container">
-<h2>Rezar no es una función.<br>Es el centro.</h2>
+<div class="content">
+<h2>La oración no es una función.<br>Es el centro.</h2>
 </div>
 </section>
 
-<!-- REUNIÓN -->
-<section class="full-image" style="background-image:url('reunion_grupo.jpg')">
+<!-- COMUNIDAD -->
+<section class="full-image" style="background-image:url('foto_gracia1.png')">
 <div class="overlay"></div>
-<div class="content container">
+<div class="content">
 <h2>La tecnología no sustituye la vida.<br>La ordena.</h2>
 </div>
 </section>
 
 <!-- LANZAMIENTO -->
 <section>
-<div class="container">
-<h2>Lanzamiento <span class="gold">en mayo</span></h2>
-<p class="lead">Cuenta atrás para el lanzamiento en mayo</p>
-<div class="countdown" id="countdown"></div>
-<a href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" class="btn btn-primary" target="_blank">
-Entrar al canal
-</a>
+<div class="content">
+<h2>Lanzamiento en mayo</h2>
+<p>Cuenta atrás para el lanzamiento en mayo</p>
+
+<div id="countdown" style="font-size:2rem;margin:20px 0;"></div>
+
+<a href="https://chat.whatsapp.com/" class="btn btn-secondary">Unirme al canal</a>
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn btn-primary">Descargar</a>
 </div>
 </section>
 
-<!-- OFRENDA -->
-<section class="ofrenda">
-<div class="container">
-<h2>Sostener lo que ayuda</h2>
-<p class="lead">
-Si esta app te ayuda y quieres que siga creciendo,
-puedes dejar una ofrenda.
-Como gesto de gratitud recibirás tu código Peregrino.
-</p>
+<!-- EXPLORAR -->
+<section>
+<div class="content">
+<h2>Explorar</h2>
 
-<div class="donate-amount" id="amount">10 €</div>
-<input type="range" min="1" max="50" value="10" class="slider" id="slider">
-
-<a id="donarBtn" class="btn btn-primary" target="_blank">
-Donar 10 €
-</a>
-
-<br><br>
-
-<a href="gracias.html" class="btn btn-secondary">
-Ya he donado · Obtener mi código
-</a>
+<a href="manual-usuario-peregrino.html" class="btn btn-secondary">Manual</a>
+<a href="manifiesto.html" class="btn btn-secondary">Manifiesto</a>
+<a href="que-es-el-mcc.html" class="btn btn-secondary">Qué es el MCC</a>
+<a href="reunion-de-grupo.html" class="btn btn-secondary">Reunión de Grupo</a>
+<a href="quiero-vivir-un-cursillo.html" class="btn btn-secondary">Quiero vivir un Cursillo</a>
+<a href="apostolado-digital.html" class="btn btn-secondary">Apostolado Digital</a>
+<a href="alguien-reza-por-ti.html" class="btn btn-secondary">Alguien reza por ti</a>
 
 </div>
 </section>
 
-<footer>
-Peregrino APP · Iniciativa personal e independiente · De Colores
-</footer>
+<a href="#" class="top-button">↑</a>
 
 <script>
-const endDate = new Date("May 31, 2026 23:59:59").getTime();
-const countdownEl = document.getElementById("countdown");
+const countdown = document.getElementById("countdown");
+const targetDate = new Date("May 15, 2026 00:00:00").getTime();
 
-setInterval(()=>{
+setInterval(function(){
 const now = new Date().getTime();
-const distance = endDate - now;
+const distance = targetDate - now;
+
 const days = Math.floor(distance / (1000*60*60*24));
-const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-countdownEl.innerHTML = days+" días · "+hours+" horas";
+const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+
+countdown.innerHTML = days+"d "+hours+"h "+minutes+"m";
+
 },1000);
-
-const slider = document.getElementById("slider");
-const amount = document.getElementById("amount");
-const btn = document.getElementById("donarBtn");
-
-function update(val){
-amount.textContent = val+" €";
-btn.textContent = "Donar "+val+" €";
-btn.href = "https://paypal.me/ingresoucha/"+val+"?locale.x=es_ES&country.x=ES";
-}
-update(slider.value);
-slider.oninput = ()=>update(slider.value);
 </script>
 
 </body>
