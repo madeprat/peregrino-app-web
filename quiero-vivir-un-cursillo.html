@@ -26,7 +26,7 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 30px;
+padding:18px 40px;
 background:rgba(8,12,20,.75);
 backdrop-filter:blur(10px);
 z-index:1000;
@@ -50,12 +50,12 @@ justify-content:center;
 text-align:center;
 padding:100px 20px;
 background:
-linear-gradient(rgba(8,12,20,.65),rgba(8,12,20,.9)),
+linear-gradient(rgba(8,12,20,.7),rgba(8,12,20,.9)),
 url("hero-peregrino.jpg") center/cover no-repeat;
 }
 
 .hero h1{
-font-size:clamp(3rem,6vw,5rem);
+font-size:clamp(3rem,7vw,5rem);
 font-weight:700;
 }
 
@@ -65,20 +65,20 @@ font-style:normal;
 }
 
 .hero p{
-max-width:700px;
-margin-top:25px;
+max-width:650px;
+margin:25px auto 0;
 opacity:.85;
 font-size:1.1rem;
 }
 
-/* SECCIONES */
+/* SECTION */
 .section{
-max-width:800px;
+max-width:900px;
 margin:auto;
-padding:120px 20px;
+padding:140px 20px;
 opacity:0;
 transform:translateY(60px);
-transition:all 1.2s cubic-bezier(.16,1,.3,1);
+transition:all 1.1s cubic-bezier(.16,1,.3,1);
 }
 
 .section.visible{
@@ -87,26 +87,36 @@ transform:translateY(0);
 }
 
 .section h2{
-color:#d4af37;
-margin-bottom:25px;
 font-size:clamp(2rem,4vw,3rem);
+color:#d4af37;
+margin-bottom:30px;
 }
 
 .section p{
-margin-bottom:24px;
+margin-bottom:22px;
 opacity:.85;
 font-size:1.1rem;
 }
 
-.pull{
-font-size:clamp(1.6rem,3vw,2.2rem);
-margin:60px 0;
+.steps{
+margin-top:30px;
+}
+
+.step{
+margin-bottom:25px;
+padding-left:20px;
+border-left:3px solid #d4af37;
+}
+
+.step strong{
+display:block;
+margin-bottom:6px;
 color:#d4af37;
 }
 
-/* IMAGE SECTION */
-.image-section{
-min-height:85vh;
+/* IMAGE BLOCK */
+.image-block{
+min-height:75vh;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -117,37 +127,35 @@ background-position:center;
 position:relative;
 }
 
-.image-section::before{
+.image-block::before{
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(rgba(8,12,20,.7),rgba(8,12,20,.9));
+background:linear-gradient(rgba(8,12,20,.75),rgba(8,12,20,.9));
 }
 
-.image-content{
+.image-block .content{
 position:relative;
 z-index:2;
 max-width:700px;
 }
 
-.image-content h2{
+.image-block h2{
 color:#d4af37;
 font-size:clamp(2rem,4vw,3rem);
 margin-bottom:20px;
 }
 
-/* CTA FINAL */
+/* CTA */
 .cta{
-min-height:80vh;
+min-height:70vh;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
 padding:80px 20px;
-background:
-linear-gradient(rgba(8,12,20,.7),rgba(8,12,20,.9)),
-url("foto_gracia1.png") center/cover no-repeat;
+background:#111a30;
 }
 
 .cta h2{
@@ -159,7 +167,7 @@ margin-bottom:20px;
 .btn{
 display:inline-block;
 margin:12px;
-padding:16px 34px;
+padding:16px 36px;
 border-radius:40px;
 text-decoration:none;
 font-weight:600;
@@ -193,66 +201,84 @@ color:black;
 <section class="hero">
 <div>
 <h1>Quiero vivir un <em>Cursillo</em></h1>
-<p>Si estás aquí, algo dentro de ti ya ha empezado a moverse.</p>
+<p>Si estás aquí, probablemente algo dentro de ti ya ha empezado a moverse.</p>
 </div>
 </section>
 
 <section class="section">
-<h2>No es casualidad</h2>
-<p>Quizá empezaste rezando con la app.</p>
-<p>Quizá alguien te habló del Cuarto Día.</p>
-<p>Quizá simplemente sientes que quieres dar un paso más.</p>
-<div class="pull">Ese deseo merece ser escuchado.</div>
+<h2>Primero, algo importante</h2>
+<p>Peregrino no organiza Cursillos ni gestiona inscripciones.</p>
+<p>El Movimiento funciona a nivel diocesano. Cada diócesis tiene su propio Secretariado.</p>
+<p>Lo mejor es contactar directamente con ellos.</p>
 </section>
 
-<section class="image-section" style="background-image:url('foto_rosario1.png')">
-<div class="image-content">
-<h2>No es información.<br>Es encuentro.</h2>
-<p>Un Cursillo no se explica del todo.  
-Se vive.</p>
+<section class="image-block" style="background-image:url('foto_gracia1.png')">
+<div class="content">
+<h2>No es una compra online.</h2>
+<p>Es un camino que se conversa, se prepara y se acompaña.</p>
 </div>
 </section>
 
 <section class="section">
-<h2>¿Qué tienes que hacer?</h2>
-<p>Peregrino no organiza Cursillos.</p>
-<p>No recogemos datos.  
-No hacemos inscripciones.</p>
-<div class="pull">Lo mejor es contactar con el Secretariado de tu diócesis.</div>
-<p>Ellos te orientarán con sencillez y libertad.</p>
+<h2>Pasos sencillos</h2>
+
+<div class="steps">
+
+<div class="step">
+<strong>1 · Busca tu diócesis</strong>
+<p>Escribe en Google: “Cursillos de Cristiandad + nombre de tu diócesis”.</p>
+</div>
+
+<div class="step">
+<strong>2 · Contacta con el Secretariado</strong>
+<p>Ellos te orientarán sobre próximos Cursillos y cómo participar.</p>
+</div>
+
+<div class="step">
+<strong>3 · Habla con quien te invitó</strong>
+<p>El Movimiento se transmite principalmente por amistad.</p>
+</div>
+
+</div>
+
 </section>
 
-<section class="image-section" style="background-image:url('foto_app1.png')">
-<div class="image-content">
+<section class="image-block" style="background-image:url('foto_rosario1.png')">
+<div class="content">
 <h2>Mientras tanto</h2>
-<p>Cuida tu oración.</p>
-<p>Habla con quien te invitó.</p>
-<p>Y no apagues esa inquietud.</p>
+<p>Cuida tu oración.<br>
+No apagues esa inquietud.<br>
+Y habla con alguien que ya lo haya vivido.</p>
 </div>
 </section>
 
 <section class="cta">
-<h2>Da el paso.</h2>
+<h2>Da el paso con libertad.</h2>
 
-<a href="https://omcc.org" class="btn">
-Buscar información oficial
+<a href="https://www.cursillosdecristiandad.com/secretariados/" target="_blank" class="btn">
+Buscar en España
+</a>
+
+<a href="https://omcc-cursillos.org/" target="_blank" class="btn">
+Buscar en el mundo
 </a>
 
 <a href="index.html" class="btn btn-secondary">
 Volver a la App
 </a>
+
 </section>
 
 <script>
-const sections = document.querySelectorAll(".section");
-const observer = new IntersectionObserver(entries=>{
+const sections=document.querySelectorAll(".section");
+const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
 observer.unobserve(entry.target);
 }
 });
-},{threshold:0.15});
+},{threshold:.15});
 sections.forEach(section=>observer.observe(section));
 </script>
 
