@@ -3,20 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual de Usuario · Peregrino APP</title>
+<title>Manual de Usuario | Peregrino APP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+--bg:#0b1220;
+--bg-card:#111a30;
+--bg-card-soft:#16213a;
+--gold:#d4af37;
+--gold-soft:#f1d28a;
+--text:#f5f3ee;
+--muted:#b9c2d0;
+--line:rgba(255,255,255,.08);
+--radius:24px;
+--shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-background:#0b1220;
-color:#f5f3ee;
+font-family:Inter,system-ui,sans-serif;
+background:radial-gradient(circle at 20% 0%,#132041 0%,#0b1220 60%);
+color:var(--text);
 line-height:1.8;
 scroll-behavior:smooth;
 }
 
-/* NAV SUPERIOR */
+/* NAV */
 .nav{
 position:fixed;
 top:0;
@@ -25,138 +40,167 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 40px;
-background:rgba(8,12,20,.9);
+padding:20px 40px;
+background:rgba(11,18,32,.9);
 backdrop-filter:blur(12px);
 z-index:1000;
+border-bottom:1px solid var(--line);
 }
 
 .nav a{
-color:white;
+color:var(--text);
 text-decoration:none;
 font-weight:600;
 opacity:.85;
 margin-left:25px;
 }
 
-.nav a:hover{opacity:1;}
+.nav a:hover{opacity:1;color:var(--gold);}
 
 .container{
-max-width:950px;
+max-width:1100px;
 margin:auto;
-padding:140px 20px 100px;
+padding:160px 25px 120px;
 }
 
-/* TÍTULOS */
-h1{
-font-size:clamp(2.8rem,6vw,4rem);
+/* HERO */
+.hero{
+margin-bottom:100px;
+}
+
+.hero h1{
+font-family:Cinzel,serif;
+font-size:clamp(3rem,6vw,4.5rem);
 margin-bottom:20px;
 }
 
-h2{
-color:#d4af37;
-margin-top:100px;
-margin-bottom:30px;
-font-size:clamp(1.8rem,4vw,2.5rem);
+.hero p{
+font-size:1.2rem;
+color:var(--muted);
+max-width:700px;
+margin-bottom:40px;
 }
 
-p{
-margin-bottom:18px;
-opacity:.9;
-}
-
-/* ENLACES INICIALES */
-.links-top{
-margin:40px 0;
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-}
-
-.links-top a{
-color:#d4af37;
-text-decoration:none;
-font-weight:600;
-}
-
-.links-top a:hover{color:white;}
-
-/* ACORDEONES */
-details{
-background:#111a30;
-border-radius:18px;
-padding:22px 26px;
-margin-bottom:18px;
-border:1px solid rgba(255,255,255,.08);
-}
-
-summary{
-cursor:pointer;
-font-weight:700;
-color:#d4af37;
-font-size:1.1rem;
-}
-
-details p, details ul{
-margin-top:15px;
-}
-
-ul{
-padding-left:20px;
-}
-
-/* TABLAS */
-.table{
-width:100%;
-border-collapse:collapse;
-margin-top:15px;
-}
-
-.table th,
-.table td{
-border-bottom:1px solid rgba(255,255,255,.08);
-padding:12px;
-text-align:left;
-}
-
-.table th{
-color:#d4af37;
-font-weight:600;
-}
-
-/* AVISO */
-.notice{
-background:#16213a;
-padding:20px;
-border-radius:16px;
-margin-top:20px;
-}
-
-/* BOTONES */
-.btn{
+.hero-buttons a{
 display:inline-block;
-margin-top:40px;
-padding:14px 30px;
-border-radius:40px;
+padding:14px 28px;
+border-radius:50px;
 text-decoration:none;
 font-weight:600;
-background:#d4af37;
+margin-right:15px;
+}
+
+.btn-gold{
+background:var(--gold);
 color:black;
+}
+
+.btn-gold:hover{background:white;}
+
+.btn-outline{
+border:1px solid var(--line);
+color:white;
+}
+
+.btn-outline:hover{
+background:white;
+color:black;
+}
+
+/* TOC */
+.toc{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-bottom:100px;
+}
+
+.toc a{
+background:var(--bg-card);
+padding:18px;
+border-radius:18px;
+text-decoration:none;
+color:var(--text);
+border:1px solid var(--line);
 transition:.3s;
 }
 
-.btn:hover{background:white;}
-
-.btn-secondary{
-background:transparent;
-border:1px solid rgba(255,255,255,.4);
-color:white;
-margin-left:10px;
+.toc a:hover{
+background:var(--bg-card-soft);
+transform:translateY(-4px);
 }
 
-.btn-secondary:hover{
-background:white;
-color:black;
+/* SECTIONS */
+section{
+margin-bottom:100px;
+}
+
+section h2{
+font-family:Cinzel,serif;
+color:var(--gold);
+font-size:2.2rem;
+margin-bottom:30px;
+}
+
+/* CARDS */
+.grid{
+display:grid;
+gap:25px;
+}
+
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(350px,1fr));}
+
+.card{
+background:var(--bg-card);
+padding:30px;
+border-radius:var(--radius);
+border:1px solid var(--line);
+box-shadow:var(--shadow);
+}
+
+.card h3{
+margin-bottom:10px;
+color:var(--gold-soft);
+}
+
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+background:var(--bg-card);
+border-radius:var(--radius);
+overflow:hidden;
+}
+
+th,td{
+padding:15px;
+border-bottom:1px solid var(--line);
+}
+
+th{
+color:var(--gold);
+text-align:left;
+}
+
+tr:last-child td{border-bottom:none;}
+
+/* NOTICE */
+.notice{
+background:var(--bg-card-soft);
+padding:25px;
+border-radius:20px;
+margin-top:25px;
+}
+
+/* FOOTER BUTTONS */
+.footer-cta{
+margin-top:120px;
+text-align:center;
+}
+.footer-cta a{
+margin:10px;
 }
 </style>
 </head>
@@ -165,15 +209,22 @@ color:black;
 
 <div class="nav">
 <a href="#top">Manual Peregrino</a>
-<a href="index.html">← Volver a la web</a>
+<a href="index.html">← Volver</a>
 </div>
 
 <div class="container" id="top">
 
+<div class="hero">
 <h1>Manual de Usuario · Peregrino APP</h1>
-<p>Guía completa para usar Peregrino APP en tu Cuarto Día.</p>
+<p>Guía completa para usar Peregrino APP en tu Cuarto Día: rezar, revisar tu Trípode, preparar la Reunión de Grupo y acompañar candidatos en oración.</p>
 
-<div class="links-top">
+<div class="hero-buttons">
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn-gold">Descargar en Android</a>
+<a href="index.html" class="btn-outline">Volver a la web</a>
+</div>
+</div>
+
+<div class="toc">
 <a href="#primeros">1. Primeros pasos</a>
 <a href="#oraciones">2. Oraciones</a>
 <a href="#tripode">3. Trípode</a>
@@ -183,137 +234,72 @@ color:black;
 <a href="#faq">7. Preguntas frecuentes</a>
 </div>
 
-<!-- 1. PRIMEROS PASOS -->
-<h2 id="primeros">1. Primeros pasos</h2>
-
-<details open>
-<summary>Configuración inicial</summary>
-<p>Introduce tus datos básicos: nombre, apellidos, diócesis, ciudad o sector si procede, fecha de tu Cursillo si la quieres conservar y preferencias de recordatorios.</p>
-<p>La fecha de tu Cursillo permite recordar aniversarios. Las horas de mañana y noche sirven para ordenar tu vida diaria. El día de Reunión de Grupo ayuda a preparar invitaciones y recordatorios.</p>
-</details>
-
-<details>
-<summary>Navegación principal</summary>
-<p>La barra inferior organiza la app en cinco pestañas:</p>
-<ul>
-<li>Inicio</li>
-<li>Oraciones</li>
-<li>Trípode</li>
-<li>Palancas</li>
-<li>Peregrinar</li>
-</ul>
-</details>
-
-<div class="notice">
-Consejo: no intentes rellenarlo todo perfecto el primer día. Empieza con lo mínimo, reza, revisa tu Trípode y deja que la app se convierta poco a poco en una costumbre.
+<section id="primeros">
+<h2>1. Primeros pasos</h2>
+<div class="card">
+<h3>Configuración inicial</h3>
+<p>Introduce tus datos básicos: nombre, diócesis, fecha de Cursillo y preferencias de recordatorios.</p>
+<p>La fecha de tu Cursillo permite recordar aniversarios. Los recordatorios ayudan a ordenar tu día.</p>
 </div>
+</section>
 
-<!-- 2. ORACIONES -->
-<h2 id="oraciones">2. Oraciones</h2>
+<section id="oraciones">
+<h2>2. Oraciones</h2>
+<div class="grid grid-3">
+<div class="card"><h3>Mañana</h3><p>Oraciones para comenzar el día.</p></div>
+<div class="card"><h3>Durante el día</h3><p>Meditación y Santa Misa.</p></div>
+<div class="card"><h3>Noche</h3><p>Completas y oración final.</p></div>
+</div>
+</section>
 
-<details>
-<summary>Cómo rezar una oración</summary>
-<p>Entra en la sección correspondiente y selecciona la oración deseada. Puedes marcarla como favorita para volver a ella más rápido.</p>
-<p>En oraciones como Laudes, Completas o Misa, podrás registrar que la has rezado para que aparezca en tu revisión de Piedad.</p>
-</details>
+<section id="tripode">
+<h2>3. Trípode</h2>
+<div class="grid grid-3">
+<div class="card"><h3>Piedad</h3><p>Vida de oración y sacramentos.</p></div>
+<div class="card"><h3>Estudio</h3><p>Formación cristiana semanal.</p></div>
+<div class="card"><h3>Acción</h3><p>Apostolado concreto en tus ambientes.</p></div>
+</div>
+</section>
 
-<details>
-<summary>Rosario guiado</summary>
-<table class="table">
-<tr><th>Función</th><th>Descripción</th></tr>
-<tr><td>Índice</td><td>Permite saltar entre partes del Rosario.</td></tr>
-<tr><td>Modo guiado</td><td>Avanza automáticamente por secciones.</td></tr>
-<tr><td>Lectura en voz alta</td><td>Disponible según versión.</td></tr>
-<tr><td>Sesión guardada</td><td>Permite continuar un Rosario interrumpido.</td></tr>
-<tr><td>Gracia final</td><td>Texto bíblico para compartir.</td></tr>
-</table>
-</details>
-
-<!-- 3. TRÍPODE -->
-<h2 id="tripode">3. Trípode</h2>
-
-<details>
-<summary>Piedad</summary>
-<p>Anota tu relación con Dios: oración, sacramentos, Rosario, Laudes, Misa, Completas, Examen, Vía Crucis o adoración.</p>
-</details>
-
-<details>
-<summary>Estudio</summary>
-<p>Registra lo que has leído, escuchado o aprendido: Biblia, formación, doctrina, documentos, charlas o material del Movimiento.</p>
-</details>
-
-<details>
-<summary>Acción</summary>
-<p>Concreta tu apostolado: testimonio, caridad, servicio, ambiente, invitación a un Cursillo o acompañamiento de candidatos.</p>
-</details>
-
-<!-- 4. REUNIÓN -->
-<h2 id="reunion">4. Reunión de Grupo</h2>
-
-<details>
-<summary>Pasos de la reunión</summary>
-<table class="table">
+<section id="reunion">
+<h2>4. Reunión de Grupo</h2>
+<table>
 <tr><th>Paso</th><th>Contenido</th></tr>
 <tr><td>Oración inicial</td><td>Invocación al Espíritu Santo.</td></tr>
-<tr><td>Revisión del plan anterior</td><td>Evaluar compromisos.</td></tr>
-<tr><td>Piedad</td><td>Vida de oración.</td></tr>
+<tr><td>Piedad</td><td>Vida espiritual.</td></tr>
 <tr><td>Estudio</td><td>Formación.</td></tr>
 <tr><td>Acción</td><td>Apostolado.</td></tr>
 <tr><td>Acción de Grupo</td><td>Compromiso común.</td></tr>
 <tr><td>Oración final</td><td>Cierre.</td></tr>
 </table>
-</details>
+</section>
 
-<!-- 5. CANDIDATOS -->
-<h2 id="candidatos">5. Candidatos</h2>
+<section id="candidatos">
+<h2>5. Candidatos</h2>
+<div class="card">
+<p>Puedes registrar personas por las que rezas, añadir notas y preparar invitaciones humanas y prudentes.</p>
+</div>
+</section>
 
-<details>
-<summary>Añadir y acompañar candidatos</summary>
-<p>Puedes registrar personas por las que rezas, añadir notas y preparar invitaciones.</p>
-</details>
+<section id="candado">
+<h2>6. Funciones con candado</h2>
+<div class="card">
+<p>Palmero, Bordón y Apóstol indican funciones avanzadas según versión o colaboración.</p>
+</div>
+</section>
 
-<details>
-<summary>Sembrar e invitar</summary>
-<p>La app prepara un mensaje editable para WhatsApp. Tú decides si enviarlo.</p>
-</details>
+<section id="faq">
+<h2>7. Preguntas frecuentes</h2>
+<div class="card">
+<p><strong>¿La app sustituye la Reunión de Grupo?</strong><br>No. Solo acompaña.</p>
+</div>
+</section>
 
-<!-- 6. CANDADO -->
-<h2 id="candado">6. Funciones con candado</h2>
-
-<details>
-<summary>Palmero, Bordón y Apóstol</summary>
-<p>Algunas funciones avanzadas pueden estar bloqueadas según versión o colaboración.</p>
-<p>No afectan al uso básico gratuito de la app.</p>
-</details>
-
-<!-- FAQ -->
-<h2 id="faq">7. Preguntas frecuentes</h2>
-
-<details>
-<summary>¿Se guardan mis datos?</summary>
-<p>Los registros se almacenan en tu dispositivo.</p>
-</details>
-
-<details>
-<summary>¿La app envía mensajes automáticamente?</summary>
-<p>No. Siempre decides antes de enviar.</p>
-</details>
-
-<details>
-<summary>¿Sustituye la Reunión de Grupo?</summary>
-<p>No. Solo acompaña.</p>
-</details>
-
-<div style="margin-top:100px;">
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn">
-Descargar Peregrino
-</a>
-<a href="index.html" class="btn btn-secondary">
-Volver al inicio
-</a>
+<div class="footer-cta">
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn-gold">Descargar Peregrino</a>
+<a href="index.html" class="btn-outline">Volver al inicio</a>
 </div>
 
 </div>
-
 </body>
 </html>
