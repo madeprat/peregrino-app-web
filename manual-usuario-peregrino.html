@@ -3,35 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual de Usuario | Peregrino APP</title>
+<title>Manual Oficial · Peregrino APP</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --bg:#0b1220;
---bg-card:#111a30;
---bg-card-soft:#16213a;
+--bg2:#101a32;
+--card:#131f3d;
 --gold:#d4af37;
 --gold-soft:#f1d28a;
 --text:#f5f3ee;
 --muted:#b9c2d0;
 --line:rgba(255,255,255,.08);
---radius:24px;
---shadow:0 20px 50px rgba(0,0,0,.4);
+--radius:28px;
+--shadow:0 30px 70px rgba(0,0,0,.5);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
 body{
-font-family:Inter,system-ui,sans-serif;
-background:radial-gradient(circle at 20% 0%,#132041 0%,#0b1220 60%);
+font-family:Inter,sans-serif;
+background:radial-gradient(circle at 30% 0%,#1a2b55 0%,#0b1220 70%);
 color:var(--text);
 line-height:1.8;
-scroll-behavior:smooth;
 }
 
-/* NAV */
 .nav{
 position:fixed;
 top:0;
@@ -48,45 +47,53 @@ border-bottom:1px solid var(--line);
 }
 
 .nav a{
-color:var(--text);
+color:white;
 text-decoration:none;
-font-weight:600;
-opacity:.85;
 margin-left:25px;
+font-weight:600;
 }
 
-.nav a:hover{opacity:1;color:var(--gold);}
+.nav a:hover{color:var(--gold);}
 
 .container{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
-padding:160px 25px 120px;
+padding:160px 30px 120px;
 }
 
 /* HERO */
 .hero{
-margin-bottom:100px;
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+background:linear-gradient(rgba(11,18,32,.85),rgba(11,18,32,.95)),
+url('https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+border-radius:var(--radius);
+padding:60px;
+box-shadow:var(--shadow);
+margin-bottom:120px;
 }
 
 .hero h1{
 font-family:Cinzel,serif;
-font-size:clamp(3rem,6vw,4.5rem);
-margin-bottom:20px;
+font-size:clamp(3rem,6vw,4.8rem);
+margin-bottom:25px;
 }
 
 .hero p{
 font-size:1.2rem;
-color:var(--muted);
 max-width:700px;
+color:var(--muted);
 margin-bottom:40px;
 }
 
-.hero-buttons a{
+.btn{
 display:inline-block;
-padding:14px 28px;
-border-radius:50px;
-text-decoration:none;
+padding:16px 32px;
+border-radius:60px;
 font-weight:600;
+text-decoration:none;
 margin-right:15px;
 }
 
@@ -95,112 +102,53 @@ background:var(--gold);
 color:black;
 }
 
-.btn-gold:hover{background:white;}
-
 .btn-outline{
-border:1px solid var(--line);
+border:1px solid white;
 color:white;
 }
 
-.btn-outline:hover{
-background:white;
-color:black;
-}
-
-/* TOC */
-.toc{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-bottom:100px;
-}
-
-.toc a{
-background:var(--bg-card);
-padding:18px;
-border-radius:18px;
-text-decoration:none;
-color:var(--text);
-border:1px solid var(--line);
-transition:.3s;
-}
-
-.toc a:hover{
-background:var(--bg-card-soft);
-transform:translateY(-4px);
-}
-
-/* SECTIONS */
 section{
-margin-bottom:100px;
+margin-bottom:150px;
 }
 
 section h2{
 font-family:Cinzel,serif;
+font-size:2.8rem;
 color:var(--gold);
-font-size:2.2rem;
-margin-bottom:30px;
+margin-bottom:40px;
 }
-
-/* CARDS */
-.grid{
-display:grid;
-gap:25px;
-}
-
-.grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
-.grid-2{grid-template-columns:repeat(auto-fit,minmax(350px,1fr));}
 
 .card{
-background:var(--bg-card);
-padding:30px;
+background:var(--card);
+padding:50px;
 border-radius:var(--radius);
-border:1px solid var(--line);
 box-shadow:var(--shadow);
+border:1px solid var(--line);
 }
 
 .card h3{
-margin-bottom:10px;
 color:var(--gold-soft);
+margin-top:40px;
+margin-bottom:15px;
+font-size:1.4rem;
 }
 
-/* TABLE */
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-background:var(--bg-card);
-border-radius:var(--radius);
-overflow:hidden;
-}
-
-th,td{
-padding:15px;
-border-bottom:1px solid var(--line);
-}
-
-th{
-color:var(--gold);
-text-align:left;
-}
-
-tr:last-child td{border-bottom:none;}
-
-/* NOTICE */
 .notice{
-background:var(--bg-card-soft);
+background:var(--bg2);
 padding:25px;
 border-radius:20px;
-margin-top:25px;
+margin:30px 0;
 }
 
-/* FOOTER BUTTONS */
-.footer-cta{
-margin-top:120px;
-text-align:center;
+.grid-2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
 }
-.footer-cta a{
-margin:10px;
+
+@media(max-width:900px){
+.grid-2{grid-template-columns:1fr;}
+.hero{height:auto;}
 }
 </style>
 </head>
@@ -208,138 +156,176 @@ margin:10px;
 <body>
 
 <div class="nav">
-<a href="#top">Manual Peregrino</a>
-<a href="index.html">← Volver</a>
+<a href="#top">Manual Oficial</a>
+<a href="#tripode">Trípode</a>
+<a href="#reunion">Reunión</a>
+<a href="#apostolado">Apostolado</a>
+<a href="#perseverancia">Perseverancia</a>
 </div>
 
 <div class="container" id="top">
 
 <div class="hero">
-<h1>Manual de Usuario · Peregrino APP</h1>
-<p>Guía completa para usar Peregrino APP en tu Cuarto Día: rezar, revisar tu Trípode, preparar la Reunión de Grupo y acompañar candidatos en oración.</p>
-<section style="margin-bottom:100px;">
-  <div class="card">
-    <h2 style="margin-bottom:20px;">¿Qué es Peregrino APP… y qué no es?</h2>
-
-    <p>
-      Peregrino APP no es una app de oración general. 
-      No pretende sustituir a ePrex, iBreviary, Universalis, Laudate ni otras herramientas litúrgicas.
-    </p>
-
-    <p>
-      Si ya usas una de ellas para rezar el Oficio o seguir el calendario litúrgico, puedes seguir haciéndolo.
-      Peregrino no compite con esas apps.
-    </p>
-
-    <p>
-      Peregrino APP nace con otra finalidad: ayudarte a vivir el Cuarto Día con método, constancia y concreción.
-    </p>
-
-    <div class="notice">
-      <strong>En otras palabras:</strong><br><br>
-      • ePrex te ayuda a rezar.<br>
-      • Peregrino te ayuda a perseverar.<br><br>
-      • Otras apps organizan textos litúrgicos.<br>
-      • Peregrino organiza tu vida de Piedad, Estudio y Acción.
-    </div>
-
-    <p style="margin-top:25px;">
-      Peregrino integra el Trípode, la revisión semanal, la preparación de la Reunión de Grupo 
-      y el acompañamiento concreto de candidatos.
-    </p>
-
-    <p>
-      No sustituye tu amistad, tu grupo ni tu apostolado.
-      Solo intenta ayudarte a vivirlos mejor.
-    </p>
-
-    <p style="margin-top:20px; opacity:.85;">
-      Si buscas una app para rezar únicamente, quizá no la necesites.<br>
-      Si buscas una ayuda para caminar tu Cuarto Día con orden y fidelidad, entonces sí.
-    </p>
-  </div>
-</section>
-<div class="hero-buttons">
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn-gold">Descargar en Android</a>
-<a href="index.html" class="btn-outline">Volver a la web</a>
-</div>
+<h1>Peregrino APP</h1>
+<p>
+No es una app de oración más.
+Es la arquitectura digital del método del Movimiento de Cursillos de Cristiandad.
+</p>
+<a href="#" class="btn btn-gold">Descargar</a>
+<a href="#" class="btn btn-outline">Volver</a>
 </div>
 
-<div class="toc">
-<a href="#primeros">1. Primeros pasos</a>
-<a href="#oraciones">2. Oraciones</a>
-<a href="#tripode">3. Trípode</a>
-<a href="#reunion">4. Reunión de Grupo</a>
-<a href="#candidatos">5. Candidatos</a>
-<a href="#candado">6. Funciones con candado</a>
-<a href="#faq">7. Preguntas frecuentes</a>
-</div>
+<!-- ARQUITECTURA -->
+<section>
+<h2>Arquitectura basada en el Método del MCC</h2>
 
-<section id="primeros">
-<h2>1. Primeros pasos</h2>
 <div class="card">
-<h3>Configuración inicial</h3>
-<p>Introduce tus datos básicos: nombre, diócesis, fecha de Cursillo y preferencias de recordatorios.</p>
-<p>La fecha de tu Cursillo permite recordar aniversarios. Los recordatorios ayudan a ordenar tu día.</p>
+<p>
+El Movimiento de Cursillos no es un conjunto de prácticas devocionales.
+Es un método para vivir y convivir lo fundamental cristiano,
+orientado a transformar ambientes mediante la amistad.
+</p>
+
+<p>
+Peregrino APP no organiza herramientas.
+Organiza vida.
+Su estructura responde directamente al Trípode,
+a la Reunión de Grupo,
+y al apostolado concreto del Cuarto Día.
+</p>
+
+<div class="notice">
+La app reproduce el ritmo real del cursillista:
+Piedad → Estudio → Acción → Revisión → Reunión → Compromiso → Apostolado.
+</div>
 </div>
 </section>
 
-<section id="oraciones">
-<h2>2. Oraciones</h2>
-<div class="grid grid-3">
-<div class="card"><h3>Mañana</h3><p>Oraciones para comenzar el día.</p></div>
-<div class="card"><h3>Durante el día</h3><p>Meditación y Santa Misa.</p></div>
-<div class="card"><h3>Noche</h3><p>Completas y oración final.</p></div>
-</div>
-</section>
-
+<!-- TRIPODE -->
 <section id="tripode">
-<h2>3. Trípode</h2>
-<div class="grid grid-3">
-<div class="card"><h3>Piedad</h3><p>Vida de oración y sacramentos.</p></div>
-<div class="card"><h3>Estudio</h3><p>Formación cristiana semanal.</p></div>
-<div class="card"><h3>Acción</h3><p>Apostolado concreto en tus ambientes.</p></div>
+<h2>El Trípode: corazón del Cuarto Día</h2>
+
+<div class="card">
+<p>
+El Trípode es la estructura que sostiene la vida del cursillista.
+No son tres actividades independientes.
+Son tres dimensiones inseparables de una misma vida cristiana.
+</p>
+
+<h3>Piedad</h3>
+<p>
+Relación viva con Dios.
+En la app se accede desde la pestaña inferior “Trípode”.
+Aquí se registran hechos y conciencia interior.
+No estadísticas.
+Vida.
+</p>
+
+<h3>Estudio</h3>
+<p>
+Iluminación de la inteligencia.
+Se registra qué se ha leído y cómo ha impactado en la vida.
+La app ayuda a concretar la idea clave.
+</p>
+
+<h3>Acción</h3>
+<p>
+Encarnación apostólica.
+Se registran nombres concretos y gestos concretos.
+La acción siempre tiene rostro.
+</p>
+
+<div class="notice">
+La revisión semanal en la app prepara la Reunión de Grupo.
+No improvisa la vida.
+La ordena.
+</div>
 </div>
 </section>
 
+<!-- REUNION -->
 <section id="reunion">
-<h2>4. Reunión de Grupo</h2>
-<table>
-<tr><th>Paso</th><th>Contenido</th></tr>
-<tr><td>Oración inicial</td><td>Invocación al Espíritu Santo.</td></tr>
-<tr><td>Piedad</td><td>Vida espiritual.</td></tr>
-<tr><td>Estudio</td><td>Formación.</td></tr>
-<tr><td>Acción</td><td>Apostolado.</td></tr>
-<tr><td>Acción de Grupo</td><td>Compromiso común.</td></tr>
-<tr><td>Oración final</td><td>Cierre.</td></tr>
-</table>
-</section>
+<h2>La Reunión de Grupo</h2>
 
-<section id="candidatos">
-<h2>5. Candidatos</h2>
 <div class="card">
-<p>Puedes registrar personas por las que rezas, añadir notas y preparar invitaciones humanas y prudentes.</p>
+<p>
+La Reunión de Grupo es el instrumento privilegiado de perseverancia.
+Es contraste, amistad y compromiso.
+</p>
+
+<p>
+La app guía el orden clásico:
+oración → revisión del plan → trípode → nuevo compromiso → acción de grupo.
+</p>
+
+<h3>Cómo funciona</h3>
+<p>
+1. Añadir participantes.<br>
+2. Iniciar reunión.<br>
+3. Registrar compromisos personales.<br>
+4. Definir Acción de Grupo.<br>
+5. Guardar resumen.
+</p>
+
+<div class="notice">
+La tecnología no sustituye la amistad.
+La protege del desorden.
+</div>
 </div>
 </section>
 
-<section id="candado">
-<h2>6. Funciones con candado</h2>
+<!-- APOSTOLADO -->
+<section id="apostolado">
+<h2>Apostolado y Gestión de Candidatos</h2>
+
 <div class="card">
-<p>Palmero, Bordón y Apóstol indican funciones avanzadas según versión o colaboración.</p>
+<p>
+El apostolado en Cursillos no es activismo.
+Es fermento de ambientes.
+</p>
+
+<p>
+La sección Candidatos permite:
+registrar nombre, ambiente, proceso, oración e invitación prudente.
+</p>
+
+<h3>Enfoque en ambientes</h3>
+<p>
+Cada candidato se asocia a familia, trabajo, amigos o comunidad.
+La app recuerda que el objetivo no es llenar listas,
+sino transformar ambientes.
+</p>
+
+<div class="notice">
+Evangelizar es acompañar procesos, no reclutar personas.
+</div>
 </div>
 </section>
 
-<section id="faq">
-<h2>7. Preguntas frecuentes</h2>
+<!-- PERSEVERANCIA -->
+<section id="perseverancia">
+<h2>Herramienta de Perseverancia</h2>
+
 <div class="card">
-<p><strong>¿La app sustituye la Reunión de Grupo?</strong><br>No. Solo acompaña.</p>
+<p>
+La perseverancia no es automática.
+Se construye con revisión constante.
+</p>
+
+<p>
+Peregrino ayuda a:
+no olvidar compromisos,
+mantener ritmo semanal,
+preparar reunión,
+sostener acción concreta.
+</p>
+
+<div class="notice">
+No genera la vida.
+Ayuda a sostenerla.
+</div>
 </div>
 </section>
-
-<div class="footer-cta">
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn-gold">Descargar Peregrino</a>
-<a href="index.html" class="btn-outline">Volver al inicio</a>
-</div>
 
 </div>
 </body>
