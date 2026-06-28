@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Peregrino App</title>
+<title>Peregrino APP | Tu compañero del Cuarto Día</title>
+<meta name="description" content="Peregrino APP acompaña tu Cuarto Día con Trípode, oraciones, candidatos y Reunión de Grupo." />
+<meta name="theme-color" content="#0b1220" />
+<meta property="og:title" content="Peregrino APP | Tu compañero del Cuarto Día" />
+<meta property="og:description" content="Trípode, oraciones, candidatos y Reunión de Grupo siempre contigo." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="preview-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Peregrino APP | Tu compañero del Cuarto Día" />
+<meta name="twitter:description" content="Trípode, oraciones, candidatos y Reunión de Grupo siempre contigo." />
+<meta name="twitter:image" content="preview-image.jpg" />
 
 <style>
 *{
@@ -131,7 +141,7 @@ background-size:cover;
 background-position:center;
 }
 
-/* DONACIÓN */
+/* OFRENDA */
 .donation-section{
 background:radial-gradient(circle at top, rgba(212,175,55,.15), transparent),
 linear-gradient(#0b1220,#05070c);
@@ -233,29 +243,31 @@ z-index:100;
 </div>
 </section>
 
-<!-- DONACIÓN -->
+<!-- OFRENDA -->
 <section class="donation-section">
 <div class="content fade-up donation-box">
-<h2>Sostener lo que sirve</h2>
-<p>Si esta app te ayuda, puedes mantenerla viva con una ofrenda libre.</p>
+<h2>Ofrenda libre para sostener el camino</h2>
+<p>Si Peregrino APP te ayuda, puedes sostener su desarrollo con una ofrenda libre y externa.</p>
 
 <div class="amount" id="amount">10 €</div>
 <input type="range" min="1" max="50" value="10" id="slider">
-<button class="btn btn-primary" onclick="donar()">Donar con PayPal</button>
+<button class="btn btn-primary" onclick="donar()">Hacer ofrenda con PayPal</button>
 
-<p style="opacity:.6;margin-top:15px;">Después podrás generar tu Código de Peregrino.</p>
+<p style="opacity:.72;margin-top:18px;line-height:1.7;">
+<strong>Importante:</strong> esta ofrenda no desbloquea funciones, planes, insignias, badges ni contenido dentro de la app. Los planes y badges de Peregrino APP, cuando estén disponibles, se gestionan únicamente desde Google Play.
+</p>
+<p style="opacity:.68;margin-top:12px;line-height:1.7;">Después, si quieres, puedes dejar una intención de oración para unirla al camino.</p>
 </div>
 </section>
 
-<!-- LANZAMIENTO -->
+<!-- DISPONIBLE -->
 <section>
 <div class="content fade-up">
-<h2>Lanzamiento en mayo</h2>
-<p>Cuenta atrás para el lanzamiento en mayo</p>
-<div id="countdown" style="font-size:2rem;margin:20px 0;"></div>
+<h2>Ya disponible para Android</h2>
+<p>Peregrino APP acompaña tu Cuarto Día con Trípode, oraciones, candidatos y Reunión de Grupo.</p>
 
-<a href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" class="btn btn-secondary">Unirme al canal para solicitar el acceso anticipado</a>
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn btn-primary">Descargar</a>
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn btn-primary">Descargar en Google Play</a>
+<a href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" class="btn btn-secondary">Unirme al canal de novedades</a>
 </div>
 </section>
 
@@ -280,26 +292,14 @@ z-index:100;
 <div class="modal-box">
 <h2>Gracias por sostener Peregrino</h2>
 <p>Se ha abierto PayPal en una nueva pestaña.<br><br>
-Cuando termines tu ofrenda, vuelve aquí para generar tu código.</p>
-<a href="gracias.html" class="btn btn-primary">Obtener mi Código</a>
+Tu ofrenda es libre y no activa ningún beneficio dentro de la app. Si quieres, al terminar puedes dejar una intención de oración.</p>
+<a href="gracias.html" class="btn btn-primary">Dejar una intención</a>
 <br><br>
 <button onclick="cerrarModal()" class="btn btn-secondary">Cerrar</button>
 </div>
 </div>
 
 <script>
-/* Countdown */
-const countdown=document.getElementById("countdown");
-const targetDate=new Date("May 15, 2026 00:00:00").getTime();
-setInterval(()=>{
-const now=new Date().getTime();
-const distance=targetDate-now;
-const days=Math.floor(distance/(1000*60*60*24));
-const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-countdown.innerHTML=days+"d "+hours+"h "+minutes+"m";
-},1000);
-
 /* Fade-up observer */
 const faders=document.querySelectorAll(".fade-up");
 const observer=new IntersectionObserver((entries)=>{
@@ -312,7 +312,7 @@ observer.unobserve(entry.target);
 },{threshold:0.2});
 faders.forEach(f=>observer.observe(f));
 
-/* Donación */
+/* Ofrenda */
 const slider=document.getElementById("slider");
 const amount=document.getElementById("amount");
 
