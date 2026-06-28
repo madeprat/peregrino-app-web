@@ -3,176 +3,219 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Gracias | Código de Peregrino</title>
+<title>Gracias | Ofrenda Peregrina</title>
+<meta name="description" content="Gracias por sostener Peregrino APP con una ofrenda libre. Comparte, si quieres, una intención de oración para unirla al camino."/>
+<meta name="theme-color" content="#0b1220"/>
+<meta property="og:title" content="Gracias por sostener Peregrino APP"/>
+<meta property="og:description" content="Una ofrenda libre, sin beneficios dentro de la app, unida a una intención de oración."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="preview-image.jpg"/>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
+:root{
+  --fondo:#0b1220;
+  --oro:#d4af37;
+  --oro-suave:rgba(212,175,55,.16);
+  --blanco:#fff;
+  --texto-suave:rgba(255,255,255,.82);
+  --linea:rgba(255,255,255,.18);
+  --verde:#163f2e;
+}
+
 body{
 font-family:"Nunito Sans",sans-serif;
 color:white;
 min-height:100vh;
 overflow-x:hidden;
-background:#0b1220;
+background:var(--fondo);
 }
 
-/* Fondo cinematográfico */
 body::before{
 content:"";
 position:fixed;
 inset:0;
 background:
-linear-gradient(rgba(6,10,18,.78),rgba(6,10,18,.92)),
+linear-gradient(rgba(6,10,18,.76),rgba(6,10,18,.94)),
 url("hero-peregrino.jpg") center/cover no-repeat;
-z-index:-1;
+z-index:-2;
 }
 
-/* Layout */
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 18% 12%, rgba(212,175,55,.18), transparent 30rem),
+radial-gradient(circle at 88% 18%, rgba(70,120,255,.12), transparent 32rem);
+z-index:-1;
+pointer-events:none;
+}
+
 .wrap{
-width:min(1100px,92%);
+width:min(1120px,92%);
 margin:auto;
 padding:90px 0;
 }
 
-h1,h2{
+h1,h2,h3{
 font-family:"Cormorant Garamond",serif;
 letter-spacing:-1px;
+line-height:1.02;
 }
 
-h1{
-font-size:clamp(3rem,6vw,5rem);
-margin-bottom:25px;
-}
+h1{font-size:clamp(3.2rem,7vw,6.2rem);margin-bottom:24px}
+h2{font-size:clamp(2rem,4.4vw,3.4rem);margin-bottom:20px}
+h3{font-size:1.7rem;margin-bottom:14px}
 
-h2{
-font-size:clamp(2rem,4vw,3.2rem);
-margin-bottom:20px;
+p{opacity:.9;margin-bottom:22px;line-height:1.8;font-size:1.05rem}
+.small{font-size:.94rem;opacity:.72}
+.gold{color:var(--oro)}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:34px;
+align-items:start;
 }
 
 .card{
-background:rgba(255,255,255,.06);
+background:rgba(255,255,255,.065);
 backdrop-filter:blur(22px);
+border:1px solid rgba(255,255,255,.12);
 border-radius:40px;
-padding:55px;
+padding:clamp(32px,5vw,56px);
 box-shadow:0 30px 80px rgba(0,0,0,.55);
-margin-bottom:50px;
-animation:fadeUp 1.2s ease forwards;
+margin-bottom:34px;
+animation:fadeUp 1.1s ease forwards;
 opacity:0;
-transform:translateY(30px);
+transform:translateY(26px);
 }
 
-@keyframes fadeUp{
-to{opacity:1;transform:translateY(0)}
+.card:nth-child(2){animation-delay:.08s}
+.card:nth-child(3){animation-delay:.16s}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+.notice{
+background:rgba(212,175,55,.12);
+border:1px solid rgba(212,175,55,.32);
+border-radius:26px;
+padding:22px;
+margin:26px 0;
 }
 
-.gold{color:#d4af37}
-
-p{
-opacity:.9;
-margin-bottom:22px;
-line-height:1.8;
-}
+.notice strong{color:var(--oro)}
 
 .btn{
-display:inline-block;
-padding:14px 30px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+padding:14px 28px;
 border-radius:40px;
-font-weight:700;
+font-weight:800;
 text-decoration:none;
 cursor:pointer;
-transition:all .4s cubic-bezier(.16,1,.3,1);
-margin-top:18px;
+transition:all .35s cubic-bezier(.16,1,.3,1);
+margin:10px 10px 0 0;
 border:none;
+font-family:inherit;
+font-size:1rem;
 }
 
-.btn-primary{
-background:#d4af37;
-color:black;
-}
+.btn-primary{background:var(--oro);color:#101010}
+.btn-secondary{background:transparent;border:1px solid rgba(255,255,255,.46);color:white}
+.btn-soft{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);color:white}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
 
-.btn-secondary{
-background:transparent;
-border:1px solid rgba(255,255,255,.5);
-color:white;
-}
-
-.btn:hover{
-transform:translateY(-4px);
-box-shadow:0 12px 30px rgba(0,0,0,.5);
-}
-
-input,textarea{
+input,textarea,select{
 width:100%;
-padding:15px 20px;
-border-radius:22px;
-border:1px solid rgba(255,255,255,.25);
+padding:15px 18px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.24);
 background:rgba(255,255,255,.08);
 color:white;
-margin-top:12px;
+margin-top:10px;
 font-family:inherit;
+font-size:1rem;
 }
 
-input:focus,textarea:focus{
-outline:none;
-border-color:#d4af37;
-}
+select option{color:#111;background:white}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.48)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--oro);box-shadow:0 0 0 4px rgba(212,175,55,.12)}
+label{display:block;font-weight:800;margin:18px 0 6px}
 
-.tabs{
+.check{
 display:flex;
 gap:12px;
-margin-bottom:30px;
+align-items:flex-start;
+margin:20px 0;
+font-size:.95rem;
+color:rgba(255,255,255,.78);
+line-height:1.6;
 }
+.check input{width:auto;margin-top:5px}
 
-.tab{
-flex:1;
-padding:12px;
-border-radius:14px;
-cursor:pointer;
-font-weight:700;
-background:rgba(255,255,255,.08);
-text-align:center;
-transition:.3s;
-}
-
-.tab.active{
-background:#d4af37;
-color:black;
-}
-
-.panel{display:none}
-.panel.active{display:block}
-
-.code-result{
+.intent-result{
 display:none;
-margin-top:30px;
-padding:30px;
+margin-top:28px;
+padding:28px;
 border-radius:30px;
-background:linear-gradient(135deg,#1d2e7a,#0b1220);
-text-align:center;
+background:linear-gradient(135deg,rgba(29,46,122,.90),rgba(14,31,23,.92));
+border:1px solid rgba(212,175,55,.22);
 }
 
-.code-result strong{
-font-size:3rem;
-letter-spacing:.25em;
-color:#d4af37;
-display:block;
-margin:15px 0;
+.intent-result pre{
+white-space:pre-wrap;
+font-family:inherit;
+line-height:1.75;
+color:rgba(255,255,255,.9);
 }
+
+.candle-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+margin-top:20px;
+}
+
+.candle{
+text-align:left;
+border:1px solid rgba(255,255,255,.16);
+background:rgba(255,255,255,.075);
+border-radius:24px;
+padding:18px;
+color:white;
+cursor:pointer;
+transition:.3s;
+font-family:inherit;
+}
+.candle:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}
+.candle strong{display:block;color:var(--oro);margin-bottom:6px}
+.candle span{opacity:.76;font-size:.92rem;line-height:1.5}
 
 .back{
 position:fixed;
-top:30px;
-left:30px;
+top:28px;
+left:28px;
 color:white;
 text-decoration:none;
-opacity:.6;
+opacity:.68;
+z-index:20;
 }
 .back:hover{opacity:1}
 
-@media(max-width:768px){
-.card{padding:35px}
+.footer-actions{margin-top:28px}
+
+@media(max-width:860px){
+.grid{grid-template-columns:1fr}
+.candle-grid{grid-template-columns:1fr}
+.wrap{padding:76px 0 48px}
+.back{position:absolute;top:20px;left:20px}
 }
 </style>
 </head>
@@ -182,165 +225,179 @@ opacity:.6;
 
 <div class="wrap">
 
-<!-- ORACIÓN COMPLETA -->
 <div class="card">
 <h1>Gracias.</h1>
-
-<p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;line-height:2;opacity:.95">
+<p style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-style:italic;line-height:2;opacity:.96">
 Señor, esta persona acaba de hacer algo hermoso.<br>
 Quizás pequeño para el mundo.<br>
 Pero tú mides diferente.<br><br>
 
 Cuídala.<br>
-Bendice su casa, su familia, su Cuarto Día.<br>
-Que lo que dio con generosidad<br>
+Bendice su casa, su familia, su camino y su Cuarto Día.<br>
+Que lo que ha dado con generosidad<br>
 vuelva a ella multiplicado en paz.<br><br>
 
-<span class="gold">Amén. 🌈</span>
+<span class="gold">Amén.</span>
 </p>
+
+<div class="notice">
+<p><strong>Esta ofrenda es libre y externa.</strong><br>
+No desbloquea funciones, planes, insignias, badges ni contenido dentro de Peregrino APP. Las funciones y planes de la app, cuando estén disponibles, se gestionan únicamente desde Google Play.</p>
+</div>
 </div>
 
-<!-- GENERADOR -->
+<div class="grid">
+
 <div class="card">
+<h2>Unir una intención de oración</h2>
+<p>Si quieres, puedes preparar una intención para que sea llevada en la oración del camino: en la Guía del Peregrino, en la Reunión de Grupo o en la oración personal.</p>
+<p class="small">Cuida la privacidad: usa solo nombres de pila o iniciales, y evita datos íntimos o sensibles de otras personas.</p>
 
-<h2>Tu ofrenda tiene nombre</h2>
+<label for="tema">Tema de la intención</label>
+<select id="tema">
+  <option>Por una persona concreta</option>
+  <option>Por una familia</option>
+  <option>Por enfermedad, duelo o soledad</option>
+  <option>Por quienes buscan trabajo o paz</option>
+  <option>Por candidatos y nuevos cursillistas</option>
+  <option>Por una situación del mundo</option>
+  <option>Acción de gracias</option>
+</select>
 
-<div class="tabs">
-<div class="tab active" onclick="cambiarTab('yo')" id="tab-yo">Para mí</div>
-<div class="tab" onclick="cambiarTab('regalo')" id="tab-regalo">🎁 Como regalo</div>
+<label for="nombre">Nombre de pila o iniciales, opcional</label>
+<input id="nombre" type="text" maxlength="60" placeholder="Ej.: María, J., una familia..."/>
+
+<label for="intencion">Intención</label>
+<textarea id="intencion" rows="5" maxlength="520" placeholder="Ej.: Por una persona que está pasando un momento difícil..." ></textarea>
+
+<div class="check">
+<input id="confirmacion" type="checkbox"/>
+<span>Entiendo que esto es una intención de oración y no activa ningún beneficio dentro de la app.</span>
 </div>
 
-<!-- PANEL YO -->
-<div class="panel active" id="panel-yo">
+<button class="btn btn-primary" onclick="prepararIntencion()">Preparar mi intención</button>
+<button class="btn btn-secondary" onclick="limpiarFormulario()">Limpiar</button>
 
-<p>Introduce el email con el que hiciste la ofrenda en PayPal.</p>
+<div class="intent-result" id="resultado-intencion">
+<h3>Tu intención preparada</h3>
+<pre id="texto-intencion"></pre>
+<div class="footer-actions">
+<button class="btn btn-primary" onclick="copiarIntencion()">Copiar intención</button>
+<button class="btn btn-soft" onclick="compartirWhatsApp()">Compartir por WhatsApp</button>
+</div>
+<p class="small" style="margin-top:18px">Puedes enviarla por el medio por el que sigas el proyecto Peregrino o guardarla para tu oración personal.</p>
+</div>
+</div>
 
-<input type="email" id="email-input" placeholder="Tu email de PayPal"/>
+<div class="card">
+<h2>Encender una velita</h2>
+<p>Elige una preocupación y une una pequeña oración a esa intención. Es un gesto sencillo: no es una compra, no es un contador público y no cambia nada dentro de la app.</p>
 
-<button class="btn btn-primary" onclick="mostrarCodigo()">Obtener mi código</button>
+<div class="candle-grid">
+<button class="candle" onclick="velita('Por quienes sufren una enfermedad o duelo')"><strong>🕯️ Enfermedad y duelo</strong><span>Por quienes necesitan consuelo, compañía y esperanza.</span></button>
+<button class="candle" onclick="velita('Por familias que atraviesan dificultades')"><strong>🕯️ Familias</strong><span>Por hogares heridos, cansados o necesitados de paz.</span></button>
+<button class="candle" onclick="velita('Por los países y pueblos que sufren')"><strong>🕯️ El mundo</strong><span>Por guerras, desastres, migraciones y pueblos que lloran.</span></button>
+<button class="candle" onclick="velita('Por candidatos y nuevos cursillistas')"><strong>🕯️ Cursillos</strong><span>Por quienes están cerca de vivir un encuentro con Dios.</span></button>
+<button class="candle" onclick="velita('Por quienes buscan trabajo, sentido o dirección')"><strong>🕯️ Trabajo y camino</strong><span>Por quienes necesitan abrir una puerta y sostener la esperanza.</span></button>
+<button class="candle" onclick="velita('Acción de gracias por lo recibido')"><strong>🕯️ Gracias</strong><span>Por las bendiciones visibles y por las que todavía no vemos.</span></button>
+</div>
 
-<div id="resultado" class="code-result">
-<span>Tu código personal</span>
-<strong id="codigo-display"></strong>
-<button class="btn btn-secondary" onclick="copiarCodigo()">Copiar código</button>
-<p style="margin-top:15px;opacity:.7">
-Actívalo en la app:<br>
-Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?
-</p>
+<div class="intent-result" id="resultado-velita">
+<h3>Velita encendida</h3>
+<pre id="texto-velita"></pre>
+<div class="footer-actions">
+<button class="btn btn-primary" onclick="copiarVelita()">Copiar oración</button>
+<button class="btn btn-soft" onclick="compartirVelitaWhatsApp()">Compartir por WhatsApp</button>
+</div>
+</div>
 </div>
 
 </div>
 
-<!-- PANEL REGALO -->
-<div class="panel" id="panel-regalo">
-
-<p>Regala el distintivo 🌈 De Colores a alguien especial.</p>
-
-<input type="text" id="regalo-nombre" placeholder="Su nombre (opcional)"/>
-<input type="email" id="regalo-email" placeholder="Su email de Google Play"/>
-<textarea id="regalo-mensaje" rows="3" placeholder="Tu mensaje personal (opcional)"></textarea>
-
-<button class="btn btn-primary" onclick="generarRegalo()">Generar tarjeta</button>
-
-<div id="tarjeta-regalo" class="code-result">
-<span>Su código</span>
-<strong id="tarjeta-codigo"></strong>
-
-<div style="margin-top:15px;">
-<button class="btn btn-secondary" onclick="copiarCodigoRegalo()">Copiar código</button>
-<button class="btn btn-primary" onclick="compartirRegalo()">📲 Compartir por WhatsApp</button>
-</div>
-
-</div>
-
-</div>
-
+<div class="card">
+<h2>Caminar juntos</h2>
+<p>Tu ofrenda ayuda a sostener el proyecto. Tu intención ayuda a recordar por qué existe: para que la tecnología sirva a la oración, a la comunidad y al Cuarto Día.</p>
+<p class="small">Si alguna vez se ofrece una misa o una oración comunitaria por las intenciones recibidas, se hará de forma general y respetuosa, sin publicar datos personales.</p>
+<a href="index.html" class="btn btn-secondary">Volver a Peregrino APP</a>
+<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn btn-primary">Ir a Google Play</a>
 </div>
 
 </div>
 
 <script>
-const SALT='peregrino2026';
-const ALFABETO='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+let ultimoTexto='';
+let ultimaVelita='';
 
-function generarCodigoColaborador(email){
-const input=email.toLowerCase().trim()+SALT;
-const mod=1000000007;
-let hash=0;
-for(let i=0;i<input.length;i++){
-hash=(hash*31+input.charCodeAt(i))%mod;
-}
-let code='';
-for(let i=0;i<5;i++){
-code+=ALFABETO[hash%ALFABETO.length];
-hash=Math.floor(hash/ALFABETO.length);
-}
-return code;
+function fechaBonita(){
+  return new Date().toLocaleDateString('es-ES',{day:'2-digit',month:'long',year:'numeric'});
 }
 
-function cambiarTab(tab){
-document.getElementById('tab-yo').classList.remove('active');
-document.getElementById('tab-regalo').classList.remove('active');
-document.getElementById('panel-yo').classList.remove('active');
-document.getElementById('panel-regalo').classList.remove('active');
+function prepararIntencion(){
+  const tema=document.getElementById('tema').value;
+  const nombre=document.getElementById('nombre').value.trim();
+  const intencion=document.getElementById('intencion').value.trim();
+  const ok=document.getElementById('confirmacion').checked;
 
-document.getElementById('tab-'+tab).classList.add('active');
-document.getElementById('panel-'+tab).classList.add('active');
+  if(!intencion){
+    alert('Escribe una intención antes de prepararla.');
+    return;
+  }
+  if(!ok){
+    alert('Confirma que entiendes que esto no activa beneficios dentro de la app.');
+    return;
+  }
+
+  ultimoTexto =
+`Peregrino APP · Intención de oración\n`+
+`Fecha: ${fechaBonita()}\n`+
+`Tema: ${tema}\n`+
+(nombre ? `Nombre: ${nombre}\n` : '')+
+`\nIntención:\n${intencion}\n\n`+
+`La uno a la oración del camino. Que el Señor bendiga esta intención y a quienes la llevan en el corazón.\n\n`+
+`Nota: esta intención no activa funciones, planes ni badges dentro de Peregrino APP.`;
+
+  document.getElementById('texto-intencion').textContent=ultimoTexto;
+  document.getElementById('resultado-intencion').style.display='block';
 }
 
-function mostrarCodigo(){
-const email=document.getElementById('email-input').value;
-if(!email)return;
-const codigo=generarCodigoColaborador(email);
-document.getElementById('codigo-display').textContent=codigo;
-document.getElementById('resultado').style.display='block';
+function copiarIntencion(){
+  if(!ultimoTexto)return;
+  navigator.clipboard.writeText(ultimoTexto).then(()=>alert('Intención copiada.'));
 }
 
-function generarRegalo(){
-const email=document.getElementById('regalo-email').value;
-if(!email)return;
-const codigo=generarCodigoColaborador(email);
-document.getElementById('tarjeta-codigo').textContent=codigo;
-document.getElementById('tarjeta-regalo').style.display='block';
+function compartirWhatsApp(){
+  if(!ultimoTexto)return;
+  window.open('https://wa.me/?text='+encodeURIComponent(ultimoTexto),'_blank');
 }
 
-function copiarCodigo(){
-navigator.clipboard.writeText(document.getElementById('codigo-display').textContent);
+function limpiarFormulario(){
+  document.getElementById('nombre').value='';
+  document.getElementById('intencion').value='';
+  document.getElementById('confirmacion').checked=false;
+  document.getElementById('resultado-intencion').style.display='none';
+  ultimoTexto='';
 }
 
-function copiarCodigoRegalo(){
-navigator.clipboard.writeText(document.getElementById('tarjeta-codigo').textContent);
+function velita(tema){
+  ultimaVelita =
+`🕯️ Peregrino APP · Velita de oración\n`+
+`Fecha: ${fechaBonita()}\n`+
+`Intención: ${tema}\n\n`+
+`Señor, te presento esta intención. Acompaña a quienes sufren, fortalece a quienes cuidan y danos un corazón sensible para caminar juntos. Amén.\n\n`+
+`Esta velita es un gesto de oración y no activa beneficios dentro de la app.`;
+
+  document.getElementById('texto-velita').textContent=ultimaVelita;
+  document.getElementById('resultado-velita').style.display='block';
 }
 
-function compartirRegalo(){
-const nombre  = document.getElementById('regalo-nombre').value.trim();
-const email   = document.getElementById('regalo-email').value.trim();
-const mensaje = document.getElementById('regalo-mensaje').value.trim();
-const codigo  = document.getElementById('tarjeta-codigo').textContent;
+function copiarVelita(){
+  if(!ultimaVelita)return;
+  navigator.clipboard.writeText(ultimaVelita).then(()=>alert('Oración copiada.'));
+}
 
-if(!codigo) return;
-
-const para = nombre ? `Para ${nombre} — De Colores! 🌈` : 'De Colores! 🌈';
-const intro = mensaje ? `"${mensaje}"\n\n` : '';
-
-const texto =
-`Peregrino APP | Tu compañero del Cuarto Día 🌈\n` +
-`Trípode, oraciones y candidatos, siempre contigo.\n\n` +
-`${para}\n\n` +
-`${intro}` +
-`Te regalo el distintivo De Colores en Peregrino APP.\n\n` +
-`Tu código: *${codigo}*\n\n` +
-`Actívalo en la app:\n` +
-`Perfil → Sostén el Camino → ¿Ya hiciste una ofrenda?\n\n` +
-`---\n` +
-`Peregrino APP es gratuita. El distintivo se activa con una ofrenda libre — lo que cada uno sienta, sin precio fijo.\n` +
-`Si quieres regalarle uno a alguien, entra en:\n` +
-`https://madeprat.github.io/peregrino-app-web\n\n` +
-`Descarga Peregrino APP gratis:\n` +
-`https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc`;
-
-const url = 'https://wa.me/?text=' + encodeURIComponent(texto);
-window.open(url, '_blank');
+function compartirVelitaWhatsApp(){
+  if(!ultimaVelita)return;
+  window.open('https://wa.me/?text='+encodeURIComponent(ultimaVelita),'_blank');
 }
 </script>
 
