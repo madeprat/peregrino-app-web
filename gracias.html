@@ -1,405 +1,419 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Gracias | Ofrenda Peregrina</title>
-<meta name="description" content="Gracias por sostener Peregrino APP con una ofrenda libre. Comparte, si quieres, una intención de oración para unirla al camino."/>
-<meta name="theme-color" content="#0b1220"/>
-<meta property="og:title" content="Gracias por sostener Peregrino APP"/>
-<meta property="og:description" content="Una ofrenda libre, sin beneficios dentro de la app, unida a una intención de oración."/>
-<meta property="og:type" content="website"/>
-<meta property="og:image" content="preview-image.jpg"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  --fondo:#0b1220;
-  --oro:#d4af37;
-  --oro-suave:rgba(212,175,55,.16);
-  --blanco:#fff;
-  --texto-suave:rgba(255,255,255,.82);
-  --linea:rgba(255,255,255,.18);
-  --verde:#163f2e;
-}
-
-body{
-font-family:"Nunito Sans",sans-serif;
-color:white;
-min-height:100vh;
-overflow-x:hidden;
-background:var(--fondo);
-}
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-linear-gradient(rgba(6,10,18,.76),rgba(6,10,18,.94)),
-url("hero-peregrino.jpg") center/cover no-repeat;
-z-index:-2;
-}
-
-body::after{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at 18% 12%, rgba(212,175,55,.18), transparent 30rem),
-radial-gradient(circle at 88% 18%, rgba(70,120,255,.12), transparent 32rem);
-z-index:-1;
-pointer-events:none;
-}
-
-.wrap{
-width:min(1120px,92%);
-margin:auto;
-padding:90px 0;
-}
-
-h1,h2,h3{
-font-family:"Cormorant Garamond",serif;
-letter-spacing:-1px;
-line-height:1.02;
-}
-
-h1{font-size:clamp(3.2rem,7vw,6.2rem);margin-bottom:24px}
-h2{font-size:clamp(2rem,4.4vw,3.4rem);margin-bottom:20px}
-h3{font-size:1.7rem;margin-bottom:14px}
-
-p{opacity:.9;margin-bottom:22px;line-height:1.8;font-size:1.05rem}
-.small{font-size:.94rem;opacity:.72}
-.gold{color:var(--oro)}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:34px;
-align-items:start;
-}
-
-.card{
-background:rgba(255,255,255,.065);
-backdrop-filter:blur(22px);
-border:1px solid rgba(255,255,255,.12);
-border-radius:40px;
-padding:clamp(32px,5vw,56px);
-box-shadow:0 30px 80px rgba(0,0,0,.55);
-margin-bottom:34px;
-animation:fadeUp 1.1s ease forwards;
-opacity:0;
-transform:translateY(26px);
-}
-
-.card:nth-child(2){animation-delay:.08s}
-.card:nth-child(3){animation-delay:.16s}
-
-@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-
-.notice{
-background:rgba(212,175,55,.12);
-border:1px solid rgba(212,175,55,.32);
-border-radius:26px;
-padding:22px;
-margin:26px 0;
-}
-
-.notice strong{color:var(--oro)}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-padding:14px 28px;
-border-radius:40px;
-font-weight:800;
-text-decoration:none;
-cursor:pointer;
-transition:all .35s cubic-bezier(.16,1,.3,1);
-margin:10px 10px 0 0;
-border:none;
-font-family:inherit;
-font-size:1rem;
-}
-
-.btn-primary{background:var(--oro);color:#101010}
-.btn-secondary{background:transparent;border:1px solid rgba(255,255,255,.46);color:white}
-.btn-soft{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);color:white}
-.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
-
-input,textarea,select{
-width:100%;
-padding:15px 18px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,.24);
-background:rgba(255,255,255,.08);
-color:white;
-margin-top:10px;
-font-family:inherit;
-font-size:1rem;
-}
-
-select option{color:#111;background:white}
-input::placeholder,textarea::placeholder{color:rgba(255,255,255,.48)}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--oro);box-shadow:0 0 0 4px rgba(212,175,55,.12)}
-label{display:block;font-weight:800;margin:18px 0 6px}
-
-.check{
-display:flex;
-gap:12px;
-align-items:flex-start;
-margin:20px 0;
-font-size:.95rem;
-color:rgba(255,255,255,.78);
-line-height:1.6;
-}
-.check input{width:auto;margin-top:5px}
-
-.intent-result{
-display:none;
-margin-top:28px;
-padding:28px;
-border-radius:30px;
-background:linear-gradient(135deg,rgba(29,46,122,.90),rgba(14,31,23,.92));
-border:1px solid rgba(212,175,55,.22);
-}
-
-.intent-result pre{
-white-space:pre-wrap;
-font-family:inherit;
-line-height:1.75;
-color:rgba(255,255,255,.9);
-}
-
-.candle-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-margin-top:20px;
-}
-
-.candle{
-text-align:left;
-border:1px solid rgba(255,255,255,.16);
-background:rgba(255,255,255,.075);
-border-radius:24px;
-padding:18px;
-color:white;
-cursor:pointer;
-transition:.3s;
-font-family:inherit;
-}
-.candle:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}
-.candle strong{display:block;color:var(--oro);margin-bottom:6px}
-.candle span{opacity:.76;font-size:.92rem;line-height:1.5}
-
-.back{
-position:fixed;
-top:28px;
-left:28px;
-color:white;
-text-decoration:none;
-opacity:.68;
-z-index:20;
-}
-.back:hover{opacity:1}
-
-.footer-actions{margin-top:28px}
-
-@media(max-width:860px){
-.grid{grid-template-columns:1fr}
-.candle-grid{grid-template-columns:1fr}
-.wrap{padding:76px 0 48px}
-.back{position:absolute;top:20px;left:20px}
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rincón de la Luz | Peregrino APP</title>
+  <meta name="description" content="Un espacio de gratitud para quienes sostienen Peregrino APP: velitas, oraciones personalizadas, muro de bienhechores y oración mensual." />
+  <meta name="theme-color" content="#101827" />
+  <meta property="og:title" content="Rincón de la Luz · Peregrino APP" />
+  <meta property="og:description" content="Tu ofrenda sostiene el camino. Tu oración enciende una luz." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="preview-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#05070c;
+      --ink:#f9f5e8;
+      --muted:rgba(249,245,232,.72);
+      --soft:rgba(249,245,232,.56);
+      --card:rgba(255,255,255,.075);
+      --card2:rgba(255,255,255,.11);
+      --line:rgba(255,255,255,.15);
+      --gold:#d4af37;
+      --gold2:#f1d487;
+      --green:#225c45;
+      --blue:#1d2e7a;
+      --rose:#b44d65;
+      --shadow:0 28px 90px rgba(0,0,0,.42);
+      --radius:32px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:"Nunito Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(212,175,55,.20), transparent 32rem),
+        radial-gradient(circle at 88% 16%, rgba(56,103,76,.22), transparent 34rem),
+        radial-gradient(circle at 50% 88%, rgba(29,46,122,.25), transparent 30rem),
+        linear-gradient(180deg,var(--bg) 0%, #09101e 45%, var(--bg2) 100%);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      opacity:.9;
+      z-index:0;
+    }
+    a{color:inherit}
+    .wrap{width:min(var(--max),calc(100% - 36px));margin-inline:auto;position:relative;z-index:1}
+    header{
+      position:sticky;top:0;z-index:30;
+      background:rgba(5,7,12,.72);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(18px);
+    }
+    .nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:900;color:var(--ink)}
+    .brand-mark{width:42px;height:42px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#15110a;box-shadow:0 14px 30px rgba(212,175,55,.18)}
+    .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .nav-actions a{font-weight:800;text-decoration:none;color:var(--muted);font-size:.92rem}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:52px;padding:14px 22px;border-radius:999px;border:0;
+      background:var(--gold);color:#17110a;text-decoration:none;font-weight:900;cursor:pointer;
+      box-shadow:0 18px 42px rgba(212,175,55,.22);
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+      font-family:inherit;font-size:1rem;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 24px 52px rgba(212,175,55,.28)}
+    .btn.secondary{background:rgba(255,255,255,.08);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+    .btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line);box-shadow:none}
+    .btn.whatsapp{background:#1f8f57;color:#fff;box-shadow:0 18px 42px rgba(31,143,87,.18)}
+    .btn.small{min-height:42px;padding:10px 16px;font-size:.92rem}
+    .hero{padding:74px 0 48px}
+    .hero-grid{display:grid;grid-template-columns:1fr .88fr;gap:34px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid rgba(212,175,55,.28);border-radius:999px;color:var(--gold2);background:rgba(212,175,55,.08);font-size:.82rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;margin:0;color:var(--ink);line-height:.98;letter-spacing:-.03em}
+    h1{font-size:clamp(3.2rem,7vw,6.7rem);margin:24px 0 18px}
+    h2{font-size:clamp(2.25rem,4.5vw,4.1rem);margin:0 0 14px}
+    h3{font-size:1.55rem;line-height:1.12;margin-bottom:10px}
+    p{margin:0 0 18px;color:var(--muted);font-size:1.08rem}
+    .lead{font-size:clamp(1.12rem,2vw,1.35rem);max-width:720px;color:rgba(249,245,232,.82)}
+    .hero-card,.panel,.result-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.105),rgba(255,255,255,.065));
+      border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(20px);
+    }
+    .hero-card{padding:30px;position:relative;overflow:hidden}
+    .hero-card::before{content:"";position:absolute;inset:-90px -80px auto auto;width:240px;height:240px;border-radius:50%;background:rgba(212,175,55,.16)}
+    .hero-card > *{position:relative;z-index:1}
+    .quote{font-family:"Cormorant Garamond",Georgia,serif;font-size:2.05rem;line-height:1.05;color:var(--ink);margin-bottom:18px}
+    .door{margin-top:28px;display:grid;gap:12px}
+    label{display:block;color:var(--ink);font-weight:900;margin-bottom:7px}
+    input,select,textarea{
+      width:100%;min-height:56px;border-radius:18px;border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.09);color:var(--ink);font:inherit;outline:none;padding:0 16px;
+    }
+    input::placeholder{color:rgba(249,245,232,.45)}
+    input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,175,55,.10)}
+    .hint{font-size:.91rem;color:var(--soft);margin-top:6px}
+    .unlock-note{display:none;border-radius:22px;padding:16px;background:rgba(31,143,87,.14);border:1px solid rgba(31,143,87,.25);color:#c6f5d7;font-weight:800}
+    .section{padding:34px 0}
+    .section-head{text-align:center;max-width:820px;margin:0 auto 28px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .panel{padding:clamp(22px,3vw,34px);position:relative;overflow:hidden}
+    .panel::after{content:"";position:absolute;inset:auto -80px -100px auto;width:220px;height:220px;border-radius:50%;background:rgba(212,175,55,.08);pointer-events:none}
+    .panel > *{position:relative;z-index:1}
+    .panel.locked{filter:saturate(.65);opacity:.62}
+    .panel.locked .locked-cover{display:grid}
+    .locked-cover{display:none;position:absolute;inset:0;z-index:4;background:rgba(5,7,12,.60);backdrop-filter:blur(6px);place-items:center;text-align:center;padding:24px}
+    .locked-cover span{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:10px 14px;background:rgba(255,255,255,.08);font-weight:900;color:var(--ink)}
+    .options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 18px}
+    .chip{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.075);padding:14px;text-align:left;color:var(--ink);font-weight:900;cursor:pointer;font-family:inherit;transition:transform .14s ease,border .14s ease,background .14s ease}
+    .chip small{display:block;color:var(--soft);font-weight:700;margin-top:4px;line-height:1.35}
+    .chip:hover,.chip.active{transform:translateY(-2px);border-color:rgba(212,175,55,.58);background:rgba(212,175,55,.11)}
+    .result-card{display:none;margin-top:18px;padding:22px;text-align:left;background:linear-gradient(145deg,rgba(212,175,55,.14),rgba(255,255,255,.07))}
+    .result-card.visible{display:block;animation:pop .32s ease both}
+    @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .generated-title{font-weight:900;color:var(--gold2);letter-spacing:.05em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px}
+    .generated-text{white-space:pre-line;color:rgba(249,245,232,.9);font-size:1.05rem;margin-bottom:18px}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .wall{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+    .wall-name{min-height:56px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-weight:900;color:rgba(249,245,232,.86)}
+    .wall-name.me{border-color:rgba(212,175,55,.70);background:rgba(212,175,55,.14);color:var(--gold2)}
+    .monthly-card{border-radius:26px;padding:24px;background:linear-gradient(135deg,rgba(29,46,122,.34),rgba(34,92,69,.24));border:1px solid rgba(255,255,255,.13);margin:16px 0}
+    .light-visual{display:flex;align-items:center;gap:12px;margin:12px 0 18px}
+    .flame{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(212,175,55,.14);font-size:2rem;box-shadow:0 0 30px rgba(212,175,55,.20)}
+    .micro{color:var(--soft);font-size:.92rem;margin:10px 0 0}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;background:#101827;color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:999px;padding:12px 18px;z-index:80;font-weight:900;transition:.22s ease}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    footer{padding:42px 0 64px;text-align:center;color:var(--soft);font-size:.92rem}
+    .footer-line{width:min(760px,100%);height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0 auto 22px}
+    @media(max-width:860px){.hero-grid,.grid{grid-template-columns:1fr}.hero{padding-top:50px}.options{grid-template-columns:1fr}.wall{grid-template-columns:repeat(2,1fr)}.nav{height:auto;padding:14px 0}.nav-actions{display:none}}
+    @media(max-width:520px){.wrap{width:min(100% - 24px,var(--max))}.hero-card,.panel{border-radius:24px}.wall{grid-template-columns:1fr}.actions .btn{width:100%}}
+  </style>
 </head>
 <body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Volver a Peregrino APP"><span class="brand-mark">✦</span><span>Peregrino APP</span></a>
+      <div class="nav-actions">
+        <a href="index.html">Inicio</a>
+        <a href="#velita">Velita</a>
+        <a href="#regalar">Regalar oración</a>
+        <a href="#muro">Muro</a>
+      </div>
+    </div>
+  </header>
 
-<a href="index.html" class="back">← Volver</a>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Rincón de la Luz</span>
+          <h1>Gracias por sostener este camino.</h1>
+          <p class="lead">Este pequeño espacio es nuestro gesto de gratitud para quienes ayudan a mantener viva Peregrino APP. Aquí puedes encender una velita, regalar una oración, dejar tu alias en el muro y unirte a la oración mensual por los bienhechores.</p>
+        </div>
+        <div class="hero-card" id="entrada">
+          <div class="quote">Tu ofrenda sostiene el camino.<br>Tu oración enciende una luz.</div>
+          <p>Introduce el correo con el que hiciste tu ofrenda para entrar al Rincón de la Luz.</p>
+          <div class="door">
+            <div>
+              <label for="emailDonante">Correo de la ofrenda</label>
+              <input id="emailDonante" type="email" autocomplete="email" placeholder="tu@email.com" />
+              <div class="hint">Puerta de cortesía. No se publica tu correo ni se muestra en las tarjetas.</div>
+            </div>
+            <button class="btn" id="entrarBtn">Entrar al Rincón de la Luz</button>
+            <div class="unlock-note" id="unlockNote">Rincón abierto. Gracias por caminar con nosotros.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="wrap">
+    <section class="section" id="velita">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">1 · Encender una velita</span>
+          <h2>Una pequeña luz por una gran intención.</h2>
+          <p>Elige una causa. Peregrino prepara una oración breve y compartible para que tu gesto pueda iluminar también a otros.</p>
+        </div>
+        <div class="panel locked" data-locked>
+          <div class="locked-cover"><span>✦ Entra con tu correo para encender una velita</span></div>
+          <h3>¿Por qué quieres encender una luz?</h3>
+          <div class="options" id="topicOptions"></div>
+          <div class="result-card" id="velitaResult">
+            <div class="generated-title">Velita encendida</div>
+            <div class="light-visual"><div class="flame">🕯️</div><p id="velitaTitle" style="margin:0"></p></div>
+            <div class="generated-text" id="velitaText"></div>
+            <div class="actions">
+              <button class="btn small" data-copy="velitaText">Copiar oración</button>
+              <a class="btn small whatsapp" id="velitaWhats" target="_blank" rel="noopener">Compartir por WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h1>Gracias.</h1>
-<p style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-style:italic;line-height:2;opacity:.96">
-Señor, esta persona acaba de hacer algo hermoso.<br>
-Quizás pequeño para el mundo.<br>
-Pero tú mides diferente.<br><br>
+    <section class="section" id="regalar">
+      <div class="wrap grid">
+        <div class="panel locked" data-locked>
+          <div class="locked-cover"><span>✦ Entra con tu correo para regalar una oración</span></div>
+          <span class="eyebrow">2 · Regalar una oración</span>
+          <h2>Un nombre basta.</h2>
+          <p>No hace falta escribir un mensaje. Tú pones el nombre o alias; Peregrino prepara una bendición hermosa y una página lista para enviar.</p>
+          <label for="nombreRegalo">Nombre o alias de la persona</label>
+          <input id="nombreRegalo" maxlength="34" placeholder="Ana, mamá, una amiga..." />
+          <div class="hint">Evita apellidos o datos íntimos. La tarjeta se genera con el nombre que escribas.</div>
+          <h3 style="margin-top:20px">Elige el tono</h3>
+          <div class="options" id="toneOptions"></div>
+          <button class="btn" id="crearTarjeta">Crear tarjeta para enviar</button>
+          <div class="result-card" id="tarjetaResult">
+            <div class="generated-title">Tarjeta lista</div>
+            <div class="generated-text" id="tarjetaPreview"></div>
+            <div class="actions">
+              <a class="btn small" id="verTarjeta" target="_blank" rel="noopener">Ver tarjeta</a>
+              <button class="btn small secondary" data-copy="tarjetaLinkText">Copiar enlace</button>
+              <a class="btn small whatsapp" id="tarjetaWhats" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+            </div>
+            <p class="micro" id="tarjetaLinkText"></p>
+          </div>
+        </div>
 
-Cuídala.<br>
-Bendice su casa, su familia, su camino y su Cuarto Día.<br>
-Que lo que ha dado con generosidad<br>
-vuelva a ella multiplicado en paz.<br><br>
+        <div class="panel locked" id="muro" data-locked>
+          <div class="locked-cover"><span>✦ Entra con tu correo para dejar tu alias</span></div>
+          <span class="eyebrow">3 · Muro de bienhechores</span>
+          <h2>Gracias a quienes sostienen este camino.</h2>
+          <p>Puedes aparecer con un alias sencillo, o permanecer anónimo. No hay importes, rankings ni comparaciones: solo gratitud.</p>
+          <label for="aliasMuro">Tu alias</label>
+          <input id="aliasMuro" maxlength="36" placeholder="Una familia de Valencia, M.C., peregrino en camino..." />
+          <div class="actions" style="margin-top:12px">
+            <button class="btn small" id="guardarAlias">Añadir mi alias</button>
+            <button class="btn small ghost" id="aliasAnonimo">Prefiero anónimo</button>
+          </div>
+          <div class="wall" id="wallNames"></div>
+          <p class="micro">En esta versión estática el alias se muestra en tu navegador. Cuando quieras hacerlo comunitario real, lo conectamos a una base de datos con consentimiento.</p>
+        </div>
+      </div>
+    </section>
 
-<span class="gold">Amén.</span>
-</p>
+    <section class="section" id="oracion-mensual">
+      <div class="wrap">
+        <div class="panel locked" data-locked>
+          <div class="locked-cover"><span>✦ Entra con tu correo para unirte a la oración mensual</span></div>
+          <span class="eyebrow">4 · Oración mensual</span>
+          <h2>Por los bienhechores de este mes.</h2>
+          <p>Cada mes encomendamos en oración a quienes sostienen Peregrino APP, a sus familias y a las intenciones que llevan en el corazón.</p>
+          <div class="monthly-card">
+            <div class="generated-title" id="monthLabel">Oración del mes</div>
+            <div class="generated-text" id="monthlyText"></div>
+          </div>
+          <div class="actions">
+            <button class="btn" id="unirmeMes">Unirme a esta oración</button>
+            <button class="btn secondary" data-copy="monthlyText">Copiar oración</button>
+            <a class="btn whatsapp" id="monthlyWhats" target="_blank" rel="noopener">Compartir por WhatsApp</a>
+          </div>
+          <p class="micro">Dios conoce los nombres, las historias y las cargas que cada persona trae consigo.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<div class="notice">
-<p><strong>Esta ofrenda es libre y externa.</strong><br>
-No desbloquea funciones, planes, insignias, badges ni contenido dentro de Peregrino APP. Las funciones y planes de la app, cuando estén disponibles, se gestionan únicamente desde Google Play.</p>
-</div>
-</div>
+  <footer>
+    <div class="wrap">
+      <div class="footer-line"></div>
+      <p>Este espacio pertenece a la web de Peregrino APP. Las funciones de la app se gestionan por separado desde Google Play.</p>
+      <p><a href="index.html">Volver a Peregrino APP</a></p>
+    </div>
+  </footer>
 
-<div class="grid">
-
-<div class="card">
-<h2>Unir una intención de oración</h2>
-<p>Si quieres, puedes preparar una intención para que sea llevada en la oración del camino: en la Guía del Peregrino, en la Reunión de Grupo o en la oración personal.</p>
-<p class="small">Cuida la privacidad: usa solo nombres de pila o iniciales, y evita datos íntimos o sensibles de otras personas.</p>
-
-<label for="tema">Tema de la intención</label>
-<select id="tema">
-  <option>Por una persona concreta</option>
-  <option>Por una familia</option>
-  <option>Por enfermedad, duelo o soledad</option>
-  <option>Por quienes buscan trabajo o paz</option>
-  <option>Por candidatos y nuevos cursillistas</option>
-  <option>Por una situación del mundo</option>
-  <option>Acción de gracias</option>
-</select>
-
-<label for="nombre">Nombre de pila o iniciales, opcional</label>
-<input id="nombre" type="text" maxlength="60" placeholder="Ej.: María, J., una familia..."/>
-
-<label for="intencion">Intención</label>
-<textarea id="intencion" rows="5" maxlength="520" placeholder="Ej.: Por una persona que está pasando un momento difícil..." ></textarea>
-
-<div class="check">
-<input id="confirmacion" type="checkbox"/>
-<span>Entiendo que esto es una intención de oración y no activa ningún beneficio dentro de la app.</span>
-</div>
-
-<button class="btn btn-primary" onclick="prepararIntencion()">Preparar mi intención</button>
-<button class="btn btn-secondary" onclick="limpiarFormulario()">Limpiar</button>
-
-<div class="intent-result" id="resultado-intencion">
-<h3>Tu intención preparada</h3>
-<pre id="texto-intencion"></pre>
-<div class="footer-actions">
-<button class="btn btn-primary" onclick="copiarIntencion()">Copiar intención</button>
-<button class="btn btn-soft" onclick="compartirWhatsApp()">Compartir por WhatsApp</button>
-</div>
-<p class="small" style="margin-top:18px">Puedes enviarla por el medio por el que sigas el proyecto Peregrino o guardarla para tu oración personal.</p>
-</div>
-</div>
-
-<div class="card">
-<h2>Encender una velita</h2>
-<p>Elige una preocupación y une una pequeña oración a esa intención. Es un gesto sencillo: no es una compra, no es un contador público y no cambia nada dentro de la app.</p>
-
-<div class="candle-grid">
-<button class="candle" onclick="velita('Por quienes sufren una enfermedad o duelo')"><strong>🕯️ Enfermedad y duelo</strong><span>Por quienes necesitan consuelo, compañía y esperanza.</span></button>
-<button class="candle" onclick="velita('Por familias que atraviesan dificultades')"><strong>🕯️ Familias</strong><span>Por hogares heridos, cansados o necesitados de paz.</span></button>
-<button class="candle" onclick="velita('Por los países y pueblos que sufren')"><strong>🕯️ El mundo</strong><span>Por guerras, desastres, migraciones y pueblos que lloran.</span></button>
-<button class="candle" onclick="velita('Por candidatos y nuevos cursillistas')"><strong>🕯️ Cursillos</strong><span>Por quienes están cerca de vivir un encuentro con Dios.</span></button>
-<button class="candle" onclick="velita('Por quienes buscan trabajo, sentido o dirección')"><strong>🕯️ Trabajo y camino</strong><span>Por quienes necesitan abrir una puerta y sostener la esperanza.</span></button>
-<button class="candle" onclick="velita('Acción de gracias por lo recibido')"><strong>🕯️ Gracias</strong><span>Por las bendiciones visibles y por las que todavía no vemos.</span></button>
-</div>
-
-<div class="intent-result" id="resultado-velita">
-<h3>Velita encendida</h3>
-<pre id="texto-velita"></pre>
-<div class="footer-actions">
-<button class="btn btn-primary" onclick="copiarVelita()">Copiar oración</button>
-<button class="btn btn-soft" onclick="compartirVelitaWhatsApp()">Compartir por WhatsApp</button>
-</div>
-</div>
-</div>
-
-</div>
-
-<div class="card">
-<h2>Caminar juntos</h2>
-<p>Tu ofrenda ayuda a sostener el proyecto. Tu intención ayuda a recordar por qué existe: para que la tecnología sirva a la oración, a la comunidad y al Cuarto Día.</p>
-<p class="small">Si alguna vez se ofrece una misa o una oración comunitaria por las intenciones recibidas, se hará de forma general y respetuosa, sin publicar datos personales.</p>
-<a href="index.html" class="btn btn-secondary">Volver a Peregrino APP</a>
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn btn-primary">Ir a Google Play</a>
-</div>
-
-</div>
+  <div class="toast" id="toast">Copiado</div>
 
 <script>
-let ultimoTexto='';
-let ultimaVelita='';
+(function(){
+  const STORAGE_EMAIL = 'peregrino_luz_email';
+  const STORAGE_ALIAS = 'peregrino_luz_alias';
+  const siteUrl = location.origin + location.pathname.replace(/gracias\.html.*$/, '');
+  const appUrl = siteUrl || './';
+  const topics = [
+    {key:'enfermos', title:'Por los enfermos', sub:'sanación, paciencia y compañía', text:'Hoy he encendido una velita por los enfermos.\n\nSeñor Jesús, acompaña a quienes sienten dolor, miedo o cansancio. Lleva consuelo a sus cuerpos, paz a sus familias y esperanza a quienes cuidan de ellos. Que ninguna persona se sienta sola en la noche. Amén.'},
+    {key:'familias', title:'Por las familias', sub:'unidad, perdón y ternura', text:'Hoy he encendido una velita por las familias.\n\nSeñor, bendice los hogares que necesitan diálogo, paciencia y paz. Sana las heridas pequeñas y grandes, guarda a quienes se aman y enséñanos a cuidar mejor a quienes tenemos cerca. Amén.'},
+    {key:'duelo', title:'Por quienes viven un duelo', sub:'consuelo en la ausencia', text:'Hoy he encendido una velita por quienes viven un duelo.\n\nSeñor de la Vida, abraza a quienes lloran una ausencia. Que tu luz entre despacio en su tristeza, que encuentren compañía en el camino y que la esperanza no se apague. Amén.'},
+    {key:'jovenes', title:'Por los jóvenes', sub:'sentido, amistad y esperanza', text:'Hoy he encendido una velita por los jóvenes.\n\nSeñor, acompaña sus decisiones, sus búsquedas y sus heridas. Pon en su camino amistades buenas, alegría limpia y una esperanza que no dependa del ruido del mundo. Amén.'},
+    {key:'trabajo', title:'Por quienes buscan trabajo', sub:'puertas abiertas y dignidad', text:'Hoy he encendido una velita por quienes buscan trabajo.\n\nSeñor, abre caminos donde parece no haber salida. Sostén la dignidad de quienes esperan una oportunidad y bendice el esfuerzo de cada familia que lucha por salir adelante. Amén.'},
+    {key:'cursillo', title:'Por los candidatos a Cursillo', sub:'corazones abiertos', text:'Hoy he encendido una velita por los candidatos a Cursillo.\n\nSeñor, prepara sus corazones con delicadeza. Que lleguen al encuentro que necesitan, que se sepan amados y que descubran una fe viva para caminar el Cuarto Día. Amén.'},
+    {key:'mundo', title:'Por una situación del mundo', sub:'paz, justicia y misericordia', text:'Hoy he encendido una velita por las situaciones que hieren al mundo.\n\nSeñor, mira a los pueblos que sufren violencia, desastres, pobreza o miedo. Despierta solidaridad, protege a los vulnerables y haznos sensibles al dolor ajeno. Amén.'},
+    {key:'gracias', title:'En acción de gracias', sub:'por lo recibido y lo vivido', text:'Hoy he encendido una velita en acción de gracias.\n\nSeñor, gracias por los dones visibles e invisibles, por las personas que sostienen el camino y por la luz que vuelve a aparecer incluso después de días difíciles. Amén.'}
+  ];
+  const tones = {
+    paz:{label:'Paz', sub:'para un corazón cansado'},
+    fortaleza:{label:'Fortaleza', sub:'para seguir adelante'},
+    esperanza:{label:'Esperanza', sub:'para mirar con luz'},
+    consuelo:{label:'Consuelo', sub:'para una etapa difícil'},
+    gratitud:{label:'Gratitud', sub:'para bendecir su vida'}
+  };
+  const wallBase = ['Una familia de Valencia','M.C.','Peregrino de Guatemala','Una madre agradecida','Por mi hijo','Un cursillista en camino','Anónimo','Una amiga que reza','Por los que empiezan','Sembrador de esperanza','Una familia en oración','Peregrino del Cuarto Día'];
+  let selectedTopic = null;
+  let selectedTone = 'paz';
 
-function fechaBonita(){
-  return new Date().toLocaleDateString('es-ES',{day:'2-digit',month:'long',year:'numeric'});
-}
-
-function prepararIntencion(){
-  const tema=document.getElementById('tema').value;
-  const nombre=document.getElementById('nombre').value.trim();
-  const intencion=document.getElementById('intencion').value.trim();
-  const ok=document.getElementById('confirmacion').checked;
-
-  if(!intencion){
-    alert('Escribe una intención antes de prepararla.');
-    return;
+  const $ = (id) => document.getElementById(id);
+  function sanitizeShort(value, fallback){
+    const clean = String(value || '').replace(/[<>"'`]/g,'').replace(/\s+/g,' ').trim();
+    return clean.slice(0, 40) || fallback;
   }
-  if(!ok){
-    alert('Confirma que entiendes que esto no activa beneficios dentro de la app.');
-    return;
+  function isEmail(value){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value||'').trim()); }
+  function showToast(msg){ const t=$('toast'); t.textContent=msg || 'Copiado'; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 1700); }
+  function copyText(text){
+    if(!text) return;
+    if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(text).then(()=>showToast('Copiado')); }
+    else{ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); showToast('Copiado'); }
+  }
+  function shareUrl(text){ return 'https://wa.me/?text=' + encodeURIComponent(text); }
+  function unlock(email){
+    if(email) localStorage.setItem(STORAGE_EMAIL, email);
+    document.querySelectorAll('[data-locked]').forEach(el=>el.classList.remove('locked'));
+    $('unlockNote').style.display='block';
+  }
+  function renderTopics(){
+    const box=$('topicOptions');
+    box.innerHTML='';
+    topics.forEach(t=>{
+      const b=document.createElement('button');
+      b.className='chip'; b.type='button'; b.dataset.key=t.key;
+      b.innerHTML=`${t.title}<small>${t.sub}</small>`;
+      b.addEventListener('click',()=>selectTopic(t.key));
+      box.appendChild(b);
+    });
+  }
+  function selectTopic(key){
+    selectedTopic = topics.find(t=>t.key===key) || topics[0];
+    document.querySelectorAll('#topicOptions .chip').forEach(c=>c.classList.toggle('active', c.dataset.key===key));
+    $('velitaTitle').textContent = selectedTopic.title;
+    $('velitaText').textContent = selectedTopic.text;
+    $('velitaWhats').href = shareUrl(selectedTopic.text + '\n\nMe he unido a esta oración desde Peregrino APP: ' + appUrl);
+    $('velitaResult').classList.add('visible');
+  }
+  function renderTones(){
+    const box=$('toneOptions'); box.innerHTML='';
+    Object.entries(tones).forEach(([key,t])=>{
+      const b=document.createElement('button'); b.className='chip'; b.type='button'; b.dataset.key=key;
+      b.innerHTML=`${t.label}<small>${t.sub}</small>`;
+      b.addEventListener('click',()=>{ selectedTone=key; renderToneActive(); });
+      box.appendChild(b);
+    });
+    renderToneActive();
+  }
+  function renderToneActive(){ document.querySelectorAll('#toneOptions .chip').forEach(c=>c.classList.toggle('active', c.dataset.key===selectedTone)); }
+  function createGift(){
+    const nombre = sanitizeShort($('nombreRegalo').value, 'alguien especial');
+    $('nombreRegalo').value = nombre;
+    const url = new URL('alguien-reza-por-ti.html', location.href);
+    url.searchParams.set('nombre', nombre);
+    url.searchParams.set('tono', selectedTone);
+    url.searchParams.set('origen', 'luz');
+    const link = url.href;
+    const text = `Hoy pensé en ti y quise dejarte una pequeña luz:\n${link}`;
+    $('tarjetaPreview').textContent = `${nombre},\n\nya tienes una tarjeta de oración preparada. No has tenido que escribir nada más: Peregrino ha convertido este gesto en una bendición lista para enviar.`;
+    $('verTarjeta').href = link;
+    $('tarjetaWhats').href = shareUrl(text);
+    $('tarjetaLinkText').textContent = link;
+    $('tarjetaResult').classList.add('visible');
+  }
+  function renderWall(){
+    const alias = localStorage.getItem(STORAGE_ALIAS);
+    const names = alias ? [alias, ...wallBase] : wallBase;
+    const box=$('wallNames'); box.innerHTML='';
+    names.slice(0,12).forEach((name,idx)=>{
+      const d=document.createElement('div'); d.className='wall-name' + (alias && idx===0 ? ' me':''); d.textContent=name; box.appendChild(d);
+    });
+  }
+  function saveAlias(value){
+    const alias = sanitizeShort(value, 'Anónimo');
+    localStorage.setItem(STORAGE_ALIAS, alias);
+    $('aliasMuro').value = alias;
+    renderWall();
+    showToast('Alias añadido al muro');
+  }
+  function currentMonthText(){
+    const now = new Date();
+    const month = new Intl.DateTimeFormat('es-ES',{month:'long', year:'numeric'}).format(now);
+    $('monthLabel').textContent = 'Oración de ' + month;
+    const txt = `Señor Jesús,\n\neste mes te encomendamos a quienes sostienen Peregrino APP, a sus familias y a las intenciones que llevan en silencio.\n\nBendice sus caminos, multiplica el bien que siembran y concédeles paz, fortaleza y esperanza para vivir cada día con amor.\n\nQue esta pequeña comunidad de oración sea luz para quienes necesitan sentirse acompañados.\n\nAmén.`;
+    $('monthlyText').textContent = txt;
+    $('monthlyWhats').href = shareUrl(txt + '\n\nMe uno a esta oración desde Peregrino APP: ' + appUrl);
   }
 
-  ultimoTexto =
-`Peregrino APP · Intención de oración\n`+
-`Fecha: ${fechaBonita()}\n`+
-`Tema: ${tema}\n`+
-(nombre ? `Nombre: ${nombre}\n` : '')+
-`\nIntención:\n${intencion}\n\n`+
-`La uno a la oración del camino. Que el Señor bendiga esta intención y a quienes la llevan en el corazón.\n\n`+
-`Nota: esta intención no activa funciones, planes ni badges dentro de Peregrino APP.`;
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-copy]');
+    if(!btn) return;
+    const id = btn.getAttribute('data-copy');
+    copyText($(id).textContent || '');
+  });
+  $('entrarBtn').addEventListener('click',()=>{
+    const email=$('emailDonante').value.trim();
+    if(!isEmail(email)){ showToast('Escribe un correo válido'); $('emailDonante').focus(); return; }
+    unlock(email);
+    location.hash = '#velita';
+  });
+  $('crearTarjeta').addEventListener('click', createGift);
+  $('guardarAlias').addEventListener('click',()=>saveAlias($('aliasMuro').value));
+  $('aliasAnonimo').addEventListener('click',()=>saveAlias('Anónimo'));
+  $('unirmeMes').addEventListener('click',()=>showToast('Gracias por unirte a la oración mensual'));
 
-  document.getElementById('texto-intencion').textContent=ultimoTexto;
-  document.getElementById('resultado-intencion').style.display='block';
-}
-
-function copiarIntencion(){
-  if(!ultimoTexto)return;
-  navigator.clipboard.writeText(ultimoTexto).then(()=>alert('Intención copiada.'));
-}
-
-function compartirWhatsApp(){
-  if(!ultimoTexto)return;
-  window.open('https://wa.me/?text='+encodeURIComponent(ultimoTexto),'_blank');
-}
-
-function limpiarFormulario(){
-  document.getElementById('nombre').value='';
-  document.getElementById('intencion').value='';
-  document.getElementById('confirmacion').checked=false;
-  document.getElementById('resultado-intencion').style.display='none';
-  ultimoTexto='';
-}
-
-function velita(tema){
-  ultimaVelita =
-`🕯️ Peregrino APP · Velita de oración\n`+
-`Fecha: ${fechaBonita()}\n`+
-`Intención: ${tema}\n\n`+
-`Señor, te presento esta intención. Acompaña a quienes sufren, fortalece a quienes cuidan y danos un corazón sensible para caminar juntos. Amén.\n\n`+
-`Esta velita es un gesto de oración y no activa beneficios dentro de la app.`;
-
-  document.getElementById('texto-velita').textContent=ultimaVelita;
-  document.getElementById('resultado-velita').style.display='block';
-}
-
-function copiarVelita(){
-  if(!ultimaVelita)return;
-  navigator.clipboard.writeText(ultimaVelita).then(()=>alert('Oración copiada.'));
-}
-
-function compartirVelitaWhatsApp(){
-  if(!ultimaVelita)return;
-  window.open('https://wa.me/?text='+encodeURIComponent(ultimaVelita),'_blank');
-}
+  renderTopics(); renderTones(); renderWall(); currentMonthText();
+  const savedEmail = localStorage.getItem(STORAGE_EMAIL);
+  if(savedEmail){ $('emailDonante').value=savedEmail; unlock(savedEmail); }
+})();
 </script>
-
 </body>
 </html>
