@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regalo de oración | Peregrino APP</title>
+  <meta name="description" content="Una oración personalizada, preparada con cariño desde el Rincón de la Luz de Peregrino APP." />
+  <meta name="theme-color" content="#102619" />
+  <meta name="robots" content="noindex, follow" />
+  <meta property="og:title" content="Una oración para ti" />
+  <meta property="og:description" content="Hoy alguien ha querido regalarte una oración." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="preview-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --forest:#102619;
+      --forest-2:#1E3A2F;
+      --leaf:#2d654c;
+      --cream:#FFF8E8;
+      --cream-2:#F2E7CA;
+      --paper:#fffdf6;
+      --gold:#C8941A;
+      --gold-2:#F0D077;
+      --rose:#B85C55;
+      --ink:#1b211b;
+      --muted:#6f6a5e;
+      --line:rgba(16,38,25,.14);
+      --line-gold:rgba(200,148,26,.32);
+      --shadow:0 36px 90px rgba(16,38,25,.24);
+      --font-display:"Cormorant Garamond", Georgia, serif;
+      --font-body:"Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font-family:var(--font-body);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(240,208,119,.22), transparent 28rem),
+        radial-gradient(circle at 88% 18%, rgba(45,101,76,.20), transparent 32rem),
+        linear-gradient(180deg,#fffaf0 0%,#f4ecd7 55%,#fff 100%);
+      line-height:1.62;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(120deg, rgba(16,38,25,.94), rgba(30,58,47,.72) 42%, rgba(255,248,232,.22)),
+        url('hero-peregrino.jpg') center/cover no-repeat;
+      z-index:-3;
+    }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(circle at 52% 30%, rgba(255,248,232,.42), transparent 18rem),
+        linear-gradient(180deg, rgba(255,248,232,.55) 0%, rgba(255,248,232,.92) 58%, rgba(255,255,255,.98) 100%);
+      z-index:-2;
+      pointer-events:none;
+    }
+    .grain{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      opacity:.06;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+      background-size:180px;
+    }
+    a{color:inherit}
+    .rainbow-bar{height:4px;background:linear-gradient(90deg,#e8524a,#e8873a,#d4b43a,#4caf72,#4a8fe8,#8b5cf6)}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(18px);
+      background:rgba(255,248,232,.76);
+      border-bottom:1px solid rgba(16,38,25,.10);
+    }
+    .nav{width:min(1120px,calc(100% - 34px));margin:0 auto;min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;color:var(--forest)}
+    .brand-mark{width:38px;height:38px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--forest),var(--leaf));color:var(--gold-2);box-shadow:0 12px 28px rgba(16,38,25,.18)}
+    .nav-link{text-decoration:none;font-weight:900;font-size:.92rem;color:rgba(27,33,27,.68)}
+    .nav-link:hover{color:var(--forest)}
+    .wrap{width:min(1120px,calc(100% - 34px));margin-inline:auto}
+    .hero{padding:clamp(42px,7vw,88px) 0 54px}
+    .grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);gap:clamp(24px,5vw,56px);align-items:center}
+    .intro{color:var(--cream)}
+    .kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,248,232,.22);border-radius:999px;background:rgba(255,248,232,.12);padding:9px 14px;font-weight:900;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(12px)}
+    .kicker::before{content:"✦";color:var(--gold-2)}
+    .intro h1{margin:22px 0 18px;font-family:var(--font-display);font-weight:700;font-size:clamp(3.5rem,8.5vw,7.3rem);line-height:.86;letter-spacing:-.055em;text-wrap:balance;text-shadow:0 18px 46px rgba(0,0,0,.18)}
+    .intro h1 em{font-style:italic;color:var(--gold-2);font-weight:600}
+    .intro p{max-width:540px;margin:0 0 26px;color:rgba(255,248,232,.78);font-size:clamp(1.08rem,2vw,1.28rem)}
+    .soft-note{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;max-width:570px;border:1px solid rgba(255,248,232,.18);border-radius:26px;background:rgba(16,38,25,.30);backdrop-filter:blur(14px);padding:18px;color:rgba(255,248,232,.80)}
+    .soft-note strong{width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:rgba(255,248,232,.13);color:var(--gold-2);font-size:1.35rem}
+    .soft-note span{display:block;font-weight:800;color:#fff8e8;margin-bottom:3px}
+    .prayer-card{
+      position:relative;
+      isolation:isolate;
+      border-radius:44px;
+      padding:clamp(14px,2vw,18px);
+      background:linear-gradient(135deg,rgba(255,248,232,.72),rgba(255,255,255,.32));
+      border:1px solid rgba(255,255,255,.48);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(20px);
+      overflow:hidden;
+    }
+    .prayer-card::before{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border-radius:35px;
+      border:1px solid rgba(200,148,26,.20);
+      pointer-events:none;
+      z-index:3;
+    }
+    .paper{
+      position:relative;
+      border-radius:34px;
+      padding:clamp(28px,5vw,56px);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(240,208,119,.18), transparent 16rem),
+        linear-gradient(180deg,rgba(255,253,246,.98),rgba(255,248,232,.96));
+      overflow:hidden;
+      min-height:620px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+    }
+    .paper::before,.paper::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+    .paper::before{width:320px;height:320px;background:rgba(200,148,26,.10);top:-160px;right:-120px}
+    .paper::after{width:260px;height:260px;background:rgba(30,58,47,.08);bottom:-130px;left:-100px}
+    .ornament{position:relative;z-index:1;width:min(180px,48%);height:28px;margin:0 auto 22px;opacity:.8;background:
+      linear-gradient(90deg,transparent,rgba(200,148,26,.55),transparent)}
+    .ornament::before,.ornament::after{content:"✦";position:absolute;top:50%;transform:translateY(-50%);color:var(--gold);font-size:.9rem;background:var(--paper);padding:0 10px}
+    .ornament::before{left:38px}.ornament::after{right:38px}
+    .seal{position:relative;z-index:1;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#fff4bf,#d8ac34 58%,#a6720b);box-shadow:0 18px 42px rgba(200,148,26,.25);color:#33210a;font-size:2rem;margin-bottom:18px}
+    .seal::after{content:"";position:absolute;inset:7px;border:1px solid rgba(51,33,10,.30);border-radius:50%}
+    .label{position:relative;z-index:1;color:var(--gold);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:900;margin-bottom:14px}
+    .card-title{position:relative;z-index:1;margin:0;font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5.8rem);line-height:.92;letter-spacing:-.045em;color:var(--forest);text-wrap:balance}
+    .card-title span{display:block;color:var(--gold);font-style:italic;font-weight:600;font-size:.82em;margin-top:4px}
+    .subtitle{position:relative;z-index:1;margin:18px auto 24px;color:var(--muted);font-size:1.08rem;max-width:580px}
+    .blessing{position:relative;z-index:1;width:100%;max-width:640px;margin:0 auto 26px;padding:clamp(22px,4vw,34px);border:1px solid rgba(200,148,26,.22);border-radius:28px;background:rgba(255,255,255,.56);box-shadow:inset 0 1px 0 rgba(255,255,255,.8);text-align:left;color:#2a2d24;font-family:var(--font-display);font-size:clamp(1.38rem,2.8vw,1.78rem);line-height:1.42;white-space:pre-line}
+    .amen{position:relative;z-index:1;font-family:var(--font-display);font-size:2rem;color:var(--gold);font-style:italic;margin-top:-4px}
+    .from{position:relative;z-index:1;margin-top:auto;color:var(--muted);font-weight:700}
+    .from strong{display:block;font-family:var(--font-display);font-size:1.9rem;color:var(--forest);font-weight:600;margin-top:4px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:14px 22px;border:0;border-radius:999px;background:var(--forest);color:#fff;text-decoration:none;font-family:var(--font-body);font-weight:900;cursor:pointer;box-shadow:0 14px 34px rgba(16,38,25,.18);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(16,38,25,.25)}
+    .btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#2b1e0a;box-shadow:0 14px 34px rgba(200,148,26,.24)}
+    .btn.whatsapp{background:#1f8f57;color:white}
+    .btn.ghost{background:rgba(255,255,255,.76);color:var(--forest);border:1px solid var(--line);box-shadow:none}
+    .below{padding:12px 0 80px}
+    .story{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+    .story-card{border:1px solid rgba(16,38,25,.10);border-radius:28px;background:rgba(255,255,255,.70);backdrop-filter:blur(12px);padding:24px;box-shadow:0 14px 40px rgba(16,38,25,.08)}
+    .story-card strong{display:block;color:var(--forest);font-family:var(--font-display);font-size:1.55rem;line-height:1.1;margin-bottom:8px}.story-card p{margin:0;color:var(--muted)}
+    .final-cta{margin-top:18px;border-radius:34px;background:linear-gradient(135deg,var(--forest),var(--leaf));color:var(--cream);padding:clamp(26px,5vw,42px);display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:var(--shadow)}
+    .final-cta h2{margin:0 0 6px;font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);line-height:1;color:var(--cream)}
+    .final-cta p{margin:0;color:rgba(255,248,232,.75);max-width:650px}.micro{margin:22px auto 0;text-align:center;color:rgba(27,33,27,.58);font-size:.92rem}.toast{position:fixed;left:50%;bottom:24px;z-index:50;transform:translateX(-50%) translateY(16px);opacity:0;background:var(--forest);color:#fff;border-radius:999px;padding:13px 18px;font-weight:900;box-shadow:0 18px 42px rgba(16,38,25,.32);transition:.22s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.intro{color:var(--forest)}.intro p{color:rgba(27,33,27,.72)}.kicker{background:rgba(255,255,255,.62);color:var(--forest);border-color:rgba(16,38,25,.12)}.soft-note{background:rgba(255,255,255,.62);border-color:rgba(16,38,25,.10);color:rgba(27,33,27,.70)}.soft-note span{color:var(--forest)}.story{grid-template-columns:1fr}.final-cta{display:block}.final-cta .actions{justify-content:flex-start}}
+    @media(max-width:560px){.nav{width:min(100% - 24px,1120px)}.brand span:last-child{display:none}.hero{padding-top:28px}.wrap{width:min(100% - 24px,1120px)}.intro h1{font-size:clamp(3.25rem,18vw,4.7rem)}.paper{min-height:0;padding:28px 20px;border-radius:28px}.prayer-card{border-radius:34px;padding:10px}.prayer-card::before{inset:8px;border-radius:28px}.card-title{font-size:clamp(2.8rem,15vw,4rem)}.blessing{text-align:center;font-size:1.32rem;padding:22px 18px}.actions .btn{width:100%}.final-cta .actions .btn{width:100%}.topbar{position:relative}}
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="rainbow-bar"></div>
+  <header class="topbar">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="brand" href="index.html"><span class="brand-mark">✦</span><span>Peregrino APP</span></a>
+      <a class="nav-link" href="index.html">Descubrir la app</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap grid">
+        <div class="intro">
+          <span class="kicker">Rincón de la Luz</span>
+          <h1 id="headline">Una oración ha sido preparada <em>para ti</em>.</h1>
+          <p id="introText">Una persona que te tiene presente quiso regalarte una oración sencilla, sin presión y sin pedirte nada a cambio.</p>
+          <div class="soft-note">
+            <strong>🕯️</strong>
+            <div><span>Lee con calma.</span> No tienes que responder ahora. A veces basta recibir una palabra buena en el momento justo.</div>
+          </div>
+        </div>
+
+        <article class="prayer-card" aria-label="Tarjeta de oración personalizada">
+          <div class="paper" id="cardToCopy">
+            <div class="ornament" aria-hidden="true"></div>
+            <div class="seal" aria-hidden="true">✝</div>
+            <div class="label">Una oración preparada para</div>
+            <h2 class="card-title" id="cardTitle">Alguien especial<span>una oración para ti</span></h2>
+            <p class="subtitle" id="subtitle">Hoy tu nombre fue pronunciado con cariño ante Dios.</p>
+            <div class="blessing" id="prayerText"></div>
+            <div class="amen">Amén.</div>
+            <div class="from">Con cariño,<strong>alguien que te quiere bien</strong></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="wrap">
+        <div class="actions" aria-label="Acciones para compartir la oración">
+          <button class="btn gold" id="copyPrayer">Copiar oración</button>
+          <a class="btn whatsapp" id="shareWhats" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+          <a class="btn ghost" href="index.html">Descubrir Peregrino APP</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="below">
+      <div class="wrap">
+        <div class="story">
+          <article class="story-card">
+            <strong>No es una presión.</strong>
+            <p>Es solo una forma delicada de decirte: alguien pensó en ti, quiso bendecirte y dejó preparada una pequeña señal de esperanza.</p>
+          </article>
+          <article class="story-card">
+            <strong>Una oración también acompaña.</strong>
+            <p>Hay días en los que una palabra buena no cambia todo, pero ayuda a respirar distinto.</p>
+          </article>
+          <article class="story-card">
+            <strong>Una luz puede seguir caminando.</strong>
+            <p>Si esta oración te hizo bien, puedes compartir Peregrino APP con alguien que también necesite una pequeña luz.</p>
+          </article>
+        </div>
+
+        <div class="final-cta">
+          <div>
+            <h2>Caminar, rezar, acompañar.</h2>
+            <p>Peregrino APP nace para ayudar a vivir el Cuarto Día con oración, constancia y comunidad.</p>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="index.html">Conocer Peregrino APP</a>
+          </div>
+        </div>
+        <p class="micro">El nombre que ves en esta página se lee únicamente desde el enlace recibido, en tu propio navegador.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">Copiado</div>
+
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  function clean(value, fallback){
+    return String(value || '')
+      .replace(/[<>"'`]/g,'')
+      .replace(/\s+/g,' ')
+      .trim()
+      .slice(0,42) || fallback;
+  }
+  const nombre = clean(params.get('nombre') || params.get('para') || params.get('n'), 'alguien especial');
+  const tono = clean(params.get('tono') || params.get('luz'), 'esperanza').toLowerCase();
+
+  const templates = {
+    paz: {
+      label: 'paz',
+      text: `Que el Señor ponga paz en tu corazón, serenidad en tus pensamientos y descanso en todo lo que hoy llevas por dentro.\n\nQue, en medio del ruido, puedas sentir una luz pequeña pero fiel acompañando tu camino.`
+    },
+    fortaleza: {
+      label: 'fortaleza',
+      text: `Que el Señor te sostenga en lo difícil, te regale paciencia para atravesar cada paso y te recuerde que ningún esfuerzo hecho con amor se pierde.\n\nQue Cristo camine contigo y fortalezca tu corazón.`
+    },
+    esperanza: {
+      label: 'esperanza',
+      text: `Que el Señor ilumine tu camino con esperanza. Que donde haya cansancio vuelva a nacer una pequeña alegría, y donde haya incertidumbre aparezca una señal de luz.\n\nNo caminas solo. Tu vida está en manos de Dios.`
+    },
+    consuelo: {
+      label: 'consuelo',
+      text: `Que el Señor te abrace con ternura en todo lo que hoy pesa. Que encuentres consuelo, compañía y una paz suave que no borra la historia, pero ayuda a respirar.\n\nQue la Virgen te cubra con su manto y te acompañe.`
+    },
+    gratitud: {
+      label: 'gratitud',
+      text: `Gracias, Señor, por su vida, por el bien que ha sembrado y por la luz que deja en quienes le quieren.\n\nBendice su camino, sus alegrías, sus luchas y todo lo que guarda en el corazón.`
+    }
+  };
+  const selected = templates[tono] || templates.esperanza;
+  const fullPrayer = `${nombre},\n\nalguien ha querido regalarte una oración.\n\n${selected.text}\n\nAmén.`;
+
+  document.title = `${nombre}, una oración para ti | Peregrino APP`;
+  document.getElementById('headline').innerHTML = `${nombre}, hay una oración preparada <em>para ti</em>.`;
+  document.getElementById('introText').textContent = 'Una persona que te tiene presente quiso regalarte una oración sencilla, sin presión y sin pedirte nada a cambio.';
+  document.getElementById('cardTitle').innerHTML = `${nombre}<span>una oración para ti</span>`;
+  document.getElementById('subtitle').textContent = `Hoy alguien quiso regalarte esta oración con ${selected.label}.`;
+  document.getElementById('prayerText').textContent = selected.text;
+
+  const shareMessage = `Hoy pensé en ti y quise dejarte una pequeña luz. La preparé para ti aquí: ${location.href}`;
+  document.getElementById('shareWhats').href = 'https://wa.me/?text=' + encodeURIComponent(shareMessage);
+
+  function showToast(message){
+    const toast = document.getElementById('toast');
+    toast.textContent = message || 'Copiado';
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),1700);
+  }
+  function copy(text){
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(()=>showToast('Oración copiada'));
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+      showToast('Oración copiada');
+    }
+  }
+  document.getElementById('copyPrayer').addEventListener('click',()=>copy(fullPrayer));
+})();
+</script>
+</body>
+</html>
