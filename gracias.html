@@ -357,7 +357,7 @@
   function createGift(){
     const nombre = sanitizeShort($('nombreRegalo').value, 'alguien especial');
     $('nombreRegalo').value = nombre;
-    const url = new URL('alguien-reza-por-ti.html', location.href);
+    const url = new URL('regalo-de-oracion.html', location.href);
     url.searchParams.set('nombre', nombre);
     url.searchParams.set('tono', selectedTone);
     url.searchParams.set('origen', 'luz');
