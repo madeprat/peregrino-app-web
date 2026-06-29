@@ -1,10 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Manifiesto de Peregrino APP y visión del Cuarto Día." name="description"/><link href="https://madeprat.github.io/peregrino-app-web/manifiesto.html" rel="canonical"/>
 <title>Manifiesto · Peregrino</title>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -169,64 +169,52 @@ color:black;
 }
 </style>
 </head>
-
 <body>
-
 <div class="nav">
 <a href="index.html">← Inicio</a>
 <a href="que-es-el-mcc.html">Qué es el MCC</a>
 </div>
-
 <section class="hero">
 <div>
-<h1>Esto nació<br><em>de un Cuarto Día real</em></h1>
+<h1>Esto nació<br/><em>de un Cuarto Día real</em></h1>
 </div>
 </section>
-
 <section class="section">
 <p>Un día nos hicimos una pregunta muy concreta:</p>
 <div class="pull">¿Cómo cuidar lo que vivimos en aquel fin de semana?</div>
 <p>No porque la gracia desaparezca. Sino porque el ruido diario ocupa espacio.</p>
 <p>Cuando no cuidamos lo pequeño, lo grande se enfría sin darnos cuenta.</p>
 </section>
-
 <section class="image-section" style="background-image:url('foto_rosario1.png')">
 <div class="image-content">
 <h2>No venimos a darte la fe.</h2>
 <p>Venimos a ayudarte a cuidarla.</p>
 </div>
 </section>
-
 <section class="section">
 <p>No pretendemos sustituir tu Reunión de Grupo.</p>
 <p>No pretendemos reemplazar tu oración.</p>
 <div class="pull">La gracia siempre ha trabajado con cosas pequeñas.</div>
 </section>
-
 <section class="image-section" style="background-image:url('foto_gracia1.png')">
 <div class="image-content">
-<h2>Una amistad.<br>Un encuentro.<br>Una conversación sincera.</h2>
+<h2>Una amistad.<br/>Un encuentro.<br/>Una conversación sincera.</h2>
 </div>
 </section>
-
 <section class="section">
 <p>Peregrino es gratuita. Y quiere seguir siéndolo.</p>
 <p>Porque lo que nace del encuentro no se vende.</p>
 </section>
-
 <section class="cta">
 <h2>Ultreya.</h2>
 <p style="opacity:.7;">Empieza hoy a cuidar tu Cuarto Día.</p>
-
-<a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" class="btn">
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
 Descargar Peregrino
 </a>
-
-<a href="index.html" class="btn btn-secondary">
+<a class="btn btn-secondary" href="index.html">
 Volver al inicio
 </a>
 </section>
-
 <script>
 const sections = document.querySelectorAll(".section");
 const observer = new IntersectionObserver(entries=>{
@@ -239,6 +227,18 @@ observer.unobserve(entry.target);
 },{threshold:0.15});
 sections.forEach(section=>observer.observe(section));
 </script>
-
+<footer class="site-legal-footer" style="padding:34px 18px 52px;text-align:center;color:#74788a;font:14px/1.6 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+<div style="width:min(780px,100%);height:1px;margin:0 auto 18px;background:linear-gradient(90deg,transparent,rgba(29,46,122,.18),transparent);"></div>
+<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
+<a href="aviso-legal.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Aviso legal</a>
+<span>·</span>
+<a href="privacidad.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Privacidad</a>
+<span>·</span>
+<a href="cookies.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Cookies</a>
+<span>·</span>
+<a href="mailto:peregrinoapp@outlook.es" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Contacto</a>
+</div>
+<div>© Peregrino APP</div>
+</footer>
 </body>
 </html>

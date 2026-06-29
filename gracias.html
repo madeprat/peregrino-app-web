@@ -1,19 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rincón de la Luz | Peregrino APP</title>
-  <meta name="description" content="Un espacio de gratitud para quienes sostienen Peregrino APP: velitas, oraciones personalizadas, muro de bienhechores y oración mensual." />
-  <meta name="theme-color" content="#101827" />
-  <meta property="og:title" content="Rincón de la Luz · Peregrino APP" />
-  <meta property="og:description" content="Tu ofrenda sostiene el camino. Tu oración enciende una luz." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="preview-image.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Rincón de la Luz | Peregrino APP</title>
+<meta content="Un espacio de gratitud para quienes sostienen Peregrino APP: velitas, oraciones personalizadas, muro de bienhechores y oración mensual." name="description"/><link href="https://madeprat.github.io/peregrino-app-web/gracias.html" rel="canonical"/>
+<meta content="#101827" name="theme-color"/>
+<meta content="Rincón de la Luz · Peregrino APP" property="og:title"/>
+<meta content="Tu ofrenda sostiene el camino. Tu oración enciende una luz." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="preview-image.jpg" property="og:image"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root{
       --bg:#0b1220;
       --bg2:#05070c;
@@ -145,138 +146,132 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="index.html" aria-label="Volver a Peregrino APP"><span class="brand-mark">✦</span><span>Peregrino APP</span></a>
-      <div class="nav-actions">
-        <a href="index.html">Inicio</a>
-        <a href="#velita">Velita</a>
-        <a href="#regalar">Regalar oración</a>
-        <a href="#muro">Muro</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <span class="eyebrow">Rincón de la Luz</span>
-          <h1>Gracias por sostener este camino.</h1>
-          <p class="lead">Este pequeño espacio es nuestro gesto de gratitud para quienes ayudan a mantener viva Peregrino APP. Aquí puedes encender una velita, regalar una oración, dejar tu alias en el muro y unirte a la oración mensual por los bienhechores.</p>
-        </div>
-        <div class="hero-card" id="entrada">
-          <div class="quote">Tu ofrenda sostiene el camino.<br>Tu oración enciende una luz.</div>
-          <p>Introduce el correo con el que hiciste tu ofrenda para entrar al Rincón de la Luz.</p>
-          <div class="door">
-            <div>
-              <label for="emailDonante">Correo de la ofrenda</label>
-              <input id="emailDonante" type="email" autocomplete="email" placeholder="tu@email.com" />
-              <div class="hint">Puerta de cortesía. El correo se guarda solo en este navegador y no se publica. <a href="privacidad.html">Ver privacidad</a>.</div>
-            </div>
-            <button class="btn" id="entrarBtn">Entrar al Rincón de la Luz</button>
-            <div class="unlock-note" id="unlockNote">Rincón abierto. Gracias por caminar con nosotros.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="velita">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow">1 · Encender una velita</span>
-          <h2>Una pequeña luz por una gran intención.</h2>
-          <p>Elige una causa. Peregrino prepara una oración breve y compartible para que tu gesto pueda iluminar también a otros.</p>
-        </div>
-        <div class="panel locked" data-locked>
-          <div class="locked-cover"><span>✦ Entra con tu correo para encender una velita</span></div>
-          <h3>¿Por qué quieres encender una luz?</h3>
-          <div class="options" id="topicOptions"></div>
-          <div class="result-card" id="velitaResult">
-            <div class="generated-title">Velita encendida</div>
-            <div class="light-visual"><div class="flame">🕯️</div><p id="velitaTitle" style="margin:0"></p></div>
-            <div class="generated-text" id="velitaText"></div>
-            <div class="actions">
-              <button class="btn small" data-copy="velitaText">Copiar oración</button>
-              <a class="btn small whatsapp" id="velitaWhats" target="_blank" rel="noopener">Compartir por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="regalar">
-      <div class="wrap grid">
-        <div class="panel locked" data-locked>
-          <div class="locked-cover"><span>✦ Entra con tu correo para regalar una oración</span></div>
-          <span class="eyebrow">2 · Regalar una oración</span>
-          <h2>Un nombre basta.</h2>
-          <p>No hace falta escribir un mensaje. Tú pones el nombre o alias; Peregrino prepara una bendición hermosa y una página lista para enviar.</p>
-          <label for="nombreRegalo">Nombre o alias de la persona</label>
-          <input id="nombreRegalo" maxlength="34" placeholder="Ana, mamá, una amiga..." />
-          <div class="hint">Evita apellidos o datos íntimos. La tarjeta se genera con el nombre que escribas.</div>
-          <h3 style="margin-top:20px">Elige el tono</h3>
-          <div class="options" id="toneOptions"></div>
-          <button class="btn" id="crearTarjeta">Crear tarjeta para enviar</button>
-          <div class="result-card" id="tarjetaResult">
-            <div class="generated-title">Tarjeta lista</div>
-            <div class="generated-text" id="tarjetaPreview"></div>
-            <div class="actions">
-              <a class="btn small" id="verTarjeta" target="_blank" rel="noopener">Ver tarjeta</a>
-              <button class="btn small secondary" data-copy="tarjetaLinkText">Copiar enlace</button>
-              <a class="btn small whatsapp" id="tarjetaWhats" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-            </div>
-            <p class="micro" id="tarjetaLinkText"></p>
-          </div>
-        </div>
-
-        <div class="panel locked" id="muro" data-locked>
-          <div class="locked-cover"><span>✦ Entra con tu correo para dejar tu alias</span></div>
-          <span class="eyebrow">3 · Muro de bienhechores</span>
-          <h2>Gracias a quienes sostienen este camino.</h2>
-          <p>Puedes aparecer con un alias sencillo, o permanecer anónimo. No hay importes, rankings ni comparaciones: solo gratitud.</p>
-          <label for="aliasMuro">Tu alias</label>
-          <input id="aliasMuro" maxlength="36" placeholder="Una familia de Valencia, M.C., peregrino en camino..." />
-          <div class="actions" style="margin-top:12px">
-            <button class="btn small" id="guardarAlias">Añadir mi alias</button>
-            <button class="btn small ghost" id="aliasAnonimo">Prefiero anónimo</button>
-          </div>
-          <div class="wall" id="wallNames"></div>
-          <p class="micro">En esta versión estática el alias se muestra en tu navegador. Cuando quieras hacerlo comunitario real, lo conectamos a una base de datos con consentimiento.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="oracion-mensual">
-      <div class="wrap">
-        <div class="panel locked" data-locked>
-          <div class="locked-cover"><span>✦ Entra con tu correo para unirte a la oración mensual</span></div>
-          <span class="eyebrow">4 · Oración mensual</span>
-          <h2>Por los bienhechores de este mes.</h2>
-          <p>Cada mes encomendamos en oración a quienes sostienen Peregrino APP, a sus familias y a las intenciones que llevan en el corazón.</p>
-          <div class="monthly-card">
-            <div class="generated-title" id="monthLabel">Oración del mes</div>
-            <div class="generated-text" id="monthlyText"></div>
-          </div>
-          <div class="actions">
-            <button class="btn" id="unirmeMes">Unirme a esta oración</button>
-            <button class="btn secondary" data-copy="monthlyText">Copiar oración</button>
-            <a class="btn whatsapp" id="monthlyWhats" target="_blank" rel="noopener">Compartir por WhatsApp</a>
-          </div>
-          <p class="micro">Dios conoce los nombres, las historias y las cargas que cada persona trae consigo.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="wrap">
-      <div class="footer-line"></div>
-      <p>Este espacio pertenece a la web de Peregrino APP. Las funciones de la app se gestionan por separado desde Google Play.</p>
-      <p><a href="index.html">Volver a Peregrino APP</a> · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a> · <a href="mailto:peregrinoapp@outlook.es">Contacto</a></p>
-    </div>
-  </footer>
+<header>
+<div class="wrap nav">
+<a aria-label="Volver a Peregrino APP" class="brand" href="index.html"><span class="brand-mark">✦</span><span>Peregrino APP</span></a>
+<div class="nav-actions">
+<a href="index.html">Inicio</a>
+<a href="#velita">Velita</a>
+<a href="#regalar">Regalar oración</a>
+<a href="#muro">Muro</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="eyebrow">Rincón de la Luz</span>
+<h1>Gracias por sostener este camino.</h1>
+<p class="lead">Este pequeño espacio es nuestro gesto de gratitud para quienes ayudan a mantener viva Peregrino APP. Aquí puedes encender una velita, regalar una oración, dejar tu alias en el muro y unirte a la oración mensual por los bienhechores.</p>
+</div>
+<div class="hero-card" id="entrada">
+<div class="quote">Tu ofrenda sostiene el camino.<br/>Tu oración enciende una luz.</div>
+<p>Introduce el correo con el que hiciste tu ofrenda para entrar al Rincón de la Luz.</p>
+<div class="door">
+<div>
+<label for="emailDonante">Correo de la ofrenda</label>
+<input autocomplete="email" id="emailDonante" placeholder="tu@email.com" type="email"/>
+<div class="hint">Puerta de cortesía. El correo se guarda solo en este navegador y no se publica. <a href="privacidad.html">Ver privacidad</a>.</div>
+</div>
+<button class="btn" id="entrarBtn">Entrar al Rincón de la Luz</button>
+<div class="unlock-note" id="unlockNote">Rincón abierto. Gracias por caminar con nosotros.</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="velita">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">1 · Encender una velita</span>
+<h2>Una pequeña luz por una gran intención.</h2>
+<p>Elige una causa. Peregrino prepara una oración breve y compartible para que tu gesto pueda iluminar también a otros.</p>
+</div>
+<div class="panel locked" data-locked="">
+<div class="locked-cover"><span>✦ Entra con tu correo para encender una velita</span></div>
+<h3>¿Por qué quieres encender una luz?</h3>
+<div class="options" id="topicOptions"></div>
+<div class="result-card" id="velitaResult">
+<div class="generated-title">Velita encendida</div>
+<div class="light-visual"><div class="flame">🕯️</div><p id="velitaTitle" style="margin:0"></p></div>
+<div class="generated-text" id="velitaText"></div>
+<div class="actions">
+<button class="btn small" data-copy="velitaText">Copiar oración</button>
+<a class="btn small whatsapp" id="velitaWhats" rel="noopener" target="_blank">Compartir por WhatsApp</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="regalar">
+<div class="wrap grid">
+<div class="panel locked" data-locked="">
+<div class="locked-cover"><span>✦ Entra con tu correo para regalar una oración</span></div>
+<span class="eyebrow">2 · Regalar una oración</span>
+<h2>Un nombre basta.</h2>
+<p>No hace falta escribir un mensaje. Tú pones el nombre o alias; Peregrino prepara una bendición hermosa y una página lista para enviar.</p>
+<label for="nombreRegalo">Nombre o alias de la persona</label>
+<input id="nombreRegalo" maxlength="34" placeholder="Ana, mamá, una amiga..."/>
+<div class="hint">Evita apellidos o datos íntimos. La tarjeta se genera con el nombre que escribas.</div>
+<h3 style="margin-top:20px">Elige el tono</h3>
+<div class="options" id="toneOptions"></div>
+<button class="btn" id="crearTarjeta">Crear tarjeta para enviar</button>
+<div class="result-card" id="tarjetaResult">
+<div class="generated-title">Tarjeta lista</div>
+<div class="generated-text" id="tarjetaPreview"></div>
+<div class="actions">
+<a class="btn small" id="verTarjeta" rel="noopener" target="_blank">Ver tarjeta</a>
+<button class="btn small secondary" data-copy="tarjetaLinkText">Copiar enlace</button>
+<a class="btn small whatsapp" id="tarjetaWhats" rel="noopener" target="_blank">Enviar por WhatsApp</a>
+</div>
+<p class="micro" id="tarjetaLinkText"></p>
+</div>
+</div>
+<div class="panel locked" data-locked="" id="muro">
+<div class="locked-cover"><span>✦ Entra con tu correo para dejar tu alias</span></div>
+<span class="eyebrow">3 · Muro de bienhechores</span>
+<h2>Gracias a quienes sostienen este camino.</h2>
+<p>Puedes aparecer con un alias sencillo, o permanecer anónimo. No hay importes, rankings ni comparaciones: solo gratitud.</p>
+<label for="aliasMuro">Tu alias</label>
+<input id="aliasMuro" maxlength="36" placeholder="Una familia de Valencia, M.C., peregrino en camino..."/>
+<div class="actions" style="margin-top:12px">
+<button class="btn small" id="guardarAlias">Añadir mi alias</button>
+<button class="btn small ghost" id="aliasAnonimo">Prefiero anónimo</button>
+</div>
+<div class="wall" id="wallNames"></div>
+<p class="micro">En esta versión estática el alias se muestra en tu navegador. Cuando quieras hacerlo comunitario real, lo conectamos a una base de datos con consentimiento.</p>
+</div>
+</div>
+</section>
+<section class="section" id="oracion-mensual">
+<div class="wrap">
+<div class="panel locked" data-locked="">
+<div class="locked-cover"><span>✦ Entra con tu correo para unirte a la oración mensual</span></div>
+<span class="eyebrow">4 · Oración mensual</span>
+<h2>Por los bienhechores de este mes.</h2>
+<p>Cada mes encomendamos en oración a quienes sostienen Peregrino APP, a sus familias y a las intenciones que llevan en el corazón.</p>
+<div class="monthly-card">
+<div class="generated-title" id="monthLabel">Oración del mes</div>
+<div class="generated-text" id="monthlyText"></div>
+</div>
+<div class="actions">
+<button class="btn" id="unirmeMes">Unirme a esta oración</button>
+<button class="btn secondary" data-copy="monthlyText">Copiar oración</button>
+<a class="btn whatsapp" id="monthlyWhats" rel="noopener" target="_blank">Compartir por WhatsApp</a>
+</div>
+<p class="micro">Dios conoce los nombres, las historias y las cargas que cada persona trae consigo.</p>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="footer-line"></div>
+<p>Este espacio pertenece a la web de Peregrino APP. Las funciones de la app se gestionan por separado desde Google Play.</p>
+<p><a href="index.html">Volver a Peregrino APP</a> · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a> · <a href="mailto:peregrinoapp@outlook.es">Contacto</a></p>
+</div>
+</footer>
 <div class="toast" id="toast">Copiado</div>
-
 <script>
 (function(){
   const STORAGE_EMAIL = 'peregrino_luz_email';
