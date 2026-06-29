@@ -6,9 +6,7 @@
   const topBtn = document.getElementById('toTop');
 
   if (slider && amount) {
-    const paintAmount = () => {
-      amount.textContent = slider.value + ' €';
-    };
+    const paintAmount = () => { amount.textContent = slider.value + ' €'; };
     slider.addEventListener('input', paintAmount);
     paintAmount();
   }
@@ -24,10 +22,7 @@
     if (modal) modal.classList.remove('open');
   };
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', window.cerrarModalDonacion);
-  }
-
+  if (closeBtn) closeBtn.addEventListener('click', window.cerrarModalDonacion);
   if (modal) {
     modal.addEventListener('click', function (event) {
       if (event.target === modal) window.cerrarModalDonacion();
@@ -35,9 +30,15 @@
   }
 
   if (topBtn) {
+    const syncTopButton = () => {
+      if (window.scrollY > 600) topBtn.classList.add('visible');
+      else topBtn.classList.remove('visible');
+    };
     topBtn.addEventListener('click', function (event) {
       event.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+    window.addEventListener('scroll', syncTopButton, { passive: true });
+    syncTopButton();
   }
 })();

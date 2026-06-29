@@ -1,308 +1,89 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Apostolado digital en Peregrino APP: compartir fe, gracia y esperanza en el día a día." name="description"/><link href="https://madeprat.github.io/peregrino-app-web/apostolado-digital.html" rel="canonical"/>
-<title>Apostolado Digital | Peregrino APP</title>
-<style>
-:root{
---azul:#1f2f6b;
---beige:#f4efe6;
---dorado:#c8a951;
---gris:#4c5167;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html,body{
-max-width:100%;
-overflow-x:hidden;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-background:var(--beige);
-}
-
-/* WRAP */
-.wrap{
-width:min(1200px, calc(100% - 40px));
-margin:auto;
-}
-
-/* NAV */
-.header{
-position:fixed;
-top:0;
-width:100%;
-background:var(--beige);
-z-index:1000;
-border-bottom:1px solid #e5dfd3;
-}
-
-.nav{
-height:70px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
-font-weight:900;
-color:var(--azul);
-text-decoration:none;
-}
-
-.brand-mark{
-width:42px;
-height:42px;
-display:grid;
-place-items:center;
-border-radius:14px;
-background:var(--azul);
-color:white;
-font-size:1.2rem;
-}
-
-.nav-links{
-display:flex;
-gap:10px;
-align-items:center;
-}
-
-.nav-links a{
-text-decoration:none;
-font-weight:700;
-color:var(--gris);
-padding:6px 12px;
-border-radius:999px;
-font-size:.92rem;
-}
-
-.nav-links a:hover{
-color:var(--azul);
-background:rgba(29,46,122,.06);
-}
-
-.btn{
-background:var(--azul);
-color:white !important;
-padding:8px 18px;
-border-radius:25px;
-font-weight:700;
-}
-
-/* COLOR BAR */
-.bar{
-height:4px;
-background:linear-gradient(90deg,#d9534f,#f0ad4e,#5cb85c,#5bc0de,#9370db);
-margin-top:70px;
-}
-
-/* STORY */
-.story-container{
-height:calc(100vh - 74px);
-overflow-y:scroll;
-scroll-snap-type:y mandatory;
-}
-
-.section{
-position:relative;
-height:100vh;
-scroll-snap-align:start;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
-}
-
-.section img{
-position:absolute;
-width:100vw;
-height:100%;
-object-fit:cover;
-top:0;
-left:0;
-z-index:0;
-}
-
-.overlay{
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.3));
-z-index:1;
-}
-
-.content{
-position:relative;
-z-index:2;
-max-width:700px;
-padding:20px;
-}
-
-.content h1{
-font-size:48px;
-margin-bottom:20px;
-}
-
-.content p{
-font-size:20px;
-line-height:1.5;
-}
-
-.cta{
-margin-top:35px;
-display:inline-block;
-background:var(--dorado);
-color:#1f2f6b;
-padding:14px 32px;
-border-radius:30px;
-font-weight:700;
-text-decoration:none;
-transition:.3s;
-}
-
-.cta:hover{
-transform:scale(1.05);
-}
-
-.scroll-indicator{
-position:absolute;
-bottom:25px;
-font-size:14px;
-opacity:.8;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-
-.nav-links{
-display:none;
-}
-
-.content h1{
-font-size:32px;
-}
-
-.content p{
-font-size:18px;
-}
-
-.section{
-height:100vh;
-}
-
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apostolado digital | Peregrino APP</title>
+  <meta name="description" content="Una invitación a compartir la fe y la esperanza también en el entorno digital." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/apostolado-digital.html" />
+  <meta property="og:title" content="Apostolado digital | Peregrino APP" />
+  <meta property="og:description" content="Una invitación a compartir la fe y la esperanza también en el entorno digital." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/apostolado-digital.html" />
+  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/preview-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Apostolado digital | Peregrino APP" />
+  <meta name="twitter:description" content="Una invitación a compartir la fe y la esperanza también en el entorno digital." />
+  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/preview-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <link rel="icon" href="preview-image.jpg" />
 </head>
 <body>
-<header class="header">
-<div class="wrap nav">
-<a class="brand" href="index.html">
-<span class="brand-mark">⛪</span>
-<span>Peregrino APP</span>
-</a>
-<nav class="nav-links">
-<a href="manifiesto.html">Manifiesto →</a>
-<a href="apostolado-digital.html">Apostolado digital</a>
-<a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
-<a href="#tripode">Trípode</a>
-<a href="#candidatos">Candidatos</a>
-<a href="#oraciones">Oraciones</a>
-<a href="#sostener">Ofrendas</a>
-<a class="btn" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
-</nav>
-</div>
-</header>
-<div class="bar"></div>
-<div class="story-container">
-<section class="section">
-<img alt="Persona usando Peregrino APP en un entorno de oración" src="foto_app1.png"/>
-<div class="overlay"></div>
-<div class="content">
-<h1>Rezar también puede ser visible</h1>
-<p>No para presumir. Sino para sembrar.</p>
-</div>
-<div class="scroll-indicator">Desliza ↓</div>
-</section>
-<section class="section">
-<img alt="Pantalla de gracia del día en Peregrino APP" src="foto_gracia1.png"/>
-<div class="overlay"></div>
-<div class="content">
-<h2>Tu gracia de hoy</h2>
-<p>Una frase. Un momento. Una luz que puedes compartir.</p>
-</div>
-</section>
-<section class="section">
-<img alt="Mensaje visual sobre compartir la fe sin esconderse" src="foto_gracia2.png"/>
-<div class="overlay"></div>
-<div class="content">
-<h2>Ser cristiano, sin esconderse</h2>
-<p>La fe no se impone. Se propone. Y hoy también se comparte.</p>
-</div>
-</section>
-<section class="section">
-<img alt="Escena de apostolado digital y comunicación de esperanza" src="foto_gracia3.png"/>
-<div class="overlay"></div>
-<div class="content">
-<h2>Apostolado digital</h2>
-<p>Un clic puede abrir conversaciones que nunca imaginaste.</p>
-</div>
-</section>
-<section class="section">
-<img alt="Uso cotidiano de la app en una pausa del día" src="foto_rezo2.png"/>
-<div class="overlay"></div>
-<div class="content">
-<h2>En tu día a día</h2>
-<p>En casa. En una cafetería. En silencio. Pero conectado.</p>
-</div>
-</section>
-<section class="section">
-<img alt="Oración y esperanza compartida con Peregrino APP" src="foto_rosario1.png"/>
-<div class="overlay"></div>
-<div class="content">
-<h2>Comparte esperanza</h2>
-<p>No somos felices porque no sufrimos; somos felices porque no sufrimos solos.</p>
-</div>
-</section>
-<section class="section">
-<img alt="Cierre visual del apostolado digital con llamada a instalar la app" src="foto_gracia1.png"/>
-<div class="overlay"></div>
-<div class="content">
-<h2>El Cuarto Día no se vive solo</h2>
-<p>Si esto te ha removido algo… no lo guardes en el bolsillo.</p>
-<p style="margin-top:15px;">
-Vive tu fe cada día. Y deja que otros vean que Cristo sigue vivo.
-</p>
-<a class="cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
-Instalar ahora
-</a>
-<p style="margin-top:25px;font-size:14px;opacity:.7;">
-De Colores.
-</p>
-</div>
-</section>
-</div>
-<footer class="site-legal-footer" style="padding:34px 18px 52px;text-align:center;color:#74788a;font:14px/1.6 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-<div style="width:min(780px,100%);height:1px;margin:0 auto 18px;background:linear-gradient(90deg,transparent,rgba(29,46,122,.18),transparent);"></div>
-<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
-<a href="aviso-legal.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Aviso legal</a>
-<span>·</span>
-<a href="privacidad.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Privacidad</a>
-<span>·</span>
-<a href="cookies.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Cookies</a>
-<span>·</span>
-<a href="mailto:peregrinoapp@outlook.es" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Contacto</a>
-</div>
-<div>© Peregrino APP</div>
-</footer>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="wrap site-nav">
+      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+        <span class="brand-mark">✦</span>
+        <span>Peregrino APP</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html#app">La app</a>
+        <a href="index.html#planes">Planes</a>
+        <a href="index.html#apoyar">Apoyar</a>
+        <a href="index.html#recursos">Recursos</a>
+        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido" class="page-shell">
+    <section class="prose-hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Peregrino APP</span>
+          <h1>Apostolado digital</h1>
+          <p class="lead">La fe no se impone. Se propone. Y hoy también se comparte.</p>
+          
+        </div>
+        <aside class="page-shot"><img src="foto_gracia3.png" alt="Imagen de apoyo para Apostolado digital" /></aside>
+      </div>
+    </section>
+    <section>
+      <div class="wrap prose-grid"><article class="prose-card"><h2>Rezar también puede ser visible</h2><p>No para presumir, sino para sembrar. Una frase, un gesto o una oración compartida puede abrir conversaciones que nunca imaginaste.</p></article><article class="prose-card"><h2>En tu día a día</h2><p>En casa, en una cafetería, en silencio, pero conectado. Peregrino quiere ayudarte a hacer visible una esperanza sencilla y real.</p></article><article class="prose-card"><h2>El Cuarto Día no se vive solo</h2><p>Si esto te ha removido algo, no lo guardes en el bolsillo. Vive tu fe cada día y deja que otros vean que Cristo sigue vivo.</p></article></div>
+    </section>
+    <section>
+      <div class="wrap cta-band">
+        <div>
+          <h2>Descubre Peregrino APP</h2>
+          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
+        </div>
+        <div class="cta-row" style="margin:0;">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
+          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <strong>Peregrino APP</strong>
+        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+      </div>
+      <div class="footer-links">
+        <a href="plan-apostol.html">Planes</a>
+        <a href="gracias.html">Rincón de la Luz</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </div>
+    </div>
+    
+  </footer>
 </body>
 </html>

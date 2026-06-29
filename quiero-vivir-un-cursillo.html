@@ -1,279 +1,89 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Información para personas que quieren vivir un Cursillo y conocer Peregrino APP." name="description"/><link href="https://madeprat.github.io/peregrino-app-web/quiero-vivir-un-cursillo.html" rel="canonical"/>
-<title>Quiero vivir un Cursillo · Peregrino</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-background:#0b1220;
-color:#f5f3ee;
-scroll-behavior:smooth;
-overflow-x:hidden;
-line-height:1.9;
-}
-
-/* NAV */
-.nav{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 40px;
-background:rgba(8,12,20,.75);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-
-.nav a{
-color:white;
-text-decoration:none;
-font-weight:600;
-opacity:.85;
-}
-
-.nav a:hover{opacity:1;}
-
-/* HERO */
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:100px 20px;
-background:
-linear-gradient(rgba(8,12,20,.7),rgba(8,12,20,.9)),
-url("hero-peregrino.jpg") center/cover no-repeat;
-}
-
-.hero h1{
-font-size:clamp(3rem,7vw,5rem);
-font-weight:700;
-}
-
-.hero em{
-color:#d4af37;
-font-style:normal;
-}
-
-.hero p{
-max-width:650px;
-margin:25px auto 0;
-opacity:.85;
-font-size:1.1rem;
-}
-
-/* SECTION */
-.section{
-max-width:900px;
-margin:auto;
-padding:140px 20px;
-opacity:0;
-transform:translateY(60px);
-transition:all 1.1s cubic-bezier(.16,1,.3,1);
-}
-
-.section.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.section h2{
-font-size:clamp(2rem,4vw,3rem);
-color:#d4af37;
-margin-bottom:30px;
-}
-
-.section p{
-margin-bottom:22px;
-opacity:.85;
-font-size:1.1rem;
-}
-
-.steps{
-margin-top:30px;
-}
-
-.step{
-margin-bottom:25px;
-padding-left:20px;
-border-left:3px solid #d4af37;
-}
-
-.step strong{
-display:block;
-margin-bottom:6px;
-color:#d4af37;
-}
-
-/* IMAGE BLOCK */
-.image-block{
-min-height:75vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:100px 20px;
-background-size:cover;
-background-position:center;
-position:relative;
-}
-
-.image-block::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(rgba(8,12,20,.75),rgba(8,12,20,.9));
-}
-
-.image-block .content{
-position:relative;
-z-index:2;
-max-width:700px;
-}
-
-.image-block h2{
-color:#d4af37;
-font-size:clamp(2rem,4vw,3rem);
-margin-bottom:20px;
-}
-
-/* CTA */
-.cta{
-min-height:70vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:80px 20px;
-background:#111a30;
-}
-
-.cta h2{
-font-size:clamp(2.5rem,6vw,4rem);
-color:#d4af37;
-margin-bottom:20px;
-}
-
-.btn{
-display:inline-block;
-margin:12px;
-padding:16px 36px;
-border-radius:40px;
-text-decoration:none;
-font-weight:600;
-background:#d4af37;
-color:black;
-transition:.3s;
-}
-
-.btn:hover{background:white;}
-
-.btn-secondary{
-background:transparent;
-border:1px solid rgba(255,255,255,.4);
-color:white;
-}
-
-.btn-secondary:hover{
-background:white;
-color:black;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiero vivir un Cursillo | Peregrino APP</title>
+  <meta name="description" content="Orientación sencilla para quien quiere vivir un Cursillo y no sabe por dónde empezar." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/quiero-vivir-un-cursillo.html" />
+  <meta property="og:title" content="Quiero vivir un Cursillo | Peregrino APP" />
+  <meta property="og:description" content="Orientación sencilla para quien quiere vivir un Cursillo y no sabe por dónde empezar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/quiero-vivir-un-cursillo.html" />
+  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/preview-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Quiero vivir un Cursillo | Peregrino APP" />
+  <meta name="twitter:description" content="Orientación sencilla para quien quiere vivir un Cursillo y no sabe por dónde empezar." />
+  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/preview-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <link rel="icon" href="preview-image.jpg" />
 </head>
 <body>
-<div class="nav">
-<a href="index.html">← Inicio</a>
-<a href="que-es-el-mcc.html">Qué es el MCC</a>
-</div>
-<section class="hero">
-<div>
-<h1>Quiero vivir un <em>Cursillo</em></h1>
-<p>Si estás aquí, probablemente algo dentro de ti ya ha empezado a moverse.</p>
-</div>
-</section>
-<section class="section">
-<h2>Primero, algo importante</h2>
-<p>Peregrino no organiza Cursillos ni gestiona inscripciones.</p>
-<p>El Movimiento funciona a nivel diocesano. Cada diócesis tiene su propio Secretariado.</p>
-<p>Lo mejor es contactar directamente con ellos.</p>
-</section>
-<section class="image-block" style="background-image:url('foto_gracia1.png')">
-<div class="content">
-<h2>No es una compra online.</h2>
-<p>Es un camino que se conversa, se prepara y se acompaña.</p>
-</div>
-</section>
-<section class="section">
-<h2>Pasos sencillos</h2>
-<div class="steps">
-<div class="step">
-<strong>1 · Busca tu diócesis</strong>
-<p>Escribe en Google: “Cursillos de Cristiandad + nombre de tu diócesis”.</p>
-</div>
-<div class="step">
-<strong>2 · Contacta con el Secretariado</strong>
-<p>Ellos te orientarán sobre próximos Cursillos y cómo participar.</p>
-</div>
-<div class="step">
-<strong>3 · Habla con quien te invitó</strong>
-<p>El Movimiento se transmite principalmente por amistad.</p>
-</div>
-</div>
-</section>
-<section class="image-block" style="background-image:url('foto_rosario1.png')">
-<div class="content">
-<h2>Mientras tanto</h2>
-<p>Cuida tu oración.<br/>
-No apagues esa inquietud.<br/>
-Y habla con alguien que ya lo haya vivido.</p>
-</div>
-</section>
-<section class="cta">
-<h2>Da el paso con libertad.</h2>
-<a class="btn" href="https://www.cursillosdecristiandad.com/secretariados/" target="_blank">
-Buscar en España
-</a>
-<a class="btn" href="https://omcc-cursillos.org/" target="_blank">
-Buscar en el mundo
-</a>
-<a class="btn btn-secondary" href="index.html">
-Volver a la App
-</a>
-</section>
-<script>
-const sections=document.querySelectorAll(".section");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-observer.unobserve(entry.target);
-}
-});
-},{threshold:.15});
-sections.forEach(section=>observer.observe(section));
-</script>
-<footer class="site-legal-footer" style="padding:34px 18px 52px;text-align:center;color:#74788a;font:14px/1.6 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-<div style="width:min(780px,100%);height:1px;margin:0 auto 18px;background:linear-gradient(90deg,transparent,rgba(29,46,122,.18),transparent);"></div>
-<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
-<a href="aviso-legal.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Aviso legal</a>
-<span>·</span>
-<a href="privacidad.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Privacidad</a>
-<span>·</span>
-<a href="cookies.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Cookies</a>
-<span>·</span>
-<a href="mailto:peregrinoapp@outlook.es" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Contacto</a>
-</div>
-<div>© Peregrino APP</div>
-</footer>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="wrap site-nav">
+      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+        <span class="brand-mark">✦</span>
+        <span>Peregrino APP</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html#app">La app</a>
+        <a href="index.html#planes">Planes</a>
+        <a href="index.html#apoyar">Apoyar</a>
+        <a href="index.html#recursos">Recursos</a>
+        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido" class="page-shell">
+    <section class="prose-hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Peregrino APP</span>
+          <h1>Quiero vivir un Cursillo</h1>
+          <p class="lead">Si estás aquí, probablemente algo dentro de ti ya ha empezado a moverse.</p>
+          
+        </div>
+        <aside class="page-shot"><img src="foto_rezo2.png" alt="Imagen de apoyo para Quiero vivir un Cursillo" /></aside>
+      </div>
+    </section>
+    <section>
+      <div class="wrap prose-grid"><article class="prose-card"><h2>Primero, algo importante</h2><p>Peregrino APP no organiza Cursillos ni gestiona inscripciones. El Movimiento funciona a nivel diocesano y cada diócesis tiene su propio Secretariado.</p><p>Lo mejor es contactar directamente con ellos.</p></article><article class="prose-card"><h2>No es una compra online</h2><p>Es un camino que se conversa, se prepara y se acompaña.</p></article><article class="prose-card"><h2>Pasos sencillos</h2><p>Busca “Cursillos de Cristiandad + nombre de tu diócesis”. Ellos te orientarán sobre próximos Cursillos y cómo participar.</p><p>Mientras tanto, cuida tu oración, no apagues esa inquietud y habla con alguien que ya lo haya vivido.</p></article></div>
+    </section>
+    <section>
+      <div class="wrap cta-band">
+        <div>
+          <h2>Descubre Peregrino APP</h2>
+          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
+        </div>
+        <div class="cta-row" style="margin:0;">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
+          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <strong>Peregrino APP</strong>
+        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+      </div>
+      <div class="footer-links">
+        <a href="plan-apostol.html">Planes</a>
+        <a href="gracias.html">Rincón de la Luz</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </div>
+    </div>
+    
+  </footer>
 </body>
 </html>

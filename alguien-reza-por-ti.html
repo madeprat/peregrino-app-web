@@ -1,290 +1,89 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Página de acompañamiento y oración compartida de Peregrino APP." name="description"/><link href="https://madeprat.github.io/peregrino-app-web/alguien-reza-por-ti.html" rel="canonical"/>
-<title>Alguien está rezando por ti · Peregrino APP</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-font-family:"Nunito Sans",sans-serif;
-background:#0b1220;
-color:white;
-overflow-x:hidden;
-}
-
-.full{
-position:relative;
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:100px 20px;
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-}
-
-.full::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(rgba(6,10,18,.65),rgba(6,10,18,.9));
-}
-
-.inner{
-position:relative;
-z-index:2;
-max-width:900px;
-}
-
-h1,h2{
-font-family:"Cormorant Garamond",serif;
-letter-spacing:-1px;
-}
-
-h1{font-size:clamp(3rem,7vw,5.5rem);margin-bottom:30px;}
-h2{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:25px;}
-
-p{
-font-size:1.15rem;
-line-height:1.9;
-margin-bottom:20px;
-opacity:.95;
-}
-
-.btn{
-display:inline-block;
-margin:12px;
-padding:14px 34px;
-border-radius:40px;
-font-weight:700;
-text-decoration:none;
-transition:all .4s cubic-bezier(.16,1,.3,1);
-}
-
-.btn-primary{
-background:#d4af37;
-color:black;
-}
-
-.btn-secondary{
-border:1px solid rgba(255,255,255,.6);
-color:white;
-}
-
-.btn:hover{
-transform:translateY(-4px);
-box-shadow:0 14px 35px rgba(0,0,0,.5);
-}
-
-.fade{
-opacity:0;
-transform:translateY(60px);
-transition:all 1.2s cubic-bezier(.16,1,.3,1);
-}
-.fade.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.card{
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(20px);
-padding:60px;
-border-radius:40px;
-box-shadow:0 30px 80px rgba(0,0,0,.6);
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alguien reza por ti | Peregrino APP</title>
+  <meta name="description" content="Una invitación amable y sin presión para quienes reciben una oración o una puerta de entrada al camino." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/alguien-reza-por-ti.html" />
+  <meta property="og:title" content="Alguien reza por ti | Peregrino APP" />
+  <meta property="og:description" content="Una invitación amable y sin presión para quienes reciben una oración o una puerta de entrada al camino." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/alguien-reza-por-ti.html" />
+  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/preview-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alguien reza por ti | Peregrino APP" />
+  <meta name="twitter:description" content="Una invitación amable y sin presión para quienes reciben una oración o una puerta de entrada al camino." />
+  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/preview-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <link rel="icon" href="preview-image.jpg" />
 </head>
 <body>
-<!-- HERO -->
-<section class="full" style="background-image:url('hero-peregrino.jpg')">
-<div class="inner fade">
-<h1 id="hero-title">Alguien está rezando por ti</h1>
-<p>
-Si has recibido esta página, probablemente alguien te quiere, te tiene presente y desea compartir contigo algo que a él o a ella le hizo bien.
-</p>
-<a class="btn btn-primary" href="#leer">Leer con calma</a>
-<a class="btn btn-secondary" href="#siguiente">Ver qué puedo hacer</a>
-</div>
-</section>
-<!-- ANTES DE NADA -->
-<section class="full" id="leer" style="background-image:url('foto_rezo2.png')">
-<div class="inner fade">
-<h2>Antes de nada</h2>
-<p id="intro-name">
-Esta página no ha llegado a ti por casualidad fría, ni como un anuncio, ni como una campaña.
-</p>
-<p>
-Alguien ha pensado en ti. Quizá un amigo. Quizá alguien de tu familia. Quizá una persona que te conoce y que, de alguna manera, ha querido abrirte una puerta.
-</p>
-<p>
-No para presionarte. No para convencerte a la fuerza. Solo para decirte: quizá esto también podría hacerte bien.
-</p>
-</div>
-</section>
-<!-- ESTO NO ES UNA PRESIÓN -->
-<section class="full" style="background-image:url('foto_gracia1.png')">
-<div class="inner fade">
-<h2>Esto no es una presión</h2>
-<p><strong>Respira. No tienes que decidir nada ahora.</strong></p>
-<p>
-Esta página no es una inscripción. No es una obligación. No es una lista donde tengas que apuntarte. Es solo una invitación sencilla, respetuosa y abierta.
-</p>
-<p>✓ No tienes que responder inmediatamente.</p>
-<p>✓ No necesitas tenerlo todo claro para seguir leyendo.</p>
-<p>✓ No hace falta que seas “perfecto” para acercarte a Dios.</p>
-<p>✓ Solo se te propone mirar una puerta que quizá estaba cerca.</p>
-</div>
-</section>
-<!-- QUÉ ES UN CURSILLO -->
-<section class="full" style="background-image:url('foto_gracia2.png')">
-<div class="inner fade">
-<h2>Qué es un Cursillo</h2>
-<p>
-Un Cursillo de Cristiandad es una experiencia de encuentro. Con Dios, contigo mismo y con otras personas que también intentan vivir la fe en medio de la vida real.
-</p>
-<p>
-No es una charla más. No es un curso académico. No es un examen de religión. Es una experiencia breve, intensa y profundamente humana que muchas personas recuerdan como un antes y un después.
-</p>
-<p>
-Muchas personas llegan con dudas, cansancio, preguntas, heridas, distancia o simple curiosidad. No hace falta tener una vida espiritual ordenada para acercarse. A veces basta con una pequeña inquietud.
-</p>
-</div>
-</section>
-<!-- POR QUÉ -->
-<section class="full" style="background-image:url('foto_rosario1.png')">
-<div class="inner fade">
-<h2>Por qué alguien te envía esto</h2>
-<p>
-En Peregrino APP, algunas personas tienen una lista sencilla de nombres por los que rezan. No como una lista de objetivos. No como una agenda de presión. Sino como una forma de cuidar espiritualmente a quienes llevan en el corazón.
-</p>
-<p id="personal-line">
-Si esta invitación ha llegado hasta ti, quizá alguien está pidiendo a Dios que te ilumine, que te acompañe y que te muestre si este camino puede ser también para ti.
-</p>
-<p><strong>Una invitación verdadera no empuja. Acompaña.</strong></p>
-</div>
-</section>
-<!-- Y AHORA -->
-<section class="full" id="siguiente" style="background-image:url('hero-peregrino.jpg')">
-<div class="inner fade">
-<h2>Y ahora qué hago</h2>
-<p>
-No hay una única respuesta. Puedes simplemente leer, dejarlo reposar y hablar con la persona que te mandó esta página. Pero si quieres dar un paso más, aquí tienes tres caminos sencillos.
-</p>
-<p>🌱 <strong>Solo quiero entender</strong></p>
-<p>
-Lee una explicación sencilla sobre qué es el Movimiento de Cursillos de Cristiandad y por qué tantas personas lo viven como un despertar.
-</p>
-<a class="btn btn-secondary" href="que-es-el-mcc.html">Qué es el MCC</a>
-<p>🕯️ <strong>Me gustaría vivir uno</strong></p>
-<p>
-Peregrino APP no organiza cursillos ni gestiona inscripciones, pero puede orientarte hacia la información oficial de tu país o diócesis.
-</p>
-<a class="btn btn-primary" href="quiero-vivir-un-cursillo.html">Buscar información oficial</a>
-<p>💬 <strong>Prefiero hablarlo</strong></p>
-<p>
-Puedes responder al mensaje que recibiste con algo tan sencillo como: “Cuéntame un poco más”. A veces el primer paso es solo una conversación.
-</p>
-<a class="btn btn-secondary" href="#mensaje">Ver una respuesta posible</a>
-</div>
-</section>
-<!-- RESPUESTA POSIBLE -->
-<section class="full" id="mensaje" style="background-image:url('foto_rezo2.png')">
-<div class="inner fade">
-<h2>Si no sabes qué contestar</h2>
-<p>
-Si esta invitación te ha tocado algo por dentro, pero no sabes muy bien qué decir, puedes responder de una forma sencilla.
-</p>
-<p><strong>1</strong><br/>Si solo tienes curiosidad</p>
-<p>
-“Lo he leído. No sé muy bien qué pensar todavía, pero me gustaría que me contaras un poco más.”
-</p>
-<p><strong>2</strong><br/>Si te da respeto</p>
-<p>
-“Me da un poco de respeto, pero gracias por pensar en mí. ¿Qué fue para ti vivir un Cursillo?”
-</p>
-<p><strong>3</strong><br/>Si quieres dar un paso</p>
-<p>
-“Creo que quiero informarme. ¿Me ayudas a saber con quién tendría que hablar?”
-</p>
-</div>
-</section>
-<!-- FINAL -->
-<section class="full" style="background-image:url('hero-peregrino.jpg')">
-<div class="inner fade">
-<div class="card">
-<h2 id="closing-title">Quizá esta invitación ha llegado a ti por algo.</h2>
-<p>
-No estás obligado a sentir nada especial ahora mismo. Hay invitaciones que se entienden enseguida y otras que necesitan tiempo.
-</p>
-<p>
-Quizá hoy solo puedas leer. Quizá mañana quieras preguntar. Quizá dentro de un tiempo recuerdes esta página de otra manera.
-</p>
-<p>
-Lo importante no es correr. Lo importante es escuchar con verdad.
-</p>
-<a class="btn btn-primary" href="quiero-vivir-un-cursillo.html">Quiero saber cómo vivir uno</a>
-<a class="btn btn-secondary" href="que-es-el-mcc.html">Entender qué es</a>
-<p style="margin-top:30px;opacity:.7;font-size:.9rem">
-Peregrino APP no organiza cursillos ni gestiona inscripciones. Esta página es solo una invitación orientativa y no recoge tus datos personales. El nombre que pueda aparecer en la página se lee únicamente desde el enlace, en tu propio navegador.
-</p>
-</div>
-</div>
-</section>
-<script>
-const fades=document.querySelectorAll(".fade");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
-});
-},{threshold:0.2});
-fades.forEach(el=>observer.observe(el));
-
-(function(){
-function cleanName(value){
-if(!value) return '';
-return value.replace(/[<>]/g,'').replace(/\s+/g,' ').trim().slice(0,40);
-}
-
-const params=new URLSearchParams(window.location.search);
-const name=cleanName(params.get('nombre') || params.get('para') || params.get('n'));
-
-if(!name) return;
-
-document.title=name+", alguien está rezando por ti · Peregrino APP";
-
-document.getElementById("hero-title").textContent=
-name+", alguien está rezando por ti";
-
-document.getElementById("intro-name").textContent=
-name+", esta página no ha llegado a ti por casualidad fría, ni como un anuncio, ni como una campaña.";
-
-document.getElementById("personal-line").textContent=
-name+", si esta invitación ha llegado hasta ti, quizá alguien está pidiendo a Dios que te ilumine, que te acompañe y que te muestre si este camino puede ser también para ti.";
-
-document.getElementById("closing-title").textContent=
-name+", quizá esta invitación ha llegado a ti por algo.";
-})();
-</script>
-<footer class="site-legal-footer" style="padding:34px 18px 52px;text-align:center;color:#74788a;font:14px/1.6 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-<div style="width:min(780px,100%);height:1px;margin:0 auto 18px;background:linear-gradient(90deg,transparent,rgba(29,46,122,.18),transparent);"></div>
-<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
-<a href="aviso-legal.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Aviso legal</a>
-<span>·</span>
-<a href="privacidad.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Privacidad</a>
-<span>·</span>
-<a href="cookies.html" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Cookies</a>
-<span>·</span>
-<a href="mailto:peregrinoapp@outlook.es" style="color:#1d2e7a;font-weight:800;text-decoration:none;">Contacto</a>
-</div>
-<div>© Peregrino APP</div>
-</footer>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="wrap site-nav">
+      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+        <span class="brand-mark">✦</span>
+        <span>Peregrino APP</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html#app">La app</a>
+        <a href="index.html#planes">Planes</a>
+        <a href="index.html#apoyar">Apoyar</a>
+        <a href="index.html#recursos">Recursos</a>
+        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido" class="page-shell">
+    <section class="prose-hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Peregrino APP</span>
+          <h1>Alguien está rezando por ti</h1>
+          <p class="lead">Si has recibido esta página, probablemente alguien te tiene presente y ha querido abrirte una puerta con cariño.</p>
+          <div class="cta-row prose-cta"><a class="btn btn-primary" href="que-es-el-mcc.html">Entender mejor el MCC</a><a class="btn btn-secondary" href="quiero-vivir-un-cursillo.html">Quiero vivir un Cursillo</a></div>
+        </div>
+        <aside class="page-shot"><img src="foto_app1.png" alt="Imagen de apoyo para Alguien está rezando por ti" /></aside>
+      </div>
+    </section>
+    <section>
+      <div class="wrap prose-grid"><article class="prose-card"><h2>Esto no es una presión</h2><p>No tienes que decidir nada ahora. No es una inscripción, no es una obligación y no es una lista donde tengas que apuntarte.</p><p>Es solo una invitación sencilla, respetuosa y abierta.</p></article><article class="prose-card"><h2>Qué es un Cursillo</h2><p>Un Cursillo de Cristiandad es una experiencia de encuentro: con Dios, contigo mismo y con otras personas que también intentan vivir la fe en medio de la vida real.</p><p>No hace falta tenerlo todo claro para acercarte.</p></article><article class="prose-card"><h2>Y ahora qué hago</h2><p>Puedes simplemente leer, dejarlo reposar y hablar con la persona que te mandó esta página.</p><p>Si quieres dar un paso más, puedes conocer mejor el Movimiento, preguntar cómo vivir un Cursillo o simplemente responder: “Cuéntame un poco más”.</p></article></div>
+    </section>
+    <section>
+      <div class="wrap cta-band">
+        <div>
+          <h2>Descubre Peregrino APP</h2>
+          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
+        </div>
+        <div class="cta-row" style="margin:0;">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
+          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <strong>Peregrino APP</strong>
+        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+      </div>
+      <div class="footer-links">
+        <a href="plan-apostol.html">Planes</a>
+        <a href="gracias.html">Rincón de la Luz</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </div>
+    </div>
+    
+  </footer>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Rincón de la Luz | Peregrino APP</title>
-<meta content="Un espacio de gratitud para quienes sostienen Peregrino APP: velitas, oraciones personalizadas, muro de bienhechores y oración mensual." name="description"/><link href="https://madeprat.github.io/peregrino-app-web/gracias.html" rel="canonical"/>
+<meta content="Un espacio de gratitud, oración y pequeños gestos de luz dentro de Peregrino APP." name="description"/><link href="https://madeprat.github.io/peregrino-app-web/gracias.html" rel="canonical"/>
 <meta content="#101827" name="theme-color"/>
 <meta content="Rincón de la Luz · Peregrino APP" property="og:title"/>
 <meta content="Tu ofrenda sostiene el camino. Tu oración enciende una luz." property="og:description"/>
@@ -144,6 +144,8 @@
     @media(max-width:860px){.hero-grid,.grid{grid-template-columns:1fr}.hero{padding-top:50px}.options{grid-template-columns:1fr}.wall{grid-template-columns:repeat(2,1fr)}.nav{height:auto;padding:14px 0}.nav-actions{display:none}}
     @media(max-width:520px){.wrap{width:min(100% - 24px,var(--max))}.hero-card,.panel{border-radius:24px}.wall{grid-template-columns:1fr}.actions .btn{width:100%}}
   </style>
+  <link rel="stylesheet" href="assets/site.css" />
+  <link rel="icon" href="preview-image.jpg" />
 </head>
 <body>
 <header>
@@ -163,14 +165,14 @@
 <div>
 <span class="eyebrow">Rincón de la Luz</span>
 <h1>Gracias por sostener este camino.</h1>
-<p class="lead">Este pequeño espacio es nuestro gesto de gratitud para quienes ayudan a mantener viva Peregrino APP. Aquí puedes encender una velita, regalar una oración, dejar tu alias en el muro y unirte a la oración mensual por los bienhechores.</p>
+<p class="lead">Un pequeño espacio para agradecer, rezar y compartir gestos de luz dentro del universo Peregrino APP. Aquí puedes encender una velita, regalar una oración, dejar tu alias en el muro y unirte a la oración mensual.</p>
 </div>
 <div class="hero-card" id="entrada">
 <div class="quote">Tu ofrenda sostiene el camino.<br/>Tu oración enciende una luz.</div>
-<p>Introduce el correo con el que hiciste tu ofrenda para entrar al Rincón de la Luz.</p>
+<p>Introduce un correo para abrir este espacio en tu navegador y guardar tu acceso de forma local.</p>
 <div class="door">
 <div>
-<label for="emailDonante">Correo de la ofrenda</label>
+<label for="emailDonante">Correo para abrir este espacio</label>
 <input autocomplete="email" id="emailDonante" placeholder="tu@email.com" type="email"/>
 <div class="hint">Puerta de cortesía. El correo se guarda solo en este navegador y no se publica. <a href="privacidad.html">Ver privacidad</a>.</div>
 </div>
@@ -229,9 +231,9 @@
 </div>
 <div class="panel locked" data-locked="" id="muro">
 <div class="locked-cover"><span>✦ Entra con tu correo para dejar tu alias</span></div>
-<span class="eyebrow">3 · Muro de bienhechores</span>
+<span class="eyebrow">3 · Muro de intenciones</span>
 <h2>Gracias a quienes sostienen este camino.</h2>
-<p>Puedes aparecer con un alias sencillo, o permanecer anónimo. No hay importes, rankings ni comparaciones: solo gratitud.</p>
+<p>Puedes aparecer con un alias sencillo, o permanecer anónimo. No hay importes, rankings ni comparaciones: solo gratitud e intenciones compartidas.</p>
 <label for="aliasMuro">Tu alias</label>
 <input id="aliasMuro" maxlength="36" placeholder="Una familia de Valencia, M.C., peregrino en camino..."/>
 <div class="actions" style="margin-top:12px">
@@ -248,7 +250,7 @@
 <div class="panel locked" data-locked="">
 <div class="locked-cover"><span>✦ Entra con tu correo para unirte a la oración mensual</span></div>
 <span class="eyebrow">4 · Oración mensual</span>
-<h2>Por los bienhechores de este mes.</h2>
+<h2>Oración de este mes.</h2>
 <p>Cada mes encomendamos en oración a quienes sostienen Peregrino APP, a sus familias y a las intenciones que llevan en el corazón.</p>
 <div class="monthly-card">
 <div class="generated-title" id="monthLabel">Oración del mes</div>
@@ -295,7 +297,7 @@
     consuelo:{label:'Consuelo', sub:'para una etapa difícil'},
     gratitud:{label:'Gratitud', sub:'para bendecir su vida'}
   };
-  const wallBase = ['Una familia de Valencia','M.C.','Peregrino de Guatemala','Una madre agradecida','Por mi hijo','Un cursillista en camino','Anónimo','Una amiga que reza','Por los que empiezan','Sembrador de esperanza','Una familia en oración','Peregrino del Cuarto Día'];
+  const wallBase = ['Una intención por quienes empiezan','Una oración por la familia','Por quien necesita paz','Por quien busca sentido','Por quienes sostienen el camino','Por una amiga en dificultad','Por los que rezan en silencio','Una luz por los enfermos','Por quienes acompañan','Una intención de esperanza','Por quien necesita consuelo','Por la comunidad'];
   let selectedTopic = null;
   let selectedTone = 'paz';
 
@@ -375,7 +377,7 @@
     localStorage.setItem(STORAGE_ALIAS, alias);
     $('aliasMuro').value = alias;
     renderWall();
-    showToast('Alias añadido al muro');
+    showToast('Alias añadido al muro local');
   }
   function currentMonthText(){
     const now = new Date();
