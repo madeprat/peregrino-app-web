@@ -94,15 +94,15 @@
     .wrap{width:min(1120px,calc(100% - 34px));margin-inline:auto}
     .hero{padding:clamp(42px,7vw,88px) 0 54px}
     .grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);gap:clamp(24px,5vw,56px);align-items:center}
-    .intro{color:var(--cream)}
-    .kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,248,232,.22);border-radius:999px;background:rgba(255,248,232,.12);padding:9px 14px;font-weight:900;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(12px)}
-    .kicker::before{content:"✦";color:var(--gold-2)}
-    .intro h1{margin:22px 0 18px;font-family:var(--font-display);font-weight:700;font-size:clamp(3.5rem,8.5vw,7.3rem);line-height:.86;letter-spacing:-.055em;text-wrap:balance;text-shadow:0 18px 46px rgba(0,0,0,.18)}
-    .intro h1 em{font-style:italic;color:var(--gold-2);font-weight:600}
-    .intro p{max-width:540px;margin:0 0 26px;color:rgba(255,248,232,.78);font-size:clamp(1.08rem,2vw,1.28rem)}
-    .soft-note{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;max-width:570px;border:1px solid rgba(255,248,232,.18);border-radius:26px;background:rgba(16,38,25,.30);backdrop-filter:blur(14px);padding:18px;color:rgba(255,248,232,.80)}
-    .soft-note strong{width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:rgba(255,248,232,.13);color:var(--gold-2);font-size:1.35rem}
-    .soft-note span{display:block;font-weight:800;color:#fff8e8;margin-bottom:3px}
+    .intro{color:var(--forest)}
+    .kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(16,38,25,.14);border-radius:999px;background:rgba(255,255,255,.62);padding:9px 14px;font-weight:900;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);backdrop-filter:blur(12px)}
+    .kicker::before{content:"✦";color:var(--gold)}
+    .intro h1{margin:22px 0 18px;font-family:var(--font-display);font-weight:700;font-size:clamp(3.5rem,8.5vw,7.3rem);line-height:.86;letter-spacing:-.055em;text-wrap:balance}
+    .intro h1 em{font-style:italic;color:var(--gold);font-weight:600}
+    .intro p{max-width:540px;margin:0 0 26px;color:rgba(27,33,27,.74);font-size:clamp(1.08rem,2vw,1.28rem)}
+    .soft-note{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;max-width:570px;border:1px solid rgba(16,38,25,.10);border-radius:26px;background:rgba(255,255,255,.66);backdrop-filter:blur(14px);padding:18px;color:rgba(27,33,27,.74)}
+    .soft-note strong{width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:rgba(200,148,26,.14);color:var(--gold);font-size:1.35rem}
+    .soft-note span{display:block;font-weight:800;color:var(--forest);margin-bottom:3px}
     .prayer-card{
       position:relative;
       isolation:isolate;
@@ -171,7 +171,8 @@
     @media(max-width:560px){.nav{width:min(100% - 24px,1120px)}.brand span:last-child{display:none}.hero{padding-top:28px}.wrap{width:min(100% - 24px,1120px)}.intro h1{font-size:clamp(3.25rem,18vw,4.7rem)}.paper{min-height:0;padding:28px 20px;border-radius:28px}.prayer-card{border-radius:34px;padding:10px}.prayer-card::before{inset:8px;border-radius:28px}.card-title{font-size:clamp(2.8rem,15vw,4rem)}.blessing{text-align:center;font-size:1.32rem;padding:22px 18px}.actions .btn{width:100%}.final-cta .actions .btn{width:100%}.topbar{position:relative}}
   </style>
   <link rel="stylesheet" href="assets/site.css" />
-  <link rel="icon" href="preview-image.jpg" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="favicon.ico" />
 </head>
 <body>
 <div aria-hidden="true" class="grain"></div>
@@ -188,7 +189,7 @@
 <div class="intro">
 <span class="kicker">Rincón de la Luz</span>
 <h1 id="headline">Una oración ha sido preparada <em>para ti</em>.</h1>
-<p id="introText">Una persona que te tiene presente quiso regalarte una oración sencilla, sin presión y sin pedirte nada a cambio.</p>
+<p id="introText">Una persona que te tiene presente quiso prepararte esta oración, con cariño, solo para ti.</p>
 <div class="soft-note">
 <strong>🕯️</strong>
 <div><span>Lee con calma.</span> No tienes que responder ahora. A veces basta recibir una palabra buena en el momento justo.</div>
@@ -209,28 +210,15 @@
 </div>
 <div class="wrap">
 <div aria-label="Acciones para compartir la oración" class="actions">
-<button class="btn gold" id="copyPrayer">Copiar oración</button>
-<a class="btn whatsapp" id="shareWhats" rel="noopener" target="_blank">Enviar por WhatsApp</a>
+<button class="btn gold" id="shareImg">Enviar con imagen 💌</button>
+<button class="btn" id="copyPrayer">Copiar oración</button>
+<a class="btn whatsapp" id="shareWhats" rel="noopener" target="_blank">WhatsApp (texto)</a>
 <a class="btn ghost" href="index.html">Descubrir Peregrino APP</a>
 </div>
 </div>
 </section>
 <section class="below">
 <div class="wrap">
-<div class="story">
-<article class="story-card">
-<strong>No es una presión.</strong>
-<p>Es solo una forma delicada de decirte: alguien pensó en ti, quiso bendecirte y dejó preparada una pequeña señal de esperanza.</p>
-</article>
-<article class="story-card">
-<strong>Una oración también acompaña.</strong>
-<p>Hay días en los que una palabra buena no cambia todo, pero ayuda a respirar distinto.</p>
-</article>
-<article class="story-card">
-<strong>Una luz puede seguir caminando.</strong>
-<p>Si esta oración te hizo bien, puedes compartir Peregrino APP con alguien que también necesite una pequeña luz.</p>
-</article>
-</div>
 <div class="final-cta">
 <div>
 <h2>Caminar, rezar, acompañar.</h2>
@@ -285,7 +273,7 @@
 
   document.title = `${nombre}, una oración para ti | Peregrino APP`;
   document.getElementById('headline').innerHTML = `${nombre}, hay una oración preparada <em>para ti</em>.`;
-  document.getElementById('introText').textContent = 'Una persona que te tiene presente quiso regalarte una oración sencilla, sin presión y sin pedirte nada a cambio.';
+  document.getElementById('introText').textContent = 'Una persona que te tiene presente quiso prepararte esta oración, con cariño, solo para ti.';
   document.getElementById('cardTitle').innerHTML = `${nombre}<span>una oración para ti</span>`;
   document.getElementById('subtitle').textContent = `Hoy alguien quiso regalarte esta oración con ${selected.label}.`;
   document.getElementById('prayerText').textContent = selected.text;
@@ -316,6 +304,67 @@
     }
   }
   document.getElementById('copyPrayer').addEventListener('click',()=>copy(fullPrayer));
+
+  // --- Enviar con imagen (tarjeta de oración como PNG + compartir nativo) ---
+  function wrap(ctx, text, x, y, maxW, lh){
+    var words = text.split(' '), line = '', yy = y;
+    for(var i=0;i<words.length;i++){
+      var test = line + words[i] + ' ';
+      if(ctx.measureText(test).width > maxW && line){ ctx.fillText(line.trim(), x, yy); line = words[i] + ' '; yy += lh; }
+      else line = test;
+    }
+    ctx.fillText(line.trim(), x, yy);
+    return yy + lh;
+  }
+  function buildCard(){
+    var c = document.createElement('canvas'); c.width = 1080; c.height = 1350;
+    var ctx = c.getContext('2d');
+    var g = ctx.createLinearGradient(0,0,0,1350);
+    g.addColorStop(0,'#fffaf0'); g.addColorStop(.55,'#f4ecd7'); g.addColorStop(1,'#fff'); 
+    ctx.fillStyle = g; ctx.fillRect(0,0,1080,1350);
+    // marco
+    ctx.strokeStyle = 'rgba(200,148,26,.45)'; ctx.lineWidth = 3; ctx.strokeRect(46,46,988,1258);
+    // sello
+    ctx.beginPath(); ctx.arc(540,210,62,0,Math.PI*2);
+    var sg = ctx.createRadialGradient(515,188,8,540,210,62);
+    sg.addColorStop(0,'#fff4bf'); sg.addColorStop(.6,'#d8ac34'); sg.addColorStop(1,'#a6720b');
+    ctx.fillStyle = sg; ctx.fill();
+    ctx.fillStyle = '#33210a'; ctx.font = '64px Georgia, serif'; ctx.textAlign='center'; ctx.fillText('✝',540,234);
+    // label
+    ctx.fillStyle = '#c8941a'; ctx.font = '700 26px Arial, sans-serif';
+    ctx.fillText('U N A   O R A C I Ó N   P A R A', 540, 330);
+    // nombre
+    ctx.fillStyle = '#102619'; ctx.font = '600 84px Georgia, serif';
+    ctx.fillText(nombre.length>16?nombre.slice(0,16)+'…':nombre, 540, 430);
+    // linea
+    ctx.strokeStyle='rgba(200,148,26,.5)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(420,478);ctx.lineTo(660,478);ctx.stroke();
+    // oración
+    ctx.fillStyle = '#1f3327'; ctx.font = 'italic 40px Georgia, serif';
+    var endY = wrap(ctx, selected.text.replace(/\n+/g,' '), 540, 560, 820, 58);
+    // amén
+    ctx.fillStyle = '#c8941a'; ctx.font = 'italic 600 44px Georgia, serif';
+    ctx.fillText('Amén.', 540, Math.min(endY+30, 1180));
+    // firma
+    ctx.fillStyle = 'rgba(27,33,27,.55)'; ctx.font = '700 28px Arial, sans-serif';
+    ctx.fillText('✦  Peregrino APP', 540, 1250);
+    return c;
+  }
+  function shareImage(){
+    var canvas = buildCard();
+    canvas.toBlob(function(blob){
+      if(!blob){ showToast('No se pudo crear la imagen'); return; }
+      var file = new File([blob], 'oracion-peregrino.png', {type:'image/png'});
+      var shareText = 'Hoy pensé en ti y quise dejarte una pequeña luz. ' + location.href;
+      if(navigator.canShare && navigator.canShare({files:[file]})){
+        navigator.share({ files:[file], text: shareText, title:'Una oración para ti' }).catch(function(){});
+      } else {
+        var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'oracion-peregrino.png'; a.click();
+        setTimeout(function(){ URL.revokeObjectURL(a.href); window.open('https://wa.me/?text='+encodeURIComponent(shareText),'_blank','noopener'); }, 400);
+        showToast('Imagen descargada · se abre WhatsApp');
+      }
+    }, 'image/png');
+  }
+  document.getElementById('shareImg').addEventListener('click', shareImage);
 })();
 </script>
 <footer class="site-legal-footer" style="padding:34px 18px 52px;text-align:center;color:#74788a;font:14px/1.6 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
