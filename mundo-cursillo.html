@@ -1426,6 +1426,7 @@
     function visiblePublicPalancas(cursilloId) {
       return appState.palancas
         .filter((p) => p.cursillo_id === cursilloId)
+        .filter((p) => !bool(p.es_prueba))
         .filter((p) => p.consentimiento_publico === null || p.consentimiento_publico === undefined || bool(p.consentimiento_publico));
     }
 
