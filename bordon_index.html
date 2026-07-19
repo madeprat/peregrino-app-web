@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- peregrino-app-web/bordon/index.html
+     Página de aterrizaje del enlace de Bordón (Plan Comunidad).
+     Si Peregrino APP está instalada, Android abre la app directamente
+     (App Links) y esta página nunca se ve. Si NO está instalada,
+     el peregrino aterriza aquí: le llevamos a Play Store y le
+     recordamos que vuelva a pulsar su enlace después de instalar. -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Bordón te espera — Peregrino APP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: linear-gradient(160deg, #1A2C6B 0%, #0e1a45 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .caja { padding: 40px 28px; max-width: 420px; }
+    .regalo { font-size: 64px; }
+    h1 { font-size: 26px; letter-spacing: 1px; color: #E8C468; margin: 18px 0 10px; }
+    p { font-size: 15px; line-height: 1.6; color: #e8e8f0; }
+    .paso { color: #bfc6e0; font-size: 13.5px; }
+    a.boton {
+      display: inline-block;
+      margin-top: 22px;
+      background: #C9A227;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+    .colores { margin-top: 26px; font-size: 14px; color: #bfc6e0; }
+  </style>
+</head>
+<body>
+  <div class="caja">
+    <div class="regalo">🎁</div>
+    <h1>Tu comunidad te regala el Bordón</h1>
+    <p>Para recibirlo necesitas tener instalada <strong>Peregrino APP</strong>.</p>
+    <p class="paso">1. Instala la app desde Google Play<br>
+       2. Vuelve a este chat y pulsa tu enlace otra vez<br>
+       3. Tu Bordón se activará al instante</p>
+    <a class="boton"
+       href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
+       Instalar Peregrino APP
+    </a>
+    <div class="colores">¡De Colores! 🌈</div>
+  </div>
+</body>
+</html>
