@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#160d2c" />
+  <meta name="theme-color" content="#0b1220" />
   <title>El mundo está de Cursillo · Peregrino App</title>
 
   <link
@@ -15,22 +15,41 @@
 
   <style>
     :root {
-      --bg: #10091f;
-      --panel: rgba(30, 18, 54, 0.78);
-      --panel-solid: #1c1233;
+      /* Paleta Peregrino APP (site.css) */
+      --bg: #0b1220;
+      --panel: rgba(17, 26, 46, 0.78);
+      --panel-solid: #111a2e;
       --panel-soft: rgba(255,255,255,.055);
-      --text: #f7f2ff;
-      --muted: #b9acce;
-      --purple: #a873ff;
-      --purple-2: #7c3aed;
-      --pink: #ff78c7;
-      --gold: #ffd76d;
-      --green: #64e6a7;
-      --blue: #70c9ff;
+      --text: #f5f7fb;
+      --muted: #c8d0df;
+      --gold: #d4af37;
+      --gold-2: #f1d27a;
+      --green: #3ecf8e;
+      --blue: #6fb3ff;
       --danger: #ff7d91;
-      --line: rgba(255,255,255,.11);
-      --shadow: 0 24px 80px rgba(0,0,0,.34);
+      --line: rgba(255,255,255,.14);
+      --shadow: 0 24px 60px rgba(0,0,0,.28);
       --radius: 22px;
+      /* Arcoíris "De Colores" */
+      --dc-rojo: #ff5f6d;
+      --dc-naranja: #ff9a3d;
+      --dc-amarillo: #ffd76d;
+      --dc-verde: #3ecf8e;
+      --dc-azul: #6fb3ff;
+      --dc-violeta: #a78bfa;
+      --purple: var(--dc-violeta);
+      --pink: var(--dc-rojo);
+      --decolores: linear-gradient(90deg, var(--dc-rojo), var(--dc-naranja), var(--dc-amarillo), var(--dc-verde), var(--dc-azul), var(--dc-violeta));
+    }
+
+    /* Cinta "De Colores" — la alegría del arcoíris, discreta y presente */
+    .decolores-ribbon {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--decolores);
+      z-index: 999;
+      opacity: .95;
     }
 
     * { box-sizing: border-box; }
@@ -39,10 +58,8 @@
       margin: 0;
       color: var(--text);
       background:
-        radial-gradient(circle at 15% 5%, rgba(124,58,237,.24), transparent 34%),
-        radial-gradient(circle at 88% 15%, rgba(255,120,199,.13), transparent 28%),
-        radial-gradient(circle at 50% 100%, rgba(60,190,255,.10), transparent 36%),
-        var(--bg);
+        radial-gradient(circle at top, rgba(212,175,55,.12), transparent 30%),
+        linear-gradient(180deg, #0b1220 0%, #0a1020 45%, #080d18 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
     }
@@ -92,10 +109,8 @@
       display: grid;
       place-items: center;
       font-size: 27px;
-      background:
-        radial-gradient(circle at 35% 30%, #fff 0 3%, transparent 4%),
-        linear-gradient(145deg, var(--purple), var(--pink));
-      box-shadow: 0 14px 38px rgba(124,58,237,.35);
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      box-shadow: 0 14px 38px rgba(212,175,55,.28);
     }
 
     .brand h1 {
@@ -138,13 +153,18 @@
     }
 
     .btn.primary {
-      border-color: rgba(168,115,255,.42);
-      background: linear-gradient(135deg, rgba(124,58,237,.88), rgba(183,67,183,.88));
-      box-shadow: 0 12px 30px rgba(124,58,237,.24);
+      border-color: rgba(212,175,55,.55);
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      color: #09111d;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(212,175,55,.25);
     }
 
     .btn.active {
-      background: linear-gradient(135deg, rgba(255,120,199,.84), rgba(124,58,237,.9));
+      background: var(--decolores);
+      color: #09111d;
+      font-weight: 700;
+      border-color: transparent;
     }
 
     .status-strip {
@@ -156,7 +176,7 @@
       gap: 10px;
       align-items: center;
       color: var(--muted);
-      background: rgba(10,6,22,.55);
+      background: rgba(9,14,25,.6);
       backdrop-filter: blur(14px);
     }
 
@@ -209,7 +229,7 @@
       border-radius: 50%;
       right: -48px;
       top: -58px;
-      background: radial-gradient(circle, rgba(168,115,255,.22), transparent 68%);
+      background: radial-gradient(circle, rgba(212,175,55,.16), transparent 68%);
     }
 
     .kpi-label {
@@ -234,6 +254,12 @@
       color: var(--muted);
       font-size: .8rem;
     }
+
+    /* Cada KPI lleva un color del arcoíris */
+    .kpi:nth-child(1) { border-top: 3px solid var(--dc-rojo); }
+    .kpi:nth-child(2) { border-top: 3px solid var(--dc-amarillo); }
+    .kpi:nth-child(3) { border-top: 3px solid var(--dc-verde); }
+    .kpi:nth-child(4) { border-top: 3px solid var(--dc-azul); }
 
     .filters {
       display: grid;
@@ -260,12 +286,12 @@
     }
 
     .control:focus {
-      border-color: rgba(168,115,255,.68);
-      box-shadow: 0 0 0 3px rgba(168,115,255,.12);
+      border-color: rgba(212,175,55,.68);
+      box-shadow: 0 0 0 3px rgba(212,175,55,.14);
     }
 
     select.control option {
-      background: #20143b;
+      background: #111a2e;
       color: white;
     }
 
@@ -293,7 +319,7 @@
     #map {
       position: absolute;
       inset: 0;
-      background: #110c20;
+      background: #0e1526;
     }
 
     .map-top {
@@ -314,7 +340,7 @@
       padding: 13px 15px;
       border: 1px solid rgba(255,255,255,.13);
       border-radius: 16px;
-      background: rgba(21,12,40,.83);
+      background: rgba(13,20,36,.85);
       box-shadow: 0 18px 50px rgba(0,0,0,.34);
       backdrop-filter: blur(16px);
     }
@@ -340,7 +366,7 @@
       padding: 10px 12px;
       border: 1px solid rgba(255,255,255,.13);
       border-radius: 14px;
-      background: rgba(21,12,40,.83);
+      background: rgba(13,20,36,.85);
       backdrop-filter: blur(16px);
       font-size: .76rem;
       color: var(--muted);
@@ -367,7 +393,7 @@
       border: 1px solid rgba(255,255,255,.14);
       border-radius: 19px;
       padding: 15px;
-      background: rgba(20,11,38,.9);
+      background: rgba(13,20,36,.92);
       box-shadow: 0 18px 55px rgba(0,0,0,.4);
       backdrop-filter: blur(18px);
     }
@@ -409,9 +435,9 @@
       padding: 6px 9px;
       border-radius: 999px;
       font-size: .72rem;
-      color: #e9ddff;
-      background: rgba(168,115,255,.13);
-      border: 1px solid rgba(168,115,255,.24);
+      color: #f6ecd0;
+      background: rgba(212,175,55,.12);
+      border: 1px solid rgba(212,175,55,.28);
     }
 
     .mural {
@@ -458,7 +484,7 @@
       overflow: auto;
       padding: 12px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(168,115,255,.55) transparent;
+      scrollbar-color: rgba(212,175,55,.55) transparent;
     }
 
     .palanca-card {
@@ -472,7 +498,7 @@
 
     .palanca-card:hover {
       transform: translateY(-1px);
-      border-color: rgba(168,115,255,.28);
+      border-color: rgba(212,175,55,.35);
       background: rgba(255,255,255,.065);
     }
 
@@ -525,7 +551,7 @@
     .palanca-detail {
       margin-top: 9px;
       font-size: .8rem;
-      color: #ddd4eb;
+      color: #dfe5f0;
     }
 
     .palanca-message {
@@ -553,7 +579,10 @@
     }
 
     .worldwide-eyebrow {
-      color: var(--pink);
+      background: var(--decolores);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       text-transform: uppercase;
       letter-spacing: .13em;
       font-weight: 820;
@@ -603,15 +632,15 @@
     .leaflet-container { font-family: inherit; }
     .leaflet-control-attribution {
       color: #afa4c1 !important;
-      background: rgba(15,8,29,.75) !important;
+      background: rgba(11,18,32,.78) !important;
     }
-    .leaflet-control-attribution a { color: #d9c8ff !important; }
+    .leaflet-control-attribution a { color: #f1d27a !important; }
     .leaflet-bar a {
-      background: rgba(24,14,45,.9);
+      background: rgba(15,23,41,.9);
       color: white;
       border-color: rgba(255,255,255,.11);
     }
-    .leaflet-bar a:hover { background: #34205d; color: white; }
+    .leaflet-bar a:hover { background: #22304f; color: white; }
 
     .beacon-wrap {
       width: 30px;
@@ -667,7 +696,7 @@
     .flow-line {
       stroke-dasharray: 6 10;
       animation: lineFlow 2.2s linear infinite;
-      filter: drop-shadow(0 0 5px rgba(168,115,255,.75));
+      filter: drop-shadow(0 0 5px rgba(212,175,55,.8));
     }
 
     @keyframes lineFlow {
@@ -676,12 +705,12 @@
 
     .leaflet-tooltip {
       color: white;
-      background: rgba(23,13,43,.93);
+      background: rgba(13,20,36,.94);
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 12px 35px rgba(0,0,0,.35);
       border-radius: 10px;
     }
-    .leaflet-tooltip::before { border-top-color: rgba(23,13,43,.93) !important; }
+    .leaflet-tooltip::before { border-top-color: rgba(13,20,36,.94) !important; }
 
     .demo-reveal {
       position: fixed;
@@ -694,8 +723,8 @@
       opacity: 0;
       visibility: hidden;
       background:
-        radial-gradient(circle at center, rgba(87,36,163,.25), transparent 52%),
-        rgba(5,3,12,.55);
+        radial-gradient(circle at center, rgba(212,175,55,.14), transparent 52%),
+        rgba(5,8,16,.6);
       backdrop-filter: blur(8px);
       transition: opacity .5s ease, visibility .5s ease;
     }
@@ -711,7 +740,7 @@
       text-align: center;
       border-radius: 28px;
       border: 1px solid rgba(255,255,255,.17);
-      background: linear-gradient(145deg, rgba(40,21,72,.95), rgba(18,10,35,.96));
+      background: linear-gradient(145deg, rgba(17,26,46,.96), rgba(9,14,25,.97));
       box-shadow: 0 35px 100px rgba(0,0,0,.55);
       transform: translateY(20px) scale(.97);
       transition: transform .55s cubic-bezier(.2,.8,.2,1);
@@ -722,7 +751,10 @@
     }
 
     .demo-kicker {
-      color: var(--pink);
+      background: var(--decolores);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       font-weight: 850;
       text-transform: uppercase;
       letter-spacing: .16em;
@@ -739,7 +771,7 @@
     .demo-box p {
       margin: 0 auto;
       max-width: 620px;
-      color: #d4c9e6;
+      color: #c8d0df;
       font-size: clamp(.95rem, 1.8vw, 1.2rem);
       line-height: 1.5;
     }
@@ -755,8 +787,8 @@
     .demo-origins span {
       padding: 8px 11px;
       border-radius: 999px;
-      background: rgba(168,115,255,.12);
-      border: 1px solid rgba(168,115,255,.25);
+      background: rgba(212,175,55,.12);
+      border: 1px solid rgba(212,175,55,.3);
       font-size: .78rem;
     }
 
@@ -766,7 +798,7 @@
       z-index: 6000;
       display: grid;
       place-items: center;
-      background: rgba(10,5,20,.84);
+      background: rgba(8,13,24,.86);
       backdrop-filter: blur(12px);
       transition: opacity .35s ease, visibility .35s ease;
     }
@@ -786,8 +818,10 @@
       width: 58px;
       height: 58px;
       border: 4px solid rgba(255,255,255,.1);
-      border-top-color: var(--purple);
-      border-right-color: var(--pink);
+      border-top-color: var(--dc-amarillo);
+      border-right-color: var(--dc-verde);
+      border-bottom-color: var(--dc-azul);
+      border-left-color: var(--dc-rojo);
       border-radius: 50%;
       margin: 0 auto 16px;
       animation: spin .9s linear infinite;
@@ -854,6 +888,7 @@
 </head>
 
 <body>
+  <div class="decolores-ribbon" aria-hidden="true"></div>
   <div id="loadingCover" class="loading-cover">
     <div class="loader">
       <div class="loader-ring"></div>
@@ -1514,7 +1549,7 @@
         L.polyline(
           [[origin.lat, origin.lon], [destLat, destLon]],
           {
-            color: "#a873ff",
+            color: "#d4af37",
             weight: Math.min(3.2, 1 + Math.log2(origin.count + 1) * .5),
             opacity: .56,
             dashArray: "6 10",
