@@ -31,6 +31,7 @@
       --dc-verde: #3ecf8e;
       --dc-azul: #6fb3ff;
       --dc-violeta: #a78bfa;
+      --done: #8b96ad;
       --purple: var(--dc-violeta);
       --pink: var(--dc-rojo);
       --decolores: linear-gradient(90deg, var(--dc-rojo), var(--dc-naranja), var(--dc-amarillo), var(--dc-verde), var(--dc-azul), var(--dc-violeta));
@@ -223,7 +224,7 @@
       border-radius: 50%;
       right: -48px;
       top: -58px;
-      background: radial-gradient(circle, rgba(212,175,55,.16), transparent 68%);
+      background: radial-gradient(circle, rgba(255,255,255,.08), transparent 68%);
     }
 
     .kpi-label {
@@ -313,9 +314,7 @@
     #map {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(212,175,55,.08), transparent 46%),
-        radial-gradient(ellipse at center, #0e1526 0%, #080d18 100%);
+      background: radial-gradient(ellipse at center, #0e1526 0%, #080d18 100%);
       cursor: grab;
     }
     #map:active { cursor: grabbing; }
@@ -381,7 +380,7 @@
 
     .legend .active { background: var(--green); box-shadow: 0 0 12px var(--green); }
     .legend .next { background: var(--purple); box-shadow: 0 0 12px var(--purple); }
-    .legend .done { background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+    .legend .done { background: var(--done); box-shadow: 0 0 10px var(--done); }
 
     .selection-card {
       position: absolute;
@@ -407,6 +406,14 @@
       gap: 10px;
       align-items: start;
     }
+
+    .selection-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .selection-actions .btn { justify-content: center; }
 
     .selection-title {
       font-weight: 830;
@@ -434,9 +441,9 @@
       padding: 6px 9px;
       border-radius: 999px;
       font-size: .72rem;
-      color: #f6ecd0;
-      background: rgba(212,175,55,.12);
-      border: 1px solid rgba(212,175,55,.28);
+      color: #e6ebf4;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
     }
 
     .mural {
@@ -483,7 +490,7 @@
       overflow: auto;
       padding: 12px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(212,175,55,.55) transparent;
+      scrollbar-color: rgba(255,255,255,.3) transparent;
     }
 
     .palanca-card {
@@ -497,7 +504,7 @@
 
     .palanca-card:hover {
       transform: translateY(-1px);
-      border-color: rgba(212,175,55,.35);
+      border-color: rgba(255,255,255,.26);
       background: rgba(255,255,255,.065);
     }
 
@@ -542,9 +549,9 @@
     }
 
     .palanca-status.done {
-      color: #fff0bd;
-      background: rgba(255,215,109,.1);
-      border: 1px solid rgba(255,215,109,.24);
+      color: #d7deea;
+      background: rgba(139,150,173,.14);
+      border: 1px solid rgba(139,150,173,.32);
     }
 
     .palanca-detail {
@@ -652,7 +659,7 @@
       opacity: 0;
       visibility: hidden;
       background:
-        radial-gradient(circle at center, rgba(212,175,55,.14), transparent 52%),
+        radial-gradient(circle at center, rgba(255,255,255,.06), transparent 52%),
         rgba(5,8,16,.6);
       backdrop-filter: blur(8px);
       transition: opacity .5s ease, visibility .5s ease;
@@ -716,8 +723,8 @@
     .demo-origins span {
       padding: 8px 11px;
       border-radius: 999px;
-      background: rgba(212,175,55,.12);
-      border: 1px solid rgba(212,175,55,.3);
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
       font-size: .78rem;
     }
 
@@ -934,6 +941,22 @@
         <div class="count-unit"><strong id="countSeconds">—</strong><span>segundos</span></div>
       </div>
     </section>
+  </div>
+
+  <div id="palancaInvite" class="demo-reveal" role="dialog" aria-modal="true" aria-labelledby="palancaInviteTitle" style="pointer-events:auto">
+    <div class="demo-box">
+      <div class="demo-kicker">Hacer palanca</div>
+      <h2 id="palancaInviteTitle">Tu oración puede sostener este Cursillo</h2>
+      <p id="palancaInviteText">
+        Las palancas se ofrecen desde Peregrino APP: eliges el Cursillo, rezas de verdad
+        —una decena, el Rosario, tu oración— y al terminar tu palanca viaja sola hasta este mundo.
+        Sin escribir nada.
+      </p>
+      <div class="demo-origins" style="margin-top:22px">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino APP</a>
+        <button class="btn" type="button" id="palancaInviteClose">Seguir explorando</button>
+      </div>
+    </div>
   </div>
 
   <div id="demoReveal" class="demo-reveal">
@@ -1168,7 +1191,7 @@
     const STATUS_COLORS = {
       activo: "#3ecf8e",
       proximo: "#a78bfa",
-      finalizado: "#d4af37"
+      finalizado: "#8b96ad"
     };
 
     const DECOLORES = ["#ff5f6d", "#ff9a3d", "#ffd76d", "#3ecf8e", "#6fb3ff", "#a78bfa"];
@@ -1350,7 +1373,7 @@
 
         const selected = cursillo.cursillo_id === appState.selectedCursilloId;
         const statusClass = normalizeHeader(cursilloStatus(cursillo));
-        const color = STATUS_COLORS[statusClass] || "#d4af37";
+        const color = STATUS_COLORS[statusClass] || "#8b96ad";
 
         points.push({
           id: cursillo.cursillo_id,
@@ -1437,9 +1460,17 @@
               <span class="pill">${nowCount} ahora</span>
             </div>
           </div>
-          <button class="btn primary" type="button" onclick="showSingleReveal()">Presentar</button>
+          <div class="selection-actions">
+            <a class="btn primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
+            <button class="btn" type="button" onclick="showSingleReveal()">Presentar</button>
+          </div>
         </div>
       `;
+    }
+
+    function palancaLink(cursilloId) {
+      return "https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" +
+        "?cursillo=" + encodeURIComponent(cursilloId) + "&accion=palanca";
     }
 
     function palancaSortWeight(status) {
@@ -1546,6 +1577,23 @@
       renderSelection();
       renderMural();
       renderFlows();
+    }
+
+    function maybeShowPalancaInvite() {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("accion") !== "palanca") return;
+
+      const cursillo = selectedCursillo();
+      if (cursillo) {
+        $("palancaInviteTitle").textContent =
+          `Tu oración puede sostener el ${cursillo.nombre_corto || "Cursillo"}`;
+      }
+
+      $("palancaInvite").classList.add("visible");
+
+      // No repetir la invitación al recargar
+      url.searchParams.delete("accion");
+      window.history.replaceState({}, "", url);
     }
 
     function chooseInitialCursillo() {
@@ -1660,6 +1708,7 @@
       appState.filteredCursillos = [...appState.cursillos];
       appState.selectedCursilloId = chooseInitialCursillo();
       renderAll();
+      maybeShowPalancaInvite();
       updateCountdown();
 
       clearInterval(appState.countdownTimer);
@@ -1778,6 +1827,7 @@
 
     initGlobe();
     bindEvents();
+    $("palancaInviteClose").addEventListener("click", () => $("palancaInvite").classList.remove("visible"));
 
     google.charts.load("current", { packages: ["table"] });
     google.charts.setOnLoadCallback(loadData);
