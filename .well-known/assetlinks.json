@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.cursillistas.peregrino_mcc",
+      "sha256_cert_fingerprints":
+        ["A1:7D:4F:BB:63:E0:10:E5:95:03:2B:47:6B:EE:B0:FD:7C:BB:76:BE:68:D6:62:4C:08:B6:36:04:B3:81:30:6F"]
+    }
+  }
+]
