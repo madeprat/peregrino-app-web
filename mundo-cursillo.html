@@ -948,12 +948,13 @@
       <div class="demo-kicker">Hacer palanca</div>
       <h2 id="palancaInviteTitle">Tu oración puede sostener este Cursillo</h2>
       <p id="palancaInviteText">
-        Las palancas se ofrecen desde Peregrino APP: eliges el Cursillo, rezas de verdad
-        —una decena, el Rosario, tu oración— y al terminar tu palanca viaja sola hasta este mundo.
-        Sin escribir nada.
+        Con Peregrino APP tu palanca se envía sola al terminar tu rezo, sin escribir nada.
+        Y si no tienes la app, también puedes ofrecerla desde la web en unos toques.
+        Para algo más personal, escribe al secretariado de tu diócesis.
       </p>
       <div class="demo-origins" style="margin-top:22px">
         <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino APP</a>
+        <a class="btn" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Ofrecer desde la web</a>
         <button class="btn" type="button" id="palancaInviteClose">Seguir explorando</button>
       </div>
     </div>
@@ -976,6 +977,12 @@
 
     const SHEET_ID = "15QgR0mqjT-IKZK4BNI916Eylg3P1QICfgfDgQWNryL4";
     const PUBLISHED_ID = "2PACX-1vRaCHm2r-sXGwtSV8mI7F03hyVxh_GNKiKX6zTdq7J6KiLI2Nf9RyAxlHcAM9RKl0vjyoZWxs9RrwSn";
+
+    // Plantilla del Google Form prefijado para palancas desde la web.
+    // Pega aquí la "PLANTILLA PREFIJADA" que te dio crearFormularioWeb()
+    // (contiene CURSILLO_ID_AQUI como marcador). Si se deja vacía,
+    // la invitación solo ofrece descargar la app.
+    const FORM_PALANCA_URL = "";
 
     const GIDS = {
       cursillos: "1993426283",
@@ -1588,6 +1595,14 @@
       if (cursillo) {
         $("palancaInviteTitle").textContent =
           `Tu oración puede sostener el ${cursillo.nombre_corto || "Cursillo"}`;
+      }
+
+      const formBtn = $("palancaInviteForm");
+      if (FORM_PALANCA_URL && cursillo) {
+        formBtn.href = FORM_PALANCA_URL.replace("CURSILLO_ID_AQUI", encodeURIComponent(cursillo.cursillo_id));
+        formBtn.hidden = false;
+      } else {
+        formBtn.hidden = true;
       }
 
       $("palancaInvite").classList.add("visible");
