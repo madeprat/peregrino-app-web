@@ -1044,7 +1044,7 @@
 
     <div id="dataStatus" class="mc-status-strip">
       <span class="mc-status-dot"></span>
-      <span id="statusText">Preparando la conexión con Google Sheets…</span>
+      <span id="statusText">Preparando la conexión con BD de Cursillos…</span>
     </div>
 
     <section class="mc-kpis" aria-label="Indicadores">
@@ -1466,7 +1466,7 @@
               reject(
                 new Error(
                   response.getMessage() ||
-                    "Google Sheets no devolvió datos."
+                    "BD de Cursillos no devolvió datos."
                 )
               );
               return;
@@ -2738,7 +2738,7 @@
       );
 
       setDataStatus(
-        "Sincronizando con Google Sheets…"
+        "Sincronizando con BD de Cursillos…"
       );
 
       try {
@@ -2764,7 +2764,7 @@
         appState.sourceMode = "google";
 
         setDataStatus(
-          `Conectado a Google Sheets · ` +
+          `Conectado a BD de Cursillos · ` +
           `${cursillos.length} Cursillos · ` +
           `${palancas.length} palancas` +
           latestUpdateText()
