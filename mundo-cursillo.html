@@ -1030,6 +1030,11 @@
     // la invitación solo ofrece descargar la app.
     const FORM_PALANCA_URL = "";
 
+    // MODO DE PRUEBAS:
+    // true  = muestra también las palancas marcadas como prueba.
+    // false = oculta las palancas de prueba (usar cuando la página pase a producción).
+    const MOSTRAR_PALANCAS_DE_PRUEBA = true;
+
     const GIDS = {
       cursillos: "1993426283",
       palancas: "1764826694",
@@ -1479,7 +1484,7 @@
     function visiblePublicPalancas(cursilloId) {
       return appState.palancas
         .filter((p) => p.cursillo_id === cursilloId)
-        .filter((p) => !bool(p.es_prueba))
+        .filter((p) => MOSTRAR_PALANCAS_DE_PRUEBA || !bool(p.es_prueba))
         .filter((p) => p.consentimiento_publico === null || p.consentimiento_publico === undefined || bool(p.consentimiento_publico));
     }
 
