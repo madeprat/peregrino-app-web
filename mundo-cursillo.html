@@ -6,23 +6,29 @@
   <meta name="theme-color" content="#0b1220" />
   <title>El mundo está de Cursillo · Peregrino App</title>
 
-
-  <meta name="description" content="Descubre los Cursillos que se celebran en el mundo y las palancas de oración que los sostienen desde Peregrino APP." />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" />
+  <meta
+    name="description"
+    content="Descubre los Cursillos que se celebran en el mundo y las palancas de oración que los sostienen desde Peregrino APP."
+  />
+  <link
+    rel="canonical"
+    href="https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html"
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="assets/site.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="favicon.ico" />
 
   <style>
     :root {
-      /* Paleta Peregrino APP (site.css) */
       --bg: #0b1220;
-      --panel: rgba(17, 26, 46, 0.78);
+      --panel: rgba(17, 26, 46, 0.82);
       --panel-solid: #111a2e;
-      --panel-soft: rgba(255,255,255,.055);
       --text: #f5f7fb;
       --muted: #c8d0df;
       --gold: #d4af37;
@@ -30,10 +36,9 @@
       --green: #3ecf8e;
       --blue: #6fb3ff;
       --danger: #ff7d91;
-      --line: rgba(255,255,255,.14);
-      --shadow: 0 24px 60px rgba(0,0,0,.28);
+      --line: rgba(255, 255, 255, 0.14);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
       --radius: 22px;
-      /* Arcoíris "De Colores" */
       --dc-rojo: #ff5f6d;
       --dc-naranja: #ff9a3d;
       --dc-amarillo: #ffd76d;
@@ -41,30 +46,34 @@
       --dc-azul: #6fb3ff;
       --dc-violeta: #a78bfa;
       --done: #8b96ad;
-      --purple: var(--dc-violeta);
-      --pink: var(--dc-rojo);
-      --decolores: linear-gradient(90deg, var(--dc-rojo), var(--dc-naranja), var(--dc-amarillo), var(--dc-verde), var(--dc-azul), var(--dc-violeta));
+      --decolores: linear-gradient(
+        90deg,
+        var(--dc-rojo),
+        var(--dc-naranja),
+        var(--dc-amarillo),
+        var(--dc-verde),
+        var(--dc-azul),
+        var(--dc-violeta)
+      );
     }
 
-    /* Cinta "De Colores" — la alegría del arcoíris, discreta y presente */
-    .mc-decolores-ribbon {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--decolores);
-      z-index: 999;
-      opacity: .95;
+    * {
+      box-sizing: border-box;
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html,
+    body {
+      min-height: 100%;
+    }
+
     body {
       margin: 0;
       color: var(--text);
       background:
-        radial-gradient(circle at top, rgba(212,175,55,.12), transparent 30%),
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 30%),
         linear-gradient(180deg, #0b1220 0%, #0a1020 45%, #080d18 100%);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
     }
 
@@ -72,18 +81,35 @@
       content: "";
       position: fixed;
       inset: 0;
+      z-index: -1;
       pointer-events: none;
-      opacity: .22;
+      opacity: 0.22;
       background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
       background-size: 44px 44px;
       mask-image: radial-gradient(circle at center, black, transparent 88%);
-      z-index: -1;
     }
 
-    button, input, select { font: inherit; }
-    button { cursor: pointer; }
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .mc-decolores-ribbon {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 999;
+      height: 4px;
+      background: var(--decolores);
+    }
 
     .mc-app {
       width: min(1600px, calc(100% - 28px));
@@ -101,33 +127,33 @@
 
     .mc-brand {
       display: flex;
-      align-items: center;
       gap: 14px;
+      align-items: center;
       min-width: 0;
     }
 
     .mc-brand-mark {
+      display: grid;
       width: 54px;
       height: 54px;
-      border-radius: 18px;
-      display: grid;
       place-items: center;
-      font-size: 27px;
+      border-radius: 18px;
       background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      box-shadow: 0 14px 38px rgba(212,175,55,.28);
+      box-shadow: 0 14px 38px rgba(212, 175, 55, 0.28);
+      font-size: 27px;
     }
 
     .mc-brand h1 {
       margin: 0;
       font-size: clamp(1.22rem, 2.4vw, 2rem);
       line-height: 1.05;
-      letter-spacing: -.025em;
+      letter-spacing: -0.025em;
     }
 
     .mc-brand p {
       margin: 6px 0 0;
       color: var(--muted);
-      font-size: .92rem;
+      font-size: 0.92rem;
     }
 
     .mc-actions {
@@ -138,65 +164,74 @@
     }
 
     .mc-btn {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 13px;
       border: 1px solid var(--line);
       border-radius: 13px;
-      padding: 10px 13px;
       color: var(--text);
-      background: rgba(255,255,255,.065);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      background: rgba(255, 255, 255, 0.065);
+      text-decoration: none;
       white-space: nowrap;
+      transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease;
     }
 
-    .mc-btn:hover {
+    .mc-btn:hover:not(:disabled) {
       transform: translateY(-1px);
-      background: rgba(255,255,255,.11);
-      border-color: rgba(255,255,255,.2);
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .mc-btn:disabled {
+      cursor: default;
+      opacity: 0.4;
     }
 
     .mc-btn.mc-primary {
-      border-color: rgba(212,175,55,.55);
-      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      border-color: rgba(212, 175, 55, 0.55);
       color: #09111d;
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
       font-weight: 700;
-      box-shadow: 0 12px 30px rgba(212,175,55,.25);
     }
 
     .mc-btn.mc-active {
-      background: var(--decolores);
-      color: #09111d;
-      font-weight: 700;
       border-color: transparent;
+      color: #09111d;
+      background: var(--decolores);
+      font-weight: 700;
     }
 
     .mc-status-strip {
+      display: flex;
+      gap: 10px;
+      align-items: center;
       margin-bottom: 14px;
       padding: 10px 14px;
       border: 1px solid var(--line);
       border-radius: 15px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
       color: var(--muted);
-      background: rgba(9,14,25,.6);
+      background: rgba(9, 14, 25, 0.6);
       backdrop-filter: blur(14px);
     }
 
     .mc-status-strip.mc-error {
-      border-color: rgba(255,125,145,.5);
+      border-color: rgba(255, 125, 145, 0.5);
       color: #ffd8df;
-      background: rgba(120,20,42,.25);
+      background: rgba(120, 20, 42, 0.25);
     }
 
     .mc-status-dot {
       width: 9px;
       height: 9px;
+      flex: 0 0 auto;
       border-radius: 50%;
       background: var(--green);
       box-shadow: 0 0 16px var(--green);
-      flex: 0 0 auto;
     }
 
     .mc-status-strip.mc-error .mc-status-dot {
@@ -212,36 +247,45 @@
     }
 
     .mc-kpi {
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025)),
-        var(--panel);
-      border-radius: 18px;
+      position: relative;
+      min-height: 110px;
+      overflow: hidden;
       padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.075),
+          rgba(255, 255, 255, 0.025)
+        ),
+        var(--panel);
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
-      min-height: 110px;
-      position: relative;
-      overflow: hidden;
     }
 
-    .mc-kpi::after {
-      content: "";
-      position: absolute;
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      right: -48px;
-      top: -58px;
-      background: radial-gradient(circle, rgba(255,255,255,.08), transparent 68%);
+    .mc-kpi:nth-child(1) {
+      border-top: 3px solid var(--dc-rojo);
+    }
+
+    .mc-kpi:nth-child(2) {
+      border-top: 3px solid var(--dc-amarillo);
+    }
+
+    .mc-kpi:nth-child(3) {
+      border-top: 3px solid var(--dc-verde);
+    }
+
+    .mc-kpi:nth-child(4) {
+      border-top: 3px solid var(--dc-azul);
     }
 
     .mc-kpi-label {
       color: var(--muted);
-      text-transform: uppercase;
-      font-size: .72rem;
+      font-size: 0.72rem;
       font-weight: 750;
-      letter-spacing: .12em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .mc-kpi-value {
@@ -250,30 +294,23 @@
       font-size: clamp(1.65rem, 3vw, 2.45rem);
       font-weight: 850;
       line-height: 1;
-      letter-spacing: -.04em;
     }
 
     .mc-kpi-note {
       margin-top: 8px;
       color: var(--muted);
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
-
-    /* Cada KPI lleva un color del arcoíris */
-    .mc-kpi:nth-child(1) { border-top: 3px solid var(--dc-rojo); }
-    .mc-kpi:nth-child(2) { border-top: 3px solid var(--dc-amarillo); }
-    .mc-kpi:nth-child(3) { border-top: 3px solid var(--dc-verde); }
-    .mc-kpi:nth-child(4) { border-top: 3px solid var(--dc-azul); }
 
     .mc-filters {
       display: grid;
-      grid-template-columns: 1.2fr repeat(4, minmax(140px, .75fr)) auto;
+      grid-template-columns: 1.2fr repeat(4, minmax(140px, 0.75fr)) auto;
       gap: 9px;
       margin-bottom: 14px;
       padding: 12px;
       border: 1px solid var(--line);
-      background: var(--panel);
       border-radius: 18px;
+      background: var(--panel);
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
     }
@@ -281,75 +318,87 @@
     .mc-control {
       width: 100%;
       min-width: 0;
-      color: var(--text);
+      padding: 11px 12px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 11px 12px;
-      background: rgba(8,5,18,.68);
       outline: none;
+      color: var(--text);
+      background: rgba(8, 5, 18, 0.68);
     }
 
     .mc-control:focus {
-      border-color: rgba(212,175,55,.68);
-      box-shadow: 0 0 0 3px rgba(212,175,55,.14);
+      border-color: rgba(212, 175, 55, 0.68);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.14);
     }
 
     select.mc-control option {
-      background: #111a2e;
       color: white;
+      background: #111a2e;
     }
 
     .mc-dashboard {
       display: grid;
-      grid-template-columns: minmax(0, 1.85fr) minmax(330px, .7fr);
+      grid-template-columns: minmax(0, 1.85fr) minmax(330px, 0.7fr);
       gap: 14px;
       align-items: stretch;
     }
 
-    .mc-map-shell, .mc-mural, .mc-worldwide {
+    .mc-map-shell,
+    .mc-mural,
+    .mc-worldwide {
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--panel);
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
-      overflow: hidden;
     }
 
     .mc-map-shell {
-      min-height: 650px;
       position: relative;
+      min-height: 650px;
     }
 
     #map {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, #0e1526 0%, #080d18 100%);
       cursor: grab;
+      background: radial-gradient(ellipse at center, #0e1526 0%, #080d18 100%);
     }
-    #map:active { cursor: grabbing; }
-    #map canvas { outline: none; }
+
+    #map:active {
+      cursor: grabbing;
+    }
+
+    #map canvas {
+      outline: none;
+    }
 
     .mc-map-top {
       position: absolute;
-      z-index: 500;
       top: 14px;
-      left: 14px;
       right: 14px;
+      left: 14px;
+      z-index: 500;
       display: flex;
       justify-content: space-between;
       gap: 12px;
       pointer-events: none;
     }
 
-    .mc-map-card {
+    .mc-map-card,
+    .mc-legend {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(13, 20, 36, 0.85);
+      backdrop-filter: blur(16px);
       pointer-events: auto;
+    }
+
+    .mc-map-card {
       max-width: 520px;
       padding: 13px 15px;
-      border: 1px solid rgba(255,255,255,.13);
       border-radius: 16px;
-      background: rgba(13,20,36,.85);
-      box-shadow: 0 18px 50px rgba(0,0,0,.34);
-      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.34);
     }
 
     .mc-map-card h2 {
@@ -360,48 +409,55 @@
     .mc-map-card p {
       margin: 5px 0 0;
       color: var(--muted);
-      font-size: .82rem;
+      font-size: 0.82rem;
       line-height: 1.35;
     }
 
     .mc-legend {
-      pointer-events: auto;
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       gap: 9px;
+      align-items: center;
       padding: 10px 12px;
-      border: 1px solid rgba(255,255,255,.13);
       border-radius: 14px;
-      background: rgba(13,20,36,.85);
-      backdrop-filter: blur(16px);
-      font-size: .76rem;
       color: var(--muted);
+      font-size: 0.76rem;
     }
 
     .mc-legend i {
+      display: inline-block;
       width: 9px;
       height: 9px;
-      border-radius: 50%;
-      display: inline-block;
       margin-right: 4px;
+      border-radius: 50%;
     }
 
-    .mc-legend .mc-active { background: var(--green); box-shadow: 0 0 12px var(--green); }
-    .mc-legend .mc-next { background: var(--purple); box-shadow: 0 0 12px var(--purple); }
-    .mc-legend .mc-done { background: var(--done); box-shadow: 0 0 10px var(--done); }
+    .mc-legend .mc-active {
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    .mc-legend .mc-next {
+      background: var(--dc-violeta);
+      box-shadow: 0 0 12px var(--dc-violeta);
+    }
+
+    .mc-legend .mc-done {
+      background: var(--done);
+      box-shadow: 0 0 10px var(--done);
+    }
 
     .mc-selection-card {
       position: absolute;
-      z-index: 500;
-      left: 14px;
       bottom: 14px;
+      left: 14px;
+      z-index: 500;
       width: min(560px, calc(100% - 28px));
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 19px;
       padding: 15px;
-      background: rgba(13,20,36,.92);
-      box-shadow: 0 18px 55px rgba(0,0,0,.4);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 19px;
+      background: rgba(13, 20, 36, 0.92);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(18px);
     }
 
@@ -416,24 +472,16 @@
       align-items: start;
     }
 
-    .mc-selection-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: stretch;
-    }
-    .mc-selection-actions .mc-btn { justify-content: center; }
-
     .mc-selection-title {
-      font-weight: 830;
       font-size: 1.05rem;
+      font-weight: 830;
       line-height: 1.25;
     }
 
     .mc-selection-sub {
-      color: var(--muted);
       margin-top: 5px;
-      font-size: .83rem;
+      color: var(--muted);
+      font-size: 0.83rem;
     }
 
     .mc-selection-stats {
@@ -445,29 +493,39 @@
 
     .mc-pill {
       display: inline-flex;
-      align-items: center;
       gap: 5px;
+      align-items: center;
       padding: 6px 9px;
-      border-radius: 999px;
-      font-size: .72rem;
-      color: #e6ebf4;
-      background: rgba(255,255,255,.06);
       border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #e6ebf4;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.72rem;
+    }
+
+    .mc-selection-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mc-selection-actions .mc-btn {
+      justify-content: center;
     }
 
     .mc-mural {
-      min-height: 650px;
       display: flex;
+      min-height: 650px;
       flex-direction: column;
     }
 
     .mc-panel-head {
-      padding: 17px;
-      border-bottom: 1px solid var(--line);
       display: flex;
+      gap: 10px;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 10px;
+      padding: 17px;
+      border-bottom: 1px solid var(--line);
     }
 
     .mc-panel-head h2 {
@@ -478,19 +536,19 @@
     .mc-panel-head p {
       margin: 5px 0 0;
       color: var(--muted);
-      font-size: .8rem;
+      font-size: 0.8rem;
       line-height: 1.35;
     }
 
     .mc-live-badge {
       padding: 6px 9px;
+      border: 1px solid rgba(100, 230, 167, 0.24);
       border-radius: 999px;
       color: #d9ffed;
-      background: rgba(100,230,167,.1);
-      border: 1px solid rgba(100,230,167,.24);
-      font-size: .68rem;
+      background: rgba(100, 230, 167, 0.1);
+      font-size: 0.68rem;
       font-weight: 800;
-      letter-spacing: .08em;
+      letter-spacing: 0.08em;
       white-space: nowrap;
     }
 
@@ -498,30 +556,23 @@
       flex: 1;
       overflow: auto;
       padding: 12px;
+      scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
       scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,.3) transparent;
     }
 
     .mc-palanca-card {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.045);
-      border-radius: 15px;
-      padding: 12px;
       margin-bottom: 9px;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .mc-palanca-card:hover {
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.26);
-      background: rgba(255,255,255,.065);
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.045);
     }
 
     .mc-palanca-top {
       display: flex;
-      justify-content: space-between;
       gap: 10px;
       align-items: flex-start;
+      justify-content: space-between;
     }
 
     .mc-palanca-name {
@@ -530,78 +581,105 @@
     }
 
     .mc-palanca-place {
-      color: var(--muted);
-      font-size: .75rem;
       margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.75rem;
     }
 
     .mc-palanca-status {
       flex: 0 0 auto;
-      font-size: .64rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .07em;
       padding: 5px 7px;
       border-radius: 999px;
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
     }
 
     .mc-palanca-status.mc-now {
+      border: 1px solid rgba(100, 230, 167, 0.28);
       color: #d9ffed;
-      background: rgba(100,230,167,.12);
-      border: 1px solid rgba(100,230,167,.28);
+      background: rgba(100, 230, 167, 0.12);
     }
 
     .mc-palanca-status.mc-next {
+      border: 1px solid rgba(168, 115, 255, 0.28);
       color: #f0e6ff;
-      background: rgba(168,115,255,.12);
-      border: 1px solid rgba(168,115,255,.28);
+      background: rgba(168, 115, 255, 0.12);
     }
 
     .mc-palanca-status.mc-done {
+      border: 1px solid rgba(139, 150, 173, 0.32);
       color: #d7deea;
-      background: rgba(139,150,173,.14);
-      border: 1px solid rgba(139,150,173,.32);
+      background: rgba(139, 150, 173, 0.14);
     }
 
     .mc-palanca-detail {
       margin-top: 9px;
-      font-size: .8rem;
       color: #dfe5f0;
+      font-size: 0.8rem;
     }
 
     .mc-palanca-message {
       margin-top: 8px;
       color: var(--muted);
-      font-size: .76rem;
-      line-height: 1.35;
+      font-size: 0.76rem;
       font-style: italic;
+      line-height: 1.35;
     }
 
     .mc-empty-state {
+      padding: 36px 18px;
       color: var(--muted);
       text-align: center;
-      padding: 36px 18px;
       line-height: 1.5;
     }
 
-    .mc-worldwide {
-      margin-top: 14px;
-      padding: 18px;
+    .mc-pagination {
+      position: sticky;
+      bottom: 0;
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 8px;
+      align-items: center;
+      margin-top: 12px;
+      padding: 18px 0 2px;
+      background: linear-gradient(
+        180deg,
+        rgba(17, 26, 46, 0),
+        rgba(17, 26, 46, 0.98) 35%
+      );
+    }
+
+    .mc-pagination .mc-btn {
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .mc-page-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+
+    .mc-worldwide {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 18px;
       align-items: center;
+      margin-top: 14px;
+      padding: 18px;
     }
 
     .mc-worldwide-eyebrow {
-      background: var(--decolores);
-      -webkit-background-clip: text;
-      background-clip: text;
       color: transparent;
-      text-transform: uppercase;
-      letter-spacing: .13em;
+      background: var(--decolores);
+      background-clip: text;
+      font-size: 0.7rem;
       font-weight: 820;
-      font-size: .7rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      -webkit-background-clip: text;
     }
 
     .mc-worldwide h2 {
@@ -623,10 +701,10 @@
 
     .mc-count-unit {
       padding: 13px 8px;
-      text-align: center;
-      border-radius: 15px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.045);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.045);
+      text-align: center;
     }
 
     .mc-count-unit strong {
@@ -639,21 +717,20 @@
       display: block;
       margin-top: 6px;
       color: var(--muted);
+      font-size: 0.59rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: .59rem;
-      letter-spacing: .08em;
     }
 
-    /* Tooltip del globo (Globe.gl) */
     .scene-tooltip {
-      color: var(--text) !important;
-      background: rgba(13,20,36,.94);
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 12px 35px rgba(0,0,0,.35);
-      border-radius: 10px;
       padding: 8px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      color: var(--text) !important;
+      background: rgba(13, 20, 36, 0.94);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
       font-family: inherit !important;
-      font-size: .8rem !important;
+      font-size: 0.8rem !important;
       line-height: 1.4;
     }
 
@@ -664,77 +741,76 @@
       display: grid;
       place-items: center;
       padding: 28px;
-      pointer-events: none;
-      opacity: 0;
       visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
       background:
-        radial-gradient(circle at center, rgba(255,255,255,.06), transparent 52%),
-        rgba(5,8,16,.6);
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 52%),
+        rgba(5, 8, 16, 0.6);
       backdrop-filter: blur(8px);
-      transition: opacity .5s ease, visibility .5s ease;
+      transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
     }
 
     .mc-demo-reveal.mc-visible {
-      opacity: 1;
       visibility: visible;
+      opacity: 1;
     }
 
     .mc-demo-box {
       width: min(760px, 94vw);
       padding: 34px;
-      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.17);
       border-radius: 28px;
-      border: 1px solid rgba(255,255,255,.17);
-      background: linear-gradient(145deg, rgba(17,26,46,.96), rgba(9,14,25,.97));
-      box-shadow: 0 35px 100px rgba(0,0,0,.55);
-      transform: translateY(20px) scale(.97);
-      transition: transform .55s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .mc-demo-reveal.mc-visible .mc-demo-box {
-      transform: translateY(0) scale(1);
+      background: linear-gradient(
+        145deg,
+        rgba(17, 26, 46, 0.96),
+        rgba(9, 14, 25, 0.97)
+      );
+      box-shadow: 0 35px 100px rgba(0, 0, 0, 0.55);
+      text-align: center;
     }
 
     .mc-demo-kicker {
-      background: var(--decolores);
-      -webkit-background-clip: text;
-      background-clip: text;
       color: transparent;
+      background: var(--decolores);
+      background-clip: text;
+      font-size: 0.72rem;
       font-weight: 850;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      font-size: .72rem;
+      -webkit-background-clip: text;
     }
 
     .mc-demo-box h2 {
       margin: 14px 0 8px;
       font-size: clamp(1.8rem, 5vw, 3.8rem);
       line-height: 1;
-      letter-spacing: -.045em;
     }
 
     .mc-demo-box p {
-      margin: 0 auto;
       max-width: 620px;
+      margin: 0 auto;
       color: #c8d0df;
-      font-size: clamp(.95rem, 1.8vw, 1.2rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
       line-height: 1.5;
     }
 
     .mc-demo-origins {
-      margin-top: 19px;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 8px;
+      justify-content: center;
+      margin-top: 19px;
     }
 
     .mc-demo-origins span {
       padding: 8px 11px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
       border: 1px solid var(--line);
-      font-size: .78rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.78rem;
     }
 
     .mc-loading-cover {
@@ -743,92 +819,167 @@
       z-index: 6000;
       display: grid;
       place-items: center;
-      background: rgba(8,13,24,.86);
+      background: rgba(8, 13, 24, 0.86);
       backdrop-filter: blur(12px);
-      transition: opacity .35s ease, visibility .35s ease;
+      transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
     }
 
     .mc-loading-cover.mc-hidden {
-      opacity: 0;
       visibility: hidden;
+      opacity: 0;
       pointer-events: none;
     }
 
     .mc-loader {
-      text-align: center;
       color: var(--muted);
+      text-align: center;
     }
 
     .mc-loader-ring {
       width: 58px;
       height: 58px;
-      border: 4px solid rgba(255,255,255,.1);
+      margin: 0 auto 16px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
       border-top-color: var(--dc-amarillo);
       border-right-color: var(--dc-verde);
       border-bottom-color: var(--dc-azul);
       border-left-color: var(--dc-rojo);
       border-radius: 50%;
-      margin: 0 auto 16px;
-      animation: spin .9s linear infinite;
+      animation: mc-spin 0.9s linear infinite;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes mc-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     @media (max-width: 1050px) {
       .mc-filters {
         grid-template-columns: repeat(3, 1fr);
       }
+
       .mc-dashboard {
         grid-template-columns: 1fr;
       }
-      .mc-map-shell { min-height: 590px; }
-      .mc-mural { min-height: 520px; }
-      .mc-worldwide { grid-template-columns: 1fr; }
+
+      .mc-map-shell {
+        min-height: 590px;
+      }
+
+      .mc-mural {
+        min-height: 520px;
+      }
+
+      .mc-worldwide {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 720px) {
-      .mc-app { width: min(100% - 18px, 1600px); padding-top: 10px; }
-      .mc-topbar { grid-template-columns: 1fr; }
-      .mc-actions { justify-content: flex-start; }
-      .mc-kpis { grid-template-columns: repeat(2, 1fr); }
-      .mc-filters { grid-template-columns: 1fr 1fr; }
-      .mc-filters .mc-wide { grid-column: 1 / -1; }
-      .mc-map-shell { min-height: 610px; }
-      .mc-map-top { flex-direction: column; }
-      .mc-legend { align-self: flex-start; }
-      .mc-selection-grid { grid-template-columns: 1fr; }
-      .mc-countdown { grid-template-columns: repeat(2, 1fr); }
+      .mc-app {
+        width: min(100% - 18px, 1600px);
+        padding-top: 10px;
+      }
+
+      .mc-topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .mc-actions {
+        justify-content: flex-start;
+      }
+
+      .mc-kpis {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mc-filters {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mc-filters .mc-wide {
+        grid-column: 1 / -1;
+      }
+
+      .mc-map-top {
+        flex-direction: column;
+      }
+
+      .mc-selection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mc-countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 440px) {
-      .mc-brand-mark { width: 46px; height: 46px; border-radius: 15px; }
-      .mc-actions .mc-btn { flex: 1 1 auto; justify-content: center; }
-      .mc-kpis { gap: 8px; }
-      .mc-kpi { min-height: 98px; padding: 13px; }
-      .mc-filters { grid-template-columns: 1fr; }
-      .mc-filters .mc-wide { grid-column: auto; }
-      .mc-map-shell { min-height: 660px; }
-      .mc-map-card { max-width: 100%; }
-      .mc-legend { display: none; }
+      .mc-actions .mc-btn {
+        flex: 1 1 auto;
+        justify-content: center;
+      }
+
+      .mc-filters {
+        grid-template-columns: 1fr;
+      }
+
+      .mc-filters .mc-wide {
+        grid-column: auto;
+      }
+
+      .mc-legend {
+        display: none;
+      }
+
+      .mc-map-shell {
+        min-height: 660px;
+      }
+
+      .mc-pagination {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mc-page-label {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        text-align: center;
+      }
     }
 
     @media print {
-      .site-header, .footer, .skip-link, .top-button { display: none !important; }
-      body { background: white; color: #18111f; }
-      body::before, .mc-actions, .mc-filters, .mc-status-strip, .mc-worldwide { display: none !important; }
-      .mc-app { width: 100%; padding: 0; }
-      .mc-topbar { margin-bottom: 10px; }
-      .mc-brand p { color: #555; }
-      .mc-kpis { grid-template-columns: repeat(4, 1fr); }
-      .mc-kpi, .mc-map-shell, .mc-mural {
-        background: white !important;
-        color: #18111f !important;
+      .site-header,
+      .footer,
+      .skip-link,
+      .top-button,
+      .mc-actions,
+      .mc-filters,
+      .mc-status-strip,
+      .mc-worldwide {
+        display: none !important;
+      }
+
+      body {
+        color: #18111f;
+        background: white;
+      }
+
+      .mc-app {
+        width: 100%;
+        padding: 0;
+      }
+
+      .mc-kpi,
+      .mc-map-shell,
+      .mc-mural {
         border: 1px solid #ddd;
+        color: #18111f !important;
+        background: white !important;
         box-shadow: none;
       }
-      .mc-kpi-label, .mc-kpi-note, .mc-panel-head p, .mc-selection-sub, .mc-palanca-place, .mc-palanca-message { color: #555 !important; }
-      .mc-dashboard { grid-template-columns: 1.7fr .8fr; }
-      .mc-map-shell, .mc-mural { min-height: 620px; }
     }
   </style>
 </head>
@@ -847,16 +998,23 @@
         <a href="index.html#planes">Planes</a>
         <a href="index.html#apoyar">Apoyar</a>
         <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+        <a
+          class="nav-cta"
+          href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"
+        >Descargar</a>
       </nav>
     </div>
   </header>
+
   <div class="mc-decolores-ribbon" aria-hidden="true"></div>
+
   <div id="loadingCover" class="mc-loading-cover">
     <div class="mc-loader">
       <div class="mc-loader-ring"></div>
       <strong>Sincronizando con el mundo…</strong>
-      <div style="margin-top:7px;font-size:.82rem">Leyendo los Cursillos y sus palancas</div>
+      <div style="margin-top: 7px; font-size: 0.82rem">
+        Leyendo los Cursillos y sus palancas
+      </div>
     </div>
   </div>
 
@@ -872,33 +1030,44 @@
 
       <div class="mc-actions">
         <button id="refreshBtn" class="mc-btn" type="button">↻ Actualizar</button>
-        <button id="demoBtn" class="mc-btn mc-primary" type="button">▶ Modo demostración</button>
-        <button id="fullscreenBtn" class="mc-btn" type="button">⛶ Pantalla completa</button>
-        <button id="printBtn" class="mc-btn" type="button">⌁ Guardar recuerdo</button>
+        <button id="demoBtn" class="mc-btn mc-primary" type="button">
+          ▶ Modo demostración
+        </button>
+        <button id="fullscreenBtn" class="mc-btn" type="button">
+          ⛶ Pantalla completa
+        </button>
+        <button id="printBtn" class="mc-btn" type="button">
+          ⌁ Guardar recuerdo
+        </button>
       </div>
     </header>
 
     <div id="dataStatus" class="mc-status-strip">
       <span class="mc-status-dot"></span>
-      <span id="statusText">Preparando la conexión con los cursillos en el mundo…</span>
+      <span id="statusText">Preparando la conexión con Google Sheets…</span>
     </div>
 
     <section class="mc-kpis" aria-label="Indicadores">
       <article class="mc-kpi">
         <div class="mc-kpi-label">Cursillos visibles</div>
         <strong id="kpiCursillos" class="mc-kpi-value">—</strong>
-        <div id="kpiCursillosNote" class="mc-kpi-note">Según los filtros activos</div>
+        <div id="kpiCursillosNote" class="mc-kpi-note">
+          Según los filtros activos
+        </div>
       </article>
+
       <article class="mc-kpi">
         <div class="mc-kpi-label">Países</div>
         <strong id="kpiCountries" class="mc-kpi-value">—</strong>
         <div class="mc-kpi-note">Presencia internacional</div>
       </article>
+
       <article class="mc-kpi">
         <div class="mc-kpi-label">Palancas registradas</div>
         <strong id="kpiPalancas" class="mc-kpi-value">—</strong>
         <div class="mc-kpi-note">Para los Cursillos visibles</div>
       </article>
+
       <article class="mc-kpi">
         <div class="mc-kpi-label">Rezando ahora</div>
         <strong id="kpiNow" class="mc-kpi-value">—</strong>
@@ -907,28 +1076,52 @@
     </section>
 
     <section class="mc-filters" aria-label="Filtros del cuadro de mando">
-      <input id="searchFilter" class="mc-control mc-wide" type="search" placeholder="Buscar diócesis, ciudad, país o número…" />
+      <input
+        id="searchFilter"
+        class="mc-control mc-wide"
+        type="search"
+        placeholder="Buscar diócesis, ciudad, país o número…"
+      />
+
       <select id="statusFilter" class="mc-control">
         <option value="">Todos los estados</option>
         <option value="Activo">Activos</option>
         <option value="Próximo">Próximos</option>
         <option value="Finalizado">Finalizados</option>
       </select>
-      <select id="countryFilter" class="mc-control"><option value="">Todos los países</option></select>
-      <select id="modalityFilter" class="mc-control"><option value="">Todas las modalidades</option></select>
-      <select id="eventTypeFilter" class="mc-control"><option value="">Todos los encuentros</option></select>
+
+      <select id="countryFilter" class="mc-control">
+        <option value="">Todos los países</option>
+      </select>
+
+      <select id="modalityFilter" class="mc-control">
+        <option value="">Todas las modalidades</option>
+      </select>
+
+      <select id="eventTypeFilter" class="mc-control">
+        <option value="">Todos los encuentros</option>
+      </select>
+
       <button id="clearFiltersBtn" class="mc-btn" type="button">Limpiar</button>
     </section>
 
     <div id="mundoContenido" class="mc-dashboard" role="main">
-      <section class="mc-map-shell" aria-label="Mapa mundial de Cursillos y palancas">
+      <section
+        class="mc-map-shell"
+        aria-label="Mapa mundial de Cursillos y palancas"
+      >
         <div id="map"></div>
 
         <div class="mc-map-top">
           <div class="mc-map-card">
             <h2>Una red mundial de oración</h2>
-            <p>Gira el mundo con el dedo o el ratón y toca una luz para ver quién reza por ese Cursillo. Cada arco de color es una palanca en camino.</p>
+            <p>
+              Gira el mundo con el dedo o el ratón y toca una luz para ver
+              quién reza por ese Cursillo. Cada arco de color es una palanca
+              en camino.
+            </p>
           </div>
+
           <div class="mc-legend" aria-label="Leyenda">
             <span><i class="mc-active"></i>Activo</span>
             <span><i class="mc-next"></i>Próximo</span>
@@ -937,7 +1130,7 @@
         </div>
 
         <div id="selectionCard" class="mc-selection-card mc-empty">
-          Selecciona un Cursillo en el mapa o en el mural para descubrir sus palancas.
+          Selecciona un Cursillo en el mapa para descubrir sus palancas.
         </div>
       </section>
 
@@ -945,12 +1138,17 @@
         <div class="mc-panel-head">
           <div>
             <h2>Mural de palancas</h2>
-            <p id="muralSubtitle">Selecciona un Cursillo para ver su comunidad de oración.</p>
+            <p id="muralSubtitle">
+              Selecciona un Cursillo para ver su comunidad de oración.
+            </p>
           </div>
           <span class="mc-live-badge">PALANCA VIVA</span>
         </div>
+
         <div id="muralList" class="mc-mural-list">
-          <div class="mc-empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>
+          <div class="mc-empty-state">
+            Aquí aparecerán las palancas del Cursillo seleccionado.
+          </div>
         </div>
       </aside>
     </div>
@@ -959,13 +1157,24 @@
       <div>
         <div class="mc-worldwide-eyebrow">Próxima palanca mundial</div>
         <h2 id="worldTitle">Consultando la configuración…</h2>
-        <p id="worldDescription">La pestaña CONFIGURACION alimenta automáticamente este bloque.</p>
+        <p id="worldDescription">
+          La pestaña CONFIGURACION alimenta automáticamente este bloque.
+        </p>
       </div>
+
       <div id="countdown" class="mc-countdown">
-        <div class="mc-count-unit"><strong id="countDays">—</strong><span>días</span></div>
-        <div class="mc-count-unit"><strong id="countHours">—</strong><span>horas</span></div>
-        <div class="mc-count-unit"><strong id="countMinutes">—</strong><span>minutos</span></div>
-        <div class="mc-count-unit"><strong id="countSeconds">—</strong><span>segundos</span></div>
+        <div class="mc-count-unit">
+          <strong id="countDays">—</strong><span>días</span>
+        </div>
+        <div class="mc-count-unit">
+          <strong id="countHours">—</strong><span>horas</span>
+        </div>
+        <div class="mc-count-unit">
+          <strong id="countMinutes">—</strong><span>minutos</span>
+        </div>
+        <div class="mc-count-unit">
+          <strong id="countSeconds">—</strong><span>segundos</span>
+        </div>
       </div>
     </section>
   </div>
@@ -974,7 +1183,10 @@
     <div class="wrap footer-grid">
       <div>
         <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+        <p>
+          Guía digital para acompañar el Cuarto Día con oración, constancia
+          y comunidad.
+        </p>
       </div>
       <div class="footer-links">
         <a href="plan-apostol.html">Planes</a>
@@ -987,21 +1199,38 @@
     </div>
   </footer>
 
-  <a class="top-button" id="toTop" href="#mundoContenido" aria-label="Volver arriba">↑</a>
+  <a
+    class="top-button"
+    id="toTop"
+    href="#mundoContenido"
+    aria-label="Volver arriba"
+  >↑</a>
 
-  <div id="palancaInvite" class="mc-demo-reveal" role="dialog" aria-modal="true" aria-labelledby="palancaInviteTitle" style="pointer-events:auto">
+  <div
+    id="palancaInvite"
+    class="mc-demo-reveal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="palancaInviteTitle"
+    style="pointer-events: auto"
+  >
     <div class="mc-demo-box">
       <div class="mc-demo-kicker">Hacer palanca</div>
-      <h2 id="palancaInviteTitle">Tu oración puede sostener este Cursillo</h2>
-      <p id="palancaInviteText">
-        Con Peregrino APP tu palanca se envía sola al terminar tu rezo, sin escribir nada.
-        Y si no tienes la app, también puedes ofrecerla desde la web en unos toques.
-        Para algo más personal, escribe al secretariado de tu diócesis.
+      <h2 id="palancaInviteTitle">
+        Tu oración puede sostener este Cursillo
+      </h2>
+      <p>
+        Con Peregrino APP tu palanca se envía sola al terminar tu rezo,
+        sin escribir nada.
       </p>
-      <div class="mc-demo-origins" style="margin-top:22px">
-        <a class="mc-btn mc-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino APP</a>
-        <a class="mc-btn" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Ofrecer desde la web</a>
-        <button class="mc-btn" type="button" id="palancaInviteClose">Seguir explorando</button>
+      <div class="mc-demo-origins" style="margin-top: 22px">
+        <a
+          class="mc-btn mc-primary"
+          href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"
+        >Descargar Peregrino APP</a>
+        <button class="mc-btn" type="button" id="palancaInviteClose">
+          Seguir explorando
+        </button>
       </div>
     </div>
   </div>
@@ -1021,25 +1250,51 @@
   <script>
     "use strict";
 
-    const SHEET_ID = "15QgR0mqjT-IKZK4BNI916Eylg3P1QICfgfDgQWNryL4";
-    const PUBLISHED_ID = "2PACX-1vRaCHm2r-sXGwtSV8mI7F03hyVxh_GNKiKX6zTdq7J6KiLI2Nf9RyAxlHcAM9RKl0vjyoZWxs9RrwSn";
+    const SHEET_ID =
+      "15QgR0mqjT-IKZK4BNI916Eylg3P1QICfgfDgQWNryL4";
 
-    // Plantilla del Google Form prefijado para palancas desde la web.
-    // Pega aquí la "PLANTILLA PREFIJADA" que te dio crearFormularioWeb()
-    // (contiene CURSILLO_ID_AQUI como marcador). Si se deja vacía,
-    // la invitación solo ofrece descargar la app.
-    const FORM_PALANCA_URL = "";
+    const PUBLISHED_ID =
+      "2PACX-1vRaCHm2r-sXGwtSV8mI7F03hyVxh_GNKiKX6zTdq7J6KiLI2Nf9RyAxlHcAM9RKl0vjyoZWxs9RrwSn";
 
-    // MODO DE PRUEBAS:
-    // true  = muestra también las palancas marcadas como prueba.
-    // false = oculta las palancas de prueba (usar cuando la página pase a producción).
+    /*
+     * AJUSTES SENCILLOS
+     * -----------------
+     * true: muestra también palancas de prueba.
+     * false: muestra únicamente palancas reales.
+     */
     const MOSTRAR_PALANCAS_DE_PRUEBA = true;
+
+    /*
+     * Las palancas ya ofrecidas permanecen en el mural durante 7 días.
+     * Las que están en curso o programadas se mantienen visibles.
+     */
+    const MURAL_DIAS_VISIBLES = 7;
+
+    /*
+     * Cantidad de tarjetas mostradas por página.
+     */
+    const MURAL_POR_PAGINA = 8;
 
     const GIDS = {
       cursillos: "1993426283",
       palancas: "1764826694",
       configuracion: "1471356041"
     };
+
+    const STATUS_COLORS = {
+      activo: "#3ecf8e",
+      proximo: "#a78bfa",
+      finalizado: "#8b96ad"
+    };
+
+    const DECOLORES = [
+      "#ff5f6d",
+      "#ff9a3d",
+      "#ffd76d",
+      "#3ecf8e",
+      "#6fb3ff",
+      "#a78bfa"
+    ];
 
     const appState = {
       cursillos: [],
@@ -1054,7 +1309,10 @@
       demoTimer: null,
       demoHideTimer: null,
       demoRunning: false,
-      demoIndex: 0
+      demoIndex: 0,
+      muralPage: 1,
+      muralTotalPages: 1,
+      muralCursilloId: null
     };
 
     const $ = (id) => document.getElementById(id);
@@ -1071,21 +1329,51 @@
     }
 
     function num(value) {
-      if (typeof value === "number") return value;
-      if (value === null || value === undefined || value === "") return null;
-      const n = Number(String(value).replace(",", "."));
-      return Number.isFinite(n) ? n : null;
+      if (typeof value === "number") {
+        return value;
+      }
+
+      if (
+        value === null ||
+        value === undefined ||
+        value === ""
+      ) {
+        return null;
+      }
+
+      const number = Number(String(value).replace(",", "."));
+      return Number.isFinite(number) ? number : null;
     }
 
     function bool(value) {
-      if (typeof value === "boolean") return value;
+      if (typeof value === "boolean") {
+        return value;
+      }
+
       const text = String(value ?? "").trim().toLowerCase();
-      return ["true", "verdadero", "1", "si", "sí", "yes"].includes(text);
+
+      return [
+        "true",
+        "verdadero",
+        "1",
+        "si",
+        "sí",
+        "yes"
+      ].includes(text);
     }
 
     function toDate(value) {
-      if (!value) return null;
-      if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+      if (!value) {
+        return null;
+      }
+
+      if (
+        value instanceof Date &&
+        !Number.isNaN(value.getTime())
+      ) {
+        return value;
+      }
+
       const date = new Date(value);
       return Number.isNaN(date.getTime()) ? null : date;
     }
@@ -1101,7 +1389,11 @@
 
     function formatDate(value, options = {}) {
       const date = toDate(value);
-      if (!date) return "Sin fecha";
+
+      if (!date) {
+        return "Sin fecha";
+      }
+
       return new Intl.DateTimeFormat("es-ES", {
         day: "2-digit",
         month: "short",
@@ -1114,13 +1406,30 @@
 
     function cursilloStatus(cursillo) {
       const now = new Date();
-      const start = toDate(cursillo.inicio_utc) || toDate(cursillo.inicio_local);
-      const end = toDate(cursillo.fin_utc) || toDate(cursillo.fin_local);
+      const start =
+        toDate(cursillo.inicio_utc) ||
+        toDate(cursillo.inicio_local);
+      const end =
+        toDate(cursillo.fin_utc) ||
+        toDate(cursillo.fin_local);
 
-      if (start && now < start) return "Próximo";
-      if (end && now > end) return "Finalizado";
-      if (start && end) return "Activo";
-      return cursillo.estado_dinamico || cursillo.estado_snapshot || "Próximo";
+      if (start && now < start) {
+        return "Próximo";
+      }
+
+      if (end && now > end) {
+        return "Finalizado";
+      }
+
+      if (start && end) {
+        return "Activo";
+      }
+
+      return (
+        cursillo.estado_dinamico ||
+        cursillo.estado_snapshot ||
+        "Próximo"
+      );
     }
 
     function palancaStatus(palanca) {
@@ -1128,36 +1437,78 @@
       const start = toDate(palanca.inicio_palanca_utc);
       const end = toDate(palanca.fin_palanca_utc);
 
-      if (start && now < start) return "Programada";
-      if (end && now > end) return "Ofrecida";
-      if (start && end) return "En curso";
-      return palanca.estado_dinamico || palanca.estado_snapshot || "Programada";
+      if (start && now < start) {
+        return "Programada";
+      }
+
+      if (end && now > end) {
+        return "Ofrecida";
+      }
+
+      if (start && end) {
+        return "En curso";
+      }
+
+      return (
+        palanca.estado_dinamico ||
+        palanca.estado_snapshot ||
+        "Programada"
+      );
     }
 
     function queryViaGoogleVisualization(url) {
       return new Promise((resolve, reject) => {
         try {
           const query = new google.visualization.Query(url);
+
           query.send((response) => {
             if (response.isError()) {
-              reject(new Error(response.getMessage() || "BD no devolvió datos."));
+              reject(
+                new Error(
+                  response.getMessage() ||
+                    "Google Sheets no devolvió datos."
+                )
+              );
               return;
             }
 
             const table = response.getDataTable();
             const headers = [];
-            for (let col = 0; col < table.getNumberOfColumns(); col += 1) {
-              headers.push(normalizeHeader(table.getColumnLabel(col) || table.getColumnId(col)));
+
+            for (
+              let column = 0;
+              column < table.getNumberOfColumns();
+              column += 1
+            ) {
+              headers.push(
+                normalizeHeader(
+                  table.getColumnLabel(column) ||
+                    table.getColumnId(column)
+                )
+              );
             }
 
             const rows = [];
-            for (let row = 0; row < table.getNumberOfRows(); row += 1) {
+
+            for (
+              let row = 0;
+              row < table.getNumberOfRows();
+              row += 1
+            ) {
               const item = {};
-              for (let col = 0; col < table.getNumberOfColumns(); col += 1) {
-                item[headers[col]] = table.getValue(row, col);
+
+              for (
+                let column = 0;
+                column < table.getNumberOfColumns();
+                column += 1
+              ) {
+                item[headers[column]] =
+                  table.getValue(row, column);
               }
+
               rows.push(item);
             }
+
             resolve(rows);
           });
         } catch (error) {
@@ -1173,6 +1524,7 @@
       ];
 
       let lastError = null;
+
       for (const url of urls) {
         try {
           return await queryViaGoogleVisualization(url);
@@ -1180,7 +1532,11 @@
           lastError = error;
         }
       }
-      throw lastError || new Error("No fue posible consultar la hoja.");
+
+      throw (
+        lastError ||
+        new Error("No fue posible consultar la hoja.")
+      );
     }
 
     function fallbackData() {
@@ -1189,124 +1545,172 @@
       const day = 24 * hour;
 
       const cursillos = [
-        { cursillo_id:"ES-VAL-169-DEMO", continente:"Europa", codigo_pais:"ES", pais:"España", bandera:"🇪🇸", diocesis:"Archidiócesis de Valencia", ciudad_referencia:"Valencia", latitud:39.4699, longitud:-0.3763, tipo_evento:"Cursillo", modalidad:"Mixto", numero:169, nombre_corto:"Cursillo Mixto Nº169", inicio_utc:new Date(now-day), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" },
-        { cursillo_id:"PE-ARE-081-DEMO", continente:"América del Sur", codigo_pais:"PE", pais:"Perú", bandera:"🇵🇪", diocesis:"Arquidiócesis de Arequipa", ciudad_referencia:"Arequipa", latitud:-16.409, longitud:-71.5375, tipo_evento:"Cursillo", modalidad:"Mujeres", numero:81, nombre_corto:"Cursillo de Mujeres Nº81", inicio_utc:new Date(now-12*hour), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" },
-        { cursillo_id:"BR-POA-183-DEMO", continente:"América del Sur", codigo_pais:"BR", pais:"Brasil", bandera:"🇧🇷", diocesis:"Arquidiócesis de Porto Alegre", ciudad_referencia:"Porto Alegre", latitud:-30.0346, longitud:-51.2177, tipo_evento:"Cursillo", modalidad:"Hombres", numero:183, nombre_corto:"Cursillo de Hombres Nº183", inicio_utc:new Date(now+day), fin_utc:new Date(now+4*day), estado_snapshot:"Próximo" },
-        { cursillo_id:"AU-CAI-035-DEMO", continente:"Oceanía", codigo_pais:"AU", pais:"Australia", bandera:"🇦🇺", diocesis:"Diócesis de Cairns", ciudad_referencia:"Cairns", latitud:-16.9186, longitud:145.7781, tipo_evento:"Cursillo", modalidad:"Mixto", numero:35, nombre_corto:"Cursillo Mixto Nº35", inicio_utc:new Date(now-4*day), fin_utc:new Date(now-day), estado_snapshot:"Finalizado" },
-        { cursillo_id:"MX-COL-056-DEMO", continente:"América del Norte", codigo_pais:"MX", pais:"México", bandera:"🇲🇽", diocesis:"Diócesis de Colima", ciudad_referencia:"Colima", latitud:19.2452, longitud:-103.7241, tipo_evento:"Cursillo", modalidad:"Mujeres", numero:56, nombre_corto:"Cursillo de Mujeres Nº56", inicio_utc:new Date(now+2*day), fin_utc:new Date(now+5*day), estado_snapshot:"Próximo" },
-        { cursillo_id:"PH-MAN-144-DEMO", continente:"Asia", codigo_pais:"PH", pais:"Filipinas", bandera:"🇵🇭", diocesis:"Arquidiócesis de Manila", ciudad_referencia:"Manila", latitud:14.5995, longitud:120.9842, tipo_evento:"Cursillo", modalidad:"Jóvenes", numero:144, nombre_corto:"Cursillo de Jóvenes Nº144", inicio_utc:new Date(now-6*hour), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" }
+        {
+          cursillo_id: "ES-VAL-169-DEMO",
+          pais: "España",
+          bandera: "🇪🇸",
+          diocesis: "Archidiócesis de Valencia",
+          ciudad_referencia: "Valencia",
+          latitud: 39.4699,
+          longitud: -0.3763,
+          tipo_evento: "Cursillo",
+          modalidad: "Mixto",
+          numero: 169,
+          nombre_corto: "Cursillo Mixto Nº169",
+          inicio_utc: new Date(now.getTime() - day),
+          fin_utc: new Date(now.getTime() + 2 * day)
+        },
+        {
+          cursillo_id: "CL-CON-141-DEMO",
+          pais: "Chile",
+          bandera: "🇨🇱",
+          diocesis: "Arquidiócesis de Concepción",
+          ciudad_referencia: "Concepción",
+          latitud: -36.8201,
+          longitud: -73.0444,
+          tipo_evento: "Cursillo",
+          modalidad: "Hombres jóvenes",
+          numero: 141,
+          nombre_corto: "Cursillo de Hombres jóvenes Nº141",
+          inicio_utc: new Date(now.getTime() - day),
+          fin_utc: new Date(now.getTime() + day)
+        }
       ];
 
       const origins = [
-        ["María","Valencia","España",39.4699,-0.3763],
-        ["Ultreya San José","Ciudad de Guatemala","Guatemala",14.6349,-90.5069],
-        ["Familia López","Ciudad de México","México",19.4326,-99.1332],
-        ["Parroquia Santa María","Porto","Portugal",41.1579,-8.6291],
-        ["José","Bogotá","Colombia",4.711,-74.0721],
-        ["Grupo Cuarto Día","Los Ángeles","Estados Unidos",34.0522,-118.2437],
-        ["Carmen","Lima","Perú",-12.0464,-77.0428],
-        ["Ultreya De Colores","São Paulo","Brasil",-23.5505,-46.6333]
+        ["María", "Valencia", "España", 39.4699, -0.3763],
+        ["Carlos", "Tokio", "Japón", 35.6762, 139.6503],
+        ["Carmen", "Porto Alegre", "Brasil", -30.0346, -51.2177],
+        ["Rafael", "Ciudad de México", "México", 19.4326, -99.1332]
       ];
 
       const palancas = [];
-      let counter = 1;
-      for (const cursillo of cursillos.slice(0, 3)) {
-        for (const origin of origins) {
-          const start = new Date(now + ((counter % 5) - 2) * 30 * 60 * 1000);
+
+      cursillos.forEach((cursillo, cursilloIndex) => {
+        origins.forEach((origin, index) => {
+          const start = new Date(
+            now.getTime() -
+              (index + cursilloIndex) * 3 * hour
+          );
+
           palancas.push({
-            palanca_id:`DEMO-${counter++}`,
-            cursillo_id:cursillo.cursillo_id,
-            inicio_palanca_utc:start,
-            fin_palanca_utc:new Date(start.getTime()+30*60*1000),
-            nombre_publico:origin[0],
-            tipo_remitente:origin[0].includes("Ultreya") ? "Ultreya" : "Individual",
-            ciudad_origen:origin[1],
-            pais_origen:origin[2],
-            latitud_origen:origin[3],
-            longitud_origen:origin[4],
-            tipo_palanca:["Rosario","Eucaristía","Oración personal","Reunión de grupo"][counter%4],
-            mensaje_predefinido:"Rezo por vosotros. De colores.",
-            consentimiento_publico:true,
-            verificada:true
+            palanca_id: `DEMO-${cursilloIndex}-${index}`,
+            cursillo_id: cursillo.cursillo_id,
+            inicio_palanca_utc: start,
+            fin_palanca_utc: new Date(
+              start.getTime() + 30 * 60 * 1000
+            ),
+            fecha_registro_utc: start,
+            nombre_publico: origin[0],
+            ciudad_origen: origin[1],
+            pais_origen: origin[2],
+            latitud_origen: origin[3],
+            longitud_origen: origin[4],
+            tipo_palanca: "Rosario",
+            mensaje_predefinido:
+              "Rezo por vosotros. De colores.",
+            consentimiento_publico: true
           });
-        }
-      }
+        });
+      });
 
       return {
         cursillos,
         palancas,
-        configuracion:[{
-          palanca_mundial_id:"DEMO-MUNDIAL",
-          titulo:"Palanca mundial por los Cursillos activos",
-          inicio_utc:new Date(now.getTime()+3*hour),
-          fin_utc:new Date(now.getTime()+3*hour+15*60*1000),
-          tipo_oracion:"Decena del rosario",
-          intencion:"Por quienes están viviendo un Cursillo y por sus equipos."
-        }]
+        configuracion: []
       };
     }
 
-    const STATUS_COLORS = {
-      activo: "#3ecf8e",
-      proximo: "#a78bfa",
-      finalizado: "#8b96ad"
-    };
-
-    const DECOLORES = ["#ff5f6d", "#ff9a3d", "#ffd76d", "#3ecf8e", "#6fb3ff", "#a78bfa"];
-
     function hexToRgbStr(hex) {
-      const n = parseInt(hex.slice(1), 16);
-      return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
+      const number = parseInt(hex.slice(1), 16);
+
+      return [
+        (number >> 16) & 255,
+        (number >> 8) & 255,
+        number & 255
+      ].join(",");
     }
 
-    function holdRotation(ms = 6000) {
-      if (!appState.globe) return;
+    function holdRotation(milliseconds = 6000) {
+      if (!appState.globe) {
+        return;
+      }
+
       const controls = appState.globe.controls();
       controls.autoRotate = false;
+
       clearTimeout(appState.rotateResumeTimer);
-      appState.rotateResumeTimer = setTimeout(() => { controls.autoRotate = true; }, ms);
+
+      appState.rotateResumeTimer = setTimeout(() => {
+        controls.autoRotate = true;
+      }, milliseconds);
     }
 
     function initGlobe() {
       if (typeof Globe === "undefined") {
-        setDataStatus("No se pudo cargar el visor 3D del globo (unpkg.com bloqueado o sin conexión).", true);
+        setDataStatus(
+          "No se pudo cargar el visor 3D del globo.",
+          true
+        );
         return;
       }
 
-      const el = $("map");
+      const element = $("map");
 
-      const globe = Globe()(el)
-        .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
-        .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
+      const globe = Globe()(element)
+        .globeImageUrl(
+          "https://unpkg.com/three-globe/example/img/earth-night.jpg"
+        )
+        .bumpImageUrl(
+          "https://unpkg.com/three-globe/example/img/earth-topology.png"
+        )
         .backgroundColor("rgba(0,0,0,0)")
         .showAtmosphere(true)
         .atmosphereColor("#d4af37")
         .atmosphereAltitude(0.22)
         .pointsData([])
-        .pointColor((d) => d.color)
-        .pointAltitude((d) => d.selected ? 0.08 : 0.03)
-        .pointRadius((d) => d.selected ? 0.85 : 0.55)
-        .pointLabel((d) => d.label)
-        .onPointClick((d) => selectCursillo(d.id, true))
+        .pointColor((item) => item.color)
+        .pointAltitude((item) =>
+          item.selected ? 0.08 : 0.03
+        )
+        .pointRadius((item) =>
+          item.selected ? 0.85 : 0.55
+        )
+        .pointLabel((item) => item.label)
+        .onPointClick((item) =>
+          selectCursillo(item.id, true)
+        )
         .ringsData([])
-        .ringColor((d) => (t) => `rgba(${d.rgb},${Math.max(0, 1 - t)})`)
-        .ringMaxRadius((d) => d.selected ? 6 : 3.5)
+        .ringColor(
+          (item) => (time) =>
+            `rgba(${item.rgb},${Math.max(0, 1 - time)})`
+        )
+        .ringMaxRadius((item) =>
+          item.selected ? 6 : 3.5
+        )
         .ringPropagationSpeed(1.6)
         .ringRepeatPeriod(1400)
         .arcsData([])
-        .arcStartLat((d) => d.slat)
-        .arcStartLng((d) => d.slng)
-        .arcEndLat((d) => d.elat)
-        .arcEndLng((d) => d.elng)
-        .arcColor((d) => d.colors)
+        .arcStartLat((item) => item.startLat)
+        .arcStartLng((item) => item.startLng)
+        .arcEndLat((item) => item.endLat)
+        .arcEndLng((item) => item.endLng)
+        .arcColor((item) => item.colors)
         .arcAltitudeAutoScale(0.45)
-        .arcStroke((d) => d.stroke)
+        .arcStroke((item) => item.stroke)
         .arcDashLength(0.45)
         .arcDashGap(0.25)
         .arcDashAnimateTime(1600)
-        .arcLabel((d) => d.label);
+        .arcLabel((item) => item.label);
 
-      globe.pointOfView({ lat: 18, lng: -5, altitude: 2.1 }, 0);
+      globe.pointOfView(
+        {
+          lat: 18,
+          lng: -5,
+          altitude: 2.1
+        },
+        0
+      );
 
       const controls = globe.controls();
       controls.autoRotate = true;
@@ -1315,13 +1719,27 @@
       controls.minDistance = 135;
       controls.maxDistance = 480;
 
-      el.addEventListener("pointerdown", () => holdRotation(6000));
-      el.addEventListener("wheel", () => holdRotation(6000), { passive: true });
+      element.addEventListener(
+        "pointerdown",
+        () => holdRotation(6000)
+      );
 
-      const fit = () => globe.width(el.clientWidth).height(el.clientHeight);
+      element.addEventListener(
+        "wheel",
+        () => holdRotation(6000),
+        { passive: true }
+      );
+
+      const fit = () => {
+        globe
+          .width(element.clientWidth)
+          .height(element.clientHeight);
+      };
+
       appState.globe = globe;
       fit();
-      new ResizeObserver(fit).observe(el);
+
+      new ResizeObserver(fit).observe(element);
       window.addEventListener("resize", fit);
     }
 
@@ -1329,10 +1747,13 @@
       const select = $(selectId);
       const current = select.value;
       const firstOption = select.options[0].outerHTML;
+
       select.innerHTML = firstOption;
 
       [...new Set(values.filter(Boolean))]
-        .sort((a, b) => String(a).localeCompare(String(b), "es"))
+        .sort((a, b) =>
+          String(a).localeCompare(String(b), "es")
+        )
         .forEach((value) => {
           const option = document.createElement("option");
           option.value = value;
@@ -1340,135 +1761,258 @@
           select.appendChild(option);
         });
 
-      if ([...select.options].some((option) => option.value === current)) {
+      if (
+        [...select.options].some(
+          (option) => option.value === current
+        )
+      ) {
         select.value = current;
       }
     }
 
     function populateFilters() {
-      fillSelect("countryFilter", appState.cursillos.map((c) => c.pais));
-      fillSelect("modalityFilter", appState.cursillos.map((c) => c.modalidad));
-      fillSelect("eventTypeFilter", appState.cursillos.map((c) => c.tipo_evento));
+      fillSelect(
+        "countryFilter",
+        appState.cursillos.map((item) => item.pais)
+      );
+
+      fillSelect(
+        "modalityFilter",
+        appState.cursillos.map((item) => item.modalidad)
+      );
+
+      fillSelect(
+        "eventTypeFilter",
+        appState.cursillos.map((item) => item.tipo_evento)
+      );
     }
 
+    /*
+     * CORRECCIÓN:
+     * Si los filtros dejan un único Cursillo visible, se selecciona
+     * automáticamente. De este modo aparecen el mural y las líneas.
+     */
     function applyFilters() {
-      const search = $("searchFilter").value.trim().toLowerCase();
+      const search =
+        $("searchFilter").value.trim().toLowerCase();
       const status = $("statusFilter").value;
       const country = $("countryFilter").value;
       const modality = $("modalityFilter").value;
       const eventType = $("eventTypeFilter").value;
 
-      appState.filteredCursillos = appState.cursillos.filter((c) => {
-        const haystack = [
-          c.cursillo_id, c.pais, c.diocesis, c.ciudad_referencia,
-          c.nombre_corto, c.numero, c.modalidad, c.tipo_evento
-        ].join(" ").toLowerCase();
+      appState.filteredCursillos =
+        appState.cursillos.filter((cursillo) => {
+          const haystack = [
+            cursillo.cursillo_id,
+            cursillo.pais,
+            cursillo.diocesis,
+            cursillo.ciudad_referencia,
+            cursillo.nombre_corto,
+            cursillo.numero,
+            cursillo.modalidad,
+            cursillo.tipo_evento
+          ]
+            .join(" ")
+            .toLowerCase();
 
-        return (!search || haystack.includes(search))
-          && (!status || cursilloStatus(c) === status)
-          && (!country || c.pais === country)
-          && (!modality || c.modalidad === modality)
-          && (!eventType || c.tipo_evento === eventType);
-      });
+          return (
+            (!search || haystack.includes(search)) &&
+            (!status || cursilloStatus(cursillo) === status) &&
+            (!country || cursillo.pais === country) &&
+            (!modality || cursillo.modalidad === modality) &&
+            (!eventType || cursillo.tipo_evento === eventType)
+          );
+        });
 
-      if (
+      const selectionRemainsVisible =
         appState.selectedCursilloId &&
-        !appState.filteredCursillos.some((c) => c.cursillo_id === appState.selectedCursilloId)
-      ) {
-        appState.selectedCursilloId = null;
+        appState.filteredCursillos.some(
+          (cursillo) =>
+            cursillo.cursillo_id ===
+            appState.selectedCursilloId
+        );
+
+      if (!selectionRemainsVisible) {
+        appState.selectedCursilloId =
+          appState.filteredCursillos.length === 1
+            ? appState.filteredCursillos[0].cursillo_id
+            : null;
       }
 
       renderAll();
+
+      if (
+        appState.filteredCursillos.length === 1 &&
+        appState.selectedCursilloId
+      ) {
+        focusCursillo(
+          appState.filteredCursillos[0],
+          1200
+        );
+      }
     }
 
     function relevantPalancas(cursilloIds) {
       const ids = new Set(cursilloIds);
-      return appState.palancas.filter((p) => ids.has(p.cursillo_id));
-    }
 
-    function animateNumber(element, target) {
-      const startValue = Number(element.dataset.value || 0);
-      const finalValue = Number(target || 0);
-      const startTime = performance.now();
-      const duration = 550;
-
-      function frame(now) {
-        const progress = Math.min(1, (now - startTime) / duration);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const value = Math.round(startValue + (finalValue - startValue) * eased);
-        element.textContent = new Intl.NumberFormat("es-ES").format(value);
-        if (progress < 1) requestAnimationFrame(frame);
-        else element.dataset.value = String(finalValue);
-      }
-
-      requestAnimationFrame(frame);
+      return appState.palancas.filter((palanca) =>
+        ids.has(palanca.cursillo_id)
+      );
     }
 
     function updateKpis() {
       const cursillos = appState.filteredCursillos;
-      const palancas = relevantPalancas(cursillos.map((c) => c.cursillo_id));
-      const countries = new Set(cursillos.map((c) => c.pais).filter(Boolean));
-      const nowCount = palancas.filter((p) => palancaStatus(p) === "En curso").length;
-      const activeCount = cursillos.filter((c) => cursilloStatus(c) === "Activo").length;
+      const palancas = relevantPalancas(
+        cursillos.map((item) => item.cursillo_id)
+      );
+      const countries = new Set(
+        cursillos.map((item) => item.pais).filter(Boolean)
+      );
 
-      animateNumber($("kpiCursillos"), cursillos.length);
-      animateNumber($("kpiCountries"), countries.size);
-      animateNumber($("kpiPalancas"), palancas.length);
-      animateNumber($("kpiNow"), nowCount);
-      $("kpiCursillosNote").textContent = `${activeCount} activos según la fecha actual`;
+      const nowCount = palancas.filter(
+        (item) => palancaStatus(item) === "En curso"
+      ).length;
+
+      const activeCount = cursillos.filter(
+        (item) => cursilloStatus(item) === "Activo"
+      ).length;
+
+      $("kpiCursillos").textContent =
+        new Intl.NumberFormat("es-ES").format(
+          cursillos.length
+        );
+
+      $("kpiCountries").textContent =
+        new Intl.NumberFormat("es-ES").format(
+          countries.size
+        );
+
+      $("kpiPalancas").textContent =
+        new Intl.NumberFormat("es-ES").format(
+          palancas.length
+        );
+
+      $("kpiNow").textContent =
+        new Intl.NumberFormat("es-ES").format(
+          nowCount
+        );
+
+      $("kpiCursillosNote").textContent =
+        `${activeCount} activos según la fecha actual`;
     }
 
     function renderMapMarkers() {
-      if (!appState.globe) return;
+      if (!appState.globe) {
+        return;
+      }
 
       const points = [];
       const rings = [];
 
-      for (const cursillo of appState.filteredCursillos) {
+      appState.filteredCursillos.forEach((cursillo) => {
         const lat = num(cursillo.latitud);
-        const lon = num(cursillo.longitud);
-        if (lat === null || lon === null) continue;
+        const lng = num(cursillo.longitud);
 
-        const selected = cursillo.cursillo_id === appState.selectedCursilloId;
-        const statusClass = normalizeHeader(cursilloStatus(cursillo));
-        const color = STATUS_COLORS[statusClass] || "#8b96ad";
+        if (lat === null || lng === null) {
+          return;
+        }
+
+        const selected =
+          cursillo.cursillo_id ===
+          appState.selectedCursilloId;
+
+        const statusClass =
+          normalizeHeader(cursilloStatus(cursillo));
+
+        const color =
+          STATUS_COLORS[statusClass] || "#8b96ad";
 
         points.push({
           id: cursillo.cursillo_id,
           lat,
-          lng: lon,
+          lng,
           color,
           selected,
           label:
-            `<strong>${escapeHtml(cursillo.nombre_corto || cursillo.tipo_evento || "Cursillo")}</strong><br>` +
-            `${escapeHtml(cursillo.ciudad_referencia || "")}, ${escapeHtml(cursillo.pais || "")}<br>` +
-            `<span style="opacity:.72">${escapeHtml(cursilloStatus(cursillo))}</span>`
+            `<strong>${escapeHtml(
+              cursillo.nombre_corto ||
+                cursillo.tipo_evento ||
+                "Cursillo"
+            )}</strong><br>` +
+            `${escapeHtml(
+              cursillo.ciudad_referencia || ""
+            )}, ${escapeHtml(cursillo.pais || "")}<br>` +
+            `<span style="opacity:.72">${escapeHtml(
+              cursilloStatus(cursillo)
+            )}</span>`
         });
 
         if (statusClass !== "finalizado" || selected) {
-          rings.push({ lat, lng: lon, rgb: hexToRgbStr(color), selected });
+          rings.push({
+            lat,
+            lng,
+            rgb: hexToRgbStr(color),
+            selected
+          });
         }
+      });
+
+      appState.globe
+        .pointsData(points)
+        .ringsData(rings);
+    }
+
+    function selectedCursillo() {
+      return (
+        appState.cursillos.find(
+          (item) =>
+            item.cursillo_id ===
+            appState.selectedCursilloId
+        ) || null
+      );
+    }
+
+    function focusCursillo(cursillo, duration = 1400) {
+      if (!cursillo || !appState.globe) {
+        return;
       }
 
-      appState.globe.pointsData(points).ringsData(rings);
+      const lat = num(cursillo.latitud);
+      const lng = num(cursillo.longitud);
+
+      if (lat === null || lng === null) {
+        return;
+      }
+
+      appState.globe.pointOfView(
+        {
+          lat,
+          lng,
+          altitude: 1.55
+        },
+        duration
+      );
+
+      holdRotation(6800);
     }
 
     function selectCursillo(cursilloId, fly = false) {
       appState.selectedCursilloId = cursilloId;
 
-      const cursillo = appState.cursillos.find((c) => c.cursillo_id === cursilloId);
+      const cursillo = selectedCursillo();
+
       if (cursillo && fly) {
-        const lat = num(cursillo.latitud);
-        const lon = num(cursillo.longitud);
-        if (lat !== null && lon !== null && appState.globe) {
-          appState.globe.pointOfView({ lat, lng: lon, altitude: 1.55 }, 1400);
-          holdRotation(6800);
-        }
+        focusCursillo(cursillo);
       }
 
       const url = new URL(window.location.href);
-      if (cursilloId) url.searchParams.set("cursillo", cursilloId);
-      else url.searchParams.delete("cursillo");
+
+      if (cursilloId) {
+        url.searchParams.set("cursillo", cursilloId);
+      } else {
+        url.searchParams.delete("cursillo");
+      }
+
       window.history.replaceState({}, "", url);
 
       renderMapMarkers();
@@ -1477,15 +2021,23 @@
       renderFlows();
     }
 
-    function selectedCursillo() {
-      return appState.cursillos.find((c) => c.cursillo_id === appState.selectedCursilloId) || null;
-    }
-
     function visiblePublicPalancas(cursilloId) {
       return appState.palancas
-        .filter((p) => p.cursillo_id === cursilloId)
-        .filter((p) => MOSTRAR_PALANCAS_DE_PRUEBA || !bool(p.es_prueba))
-        .filter((p) => p.consentimiento_publico === null || p.consentimiento_publico === undefined || bool(p.consentimiento_publico));
+        .filter(
+          (palanca) =>
+            palanca.cursillo_id === cursilloId
+        )
+        .filter(
+          (palanca) =>
+            MOSTRAR_PALANCAS_DE_PRUEBA ||
+            !bool(palanca.es_prueba)
+        )
+        .filter(
+          (palanca) =>
+            palanca.consentimiento_publico === null ||
+            palanca.consentimiento_publico === undefined ||
+            bool(palanca.consentimiento_publico)
+        );
     }
 
     function renderSelection() {
@@ -1493,48 +2045,204 @@
       const cursillo = selectedCursillo();
 
       if (!cursillo) {
-        card.className = "mc-selection-card mc-empty";
-        card.innerHTML = "Selecciona un Cursillo en el mapa o en el mural para descubrir sus palancas.";
+        card.className =
+          "mc-selection-card mc-empty";
+
+        card.innerHTML =
+          "Selecciona un Cursillo en el mapa para descubrir sus palancas.";
+
         return;
       }
 
-      const palancas = visiblePublicPalancas(cursillo.cursillo_id);
-      const nowCount = palancas.filter((p) => palancaStatus(p) === "En curso").length;
-      const countries = new Set(palancas.map((p) => p.pais_origen).filter(Boolean));
-      const status = cursilloStatus(cursillo);
+      const palancas =
+        visiblePublicPalancas(cursillo.cursillo_id);
+
+      const nowCount = palancas.filter(
+        (palanca) =>
+          palancaStatus(palanca) === "En curso"
+      ).length;
+
+      const countries = new Set(
+        palancas
+          .map((palanca) => palanca.pais_origen)
+          .filter(Boolean)
+      );
 
       card.className = "mc-selection-card";
+
       card.innerHTML = `
         <div class="mc-selection-grid">
           <div>
-            <div class="mc-selection-title">${escapeHtml(cursillo.bandera || "🌍")} ${escapeHtml(cursillo.nombre_corto || cursillo.tipo_evento || "Cursillo")}</div>
-            <div class="mc-selection-sub">
-              ${escapeHtml(cursillo.diocesis || "")} · ${escapeHtml(cursillo.ciudad_referencia || "")}, ${escapeHtml(cursillo.pais || "")}<br>
-              ${formatDate(cursillo.inicio_utc || cursillo.inicio_local)} — ${formatDate(cursillo.fin_utc || cursillo.fin_local)}
+            <div class="mc-selection-title">
+              ${escapeHtml(cursillo.bandera || "🌍")}
+              ${escapeHtml(
+                cursillo.nombre_corto ||
+                  cursillo.tipo_evento ||
+                  "Cursillo"
+              )}
             </div>
+
+            <div class="mc-selection-sub">
+              ${escapeHtml(cursillo.diocesis || "")}
+              ·
+              ${escapeHtml(
+                cursillo.ciudad_referencia || ""
+              )},
+              ${escapeHtml(cursillo.pais || "")}
+              <br>
+              ${formatDate(
+                cursillo.inicio_utc ||
+                  cursillo.inicio_local
+              )}
+              —
+              ${formatDate(
+                cursillo.fin_utc ||
+                  cursillo.fin_local
+              )}
+            </div>
+
             <div class="mc-selection-stats">
-              <span class="mc-pill">${escapeHtml(status)}</span>
-              <span class="mc-pill">${palancas.length} palancas</span>
-              <span class="mc-pill">${countries.size} países</span>
-              <span class="mc-pill">${nowCount} ahora</span>
+              <span class="mc-pill">
+                ${escapeHtml(cursilloStatus(cursillo))}
+              </span>
+
+              <span class="mc-pill">
+                ${palancas.length} palancas
+              </span>
+
+              <span class="mc-pill">
+                ${countries.size} países
+              </span>
+
+              <span class="mc-pill">
+                ${nowCount} ahora
+              </span>
             </div>
           </div>
+
           <div class="mc-selection-actions">
-            <a class="mc-btn mc-primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
-            <button class="mc-btn" type="button" onclick="showSingleReveal()">Presentar</button>
+            <a
+              class="mc-btn mc-primary"
+              href="${palancaLink(
+                cursillo.cursillo_id
+              )}"
+            >🙏 Hacer palanca</a>
+
+            <button
+              class="mc-btn"
+              type="button"
+              onclick="showSingleReveal()"
+            >Presentar</button>
           </div>
         </div>
       `;
     }
 
     function palancaLink(cursilloId) {
-      return "https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" +
-        "?cursillo=" + encodeURIComponent(cursilloId) + "&accion=palanca";
+      return (
+        "https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" +
+        "?cursillo=" +
+        encodeURIComponent(cursilloId) +
+        "&accion=palanca"
+      );
     }
 
     function palancaSortWeight(status) {
-      return status === "En curso" ? 0 : status === "Programada" ? 1 : 2;
+      if (status === "En curso") {
+        return 0;
+      }
+
+      if (status === "Programada") {
+        return 1;
+      }
+
+      return 2;
     }
+
+    /*
+     * Fecha principal para ordenar:
+     * 1. fecha en que llegó al mural;
+     * 2. comienzo de la palanca;
+     * 3. finalización.
+     */
+    function palancaFechaReferencia(palanca) {
+      return (
+        toDate(palanca.fecha_registro_utc) ||
+        toDate(palanca.inicio_palanca_utc) ||
+        toDate(palanca.fin_palanca_utc)
+      );
+    }
+
+    /*
+     * CORRECCIÓN:
+     * - "Ahora" primero.
+     * - Después las programadas.
+     * - Después las ofrecidas.
+     * - Dentro de cada grupo, las más recientes arriba.
+     * - Las ofrecidas se conservan durante la última semana.
+     */
+    function palancasRecientesDelCursillo(cursilloId) {
+      const now = new Date();
+
+      const limit = new Date(
+        now.getTime() -
+          MURAL_DIAS_VISIBLES *
+            24 *
+            60 *
+            60 *
+            1000
+      );
+
+      return visiblePublicPalancas(cursilloId)
+        .filter((palanca) => {
+          const status = palancaStatus(palanca);
+
+          if (
+            status === "En curso" ||
+            status === "Programada"
+          ) {
+            return true;
+          }
+
+          const date = palancaFechaReferencia(palanca);
+
+          return date !== null && date >= limit;
+        })
+        .sort((a, b) => {
+          const statusDifference =
+            palancaSortWeight(palancaStatus(a)) -
+            palancaSortWeight(palancaStatus(b));
+
+          if (statusDifference !== 0) {
+            return statusDifference;
+          }
+
+          const dateA =
+            palancaFechaReferencia(a)?.getTime() || 0;
+
+          const dateB =
+            palancaFechaReferencia(b)?.getTime() || 0;
+
+          return dateB - dateA;
+        });
+    }
+
+    window.changeMuralPage = function changeMuralPage(
+      delta
+    ) {
+      appState.muralPage = Math.min(
+        appState.muralTotalPages,
+        Math.max(1, appState.muralPage + delta)
+      );
+
+      renderMural();
+
+      const list = $("muralList");
+
+      if (list) {
+        list.scrollTop = 0;
+      }
+    };
 
     function renderMural() {
       const list = $("muralList");
@@ -1542,90 +2250,307 @@
       const cursillo = selectedCursillo();
 
       if (!cursillo) {
-        subtitle.textContent = "Selecciona un Cursillo para ver su comunidad de oración.";
-        list.innerHTML = `<div class="mc-empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>`;
+        appState.muralPage = 1;
+        appState.muralTotalPages = 1;
+        appState.muralCursilloId = null;
+
+        subtitle.textContent =
+          "Selecciona un Cursillo para ver su comunidad de oración.";
+
+        list.innerHTML = `
+          <div class="mc-empty-state">
+            Aquí aparecerán las palancas del Cursillo seleccionado.
+          </div>
+        `;
+
         return;
       }
 
-      const palancas = visiblePublicPalancas(cursillo.cursillo_id)
-        .sort((a, b) => {
-          const statusDiff = palancaSortWeight(palancaStatus(a)) - palancaSortWeight(palancaStatus(b));
-          if (statusDiff !== 0) return statusDiff;
-          return (toDate(a.inicio_palanca_utc)?.getTime() || 0) - (toDate(b.inicio_palanca_utc)?.getTime() || 0);
-        });
+      if (
+        appState.muralCursilloId !==
+        cursillo.cursillo_id
+      ) {
+        appState.muralCursilloId =
+          cursillo.cursillo_id;
 
-      subtitle.textContent = `${cursillo.nombre_corto || "Cursillo"} · ${cursillo.ciudad_referencia || cursillo.pais || ""}`;
+        appState.muralPage = 1;
+      }
+
+      const palancas =
+        palancasRecientesDelCursillo(
+          cursillo.cursillo_id
+        );
+
+      appState.muralTotalPages = Math.max(
+        1,
+        Math.ceil(
+          palancas.length / MURAL_POR_PAGINA
+        )
+      );
+
+      if (
+        appState.muralPage >
+        appState.muralTotalPages
+      ) {
+        appState.muralPage =
+          appState.muralTotalPages;
+      }
+
+      subtitle.textContent =
+        `${cursillo.nombre_corto || "Cursillo"} · ` +
+        `${cursillo.ciudad_referencia || cursillo.pais || ""} · ` +
+        `${palancas.length} palanca${palancas.length === 1 ? "" : "s"} ` +
+        `de los últimos ${MURAL_DIAS_VISIBLES} días`;
 
       if (!palancas.length) {
-        list.innerHTML = `<div class="mc-empty-state">Todavía no hay palancas públicas registradas para este Cursillo.</div>`;
+        list.innerHTML = `
+          <div class="mc-empty-state">
+            No hay palancas públicas de los últimos
+            ${MURAL_DIAS_VISIBLES} días para este Cursillo.
+          </div>
+        `;
+
         return;
       }
 
-      list.innerHTML = palancas.slice(0, 70).map((p) => {
-        const status = palancaStatus(p);
-        const cssStatus = status === "En curso" ? "mc-now" : status === "Programada" ? "mc-next" : "mc-done";
-        const statusText = status === "En curso" ? "Ahora" : status === "Programada" ? "Próxima" : "Ofrecida";
-        const start = formatDate(p.inicio_palanca_utc, { time:true, year:false, utc:true });
-        const end = formatDate(p.fin_palanca_utc, { time:true, year:false, utc:true });
+      const firstIndex =
+        (appState.muralPage - 1) *
+        MURAL_POR_PAGINA;
 
-        return `
-          <article class="mc-palanca-card" tabindex="0">
-            <div class="mc-palanca-top">
-              <div>
-                <div class="mc-palanca-name">${escapeHtml(p.nombre_publico || "Palanca anónima")}</div>
-                <div class="mc-palanca-place">${escapeHtml(p.ciudad_origen || "")}${p.pais_origen ? ` · ${escapeHtml(p.pais_origen)}` : ""}</div>
+      const currentPage = palancas.slice(
+        firstIndex,
+        firstIndex + MURAL_POR_PAGINA
+      );
+
+      const cards = currentPage
+        .map((palanca) => {
+          const status = palancaStatus(palanca);
+
+          const cssStatus =
+            status === "En curso"
+              ? "mc-now"
+              : status === "Programada"
+                ? "mc-next"
+                : "mc-done";
+
+          const statusText =
+            status === "En curso"
+              ? "Ahora"
+              : status === "Programada"
+                ? "Próxima"
+                : "Ofrecida";
+
+          const start = formatDate(
+            palanca.inicio_palanca_utc,
+            {
+              time: true,
+              year: false,
+              utc: true
+            }
+          );
+
+          const end = formatDate(
+            palanca.fin_palanca_utc,
+            {
+              time: true,
+              year: false,
+              utc: true
+            }
+          );
+
+          return `
+            <article
+              class="mc-palanca-card"
+              tabindex="0"
+            >
+              <div class="mc-palanca-top">
+                <div>
+                  <div class="mc-palanca-name">
+                    ${escapeHtml(
+                      palanca.nombre_publico ||
+                        "Palanca anónima"
+                    )}
+                  </div>
+
+                  <div class="mc-palanca-place">
+                    ${escapeHtml(
+                      palanca.ciudad_origen || ""
+                    )}
+                    ${
+                      palanca.pais_origen
+                        ? ` · ${escapeHtml(
+                            palanca.pais_origen
+                          )}`
+                        : ""
+                    }
+                  </div>
+                </div>
+
+                <span
+                  class="mc-palanca-status ${cssStatus}"
+                >${statusText}</span>
               </div>
-              <span class="mc-palanca-status ${cssStatus}">${statusText}</span>
-            </div>
-            <div class="mc-palanca-detail">
-              ${escapeHtml(p.tipo_palanca || "Oración")} · ${start}${p.fin_palanca_utc ? `–${end.split(", ").pop()}` : ""}
-            </div>
-            ${p.mensaje_predefinido ? `<div class="mc-palanca-message">“${escapeHtml(p.mensaje_predefinido)}”</div>` : ""}
-          </article>
-        `;
-      }).join("");
+
+              <div class="mc-palanca-detail">
+                ${escapeHtml(
+                  palanca.tipo_palanca || "Oración"
+                )}
+                ·
+                ${start}
+                ${
+                  palanca.fin_palanca_utc
+                    ? `–${end.split(", ").pop()}`
+                    : ""
+                }
+              </div>
+
+              ${
+                palanca.mensaje_predefinido
+                  ? `
+                    <div class="mc-palanca-message">
+                      “${escapeHtml(
+                        palanca.mensaje_predefinido
+                      )}”
+                    </div>
+                  `
+                  : ""
+              }
+            </article>
+          `;
+        })
+        .join("");
+
+      const pagination =
+        appState.muralTotalPages > 1
+          ? `
+            <nav
+              class="mc-pagination"
+              aria-label="Paginación de palancas"
+            >
+              <button
+                class="mc-btn"
+                type="button"
+                onclick="changeMuralPage(-1)"
+                ${
+                  appState.muralPage === 1
+                    ? "disabled"
+                    : ""
+                }
+              >
+                ← Más recientes
+              </button>
+
+              <span class="mc-page-label">
+                ${appState.muralPage}
+                de
+                ${appState.muralTotalPages}
+              </span>
+
+              <button
+                class="mc-btn"
+                type="button"
+                onclick="changeMuralPage(1)"
+                ${
+                  appState.muralPage ===
+                  appState.muralTotalPages
+                    ? "disabled"
+                    : ""
+                }
+              >
+                Más antiguas →
+              </button>
+            </nav>
+          `
+          : "";
+
+      list.innerHTML = cards + pagination;
     }
 
+    /*
+     * Los arcos usan las mismas palancas recientes que el mural.
+     * Así el mapa y el panel muestran el mismo periodo.
+     */
     function renderFlows() {
-      if (!appState.globe) return;
+      if (!appState.globe) {
+        return;
+      }
 
       const cursillo = selectedCursillo();
-      if (!cursillo) { appState.globe.arcsData([]); return; }
 
-      const destLat = num(cursillo.latitud);
-      const destLon = num(cursillo.longitud);
-      if (destLat === null || destLon === null) { appState.globe.arcsData([]); return; }
+      if (!cursillo) {
+        appState.globe.arcsData([]);
+        return;
+      }
+
+      const destinationLat = num(cursillo.latitud);
+      const destinationLng = num(cursillo.longitud);
+
+      if (
+        destinationLat === null ||
+        destinationLng === null
+      ) {
+        appState.globe.arcsData([]);
+        return;
+      }
 
       const grouped = new Map();
-      for (const p of visiblePublicPalancas(cursillo.cursillo_id)) {
-        const lat = num(p.latitud_origen);
-        const lon = num(p.longitud_origen);
-        if (lat === null || lon === null) continue;
-        const key = `${lat.toFixed(3)}|${lon.toFixed(3)}`;
+
+      palancasRecientesDelCursillo(
+        cursillo.cursillo_id
+      ).forEach((palanca) => {
+        const lat = num(palanca.latitud_origen);
+        const lng = num(palanca.longitud_origen);
+
+        if (lat === null || lng === null) {
+          return;
+        }
+
+        const key =
+          `${lat.toFixed(3)}|${lng.toFixed(3)}`;
+
         if (!grouped.has(key)) {
           grouped.set(key, {
-            lat, lon,
-            city: p.ciudad_origen || "",
-            country: p.pais_origen || "",
+            lat,
+            lng,
+            city: palanca.ciudad_origen || "",
+            country: palanca.pais_origen || "",
             count: 0
           });
         }
-        grouped.get(key).count += 1;
-      }
 
-      const arcs = [...grouped.values()].slice(0, 90).map((origin, i) => {
-        const c1 = DECOLORES[i % DECOLORES.length];
-        const c2 = DECOLORES[(i + 2) % DECOLORES.length];
-        return {
-          slat: origin.lat,
-          slng: origin.lon,
-          elat: destLat,
-          elng: destLon,
-          colors: [c1, c2],
-          stroke: Math.min(1.6, 0.45 + Math.log2(origin.count + 1) * 0.3),
-          label: `${escapeHtml(origin.city)}, ${escapeHtml(origin.country)} · ${origin.count} palanca${origin.count === 1 ? "" : "s"}`
-        };
+        grouped.get(key).count += 1;
       });
+
+      const arcs = [...grouped.values()]
+        .slice(0, 90)
+        .map((origin, index) => {
+          const firstColor =
+            DECOLORES[index % DECOLORES.length];
+
+          const secondColor =
+            DECOLORES[
+              (index + 2) % DECOLORES.length
+            ];
+
+          return {
+            startLat: origin.lat,
+            startLng: origin.lng,
+            endLat: destinationLat,
+            endLng: destinationLng,
+            colors: [firstColor, secondColor],
+            stroke: Math.min(
+              1.6,
+              0.45 +
+                Math.log2(origin.count + 1) *
+                  0.3
+            ),
+            label:
+              `${escapeHtml(origin.city)}, ` +
+              `${escapeHtml(origin.country)} · ` +
+              `${origin.count} palanca` +
+              `${origin.count === 1 ? "" : "s"}`
+          };
+        });
 
       appState.globe.arcsData(arcs);
     }
@@ -1638,48 +2563,51 @@
       renderFlows();
     }
 
-    function maybeShowPalancaInvite() {
-      const url = new URL(window.location.href);
-      if (url.searchParams.get("accion") !== "palanca") return;
-
-      const cursillo = selectedCursillo();
-      if (cursillo) {
-        $("palancaInviteTitle").textContent =
-          `Tu oración puede sostener el ${cursillo.nombre_corto || "Cursillo"}`;
-      }
-
-      const formBtn = $("palancaInviteForm");
-      if (FORM_PALANCA_URL && cursillo) {
-        formBtn.href = FORM_PALANCA_URL.replace("CURSILLO_ID_AQUI", encodeURIComponent(cursillo.cursillo_id));
-        formBtn.hidden = false;
-      } else {
-        formBtn.hidden = true;
-      }
-
-      $("palancaInvite").classList.add("mc-visible");
-
-      // No repetir la invitación al recargar
-      url.searchParams.delete("accion");
-      window.history.replaceState({}, "", url);
-    }
-
     function chooseInitialCursillo() {
-      const requested = new URL(window.location.href).searchParams.get("cursillo");
-      if (requested && appState.cursillos.some((c) => c.cursillo_id === requested)) return requested;
+      const requested =
+        new URL(window.location.href)
+          .searchParams
+          .get("cursillo");
 
-      const active = appState.cursillos.find((c) => cursilloStatus(c) === "Activo");
-      return active?.cursillo_id || appState.cursillos[0]?.cursillo_id || null;
+      if (
+        requested &&
+        appState.cursillos.some(
+          (cursillo) =>
+            cursillo.cursillo_id === requested
+        )
+      ) {
+        return requested;
+      }
+
+      const active = appState.cursillos.find(
+        (cursillo) =>
+          cursilloStatus(cursillo) === "Activo"
+      );
+
+      return (
+        active?.cursillo_id ||
+        appState.cursillos[0]?.cursillo_id ||
+        null
+      );
     }
 
     function nextWorldwideEvent() {
       const now = new Date();
-      return [...appState.configuracion]
-        .filter((item) => {
-          const start = toDate(item.inicio_utc);
-          const end = toDate(item.fin_utc);
-          return start && (!end || end >= now);
-        })
-        .sort((a, b) => toDate(a.inicio_utc) - toDate(b.inicio_utc))[0] || null;
+
+      return (
+        [...appState.configuracion]
+          .filter((item) => {
+            const start = toDate(item.inicio_utc);
+            const end = toDate(item.fin_utc);
+
+            return start && (!end || end >= now);
+          })
+          .sort(
+            (a, b) =>
+              toDate(a.inicio_utc) -
+              toDate(b.inicio_utc)
+          )[0] || null
+      );
     }
 
     function updateCountdown() {
@@ -1688,9 +2616,21 @@
       const description = $("worldDescription");
 
       if (!event) {
-        title.textContent = "No hay una palanca mundial futura configurada";
-        description.textContent = "Añade una fila futura en la pestaña CONFIGURACION para activar la cuenta atrás.";
-        ["countDays","countHours","countMinutes","countSeconds"].forEach((id) => $(id).textContent = "0");
+        title.textContent =
+          "No hay una palanca mundial futura configurada";
+
+        description.textContent =
+          "Añade una fila futura en CONFIGURACION para activar la cuenta atrás.";
+
+        [
+          "countDays",
+          "countHours",
+          "countMinutes",
+          "countSeconds"
+        ].forEach((id) => {
+          $(id).textContent = "0";
+        });
+
         return;
       }
 
@@ -1698,57 +2638,125 @@
       const end = toDate(event.fin_utc);
       const now = new Date();
 
-      title.textContent = event.titulo || "Palanca mundial";
+      title.textContent =
+        event.titulo || "Palanca mundial";
+
       description.textContent = [
         event.tipo_oracion,
         event.intencion,
-        start ? formatDate(start, { time:true, utc:true }) + " UTC" : ""
-      ].filter(Boolean).join(" · ");
+        start
+          ? `${formatDate(start, {
+              time: true,
+              utc: true
+            })} UTC`
+          : ""
+      ]
+        .filter(Boolean)
+        .join(" · ");
 
-      let diff = Math.max(0, start.getTime() - now.getTime());
-      if (start <= now && (!end || now <= end)) {
-        title.textContent = `Ahora: ${event.titulo || "Palanca mundial"}`;
-        diff = 0;
+      let difference = Math.max(
+        0,
+        start.getTime() - now.getTime()
+      );
+
+      if (
+        start <= now &&
+        (!end || now <= end)
+      ) {
+        title.textContent =
+          `Ahora: ${event.titulo || "Palanca mundial"}`;
+
+        difference = 0;
       }
 
-      const seconds = Math.floor(diff / 1000);
-      const days = Math.floor(seconds / 86400);
-      const hours = Math.floor((seconds % 86400) / 3600);
-      const minutes = Math.floor((seconds % 3600) / 60);
-      const secs = seconds % 60;
+      const seconds = Math.floor(
+        difference / 1000
+      );
 
-      $("countDays").textContent = String(days).padStart(2, "0");
-      $("countHours").textContent = String(hours).padStart(2, "0");
-      $("countMinutes").textContent = String(minutes).padStart(2, "0");
-      $("countSeconds").textContent = String(secs).padStart(2, "0");
+      const days = Math.floor(
+        seconds / 86400
+      );
+
+      const hours = Math.floor(
+        (seconds % 86400) / 3600
+      );
+
+      const minutes = Math.floor(
+        (seconds % 3600) / 60
+      );
+
+      const remainingSeconds =
+        seconds % 60;
+
+      $("countDays").textContent =
+        String(days).padStart(2, "0");
+
+      $("countHours").textContent =
+        String(hours).padStart(2, "0");
+
+      $("countMinutes").textContent =
+        String(minutes).padStart(2, "0");
+
+      $("countSeconds").textContent =
+        String(remainingSeconds).padStart(2, "0");
     }
 
     function setDataStatus(message, error = false) {
       $("statusText").textContent = message;
-      $("dataStatus").classList.toggle("mc-error", error);
+
+      $("dataStatus").classList.toggle(
+        "mc-error",
+        error
+      );
     }
 
     function latestUpdateText() {
       const dates = appState.cursillos
-        .map((c) => toDate(c.fecha_actualizacion_utc))
+        .map((cursillo) =>
+          toDate(cursillo.fecha_actualizacion_utc)
+        )
         .filter(Boolean)
         .sort((a, b) => b - a);
-      if (!dates.length) return "";
-      return ` · Última actualización de datos: ${formatDate(dates[0], { time:true, utc:true })} UTC`;
+
+      if (!dates.length) {
+        return "";
+      }
+
+      return (
+        " · Última actualización de datos: " +
+        formatDate(dates[0], {
+          time: true,
+          utc: true
+        }) +
+        " UTC"
+      );
     }
 
     async function loadData() {
-      $("loadingCover").classList.remove("mc-hidden");
-      setDataStatus("Sincronizando con cursillos…");
+      $("loadingCover").classList.remove(
+        "mc-hidden"
+      );
+
+      setDataStatus(
+        "Sincronizando con Google Sheets…"
+      );
 
       try {
-        const [cursillos, palancas, configuracion] = await Promise.all([
+        const [
+          cursillos,
+          palancas,
+          configuracion
+        ] = await Promise.all([
           querySheet(GIDS.cursillos),
           querySheet(GIDS.palancas),
           querySheet(GIDS.configuracion)
         ]);
 
-        if (!cursillos.length) throw new Error("La pestaña CURSILLOS no devolvió filas.");
+        if (!cursillos.length) {
+          throw new Error(
+            "La pestaña CURSILLOS no devolvió filas."
+          );
+        }
 
         appState.cursillos = cursillos;
         appState.palancas = palancas;
@@ -1756,149 +2764,333 @@
         appState.sourceMode = "google";
 
         setDataStatus(
-          `Conectado a Cursillos en el Mundo · ${cursillos.length} Cursillos · ${palancas.length} palancas${latestUpdateText()}`
+          `Conectado a Google Sheets · ` +
+          `${cursillos.length} Cursillos · ` +
+          `${palancas.length} palancas` +
+          latestUpdateText()
         );
       } catch (error) {
         const demo = fallbackData();
+
         appState.cursillos = demo.cursillos;
         appState.palancas = demo.palancas;
-        appState.configuracion = demo.configuracion;
+        appState.configuracion =
+          demo.configuracion;
         appState.sourceMode = "demo";
 
         setDataStatus(
-          `No fue posible leer la hoja pública. Se muestran datos locales de demostración. Detalle: ${error.message}`,
+          "No fue posible leer la hoja pública. " +
+          "Se muestran datos de demostración. " +
+          `Detalle: ${error.message}`,
           true
         );
       }
 
       populateFilters();
-      appState.filteredCursillos = [...appState.cursillos];
-      appState.selectedCursilloId = chooseInitialCursillo();
+
+      appState.filteredCursillos = [
+        ...appState.cursillos
+      ];
+
+      appState.selectedCursilloId =
+        chooseInitialCursillo();
+
+      appState.muralPage = 1;
+      appState.muralCursilloId = null;
+
       renderAll();
-      maybeShowPalancaInvite();
       updateCountdown();
+      maybeShowPalancaInvite();
 
-      clearInterval(appState.countdownTimer);
-      appState.countdownTimer = setInterval(() => {
-        updateCountdown();
-        updateKpis();
-        renderMural();
-      }, 1000);
+      clearInterval(
+        appState.countdownTimer
+      );
 
-      $("loadingCover").classList.add("mc-hidden");
+      appState.countdownTimer = setInterval(
+        () => {
+          updateCountdown();
+          updateKpis();
+        },
+        1000
+      );
+
+      $("loadingCover").classList.add(
+        "mc-hidden"
+      );
+    }
+
+    function maybeShowPalancaInvite() {
+      const url = new URL(window.location.href);
+
+      if (
+        url.searchParams.get("accion") !==
+        "palanca"
+      ) {
+        return;
+      }
+
+      const cursillo = selectedCursillo();
+
+      if (cursillo) {
+        $("palancaInviteTitle").textContent =
+          `Tu oración puede sostener el ` +
+          `${cursillo.nombre_corto || "Cursillo"}`;
+      }
+
+      $("palancaInvite").classList.add(
+        "mc-visible"
+      );
+
+      url.searchParams.delete("accion");
+      window.history.replaceState({}, "", url);
     }
 
     function demoCandidates() {
-      const filtered = appState.filteredCursillos.length ? appState.filteredCursillos : appState.cursillos;
-      const withCounts = filtered.map((c) => ({
-        cursillo: c,
-        count: visiblePublicPalancas(c.cursillo_id).length,
-        active: cursilloStatus(c) === "Activo"
-      }));
+      const filtered =
+        appState.filteredCursillos.length
+          ? appState.filteredCursillos
+          : appState.cursillos;
 
-      return withCounts
-        .sort((a, b) => Number(b.active) - Number(a.active) || b.count - a.count)
+      return filtered
+        .map((cursillo) => ({
+          cursillo,
+          count:
+            visiblePublicPalancas(
+              cursillo.cursillo_id
+            ).length,
+          active:
+            cursilloStatus(cursillo) === "Activo"
+        }))
+        .sort(
+          (a, b) =>
+            Number(b.active) -
+              Number(a.active) ||
+            b.count - a.count
+        )
         .map((item) => item.cursillo);
     }
 
     function revealForCursillo(cursillo) {
-      if (!cursillo) return;
-      const palancas = visiblePublicPalancas(cursillo.cursillo_id);
+      if (!cursillo) {
+        return;
+      }
+
+      const palancas =
+        visiblePublicPalancas(
+          cursillo.cursillo_id
+        );
+
       const uniqueOrigins = [];
       const seen = new Set();
 
-      for (const p of palancas) {
-        const label = [p.ciudad_origen, p.pais_origen].filter(Boolean).join(", ");
+      palancas.forEach((palanca) => {
+        const label = [
+          palanca.ciudad_origen,
+          palanca.pais_origen
+        ]
+          .filter(Boolean)
+          .join(", ");
+
         if (label && !seen.has(label)) {
           seen.add(label);
           uniqueOrigins.push(label);
         }
-      }
+      });
 
-      $("demoTitle").textContent = cursillo.nombre_corto || "El mundo reza por vosotros";
+      $("demoTitle").textContent =
+        cursillo.nombre_corto ||
+        "El mundo reza por vosotros";
+
       $("demoText").textContent =
         `${cursillo.diocesis || cursillo.ciudad_referencia || cursillo.pais}. ` +
-        `${palancas.length} palancas registradas desde ${new Set(palancas.map((p) => p.pais_origen).filter(Boolean)).size} países.`;
+        `${palancas.length} palancas registradas desde ` +
+        `${new Set(
+          palancas
+            .map((item) => item.pais_origen)
+            .filter(Boolean)
+        ).size} países.`;
 
-      $("demoOrigins").innerHTML = uniqueOrigins
-        .slice(0, 8)
-        .map((origin) => `<span>${escapeHtml(origin)}</span>`)
-        .join("");
+      $("demoOrigins").innerHTML =
+        uniqueOrigins
+          .slice(0, 8)
+          .map(
+            (origin) =>
+              `<span>${escapeHtml(origin)}</span>`
+          )
+          .join("");
 
-      $("demoReveal").classList.add("mc-visible");
-      clearTimeout(appState.demoHideTimer);
-      appState.demoHideTimer = setTimeout(() => $("demoReveal").classList.remove("mc-visible"), 3300);
+      $("demoReveal").classList.add(
+        "mc-visible"
+      );
+
+      clearTimeout(
+        appState.demoHideTimer
+      );
+
+      appState.demoHideTimer =
+        setTimeout(() => {
+          $("demoReveal").classList.remove(
+            "mc-visible"
+          );
+        }, 3300);
     }
 
     function demoStep() {
       const candidates = demoCandidates();
-      if (!candidates.length) return;
 
-      const cursillo = candidates[appState.demoIndex % candidates.length];
+      if (!candidates.length) {
+        return;
+      }
+
+      const cursillo =
+        candidates[
+          appState.demoIndex %
+            candidates.length
+        ];
+
       appState.demoIndex += 1;
-      selectCursillo(cursillo.cursillo_id, true);
+
+      selectCursillo(
+        cursillo.cursillo_id,
+        true
+      );
+
       revealForCursillo(cursillo);
     }
 
     function toggleDemo() {
-      appState.demoRunning = !appState.demoRunning;
-      $("demoBtn").classList.toggle("mc-active", appState.demoRunning);
-      $("demoBtn").textContent = appState.demoRunning ? "■ Detener demostración" : "▶ Modo demostración";
+      appState.demoRunning =
+        !appState.demoRunning;
+
+      $("demoBtn").classList.toggle(
+        "mc-active",
+        appState.demoRunning
+      );
+
+      $("demoBtn").textContent =
+        appState.demoRunning
+          ? "■ Detener demostración"
+          : "▶ Modo demostración";
 
       clearInterval(appState.demoTimer);
       clearTimeout(appState.demoHideTimer);
-      $("demoReveal").classList.remove("mc-visible");
+
+      $("demoReveal").classList.remove(
+        "mc-visible"
+      );
 
       if (appState.demoRunning) {
         demoStep();
-        appState.demoTimer = setInterval(demoStep, 7200);
+
+        appState.demoTimer =
+          setInterval(demoStep, 7200);
       }
     }
 
-    window.showSingleReveal = function showSingleReveal() {
-      revealForCursillo(selectedCursillo());
-    };
+    window.showSingleReveal =
+      function showSingleReveal() {
+        revealForCursillo(
+          selectedCursillo()
+        );
+      };
 
     function bindEvents() {
-      ["searchFilter","statusFilter","countryFilter","modalityFilter","eventTypeFilter"]
-        .forEach((id) => $(id).addEventListener(id === "searchFilter" ? "input" : "change", applyFilters));
-
-      $("clearFiltersBtn").addEventListener("click", () => {
-        $("searchFilter").value = "";
-        $("statusFilter").value = "";
-        $("countryFilter").value = "";
-        $("modalityFilter").value = "";
-        $("eventTypeFilter").value = "";
-        applyFilters();
+      [
+        "searchFilter",
+        "statusFilter",
+        "countryFilter",
+        "modalityFilter",
+        "eventTypeFilter"
+      ].forEach((id) => {
+        $(id).addEventListener(
+          id === "searchFilter"
+            ? "input"
+            : "change",
+          applyFilters
+        );
       });
 
-      $("refreshBtn").addEventListener("click", loadData);
-      $("demoBtn").addEventListener("click", toggleDemo);
+      $("clearFiltersBtn").addEventListener(
+        "click",
+        () => {
+          $("searchFilter").value = "";
+          $("statusFilter").value = "";
+          $("countryFilter").value = "";
+          $("modalityFilter").value = "";
+          $("eventTypeFilter").value = "";
 
-      $("fullscreenBtn").addEventListener("click", async () => {
-        try {
-          if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
-          else await document.exitFullscreen();
-        } catch (error) {
-          console.warn("Pantalla completa no disponible:", error);
+          applyFilters();
         }
-      });
+      );
 
-      $("printBtn").addEventListener("click", () => window.print());
+      $("refreshBtn").addEventListener(
+        "click",
+        loadData
+      );
 
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && appState.demoRunning) toggleDemo();
-        if (event.key.toLowerCase() === "d" && !["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName)) toggleDemo();
-      });
+      $("demoBtn").addEventListener(
+        "click",
+        toggleDemo
+      );
+
+      $("fullscreenBtn").addEventListener(
+        "click",
+        async () => {
+          try {
+            if (!document.fullscreenElement) {
+              await document.documentElement
+                .requestFullscreen();
+            } else {
+              await document.exitFullscreen();
+            }
+          } catch (error) {
+            console.warn(
+              "Pantalla completa no disponible:",
+              error
+            );
+          }
+        }
+      );
+
+      $("printBtn").addEventListener(
+        "click",
+        () => window.print()
+      );
+
+      $("palancaInviteClose").addEventListener(
+        "click",
+        () => {
+          $("palancaInvite").classList.remove(
+            "mc-visible"
+          );
+        }
+      );
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          if (
+            event.key === "Escape" &&
+            appState.demoRunning
+          ) {
+            toggleDemo();
+          }
+        }
+      );
     }
 
     initGlobe();
     bindEvents();
-    $("palancaInviteClose").addEventListener("click", () => $("palancaInvite").classList.remove("mc-visible"));
 
-    google.charts.load("current", { packages: ["table"] });
-    google.charts.setOnLoadCallback(loadData);
+    google.charts.load("current", {
+      packages: ["table"]
+    });
+
+    google.charts.setOnLoadCallback(
+      loadData
+    );
   </script>
+
   <script src="assets/site.js"></script>
 </body>
 </html>
