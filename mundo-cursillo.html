@@ -880,7 +880,7 @@
 
     <div id="dataStatus" class="mc-status-strip">
       <span class="mc-status-dot"></span>
-      <span id="statusText">Preparando la conexión con Google Sheets…</span>
+      <span id="statusText">Preparando la conexión con los cursillos en el mundo…</span>
     </div>
 
     <section class="mc-kpis" aria-label="Indicadores">
@@ -1140,7 +1140,7 @@
           const query = new google.visualization.Query(url);
           query.send((response) => {
             if (response.isError()) {
-              reject(new Error(response.getMessage() || "Google Sheets no devolvió datos."));
+              reject(new Error(response.getMessage() || "BD no devolvió datos."));
               return;
             }
 
@@ -1739,7 +1739,7 @@
 
     async function loadData() {
       $("loadingCover").classList.remove("mc-hidden");
-      setDataStatus("Sincronizando con Google Sheets…");
+      setDataStatus("Sincronizando con cursillos…");
 
       try {
         const [cursillos, palancas, configuracion] = await Promise.all([
@@ -1756,7 +1756,7 @@
         appState.sourceMode = "google";
 
         setDataStatus(
-          `Conectado a Google Sheets · ${cursillos.length} Cursillos · ${palancas.length} palancas${latestUpdateText()}`
+          `Conectado a Cursillos en el Mundo · ${cursillos.length} Cursillos · ${palancas.length} palancas${latestUpdateText()}`
         );
       } catch (error) {
         const demo = fallbackData();
