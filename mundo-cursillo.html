@@ -7,6 +7,15 @@
   <title>El mundo está de Cursillo · Peregrino App</title>
 
 
+  <meta name="description" content="Descubre los Cursillos que se celebran en el mundo y las palancas de oración que los sostienen desde Peregrino APP." />
+  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="favicon.ico" />
+
   <style>
     :root {
       /* Paleta Peregrino APP (site.css) */
@@ -38,7 +47,7 @@
     }
 
     /* Cinta "De Colores" — la alegría del arcoíris, discreta y presente */
-    .decolores-ribbon {
+    .mc-decolores-ribbon {
       position: fixed;
       top: 0; left: 0; right: 0;
       height: 4px;
@@ -76,13 +85,13 @@
     button, input, select { font: inherit; }
     button { cursor: pointer; }
 
-    .app {
+    .mc-app {
       width: min(1600px, calc(100% - 28px));
       margin: 0 auto;
       padding: 18px 0 30px;
     }
 
-    .topbar {
+    .mc-topbar {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 18px;
@@ -90,14 +99,14 @@
       margin-bottom: 16px;
     }
 
-    .brand {
+    .mc-brand {
       display: flex;
       align-items: center;
       gap: 14px;
       min-width: 0;
     }
 
-    .brand-mark {
+    .mc-brand-mark {
       width: 54px;
       height: 54px;
       border-radius: 18px;
@@ -108,27 +117,27 @@
       box-shadow: 0 14px 38px rgba(212,175,55,.28);
     }
 
-    .brand h1 {
+    .mc-brand h1 {
       margin: 0;
       font-size: clamp(1.22rem, 2.4vw, 2rem);
       line-height: 1.05;
       letter-spacing: -.025em;
     }
 
-    .brand p {
+    .mc-brand p {
       margin: 6px 0 0;
       color: var(--muted);
       font-size: .92rem;
     }
 
-    .actions {
+    .mc-actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
       gap: 9px;
     }
 
-    .btn {
+    .mc-btn {
       border: 1px solid var(--line);
       border-radius: 13px;
       padding: 10px 13px;
@@ -141,13 +150,13 @@
       white-space: nowrap;
     }
 
-    .btn:hover {
+    .mc-btn:hover {
       transform: translateY(-1px);
       background: rgba(255,255,255,.11);
       border-color: rgba(255,255,255,.2);
     }
 
-    .btn.primary {
+    .mc-btn.mc-primary {
       border-color: rgba(212,175,55,.55);
       background: linear-gradient(135deg, var(--gold-2), var(--gold));
       color: #09111d;
@@ -155,14 +164,14 @@
       box-shadow: 0 12px 30px rgba(212,175,55,.25);
     }
 
-    .btn.active {
+    .mc-btn.mc-active {
       background: var(--decolores);
       color: #09111d;
       font-weight: 700;
       border-color: transparent;
     }
 
-    .status-strip {
+    .mc-status-strip {
       margin-bottom: 14px;
       padding: 10px 14px;
       border: 1px solid var(--line);
@@ -175,13 +184,13 @@
       backdrop-filter: blur(14px);
     }
 
-    .status-strip.error {
+    .mc-status-strip.mc-error {
       border-color: rgba(255,125,145,.5);
       color: #ffd8df;
       background: rgba(120,20,42,.25);
     }
 
-    .status-dot {
+    .mc-status-dot {
       width: 9px;
       height: 9px;
       border-radius: 50%;
@@ -190,19 +199,19 @@
       flex: 0 0 auto;
     }
 
-    .status-strip.error .status-dot {
+    .mc-status-strip.mc-error .mc-status-dot {
       background: var(--danger);
       box-shadow: 0 0 16px var(--danger);
     }
 
-    .kpis {
+    .mc-kpis {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin-bottom: 14px;
     }
 
-    .kpi {
+    .mc-kpi {
       border: 1px solid var(--line);
       background:
         linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025)),
@@ -216,7 +225,7 @@
       overflow: hidden;
     }
 
-    .kpi::after {
+    .mc-kpi::after {
       content: "";
       position: absolute;
       width: 110px;
@@ -227,7 +236,7 @@
       background: radial-gradient(circle, rgba(255,255,255,.08), transparent 68%);
     }
 
-    .kpi-label {
+    .mc-kpi-label {
       color: var(--muted);
       text-transform: uppercase;
       font-size: .72rem;
@@ -235,7 +244,7 @@
       letter-spacing: .12em;
     }
 
-    .kpi-value {
+    .mc-kpi-value {
       display: block;
       margin-top: 8px;
       font-size: clamp(1.65rem, 3vw, 2.45rem);
@@ -244,19 +253,19 @@
       letter-spacing: -.04em;
     }
 
-    .kpi-note {
+    .mc-kpi-note {
       margin-top: 8px;
       color: var(--muted);
       font-size: .8rem;
     }
 
     /* Cada KPI lleva un color del arcoíris */
-    .kpi:nth-child(1) { border-top: 3px solid var(--dc-rojo); }
-    .kpi:nth-child(2) { border-top: 3px solid var(--dc-amarillo); }
-    .kpi:nth-child(3) { border-top: 3px solid var(--dc-verde); }
-    .kpi:nth-child(4) { border-top: 3px solid var(--dc-azul); }
+    .mc-kpi:nth-child(1) { border-top: 3px solid var(--dc-rojo); }
+    .mc-kpi:nth-child(2) { border-top: 3px solid var(--dc-amarillo); }
+    .mc-kpi:nth-child(3) { border-top: 3px solid var(--dc-verde); }
+    .mc-kpi:nth-child(4) { border-top: 3px solid var(--dc-azul); }
 
-    .filters {
+    .mc-filters {
       display: grid;
       grid-template-columns: 1.2fr repeat(4, minmax(140px, .75fr)) auto;
       gap: 9px;
@@ -269,7 +278,7 @@
       backdrop-filter: blur(16px);
     }
 
-    .control {
+    .mc-control {
       width: 100%;
       min-width: 0;
       color: var(--text);
@@ -280,24 +289,24 @@
       outline: none;
     }
 
-    .control:focus {
+    .mc-control:focus {
       border-color: rgba(212,175,55,.68);
       box-shadow: 0 0 0 3px rgba(212,175,55,.14);
     }
 
-    select.control option {
+    select.mc-control option {
       background: #111a2e;
       color: white;
     }
 
-    .dashboard {
+    .mc-dashboard {
       display: grid;
       grid-template-columns: minmax(0, 1.85fr) minmax(330px, .7fr);
       gap: 14px;
       align-items: stretch;
     }
 
-    .map-shell, .mural, .worldwide {
+    .mc-map-shell, .mc-mural, .mc-worldwide {
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--panel);
@@ -306,7 +315,7 @@
       overflow: hidden;
     }
 
-    .map-shell {
+    .mc-map-shell {
       min-height: 650px;
       position: relative;
     }
@@ -320,7 +329,7 @@
     #map:active { cursor: grabbing; }
     #map canvas { outline: none; }
 
-    .map-top {
+    .mc-map-top {
       position: absolute;
       z-index: 500;
       top: 14px;
@@ -332,7 +341,7 @@
       pointer-events: none;
     }
 
-    .map-card {
+    .mc-map-card {
       pointer-events: auto;
       max-width: 520px;
       padding: 13px 15px;
@@ -343,19 +352,19 @@
       backdrop-filter: blur(16px);
     }
 
-    .map-card h2 {
+    .mc-map-card h2 {
       margin: 0;
       font-size: 1rem;
     }
 
-    .map-card p {
+    .mc-map-card p {
       margin: 5px 0 0;
       color: var(--muted);
       font-size: .82rem;
       line-height: 1.35;
     }
 
-    .legend {
+    .mc-legend {
       pointer-events: auto;
       display: flex;
       flex-wrap: wrap;
@@ -370,7 +379,7 @@
       color: var(--muted);
     }
 
-    .legend i {
+    .mc-legend i {
       width: 9px;
       height: 9px;
       border-radius: 50%;
@@ -378,11 +387,11 @@
       margin-right: 4px;
     }
 
-    .legend .active { background: var(--green); box-shadow: 0 0 12px var(--green); }
-    .legend .next { background: var(--purple); box-shadow: 0 0 12px var(--purple); }
-    .legend .done { background: var(--done); box-shadow: 0 0 10px var(--done); }
+    .mc-legend .mc-active { background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .mc-legend .mc-next { background: var(--purple); box-shadow: 0 0 12px var(--purple); }
+    .mc-legend .mc-done { background: var(--done); box-shadow: 0 0 10px var(--done); }
 
-    .selection-card {
+    .mc-selection-card {
       position: absolute;
       z-index: 500;
       left: 14px;
@@ -396,45 +405,45 @@
       backdrop-filter: blur(18px);
     }
 
-    .selection-card.empty {
+    .mc-selection-card.mc-empty {
       color: var(--muted);
     }
 
-    .selection-grid {
+    .mc-selection-grid {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 10px;
       align-items: start;
     }
 
-    .selection-actions {
+    .mc-selection-actions {
       display: flex;
       flex-direction: column;
       gap: 8px;
       align-items: stretch;
     }
-    .selection-actions .btn { justify-content: center; }
+    .mc-selection-actions .mc-btn { justify-content: center; }
 
-    .selection-title {
+    .mc-selection-title {
       font-weight: 830;
       font-size: 1.05rem;
       line-height: 1.25;
     }
 
-    .selection-sub {
+    .mc-selection-sub {
       color: var(--muted);
       margin-top: 5px;
       font-size: .83rem;
     }
 
-    .selection-stats {
+    .mc-selection-stats {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
       margin-top: 11px;
     }
 
-    .pill {
+    .mc-pill {
       display: inline-flex;
       align-items: center;
       gap: 5px;
@@ -446,13 +455,13 @@
       border: 1px solid var(--line);
     }
 
-    .mural {
+    .mc-mural {
       min-height: 650px;
       display: flex;
       flex-direction: column;
     }
 
-    .panel-head {
+    .mc-panel-head {
       padding: 17px;
       border-bottom: 1px solid var(--line);
       display: flex;
@@ -461,19 +470,19 @@
       gap: 10px;
     }
 
-    .panel-head h2 {
+    .mc-panel-head h2 {
       margin: 0;
       font-size: 1.08rem;
     }
 
-    .panel-head p {
+    .mc-panel-head p {
       margin: 5px 0 0;
       color: var(--muted);
       font-size: .8rem;
       line-height: 1.35;
     }
 
-    .live-badge {
+    .mc-live-badge {
       padding: 6px 9px;
       border-radius: 999px;
       color: #d9ffed;
@@ -485,7 +494,7 @@
       white-space: nowrap;
     }
 
-    .mural-list {
+    .mc-mural-list {
       flex: 1;
       overflow: auto;
       padding: 12px;
@@ -493,7 +502,7 @@
       scrollbar-color: rgba(255,255,255,.3) transparent;
     }
 
-    .palanca-card {
+    .mc-palanca-card {
       border: 1px solid var(--line);
       background: rgba(255,255,255,.045);
       border-radius: 15px;
@@ -502,31 +511,31 @@
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
-    .palanca-card:hover {
+    .mc-palanca-card:hover {
       transform: translateY(-1px);
       border-color: rgba(255,255,255,.26);
       background: rgba(255,255,255,.065);
     }
 
-    .palanca-top {
+    .mc-palanca-top {
       display: flex;
       justify-content: space-between;
       gap: 10px;
       align-items: flex-start;
     }
 
-    .palanca-name {
+    .mc-palanca-name {
       font-weight: 780;
       line-height: 1.25;
     }
 
-    .palanca-place {
+    .mc-palanca-place {
       color: var(--muted);
       font-size: .75rem;
       margin-top: 3px;
     }
 
-    .palanca-status {
+    .mc-palanca-status {
       flex: 0 0 auto;
       font-size: .64rem;
       font-weight: 800;
@@ -536,31 +545,31 @@
       border-radius: 999px;
     }
 
-    .palanca-status.now {
+    .mc-palanca-status.mc-now {
       color: #d9ffed;
       background: rgba(100,230,167,.12);
       border: 1px solid rgba(100,230,167,.28);
     }
 
-    .palanca-status.next {
+    .mc-palanca-status.mc-next {
       color: #f0e6ff;
       background: rgba(168,115,255,.12);
       border: 1px solid rgba(168,115,255,.28);
     }
 
-    .palanca-status.done {
+    .mc-palanca-status.mc-done {
       color: #d7deea;
       background: rgba(139,150,173,.14);
       border: 1px solid rgba(139,150,173,.32);
     }
 
-    .palanca-detail {
+    .mc-palanca-detail {
       margin-top: 9px;
       font-size: .8rem;
       color: #dfe5f0;
     }
 
-    .palanca-message {
+    .mc-palanca-message {
       margin-top: 8px;
       color: var(--muted);
       font-size: .76rem;
@@ -568,14 +577,14 @@
       font-style: italic;
     }
 
-    .empty-state {
+    .mc-empty-state {
       color: var(--muted);
       text-align: center;
       padding: 36px 18px;
       line-height: 1.5;
     }
 
-    .worldwide {
+    .mc-worldwide {
       margin-top: 14px;
       padding: 18px;
       display: grid;
@@ -584,7 +593,7 @@
       align-items: center;
     }
 
-    .worldwide-eyebrow {
+    .mc-worldwide-eyebrow {
       background: var(--decolores);
       -webkit-background-clip: text;
       background-clip: text;
@@ -595,24 +604,24 @@
       font-size: .7rem;
     }
 
-    .worldwide h2 {
+    .mc-worldwide h2 {
       margin: 7px 0 6px;
       font-size: clamp(1.25rem, 2.3vw, 2rem);
     }
 
-    .worldwide p {
+    .mc-worldwide p {
       margin: 0;
       color: var(--muted);
       line-height: 1.45;
     }
 
-    .countdown {
+    .mc-countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
     }
 
-    .count-unit {
+    .mc-count-unit {
       padding: 13px 8px;
       text-align: center;
       border-radius: 15px;
@@ -620,13 +629,13 @@
       background: rgba(255,255,255,.045);
     }
 
-    .count-unit strong {
+    .mc-count-unit strong {
       display: block;
       font-size: clamp(1.25rem, 3vw, 2rem);
       line-height: 1;
     }
 
-    .count-unit span {
+    .mc-count-unit span {
       display: block;
       margin-top: 6px;
       color: var(--muted);
@@ -648,7 +657,7 @@
       line-height: 1.4;
     }
 
-    .demo-reveal {
+    .mc-demo-reveal {
       position: fixed;
       inset: 0;
       z-index: 5000;
@@ -665,12 +674,12 @@
       transition: opacity .5s ease, visibility .5s ease;
     }
 
-    .demo-reveal.visible {
+    .mc-demo-reveal.mc-visible {
       opacity: 1;
       visibility: visible;
     }
 
-    .demo-box {
+    .mc-demo-box {
       width: min(760px, 94vw);
       padding: 34px;
       text-align: center;
@@ -682,11 +691,11 @@
       transition: transform .55s cubic-bezier(.2,.8,.2,1);
     }
 
-    .demo-reveal.visible .demo-box {
+    .mc-demo-reveal.mc-visible .mc-demo-box {
       transform: translateY(0) scale(1);
     }
 
-    .demo-kicker {
+    .mc-demo-kicker {
       background: var(--decolores);
       -webkit-background-clip: text;
       background-clip: text;
@@ -697,14 +706,14 @@
       font-size: .72rem;
     }
 
-    .demo-box h2 {
+    .mc-demo-box h2 {
       margin: 14px 0 8px;
       font-size: clamp(1.8rem, 5vw, 3.8rem);
       line-height: 1;
       letter-spacing: -.045em;
     }
 
-    .demo-box p {
+    .mc-demo-box p {
       margin: 0 auto;
       max-width: 620px;
       color: #c8d0df;
@@ -712,7 +721,7 @@
       line-height: 1.5;
     }
 
-    .demo-origins {
+    .mc-demo-origins {
       margin-top: 19px;
       display: flex;
       justify-content: center;
@@ -720,7 +729,7 @@
       gap: 8px;
     }
 
-    .demo-origins span {
+    .mc-demo-origins span {
       padding: 8px 11px;
       border-radius: 999px;
       background: rgba(255,255,255,.06);
@@ -728,7 +737,7 @@
       font-size: .78rem;
     }
 
-    .loading-cover {
+    .mc-loading-cover {
       position: fixed;
       inset: 0;
       z-index: 6000;
@@ -739,18 +748,18 @@
       transition: opacity .35s ease, visibility .35s ease;
     }
 
-    .loading-cover.hidden {
+    .mc-loading-cover.mc-hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
 
-    .loader {
+    .mc-loader {
       text-align: center;
       color: var(--muted);
     }
 
-    .loader-ring {
+    .mc-loader-ring {
       width: 58px;
       height: 58px;
       border: 4px solid rgba(255,255,255,.1);
@@ -766,206 +775,243 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     @media (max-width: 1050px) {
-      .filters {
+      .mc-filters {
         grid-template-columns: repeat(3, 1fr);
       }
-      .dashboard {
+      .mc-dashboard {
         grid-template-columns: 1fr;
       }
-      .map-shell { min-height: 590px; }
-      .mural { min-height: 520px; }
-      .worldwide { grid-template-columns: 1fr; }
+      .mc-map-shell { min-height: 590px; }
+      .mc-mural { min-height: 520px; }
+      .mc-worldwide { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
-      .app { width: min(100% - 18px, 1600px); padding-top: 10px; }
-      .topbar { grid-template-columns: 1fr; }
-      .actions { justify-content: flex-start; }
-      .kpis { grid-template-columns: repeat(2, 1fr); }
-      .filters { grid-template-columns: 1fr 1fr; }
-      .filters .wide { grid-column: 1 / -1; }
-      .map-shell { min-height: 610px; }
-      .map-top { flex-direction: column; }
-      .legend { align-self: flex-start; }
-      .selection-grid { grid-template-columns: 1fr; }
-      .countdown { grid-template-columns: repeat(2, 1fr); }
+      .mc-app { width: min(100% - 18px, 1600px); padding-top: 10px; }
+      .mc-topbar { grid-template-columns: 1fr; }
+      .mc-actions { justify-content: flex-start; }
+      .mc-kpis { grid-template-columns: repeat(2, 1fr); }
+      .mc-filters { grid-template-columns: 1fr 1fr; }
+      .mc-filters .mc-wide { grid-column: 1 / -1; }
+      .mc-map-shell { min-height: 610px; }
+      .mc-map-top { flex-direction: column; }
+      .mc-legend { align-self: flex-start; }
+      .mc-selection-grid { grid-template-columns: 1fr; }
+      .mc-countdown { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 440px) {
-      .brand-mark { width: 46px; height: 46px; border-radius: 15px; }
-      .actions .btn { flex: 1 1 auto; justify-content: center; }
-      .kpis { gap: 8px; }
-      .kpi { min-height: 98px; padding: 13px; }
-      .filters { grid-template-columns: 1fr; }
-      .filters .wide { grid-column: auto; }
-      .map-shell { min-height: 660px; }
-      .map-card { max-width: 100%; }
-      .legend { display: none; }
+      .mc-brand-mark { width: 46px; height: 46px; border-radius: 15px; }
+      .mc-actions .mc-btn { flex: 1 1 auto; justify-content: center; }
+      .mc-kpis { gap: 8px; }
+      .mc-kpi { min-height: 98px; padding: 13px; }
+      .mc-filters { grid-template-columns: 1fr; }
+      .mc-filters .mc-wide { grid-column: auto; }
+      .mc-map-shell { min-height: 660px; }
+      .mc-map-card { max-width: 100%; }
+      .mc-legend { display: none; }
     }
 
     @media print {
+      .site-header, .footer, .skip-link, .top-button { display: none !important; }
       body { background: white; color: #18111f; }
-      body::before, .actions, .filters, .status-strip, .worldwide { display: none !important; }
-      .app { width: 100%; padding: 0; }
-      .topbar { margin-bottom: 10px; }
-      .brand p { color: #555; }
-      .kpis { grid-template-columns: repeat(4, 1fr); }
-      .kpi, .map-shell, .mural {
+      body::before, .mc-actions, .mc-filters, .mc-status-strip, .mc-worldwide { display: none !important; }
+      .mc-app { width: 100%; padding: 0; }
+      .mc-topbar { margin-bottom: 10px; }
+      .mc-brand p { color: #555; }
+      .mc-kpis { grid-template-columns: repeat(4, 1fr); }
+      .mc-kpi, .mc-map-shell, .mc-mural {
         background: white !important;
         color: #18111f !important;
         border: 1px solid #ddd;
         box-shadow: none;
       }
-      .kpi-label, .kpi-note, .panel-head p, .selection-sub, .palanca-place, .palanca-message { color: #555 !important; }
-      .dashboard { grid-template-columns: 1.7fr .8fr; }
-      .map-shell, .mural { min-height: 620px; }
+      .mc-kpi-label, .mc-kpi-note, .mc-panel-head p, .mc-selection-sub, .mc-palanca-place, .mc-palanca-message { color: #555 !important; }
+      .mc-dashboard { grid-template-columns: 1.7fr .8fr; }
+      .mc-map-shell, .mc-mural { min-height: 620px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="decolores-ribbon" aria-hidden="true"></div>
-  <div id="loadingCover" class="loading-cover">
-    <div class="loader">
-      <div class="loader-ring"></div>
+  <a class="skip-link" href="#mundoContenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="wrap site-nav">
+      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Peregrino APP</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html#app">La app</a>
+        <a href="index.html#planes">Planes</a>
+        <a href="index.html#apoyar">Apoyar</a>
+        <a href="index.html#recursos">Recursos</a>
+        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mc-decolores-ribbon" aria-hidden="true"></div>
+  <div id="loadingCover" class="mc-loading-cover">
+    <div class="mc-loader">
+      <div class="mc-loader-ring"></div>
       <strong>Sincronizando con el mundo…</strong>
       <div style="margin-top:7px;font-size:.82rem">Leyendo los Cursillos y sus palancas</div>
     </div>
   </div>
 
-  <div class="app">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true">🌍</div>
+  <div class="mc-app">
+    <header class="mc-topbar">
+      <div class="mc-brand">
+        <div class="mc-brand-mark" aria-hidden="true">🌍</div>
         <div>
           <h1>El mundo está de Cursillo</h1>
           <p>Palancas vivas · Peregrino App · Datos experimentales</p>
         </div>
       </div>
 
-      <div class="actions">
-        <button id="refreshBtn" class="btn" type="button">↻ Actualizar</button>
-        <button id="demoBtn" class="btn primary" type="button">▶ Modo demostración</button>
-        <button id="fullscreenBtn" class="btn" type="button">⛶ Pantalla completa</button>
-        <button id="printBtn" class="btn" type="button">⌁ Guardar recuerdo</button>
+      <div class="mc-actions">
+        <button id="refreshBtn" class="mc-btn" type="button">↻ Actualizar</button>
+        <button id="demoBtn" class="mc-btn mc-primary" type="button">▶ Modo demostración</button>
+        <button id="fullscreenBtn" class="mc-btn" type="button">⛶ Pantalla completa</button>
+        <button id="printBtn" class="mc-btn" type="button">⌁ Guardar recuerdo</button>
       </div>
     </header>
 
-    <div id="dataStatus" class="status-strip">
-      <span class="status-dot"></span>
+    <div id="dataStatus" class="mc-status-strip">
+      <span class="mc-status-dot"></span>
       <span id="statusText">Preparando la conexión con Google Sheets…</span>
     </div>
 
-    <section class="kpis" aria-label="Indicadores">
-      <article class="kpi">
-        <div class="kpi-label">Cursillos visibles</div>
-        <strong id="kpiCursillos" class="kpi-value">—</strong>
-        <div id="kpiCursillosNote" class="kpi-note">Según los filtros activos</div>
+    <section class="mc-kpis" aria-label="Indicadores">
+      <article class="mc-kpi">
+        <div class="mc-kpi-label">Cursillos visibles</div>
+        <strong id="kpiCursillos" class="mc-kpi-value">—</strong>
+        <div id="kpiCursillosNote" class="mc-kpi-note">Según los filtros activos</div>
       </article>
-      <article class="kpi">
-        <div class="kpi-label">Países</div>
-        <strong id="kpiCountries" class="kpi-value">—</strong>
-        <div class="kpi-note">Presencia internacional</div>
+      <article class="mc-kpi">
+        <div class="mc-kpi-label">Países</div>
+        <strong id="kpiCountries" class="mc-kpi-value">—</strong>
+        <div class="mc-kpi-note">Presencia internacional</div>
       </article>
-      <article class="kpi">
-        <div class="kpi-label">Palancas registradas</div>
-        <strong id="kpiPalancas" class="kpi-value">—</strong>
-        <div class="kpi-note">Para los Cursillos visibles</div>
+      <article class="mc-kpi">
+        <div class="mc-kpi-label">Palancas registradas</div>
+        <strong id="kpiPalancas" class="mc-kpi-value">—</strong>
+        <div class="mc-kpi-note">Para los Cursillos visibles</div>
       </article>
-      <article class="kpi">
-        <div class="kpi-label">Rezando ahora</div>
-        <strong id="kpiNow" class="kpi-value">—</strong>
-        <div class="kpi-note">Según las franjas declaradas</div>
+      <article class="mc-kpi">
+        <div class="mc-kpi-label">Rezando ahora</div>
+        <strong id="kpiNow" class="mc-kpi-value">—</strong>
+        <div class="mc-kpi-note">Según las franjas declaradas</div>
       </article>
     </section>
 
-    <section class="filters" aria-label="Filtros del cuadro de mando">
-      <input id="searchFilter" class="control wide" type="search" placeholder="Buscar diócesis, ciudad, país o número…" />
-      <select id="statusFilter" class="control">
+    <section class="mc-filters" aria-label="Filtros del cuadro de mando">
+      <input id="searchFilter" class="mc-control mc-wide" type="search" placeholder="Buscar diócesis, ciudad, país o número…" />
+      <select id="statusFilter" class="mc-control">
         <option value="">Todos los estados</option>
         <option value="Activo">Activos</option>
         <option value="Próximo">Próximos</option>
         <option value="Finalizado">Finalizados</option>
       </select>
-      <select id="countryFilter" class="control"><option value="">Todos los países</option></select>
-      <select id="modalityFilter" class="control"><option value="">Todas las modalidades</option></select>
-      <select id="eventTypeFilter" class="control"><option value="">Todos los encuentros</option></select>
-      <button id="clearFiltersBtn" class="btn" type="button">Limpiar</button>
+      <select id="countryFilter" class="mc-control"><option value="">Todos los países</option></select>
+      <select id="modalityFilter" class="mc-control"><option value="">Todas las modalidades</option></select>
+      <select id="eventTypeFilter" class="mc-control"><option value="">Todos los encuentros</option></select>
+      <button id="clearFiltersBtn" class="mc-btn" type="button">Limpiar</button>
     </section>
 
-    <main class="dashboard">
-      <section class="map-shell" aria-label="Mapa mundial de Cursillos y palancas">
+    <div id="mundoContenido" class="mc-dashboard" role="main">
+      <section class="mc-map-shell" aria-label="Mapa mundial de Cursillos y palancas">
         <div id="map"></div>
 
-        <div class="map-top">
-          <div class="map-card">
+        <div class="mc-map-top">
+          <div class="mc-map-card">
             <h2>Una red mundial de oración</h2>
             <p>Gira el mundo con el dedo o el ratón y toca una luz para ver quién reza por ese Cursillo. Cada arco de color es una palanca en camino.</p>
           </div>
-          <div class="legend" aria-label="Leyenda">
-            <span><i class="active"></i>Activo</span>
-            <span><i class="next"></i>Próximo</span>
-            <span><i class="done"></i>Finalizado</span>
+          <div class="mc-legend" aria-label="Leyenda">
+            <span><i class="mc-active"></i>Activo</span>
+            <span><i class="mc-next"></i>Próximo</span>
+            <span><i class="mc-done"></i>Finalizado</span>
           </div>
         </div>
 
-        <div id="selectionCard" class="selection-card empty">
+        <div id="selectionCard" class="mc-selection-card mc-empty">
           Selecciona un Cursillo en el mapa o en el mural para descubrir sus palancas.
         </div>
       </section>
 
-      <aside class="mural">
-        <div class="panel-head">
+      <aside class="mc-mural">
+        <div class="mc-panel-head">
           <div>
             <h2>Mural de palancas</h2>
             <p id="muralSubtitle">Selecciona un Cursillo para ver su comunidad de oración.</p>
           </div>
-          <span class="live-badge">PALANCA VIVA</span>
+          <span class="mc-live-badge">PALANCA VIVA</span>
         </div>
-        <div id="muralList" class="mural-list">
-          <div class="empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>
+        <div id="muralList" class="mc-mural-list">
+          <div class="mc-empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>
         </div>
       </aside>
-    </main>
+    </div>
 
-    <section class="worldwide">
+    <section class="mc-worldwide">
       <div>
-        <div class="worldwide-eyebrow">Próxima palanca mundial</div>
+        <div class="mc-worldwide-eyebrow">Próxima palanca mundial</div>
         <h2 id="worldTitle">Consultando la configuración…</h2>
         <p id="worldDescription">La pestaña CONFIGURACION alimenta automáticamente este bloque.</p>
       </div>
-      <div id="countdown" class="countdown">
-        <div class="count-unit"><strong id="countDays">—</strong><span>días</span></div>
-        <div class="count-unit"><strong id="countHours">—</strong><span>horas</span></div>
-        <div class="count-unit"><strong id="countMinutes">—</strong><span>minutos</span></div>
-        <div class="count-unit"><strong id="countSeconds">—</strong><span>segundos</span></div>
+      <div id="countdown" class="mc-countdown">
+        <div class="mc-count-unit"><strong id="countDays">—</strong><span>días</span></div>
+        <div class="mc-count-unit"><strong id="countHours">—</strong><span>horas</span></div>
+        <div class="mc-count-unit"><strong id="countMinutes">—</strong><span>minutos</span></div>
+        <div class="mc-count-unit"><strong id="countSeconds">—</strong><span>segundos</span></div>
       </div>
     </section>
   </div>
 
-  <div id="palancaInvite" class="demo-reveal" role="dialog" aria-modal="true" aria-labelledby="palancaInviteTitle" style="pointer-events:auto">
-    <div class="demo-box">
-      <div class="demo-kicker">Hacer palanca</div>
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <strong>Peregrino APP</strong>
+        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+      </div>
+      <div class="footer-links">
+        <a href="plan-apostol.html">Planes</a>
+        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="top-button" id="toTop" href="#mundoContenido" aria-label="Volver arriba">↑</a>
+
+  <div id="palancaInvite" class="mc-demo-reveal" role="dialog" aria-modal="true" aria-labelledby="palancaInviteTitle" style="pointer-events:auto">
+    <div class="mc-demo-box">
+      <div class="mc-demo-kicker">Hacer palanca</div>
       <h2 id="palancaInviteTitle">Tu oración puede sostener este Cursillo</h2>
       <p id="palancaInviteText">
         Con Peregrino APP tu palanca se envía sola al terminar tu rezo, sin escribir nada.
         Y si no tienes la app, también puedes ofrecerla desde la web en unos toques.
         Para algo más personal, escribe al secretariado de tu diócesis.
       </p>
-      <div class="demo-origins" style="margin-top:22px">
-        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino APP</a>
-        <a class="btn" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Ofrecer desde la web</a>
-        <button class="btn" type="button" id="palancaInviteClose">Seguir explorando</button>
+      <div class="mc-demo-origins" style="margin-top:22px">
+        <a class="mc-btn mc-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino APP</a>
+        <a class="mc-btn" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Ofrecer desde la web</a>
+        <button class="mc-btn" type="button" id="palancaInviteClose">Seguir explorando</button>
       </div>
     </div>
   </div>
 
-  <div id="demoReveal" class="demo-reveal">
-    <div class="demo-box">
-      <div class="demo-kicker">Mientras vivís vuestro Cursillo…</div>
+  <div id="demoReveal" class="mc-demo-reveal">
+    <div class="mc-demo-box">
+      <div class="mc-demo-kicker">Mientras vivís vuestro Cursillo…</div>
       <h2 id="demoTitle">El mundo reza por vosotros</h2>
       <p id="demoText"></p>
-      <div id="demoOrigins" class="demo-origins"></div>
+      <div id="demoOrigins" class="mc-demo-origins"></div>
     </div>
   </div>
 
@@ -982,7 +1028,7 @@
     // Pega aquí la "PLANTILLA PREFIJADA" que te dio crearFormularioWeb()
     // (contiene CURSILLO_ID_AQUI como marcador). Si se deja vacía,
     // la invitación solo ofrece descargar la app.
-    const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyPGLOxOLhG7rYLQdSk4b7SulXNKzVj4mYMTLrw/viewform?usp=pp_url&entry.127073981=CURSILLO_ID_AQUI";
+    const FORM_PALANCA_URL = "";
 
     const GIDS = {
       cursillos: "1993426283",
@@ -1442,7 +1488,7 @@
       const cursillo = selectedCursillo();
 
       if (!cursillo) {
-        card.className = "selection-card empty";
+        card.className = "mc-selection-card mc-empty";
         card.innerHTML = "Selecciona un Cursillo en el mapa o en el mural para descubrir sus palancas.";
         return;
       }
@@ -1452,25 +1498,25 @@
       const countries = new Set(palancas.map((p) => p.pais_origen).filter(Boolean));
       const status = cursilloStatus(cursillo);
 
-      card.className = "selection-card";
+      card.className = "mc-selection-card";
       card.innerHTML = `
-        <div class="selection-grid">
+        <div class="mc-selection-grid">
           <div>
-            <div class="selection-title">${escapeHtml(cursillo.bandera || "🌍")} ${escapeHtml(cursillo.nombre_corto || cursillo.tipo_evento || "Cursillo")}</div>
-            <div class="selection-sub">
+            <div class="mc-selection-title">${escapeHtml(cursillo.bandera || "🌍")} ${escapeHtml(cursillo.nombre_corto || cursillo.tipo_evento || "Cursillo")}</div>
+            <div class="mc-selection-sub">
               ${escapeHtml(cursillo.diocesis || "")} · ${escapeHtml(cursillo.ciudad_referencia || "")}, ${escapeHtml(cursillo.pais || "")}<br>
               ${formatDate(cursillo.inicio_utc || cursillo.inicio_local)} — ${formatDate(cursillo.fin_utc || cursillo.fin_local)}
             </div>
-            <div class="selection-stats">
-              <span class="pill">${escapeHtml(status)}</span>
-              <span class="pill">${palancas.length} palancas</span>
-              <span class="pill">${countries.size} países</span>
-              <span class="pill">${nowCount} ahora</span>
+            <div class="mc-selection-stats">
+              <span class="mc-pill">${escapeHtml(status)}</span>
+              <span class="mc-pill">${palancas.length} palancas</span>
+              <span class="mc-pill">${countries.size} países</span>
+              <span class="mc-pill">${nowCount} ahora</span>
             </div>
           </div>
-          <div class="selection-actions">
-            <a class="btn primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
-            <button class="btn" type="button" onclick="showSingleReveal()">Presentar</button>
+          <div class="mc-selection-actions">
+            <a class="mc-btn mc-primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
+            <button class="mc-btn" type="button" onclick="showSingleReveal()">Presentar</button>
           </div>
         </div>
       `;
@@ -1492,7 +1538,7 @@
 
       if (!cursillo) {
         subtitle.textContent = "Selecciona un Cursillo para ver su comunidad de oración.";
-        list.innerHTML = `<div class="empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>`;
+        list.innerHTML = `<div class="mc-empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>`;
         return;
       }
 
@@ -1506,30 +1552,30 @@
       subtitle.textContent = `${cursillo.nombre_corto || "Cursillo"} · ${cursillo.ciudad_referencia || cursillo.pais || ""}`;
 
       if (!palancas.length) {
-        list.innerHTML = `<div class="empty-state">Todavía no hay palancas públicas registradas para este Cursillo.</div>`;
+        list.innerHTML = `<div class="mc-empty-state">Todavía no hay palancas públicas registradas para este Cursillo.</div>`;
         return;
       }
 
       list.innerHTML = palancas.slice(0, 70).map((p) => {
         const status = palancaStatus(p);
-        const cssStatus = status === "En curso" ? "now" : status === "Programada" ? "next" : "done";
+        const cssStatus = status === "En curso" ? "mc-now" : status === "Programada" ? "mc-next" : "mc-done";
         const statusText = status === "En curso" ? "Ahora" : status === "Programada" ? "Próxima" : "Ofrecida";
         const start = formatDate(p.inicio_palanca_utc, { time:true, year:false, utc:true });
         const end = formatDate(p.fin_palanca_utc, { time:true, year:false, utc:true });
 
         return `
-          <article class="palanca-card" tabindex="0">
-            <div class="palanca-top">
+          <article class="mc-palanca-card" tabindex="0">
+            <div class="mc-palanca-top">
               <div>
-                <div class="palanca-name">${escapeHtml(p.nombre_publico || "Palanca anónima")}</div>
-                <div class="palanca-place">${escapeHtml(p.ciudad_origen || "")}${p.pais_origen ? ` · ${escapeHtml(p.pais_origen)}` : ""}</div>
+                <div class="mc-palanca-name">${escapeHtml(p.nombre_publico || "Palanca anónima")}</div>
+                <div class="mc-palanca-place">${escapeHtml(p.ciudad_origen || "")}${p.pais_origen ? ` · ${escapeHtml(p.pais_origen)}` : ""}</div>
               </div>
-              <span class="palanca-status ${cssStatus}">${statusText}</span>
+              <span class="mc-palanca-status ${cssStatus}">${statusText}</span>
             </div>
-            <div class="palanca-detail">
+            <div class="mc-palanca-detail">
               ${escapeHtml(p.tipo_palanca || "Oración")} · ${start}${p.fin_palanca_utc ? `–${end.split(", ").pop()}` : ""}
             </div>
-            ${p.mensaje_predefinido ? `<div class="palanca-message">“${escapeHtml(p.mensaje_predefinido)}”</div>` : ""}
+            ${p.mensaje_predefinido ? `<div class="mc-palanca-message">“${escapeHtml(p.mensaje_predefinido)}”</div>` : ""}
           </article>
         `;
       }).join("");
@@ -1605,7 +1651,7 @@
         formBtn.hidden = true;
       }
 
-      $("palancaInvite").classList.add("visible");
+      $("palancaInvite").classList.add("mc-visible");
 
       // No repetir la invitación al recargar
       url.searchParams.delete("accion");
@@ -1674,7 +1720,7 @@
 
     function setDataStatus(message, error = false) {
       $("statusText").textContent = message;
-      $("dataStatus").classList.toggle("error", error);
+      $("dataStatus").classList.toggle("mc-error", error);
     }
 
     function latestUpdateText() {
@@ -1687,7 +1733,7 @@
     }
 
     async function loadData() {
-      $("loadingCover").classList.remove("hidden");
+      $("loadingCover").classList.remove("mc-hidden");
       setDataStatus("Sincronizando con Google Sheets…");
 
       try {
@@ -1734,7 +1780,7 @@
         renderMural();
       }, 1000);
 
-      $("loadingCover").classList.add("hidden");
+      $("loadingCover").classList.add("mc-hidden");
     }
 
     function demoCandidates() {
@@ -1774,9 +1820,9 @@
         .map((origin) => `<span>${escapeHtml(origin)}</span>`)
         .join("");
 
-      $("demoReveal").classList.add("visible");
+      $("demoReveal").classList.add("mc-visible");
       clearTimeout(appState.demoHideTimer);
-      appState.demoHideTimer = setTimeout(() => $("demoReveal").classList.remove("visible"), 3300);
+      appState.demoHideTimer = setTimeout(() => $("demoReveal").classList.remove("mc-visible"), 3300);
     }
 
     function demoStep() {
@@ -1791,12 +1837,12 @@
 
     function toggleDemo() {
       appState.demoRunning = !appState.demoRunning;
-      $("demoBtn").classList.toggle("active", appState.demoRunning);
+      $("demoBtn").classList.toggle("mc-active", appState.demoRunning);
       $("demoBtn").textContent = appState.demoRunning ? "■ Detener demostración" : "▶ Modo demostración";
 
       clearInterval(appState.demoTimer);
       clearTimeout(appState.demoHideTimer);
-      $("demoReveal").classList.remove("visible");
+      $("demoReveal").classList.remove("mc-visible");
 
       if (appState.demoRunning) {
         demoStep();
@@ -1843,10 +1889,11 @@
 
     initGlobe();
     bindEvents();
-    $("palancaInviteClose").addEventListener("click", () => $("palancaInvite").classList.remove("visible"));
+    $("palancaInviteClose").addEventListener("click", () => $("palancaInvite").classList.remove("mc-visible"));
 
     google.charts.load("current", { packages: ["table"] });
     google.charts.setOnLoadCallback(loadData);
   </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>
