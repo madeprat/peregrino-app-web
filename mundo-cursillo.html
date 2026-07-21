@@ -881,7 +881,7 @@
 
     <div id="dataStatus" class="status-strip">
       <span class="status-dot"></span>
-      <span id="statusText">Preparando la conexión con Google Sheets…</span>
+      <span id="statusText">Preparando la conexión con BD de Cursillos…</span>
     </div>
 
     <section class="kpis" aria-label="Indicadores">
@@ -1123,7 +1123,7 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
           const query = new google.visualization.Query(url);
           query.send((response) => {
             if (response.isError()) {
-              reject(new Error(response.getMessage() || "Google Sheets no devolvió datos."));
+              reject(new Error(response.getMessage() || "BD de Cursillos no devolvió datos."));
               return;
             }
 
@@ -1876,7 +1876,7 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
 
     async function loadData() {
       $("loadingCover").classList.remove("hidden");
-      setDataStatus("Sincronizando con Google Sheets…");
+      setDataStatus("Sincronizando con BD de Cursillos…");
 
       try {
         const [cursillos, palancas, configuracion] = await Promise.all([
@@ -1893,7 +1893,7 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
         appState.sourceMode = "google";
 
         setDataStatus(
-          `Conectado a Google Sheets · ${cursillos.length} Cursillos · ${palancas.length} palancas${latestUpdateText()}`
+          `Conectado a BD de Cursillos · ${cursillos.length} Cursillos · ${palancas.length} palancas${latestUpdateText()}`
         );
       } catch (error) {
         const demo = fallbackData();
