@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b1220" />
   <title>El mundo está de Cursillo · Peregrino App</title>
-
+  <meta name="description" content="Mapa experimental de Cursillos y palancas de oración conectado con Peregrino APP." />
+  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="favicon.ico" />
 
   <style>
     :root {
@@ -793,6 +799,184 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
+
+    /* Encabezado y pie comunes de Peregrino APP.
+       Se incluyen aquí de forma aislada para no importar las reglas globales de site.css,
+       que colisionan con .kpi, .btn y otros componentes propios de este cuadro de mando. */
+    .site-wrap {
+      width: min(1160px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .site-skip-link {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .site-skip-link:focus {
+      left: 12px;
+      top: 12px;
+      z-index: 7000;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #000;
+      background: #fff;
+    }
+
+    .peregrino-site-header {
+      position: sticky;
+      top: 4px;
+      z-index: 1200;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(9,14,25,.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .peregrino-site-nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .peregrino-site-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .peregrino-site-brand-mark {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #0b1220;
+      background: linear-gradient(180deg, var(--gold), #c19317);
+      box-shadow: 0 16px 30px rgba(212,175,55,.24);
+    }
+
+    .peregrino-site-brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      pointer-events: none;
+      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.75) 50%, transparent 65%);
+      transform: translateX(-180%) rotate(10deg);
+      animation: brandSheen 5.8s ease-in-out infinite;
+    }
+
+    .peregrino-nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .peregrino-nav-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color .22s ease, background .22s ease, transform .22s ease;
+    }
+
+    .peregrino-nav-links a:hover,
+    .peregrino-nav-links a:focus-visible {
+      color: #fff;
+      background: rgba(255,255,255,.06);
+      transform: translateY(-1px);
+    }
+
+    .peregrino-nav-links .peregrino-nav-cta {
+      color: #09111d;
+      background: var(--gold);
+    }
+
+    .peregrino-nav-links .peregrino-nav-cta:hover,
+    .peregrino-nav-links .peregrino-nav-cta:focus-visible {
+      color: #09111d;
+      background: var(--gold-2);
+    }
+
+    .peregrino-footer {
+      padding: 40px 0 60px;
+      color: #9da8bf;
+    }
+
+    .peregrino-footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .peregrino-footer p {
+      margin: 8px 0 0;
+    }
+
+    .peregrino-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-content: flex-start;
+      gap: 12px;
+    }
+
+    .peregrino-footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .peregrino-footer a:hover,
+    .peregrino-footer a:focus-visible {
+      color: #fff;
+    }
+
+    .site-top-button {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 1250;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #0b1220;
+      background: rgba(212,175,55,.94);
+      box-shadow: 0 18px 28px rgba(0,0,0,.24);
+      text-decoration: none;
+      font-weight: 900;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .site-top-button.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    @keyframes brandSheen {
+      0%, 14%, 100% { transform: translateX(-180%) rotate(10deg); }
+      22%, 36% { transform: translateX(180%) rotate(10deg); }
+    }
+
     @media (max-width: 1050px) {
       .filters {
         grid-template-columns: repeat(3, 1fr);
@@ -806,6 +990,15 @@
     }
 
     @media (max-width: 720px) {
+      .peregrino-site-nav {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+      .peregrino-nav-links { gap: 6px; }
+      .peregrino-nav-links a { padding: 9px 12px; font-size: .92rem; }
+      .peregrino-footer-grid { grid-template-columns: 1fr; }
+      .peregrino-footer-links { justify-content: flex-start; }
       .app { width: min(100% - 18px, 1600px); padding-top: 10px; }
       .topbar { grid-template-columns: 1fr; }
       .actions { justify-content: flex-start; }
@@ -817,6 +1010,11 @@
       .legend { align-self: flex-start; }
       .selection-grid { grid-template-columns: 1fr; }
       .countdown { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .peregrino-site-nav { flex-direction: column; }
+      .peregrino-nav-links { justify-content: flex-start; }
     }
 
     @media (max-width: 440px) {
@@ -833,7 +1031,8 @@
 
     @media print {
       body { background: white; color: #18111f; }
-      body::before, .actions, .filters, .status-strip, .worldwide { display: none !important; }
+      body::before, .actions, .filters, .status-strip, .worldwide,
+      .peregrino-site-header, .peregrino-footer, .site-top-button, .site-skip-link { display: none !important; }
       .app { width: 100%; padding: 0; }
       .topbar { margin-bottom: 10px; }
       .brand p { color: #555; }
@@ -852,7 +1051,25 @@
 </head>
 
 <body>
+  <a class="site-skip-link" href="#contenido">Saltar al contenido</a>
   <div class="decolores-ribbon" aria-hidden="true"></div>
+
+  <header class="peregrino-site-header">
+    <div class="site-wrap peregrino-site-nav">
+      <a class="peregrino-site-brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+        <span class="peregrino-site-brand-mark" aria-hidden="true">✦</span>
+        <span>Peregrino APP</span>
+      </a>
+      <nav class="peregrino-nav-links" aria-label="Navegación principal">
+        <a href="index.html#app">La app</a>
+        <a href="index.html#planes">Planes</a>
+        <a href="index.html#apoyar">Apoyar</a>
+        <a href="index.html#recursos">Recursos</a>
+        <a class="peregrino-nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+      </nav>
+    </div>
+  </header>
+
   <div id="loadingCover" class="loading-cover">
     <div class="loader">
       <div class="loader-ring"></div>
@@ -861,13 +1078,13 @@
     </div>
   </div>
 
-  <div class="app">
+  <div id="contenido" class="app">
     <header class="topbar">
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">🌍</div>
         <div>
           <h1>El mundo está de Cursillo</h1>
-          <p>Palancas vivas · Peregrino App · Datos experimentales</p>
+          <p id="pageModeText">Palancas vivas · Peregrino App · Datos experimentales</p>
         </div>
       </div>
 
@@ -971,6 +1188,25 @@
     </section>
   </div>
 
+  <footer class="peregrino-footer">
+    <div class="site-wrap peregrino-footer-grid">
+      <div>
+        <strong>Peregrino APP</strong>
+        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+      </div>
+      <div class="peregrino-footer-links">
+        <a href="plan-apostol.html">Planes</a>
+        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="site-top-button" id="toTop" href="#contenido" aria-label="Volver arriba">↑</a>
+
   <div id="palancaInvite" class="demo-reveal" role="dialog" aria-modal="true" aria-labelledby="palancaInviteTitle" style="pointer-events:auto">
     <div class="demo-box">
       <div class="demo-kicker">Hacer palanca</div>
@@ -1011,6 +1247,11 @@
     // (contiene CURSILLO_ID_AQUI como marcador). Si se deja vacía,
     // la invitación solo ofrece descargar la app.
 const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyPGLOxOLhG7rYLQdSk4b7SulXNKzVj4mYMTLrw/viewform?usp=pp_url&entry.127073981=CURSILLO_ID_AQUI";
+    // INTERRUPTOR ÚNICO DE FASE:
+    // true  = fase experimental: muestra palancas reales y de prueba.
+    // false = producción: oculta únicamente las filas marcadas como es_prueba.
+    const MOSTRAR_PALANCAS_DE_PRUEBA = true;
+
     // Mural: histórico visible de palancas ya ofrecidas y tamaño de página.
     const MURAL_DIAS_VISIBLES = 7;
     const MURAL_POR_PAGINA = 8;
@@ -1392,9 +1633,23 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
       }
     }
 
+    function palancaEsVisiblePublicamente(palanca) {
+      const pruebaPermitida =
+        MOSTRAR_PALANCAS_DE_PRUEBA || !bool(palanca.es_prueba);
+
+      const consentimientoPermitido =
+        palanca.consentimiento_publico === null
+        || palanca.consentimiento_publico === undefined
+        || bool(palanca.consentimiento_publico);
+
+      return pruebaPermitida && consentimientoPermitido;
+    }
+
     function relevantPalancas(cursilloIds) {
       const ids = new Set(cursilloIds);
-      return appState.palancas.filter((p) => ids.has(p.cursillo_id));
+      return appState.palancas
+        .filter((p) => ids.has(p.cursillo_id))
+        .filter(palancaEsVisiblePublicamente);
     }
 
     function animateNumber(element, target) {
@@ -1495,8 +1750,7 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
     function visiblePublicPalancas(cursilloId) {
       return appState.palancas
         .filter((p) => p.cursillo_id === cursilloId)
-        .filter((p) => !bool(p.es_prueba))
-        .filter((p) => p.consentimiento_publico === null || p.consentimiento_publico === undefined || bool(p.consentimiento_publico));
+        .filter(palancaEsVisiblePublicamente);
     }
 
     function renderSelection() {
@@ -1876,6 +2130,9 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
 
     async function loadData() {
       $("loadingCover").classList.remove("hidden");
+      $("pageModeText").textContent = MOSTRAR_PALANCAS_DE_PRUEBA
+        ? "Palancas vivas · Peregrino App · Fase experimental: pruebas visibles"
+        : "Palancas vivas · Peregrino App · Producción: pruebas ocultas";
       setDataStatus("Sincronizando con BD de Cursillos…");
 
       try {
@@ -1892,8 +2149,13 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
         appState.configuracion = configuracion;
         appState.sourceMode = "google";
 
+        const palancasVisibles = palancas.filter(palancaEsVisiblePublicamente);
+        const detallePruebas = MOSTRAR_PALANCAS_DE_PRUEBA
+          ? " · incluye registros de prueba"
+          : " · pruebas excluidas";
+
         setDataStatus(
-          `Conectado a BD de Cursillos · ${cursillos.length} Cursillos · ${palancas.length} palancas${latestUpdateText()}`
+          `Conectado a BD de Cursillos · ${cursillos.length} Cursillos · ${palancasVisibles.length} palancas visibles${detallePruebas}${latestUpdateText()}`
         );
       } catch (error) {
         const demo = fallbackData();
@@ -2025,6 +2287,15 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
       });
 
       $("printBtn").addEventListener("click", () => window.print());
+
+      const toTop = $("toTop");
+      if (toTop) {
+        const updateTopButton = () => {
+          toTop.classList.toggle("visible", window.scrollY > 500);
+        };
+        window.addEventListener("scroll", updateTopButton, { passive: true });
+        updateTopButton();
+      }
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && appState.demoRunning) toggleDemo();
