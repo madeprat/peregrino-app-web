@@ -1047,6 +1047,510 @@
       .dashboard { grid-template-columns: 1.7fr .8fr; }
       .map-shell, .mural { min-height: 620px; }
     }
+  
+
+    /* ==============================================================
+       REDISEÑO: EL MUNDO COMO PROTAGONISTA
+       ============================================================== */
+    .peregrino-site-nav { min-height: 76px; }
+
+    .app {
+      width: min(1660px, calc(100% - 28px));
+      padding: 12px 0 30px;
+    }
+
+    .experience-hero {
+      position: relative;
+      z-index: 900;
+      display: grid;
+      grid-template-columns: minmax(430px, 1.08fr) minmax(620px, .92fr);
+      gap: 22px;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .title-zone {
+      position: relative;
+      min-width: 0;
+      padding: 7px 0 0;
+    }
+
+    .title-zone .brand {
+      align-items: center;
+      gap: 18px;
+    }
+
+    .title-zone .brand-mark {
+      width: 74px;
+      height: 74px;
+      flex: 0 0 74px;
+      border-radius: 50%;
+      border: 2px solid rgba(212,175,55,.82);
+      outline: 1px solid rgba(212,175,55,.28);
+      outline-offset: 6px;
+      font-size: 34px;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.35), transparent 18%),
+        linear-gradient(180deg, var(--gold-2), var(--gold));
+      box-shadow: 0 0 42px rgba(212,175,55,.18);
+    }
+
+    .title-copy { min-width: 0; }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .title-row h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 2.55vw, 2.55rem);
+      line-height: 1;
+      letter-spacing: -.038em;
+    }
+
+    .title-zone .brand p {
+      margin-top: 10px;
+      font-size: .92rem;
+    }
+
+    .filter-trigger {
+      min-height: 40px;
+      padding: 0 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(212,175,55,.72);
+      background: rgba(8,13,24,.62);
+      color: var(--text);
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+    }
+
+    .filter-trigger:hover,
+    .filter-trigger[aria-expanded="true"] {
+      background: rgba(212,175,55,.12);
+      border-color: var(--gold-2);
+    }
+
+    .filter-trigger svg,
+    .filter-close svg { width: 18px; height: 18px; flex: 0 0 auto; }
+
+    .filter-count {
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #09111d;
+      background: var(--gold-2);
+      font-size: .68rem;
+      font-weight: 900;
+    }
+
+    .filter-count[hidden] { display: none; }
+
+    .filter-chevron {
+      font-size: .8rem;
+      transition: transform .2s ease;
+    }
+
+    .filter-trigger[aria-expanded="true"] .filter-chevron {
+      transform: rotate(180deg);
+    }
+
+    .filters-popover {
+      position: absolute;
+      z-index: 1800;
+      top: calc(100% + 14px);
+      left: 92px;
+      width: min(790px, calc(100vw - 58px));
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.018)),
+        rgba(9,14,25,.72);
+      box-shadow: 0 30px 90px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(24px) saturate(130%);
+      -webkit-backdrop-filter: blur(24px) saturate(130%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-12px) scale(.985);
+      transform-origin: top left;
+      transition: opacity .2s ease, transform .22s ease, visibility .2s ease;
+    }
+
+    .filters-popover.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .filters-popover::before {
+      display: none;
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 42px;
+      width: 14px;
+      height: 14px;
+      border-left: 1px solid rgba(255,255,255,.16);
+      border-top: 1px solid rgba(255,255,255,.16);
+      background: rgba(18,25,39,.9);
+      transform: rotate(45deg);
+    }
+
+    .filters-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .filters-head strong { font-size: .94rem; }
+    .filters-head span { color: var(--muted); font-size: .78rem; }
+
+    .filter-close {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      justify-content: center;
+      border-radius: 10px;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .filters-grid .wide { grid-column: 1 / -1; }
+
+    .filters-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 9px;
+      margin-top: 3px;
+    }
+
+    .filters-actions .btn { min-height: 42px; }
+
+    .experience-controls {
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .experience-controls .actions {
+      gap: 9px;
+      justify-content: flex-end;
+    }
+
+    .experience-controls .actions .btn {
+      min-height: 42px;
+      padding: 9px 13px;
+      background: rgba(9,14,25,.55);
+      backdrop-filter: blur(14px);
+    }
+
+    .experience-controls .actions .btn.primary {
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+    }
+
+    .kpis {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+    }
+
+    .kpi {
+      min-height: 98px;
+      padding: 14px 14px 12px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 11px;
+      align-items: center;
+      border-top-width: 1px !important;
+      border-radius: 15px;
+      background: linear-gradient(145deg, rgba(17,26,46,.82), rgba(8,13,24,.78));
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+    }
+
+    .kpi::after { display: none; }
+
+    .kpi-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      border-radius: 13px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .kpi:nth-child(1) .kpi-icon { color: var(--dc-amarillo); text-shadow: 0 0 18px rgba(255,215,109,.45); }
+    .kpi:nth-child(2) .kpi-icon { color: var(--dc-verde); text-shadow: 0 0 18px rgba(62,207,142,.4); }
+    .kpi:nth-child(3) .kpi-icon { color: var(--dc-violeta); text-shadow: 0 0 18px rgba(167,139,250,.45); }
+    .kpi:nth-child(4) .kpi-icon { color: var(--dc-azul); text-shadow: 0 0 18px rgba(111,179,255,.45); }
+
+    .kpi-content { min-width: 0; }
+
+    .kpi-value {
+      margin: 0;
+      font-size: clamp(2rem, 2.8vw, 3rem);
+      line-height: .88;
+      letter-spacing: -.055em;
+    }
+
+    .kpi-label {
+      margin-top: 8px;
+      font-size: .66rem;
+      letter-spacing: .055em;
+      line-height: 1.15;
+    }
+
+    .kpi-note {
+      margin-top: 3px;
+      font-size: .64rem;
+      line-height: 1.2;
+      opacity: .72;
+    }
+
+    .dashboard {
+      grid-template-columns: minmax(0, 2.05fr) minmax(390px, .95fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .map-shell,
+    .mural {
+      height: clamp(650px, calc(100vh - 245px), 790px);
+      min-height: 650px;
+      border-color: rgba(255,255,255,.11);
+      background: rgba(5,10,19,.7);
+    }
+
+    .map-shell {
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.36), inset 0 0 90px rgba(212,175,55,.035);
+    }
+
+    #map {
+      background:
+        radial-gradient(circle at 50% 44%, rgba(212,175,55,.08), transparent 43%),
+        radial-gradient(ellipse at center, #0e1526 0%, #050914 100%);
+    }
+
+    .map-top { display: none; }
+
+    .map-side-controls {
+      position: absolute;
+      z-index: 560;
+      top: 50%;
+      left: 16px;
+      display: grid;
+      transform: translateY(-50%);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 15px;
+      overflow: hidden;
+      background: rgba(7,12,22,.66);
+      box-shadow: 0 18px 48px rgba(0,0,0,.32);
+      backdrop-filter: blur(18px);
+    }
+
+    .map-tool {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-bottom: 1px solid rgba(255,255,255,.085);
+      color: #e8edf6;
+      background: transparent;
+      font-size: 1.28rem;
+      transition: background .18s ease, color .18s ease;
+    }
+
+    .map-tool:last-child { border-bottom: 0; }
+    .map-tool:hover,
+    .map-tool.active { color: var(--gold-2); background: rgba(212,175,55,.11); }
+
+    .map-tool::after {
+      content: attr(data-label);
+      position: absolute;
+      left: calc(100% + 10px);
+      top: 50%;
+      transform: translate(5px, -50%);
+      padding: 7px 9px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 9px;
+      color: var(--text);
+      background: rgba(8,13,24,.94);
+      font-size: .7rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+
+    .map-tool:hover::after,
+    .map-tool:focus-visible::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(0, -50%);
+    }
+
+    .selection-card {
+      left: 78px;
+      bottom: 66px;
+      width: min(410px, calc(100% - 98px));
+      padding: 13px 14px;
+      border-left: 3px solid var(--dc-violeta);
+      border-radius: 16px;
+      background: rgba(9,15,27,.86);
+    }
+
+    .selection-title { font-size: .96rem; }
+    .selection-sub { font-size: .76rem; }
+    .selection-stats { margin-top: 8px; }
+    .selection-actions .btn { min-height: 38px; padding: 8px 11px; font-size: .76rem; }
+
+    .status-strip.map-status {
+      position: absolute;
+      z-index: 550;
+      left: 16px;
+      right: 16px;
+      bottom: 12px;
+      min-height: 40px;
+      margin: 0;
+      padding: 8px 13px;
+      border-radius: 13px;
+      color: rgba(220,227,239,.82);
+      background: rgba(7,12,22,.76);
+      box-shadow: 0 14px 38px rgba(0,0,0,.28);
+      backdrop-filter: blur(18px);
+      font-size: .72rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status-strip.map-status .status-dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    .mural {
+      border-color: rgba(212,175,55,.22);
+      box-shadow: 0 30px 82px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.035);
+    }
+
+    .panel-head {
+      padding: 24px 25px 20px;
+      border-bottom-color: rgba(212,175,55,.28);
+    }
+
+    .panel-head h2 {
+      font-size: clamp(1.35rem, 1.8vw, 1.8rem);
+      letter-spacing: -.025em;
+    }
+
+    .panel-head p {
+      margin-top: 10px;
+      font-size: .88rem;
+      line-height: 1.5;
+    }
+
+    .live-badge { margin-top: 2px; }
+
+    .mural-list {
+      padding: 18px 20px 20px;
+    }
+
+    .empty-state {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      padding: 38px 24px;
+      font-size: 1rem;
+    }
+
+    .palanca-card {
+      padding: 15px;
+      margin-bottom: 11px;
+      border-radius: 16px;
+    }
+
+    .worldwide { margin-top: 16px; }
+
+    @media (max-width: 1300px) {
+      .experience-hero { grid-template-columns: minmax(380px, .9fr) minmax(580px, 1.1fr); }
+      .title-zone .brand-mark { width: 62px; height: 62px; flex-basis: 62px; font-size: 29px; }
+      .dashboard { grid-template-columns: minmax(0, 1.75fr) minmax(350px, .85fr); }
+      .kpi { padding-inline: 11px; column-gap: 8px; }
+      .kpi-icon { width: 34px; height: 34px; }
+    }
+
+    @media (max-width: 1080px) {
+      .experience-hero { grid-template-columns: 1fr; }
+      .experience-controls .actions { justify-content: flex-start; }
+      .dashboard { grid-template-columns: 1fr; }
+      .map-shell, .mural { height: auto; min-height: 650px; }
+      .mural { min-height: 520px; }
+      .filters-popover { left: 0; }
+    }
+
+    @media (max-width: 760px) {
+      .peregrino-site-nav { min-height: auto; }
+      .experience-hero { gap: 14px; }
+      .title-zone .brand { align-items: flex-start; }
+      .title-zone .brand-mark { width: 52px; height: 52px; flex-basis: 52px; font-size: 24px; outline-offset: 3px; }
+      .title-row { gap: 9px; }
+      .filter-trigger { min-height: 36px; padding-inline: 11px; }
+      .experience-controls .actions { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .experience-controls .actions .btn { justify-content: center; }
+      .kpis { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .filters-popover { width: calc(100vw - 22px); left: -2px; }
+      .filters-grid { grid-template-columns: 1fr 1fr; }
+      .filters-grid .wide, .filters-actions { grid-column: 1 / -1; }
+      .map-shell { min-height: 610px; }
+      .map-side-controls { left: 10px; }
+      .map-tool { width: 42px; height: 42px; }
+      .selection-card { left: 62px; width: calc(100% - 74px); bottom: 68px; }
+      .status-strip.map-status { left: 10px; right: 10px; font-size: .65rem; }
+    }
+
+    @media (max-width: 480px) {
+      .app { width: calc(100% - 14px); }
+      .title-zone .brand-mark { display: none; }
+      .title-row h1 { font-size: 1.55rem; }
+      .filters-grid { grid-template-columns: 1fr; }
+      .filters-grid .wide, .filters-actions { grid-column: 1; }
+      .filters-actions { justify-content: stretch; }
+      .filters-actions .btn { flex: 1; justify-content: center; }
+      .kpi { min-height: 88px; }
+      .kpi-value { font-size: 2.05rem; }
+      .kpi-note { display: none; }
+      .map-shell { min-height: 650px; }
+      .selection-card { left: 10px; width: calc(100% - 20px); bottom: 68px; }
+      .map-side-controls { top: auto; bottom: 120px; transform: none; }
+    }
+
+    @media print {
+      .filters-popover, .filter-trigger, .map-side-controls { display: none !important; }
+      .status-strip.map-status { position: static; margin: 8px; white-space: normal; }
+      .map-shell, .mural { height: 620px; }
+    }
+
   </style>
 </head>
 
@@ -1079,83 +1583,121 @@
   </div>
 
   <div id="contenido" class="app">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true">🌍</div>
-        <div>
-          <h1>El mundo está de Cursillo</h1>
-          <p id="pageModeText">Palancas vivas · Peregrino App · Datos experimentales</p>
+    <section class="experience-hero" aria-label="Cabecera de la experiencia mundial">
+      <div class="title-zone">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">🌍</div>
+          <div class="title-copy">
+            <div class="title-row">
+              <h1>El mundo está de Cursillo</h1>
+              <button id="filterToggleBtn" class="btn filter-trigger" type="button" aria-expanded="false" aria-controls="filtersPanel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 5h18l-7 8v5l-4 2v-7L3 5z"></path>
+                </svg>
+                <span>Filtros</span>
+                <span id="activeFilterCount" class="filter-count" hidden>0</span>
+                <span class="filter-chevron" aria-hidden="true">⌄</span>
+              </button>
+            </div>
+            <p id="pageModeText">Palancas vivas · Peregrino App · Datos experimentales</p>
+          </div>
         </div>
+
+        <section id="filtersPanel" class="filters-popover" aria-label="Filtros del cuadro de mando" aria-hidden="true">
+          <div class="filters-head">
+            <div>
+              <strong>Filtrar el mundo</strong><br>
+              <span>Encuentra un Cursillo sin quitar protagonismo al mapa.</span>
+            </div>
+            <button id="filterCloseBtn" class="btn filter-close" type="button" aria-label="Cerrar filtros">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="filters-grid">
+            <input id="searchFilter" class="control wide" type="search" placeholder="Buscar diócesis, ciudad, país o número…" />
+            <select id="statusFilter" class="control">
+              <option value="">Todos los estados</option>
+              <option value="Activo">Activos</option>
+              <option value="Próximo">Próximos</option>
+              <option value="Finalizado">Finalizados</option>
+            </select>
+            <select id="countryFilter" class="control"><option value="">Todos los países</option></select>
+            <select id="modalityFilter" class="control"><option value="">Todas las modalidades</option></select>
+            <select id="eventTypeFilter" class="control"><option value="">Todos los encuentros</option></select>
+            <div class="filters-actions">
+              <button id="clearFiltersBtn" class="btn" type="button">↻ Limpiar</button>
+              <button id="applyFiltersBtn" class="btn primary" type="button">Aplicar filtros</button>
+            </div>
+          </div>
+        </section>
       </div>
 
-      <div class="actions">
-        <button id="refreshBtn" class="btn" type="button">↻ Actualizar</button>
-        <button id="demoBtn" class="btn primary" type="button">▶ Modo demostración</button>
-        <button id="fullscreenBtn" class="btn" type="button">⛶ Pantalla completa</button>
-        <button id="printBtn" class="btn" type="button">⌁ Guardar recuerdo</button>
+      <div class="experience-controls">
+        <div class="actions">
+          <button id="refreshBtn" class="btn" type="button">↻ Actualizar</button>
+          <button id="demoBtn" class="btn primary" type="button">▶ Modo demostración</button>
+          <button id="fullscreenBtn" class="btn" type="button">⛶ Pantalla completa</button>
+          <button id="printBtn" class="btn" type="button">⌁ Guardar recuerdo</button>
+        </div>
+
+        <section class="kpis" aria-label="Indicadores">
+          <article class="kpi">
+            <span class="kpi-icon" aria-hidden="true">👥</span>
+            <div class="kpi-content">
+              <strong id="kpiCursillos" class="kpi-value">—</strong>
+              <div class="kpi-label">Cursillos visibles</div>
+              <div id="kpiCursillosNote" class="kpi-note">Según los filtros activos</div>
+            </div>
+          </article>
+          <article class="kpi">
+            <span class="kpi-icon" aria-hidden="true">🌐</span>
+            <div class="kpi-content">
+              <strong id="kpiCountries" class="kpi-value">—</strong>
+              <div class="kpi-label">Países</div>
+              <div class="kpi-note">Presencia internacional</div>
+            </div>
+          </article>
+          <article class="kpi">
+            <span class="kpi-icon" aria-hidden="true">⊕</span>
+            <div class="kpi-content">
+              <strong id="kpiPalancas" class="kpi-value">—</strong>
+              <div class="kpi-label">Palancas registradas</div>
+              <div class="kpi-note">Para los Cursillos visibles</div>
+            </div>
+          </article>
+          <article class="kpi">
+            <span class="kpi-icon" aria-hidden="true">◷</span>
+            <div class="kpi-content">
+              <strong id="kpiNow" class="kpi-value">—</strong>
+              <div class="kpi-label">Rezando ahora</div>
+              <div class="kpi-note">Según las franjas declaradas</div>
+            </div>
+          </article>
+        </section>
       </div>
-    </header>
-
-    <div id="dataStatus" class="status-strip">
-      <span class="status-dot"></span>
-      <span id="statusText">Preparando la conexión con BD de Cursillos…</span>
-    </div>
-
-    <section class="kpis" aria-label="Indicadores">
-      <article class="kpi">
-        <div class="kpi-label">Cursillos visibles</div>
-        <strong id="kpiCursillos" class="kpi-value">—</strong>
-        <div id="kpiCursillosNote" class="kpi-note">Según los filtros activos</div>
-      </article>
-      <article class="kpi">
-        <div class="kpi-label">Países</div>
-        <strong id="kpiCountries" class="kpi-value">—</strong>
-        <div class="kpi-note">Presencia internacional</div>
-      </article>
-      <article class="kpi">
-        <div class="kpi-label">Palancas registradas</div>
-        <strong id="kpiPalancas" class="kpi-value">—</strong>
-        <div class="kpi-note">Para los Cursillos visibles</div>
-      </article>
-      <article class="kpi">
-        <div class="kpi-label">Rezando ahora</div>
-        <strong id="kpiNow" class="kpi-value">—</strong>
-        <div class="kpi-note">Según las franjas declaradas</div>
-      </article>
-    </section>
-
-    <section class="filters" aria-label="Filtros del cuadro de mando">
-      <input id="searchFilter" class="control wide" type="search" placeholder="Buscar diócesis, ciudad, país o número…" />
-      <select id="statusFilter" class="control">
-        <option value="">Todos los estados</option>
-        <option value="Activo">Activos</option>
-        <option value="Próximo">Próximos</option>
-        <option value="Finalizado">Finalizados</option>
-      </select>
-      <select id="countryFilter" class="control"><option value="">Todos los países</option></select>
-      <select id="modalityFilter" class="control"><option value="">Todas las modalidades</option></select>
-      <select id="eventTypeFilter" class="control"><option value="">Todos los encuentros</option></select>
-      <button id="clearFiltersBtn" class="btn" type="button">Limpiar</button>
     </section>
 
     <main class="dashboard">
       <section class="map-shell" aria-label="Mapa mundial de Cursillos y palancas">
         <div id="map"></div>
 
-        <div class="map-top">
-          <div class="map-card">
-            <h2>Una red mundial de oración</h2>
-            <p>Gira el mundo con el dedo o el ratón y toca una luz para ver quién reza por ese Cursillo. Cada arco de color es una palanca en camino.</p>
-          </div>
-          <div class="legend" aria-label="Leyenda">
-            <span><i class="active"></i>Activo</span>
-            <span><i class="next"></i>Próximo</span>
-            <span><i class="done"></i>Finalizado</span>
-          </div>
-        </div>
+        <nav class="map-side-controls" aria-label="Controles del mundo">
+          <button id="mapZoomInBtn" class="map-tool" type="button" data-label="Acercar" aria-label="Acercar el mundo">+</button>
+          <button id="mapZoomOutBtn" class="map-tool" type="button" data-label="Alejar" aria-label="Alejar el mundo">−</button>
+          <button id="mapFocusBtn" class="map-tool" type="button" data-label="Cursillo seleccionado" aria-label="Centrar el Cursillo seleccionado">⌾</button>
+          <button id="mapResetBtn" class="map-tool" type="button" data-label="Vista mundial" aria-label="Recuperar la vista mundial">◎</button>
+          <button id="mapRotateBtn" class="map-tool active" type="button" data-label="Giro automático" aria-label="Activar o detener el giro automático">✥</button>
+        </nav>
 
         <div id="selectionCard" class="selection-card empty">
           Selecciona un Cursillo en el mapa o en el mural para descubrir sus palancas.
+        </div>
+
+        <div id="dataStatus" class="status-strip map-status">
+          <span class="status-dot"></span>
+          <span id="statusText">Preparando la conexión con BD de Cursillos…</span>
         </div>
       </section>
 
@@ -1487,8 +2029,9 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
       if (!appState.globe) return;
       const controls = appState.globe.controls();
       controls.autoRotate = false;
+      $("mapRotateBtn")?.classList.remove("active");
       clearTimeout(appState.rotateResumeTimer);
-      appState.rotateResumeTimer = setTimeout(() => { controls.autoRotate = true; }, ms);
+      appState.rotateResumeTimer = setTimeout(() => { controls.autoRotate = true; $("mapRotateBtn")?.classList.add("active"); }, ms);
     }
 
     function initGlobe() {
@@ -2261,9 +2804,102 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
       revealForCursillo(selectedCursillo());
     };
 
+    function setFiltersOpen(open, focusFirst = false) {
+      const panel = $("filtersPanel");
+      const trigger = $("filterToggleBtn");
+      if (!panel || !trigger) return;
+
+      panel.classList.toggle("open", open);
+      panel.setAttribute("aria-hidden", String(!open));
+      trigger.setAttribute("aria-expanded", String(open));
+
+      if (open && focusFirst) {
+        setTimeout(() => $("searchFilter")?.focus(), 80);
+      }
+    }
+
+    function updateActiveFilterCount() {
+      const count = [
+        $("searchFilter").value.trim(),
+        $("statusFilter").value,
+        $("countryFilter").value,
+        $("modalityFilter").value,
+        $("eventTypeFilter").value
+      ].filter(Boolean).length;
+
+      const badge = $("activeFilterCount");
+      badge.textContent = String(count);
+      badge.hidden = count === 0;
+    }
+
+    function applyAndCloseFilters() {
+      applyFilters();
+      updateActiveFilterCount();
+      setFiltersOpen(false);
+    }
+
+    function currentPointOfView() {
+      try {
+        return appState.globe?.pointOfView() || { lat:18, lng:-5, altitude:2.1 };
+      } catch (_) {
+        return { lat:18, lng:-5, altitude:2.1 };
+      }
+    }
+
+    function zoomGlobe(delta) {
+      if (!appState.globe) return;
+      const pov = currentPointOfView();
+      const altitude = Math.min(4.2, Math.max(.72, Number(pov.altitude || 2.1) + delta));
+      appState.globe.pointOfView({ lat:pov.lat || 0, lng:pov.lng || 0, altitude }, 450);
+      holdRotation(5000);
+    }
+
+    function focusSelectedCursillo() {
+      const cursillo = selectedCursillo();
+      if (!cursillo || !appState.globe) return;
+      const lat = num(cursillo.latitud);
+      const lon = num(cursillo.longitud);
+      if (lat === null || lon === null) return;
+      appState.globe.pointOfView({ lat, lng:lon, altitude:1.45 }, 900);
+      holdRotation(6500);
+    }
+
+    function resetWorldView() {
+      if (!appState.globe) return;
+      appState.globe.pointOfView({ lat:18, lng:-5, altitude:2.1 }, 850);
+      holdRotation(4500);
+    }
+
+    function toggleWorldRotation() {
+      if (!appState.globe) return;
+      const controls = appState.globe.controls();
+      controls.autoRotate = !controls.autoRotate;
+      clearTimeout(appState.rotateResumeTimer);
+      $("mapRotateBtn")?.classList.toggle("active", controls.autoRotate);
+      $("mapRotateBtn")?.setAttribute(
+        "aria-label",
+        controls.autoRotate ? "Detener el giro automático" : "Activar el giro automático"
+      );
+    }
+
     function bindEvents() {
-      ["searchFilter","statusFilter","countryFilter","modalityFilter","eventTypeFilter"]
-        .forEach((id) => $(id).addEventListener(id === "searchFilter" ? "input" : "change", applyFilters));
+      const filterIds = ["searchFilter","statusFilter","countryFilter","modalityFilter","eventTypeFilter"];
+
+      filterIds.forEach((id) => {
+        const eventName = id === "searchFilter" ? "input" : "change";
+        $(id).addEventListener(eventName, updateActiveFilterCount);
+      });
+
+      $("searchFilter").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") applyAndCloseFilters();
+      });
+
+      $("filterToggleBtn").addEventListener("click", () => {
+        const open = $("filterToggleBtn").getAttribute("aria-expanded") !== "true";
+        setFiltersOpen(open, open);
+      });
+      $("filterCloseBtn").addEventListener("click", () => setFiltersOpen(false));
+      $("applyFiltersBtn").addEventListener("click", applyAndCloseFilters);
 
       $("clearFiltersBtn").addEventListener("click", () => {
         $("searchFilter").value = "";
@@ -2272,6 +2908,16 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
         $("modalityFilter").value = "";
         $("eventTypeFilter").value = "";
         applyFilters();
+        updateActiveFilterCount();
+        setFiltersOpen(false);
+      });
+
+      document.addEventListener("pointerdown", (event) => {
+        const panel = $("filtersPanel");
+        const trigger = $("filterToggleBtn");
+        if (panel?.classList.contains("open") && !panel.contains(event.target) && !trigger.contains(event.target)) {
+          setFiltersOpen(false);
+        }
       });
 
       $("refreshBtn").addEventListener("click", loadData);
@@ -2288,6 +2934,12 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
 
       $("printBtn").addEventListener("click", () => window.print());
 
+      $("mapZoomInBtn").addEventListener("click", () => zoomGlobe(-.3));
+      $("mapZoomOutBtn").addEventListener("click", () => zoomGlobe(.3));
+      $("mapFocusBtn").addEventListener("click", focusSelectedCursillo);
+      $("mapResetBtn").addEventListener("click", resetWorldView);
+      $("mapRotateBtn").addEventListener("click", toggleWorldRotation);
+
       const toTop = $("toTop");
       if (toTop) {
         const updateTopButton = () => {
@@ -2298,7 +2950,13 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
       }
 
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && appState.demoRunning) toggleDemo();
+        if (event.key === "Escape") {
+          if ($("filtersPanel")?.classList.contains("open")) {
+            setFiltersOpen(false);
+            return;
+          }
+          if (appState.demoRunning) toggleDemo();
+        }
         if (event.key.toLowerCase() === "d" && !["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName)) toggleDemo();
       });
     }
