@@ -23,253 +23,427 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/site.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="favicon.ico" />
 
   <style>
-    /* Esta página conserva los componentes y la paleta del diseño actual,
-       añadiendo únicamente variantes necesarias para el tono de invitación. */
+    :root {
+      --editorial: "Cormorant Garamond", Georgia, serif;
+    }
+
+    .invitation-hero {
+      padding-bottom: 56px;
+    }
+
+    .invitation-hero .wrap {
+      align-items: center;
+    }
+
+    .invitation-hero h1 {
+      font-family: var(--editorial);
+      font-size: clamp(3.4rem, 7vw, 6.3rem);
+      font-weight: 600;
+      line-height: .92;
+      letter-spacing: -.045em;
+      max-width: 11ch;
+    }
 
     .invitation-hero .lead {
-      max-width: 62ch;
+      max-width: 57ch;
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+      line-height: 1.75;
     }
 
-    .invitation-hero .prose-cta {
-      margin-top: 26px;
+    .invitation-hero .page-shot {
+      position: relative;
+      padding: 12px;
+      border-radius: 38px;
+      background: linear-gradient(145deg, rgba(212,175,55,.2), rgba(255,255,255,.06));
     }
 
-    .invitation-grid {
-      align-items: stretch;
+    .invitation-hero .page-shot::before {
+      content: "";
+      position: absolute;
+      inset: -26px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,.15), transparent 67%);
+      filter: blur(12px);
     }
 
-    .invitation-wide {
-      grid-column: 1 / -1;
+    .invitation-hero .page-shot img {
+      aspect-ratio: 4 / 5;
+      border-radius: 28px;
     }
 
-    .invitation-opening {
-      padding: clamp(26px, 4vw, 42px);
-      background:
-        linear-gradient(135deg, rgba(212,175,55,.15), rgba(29,46,122,.24)),
-        rgba(255,255,255,.06);
-      border-color: rgba(212,175,55,.22);
+    .letter-section {
+      padding: 34px 0 96px;
     }
 
-    .invitation-opening h2 {
-      max-width: 21ch;
+    .letter {
+      width: min(780px, calc(100% - 32px));
+      margin: 0 auto;
     }
 
-    .invitation-opening p {
-      max-width: 82ch;
+    .letter-opening {
+      max-width: 700px;
+      margin: 0 auto 92px;
+      text-align: center;
     }
 
-    .invitation-label {
+    .letter-opening .small-star {
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 22px;
       color: var(--gold-2);
-      font-size: .8rem;
+      font-size: 1.05rem;
+    }
+
+    .letter-opening p {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--editorial);
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      line-height: 1.35;
+    }
+
+    .letter-opening strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .chapter {
+      position: relative;
+      margin: 0 0 92px;
+      padding-top: 34px;
+    }
+
+    .chapter::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(212,175,55,.52), rgba(255,255,255,.08), transparent);
+    }
+
+    .chapter-label {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--gold-2);
+      font-size: .76rem;
       font-weight: 900;
-      letter-spacing: .08em;
+      letter-spacing: .13em;
       text-transform: uppercase;
     }
 
-    .invitation-card h2 {
-      max-width: 21ch;
+    .chapter h2 {
+      max-width: 14ch;
+      margin: 0 0 26px;
+      color: #fff;
+      font-family: var(--editorial);
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      font-weight: 600;
+      line-height: .98;
+      letter-spacing: -.035em;
     }
 
-    .invitation-card p {
-      font-size: 1.02rem;
-    }
-
-    .reassurance-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .reassurance-item {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding: 13px 14px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 16px;
-      background: rgba(255,255,255,.045);
+    .chapter p {
+      margin: 0 0 1.35rem;
       color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.92;
     }
 
-    .reassurance-icon {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: rgba(212,175,55,.14);
+    .chapter p:last-child {
+      margin-bottom: 0;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+      margin: .07em .12em 0 0;
       color: var(--gold-2);
-      font-weight: 900;
+      font-family: var(--editorial);
+      font-size: 4.3rem;
+      font-weight: 600;
+      line-height: .72;
     }
 
-    .invitation-quote {
+    .soft-assurances {
+      margin: 38px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .soft-assurances li {
       display: grid;
-      align-content: center;
-    }
-
-    .invitation-quote .quote-box {
-      margin: 4px 0 18px;
-      font-size: clamp(1.12rem, 2vw, 1.35rem);
+      grid-template-columns: 28px 1fr;
+      gap: 13px;
+      align-items: start;
+      padding: 14px 0;
+      color: #eef1f6;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 1rem;
       line-height: 1.65;
     }
 
-    .path-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 24px;
+    .soft-assurances li:last-child {
+      border-bottom: 0;
     }
 
-    .path-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      padding: 22px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,.05);
-      box-shadow: 0 12px 24px rgba(0,0,0,.12);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-
-    .path-card:hover,
-    .path-card:focus-within {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      border-color: rgba(212,175,55,.22);
-    }
-
-    .path-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 16px;
-      border-radius: 16px;
-      background: rgba(212,175,55,.12);
+    .soft-assurances span {
       color: var(--gold-2);
-      font-size: 1.35rem;
-    }
-
-    .path-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.22rem;
-    }
-
-    .path-card p {
-      flex: 1;
-      margin: 0 0 18px;
-      color: var(--muted);
-    }
-
-    .path-link {
-      color: var(--gold-2);
-      text-decoration: none;
-      font-weight: 800;
-    }
-
-    .path-link:hover,
-    .path-link:focus-visible {
-      color: #fff;
-    }
-
-    .reply-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    .reply-option {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 15px;
-      align-items: start;
-      padding: 17px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 18px;
-      background: rgba(255,255,255,.045);
-    }
-
-    .reply-number {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      background: var(--gold);
-      color: #09111d;
       font-weight: 900;
     }
 
-    .reply-option strong {
-      display: block;
-      margin-bottom: 5px;
-      color: #fff;
+    .full-quote {
+      position: relative;
+      width: min(980px, calc(100% - 32px));
+      margin: 8px auto 100px;
+      padding: clamp(54px, 8vw, 88px) clamp(28px, 7vw, 82px);
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,.2);
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(212,175,55,.2), transparent 30rem),
+        linear-gradient(135deg, rgba(29,46,122,.32), rgba(255,255,255,.055));
+      text-align: center;
     }
 
-    .reply-option p {
+    .full-quote::before {
+      content: "“";
+      position: absolute;
+      top: -42px;
+      left: 34px;
+      color: rgba(212,175,55,.12);
+      font-family: var(--editorial);
+      font-size: 13rem;
+      line-height: 1;
+    }
+
+    .full-quote blockquote {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      color: #fff;
+      font-family: var(--editorial);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.16;
+    }
+
+    .full-quote p {
+      position: relative;
+      max-width: 630px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .paths {
+      margin-top: 30px;
+      counter-reset: path;
+    }
+
+    .path {
+      counter-increment: path;
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 24px;
+      align-items: start;
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .path:first-child {
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .path::before {
+      content: "0" counter(path);
+      color: var(--gold-2);
+      font-family: var(--editorial);
+      font-size: 2.6rem;
+      line-height: 1;
+    }
+
+    .path h3 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 1.24rem;
+    }
+
+    .path p {
       margin: 0;
       color: var(--muted);
-      font-size: .98rem;
+      font-size: .99rem;
+      line-height: 1.72;
     }
 
-    .closing-card {
-      padding: clamp(30px, 5vw, 50px);
-      text-align: center;
-      background:
-        radial-gradient(circle at 15% 0%, rgba(212,175,55,.18), transparent 26rem),
-        linear-gradient(135deg, rgba(29,46,122,.34), rgba(255,255,255,.06));
-      border-color: rgba(212,175,55,.2);
-    }
-
-    .closing-card h2 {
-      max-width: 20ch;
-      margin-inline: auto;
-      color: #fff;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-    }
-
-    .closing-card h2 em {
+    .path a {
+      align-self: center;
       color: var(--gold-2);
-      font-style: normal;
+      text-decoration: none;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
-    .closing-card > p {
-      max-width: 64ch;
-      margin-inline: auto;
+    .path a:hover,
+    .path a:focus-visible {
+      color: #fff;
+    }
+
+    .answers {
+      margin-top: 30px;
+    }
+
+    .answer {
+      position: relative;
+      margin: 0;
+      padding: 28px 0 28px 42px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .answer:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .answer::before {
+      content: "“";
+      position: absolute;
+      top: 13px;
+      left: 0;
+      color: var(--gold-2);
+      font-family: var(--editorial);
+      font-size: 3.4rem;
+      line-height: 1;
+    }
+
+    .answer strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold-2);
+      font-size: .78rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .answer p {
+      margin: 0;
+      color: #f4f6fa;
+      font-family: var(--editorial);
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .closing-letter {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto 84px;
+      padding: clamp(48px, 8vw, 82px);
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(212,175,55,.2), transparent 32rem),
+        linear-gradient(135deg, rgba(29,46,122,.38), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.11);
+      text-align: center;
+    }
+
+    .closing-letter h2 {
+      max-width: 13ch;
+      margin: 0 auto 22px;
+      color: #fff;
+      font-family: var(--editorial);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 600;
+      line-height: .95;
+    }
+
+    .closing-letter h2 em {
+      color: var(--gold-2);
+      font-weight: 500;
+    }
+
+    .closing-letter > p {
+      max-width: 660px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.82;
+    }
+
+    .closing-letter .cta-row {
+      justify-content: center;
+      margin-top: 30px;
     }
 
     .privacy-note {
-      max-width: 74ch !important;
-      margin: 28px auto 0 !important;
-      padding-top: 20px;
+      max-width: 720px !important;
+      margin: 30px auto 0 !important;
+      padding-top: 22px;
       border-top: 1px solid rgba(255,255,255,.1);
       color: var(--muted-2) !important;
-      font-size: .84rem !important;
-    }
-
-    @media (max-width: 900px) {
-      .path-grid {
-        grid-template-columns: 1fr;
-      }
+      font-size: .82rem !important;
+      line-height: 1.65 !important;
     }
 
     @media (max-width: 760px) {
-      .invitation-wide {
-        grid-column: auto;
+      .invitation-hero h1 {
+        max-width: none;
       }
 
-      .reply-option {
+      .chapter {
+        margin-bottom: 72px;
+      }
+
+      .path {
+        grid-template-columns: 56px 1fr;
+      }
+
+      .path a {
+        grid-column: 2;
+        justify-self: start;
+        margin-top: 4px;
+      }
+
+      .full-quote,
+      .closing-letter {
+        border-radius: 26px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .letter-opening {
+        margin-bottom: 70px;
+      }
+
+      .letter-opening p {
+        font-size: 1.65rem;
+      }
+
+      .chapter h2 {
+        max-width: none;
+      }
+
+      .path {
         grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .path::before {
+        font-size: 2rem;
+      }
+
+      .path a {
+        grid-column: 1;
+      }
+
+      .answer {
+        padding-left: 30px;
       }
     }
   </style>
@@ -301,13 +475,14 @@
         <div>
           <span class="eyebrow">Una invitación sin compromiso</span>
           <h1 id="hero-title">Alguien está rezando por ti</h1>
+
           <p class="lead" id="hero-lead">
             Si has recibido esta página, probablemente alguien te quiere,
             te tiene presente y desea compartir contigo algo que a esa persona
             le hizo bien.
           </p>
 
-          <div class="cta-row prose-cta">
+          <div class="cta-row">
             <a class="btn btn-primary" href="#leer">Leer con calma</a>
             <a class="btn btn-secondary" href="#siguiente">Ver qué puedo hacer</a>
           </div>
@@ -319,56 +494,43 @@
       </div>
     </section>
 
-    <section id="leer" data-section="invitacion">
-      <div class="wrap prose-grid invitation-grid">
-
-        <article class="prose-card invitation-card invitation-wide invitation-opening">
-          <span class="invitation-label">Antes de nada</span>
-          <h2 id="intro-title">Esta página no ha llegado a ti como un anuncio</h2>
-
+    <section class="letter-section" id="leer">
+      <div class="letter">
+        <div class="letter-opening">
+          <span class="small-star">✦</span>
           <p id="intro-name">
-            Alguien ha pensado en ti. Quizá un amigo, alguien de tu familia o
-            una persona que te conoce bien y que, de alguna manera, ha querido
-            abrirte una puerta.
+            Esta página no ha llegado a ti como un anuncio.
+            <strong>Alguien ha pensado en ti.</strong>
           </p>
+        </div>
 
-          <div class="quote-box">
-            No para presionarte. No para convencerte a la fuerza. Solo para
-            decirte: quizá esto también podría hacerte bien.
-          </div>
-        </article>
+        <section class="chapter">
+          <span class="chapter-label">Antes de nada</span>
+          <h2>No tienes que decidir nada ahora</h2>
 
-        <article class="prose-card invitation-card">
-          <span class="invitation-label">Esto no es una presión</span>
-          <h2>Respira. No tienes que decidir nada ahora</h2>
+          <p class="dropcap">
+            Quizá ha sido un amigo, alguien de tu familia o una persona que te
+            conoce bien. Alguien que, de alguna manera, ha querido abrirte una
+            puerta.
+          </p>
 
           <p>
-            Esta página no es una inscripción, una obligación ni una lista en
-            la que tengas que apuntarte. Es solamente una invitación sencilla,
-            respetuosa y abierta.
+            No para presionarte. No para convencerte a la fuerza. Solo para
+            decirte, con cariño: quizá esto también podría hacerte bien.
           </p>
 
-          <div class="reassurance-list" aria-label="Qué no exige esta invitación">
-            <div class="reassurance-item">
-              <span class="reassurance-icon">✓</span>
-              <span>No tienes que responder inmediatamente.</span>
-            </div>
-            <div class="reassurance-item">
-              <span class="reassurance-icon">✓</span>
-              <span>No necesitas tenerlo todo claro para seguir leyendo.</span>
-            </div>
-            <div class="reassurance-item">
-              <span class="reassurance-icon">✓</span>
-              <span>No hace falta ser perfecto para acercarte a Dios.</span>
-            </div>
-          </div>
-        </article>
+          <ul class="soft-assurances">
+            <li><span>✓</span><div>No tienes que responder inmediatamente.</div></li>
+            <li><span>✓</span><div>No necesitas tenerlo todo claro para seguir leyendo.</div></li>
+            <li><span>✓</span><div>No hace falta ser perfecto para acercarte a Dios.</div></li>
+          </ul>
+        </section>
 
-        <article class="prose-card invitation-card">
-          <span class="invitation-label">Qué es un Cursillo</span>
+        <section class="chapter">
+          <span class="chapter-label">Qué es un Cursillo</span>
           <h2>Una experiencia de encuentro</h2>
 
-          <p>
+          <p class="dropcap">
             Un Cursillo de Cristiandad es un encuentro con Dios, contigo mismo
             y con otras personas que también intentan vivir la fe en medio de
             la vida real.
@@ -384,13 +546,13 @@
             A veces basta una pequeña inquietud y la disposición de dejarse
             sorprender.
           </p>
-        </article>
+        </section>
 
-        <article class="prose-card invitation-card">
-          <span class="invitation-label">Por qué alguien te envía esto</span>
+        <section class="chapter">
+          <span class="chapter-label">Por qué alguien te envía esto</span>
           <h2>Porque te lleva en el corazón</h2>
 
-          <p>
+          <p class="dropcap">
             En Peregrino APP hay personas que guardan algunos nombres por los
             que rezan. No como una lista de objetivos ni como una agenda para
             convencer a nadie, sino como una forma sencilla de cuidar
@@ -402,24 +564,21 @@
             a Dios que te acompañe, te ilumine y te muestre si este camino
             también puede ser para ti.
           </p>
-        </article>
+        </section>
+      </div>
 
-        <article class="prose-card invitation-card invitation-quote">
-          <span class="invitation-label">Con libertad</span>
+      <aside class="full-quote" aria-label="Idea principal">
+        <blockquote>Una invitación verdadera no empuja. Acompaña.</blockquote>
+        <p>
+          Puedes leer esta página y dejarla reposar. Puedes preguntar.
+          También puedes no hacer nada por ahora. Lo importante no es
+          responder deprisa, sino escuchar con verdad.
+        </p>
+      </aside>
 
-          <div class="quote-box">
-            Una invitación verdadera no empuja. Acompaña.
-          </div>
-
-          <p>
-            Puedes leer esta página y dejarla reposar. Puedes preguntar.
-            También puedes no hacer nada por ahora. Lo importante no es
-            responder deprisa, sino escuchar con verdad.
-          </p>
-        </article>
-
-        <article class="prose-card invitation-card invitation-wide" id="siguiente">
-          <span class="invitation-label">Y ahora, ¿qué puedo hacer?</span>
+      <div class="letter">
+        <section class="chapter" id="siguiente">
+          <span class="chapter-label">Y ahora, ¿qué puedo hacer?</span>
           <h2>Tres caminos sencillos</h2>
 
           <p>
@@ -427,130 +586,111 @@
             que te mandó esta página o dar uno de estos pequeños pasos.
           </p>
 
-          <div class="path-grid">
-            <article class="path-card">
-              <span class="path-icon">✦</span>
-              <h3>Solo quiero entender</h3>
-              <p>
-                Descubre de forma sencilla qué es el Movimiento de Cursillos
-                de Cristiandad y por qué tantas personas lo recuerdan como un
-                despertar.
-              </p>
-              <a class="path-link" href="que-es-el-mcc.html">Entender qué es el MCC →</a>
+          <div class="paths">
+            <article class="path">
+              <div>
+                <h3>Solo quiero entender</h3>
+                <p>
+                  Descubre qué es el Movimiento de Cursillos de Cristiandad y
+                  por qué tantas personas lo recuerdan como un despertar.
+                </p>
+              </div>
+              <a href="que-es-el-mcc.html">Entender qué es →</a>
             </article>
 
-            <article class="path-card">
-              <span class="path-icon">◉</span>
-              <h3>Me gustaría vivir uno</h3>
-              <p>
-                Peregrino APP no organiza cursillos ni gestiona inscripciones,
-                pero puede ayudarte a localizar la información oficial de tu
-                país o diócesis.
-              </p>
-              <a class="path-link" href="quiero-vivir-un-cursillo.html">Buscar información oficial →</a>
+            <article class="path">
+              <div>
+                <h3>Me gustaría vivir uno</h3>
+                <p>
+                  Peregrino APP no organiza cursillos ni gestiona inscripciones,
+                  pero puede ayudarte a localizar la información oficial de tu
+                  país o diócesis.
+                </p>
+              </div>
+              <a href="quiero-vivir-un-cursillo.html">Buscar información →</a>
             </article>
 
-            <article class="path-card">
-              <span class="path-icon">“ ”</span>
-              <h3>Prefiero hablarlo</h3>
-              <p>
-                Puedes responder al mensaje que recibiste con algo tan simple
-                como «Cuéntame un poco más». A veces el primer paso solo es una
-                conversación.
-              </p>
-              <a class="path-link" href="#mensaje">Ver respuestas posibles →</a>
+            <article class="path">
+              <div>
+                <h3>Prefiero hablarlo</h3>
+                <p>
+                  Puedes responder al mensaje que recibiste con algo tan simple
+                  como «Cuéntame un poco más».
+                </p>
+              </div>
+              <a href="#mensaje">Ver respuestas →</a>
             </article>
           </div>
-        </article>
+        </section>
 
-        <article class="prose-card invitation-card invitation-wide" id="mensaje">
-          <span class="invitation-label">Si no sabes qué contestar</span>
+        <section class="chapter" id="mensaje">
+          <span class="chapter-label">Si no sabes qué contestar</span>
           <h2>No necesitas encontrar las palabras perfectas</h2>
 
           <p>
-            Estas respuestas no son fórmulas. Solo pueden ayudarte a iniciar la
+            Estas frases no son fórmulas. Solo pueden ayudarte a iniciar la
             conversación con naturalidad.
           </p>
 
-          <div class="reply-list">
-            <div class="reply-option">
-              <span class="reply-number">1</span>
-              <div>
-                <strong>Si solo tienes curiosidad</strong>
-                <p>«Lo he leído. Todavía no sé muy bien qué pensar, pero me gustaría que me contaras un poco más».</p>
-              </div>
-            </div>
+          <div class="answers">
+            <blockquote class="answer">
+              <strong>Si solo tienes curiosidad</strong>
+              <p>Lo he leído. Todavía no sé muy bien qué pensar, pero me gustaría que me contaras un poco más.</p>
+            </blockquote>
 
-            <div class="reply-option">
-              <span class="reply-number">2</span>
-              <div>
-                <strong>Si te da algo de respeto</strong>
-                <p>«Me da un poco de respeto, pero gracias por pensar en mí. ¿Qué significó para ti vivir un Cursillo?»</p>
-              </div>
-            </div>
+            <blockquote class="answer">
+              <strong>Si te da algo de respeto</strong>
+              <p>Me da un poco de respeto, pero gracias por pensar en mí. ¿Qué significó para ti vivir un Cursillo?</p>
+            </blockquote>
 
-            <div class="reply-option">
-              <span class="reply-number">3</span>
-              <div>
-                <strong>Si quieres dar un paso</strong>
-                <p>«Creo que quiero informarme. ¿Me ayudas a saber con quién tendría que hablar?»</p>
-              </div>
-            </div>
+            <blockquote class="answer">
+              <strong>Si quieres dar un paso</strong>
+              <p>Creo que quiero informarme. ¿Me ayudas a saber con quién tendría que hablar?</p>
+            </blockquote>
           </div>
-        </article>
+        </section>
 
-        <article class="prose-card invitation-card">
-          <span class="invitation-label">Una última cosa</span>
-          <h2>No estás obligado a sentir algo especial</h2>
+        <section class="chapter">
+          <span class="chapter-label">Una última cosa</span>
+          <h2>Las cosas importantes también saben esperar</h2>
+
+          <p class="dropcap">
+            No estás obligado a sentir algo especial. Hay invitaciones que se
+            comprenden enseguida y otras que necesitan tiempo.
+          </p>
 
           <p>
-            Hay invitaciones que se comprenden enseguida y otras que necesitan
-            tiempo. Quizá hoy solo quieras leer. Quizá mañana quieras preguntar.
+            Quizá hoy solo quieras leer. Quizá mañana quieras preguntar.
             Quizá recuerdes esta página dentro de unos meses.
           </p>
 
           <p>
-            No tienes que correr. Las cosas importantes también saben esperar.
+            No tienes que correr. La persona que te la envió seguirá
+            deseándote el bien, respondas como respondas.
           </p>
-        </article>
-
-        <article class="prose-card invitation-card invitation-quote">
-          <span class="invitation-label">Lo esencial</span>
-
-          <div class="quote-box">
-            Puede que hoy solo se haya abierto una pequeña rendija. Eso ya es
-            suficiente.
-          </div>
-
-          <p>
-            Tú puedes decidir libremente qué hacer con esta invitación. La
-            persona que te la envió seguirá deseándote el bien, respondas como
-            respondas.
-          </p>
-        </article>
-
-        <article class="prose-card invitation-card invitation-wide closing-card">
-          <h2 id="closing-title">Quizá esta invitación ha llegado a ti <em>por algo</em></h2>
-
-          <p>
-            No necesitas dar una respuesta perfecta. Solo escuchar con calma,
-            hacer una pregunta si nace de ti y dejar que Dios haga el resto.
-          </p>
-
-          <div class="cta-row" style="justify-content:center;">
-            <a class="btn btn-primary" href="quiero-vivir-un-cursillo.html">Quiero saber cómo vivir uno</a>
-            <a class="btn btn-secondary" href="que-es-el-mcc.html">Entender qué es</a>
-          </div>
-
-          <p class="privacy-note">
-            Peregrino APP no organiza cursillos ni gestiona inscripciones.
-            Esta página es únicamente una invitación orientativa y no recoge
-            tus datos personales. El nombre que pueda aparecer se lee desde el
-            enlace únicamente en tu propio navegador.
-          </p>
-        </article>
-
+        </section>
       </div>
+    </section>
+
+    <section class="closing-letter">
+      <h2 id="closing-title">Quizá esta invitación ha llegado a ti <em>por algo</em></h2>
+
+      <p>
+        No necesitas dar una respuesta perfecta. Solo escuchar con calma,
+        hacer una pregunta si nace de ti y dejar que Dios haga el resto.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="quiero-vivir-un-cursillo.html">Quiero saber cómo vivir uno</a>
+        <a class="btn btn-secondary" href="que-es-el-mcc.html">Entender qué es</a>
+      </div>
+
+      <p class="privacy-note">
+        Peregrino APP no organiza cursillos ni gestiona inscripciones.
+        Esta página es únicamente una invitación orientativa y no recoge tus
+        datos personales. El nombre que pueda aparecer se lee desde el enlace
+        únicamente en tu propio navegador.
+      </p>
     </section>
 
     <section>
@@ -612,31 +752,28 @@
 
       document.title = name + ", alguien está rezando por ti | Peregrino APP";
 
-      const heroTitle = document.getElementById("hero-title");
-      heroTitle.textContent = "";
-      const heroName = document.createElement("span");
-      heroName.textContent = name + ", ";
-      heroTitle.appendChild(heroName);
-      heroTitle.appendChild(document.createTextNode("alguien está rezando por ti"));
+      document.getElementById("hero-title").textContent =
+        name + ", alguien está rezando por ti";
 
       document.getElementById("hero-lead").textContent =
         "Si has recibido esta página, probablemente alguien te quiere, te tiene presente y desea compartir contigo algo que a esa persona le hizo bien.";
 
-      document.getElementById("intro-title").textContent =
-        name + ", esta página no ha llegado a ti como un anuncio";
-
-      document.getElementById("intro-name").textContent =
-        "Alguien ha pensado en ti. Quizá un amigo, alguien de tu familia o una persona que te conoce bien y que, de alguna manera, ha querido abrirte una puerta.";
+      const intro = document.getElementById("intro-name");
+      intro.textContent = "";
+      intro.appendChild(document.createTextNode(name + ", esta página no ha llegado a ti como un anuncio. "));
+      const strong = document.createElement("strong");
+      strong.textContent = "Alguien ha pensado en ti.";
+      intro.appendChild(strong);
 
       document.getElementById("personal-line").textContent =
         name + ", si esta invitación ha llegado hasta ti, quizá alguien está pidiendo a Dios que te acompañe, te ilumine y te muestre si este camino también puede ser para ti.";
 
-      const closingTitle = document.getElementById("closing-title");
-      closingTitle.textContent = "";
-      closingTitle.appendChild(document.createTextNode(name + ", quizá esta invitación ha llegado a ti "));
+      const closing = document.getElementById("closing-title");
+      closing.textContent = "";
+      closing.appendChild(document.createTextNode(name + ", quizá esta invitación ha llegado a ti "));
       const emphasis = document.createElement("em");
       emphasis.textContent = "por algo";
-      closingTitle.appendChild(emphasis);
+      closing.appendChild(emphasis);
     })();
   </script>
 </body>
