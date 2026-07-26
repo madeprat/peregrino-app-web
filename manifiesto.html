@@ -3,121 +3,444 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Manifiesto | Peregrino APP</title>
-  <meta name="description" content="Peregrino APP nació en una familia cursillista para ayudar a cuidar, con sencillez y constancia, la gracia recibida en el Cuarto Día." />
+  <meta
+    name="description"
+    content="Por qué existe Peregrino APP y los principios cristianos, humanos y tecnológicos que orientan su desarrollo."
+  />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/manifiesto.html" />
+  <link
+    rel="canonical"
+    href="https://madeprat.github.io/peregrino-app-web/manifiesto.html"
+  />
 
   <meta property="og:title" content="Manifiesto | Peregrino APP" />
-  <meta property="og:description" content="Una pequeña ayuda, nacida en una familia cursillista, para cuidar cada día lo que comenzó en aquel fin de semana." />
+  <meta
+    property="og:description"
+    content="Una aplicación creada por una familia cursillista, con la tecnología al servicio de la persona y del Cuarto Día."
+  />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/manifiesto.html" />
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
+  <meta
+    property="og:url"
+    content="https://madeprat.github.io/peregrino-app-web/manifiesto.html"
+  />
+  <meta
+    property="og:image"
+    content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png"
+  />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Manifiesto | Peregrino APP" />
-  <meta name="twitter:description" content="Una pequeña ayuda, nacida en una familia cursillista, para cuidar cada día lo que comenzó en aquel fin de semana." />
-  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
+  <meta
+    name="twitter:description"
+    content="La tecnología al servicio de la persona, la oración y el Cuarto Día."
+  />
+  <meta
+    name="twitter:image"
+    content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png"
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="assets/site.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="favicon.ico" />
 
   <style>
-    /* Ajustes propios del manifiesto, construidos con la misma paleta y
-       los mismos componentes visuales del resto de Peregrino APP. */
-    .manifest-grid {
-      align-items: stretch;
+    :root {
+      --manifest-serif: "Cormorant Garamond", Georgia, serif;
     }
 
-    .manifest-wide {
-      grid-column: 1 / -1;
+    .manifest-hero {
+      padding-bottom: 64px;
     }
 
-    .manifest-origin {
-      padding: clamp(24px, 4vw, 38px);
+    .manifest-hero .wrap {
+      align-items: center;
+    }
+
+    .manifest-hero h1 {
+      max-width: 11ch;
+      font-family: var(--manifest-serif);
+      font-size: clamp(3.5rem, 7.3vw, 6.6rem);
+      font-weight: 600;
+      line-height: .91;
+      letter-spacing: -.05em;
+    }
+
+    .manifest-hero .lead {
+      max-width: 58ch;
+      font-size: clamp(1.08rem, 2vw, 1.27rem);
+      line-height: 1.78;
+    }
+
+    .manifest-hero .page-shot {
+      position: relative;
+      padding: 12px;
+      border-radius: 38px;
       background:
-        linear-gradient(135deg, rgba(212,175,55,.14), rgba(29,46,122,.22)),
-        rgba(255,255,255,.06);
-      border-color: rgba(212,175,55,.2);
+        linear-gradient(145deg, rgba(212,175,55,.2), rgba(255,255,255,.06));
     }
 
-    .manifest-origin h2 {
-      max-width: 18ch;
+    .manifest-hero .page-shot::before {
+      content: "";
+      position: absolute;
+      inset: -28px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,.15), transparent 68%);
+      filter: blur(14px);
     }
 
-    .manifest-origin p {
-      max-width: 82ch;
+    .manifest-hero .page-shot img {
+      aspect-ratio: 4 / 5;
+      border-radius: 28px;
     }
 
-    .manifest-kicker {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--gold-2);
-      font-size: .8rem;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+    .manifest-body {
+      padding: 34px 0 100px;
     }
 
-    .manifest-pillars {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .manifest-pillar {
-      padding: 12px 14px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 16px;
-      background: rgba(255,255,255,.045);
-      color: #fff;
-      font-weight: 800;
-    }
-
-    .manifest-pillar span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted-2);
-      font-size: .88rem;
-      font-weight: 500;
-    }
-
-    .manifest-quote {
-      display: grid;
-      align-content: center;
-      min-height: 100%;
-    }
-
-    .manifest-quote .quote-box {
-      margin-top: 4px;
-      font-size: clamp(1.1rem, 2vw, 1.3rem);
-      line-height: 1.65;
-    }
-
-    .manifest-closing {
-      text-align: center;
-      padding: clamp(28px, 5vw, 48px);
-    }
-
-    .manifest-closing h2 {
-      color: var(--gold-2);
-      font-size: clamp(2.7rem, 6vw, 5rem);
-    }
-
-    .manifest-closing p {
-      max-width: 68ch;
+    .manifest {
+      width: min(790px, calc(100% - 32px));
       margin-inline: auto;
     }
 
+    .manifest-intro {
+      max-width: 730px;
+      margin: 0 auto 104px;
+      text-align: center;
+    }
+
+    .manifest-intro .star {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--gold-2);
+      font-size: 1.05rem;
+    }
+
+    .manifest-intro p {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--manifest-serif);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      line-height: 1.32;
+    }
+
+    .manifest-intro strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .manifest-section {
+      position: relative;
+      margin-bottom: 102px;
+      padding-top: 36px;
+    }
+
+    .manifest-section::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(212,175,55,.54),
+          rgba(255,255,255,.09),
+          transparent
+        );
+    }
+
+    .manifest-label {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--gold-2);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .manifest-section h2 {
+      max-width: 14ch;
+      margin: 0 0 28px;
+      color: #fff;
+      font-family: var(--manifest-serif);
+      font-size: clamp(2.6rem, 5vw, 4.55rem);
+      font-weight: 600;
+      line-height: .97;
+      letter-spacing: -.038em;
+    }
+
+    .manifest-section p {
+      margin: 0 0 1.4rem;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.94;
+    }
+
+    .manifest-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+      margin: .07em .12em 0 0;
+      color: var(--gold-2);
+      font-family: var(--manifest-serif);
+      font-size: 4.35rem;
+      font-weight: 600;
+      line-height: .72;
+    }
+
+    .manifest-quote {
+      position: relative;
+      width: min(990px, calc(100% - 32px));
+      margin: 4px auto 108px;
+      padding: clamp(56px, 8vw, 92px) clamp(28px, 7vw, 84px);
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,.2);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(212,175,55,.2), transparent 31rem),
+        linear-gradient(135deg, rgba(29,46,122,.34), rgba(255,255,255,.055));
+      text-align: center;
+    }
+
+    .manifest-quote::before {
+      content: "“";
+      position: absolute;
+      top: -46px;
+      left: 34px;
+      color: rgba(212,175,55,.12);
+      font-family: var(--manifest-serif);
+      font-size: 14rem;
+      line-height: 1;
+    }
+
+    .manifest-quote blockquote {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      color: #fff;
+      font-family: var(--manifest-serif);
+      font-size: clamp(2.1rem, 5vw, 4.15rem);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .manifest-quote p {
+      position: relative;
+      max-width: 670px;
+      margin: 26px auto 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.78;
+    }
+
+    .four-steps {
+      margin-top: 36px;
+      counter-reset: fourthday;
+    }
+
+    .four-step {
+      counter-increment: fourthday;
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 27px 0;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .four-step:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .four-step::before {
+      content: "0" counter(fourthday);
+      color: var(--gold-2);
+      font-family: var(--manifest-serif);
+      font-size: 2.65rem;
+      line-height: 1;
+    }
+
+    .four-step h3 {
+      margin: 0 0 7px;
+      color: #fff;
+      font-size: 1.22rem;
+    }
+
+    .four-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .99rem;
+      line-height: 1.72;
+    }
+
+    .principles {
+      margin-top: 36px;
+    }
+
+    .principle {
+      position: relative;
+      margin: 0;
+      padding: 26px 0 26px 38px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .principle:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .principle::before {
+      content: "✦";
+      position: absolute;
+      top: 29px;
+      left: 0;
+      color: var(--gold-2);
+      font-size: .82rem;
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #fff;
+      font-family: var(--manifest-serif);
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .principle span {
+      display: block;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .custody-note {
+      margin-top: 34px;
+      padding-left: 24px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .custody-note p {
+      color: #edf0f6;
+      font-family: var(--manifest-serif);
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .manifest-closing {
+      width: min(990px, calc(100% - 32px));
+      margin: 0 auto 86px;
+      padding: clamp(54px, 8vw, 88px);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(212,175,55,.21), transparent 33rem),
+        linear-gradient(135deg, rgba(29,46,122,.4), rgba(255,255,255,.06));
+      text-align: center;
+    }
+
+    .manifest-closing h2 {
+      max-width: 13ch;
+      margin: 0 auto 24px;
+      color: #fff;
+      font-family: var(--manifest-serif);
+      font-size: clamp(3.2rem, 6vw, 5.25rem);
+      font-weight: 600;
+      line-height: .94;
+    }
+
+    .manifest-closing h2 em {
+      color: var(--gold-2);
+      font-weight: 500;
+    }
+
+    .manifest-closing > p {
+      max-width: 690px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.84;
+    }
+
+    .manifest-closing .final-word {
+      display: block;
+      margin-top: 36px;
+      color: var(--gold-2);
+      font-family: var(--manifest-serif);
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .manifest-closing .cta-row {
+      justify-content: center;
+      margin-top: 34px;
+    }
+
+    .authorship {
+      max-width: 730px !important;
+      margin: 32px auto 0 !important;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      color: var(--muted-2) !important;
+      font-size: .82rem !important;
+      line-height: 1.68 !important;
+    }
+
     @media (max-width: 760px) {
-      .manifest-pillars {
+      .manifest-hero h1 {
+        max-width: none;
+      }
+
+      .manifest-section {
+        margin-bottom: 78px;
+      }
+
+      .manifest-quote,
+      .manifest-closing {
+        border-radius: 27px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .manifest-intro {
+        margin-bottom: 74px;
+      }
+
+      .manifest-intro p {
+        font-size: 1.68rem;
+      }
+
+      .manifest-section h2 {
+        max-width: none;
+      }
+
+      .four-step {
         grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .four-step::before {
+        font-size: 2rem;
+      }
+
+      .principle {
+        padding-left: 30px;
       }
     }
   </style>
@@ -128,7 +451,11 @@
 
   <header class="site-header">
     <div class="wrap site-nav">
-      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Peregrino APP, volver al inicio"
+      >
         <span class="brand-mark">✦</span>
         <span>Peregrino APP</span>
       </a>
@@ -138,193 +465,387 @@
         <a href="index.html#planes">Planes</a>
         <a href="index.html#apoyar">Apoyar</a>
         <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+        <a
+          class="nav-cta"
+          href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"
+        >Descargar</a>
       </nav>
     </div>
   </header>
 
   <main id="contenido" class="page-shell">
-    <section class="prose-hero">
+    <section class="prose-hero manifest-hero">
       <div class="wrap">
         <div>
-          <span class="eyebrow">Peregrino APP · Manifiesto</span>
-          <h1>Esto nació de un Cuarto Día real</h1>
+          <span class="eyebrow">Manifiesto Peregrino APP</span>
+          <h1>Por qué existe esta aplicación</h1>
+
           <p class="lead">
-            No nació en una empresa ni alrededor de una mesa de inversores.
-            Nació en casa, dentro de una familia cursillista, intentando cuidar
-            en la vida ordinaria lo que un día nos cambió el corazón.
+            No nació para captar tu atención. Nació para ayudarte a devolverla
+            a lo esencial.
           </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#manifiesto">Leer el manifiesto</a>
+            <a class="btn btn-secondary" href="#principios">Nuestros principios</a>
+          </div>
         </div>
 
         <aside class="page-shot">
-          <img src="foto_gracia1.png" alt="Imagen que acompaña el manifiesto de Peregrino APP" />
+          <img
+            src="foto_gracia1.png"
+            alt="Imagen que acompaña el manifiesto de Peregrino APP"
+          />
         </aside>
       </div>
     </section>
 
-    <section data-section="origen">
-      <div class="wrap prose-grid manifest-grid">
-
-        <article class="prose-card manifest-wide manifest-origin">
-          <span class="manifest-kicker">Una pregunta sencilla</span>
-          <h2>¿Cómo cuidar lo que vivimos en aquel fin de semana?</h2>
-
+    <section class="manifest-body" id="manifiesto">
+      <div class="manifest">
+        <div class="manifest-intro">
+          <span class="star">✦</span>
           <p>
-            No porque la gracia desaparezca. No porque falten la fe o las ganas.
-            Sino porque la vida hace ruido, los días se llenan y, casi sin darnos
-            cuenta, lo urgente empieza a ocupar el lugar de lo importante.
+            No somos una empresa. No tenemos inversores. No hay un equipo de
+            marketing detrás de esta pantalla.
+            <strong>Somos una familia cursillista.</strong>
+          </p>
+        </div>
+
+        <section class="manifest-section">
+          <span class="manifest-label">El origen</span>
+          <h2>Una pregunta sencilla</h2>
+
+          <p class="dropcap">
+            Un día nos preguntamos por qué es tan fácil perder el Cuarto Día.
           </p>
 
           <p>
-            Los cursillistas de otros tiempos se escribían cartas, se llamaban,
-            buscaban la manera de acompañarse y recordarse mutuamente que el
-            Cursillo no terminaba el domingo. Nosotros llevamos un teléfono en
-            el bolsillo. Nos pareció honesto intentar ponerlo también al servicio
-            del Señor.
+            No por falta de fe. No por falta de ganas. Sino porque la vida es
+            ruidosa, los días son cortos y la constancia —esa virtud pequeña y
+            tenaz que sostiene todo lo demás— necesita ayuda.
           </p>
 
           <p>
-            Así nació Peregrino: no de una gran estrategia, sino del deseo muy
-            concreto de no perder el hilo del Cuarto Día.
+            Siempre la ha necesitado. Los cursillistas de los años cincuenta se
+            escribían cartas. Nosotros tenemos teléfonos en el bolsillo. Nos
+            pareció honesto intentar ponerlos al servicio del Señor.
           </p>
-        </article>
 
-        <article class="prose-card">
-          <span class="manifest-kicker">Lo que no pretendemos</span>
+          <p>
+            Peregrino nació de esa convicción y de ese atrevimiento.
+          </p>
+        </section>
+
+        <section class="manifest-section">
+          <span class="manifest-label">Lo que no pretendemos</span>
           <h2>Tu comunidad no cabe en una pantalla</h2>
 
-          <p>
-            Peregrino no puede ser tu Reunión de Grupo. No puede darte la mirada
-            que sostiene, la conversación sincera, el abrazo después de compartir
-            algo difícil ni la alegría de caminar acompañado.
+          <p class="dropcap">
+            Peregrino no pretende ser tu comunidad. Tu Reunión de Grupo no cabe
+            en una pantalla, y sería una mentira intentarlo.
           </p>
 
           <p>
-            Tampoco puede rezar por ti. La oración sigue siendo un encuentro
-            personal con Dios, en el silencio de tu corazón y en la vida que
-            verdaderamente estás viviendo.
+            El calor de estar juntos, la mirada que sostiene, el abrazo después
+            de compartir algo difícil: eso no lo puede dar ninguna aplicación,
+            y no lo intentamos.
           </p>
-        </article>
 
-        <article class="prose-card manifest-quote">
-          <span class="manifest-kicker">Lo que sí puede hacer</span>
-          <div class="quote-box">
-            No venimos a darte la fe. Venimos a ofrecerte una ayuda pequeña y
-            amable para que puedas cuidarla.
+          <p>
+            Tampoco pretende sustituir la oración. La oración es un encuentro
+            personal con Dios, y ese encuentro ocurre en el silencio de tu
+            corazón, no en una notificación.
+          </p>
+
+          <p>
+            No pretende darte la fe. Eso ya lo tienes. Lo que quizá necesitas
+            —lo que muchos necesitamos— es un pequeño empujón para no olvidar
+            que hoy también puedes orar, estudiar, actuar y acercarte a alguien
+            que todavía no conoce a Cristo.
+          </p>
+        </section>
+      </div>
+
+      <aside class="manifest-quote" aria-label="Idea central del manifiesto">
+        <blockquote>
+          La tecnología debe estar al servicio de la persona. Nunca la persona
+          al servicio de la tecnología.
+        </blockquote>
+        <p>
+          Esta convicción no es un lema añadido al final del desarrollo. Es el
+          criterio desde el que decidimos qué construir, qué medir, qué pedir y,
+          también, a qué renunciar.
+        </p>
+      </aside>
+
+      <div class="manifest">
+        <section class="manifest-section">
+          <span class="manifest-label">Lo que sí queremos ofrecerte</span>
+          <h2>Un lugar tranquilo al que volver</h2>
+
+          <p class="dropcap">
+            Un lugar donde rezar cuando el día empieza y todavía no has
+            encontrado las palabras.
+          </p>
+
+          <p>
+            El Padrenuestro, el Rosario, la Hora Apostólica, la Vía Crucis:
+            oraciones que la Iglesia lleva siglos rezando, disponibles cuando
+            las necesitas, sin distracciones, sin publicidad y sin que nadie te
+            venda nada mientras rezas.
+          </p>
+
+          <p>
+            Un espacio para esos momentos en que vas en el metro, esperas en
+            una sala, tienes cinco minutos entre reunión y reunión y quieres
+            que ese tiempo sirva para algo más que el scroll eterno.
+          </p>
+
+          <p>
+            Y un recordatorio suave de que el Cuarto Día necesita equilibrio.
+          </p>
+
+          <div class="four-steps" aria-label="Las cuatro dimensiones del Cuarto Día">
+            <article class="four-step">
+              <div>
+                <h3>Oración</h3>
+                <p>Volver a Dios y aprender a permanecer con Él.</p>
+              </div>
+            </article>
+
+            <article class="four-step">
+              <div>
+                <h3>Estudio</h3>
+                <p>Formar la cabeza y el corazón para comprender mejor la fe.</p>
+              </div>
+            </article>
+
+            <article class="four-step">
+              <div>
+                <h3>Acción</h3>
+                <p>Convertir lo recibido en una manera concreta de vivir y servir.</p>
+              </div>
+            </article>
+
+            <article class="four-step">
+              <div>
+                <h3>Candidatos</h3>
+                <p>Mirar con cariño a quien quizá espera que alguien se acerque.</p>
+              </div>
+            </article>
           </div>
 
           <p>
-            A veces basta un recordatorio suave, una oración que ya estaba allí
-            cuando no encuentras las palabras o cinco minutos de calma en medio
-            de un día complicado.
+            Eso es Peregrino. Poco más, pero con intención.
           </p>
-        </article>
+        </section>
 
-        <article class="prose-card">
-          <span class="manifest-kicker">Para la vida real</span>
-          <h2>Un lugar sencillo al que volver</h2>
+        <section class="manifest-section" id="principios">
+          <span class="manifest-label">Desarrollo ético</span>
+          <h2>La dignidad de la persona, antes que cualquier métrica</h2>
 
-          <p>
-            Cuando el día empieza deprisa. Cuando vas en el metro. Cuando esperas
-            en una sala. Cuando llegas cansado a la noche o necesitas dejar un
-            momento el ruido y recordar qué es lo esencial.
+          <p class="dropcap">
+            Peregrino se desarrolla desde una convicción cristiana muy sencilla:
+            cada persona posee una dignidad que ninguna estadística, algoritmo,
+            modelo de negocio o decisión técnica puede reducir.
           </p>
 
           <p>
-            Allí queremos que esté Peregrino: sin publicidad, sin distracciones
-            y sin convertir la fe en un producto.
+            No creemos que todo lo técnicamente posible deba hacerse. Tampoco
+            creemos que el éxito de una aplicación se mida por el tiempo que
+            consigue retenerte dentro de ella.
           </p>
-        </article>
-
-        <article class="prose-card">
-          <span class="manifest-kicker">El Cuarto Día</span>
-          <h2>Cuidar lo pequeño para sostener lo grande</h2>
 
           <p>
-            Peregrino quiere recordarte, con suavidad, que el Cuarto Día se cuida
-            con pasos concretos y constantes:
+            Para nosotros, el éxito puede consistir precisamente en que cierres
+            la pantalla porque ya has rezado, has llamado a alguien, has vuelto
+            a tu Reunión de Grupo o has decidido hacer el bien.
           </p>
 
-          <div class="manifest-pillars" aria-label="Dimensiones que ayuda a cuidar Peregrino APP">
-            <div class="manifest-pillar">Oración<span>Volver cada día a Dios.</span></div>
-            <div class="manifest-pillar">Estudio<span>Seguir formando el corazón y la cabeza.</span></div>
-            <div class="manifest-pillar">Acción<span>Llevar lo recibido a la vida.</span></div>
-            <div class="manifest-pillar">Candidatos<span>Mirar con cariño a quien todavía espera.</span></div>
+          <div class="principles">
+            <p class="principle">
+              <strong>No diseñamos para crear dependencia.</strong>
+              <span>
+                No usamos mecanismos de culpa, miedo a perder una racha,
+                recompensas manipuladoras ni recorridos infinitos para aumentar
+                artificialmente el tiempo de uso.
+              </span>
+            </p>
+
+            <p class="principle">
+              <strong>Tu vida espiritual no es materia prima.</strong>
+              <span>
+                Peregrino APP no incorpora analítica de comportamiento para
+                medir tu fe, construir perfiles personales o averiguar qué
+                rezas, cuándo rezas, durante cuánto tiempo o a quién llevas en
+                el corazón.
+              </span>
+            </p>
+
+            <p class="principle">
+              <strong>No vendemos tu atención ni tus datos.</strong>
+              <span>
+                No incluimos publicidad, rastreadores publicitarios ni sistemas
+                destinados a comercializar, segmentar o explotar tu actividad.
+              </span>
+            </p>
+
+            <p class="principle">
+              <strong>Pedimos y tratamos únicamente lo necesario.</strong>
+              <span>
+                Cuando una función necesita conexión —por ejemplo, para rezar
+                en comunidad— solo debe utilizar la información técnica
+                imprescindible para prestar esa función, con una finalidad
+                concreta y durante el tiempo necesario.
+              </span>
+            </p>
+
+            <p class="principle">
+              <strong>La intimidad se protege desde el diseño.</strong>
+              <span>
+                La privacidad no es una capa que se añade al final. Condiciona
+                la arquitectura, los permisos, las dependencias externas y cada
+                decisión sobre almacenamiento o intercambio de información.
+              </span>
+            </p>
+
+            <p class="principle">
+              <strong>La inteligencia artificial no decide nuestros principios.</strong>
+              <span>
+                Puede ayudarnos a escribir, revisar o comprender código. Pero
+                no sustituye el juicio humano, el discernimiento moral ni la
+                responsabilidad de quien decide qué debe hacer la aplicación.
+              </span>
+            </p>
+
+            <p class="principle">
+              <strong>La persona siempre conserva su libertad.</strong>
+              <span>
+                Peregrino acompaña, propone y recuerda. No vigila, no califica
+                la vida espiritual y no pretende ocupar el lugar de la
+                conciencia, la comunidad, la dirección espiritual o la Iglesia.
+              </span>
+            </p>
           </div>
-        </article>
+        </section>
 
-        <article class="prose-card manifest-wide">
-          <span class="manifest-kicker">Lo que nos mueve</span>
-          <h2>Si te ayuda un solo día, ya habrá valido la pena</h2>
+        <section class="manifest-section">
+          <span class="manifest-label">Lo que nos mueve</span>
+          <h2>No queremos que la tengas. Queremos que te ayude a crecer</h2>
 
-          <p>
-            Si Peregrino te ayuda a rezar cuando aquel día no habrías rezado,
-            habrá cumplido su misión. Si te recuerda a alguien a quien llevas
-            tiempo queriendo acercar al Cursillo, habrá cumplido. Si en un momento
-            de sequedad encuentras una palabra que te sostiene, también.
+          <p class="dropcap">
+            Hay una diferencia enorme entre descargar una aplicación y dejar
+            que algo bueno transforme un momento de tu día.
           </p>
 
           <p>
-            El Movimiento ha cambiado vidas desde sus comienzos a través de
-            medios humanos muy sencillos: una amistad, un encuentro, una
-            conversación, una palanca, una carta, una llamada.
+            Si un día Peregrino te ayuda a rezar cuando no habrías rezado,
+            habremos cumplido. Si te recuerda a alguien a quien llevas tiempo
+            queriendo acercar al Cursillo, habremos cumplido.
           </p>
 
-          <div class="quote-box">
-            Peregrino quiere ser eso: una palanca pequeña, hecha con cariño y
-            puesta en tus manos.
+          <p>
+            Si en un momento de sequedad espiritual te ofrece una palabra que
+            no esperabas y que te sostiene, también habremos cumplido.
+          </p>
+
+          <p>
+            El Movimiento de Cursillos de Cristiandad cambió vidas desde sus
+            primeros días en Mallorca porque alguien creyó que la gracia podía
+            trabajar a través de medios humanos sencillos.
+          </p>
+
+          <p>
+            Un fin de semana. Un coloquio. Una palanca. Una carta. Una llamada.
+          </p>
+
+          <div class="custody-note">
+            <p>
+              Esto es una palanca pequeña. La ponemos en tus manos.
+            </p>
           </div>
-        </article>
+        </section>
 
-        <article class="prose-card">
-          <span class="manifest-kicker">Una puerta abierta</span>
-          <h2>Gratuita, sin anuncios y con vocación de servicio</h2>
+        <section class="manifest-section">
+          <span class="manifest-label">Independencia y sostenibilidad</span>
+          <h2>Lo esencial no se vende</h2>
+
+          <p class="dropcap">
+            Peregrino nació gratuita y su corazón seguirá siéndolo.
+          </p>
 
           <p>
-            El corazón de Peregrino es gratuito y queremos que siga siéndolo.
-            Los planes de apoyo existen para ayudar a sostener y mejorar este
-            apostolado, no para cerrar la puerta a quien solo necesita entrar,
-            rezar y seguir caminando.
+            Rezar, cuidar el Cuarto Día, encontrar las oraciones esenciales y
+            acercarse a la comunidad no deben convertirse en un privilegio para
+            quien pueda pagar.
           </p>
-        </article>
-
-        <article class="prose-card">
-          <span class="manifest-kicker">Para terminar</span>
-          <h2>Que Ultreya sea más que una despedida</h2>
 
           <p>
-            Que sea lo que hacemos cada mañana cuando elegimos seguir adelante,
-            con la vida que tenemos, en el mundo que nos ha tocado y fieles a lo
-            que encontramos en aquel fin de semana que lo cambió todo.
+            Los planes de apoyo existen para quienes desean ayudarnos a
+            sostener, mantener y mejorar este apostolado, y pueden incluir
+            servicios adicionales. No compran la oración, la gracia ni el
+            derecho a ser acompañado.
           </p>
-        </article>
 
-        <article class="prose-card manifest-wide manifest-closing">
-          <h2>Ultreya.</h2>
           <p>
-            Peregrino no quiere caminar por ti. Solo acompañarte un poco mientras
-            sigues caminando por Cristo hacia el Padre, junto a los demás.
+            No tenemos inversores que nos exijan crecer a costa de nuestros
+            principios. No financiamos el proyecto vendiendo publicidad ni
+            convirtiendo la intimidad de quien reza en un producto.
           </p>
-        </article>
+        </section>
 
+        <section class="manifest-section">
+          <span class="manifest-label">Custodiar sin apropiarnos</span>
+          <h2>Proteger este proyecto también es cuidarlo</h2>
+
+          <p class="dropcap">
+            Las oraciones de la Iglesia, el carisma del Movimiento y la palabra
+            Ultreya no nos pertenecen. Peregrino nace para servirlos, no para
+            apropiárselos ni hablar institucionalmente en su nombre.
+          </p>
+
+          <p>
+            Sí son fruto de nuestro trabajo el código original, la arquitectura,
+            el diseño, la identidad visual, la selección y organización de los
+            contenidos, y los textos que hemos escrito para acompañar este
+            camino.
+          </p>
+
+          <p>
+            Proteger el nombre Peregrino APP y estas creaciones no significa
+            cerrar una puerta. Significa evitar que el proyecto sea confundido,
+            desvirtuado, utilizado de forma contraria a sus principios o
+            convertido en algo que nunca quiso ser.
+          </p>
+        </section>
       </div>
     </section>
 
-    <section>
-      <div class="wrap cta-band">
-        <div>
-          <h2>Empieza hoy a cuidar tu Cuarto Día</h2>
-          <p>
-            Descarga Peregrino APP y encuentra un lugar sencillo para volver,
-            cada día, a la oración, la constancia y lo esencial.
-          </p>
-        </div>
+    <section class="manifest-closing">
+      <h2>Que <em>Ultreya</em> no sea solo una despedida</h2>
 
-        <div class="cta-row" style="margin:0;">
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
-          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
-        </div>
+      <p>
+        Que sea lo que hacemos cada mañana cuando elegimos seguir adelante, con
+        la vida que tenemos, en el mundo que nos ha tocado, fieles a lo que
+        encontramos en aquel fin de semana que lo cambió todo.
+      </p>
+
+      <span class="final-word">Ultreya.</span>
+
+      <div class="cta-row">
+        <a
+          class="btn btn-primary"
+          href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"
+        >Descargar Peregrino APP</a>
+        <a class="btn btn-secondary" href="index.html#apoyar">Sostener el proyecto</a>
       </div>
+
+      <p class="authorship">
+        Peregrino APP es un proyecto original creado por una familia
+        cursillista. El nombre, la identidad visual, el código, el diseño y los
+        textos originales están protegidos por la legislación aplicable.
+        © 2026 Peregrino APP. Todos los derechos reservados.
+      </p>
     </section>
   </main>
 
@@ -332,7 +853,10 @@
     <div class="wrap footer-grid">
       <div>
         <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+        <p>
+          Guía digital para acompañar el Cuarto Día con oración, constancia y
+          comunidad.
+        </p>
       </div>
 
       <div class="footer-links">
