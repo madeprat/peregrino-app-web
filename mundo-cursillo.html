@@ -1792,7 +1792,9 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
     // INTERRUPTOR ÚNICO DE FASE:
     // true  = fase experimental: muestra palancas reales y de prueba.
     // false = producción: oculta únicamente las filas marcadas como es_prueba.
-    const MOSTRAR_PALANCAS_DE_PRUEBA = true;
+  // Producción: solo se muestran Cursillos y palancas reales.
+const MOSTRAR_CURSILLOS_DE_PRUEBA = false;
+const MOSTRAR_PALANCAS_DE_PRUEBA = false;
 
     // Mural: histórico visible de palancas ya ofrecidas y tamaño de página.
     const MURAL_DIAS_VISIBLES = 7;
@@ -1848,6 +1850,25 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
       const text = String(value ?? "").trim().toLowerCase();
       return ["true", "verdadero", "1", "si", "sí", "yes"].includes(text);
     }
+    function esValorFalseExplicito(value) {
+  if (value === false) return true;
+
+  const text = String(value ?? "")
+    .trim()
+    .toLowerCase();
+
+  return ["false", "falso", "0", "no"].includes(text);
+}
+
+function cursilloEsVisiblePublicamente(cursillo) {
+  if (MOSTRAR_CURSILLOS_DE_PRUEBA) {
+    return true;
+  }
+
+  // En producción solo se muestra si es_prueba está
+  // expresamente marcado como FALSE.
+  return esValorFalseExplicito(cursillo.es_prueba);
+}
 
     function toDate(value) {
       if (!value) return null;
@@ -2685,9 +2706,21 @@ const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyP
           querySheet(GIDS.configuracion)
         ]);
 
-        if (!cursillos.length) throw new Error("La pestaña CURSILLOS no devolvió filas.");
-
-        appState.cursillos = cursillos;
+        if (!cursillos.length) {
+          throw new Error("La pestaña CURSILLOS no devolvió filas.");
+        }
+        
+        const cursillosVisibles = cursillos.filter(
+          cursilloEsVisiblePublicamente
+        );
+        
+        if (!cursillosVisibles.length) {
+          throw new Error(
+            "No hay Cursillos reales publicados. Revisa la columna es_prueba."
+          );
+        }
+        
+        appState.cursillos = cursillosVisibles;
         appState.palancas = palancas;
         appState.configuracion = configuracion;
         appState.sourceMode = "google";
