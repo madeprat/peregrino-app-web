@@ -3,78 +3,807 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Qué es el MCC | Peregrino APP</title>
-  <meta name="description" content="Una explicación sencilla sobre el Movimiento de Cursillos de Cristiandad y su relación con Peregrino APP." />
+  <meta
+    name="description"
+    content="Una explicación sencilla y cercana del Movimiento de Cursillos de Cristiandad, el Cuarto Día y la vida que comienza después del Cursillo."
+  />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/que-es-el-mcc.html" />
+  <link
+    rel="canonical"
+    href="https://madeprat.github.io/peregrino-app-web/que-es-el-mcc.html"
+  />
+
   <meta property="og:title" content="Qué es el MCC | Peregrino APP" />
-  <meta property="og:description" content="Una explicación sencilla sobre el Movimiento de Cursillos de Cristiandad y su relación con Peregrino APP." />
+  <meta
+    property="og:description"
+    content="El Cursillo dura unos días. El Cuarto Día dura toda la vida."
+  />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/que-es-el-mcc.html" />
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
+  <meta
+    property="og:url"
+    content="https://madeprat.github.io/peregrino-app-web/que-es-el-mcc.html"
+  />
+  <meta
+    property="og:image"
+    content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png"
+  />
+
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Qué es el MCC | Peregrino APP" />
-  <meta name="twitter:description" content="Una explicación sencilla sobre el Movimiento de Cursillos de Cristiandad y su relación con Peregrino APP." />
-  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
+  <meta
+    name="twitter:description"
+    content="Una explicación sencilla sobre el Movimiento de Cursillos de Cristiandad y la vida del Cuarto Día."
+  />
+  <meta
+    name="twitter:image"
+    content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png"
+  />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="assets/site.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="favicon.ico" />
+
+  <style>
+    :root {
+      --mcc-serif: "Cormorant Garamond", Georgia, serif;
+    }
+
+    .mcc-hero {
+      padding-bottom: 64px;
+    }
+
+    .mcc-hero .wrap {
+      align-items: center;
+    }
+
+    .mcc-hero h1 {
+      max-width: 10ch;
+      font-family: var(--mcc-serif);
+      font-size: clamp(3.65rem, 7.6vw, 6.85rem);
+      font-weight: 600;
+      line-height: .9;
+      letter-spacing: -.052em;
+    }
+
+    .mcc-hero .lead {
+      max-width: 59ch;
+      font-size: clamp(1.08rem, 2vw, 1.27rem);
+      line-height: 1.8;
+    }
+
+    .mcc-hero .page-shot {
+      position: relative;
+      padding: 12px;
+      border-radius: 38px;
+      background:
+        linear-gradient(145deg, rgba(212,175,55,.2), rgba(255,255,255,.06));
+    }
+
+    .mcc-hero .page-shot::before {
+      content: "";
+      position: absolute;
+      inset: -28px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,.15), transparent 68%);
+      filter: blur(14px);
+    }
+
+    .mcc-hero .page-shot img {
+      aspect-ratio: 4 / 5;
+      border-radius: 28px;
+      object-fit: cover;
+    }
+
+    .mcc-body {
+      padding: 36px 0 104px;
+    }
+
+    .mcc-prose {
+      width: min(800px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .mcc-opening {
+      max-width: 735px;
+      margin: 0 auto 104px;
+      text-align: center;
+    }
+
+    .mcc-opening .star {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--gold-2);
+      font-size: 1.05rem;
+    }
+
+    .mcc-opening p {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--mcc-serif);
+      font-size: clamp(1.78rem, 4vw, 2.78rem);
+      line-height: 1.31;
+    }
+
+    .mcc-opening strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .mcc-section {
+      position: relative;
+      margin-bottom: 104px;
+      padding-top: 36px;
+    }
+
+    .mcc-section::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(212,175,55,.54),
+          rgba(255,255,255,.09),
+          transparent
+        );
+    }
+
+    .mcc-label {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--gold-2);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .mcc-section h2 {
+      max-width: 14ch;
+      margin: 0 0 28px;
+      color: #fff;
+      font-family: var(--mcc-serif);
+      font-size: clamp(2.65rem, 5vw, 4.6rem);
+      font-weight: 600;
+      line-height: .96;
+      letter-spacing: -.04em;
+    }
+
+    .mcc-section p {
+      margin: 0 0 1.42rem;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.94;
+    }
+
+    .mcc-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+      margin: .07em .12em 0 0;
+      color: var(--gold-2);
+      font-family: var(--mcc-serif);
+      font-size: 4.35rem;
+      font-weight: 600;
+      line-height: .72;
+    }
+
+    .mcc-quote {
+      position: relative;
+      width: min(990px, calc(100% - 32px));
+      margin: 4px auto 110px;
+      padding: clamp(56px, 8vw, 94px) clamp(28px, 7vw, 86px);
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,.2);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(212,175,55,.2), transparent 31rem),
+        linear-gradient(135deg, rgba(29,46,122,.34), rgba(255,255,255,.055));
+      text-align: center;
+    }
+
+    .mcc-quote::before {
+      content: "“";
+      position: absolute;
+      top: -46px;
+      left: 34px;
+      color: rgba(212,175,55,.12);
+      font-family: var(--mcc-serif);
+      font-size: 14rem;
+      line-height: 1;
+    }
+
+    .mcc-quote blockquote {
+      position: relative;
+      max-width: 770px;
+      margin: 0 auto;
+      color: #fff;
+      font-family: var(--mcc-serif);
+      font-size: clamp(2.15rem, 5vw, 4.25rem);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.14;
+    }
+
+    .mcc-quote p {
+      position: relative;
+      max-width: 650px;
+      margin: 26px auto 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.78;
+    }
+
+    .journey {
+      margin-top: 36px;
+      counter-reset: mcc-stage;
+    }
+
+    .journey-stage {
+      counter-increment: mcc-stage;
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 26px;
+      align-items: start;
+      padding: 31px 0;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .journey-stage:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .journey-stage::before {
+      content: "0" counter(mcc-stage);
+      color: var(--gold-2);
+      font-family: var(--mcc-serif);
+      font-size: 2.75rem;
+      line-height: 1;
+    }
+
+    .journey-stage .moment {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--gold-2);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .journey-stage h3 {
+      margin: 0 0 9px;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+
+    .journey-stage p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .99rem;
+      line-height: 1.75;
+    }
+
+    .recognition {
+      margin-top: 34px;
+      padding-left: 25px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .recognition p {
+      margin: 0;
+      color: #f0f2f6;
+      font-family: var(--mcc-serif);
+      font-size: clamp(1.45rem, 3vw, 1.98rem);
+      font-style: italic;
+      line-height: 1.46;
+    }
+
+    .language {
+      margin-top: 34px;
+    }
+
+    .term {
+      display: grid;
+      grid-template-columns: minmax(150px, .42fr) 1fr;
+      gap: 28px;
+      align-items: start;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .term:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .term-name {
+      color: var(--gold-2);
+      font-family: var(--mcc-serif);
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 1.05;
+    }
+
+    .term h3 {
+      margin: 0 0 7px;
+      color: #fff;
+      font-size: 1.16rem;
+    }
+
+    .term p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .97rem;
+      line-height: 1.72;
+    }
+
+    .app-place {
+      position: relative;
+      width: min(990px, calc(100% - 32px));
+      margin: 0 auto 110px;
+      padding: clamp(52px, 8vw, 84px);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 14% 0%, rgba(212,175,55,.18), transparent 32rem),
+        linear-gradient(135deg, rgba(29,46,122,.37), rgba(255,255,255,.055));
+    }
+
+    .app-place .inner {
+      max-width: 760px;
+      margin-inline: auto;
+    }
+
+    .app-place .mcc-label {
+      text-align: center;
+    }
+
+    .app-place h2 {
+      max-width: 15ch;
+      margin: 0 auto 26px;
+      color: #fff;
+      font-family: var(--mcc-serif);
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      font-weight: 600;
+      line-height: .96;
+      letter-spacing: -.04em;
+      text-align: center;
+    }
+
+    .app-place p {
+      margin: 0 0 1.38rem;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.9;
+    }
+
+    .app-place p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .app-principle {
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      color: #fff !important;
+      font-family: var(--mcc-serif);
+      font-size: clamp(1.45rem, 3vw, 1.95rem) !important;
+      font-style: italic;
+      text-align: center;
+      line-height: 1.45 !important;
+    }
+
+    .mcc-closing {
+      width: min(990px, calc(100% - 32px));
+      margin: 0 auto 86px;
+      padding: clamp(54px, 8vw, 88px);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(212,175,55,.21), transparent 33rem),
+        linear-gradient(135deg, rgba(29,46,122,.4), rgba(255,255,255,.06));
+      text-align: center;
+    }
+
+    .mcc-closing h2 {
+      max-width: 15ch;
+      margin: 0 auto 24px;
+      color: #fff;
+      font-family: var(--mcc-serif);
+      font-size: clamp(3rem, 6vw, 5.05rem);
+      font-weight: 600;
+      line-height: .95;
+    }
+
+    .mcc-closing h2 em {
+      color: var(--gold-2);
+      font-weight: 500;
+    }
+
+    .mcc-closing > p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.07rem;
+      line-height: 1.84;
+    }
+
+    .mcc-closing .cta-row {
+      justify-content: center;
+      margin-top: 34px;
+    }
+
+    .independence-note {
+      max-width: 735px !important;
+      margin: 32px auto 0 !important;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      color: var(--muted-2) !important;
+      font-size: .82rem !important;
+      line-height: 1.68 !important;
+    }
+
+    @media (max-width: 760px) {
+      .mcc-hero h1 {
+        max-width: none;
+      }
+
+      .mcc-section {
+        margin-bottom: 80px;
+      }
+
+      .mcc-quote,
+      .app-place,
+      .mcc-closing {
+        border-radius: 27px;
+      }
+
+      .term {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .mcc-opening {
+        margin-bottom: 74px;
+      }
+
+      .mcc-opening p {
+        font-size: 1.68rem;
+      }
+
+      .mcc-section h2 {
+        max-width: none;
+      }
+
+      .journey-stage {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .journey-stage::before {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
   <header class="site-header">
     <div class="wrap site-nav">
-      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Peregrino APP, volver al inicio"
+      >
         <span class="brand-mark">✦</span>
         <span>Peregrino APP</span>
       </a>
+
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
         <a href="index.html#planes">Planes</a>
         <a href="index.html#apoyar">Apoyar</a>
         <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+        <a
+          class="nav-cta"
+          href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"
+        >Descargar</a>
       </nav>
     </div>
   </header>
+
   <main id="contenido" class="page-shell">
-    <section class="prose-hero">
+    <section class="prose-hero mcc-hero">
       <div class="wrap">
         <div>
-          <span class="eyebrow">Peregrino APP</span>
+          <span class="eyebrow">Peregrino APP · Para quien empieza</span>
           <h1>¿Qué es el MCC?</h1>
-          <p class="lead">Una explicación breve para quienes llegan por primera vez y quieren entender el contexto de Peregrino APP.</p>
-          
+
+          <p class="lead">
+            Una explicación sencilla para quien ha llegado a Peregrino por la
+            oración, pero todavía no sabe qué es un Cursillo de Cristiandad ni
+            por qué tantos cursillistas hablan del Cuarto Día.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#entender">Entenderlo sin líos</a>
+            <a class="btn btn-secondary" href="quiero-vivir-un-cursillo.html">Quiero dar el paso</a>
+          </div>
         </div>
-        <aside class="page-shot"><img src="foto_rosario1.png" alt="Imagen de apoyo para ¿Qué es el MCC?" /></aside>
+
+        <aside class="page-shot">
+          <img
+            src="foto_rosario1.png"
+            alt="Imagen de oración que acompaña la explicación sobre el Movimiento de Cursillos de Cristiandad"
+          />
+        </aside>
       </div>
     </section>
-    <section>
-      <div class="wrap prose-grid"><article class="prose-card"><h2>No es solo un retiro</h2><p>Un Cursillo de Cristiandad es una experiencia intensa de encuentro con Cristo, con uno mismo y con los demás.</p><p>Pero el Movimiento no termina en esos días: empieza una vida nueva en el Cuarto Día.</p></article><article class="prose-card"><h2>Tres momentos</h2><p>Antes, durante y después: invitación, encuentro y vida cotidiana.</p><p>El Cuarto Día es la fe vivida en el trabajo, la familia, los amigos y los ambientes.</p></article><article class="prose-card"><h2>Peregrino no sustituye al Movimiento</h2><p>Solo quiere ayudarte a no perder el hilo. La app acompaña; la vida del Movimiento se vive con personas, amistad y comunidad.</p></article></div>
-    </section>
-    <section>
-      <div class="wrap cta-band">
-        <div>
-          <h2>Descubre Peregrino APP</h2>
-          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
+
+    <section class="mcc-body" id="entender">
+      <div class="mcc-prose">
+        <div class="mcc-opening">
+          <span class="star">✦</span>
+          <p>
+            El MCC es el Movimiento de Cursillos de Cristiandad.
+            <strong>No es únicamente algo que sucede durante unos días.</strong>
+          </p>
         </div>
-        <div class="cta-row" style="margin:0;">
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
-          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
-        </div>
+
+        <section class="mcc-section">
+          <span class="mcc-label">La idea central</span>
+          <h2>No es solo un retiro</h2>
+
+          <p class="dropcap">
+            Un Cursillo de Cristiandad es una experiencia intensa de encuentro
+            con Cristo, con uno mismo y con los demás.
+          </p>
+
+          <p>
+            Durante unos días se comparte vida, amistad, oración, escucha y
+            anuncio. Pero la intención del Movimiento no es aislar esa
+            experiencia del resto de la existencia.
+          </p>
+
+          <p>
+            Lo que allí se descubre está llamado a entrar en la familia, el
+            trabajo, las amistades, la parroquia y los ambientes donde cada
+            persona vive de verdad.
+          </p>
+
+          <p>
+            Por eso muchos cursillistas no hablan solamente de haber asistido a
+            un Cursillo. Hablan de haber comenzado un camino.
+          </p>
+        </section>
       </div>
+
+      <aside class="mcc-quote" aria-label="Idea principal">
+        <blockquote>
+          El Cursillo puede durar unos días. El Cuarto Día dura toda la vida.
+        </blockquote>
+        <p>
+          El Cuarto Día son todos los días que vienen después: la fe llevada a
+          la vida ordinaria, con sus alegrías, cansancios, relaciones y
+          responsabilidades.
+        </p>
+      </aside>
+
+      <div class="mcc-prose">
+        <section class="mcc-section" id="momentos">
+          <span class="mcc-label">Un mismo camino</span>
+          <h2>Tres momentos que se necesitan entre sí</h2>
+
+          <p>
+            No son tres productos ni tres etapas desconectadas. Son tres
+            dimensiones de un proceso de encuentro y acompañamiento.
+          </p>
+
+          <div class="journey">
+            <article class="journey-stage">
+              <div>
+                <span class="moment">Antes</span>
+                <h3>Pre-Cursillo</h3>
+                <p>
+                  Es el tiempo de la amistad, la invitación, la preparación y el
+                  acompañamiento. Alguien percibe que una persona puede recibir
+                  un bien y la ayuda a acercarse sin presionarla.
+                </p>
+              </div>
+            </article>
+
+            <article class="journey-stage">
+              <div>
+                <span class="moment">Durante</span>
+                <h3>Cursillo</h3>
+                <p>
+                  Son días de convivencia, escucha, oración, amistad y anuncio.
+                  No se trata únicamente de aprender contenidos, sino de dejar
+                  que el Evangelio ilumine la vida concreta.
+                </p>
+              </div>
+            </article>
+
+            <article class="journey-stage">
+              <div>
+                <span class="moment">Después</span>
+                <h3>Pos-Cursillo</h3>
+                <p>
+                  Es donde la experiencia se cuida y madura: en la Reunión de
+                  Grupo, la Ultreya, la oración, el acompañamiento, el apostolado
+                  y la vida cristiana dentro de los propios ambientes.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="mcc-section">
+          <span class="mcc-label">Quizá te reconoces aquí</span>
+          <h2>La fe no está hecha para vivirse en solitario</h2>
+
+          <p class="dropcap">
+            Puede que hayas llegado a Peregrino porque te ayuda a rezar. Quizá
+            empezaste con el Rosario, las oraciones del día o el Examen de
+            conciencia.
+          </p>
+
+          <p>
+            Pero poco a poco puedes descubrir que no quieres vivir la fe como
+            algo completamente privado. Necesitas amistad, testimonio,
+            comunidad y una forma concreta de llevarla a la realidad.
+          </p>
+
+          <p>
+            Ahí el MCC tiene una intuición profundamente humana: la fe se
+            sostiene mejor cuando se comparte con otros y se convierte en vida.
+          </p>
+
+          <div class="recognition">
+            <p>
+              Quizá quieres conocer mejor a Cristo. Quizá te falta continuidad,
+              comunidad o una manera de vivir la fe en tu ambiente. Quizá solo
+              sientes que ha llegado el momento de dar un paso más.
+            </p>
+          </div>
+        </section>
+
+        <section class="mcc-section">
+          <span class="mcc-label">Palabras que escucharás</span>
+          <h2>Un pequeño diccionario para no perderte</h2>
+
+          <div class="language">
+            <article class="term">
+              <span class="term-name">Cuarto Día</span>
+              <div>
+                <h3>La vida después del Cursillo</h3>
+                <p>
+                  Es la vida cotidiana del cursillista. No es una etapa
+                  secundaria: es donde lo vivido se hace fidelidad diaria.
+                </p>
+              </div>
+            </article>
+
+            <article class="term">
+              <span class="term-name">Trípode</span>
+              <div>
+                <h3>Piedad, Estudio y Acción</h3>
+                <p>
+                  Tres apoyos para caminar: vida de oración, formación cristiana
+                  y acción apostólica dentro de la realidad concreta.
+                </p>
+              </div>
+            </article>
+
+            <article class="term">
+              <span class="term-name">Reunión de Grupo</span>
+              <div>
+                <h3>Amistad que acompaña</h3>
+                <p>
+                  Un encuentro pequeño y frecuente en el que varios cursillistas
+                  comparten vida, fe y compromiso para no caminar solos.
+                </p>
+              </div>
+            </article>
+
+            <article class="term">
+              <span class="term-name">Ultreya</span>
+              <div>
+                <h3>Comunidad en marcha</h3>
+                <p>
+                  Un encuentro más amplio para animarse, compartir testimonio y
+                  recordar que el camino continúa junto a los demás.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section class="app-place">
+        <div class="inner">
+          <span class="mcc-label">Dónde entra Peregrino APP</span>
+          <h2>La aplicación acompaña. No sustituye al Movimiento.</h2>
+
+          <p>
+            Peregrino APP no pretende reemplazar la Reunión de Grupo, la
+            Ultreya, el acompañamiento, la vida sacramental ni la comunidad.
+          </p>
+
+          <p>
+            Puede ayudarte a rezar, cuidar tu Trípode, tener presentes a tus
+            candidatos, preparar mejor la Reunión de Grupo y vivir el Cuarto Día
+            con más constancia.
+          </p>
+
+          <p>
+            Pero el corazón continúa fuera de la pantalla: en Cristo, en la
+            amistad, en la Iglesia y en la misión dentro de los ambientes.
+          </p>
+
+          <p class="app-principle">
+            La aplicación quiere ayudarte a no perder el hilo, no convertirse
+            ella misma en el centro.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <section class="mcc-closing">
+      <h2>¿Sientes que quieres <em>dar el paso?</em></h2>
+
+      <p>
+        Hemos preparado una guía sencilla para ayudarte a buscar información
+        oficial, localizar tu diócesis y saber con quién puedes hablar, sin
+        dejar tus datos personales en Peregrino APP.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="quiero-vivir-un-cursillo.html">
+          Quiero vivir un Cursillo
+        </a>
+        <a class="btn btn-secondary" href="index.html#recursos">
+          Volver a recursos
+        </a>
+      </div>
+
+      <p class="independence-note">
+        Peregrino APP es una iniciativa personal e independiente de apoyo al
+        Cuarto Día. No representa oficialmente al Movimiento de Cursillos de
+        Cristiandad. Para información institucional, consulta siempre los
+        canales oficiales de tu país o diócesis.
+      </p>
     </section>
   </main>
+
   <footer class="footer">
     <div class="wrap footer-grid">
       <div>
         <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+        <p>
+          Guía digital para acompañar el Cuarto Día con oración, constancia y
+          comunidad.
+        </p>
       </div>
+
       <div class="footer-links">
         <a href="plan-apostol.html">Planes</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
@@ -84,7 +813,6 @@
         <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
-    
   </footer>
 </body>
 </html>
