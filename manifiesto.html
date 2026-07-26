@@ -4,34 +4,135 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manifiesto | Peregrino APP</title>
-  <meta name="description" content="La visión de fondo de Peregrino APP y su forma de cuidar el Cuarto Día." />
+  <meta name="description" content="Peregrino APP nació en una familia cursillista para ayudar a cuidar, con sencillez y constancia, la gracia recibida en el Cuarto Día." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0b1220" />
   <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/manifiesto.html" />
+
   <meta property="og:title" content="Manifiesto | Peregrino APP" />
-  <meta property="og:description" content="La visión de fondo de Peregrino APP y su forma de cuidar el Cuarto Día." />
+  <meta property="og:description" content="Una pequeña ayuda, nacida en una familia cursillista, para cuidar cada día lo que comenzó en aquel fin de semana." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/manifiesto.html" />
   <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
+
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Manifiesto | Peregrino APP" />
-  <meta name="twitter:description" content="La visión de fondo de Peregrino APP y su forma de cuidar el Cuarto Día." />
+  <meta name="twitter:description" content="Una pequeña ayuda, nacida en una familia cursillista, para cuidar cada día lo que comenzó en aquel fin de semana." />
   <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/site.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="favicon.ico" />
+
+  <style>
+    /* Ajustes propios del manifiesto, construidos con la misma paleta y
+       los mismos componentes visuales del resto de Peregrino APP. */
+    .manifest-grid {
+      align-items: stretch;
+    }
+
+    .manifest-wide {
+      grid-column: 1 / -1;
+    }
+
+    .manifest-origin {
+      padding: clamp(24px, 4vw, 38px);
+      background:
+        linear-gradient(135deg, rgba(212,175,55,.14), rgba(29,46,122,.22)),
+        rgba(255,255,255,.06);
+      border-color: rgba(212,175,55,.2);
+    }
+
+    .manifest-origin h2 {
+      max-width: 18ch;
+    }
+
+    .manifest-origin p {
+      max-width: 82ch;
+    }
+
+    .manifest-kicker {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--gold-2);
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .manifest-pillars {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .manifest-pillar {
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 16px;
+      background: rgba(255,255,255,.045);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .manifest-pillar span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted-2);
+      font-size: .88rem;
+      font-weight: 500;
+    }
+
+    .manifest-quote {
+      display: grid;
+      align-content: center;
+      min-height: 100%;
+    }
+
+    .manifest-quote .quote-box {
+      margin-top: 4px;
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      line-height: 1.65;
+    }
+
+    .manifest-closing {
+      text-align: center;
+      padding: clamp(28px, 5vw, 48px);
+    }
+
+    .manifest-closing h2 {
+      color: var(--gold-2);
+      font-size: clamp(2.7rem, 6vw, 5rem);
+    }
+
+    .manifest-closing p {
+      max-width: 68ch;
+      margin-inline: auto;
+    }
+
+    @media (max-width: 760px) {
+      .manifest-pillars {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
   <header class="site-header">
     <div class="wrap site-nav">
       <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
         <span class="brand-mark">✦</span>
         <span>Peregrino APP</span>
       </a>
+
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
         <a href="index.html#planes">Planes</a>
@@ -41,27 +142,184 @@
       </nav>
     </div>
   </header>
+
   <main id="contenido" class="page-shell">
     <section class="prose-hero">
       <div class="wrap">
         <div>
-          <span class="eyebrow">Peregrino APP</span>
+          <span class="eyebrow">Peregrino APP · Manifiesto</span>
           <h1>Esto nació de un Cuarto Día real</h1>
-          <p class="lead">Peregrino APP no nace para sustituir la vida de fe, sino para ayudarte a cuidarla en medio del ruido diario.</p>
-          
+          <p class="lead">
+            No nació en una empresa ni alrededor de una mesa de inversores.
+            Nació en casa, dentro de una familia cursillista, intentando cuidar
+            en la vida ordinaria lo que un día nos cambió el corazón.
+          </p>
         </div>
-        <aside class="page-shot"><img src="foto_gracia1.png" alt="Imagen de apoyo para Esto nació de un Cuarto Día real" /></aside>
+
+        <aside class="page-shot">
+          <img src="foto_gracia1.png" alt="Imagen que acompaña el manifiesto de Peregrino APP" />
+        </aside>
       </div>
     </section>
-    <section>
-      <div class="wrap prose-grid"><article class="prose-card"><h2>No venimos a darte la fe</h2><p>Venimos a ayudarte a cuidarla. Cuando no cuidamos lo pequeño, lo grande se enfría sin darnos cuenta.</p><p>Peregrino no pretende sustituir tu Reunión de Grupo ni reemplazar tu oración. Quiere ayudarte a no perder el hilo.</p></article><article class="prose-card"><h2>Una amistad, un encuentro, una conversación sincera</h2><p>Peregrino quiere ser una ayuda concreta para la vida real del Cuarto Día: amistad, encuentro, revisión y perseverancia.</p><p>La app es gratuita y quiere seguir siendo una puerta sencilla para muchas personas.</p></article><article class="prose-card"><h2>Ultreya</h2><p>Empieza hoy a cuidar tu Cuarto Día. No por miedo a perderlo, sino por amor a lo que ya has recibido.</p></article></div>
+
+    <section data-section="origen">
+      <div class="wrap prose-grid manifest-grid">
+
+        <article class="prose-card manifest-wide manifest-origin">
+          <span class="manifest-kicker">Una pregunta sencilla</span>
+          <h2>¿Cómo cuidar lo que vivimos en aquel fin de semana?</h2>
+
+          <p>
+            No porque la gracia desaparezca. No porque falten la fe o las ganas.
+            Sino porque la vida hace ruido, los días se llenan y, casi sin darnos
+            cuenta, lo urgente empieza a ocupar el lugar de lo importante.
+          </p>
+
+          <p>
+            Los cursillistas de otros tiempos se escribían cartas, se llamaban,
+            buscaban la manera de acompañarse y recordarse mutuamente que el
+            Cursillo no terminaba el domingo. Nosotros llevamos un teléfono en
+            el bolsillo. Nos pareció honesto intentar ponerlo también al servicio
+            del Señor.
+          </p>
+
+          <p>
+            Así nació Peregrino: no de una gran estrategia, sino del deseo muy
+            concreto de no perder el hilo del Cuarto Día.
+          </p>
+        </article>
+
+        <article class="prose-card">
+          <span class="manifest-kicker">Lo que no pretendemos</span>
+          <h2>Tu comunidad no cabe en una pantalla</h2>
+
+          <p>
+            Peregrino no puede ser tu Reunión de Grupo. No puede darte la mirada
+            que sostiene, la conversación sincera, el abrazo después de compartir
+            algo difícil ni la alegría de caminar acompañado.
+          </p>
+
+          <p>
+            Tampoco puede rezar por ti. La oración sigue siendo un encuentro
+            personal con Dios, en el silencio de tu corazón y en la vida que
+            verdaderamente estás viviendo.
+          </p>
+        </article>
+
+        <article class="prose-card manifest-quote">
+          <span class="manifest-kicker">Lo que sí puede hacer</span>
+          <div class="quote-box">
+            No venimos a darte la fe. Venimos a ofrecerte una ayuda pequeña y
+            amable para que puedas cuidarla.
+          </div>
+
+          <p>
+            A veces basta un recordatorio suave, una oración que ya estaba allí
+            cuando no encuentras las palabras o cinco minutos de calma en medio
+            de un día complicado.
+          </p>
+        </article>
+
+        <article class="prose-card">
+          <span class="manifest-kicker">Para la vida real</span>
+          <h2>Un lugar sencillo al que volver</h2>
+
+          <p>
+            Cuando el día empieza deprisa. Cuando vas en el metro. Cuando esperas
+            en una sala. Cuando llegas cansado a la noche o necesitas dejar un
+            momento el ruido y recordar qué es lo esencial.
+          </p>
+
+          <p>
+            Allí queremos que esté Peregrino: sin publicidad, sin distracciones
+            y sin convertir la fe en un producto.
+          </p>
+        </article>
+
+        <article class="prose-card">
+          <span class="manifest-kicker">El Cuarto Día</span>
+          <h2>Cuidar lo pequeño para sostener lo grande</h2>
+
+          <p>
+            Peregrino quiere recordarte, con suavidad, que el Cuarto Día se cuida
+            con pasos concretos y constantes:
+          </p>
+
+          <div class="manifest-pillars" aria-label="Dimensiones que ayuda a cuidar Peregrino APP">
+            <div class="manifest-pillar">Oración<span>Volver cada día a Dios.</span></div>
+            <div class="manifest-pillar">Estudio<span>Seguir formando el corazón y la cabeza.</span></div>
+            <div class="manifest-pillar">Acción<span>Llevar lo recibido a la vida.</span></div>
+            <div class="manifest-pillar">Candidatos<span>Mirar con cariño a quien todavía espera.</span></div>
+          </div>
+        </article>
+
+        <article class="prose-card manifest-wide">
+          <span class="manifest-kicker">Lo que nos mueve</span>
+          <h2>Si te ayuda un solo día, ya habrá valido la pena</h2>
+
+          <p>
+            Si Peregrino te ayuda a rezar cuando aquel día no habrías rezado,
+            habrá cumplido su misión. Si te recuerda a alguien a quien llevas
+            tiempo queriendo acercar al Cursillo, habrá cumplido. Si en un momento
+            de sequedad encuentras una palabra que te sostiene, también.
+          </p>
+
+          <p>
+            El Movimiento ha cambiado vidas desde sus comienzos a través de
+            medios humanos muy sencillos: una amistad, un encuentro, una
+            conversación, una palanca, una carta, una llamada.
+          </p>
+
+          <div class="quote-box">
+            Peregrino quiere ser eso: una palanca pequeña, hecha con cariño y
+            puesta en tus manos.
+          </div>
+        </article>
+
+        <article class="prose-card">
+          <span class="manifest-kicker">Una puerta abierta</span>
+          <h2>Gratuita, sin anuncios y con vocación de servicio</h2>
+
+          <p>
+            El corazón de Peregrino es gratuito y queremos que siga siéndolo.
+            Los planes de apoyo existen para ayudar a sostener y mejorar este
+            apostolado, no para cerrar la puerta a quien solo necesita entrar,
+            rezar y seguir caminando.
+          </p>
+        </article>
+
+        <article class="prose-card">
+          <span class="manifest-kicker">Para terminar</span>
+          <h2>Que Ultreya sea más que una despedida</h2>
+
+          <p>
+            Que sea lo que hacemos cada mañana cuando elegimos seguir adelante,
+            con la vida que tenemos, en el mundo que nos ha tocado y fieles a lo
+            que encontramos en aquel fin de semana que lo cambió todo.
+          </p>
+        </article>
+
+        <article class="prose-card manifest-wide manifest-closing">
+          <h2>Ultreya.</h2>
+          <p>
+            Peregrino no quiere caminar por ti. Solo acompañarte un poco mientras
+            sigues caminando por Cristo hacia el Padre, junto a los demás.
+          </p>
+        </article>
+
+      </div>
     </section>
+
     <section>
       <div class="wrap cta-band">
         <div>
-          <h2>Descubre Peregrino APP</h2>
-          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
+          <h2>Empieza hoy a cuidar tu Cuarto Día</h2>
+          <p>
+            Descarga Peregrino APP y encuentra un lugar sencillo para volver,
+            cada día, a la oración, la constancia y lo esencial.
+          </p>
         </div>
+
         <div class="cta-row" style="margin:0;">
           <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
           <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
@@ -69,12 +327,14 @@
       </div>
     </section>
   </main>
+
   <footer class="footer">
     <div class="wrap footer-grid">
       <div>
         <strong>Peregrino APP</strong>
         <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
       </div>
+
       <div class="footer-links">
         <a href="plan-apostol.html">Planes</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
@@ -84,7 +344,6 @@
         <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
-    
   </footer>
 </body>
 </html>
