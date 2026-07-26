@@ -3,78 +3,978 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Quiero vivir un Cursillo | Peregrino APP</title>
-  <meta name="description" content="Orientación sencilla para quien quiere vivir un Cursillo y no sabe por dónde empezar." />
+  <meta
+    name="description"
+    content="Una guía sencilla para acercarte a un Cursillo de Cristiandad a través de los canales oficiales del Movimiento."
+  />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/quiero-vivir-un-cursillo.html" />
+  <link
+    rel="canonical"
+    href="https://madeprat.github.io/peregrino-app-web/quiero-vivir-un-cursillo.html"
+  />
+
   <meta property="og:title" content="Quiero vivir un Cursillo | Peregrino APP" />
-  <meta property="og:description" content="Orientación sencilla para quien quiere vivir un Cursillo y no sabe por dónde empezar." />
+  <meta
+    property="og:description"
+    content="Qué buscar, dónde acudir y cómo dar el primer paso para vivir un Cursillo de Cristiandad."
+  />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/quiero-vivir-un-cursillo.html" />
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
+  <meta
+    property="og:url"
+    content="https://madeprat.github.io/peregrino-app-web/quiero-vivir-un-cursillo.html"
+  />
+  <meta
+    property="og:image"
+    content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png"
+  />
+
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Quiero vivir un Cursillo | Peregrino APP" />
-  <meta name="twitter:description" content="Orientación sencilla para quien quiere vivir un Cursillo y no sabe por dónde empezar." />
-  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
+  <meta
+    name="twitter:description"
+    content="Una orientación sencilla para quien siente que ha llegado el momento de dar un paso."
+  />
+  <meta
+    name="twitter:image"
+    content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png"
+  />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="assets/site.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="favicon.ico" />
+
+  <style>
+    :root {
+      --guide-serif: "Cormorant Garamond", Georgia, serif;
+    }
+
+    .guide-hero {
+      padding-bottom: 64px;
+    }
+
+    .guide-hero .wrap {
+      align-items: center;
+    }
+
+    .guide-hero h1 {
+      max-width: 10ch;
+      font-family: var(--guide-serif);
+      font-size: clamp(3.65rem, 7.5vw, 6.8rem);
+      font-weight: 600;
+      line-height: .9;
+      letter-spacing: -.05em;
+    }
+
+    .guide-hero .lead {
+      max-width: 59ch;
+      font-size: clamp(1.08rem, 2vw, 1.27rem);
+      line-height: 1.78;
+    }
+
+    .guide-hero .page-shot {
+      position: relative;
+      padding: 12px;
+      border-radius: 38px;
+      background:
+        linear-gradient(145deg, rgba(212,175,55,.2), rgba(255,255,255,.06));
+    }
+
+    .guide-hero .page-shot::before {
+      content: "";
+      position: absolute;
+      inset: -28px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,.15), transparent 68%);
+      filter: blur(14px);
+    }
+
+    .guide-hero .page-shot img {
+      aspect-ratio: 4 / 5;
+      border-radius: 28px;
+      object-fit: cover;
+    }
+
+    .guide-body {
+      padding: 36px 0 100px;
+    }
+
+    .guide {
+      width: min(800px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .guide-opening {
+      max-width: 735px;
+      margin: 0 auto 104px;
+      text-align: center;
+    }
+
+    .guide-opening .star {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--gold-2);
+      font-size: 1.05rem;
+    }
+
+    .guide-opening p {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--guide-serif);
+      font-size: clamp(1.75rem, 4vw, 2.72rem);
+      line-height: 1.32;
+    }
+
+    .guide-opening strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .guide-section {
+      position: relative;
+      margin-bottom: 102px;
+      padding-top: 36px;
+    }
+
+    .guide-section::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(212,175,55,.54),
+          rgba(255,255,255,.09),
+          transparent
+        );
+    }
+
+    .guide-label {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--gold-2);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .guide-section h2 {
+      max-width: 14ch;
+      margin: 0 0 28px;
+      color: #fff;
+      font-family: var(--guide-serif);
+      font-size: clamp(2.65rem, 5vw, 4.55rem);
+      font-weight: 600;
+      line-height: .97;
+      letter-spacing: -.038em;
+    }
+
+    .guide-section p {
+      margin: 0 0 1.4rem;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.94;
+    }
+
+    .guide-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+      margin: .07em .12em 0 0;
+      color: var(--gold-2);
+      font-family: var(--guide-serif);
+      font-size: 4.35rem;
+      font-weight: 600;
+      line-height: .72;
+    }
+
+    .honest-note {
+      margin-top: 34px;
+      padding: 24px 0 0 26px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      border-left: 3px solid var(--gold);
+    }
+
+    .honest-note strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #fff;
+    }
+
+    .honest-note p {
+      margin: 0;
+      font-size: .99rem;
+      line-height: 1.75;
+    }
+
+    .guide-quote {
+      position: relative;
+      width: min(990px, calc(100% - 32px));
+      margin: 4px auto 108px;
+      padding: clamp(56px, 8vw, 92px) clamp(28px, 7vw, 84px);
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,.2);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(212,175,55,.2), transparent 31rem),
+        linear-gradient(135deg, rgba(29,46,122,.34), rgba(255,255,255,.055));
+      text-align: center;
+    }
+
+    .guide-quote::before {
+      content: "“";
+      position: absolute;
+      top: -46px;
+      left: 34px;
+      color: rgba(212,175,55,.12);
+      font-family: var(--guide-serif);
+      font-size: 14rem;
+      line-height: 1;
+    }
+
+    .guide-quote blockquote {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      color: #fff;
+      font-family: var(--guide-serif);
+      font-size: clamp(2.15rem, 5vw, 4.2rem);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.14;
+    }
+
+    .guide-quote p {
+      position: relative;
+      max-width: 660px;
+      margin: 26px auto 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.78;
+    }
+
+    .steps {
+      margin-top: 36px;
+      counter-reset: practical-step;
+    }
+
+    .step {
+      counter-increment: practical-step;
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 25px;
+      align-items: start;
+      padding: 29px 0;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .step:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .step::before {
+      content: "0" counter(practical-step);
+      color: var(--gold-2);
+      font-family: var(--guide-serif);
+      font-size: 2.7rem;
+      line-height: 1;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 1.23rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .99rem;
+      line-height: 1.74;
+    }
+
+    .official-list {
+      margin-top: 34px;
+    }
+
+    .official-link {
+      display: grid;
+      grid-template-columns: minmax(120px, .38fr) 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 27px 0;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .official-link:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .official-region {
+      color: var(--gold-2);
+      font-family: var(--guide-serif);
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    .official-link h3 {
+      margin: 0 0 6px;
+      color: #fff;
+      font-size: 1.14rem;
+    }
+
+    .official-link p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.68;
+    }
+
+    .official-link a {
+      color: var(--gold-2);
+      text-decoration: none;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .official-link a:hover,
+    .official-link a:focus-visible {
+      color: #fff;
+    }
+
+    .message-paper {
+      position: relative;
+      margin-top: 34px;
+      padding: clamp(32px, 5vw, 48px);
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,.2);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+      box-shadow: var(--shadow);
+    }
+
+    .message-paper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 42px,
+          rgba(212,175,55,.1) 43px,
+          transparent 44px
+        );
+    }
+
+    .message-paper blockquote {
+      position: relative;
+      margin: 0;
+      color: #f1f3f7;
+      font-family: var(--guide-serif);
+      font-size: clamp(1.38rem, 3vw, 1.85rem);
+      line-height: 1.58;
+    }
+
+    .message-paper .placeholder {
+      color: var(--gold-2);
+      font-style: italic;
+    }
+
+    .copy-row {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .copy-status {
+      color: var(--muted-2);
+      font-size: .88rem;
+    }
+
+    .preparation {
+      margin-top: 34px;
+      counter-reset: prep;
+    }
+
+    .prep {
+      counter-increment: prep;
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      padding: 25px 0;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .prep:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .prep-word {
+      color: var(--gold-2);
+      font-family: var(--guide-serif);
+      font-size: 1.7rem;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .prep h3 {
+      margin: 0 0 7px;
+      color: #fff;
+      font-size: 1.17rem;
+    }
+
+    .prep p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .97rem;
+      line-height: 1.72;
+    }
+
+    .faq {
+      margin-top: 30px;
+    }
+
+    .faq details {
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .faq details:first-child {
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .faq summary {
+      position: relative;
+      padding: 24px 42px 24px 0;
+      color: #fff;
+      font-size: 1.06rem;
+      font-weight: 800;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq summary::after {
+      content: "+";
+      position: absolute;
+      top: 19px;
+      right: 2px;
+      color: var(--gold-2);
+      font-family: var(--guide-serif);
+      font-size: 1.9rem;
+      font-weight: 500;
+    }
+
+    .faq details[open] summary::after {
+      content: "−";
+    }
+
+    .faq details p {
+      max-width: 700px;
+      margin: -4px 0 24px;
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.76;
+    }
+
+    .guide-closing {
+      width: min(990px, calc(100% - 32px));
+      margin: 0 auto 86px;
+      padding: clamp(54px, 8vw, 88px);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(212,175,55,.21), transparent 33rem),
+        linear-gradient(135deg, rgba(29,46,122,.4), rgba(255,255,255,.06));
+      text-align: center;
+    }
+
+    .guide-closing h2 {
+      max-width: 17ch;
+      margin: 0 auto 24px;
+      color: #fff;
+      font-family: var(--guide-serif);
+      font-size: clamp(3rem, 6vw, 5.05rem);
+      font-weight: 600;
+      line-height: .95;
+    }
+
+    .guide-closing h2 em {
+      color: var(--gold-2);
+      font-weight: 500;
+    }
+
+    .guide-closing > p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.07rem;
+      line-height: 1.84;
+    }
+
+    .guide-closing .cta-row {
+      justify-content: center;
+      margin-top: 34px;
+    }
+
+    .independence-note {
+      max-width: 730px !important;
+      margin: 32px auto 0 !important;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      color: var(--muted-2) !important;
+      font-size: .82rem !important;
+      line-height: 1.68 !important;
+    }
+
+    @media (max-width: 820px) {
+      .official-link {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .official-link a {
+        margin-top: 4px;
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .guide-hero h1 {
+        max-width: none;
+      }
+
+      .guide-section {
+        margin-bottom: 78px;
+      }
+
+      .guide-quote,
+      .guide-closing {
+        border-radius: 27px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .guide-opening {
+        margin-bottom: 74px;
+      }
+
+      .guide-opening p {
+        font-size: 1.68rem;
+      }
+
+      .guide-section h2 {
+        max-width: none;
+      }
+
+      .step,
+      .prep {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .step::before {
+        font-size: 2rem;
+      }
+
+      .message-paper {
+        border-radius: 22px;
+      }
+
+      .message-paper::before {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
   <header class="site-header">
     <div class="wrap site-nav">
-      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Peregrino APP, volver al inicio"
+      >
         <span class="brand-mark">✦</span>
         <span>Peregrino APP</span>
       </a>
+
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
         <a href="index.html#planes">Planes</a>
         <a href="index.html#apoyar">Apoyar</a>
         <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+        <a
+          class="nav-cta"
+          href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"
+        >Descargar</a>
       </nav>
     </div>
   </header>
+
   <main id="contenido" class="page-shell">
-    <section class="prose-hero">
+    <section class="prose-hero guide-hero">
       <div class="wrap">
         <div>
-          <span class="eyebrow">Peregrino APP</span>
-          <h1>Quiero vivir un Cursillo</h1>
-          <p class="lead">Si estás aquí, probablemente algo dentro de ti ya ha empezado a moverse.</p>
-          
+          <span class="eyebrow">Peregrino APP · Dar el paso</span>
+          <h1>¿Quieres vivir un Cursillo?</h1>
+
+          <p class="lead">
+            Quizá llegaste buscando una oración. Quizá empezaste por el Rosario,
+            por Laudes o por el Examen. Y ahora hay una pregunta nueva dentro de
+            ti: ¿y si esto también es para mí?
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#camino">Orientarme ahora</a>
+            <a class="btn btn-secondary" href="que-es-el-mcc.html">Antes quiero entenderlo</a>
+          </div>
         </div>
-        <aside class="page-shot"><img src="foto_rezo2.png" alt="Imagen de apoyo para Quiero vivir un Cursillo" /></aside>
+
+        <aside class="page-shot">
+          <img
+            src="foto_rezo2.png"
+            alt="Una persona en actitud de oración, imagen de apoyo para quien desea vivir un Cursillo"
+          />
+        </aside>
       </div>
     </section>
-    <section>
-      <div class="wrap prose-grid"><article class="prose-card"><h2>Primero, algo importante</h2><p>Peregrino APP no organiza Cursillos ni gestiona inscripciones. El Movimiento funciona a nivel diocesano y cada diócesis tiene su propio Secretariado.</p><p>Lo mejor es contactar directamente con ellos.</p></article><article class="prose-card"><h2>No es una compra online</h2><p>Es un camino que se conversa, se prepara y se acompaña.</p></article><article class="prose-card"><h2>Pasos sencillos</h2><p>Busca “Cursillos de Cristiandad + nombre de tu diócesis”. Ellos te orientarán sobre próximos Cursillos y cómo participar.</p><p>Mientras tanto, cuida tu oración, no apagues esa inquietud y habla con alguien que ya lo haya vivido.</p></article></div>
-    </section>
-    <section>
-      <div class="wrap cta-band">
-        <div>
-          <h2>Descubre Peregrino APP</h2>
-          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
+
+    <section class="guide-body">
+      <div class="guide">
+        <div class="guide-opening">
+          <span class="star">✦</span>
+          <p>
+            Si esa inquietud ha nacido mientras rezabas,
+            <strong>no necesitas resolverla hoy, pero sí merece que la escuches.</strong>
+          </p>
         </div>
-        <div class="cta-row" style="margin:0;">
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
-          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
-        </div>
+
+        <section class="guide-section">
+          <span class="guide-label">Primero, una aclaración honesta</span>
+          <h2>Esta página no inscribe a nadie</h2>
+
+          <p class="dropcap">
+            Peregrino APP no organiza Cursillos, no gestiona plazas y no recoge
+            tus datos personales para ponerte en contacto con nadie.
+          </p>
+
+          <p>
+            El Movimiento de Cursillos de Cristiandad se organiza a través de
+            sus estructuras y secretariados. Son ellos quienes pueden informarte
+            de los próximos Cursillos, explicarte cómo se participa y
+            acompañarte adecuadamente.
+          </p>
+
+          <div class="honest-note">
+            <strong>Nuestro papel es mucho más sencillo.</strong>
+            <p>
+              Ayudarte a orientarte, mostrarte dónde buscar y dejar que seas tú
+              quien contacte directamente con los canales oficiales.
+            </p>
+          </div>
+        </section>
       </div>
+
+      <aside class="guide-quote" aria-label="Idea central">
+        <blockquote>
+          Un Cursillo no se vive como una compra en internet.
+        </blockquote>
+        <p>
+          Se conversa, se prepara y se discierne. Lo importante no es llegar
+          deprisa, sino llegar bien acompañado.
+        </p>
+      </aside>
+
+      <div class="guide">
+        <section class="guide-section" id="camino">
+          <span class="guide-label">El camino práctico</span>
+          <h2>Cuatro pasos sencillos</h2>
+
+          <p>
+            No necesitas conocer toda la organización del Movimiento. Empieza
+            por lo más cercano y deja que, desde allí, te indiquen el siguiente
+            paso.
+          </p>
+
+          <div class="steps">
+            <article class="step">
+              <div>
+                <h3>Localiza tu ámbito</h3>
+                <p>
+                  Empieza por tu país. Después busca tu diócesis, provincia,
+                  ciudad o región. La información concreta suele estar cerca de
+                  tu realidad local.
+                </p>
+              </div>
+            </article>
+
+            <article class="step">
+              <div>
+                <h3>Busca el secretariado</h3>
+                <p>
+                  El secretariado nacional o diocesano es el punto más fiable
+                  para conocer fechas, requisitos y personas de contacto.
+                </p>
+              </div>
+            </article>
+
+            <article class="step">
+              <div>
+                <h3>Contacta directamente</h3>
+                <p>
+                  Utiliza el teléfono, el correo, el formulario o la web oficial.
+                  Ellos podrán orientarte mejor que una aplicación.
+                </p>
+              </div>
+            </article>
+
+            <article class="step">
+              <div>
+                <h3>Déjate acompañar</h3>
+                <p>
+                  Habla con quienes preparan el Cursillo y plantea tus dudas con
+                  libertad. No necesitas llegar con todas las respuestas.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section" id="oficial">
+          <span class="guide-label">Dónde mirar primero</span>
+          <h2>Fuentes oficiales</h2>
+
+          <p>
+            Estos enlaces son buenos puntos de partida. La información más
+            concreta seguirá dependiendo de tu diócesis o secretariado local.
+          </p>
+
+          <div class="official-list">
+            <article class="official-link">
+              <span class="official-region">España</span>
+              <div>
+                <h3>Secretariado Nacional</h3>
+                <p>
+                  Localiza los secretariados diocesanos y el contacto que
+                  corresponde a tu zona.
+                </p>
+              </div>
+              <a
+                href="https://www.cursillosdecristiandad.com/secretariados/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Abrir directorio →</a>
+            </article>
+
+            <article class="official-link">
+              <span class="official-region">Mundo</span>
+              <div>
+                <h3>Organismo Mundial de Cursillos de Cristiandad</h3>
+                <p>
+                  Punto de orientación internacional cuando buscas información
+                  fuera de España o no localizas tu país.
+                </p>
+              </div>
+              <a
+                href="https://omcc-cursillos.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Abrir OMCC →</a>
+            </article>
+
+            <article class="official-link">
+              <span class="official-region">EE. UU.</span>
+              <div>
+                <h3>National Cursillo USA</h3>
+                <p>
+                  Enlaces y contactos para regiones, diócesis y comunidades del
+                  Movimiento en Estados Unidos.
+                </p>
+              </div>
+              <a
+                href="https://cursillousa.org/espanol/links-y-contactos/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Abrir contactos →</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section">
+          <span class="guide-label">Un mensaje para empezar</span>
+          <h2>No necesitas explicarlo todo perfectamente</h2>
+
+          <p>
+            Cuando encuentres el contacto de tu diócesis o secretariado, puedes
+            escribir algo tan sencillo como esto:
+          </p>
+
+          <div class="message-paper">
+            <blockquote id="contact-message">
+Hola, me llamo <span class="placeholder">[tu nombre]</span> y vivo en <span class="placeholder">[tu ciudad]</span>.
+
+He conocido el Movimiento de Cursillos de Cristiandad a través de Peregrino APP y me gustaría recibir información para saber si puedo vivir un Cursillo.
+
+¿Podrían orientarme sobre próximos Cursillos o indicarme con quién debo hablar en mi diócesis?
+
+Muchas gracias. De colores.
+            </blockquote>
+
+            <div class="copy-row">
+              <button class="btn btn-primary" type="button" id="copy-message">
+                Copiar mensaje
+              </button>
+              <span class="copy-status" id="copy-status" aria-live="polite"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="guide-section">
+          <span class="guide-label">Mientras das el paso</span>
+          <h2>Una manera sencilla de prepararte</h2>
+
+          <div class="preparation">
+            <article class="prep">
+              <span class="prep-word">Reza</span>
+              <div>
+                <h3>Pide luz</h3>
+                <p>
+                  No hace falta tenerlo todo claro. Pide al Señor que ordene ese
+                  deseo y te muestre el siguiente paso.
+                </p>
+              </div>
+            </article>
+
+            <article class="prep">
+              <span class="prep-word">Pregunta</span>
+              <div>
+                <h3>Busca una persona</h3>
+                <p>
+                  Si conoces a alguien cursillista, habla con él. Muchas veces
+                  el camino empieza con una conversación sencilla.
+                </p>
+              </div>
+            </article>
+
+            <article class="prep">
+              <span class="prep-word">Camina</span>
+              <div>
+                <h3>No apagues la inquietud</h3>
+                <p>
+                  No necesitas tomar una gran decisión hoy. El primer paso puede
+                  ser únicamente enviar un mensaje.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section">
+          <span class="guide-label">Preguntas frecuentes</span>
+          <h2>Dudas completamente normales</h2>
+
+          <div class="faq">
+            <details>
+              <summary>¿Peregrino APP organiza Cursillos?</summary>
+              <p>
+                No. Peregrino APP es una herramienta independiente de oración y
+                apoyo al Cuarto Día. Los Cursillos son organizados por los
+                secretariados correspondientes del Movimiento.
+              </p>
+            </details>
+
+            <details>
+              <summary>¿Tengo que dejar mis datos aquí?</summary>
+              <p>
+                No. Esta página no incluye formularios ni recoge información
+                personal. Tú decides si quieres abrir un canal oficial y
+                contactar directamente con él.
+              </p>
+            </details>
+
+            <details>
+              <summary>¿Qué hago si no encuentro mi diócesis?</summary>
+              <p>
+                Busca primero el secretariado nacional de tu país. Si aun así
+                no encuentras la información, consulta el OMCC o pregunta en una
+                parroquia de tu zona.
+              </p>
+            </details>
+
+            <details>
+              <summary>¿Necesito tener una vida de fe perfecta?</summary>
+              <p>
+                No. No hace falta saberlo todo ni tener la vida completamente
+                ordenada. Puedes acercarte con tus preguntas y dejarte orientar
+                por quienes acompañan este camino.
+              </p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="guide-closing">
+      <h2>Tal vez no buscabas un Cursillo. <em>Tal vez lo estabas necesitando.</em></h2>
+
+      <p>
+        Puedes volver a Peregrino para seguir rezando o abrir una fuente oficial
+        y dar hoy un paso pequeño. No necesitas hacer más de lo que ahora puedas.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://www.cursillosdecristiandad.com/secretariados/" target="_blank" rel="noopener noreferrer">
+          Buscar en España
+        </a>
+        <a class="btn btn-secondary" href="https://omcc-cursillos.org/" target="_blank" rel="noopener noreferrer">
+          Buscar en el mundo
+        </a>
+      </div>
+
+      <p class="independence-note">
+        Peregrino APP no organiza Cursillos, no gestiona inscripciones y no
+        representa oficialmente al Movimiento de Cursillos de Cristiandad.
+        Consulta siempre los canales oficiales de tu país o diócesis.
+      </p>
     </section>
   </main>
+
   <footer class="footer">
     <div class="wrap footer-grid">
       <div>
         <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+        <p>
+          Guía digital para acompañar el Cuarto Día con oración, constancia y
+          comunidad.
+        </p>
       </div>
+
       <div class="footer-links">
         <a href="plan-apostol.html">Planes</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
@@ -84,7 +984,35 @@
         <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
-    
   </footer>
+
+  <script>
+    (function () {
+      const copyButton = document.getElementById("copy-message");
+      const message = document.getElementById("contact-message");
+      const status = document.getElementById("copy-status");
+
+      if (!copyButton || !message || !status) return;
+
+      copyButton.addEventListener("click", async function () {
+        const text = message.innerText.trim();
+
+        try {
+          await navigator.clipboard.writeText(text);
+          status.textContent = "Mensaje copiado.";
+        } catch (error) {
+          const range = document.createRange();
+          range.selectNodeContents(message);
+
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+
+          status.textContent =
+            "No se pudo copiar automáticamente. El texto ha quedado seleccionado.";
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
