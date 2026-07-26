@@ -2731,7 +2731,7 @@ function cursilloEsVisiblePublicamente(cursillo) {
           : " · pruebas excluidas";
 
         setDataStatus(
-          `Conectado a BD de Cursillos · ${cursillos.length} Cursillos · ${palancasVisibles.length} palancas visibles${detallePruebas}${latestUpdateText()}`
+         `Conectado a BD de Cursillos · ${cursillosVisibles.length} Cursillos · ${palancasVisibles.length} palancas visibles${detallePruebas}${latestUpdateText()}`
         );
       } catch (error) {
         const demo = fallbackData();
