@@ -490,6 +490,65 @@
       letter-spacing: .08em;
       white-space: nowrap;
     }
+    .mural-head-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mural-all-btn {
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: .68rem;
+  font-weight: 800;
+}
+
+.palanca-target {
+  margin-top: 10px;
+  padding: 9px 10px;
+  border-left: 3px solid var(--dc-violeta);
+  border-radius: 10px;
+  color: var(--muted);
+  background: rgba(167,139,250,.08);
+  font-size: .72rem;
+  line-height: 1.35;
+}
+
+.palanca-target span {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--dc-violeta);
+  text-transform: uppercase;
+  font-size: .59rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+}
+
+.palanca-target strong {
+  display: block;
+  color: var(--text);
+  font-size: .78rem;
+}
+
+.palanca-target small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: .68rem;
+}
+
+.mural-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 9px;
+}
+
+.mural-card-actions .btn {
+  padding: 7px 9px;
+  font-size: .7rem;
+}
 
     .mural-list {
       flex: 1;
@@ -1705,9 +1764,24 @@
         <div class="panel-head">
           <div>
             <h2>Mural de palancas</h2>
-            <p id="muralSubtitle">Selecciona un Cursillo para ver su comunidad de oración.</p>
+            <p id="muralSubtitle">
+              Palancas que están sosteniendo Cursillos en todo el mundo.
+            </p>
           </div>
-          <span class="live-badge">PALANCA VIVA</span>
+        
+          <div class="mural-head-actions">
+            <button
+              id="showAllPalancasBtn"
+              class="btn mural-all-btn"
+              type="button"
+              onclick="showAllPalancas()"
+              hidden
+            >
+              🌍 Ver todas
+            </button>
+        
+            <span class="live-badge">PALANCA VIVA</span>
+          </div>
         </div>
         <div id="muralList" class="mural-list">
           <div class="empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>
@@ -2306,7 +2380,42 @@ function cursilloEsVisiblePublicamente(cursillo) {
       renderMural();
       renderFlows();
     }
+window.showAllPalancas = function showAllPalancas() {
+  selectCursillo(null, false);
 
+  if (appState.globe) {
+    appState.globe.pointOfView(
+      {
+        lat: 18,
+        lng: -5,
+        altitude: 2.1
+      },
+      850
+    );
+  }
+
+  const list = $("muralList");
+
+  if (list) {
+    list.scrollTop = 0;
+  }
+};
+
+
+window.openCursilloFromMural =
+  function openCursilloFromMural(encodedCursilloId) {
+    const cursilloId = decodeURIComponent(
+      encodedCursilloId
+    );
+
+    selectCursillo(cursilloId, true);
+
+    const list = $("muralList");
+
+    if (list) {
+      list.scrollTop = 0;
+    }
+  };
     function selectedCursillo() {
       return appState.cursillos.find((c) => c.cursillo_id === appState.selectedCursilloId) || null;
     }
@@ -2619,11 +2728,23 @@ function cursilloEsVisiblePublicamente(cursillo) {
     }
 
     function chooseInitialCursillo() {
-      const requested = new URL(window.location.href).searchParams.get("cursillo");
-      if (requested && appState.cursillos.some((c) => c.cursillo_id === requested)) return requested;
-
-      const active = appState.cursillos.find((c) => cursilloStatus(c) === "Activo");
-      return active?.cursillo_id || appState.cursillos[0]?.cursillo_id || null;
+      const requested = new URL(window.location.href)
+        .searchParams
+        .get("cursillo");
+    
+      // Se conserva la selección solamente cuando la URL pide
+      // expresamente un Cursillo concreto.
+      if (
+        requested &&
+        appState.cursillos.some(
+          (c) => c.cursillo_id === requested
+        )
+      ) {
+        return requested;
+      }
+    
+      // La vista normal comienza mostrando el mundo completo.
+      return null;
     }
 
     function nextWorldwideEvent() {
