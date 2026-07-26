@@ -2432,7 +2432,16 @@ window.openCursilloFromMural =
 
       if (!cursillo) {
         card.className = "selection-card empty";
-        card.innerHTML = "Selecciona un Cursillo en el mapa o en el mural para descubrir sus palancas.";
+      
+        card.innerHTML = `
+          <strong>Vista mundial activa</strong><br>
+          <span style="display:block;margin-top:5px">
+            El mural reúne las palancas que están viajando
+            hacia todos los Cursillos visibles. Selecciona
+            un punto para concentrarte en uno de ellos.
+          </span>
+        `;
+      
         return;
       }
 
@@ -2480,37 +2489,59 @@ window.openCursilloFromMural =
         || toDate(palanca.fin_palanca_utc);
     }
 
-    function palancasVisiblesEnMural(cursilloId) {
-      const ahora = new Date();
-      const limite = new Date(
-        ahora.getTime() - MURAL_DIAS_VISIBLES * 24 * 60 * 60 * 1000
+function palancasVisiblesEnMural(cursilloId = null) {
+  const ahora = new Date();
+
+  const limite = new Date(
+    ahora.getTime()
+    - MURAL_DIAS_VISIBLES * 24 * 60 * 60 * 1000
+  );
+
+  const palancasBase = cursilloId
+    ? visiblePublicPalancas(cursilloId)
+    : relevantPalancas(
+        appState.filteredCursillos.map(
+          (cursillo) => cursillo.cursillo_id
+        )
       );
 
-      return visiblePublicPalancas(cursilloId)
-        .filter((palanca) => {
-          const estado = palancaStatus(palanca);
+  return palancasBase
+    .filter((palanca) => {
+      const estado = palancaStatus(palanca);
 
-          // Las que están ocurriendo o están programadas siempre se muestran.
-          if (estado === "En curso" || estado === "Programada") return true;
+      // Las que están ocurriendo o están programadas
+      // siempre permanecen visibles.
+      if (
+        estado === "En curso" ||
+        estado === "Programada"
+      ) {
+        return true;
+      }
 
-          // Las ya ofrecidas permanecen visibles durante la última semana.
-          const fecha = palancaFechaReferencia(palanca);
-          return fecha !== null && fecha >= limite;
-        })
-        .sort((a, b) => {
-          const statusDiff =
-            palancaSortWeight(palancaStatus(a))
-            - palancaSortWeight(palancaStatus(b));
+      // Las ya ofrecidas permanecen durante la última semana.
+      const fecha = palancaFechaReferencia(palanca);
 
-          if (statusDiff !== 0) return statusDiff;
+      return fecha !== null && fecha >= limite;
+    })
+    .sort((a, b) => {
+      const diferenciaEstado =
+        palancaSortWeight(palancaStatus(a))
+        - palancaSortWeight(palancaStatus(b));
 
-          const fechaA = palancaFechaReferencia(a)?.getTime() || 0;
-          const fechaB = palancaFechaReferencia(b)?.getTime() || 0;
+      if (diferenciaEstado !== 0) {
+        return diferenciaEstado;
+      }
 
-          // Descendente: las más recientes aparecen arriba.
-          return fechaB - fechaA;
-        });
-    }
+      const fechaA =
+        palancaFechaReferencia(a)?.getTime() || 0;
+
+      const fechaB =
+        palancaFechaReferencia(b)?.getTime() || 0;
+
+      // Las más recientes aparecen primero.
+      return fechaB - fechaA;
+    });
+}
 
     window.changeMuralPage = function changeMuralPage(delta) {
       appState.muralPage = Math.min(
@@ -2524,175 +2555,449 @@ window.openCursilloFromMural =
       if (list) list.scrollTop = 0;
     };
 
-    function renderMural() {
-      const list = $("muralList");
-      const subtitle = $("muralSubtitle");
-      const cursillo = selectedCursillo();
+function renderMural() {
+  const list = $("muralList");
+  const subtitle = $("muralSubtitle");
+  const cursillo = selectedCursillo();
 
-      if (!cursillo) {
-        appState.muralPage = 1;
-        appState.muralTotalPages = 1;
-        appState.muralCursilloId = null;
+  const modoGlobal = !cursillo;
 
-        subtitle.textContent =
-          "Selecciona un Cursillo para ver su comunidad de oración.";
-        list.innerHTML =
-          `<div class="empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>`;
-        return;
-      }
+  const identificadorMural = modoGlobal
+    ? "__GLOBAL__"
+    : cursillo.cursillo_id;
 
-      // Al cambiar de Cursillo, se vuelve a la primera página.
-      if (appState.muralCursilloId !== cursillo.cursillo_id) {
-        appState.muralCursilloId = cursillo.cursillo_id;
-        appState.muralPage = 1;
-      }
+  const showAllButton = $("showAllPalancasBtn");
 
-      const palancas = palancasVisiblesEnMural(cursillo.cursillo_id);
+  if (showAllButton) {
+    showAllButton.hidden = modoGlobal;
+  }
 
-      appState.muralTotalPages = Math.max(
-        1,
-        Math.ceil(palancas.length / MURAL_POR_PAGINA)
+  // Al cambiar entre vista global y un Cursillo,
+  // recuperamos la primera página.
+  if (
+    appState.muralCursilloId !== identificadorMural
+  ) {
+    appState.muralCursilloId = identificadorMural;
+    appState.muralPage = 1;
+  }
+
+  const palancas = palancasVisiblesEnMural(
+    modoGlobal
+      ? null
+      : cursillo.cursillo_id
+  );
+
+  appState.muralTotalPages = Math.max(
+    1,
+    Math.ceil(
+      palancas.length / MURAL_POR_PAGINA
+    )
+  );
+
+  if (
+    appState.muralPage >
+    appState.muralTotalPages
+  ) {
+    appState.muralPage =
+      appState.muralTotalPages;
+  }
+
+  if (modoGlobal) {
+    const destinos = new Set(
+      palancas
+        .map((palanca) => palanca.cursillo_id)
+        .filter(Boolean)
+    );
+
+    subtitle.textContent =
+      `${palancas.length} palanca`
+      + `${palancas.length === 1 ? "" : "s"} `
+      + `hacia ${destinos.size} Cursillo`
+      + `${destinos.size === 1 ? "" : "s"} del mundo`;
+
+  } else {
+    subtitle.textContent =
+      `${cursillo.nombre_corto || "Cursillo"} · `
+      + `${cursillo.ciudad_referencia || cursillo.pais || ""} · `
+      + `${palancas.length} palanca`
+      + `${palancas.length === 1 ? "" : "s"} visibles`;
+  }
+
+  if (!palancas.length) {
+    list.innerHTML = modoGlobal
+      ? `
+        <div class="empty-state">
+          No hay palancas públicas recientes para los
+          Cursillos actualmente visibles.
+        </div>
+      `
+      : `
+        <div class="empty-state">
+          No hay palancas públicas de los últimos
+          ${MURAL_DIAS_VISIBLES} días para este Cursillo.
+        </div>
+      `;
+
+    return;
+  }
+
+  const inicio =
+    (appState.muralPage - 1)
+    * MURAL_POR_PAGINA;
+
+  const palancasPagina = palancas.slice(
+    inicio,
+    inicio + MURAL_POR_PAGINA
+  );
+
+  const tarjetas = palancasPagina
+    .map((palanca) => {
+      const status = palancaStatus(palanca);
+
+      const cssStatus =
+        status === "En curso"
+          ? "now"
+          : status === "Programada"
+            ? "next"
+            : "done";
+
+      const statusText =
+        status === "En curso"
+          ? "Ahora"
+          : status === "Programada"
+            ? "Próxima"
+            : "Ofrecida";
+
+      const start = formatDate(
+        palanca.inicio_palanca_utc,
+        {
+          time: true,
+          year: false,
+          utc: true
+        }
       );
 
-      if (appState.muralPage > appState.muralTotalPages) {
-        appState.muralPage = appState.muralTotalPages;
-      }
-
-      subtitle.textContent =
-        `${cursillo.nombre_corto || "Cursillo"} · `
-        + `${cursillo.ciudad_referencia || cursillo.pais || ""} · `
-        + `${palancas.length} palanca${palancas.length === 1 ? "" : "s"} visibles`;
-
-      if (!palancas.length) {
-        list.innerHTML =
-          `<div class="empty-state">No hay palancas públicas de los últimos ${MURAL_DIAS_VISIBLES} días para este Cursillo.</div>`;
-        return;
-      }
-
-      const inicio = (appState.muralPage - 1) * MURAL_POR_PAGINA;
-      const palancasPagina = palancas.slice(
-        inicio,
-        inicio + MURAL_POR_PAGINA
+      const end = formatDate(
+        palanca.fin_palanca_utc,
+        {
+          time: true,
+          year: false,
+          utc: true
+        }
       );
 
-      const tarjetas = palancasPagina.map((p) => {
-        const status = palancaStatus(p);
-        const cssStatus =
-          status === "En curso"
-            ? "now"
-            : status === "Programada"
-              ? "next"
-              : "done";
+      const destino = appState.cursillos.find(
+        (item) =>
+          item.cursillo_id === palanca.cursillo_id
+      );
 
-        const statusText =
-          status === "En curso"
-            ? "Ahora"
-            : status === "Programada"
-              ? "Próxima"
-              : "Ofrecida";
+      const nombreDestino = destino
+        ? (
+            destino.nombre_corto
+            || destino.tipo_evento
+            || "Cursillo"
+          )
+        : "Cursillo";
 
-        const start = formatDate(
-          p.inicio_palanca_utc,
-          { time:true, year:false, utc:true }
-        );
+      const lugarDestino = destino
+        ? [
+            destino.ciudad_referencia,
+            destino.pais
+          ]
+            .filter(Boolean)
+            .join(", ")
+        : "";
 
-        const end = formatDate(
-          p.fin_palanca_utc,
-          { time:true, year:false, utc:true }
-        );
+      const destinoCodificado = destino
+        ? encodeURIComponent(destino.cursillo_id)
+        : "";
 
-        return `
-          <article class="palanca-card" tabindex="0">
-            <div class="palanca-top">
-              <div>
-                <div class="palanca-name">${escapeHtml(p.nombre_publico || "Palanca anónima")}</div>
-                <div class="palanca-place">${escapeHtml(p.ciudad_origen || "")}${p.pais_origen ? ` · ${escapeHtml(p.pais_origen)}` : ""}</div>
-              </div>
-              <span class="palanca-status ${cssStatus}">${statusText}</span>
-            </div>
-            <div class="palanca-detail">
-              ${escapeHtml(p.tipo_palanca || "Oración")} · ${start}${p.fin_palanca_utc ? `–${end.split(", ").pop()}` : ""}
-            </div>
-            ${p.mensaje_predefinido ? `<div class="palanca-message">“${escapeHtml(p.mensaje_predefinido)}”</div>` : ""}
-          </article>
-        `;
-      }).join("");
-
-      const paginacion =
-        appState.muralTotalPages > 1
+      const bloqueDestino =
+        modoGlobal && destino
           ? `
-            <nav class="mural-pagination" aria-label="Paginación de palancas">
-              <button
-                class="btn"
-                type="button"
-                onclick="changeMuralPage(-1)"
-                ${appState.muralPage === 1 ? "disabled" : ""}
-              >
-                ← Más recientes
-              </button>
-
-              <span class="mural-page-label">
-                ${appState.muralPage} de ${appState.muralTotalPages}
-              </span>
-
-              <button
-                class="btn"
-                type="button"
-                onclick="changeMuralPage(1)"
-                ${appState.muralPage === appState.muralTotalPages ? "disabled" : ""}
-              >
-                Más antiguas →
-              </button>
-            </nav>
+            <div class="palanca-target">
+              <span>Hacia</span>
+              <strong>
+                ${escapeHtml(destino.bandera || "🌍")}
+                ${escapeHtml(nombreDestino)}
+              </strong>
+              ${
+                lugarDestino
+                  ? `<small>${escapeHtml(lugarDestino)}</small>`
+                  : ""
+              }
+            </div>
           `
           : "";
 
-      list.innerHTML = tarjetas + paginacion;
+      const botonDestino =
+        modoGlobal && destino
+          ? `
+            <div class="mural-card-actions">
+              <button
+                class="btn"
+                type="button"
+                onclick="openCursilloFromMural('${destinoCodificado}')"
+              >
+                Ver este Cursillo →
+              </button>
+            </div>
+          `
+          : "";
+
+      return `
+        <article class="palanca-card" tabindex="0">
+          <div class="palanca-top">
+            <div>
+              <div class="palanca-name">
+                ${escapeHtml(
+                  palanca.nombre_publico
+                  || "Palanca anónima"
+                )}
+              </div>
+
+              <div class="palanca-place">
+                ${escapeHtml(
+                  palanca.ciudad_origen || ""
+                )}
+                ${
+                  palanca.pais_origen
+                    ? ` · ${escapeHtml(
+                        palanca.pais_origen
+                      )}`
+                    : ""
+                }
+              </div>
+            </div>
+
+            <span class="palanca-status ${cssStatus}">
+              ${statusText}
+            </span>
+          </div>
+
+          <div class="palanca-detail">
+            ${escapeHtml(
+              palanca.tipo_palanca || "Oración"
+            )}
+            · ${start}
+            ${
+              palanca.fin_palanca_utc
+                ? `–${end.split(", ").pop()}`
+                : ""
+            }
+          </div>
+
+          ${
+            palanca.mensaje_predefinido
+              ? `
+                <div class="palanca-message">
+                  “${escapeHtml(
+                    palanca.mensaje_predefinido
+                  )}”
+                </div>
+              `
+              : ""
+          }
+
+          ${bloqueDestino}
+          ${botonDestino}
+        </article>
+      `;
+    })
+    .join("");
+
+  const paginacion =
+    appState.muralTotalPages > 1
+      ? `
+        <nav
+          class="mural-pagination"
+          aria-label="Paginación de palancas"
+        >
+          <button
+            class="btn"
+            type="button"
+            onclick="changeMuralPage(-1)"
+            ${
+              appState.muralPage === 1
+                ? "disabled"
+                : ""
+            }
+          >
+            ← Más recientes
+          </button>
+
+          <span class="mural-page-label">
+            ${appState.muralPage}
+            de
+            ${appState.muralTotalPages}
+          </span>
+
+          <button
+            class="btn"
+            type="button"
+            onclick="changeMuralPage(1)"
+            ${
+              appState.muralPage ===
+              appState.muralTotalPages
+                ? "disabled"
+                : ""
+            }
+          >
+            Más antiguas →
+          </button>
+        </nav>
+      `
+      : "";
+
+  list.innerHTML = tarjetas + paginacion;
+}
+
+ function renderFlows() {
+  if (!appState.globe) {
+    return;
+  }
+
+  const cursilloSeleccionado =
+    selectedCursillo();
+
+  const cursillosPorId = new Map(
+    appState.cursillos.map(
+      (cursillo) => [
+        cursillo.cursillo_id,
+        cursillo
+      ]
+    )
+  );
+
+  const palancas =
+    palancasVisiblesEnMural(
+      cursilloSeleccionado
+        ? cursilloSeleccionado.cursillo_id
+        : null
+    );
+
+  const agrupadas = new Map();
+
+  for (const palanca of palancas) {
+    const destino = cursilloSeleccionado
+      || cursillosPorId.get(
+        palanca.cursillo_id
+      );
+
+    if (!destino) {
+      continue;
     }
 
-    function renderFlows() {
-      if (!appState.globe) return;
+    const origenLat =
+      num(palanca.latitud_origen);
 
-      const cursillo = selectedCursillo();
-      if (!cursillo) { appState.globe.arcsData([]); return; }
+    const origenLon =
+      num(palanca.longitud_origen);
 
-      const destLat = num(cursillo.latitud);
-      const destLon = num(cursillo.longitud);
-      if (destLat === null || destLon === null) { appState.globe.arcsData([]); return; }
+    const destinoLat =
+      num(destino.latitud);
 
-      const grouped = new Map();
-      for (const p of visiblePublicPalancas(cursillo.cursillo_id)) {
-        const lat = num(p.latitud_origen);
-        const lon = num(p.longitud_origen);
-        if (lat === null || lon === null) continue;
-        const key = `${lat.toFixed(3)}|${lon.toFixed(3)}`;
-        if (!grouped.has(key)) {
-          grouped.set(key, {
-            lat, lon,
-            city: p.ciudad_origen || "",
-            country: p.pais_origen || "",
-            count: 0
-          });
-        }
-        grouped.get(key).count += 1;
-      }
+    const destinoLon =
+      num(destino.longitud);
 
-      const arcs = [...grouped.values()].slice(0, 90).map((origin, i) => {
-        const c1 = DECOLORES[i % DECOLORES.length];
-        const c2 = DECOLORES[(i + 2) % DECOLORES.length];
-        return {
-          slat: origin.lat,
-          slng: origin.lon,
-          elat: destLat,
-          elng: destLon,
-          colors: [c1, c2],
-          stroke: Math.min(1.6, 0.45 + Math.log2(origin.count + 1) * 0.3),
-          label: `${escapeHtml(origin.city)}, ${escapeHtml(origin.country)} · ${origin.count} palanca${origin.count === 1 ? "" : "s"}`
-        };
+    if (
+      origenLat === null ||
+      origenLon === null ||
+      destinoLat === null ||
+      destinoLon === null
+    ) {
+      continue;
+    }
+
+    const clave = [
+      origenLat.toFixed(3),
+      origenLon.toFixed(3),
+      destinoLat.toFixed(3),
+      destinoLon.toFixed(3)
+    ].join("|");
+
+    if (!agrupadas.has(clave)) {
+      agrupadas.set(clave, {
+        origenLat,
+        origenLon,
+        destinoLat,
+        destinoLon,
+        ciudadOrigen:
+          palanca.ciudad_origen || "",
+        paisOrigen:
+          palanca.pais_origen || "",
+        destinoNombre:
+          destino.nombre_corto
+          || destino.tipo_evento
+          || "Cursillo",
+        destinoLugar:
+          destino.ciudad_referencia
+          || destino.pais
+          || "",
+        count: 0
       });
-
-      appState.globe.arcsData(arcs);
     }
+
+    agrupadas.get(clave).count += 1;
+  }
+
+  const arcs = [...agrupadas.values()]
+    .slice(0, 120)
+    .map((flujo, index) => {
+      const colorInicio =
+        DECOLORES[
+          index % DECOLORES.length
+        ];
+
+      const colorFin =
+        DECOLORES[
+          (index + 2) % DECOLORES.length
+        ];
+
+      const origenTexto = [
+        flujo.ciudadOrigen,
+        flujo.paisOrigen
+      ]
+        .filter(Boolean)
+        .join(", ");
+
+      const destinoTexto = [
+        flujo.destinoNombre,
+        flujo.destinoLugar
+      ]
+        .filter(Boolean)
+        .join(" · ");
+
+      return {
+        slat: flujo.origenLat,
+        slng: flujo.origenLon,
+        elat: flujo.destinoLat,
+        elng: flujo.destinoLon,
+        colors: [
+          colorInicio,
+          colorFin
+        ],
+        stroke: Math.min(
+          1.6,
+          0.45
+          + Math.log2(
+              flujo.count + 1
+            ) * 0.3
+        ),
+        label:
+          `${escapeHtml(
+            origenTexto || "Origen"
+          )}`
+          + ` → `
+          + `${escapeHtml(destinoTexto)}`
+          + ` · `
+          + `${flujo.count} palanca`
+          + `${flujo.count === 1 ? "" : "s"}`
+      };
+    });
+
+  appState.globe.arcsData(arcs);
+}
 
     function renderAll() {
       updateKpis();
