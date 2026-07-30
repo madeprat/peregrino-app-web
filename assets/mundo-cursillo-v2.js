@@ -5,15 +5,12 @@
   const body = document.body;
   body.classList.add("peregrino-world-v2");
 
-  const logoTargets = document.querySelectorAll(
-    ".brand-mark, .peregrino-site-brand-mark"
-  );
-  logoTargets.forEach((mark) => {
+  const mark = document.querySelector(".brand-mark");
+  if (mark) {
     mark.innerHTML =
       '<img src="assets/peregrino-app-icon.png" alt="" ' +
-      'onerror="if(!this.dataset.official){this.dataset.official=\'1\';this.src=\'https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480\';}' +
-      'else{this.remove();this.parentElement.textContent=\'P\';}">';
-  });
+      'onerror="this.remove();this.parentElement.textContent=\'P\'">';
+  }
 
   const actions = document.querySelector(".topbar .actions") || document.querySelector(".topbar");
   if (actions && !document.querySelector(".world-v2-home")) {
