@@ -1,90 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Manual oficial | Peregrino APP</title>
-  <meta name="description" content="Manual oficial para empezar a usar Peregrino APP." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/manual-usuario-peregrino.html" />
-  <meta property="og:title" content="Manual oficial | Peregrino APP" />
-  <meta property="og:description" content="Manual oficial para empezar a usar Peregrino APP." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/manual-usuario-peregrino.html" />
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Manual oficial | Peregrino APP" />
-  <meta name="twitter:description" content="Manual oficial para empezar a usar Peregrino APP." />
-  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/site.css" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="favicon.ico" />
+  <meta name="description" content="Manual para empezar a utilizar Peregrino APP y comprender sus principales espacios.">
+  <meta name="theme-color" content="#fffaf0">
+  <meta property="og:title" content="Manual oficial | Peregrino APP">
+  <meta property="og:description" content="Una guía práctica para comenzar y aprovechar Peregrino APP.">
+  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/manual-v2.css">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
 </head>
 <body>
+
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="decolores-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   <header class="site-header">
-    <div class="wrap site-nav">
+    <div class="shell nav-shell">
       <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
-        <span class="brand-mark">✦</span>
-        <span>Peregrino APP</span>
+        <span class="brand-logo">
+          <img src="assets/peregrino-app-icon.png" alt="" width="56" height="56"
+               onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+          <span class="brand-fallback" hidden aria-hidden="true">P</span>
+        </span>
+        <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
       </a>
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a href="index.html#app">La app</a>
-        <a href="index.html#planes">Planes</a>
-        <a href="index.html#apoyar">Apoyar</a>
-        <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span><span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="index.html#app" aria-current="page">La app</a>
+<a href="index.html#experiencias">Oración y comunidad</a>
+<a href="index.html#cursillo">Descubre el Cursillo</a>
+<a href="index.html#miembros">Miembros</a>
+<a href="index.html#proyecto">El proyecto</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
     </div>
   </header>
-  <main id="contenido" class="page-shell">
-    <section class="prose-hero">
-      <div class="wrap">
-        <div>
-          <span class="eyebrow">Peregrino APP</span>
-          <h1>Manual oficial de Peregrino APP</h1>
-          <p class="lead">Una guía breve para entender cómo está pensada la app y cómo aprovecharla mejor en el día a día.</p>
-          
+<main id="contenido">
+  <section class="page-hero">
+    <div class="shell page-hero-grid">
+      <div class="reveal"><p class="eyebrow">Manual oficial</p><h1>Aprende Peregrino <em>sin perderte.</em></h1><p class="lead">Una guía práctica para comprender cómo está organizada la app y utilizar cada espacio como apoyo para la oración, el Trípode y la comunidad.</p><div class="hero-actions"><a class="button button-primary" href="#manual">Abrir el manual</a><a class="button button-quiet" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a></div></div>
+      <aside class="hero-card manual-hero-card reveal"><div class="hero-card-symbol">☰</div><h2>La app organiza vida, no estadísticas</h2><p>Su estructura responde al Trípode, la Reunión de Grupo y el apostolado concreto del Cuarto Día.</p><div class="steps-row"><span>Oración</span><span>Estudio</span><span>Acción</span><span>Comunidad</span></div></aside>
+    </div>
+  </section>
+
+  <section class="section section-white" id="manual">
+    <div class="shell">
+      <div class="section-heading reveal"><p class="section-kicker">Guía por capítulos</p><h2>Todo lo necesario para empezar</h2><p>Utiliza el índice o busca una palabra. Los capítulos pueden abrirse y cerrarse sin abandonar la página.</p></div>
+
+      <div class="manual-search reveal"><label class="sr-only" for="manualSearch">Buscar en el manual</label><input id="manualSearch" type="search" placeholder="Buscar: Rosario, Trípode, importar, grupo…"><span>⌕</span></div>
+
+      <div class="manual-layout">
+        <nav class="manual-nav reveal" aria-label="Índice del manual">
+          <strong>Capítulos</strong>
+          <a href="#capitulo-1">Empezar</a><a href="#capitulo-2">Inicio y Trípode</a><a href="#capitulo-3">Oraciones</a><a href="#capitulo-4">Rezar en grupo</a><a href="#capitulo-5">Candidatos</a><a href="#capitulo-6">Mis devociones</a><a href="#capitulo-7">Planes y compras</a><a href="#capitulo-8">Privacidad</a>
+        </nav>
+
+        <div class="manual-content">
+          <details class="manual-chapter reveal" id="capitulo-1" open data-search="instalar empezar cuenta perfil permisos inicio">
+            <summary><span class="chapter-number">01</span><span class="chapter-title"><strong>Empezar con Peregrino</strong><span>Instalación, primera entrada y orientación inicial.</span></span><span class="chapter-toggle">+</span></summary>
+            <div class="chapter-body"><p>Descarga la app desde la tienda, abre Peregrino y recorre la presentación inicial. No necesitas configurar toda tu vida el primer día.</p><h3>Primeros pasos recomendados</h3><ul><li>Comprueba que puedes abrir la pantalla de oración.</li><li>Explora el Trípode sin intentar completarlo todo.</li><li>Entra en tu perfil para conocer tu plan efectivo.</li><li>Concede únicamente los permisos que una función necesite.</li></ul><div class="chapter-note">Peregrino está pensado para acompañarte gradualmente. Empieza por una función que realmente vayas a utilizar.</div></div>
+          </details>
+
+          <details class="manual-chapter reveal" id="capitulo-2" data-search="inicio trípode piedad estudio acción diario apuntes gracias">
+            <summary><span class="chapter-number">02</span><span class="chapter-title"><strong>Inicio y Trípode</strong><span>El ritmo diario del Cuarto Día.</span></span><span class="chapter-toggle">+</span></summary>
+            <div class="chapter-body"><p>El Trípode reúne piedad, estudio y acción como dimensiones de una misma vida. No funciona como una puntuación espiritual.</p><div class="manual-grid"><div class="manual-mini"><strong>Piedad</strong><span>Oración y encuentro con Dios.</span></div><div class="manual-mini"><strong>Estudio</strong><span>Formación, lecturas y apuntes.</span></div><div class="manual-mini"><strong>Acción</strong><span>Compromisos y gestos concretos.</span></div></div><p>Utiliza el registro para recordar y ordenar, no para compararte ni generar una racha.</p></div>
+          </details>
+
+          <details class="manual-chapter reveal" id="capitulo-3" data-search="oraciones rosario vía crucis hora apostólica audio voz modo auto devociones">
+            <summary><span class="chapter-number">03</span><span class="chapter-title"><strong>Oraciones y devociones</strong><span>Lectura, voz guiada y Modo Auto.</span></span><span class="chapter-toggle">+</span></summary>
+            <div class="chapter-body"><p>La sección de oraciones diferencia las devociones de lectura y las experiencias guiadas. Según el plan, algunas pueden incluir voz o avance automático.</p><h3>Uso básico</h3><ul><li>Elige la devoción.</li><li>Selecciona el modo disponible: lectura, guiado o automático.</li><li>Utiliza los controles para avanzar, pausar o volver atrás.</li><li>Marca como favorita una oración que quieras encontrar rápidamente.</li></ul><div class="chapter-note">El audio y el Modo Auto están pensados para acompañar, no para acelerar la oración.</div></div>
+          </details>
+
+          <details class="manual-chapter reveal" id="capitulo-4" data-search="rezar grupo comunidad sincronizado anfitrión invitado reunión activa rosario">
+            <summary><span class="chapter-number">04</span><span class="chapter-title"><strong>Rezar en grupo</strong><span>Crear, unirse y avanzar juntos.</span></span><span class="chapter-toggle">+</span></summary>
+            <div class="chapter-body"><p>Peregrino permite que varias personas sigan una oración de forma sincronizada, tanto a distancia como estando juntas.</p><h3>Como anfitrión</h3><ul><li>Elige la oración y crea la sesión.</li><li>Comparte el enlace o código de acceso.</li><li>Controla el avance para todo el grupo.</li></ul><h3>Como invitado</h3><ul><li>Abre la invitación.</li><li>Únete gratuitamente cuando la sesión lo permita.</li><li>Sigue el ritmo marcado por el anfitrión.</li></ul></div>
+          </details>
+
+          <details class="manual-chapter reveal" id="capitulo-5" data-search="candidatos cursillo palancas correo invitación alguien reza por ti mundo">
+            <summary><span class="chapter-number">05</span><span class="chapter-title"><strong>Candidatos y Cursillos</strong><span>Nombres, oración, palancas e invitaciones.</span></span><span class="chapter-toggle">+</span></summary>
+            <div class="chapter-body"><p>La zona de candidatos ayuda a mantener presentes a las personas por las que rezas y a preparar un acompañamiento concreto.</p><ul><li>Guarda únicamente la información necesaria.</li><li>Consulta los Cursillos publicados.</li><li>Ofrece una palanca o utiliza el correo disponible.</li><li>Comparte una invitación personal con respeto y sin presión.</li></ul><div class="chapter-note">Una persona nunca es un objetivo comercial ni una métrica. La información se utiliza para acompañar, no para vigilar.</div></div>
+          </details>
+
+          <details class="manual-chapter reveal" id="capitulo-6" data-search="mis devociones importar exportar json biblioteca copia seguridad compartir">
+            <summary><span class="chapter-number">06</span><span class="chapter-title"><strong>Mis devociones</strong><span>Importar, editar y conservar tus oraciones.</span></span><span class="chapter-toggle">+</span></summary>
+            <div class="chapter-body"><p>Desde la Biblioteca web puedes descargar una oración compatible y abrirla con Peregrino. Se añadirá a Mis devociones.</p><h3>Importar desde el móvil</h3><ul><li>Descarga el archivo terminado en <code>.peregrino.json</code>.</li><li>Abre o comparte el archivo.</li><li>Elige Peregrino APP.</li><li>Confirma la importación.</li></ul><p>En los niveles que incluyan las herramientas correspondientes, también podrás exportar y preparar copias de seguridad.</p></div>
+          </details>
+
+          <details class="manual-chapter reveal" id="capitulo-7" data-search="planes gratis palmero bordón apóstol comprar restaurar compras upgrade diferencia comunidad">
+            <summary><span class="chapter-number">07</span><span class="chapter-title"><strong>Planes, mejoras y restauración</strong><span>Cómo se reconoce tu nivel.</span></span><span class="chapter-toggle">+</span></summary>
+            <div class="chapter-body"><p>Tu perfil muestra el plan efectivo: comprado individualmente, recibido desde una comunidad o restaurado desde la tienda.</p><ul><li>En Android, Palmero, Bordón y Apóstol son niveles progresivos.</li><li>Al mejorar, pagas únicamente la diferencia prevista entre niveles.</li><li>Un Bordón comunitario puede mejorarse a Apóstol.</li><li>En iPhone, Apóstol se ofrece como acceso anual.</li><li>Utiliza «Restaurar compras» al cambiar de dispositivo o reinstalar.</li></ul><p><a href="plan-apostol.html">Consulta la explicación completa de los planes →</a></p></div>
+          </details>
+
+          <details class="manual-chapter reveal" id="capitulo-8" data-search="privacidad datos analíticas publicidad permisos cuenta seguridad">
+            <summary><span class="chapter-number">08</span><span class="chapter-title"><strong>Privacidad y uso consciente</strong><span>Lo que Peregrino mide y lo que decide no medir.</span></span><span class="chapter-toggle">+</span></summary>
+            <div class="chapter-body"><p>Peregrino no utiliza tu vida espiritual para construir perfiles de comportamiento, calificar tu fe ni vender publicidad.</p><ul><li>No hay rachas manipuladoras.</li><li>No se vende tu atención ni tu actividad.</li><li>Las funciones conectadas utilizan solo la información técnica necesaria.</li><li>La app acompaña; no sustituye la comunidad, la conciencia ni la dirección espiritual.</li></ul><p><a href="manifiesto.html">Leer los principios completos →</a></p></div>
+          </details>
+
+          <div class="manual-empty" id="manualEmpty">No se ha encontrado ningún capítulo con ese término.</div>
         </div>
-        <aside class="page-shot"><img src="captura.png" alt="Imagen de apoyo para Manual oficial de Peregrino APP" /></aside>
-      </div>
-    </section>
-    <section>
-      <div class="wrap prose-grid"><article class="prose-card"><h2>Arquitectura basada en el método del MCC</h2><p>Peregrino APP no organiza solo herramientas: organiza vida. Su estructura responde al Trípode, a la Reunión de Grupo y al apostolado concreto del Cuarto Día.</p><p>La app reproduce el ritmo real del cursillista: piedad, estudio, acción, revisión, reunión y compromiso.</p></article><article class="prose-card"><h2>El Trípode: corazón del Cuarto Día</h2><p>Piedad, estudio y acción no son tres actividades independientes, sino tres dimensiones inseparables de una misma vida cristiana.</p><p>Dentro de la app, el Trípode está pensado para ayudarte a registrar vida, no estadísticas.</p></article><article class="prose-card"><h2>Reunión, perseverancia y apostolado</h2><p>La app acompaña el camino para que no se quede solo en una intención bonita. Ayuda a concretar relaciones, nombres, gestos y continuidad.</p><p>Úsala como un apoyo sencillo, no como un sustituto de la gracia ni de la comunidad real.</p></article></div>
-    </section>
-    <section>
-      <div class="wrap cta-band">
-        <div>
-          <h2>Descubre Peregrino APP</h2>
-          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
-        </div>
-        <div class="cta-row" style="margin:0;">
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
-          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <div class="wrap footer-grid">
-      <div>
-        <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
-      </div>
-      <div class="footer-links">
-        <a href="plan-apostol.html">Planes</a>
-        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
-        <a href="aviso-legal.html">Aviso legal</a>
-        <a href="privacidad.html">Privacidad</a>
-        <a href="cookies.html">Cookies</a>
-        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
-    
+  </section>
+</main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html">
+          <span class="brand-logo">
+            <img src="assets/peregrino-app-icon.png" alt="" width="52" height="52"
+                 onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+            <span class="brand-fallback" hidden aria-hidden="true">P</span>
+          </span>
+          <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
+        </a>
+        <p>Guía digital para acompañar la oración, la constancia y la comunidad.</p>
+      </div>
+      <div>
+        <h3>Vive Peregrino</h3>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
+        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
+        <a href="historieta.html">Historieta</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
+      <a href="#contenido">Volver arriba ↑</a>
+    </div>
   </footer>
-</body>
-</html>
+<script src="assets/community-v2.js"></script><script src="assets/manual-v2.js"></script>
+</body></html>

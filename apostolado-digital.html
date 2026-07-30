@@ -1,90 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Apostolado digital | Peregrino APP</title>
-  <meta name="description" content="Una invitación a compartir la fe y la esperanza también en el entorno digital." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/apostolado-digital.html" />
-  <meta property="og:title" content="Apostolado digital | Peregrino APP" />
-  <meta property="og:description" content="Una invitación a compartir la fe y la esperanza también en el entorno digital." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/apostolado-digital.html" />
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Apostolado digital | Peregrino APP" />
-  <meta name="twitter:description" content="Una invitación a compartir la fe y la esperanza también en el entorno digital." />
-  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/site.css" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="favicon.ico" />
+  <meta name="description" content="Una invitación a compartir la fe y la esperanza también en el entorno digital.">
+  <meta name="theme-color" content="#fffaf0">
+  <meta property="og:title" content="Apostolado digital | Peregrino APP">
+  <meta property="og:description" content="La fe no se impone. Se propone. Y hoy también se comparte.">
+  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/discover-v2.css">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
 </head>
-<body>
+<body class="discover-page">
+
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="decolores-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   <header class="site-header">
-    <div class="wrap site-nav">
+    <div class="shell nav-shell">
       <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
-        <span class="brand-mark">✦</span>
-        <span>Peregrino APP</span>
+        <span class="brand-logo">
+          <img src="assets/peregrino-app-icon.png" alt="" width="56" height="56"
+               onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+          <span class="brand-fallback" hidden aria-hidden="true">P</span>
+        </span>
+        <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
       </a>
-      <nav class="nav-links" aria-label="Navegación principal">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span><span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
-        <a href="index.html#planes">Planes</a>
-        <a href="index.html#apoyar">Apoyar</a>
-        <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+<a href="index.html#experiencias">Oración y comunidad</a>
+<a href="index.html#cursillo" aria-current="page">Descubre el Cursillo</a>
+<a href="index.html#miembros">Miembros</a>
+<a href="index.html#proyecto">El proyecto</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
     </div>
   </header>
-  <main id="contenido" class="page-shell">
-    <section class="prose-hero">
-      <div class="wrap">
-        <div>
-          <span class="eyebrow">Peregrino APP</span>
-          <h1>Apostolado digital</h1>
-          <p class="lead">La fe no se impone. Se propone. Y hoy también se comparte.</p>
-          
-        </div>
-        <aside class="page-shot"><img src="foto_gracia3.png" alt="Imagen de apoyo para Apostolado digital" /></aside>
+<main id="contenido">
+  <section class="editorial-hero">
+    <div class="shell editorial-hero-grid">
+      <div class="reveal"><p class="eyebrow">La fe en los ambientes</p><h1>Apostolado <em>digital.</em></h1><p class="lead">La fe no se impone. Se propone. Y hoy también se comparte en mensajes, conversaciones, imágenes y gestos sencillos.</p><div class="hero-actions"><a class="button button-primary" href="#sembrar">Cómo sembrar</a><a class="button button-quiet" href="rincon-de-la-luz.html">Compartir una oración</a></div></div>
+      <aside class="editorial-image reveal"><figure><img src="foto_gracia3.png" onerror="this.onerror=null;this.src='https://madeprat.github.io/peregrino-app-web/foto_gracia3.png';" alt="Imagen de apoyo para el apostolado digital"></figure><div class="image-note"><strong>Proponer</strong><span>Hacer visible una esperanza sencilla y real.</span></div></aside>
+    </div>
+  </section>
+
+  <section class="editorial-section" id="sembrar">
+    <div class="shell">
+      <div class="opening-statement reveal"><span class="opening-symbol">✦</span><p>Una frase, un gesto o una oración compartida puede abrir <strong>una conversación que no imaginabas.</strong></p></div>
+      <div class="principle-grid">
+        <article class="principle-card reveal"><span class="principle-icon">01</span><h2>Rezar también puede ser visible</h2><p>No para presumir, sino para sembrar. La presencia serena de la fe puede despertar preguntas y consuelo.</p><a class="small-link" href="rincon-de-la-luz.html">Regalar una oración →</a></article>
+        <article class="principle-card reveal"><span class="principle-icon">02</span><h2>En tu día a día</h2><p>En casa, en una cafetería, en silencio, pero conectado. Lo digital también forma parte de los ambientes donde vivimos.</p><a class="small-link" href="biblioteca-oraciones.html">Encontrar una oración →</a></article>
+        <article class="principle-card reveal"><span class="principle-icon">03</span><h2>El Cuarto Día no se vive solo</h2><p>Si algo te ha removido, no lo guardes en el bolsillo. Vive la fe cada día y deja que otros vean una esperanza real.</p><a class="small-link" href="que-es-el-mcc.html">Conocer el Cuarto Día →</a></article>
       </div>
-    </section>
-    <section>
-      <div class="wrap prose-grid"><article class="prose-card"><h2>Rezar también puede ser visible</h2><p>No para presumir, sino para sembrar. Una frase, un gesto o una oración compartida puede abrir conversaciones que nunca imaginaste.</p></article><article class="prose-card"><h2>En tu día a día</h2><p>En casa, en una cafetería, en silencio, pero conectado. Peregrino quiere ayudarte a hacer visible una esperanza sencilla y real.</p></article><article class="prose-card"><h2>El Cuarto Día no se vive solo</h2><p>Si esto te ha removido algo, no lo guardes en el bolsillo. Vive tu fe cada día y deja que otros vean que Cristo sigue vivo.</p></article></div>
-    </section>
-    <section>
-      <div class="wrap cta-band">
-        <div>
-          <h2>Descubre Peregrino APP</h2>
-          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
+    </div>
+  </section>
+
+  <section class="editorial-section alt"><aside class="big-quote reveal"><blockquote>La fe no se impone. Se propone.</blockquote><p>El apostolado digital no consiste en llenar las redes de mensajes religiosos, sino en cuidar la forma, el momento y a la persona que los recibe.</p></aside></section>
+
+  <section class="editorial-section">
+    <div class="editorial-narrow">
+      <article class="story-block reveal"><span class="story-label">Un criterio sencillo</span><h2>Compartir sin invadir</h2><p class="dropcap">Una presencia cristiana en internet necesita la misma delicadeza que cualquier conversación importante cara a cara.</p><p>Puede ser una oración enviada a quien atraviesa un momento difícil, una palabra de gratitud, una invitación sin presión o la alegría de mostrar que la fe también se vive en lo cotidiano.</p>
+        <div class="editorial-cards">
+          <article class="editorial-card"><span class="card-number">ESCUCHA</span><h3>Piensa en la persona</h3><p>No todo mensaje sirve para todos ni todo momento es adecuado.</p></article>
+          <article class="editorial-card"><span class="card-number">CUIDA</span><h3>Habla con respeto</h3><p>Una invitación puede abrir una puerta sin exigir que alguien la cruce.</p></article>
+          <article class="editorial-card"><span class="card-number">SIEMBRA</span><h3>Deja espacio</h3><p>Compartir la esperanza no significa controlar la respuesta.</p></article>
         </div>
-        <div class="cta-row" style="margin:0;">
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
-          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
-        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="closing-panel reveal"><h2>También en internet puedes <em>ser luz.</em></h2><p>Peregrino ofrece recursos para compartir una oración, una invitación o una experiencia sin convertir la fe en publicidad.</p><div class="hero-actions"><a class="button button-primary" href="rincon-de-la-luz.html">Ir al Rincón de la Luz</a><a class="button button-quiet" href="alguien-reza-por-ti.html">Ver una invitación</a></div></section>
+</main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html">
+          <span class="brand-logo">
+            <img src="assets/peregrino-app-icon.png" alt="" width="52" height="52"
+                 onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+            <span class="brand-fallback" hidden aria-hidden="true">P</span>
+          </span>
+          <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
+        </a>
+        <p>Guía digital para acompañar la oración, la constancia y la comunidad.</p>
       </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <div class="wrap footer-grid">
       <div>
-        <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
-      </div>
-      <div class="footer-links">
-        <a href="plan-apostol.html">Planes</a>
+        <h3>Vive Peregrino</h3>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
         <a href="aviso-legal.html">Aviso legal</a>
         <a href="privacidad.html">Privacidad</a>
         <a href="cookies.html">Cookies</a>
-        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
-    
+    <div class="shell footer-bottom">
+      <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
+      <a href="#contenido">Volver arriba ↑</a>
+    </div>
   </footer>
-</body>
-</html>
+<script src="assets/community-v2.js"></script>
+</body></html>

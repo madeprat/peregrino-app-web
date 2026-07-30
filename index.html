@@ -1,335 +1,490 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Peregrino APP | El Cuarto Día, vivo cada día</title>
-  <meta name="description" content="Peregrino APP acompaña tu Cuarto Día con oración, Trípode, comunidad y niveles claros para avanzar a tu ritmo: Gratis, Palmero, Bordón y Apóstol." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/" />
-  <meta property="og:title" content="Peregrino APP | El Cuarto Día, vivo cada día" />
-  <meta property="og:description" content="Empieza gratis y descubre cómo Peregrino APP acompaña tu oración, constancia y comunidad en el día a día." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/" />
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Peregrino APP | El Cuarto Día, vivo cada día" />
-  <meta name="twitter:description" content="Empieza gratis y descubre cómo Peregrino APP acompaña tu oración, constancia y comunidad en el día a día." />
-  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-  <link rel="preload" as="image" href="hero-peregrino.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/site.css" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="favicon.ico" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peregrino APP · El Cuarto Día, vivo cada día</title>
+  <meta name="description" content="Peregrino acompaña el Cuarto Día con oración, comunidad, recursos y herramientas para compartir la fe.">
+  <meta name="theme-color" content="#fffaf0">
+  <meta property="og:title" content="Peregrino APP · El Cuarto Día, vivo cada día">
+  <meta property="og:description" content="Una app y una comunidad digital para sostener la oración, la constancia y el camino compartido.">
+  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site-v2.css">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
 </head>
-<body>
+<body data-member-mode="visitor">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <div class="decolores-line" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
   <header class="site-header">
-    <div class="wrap site-nav">
-      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
-        <span class="brand-mark" aria-hidden="true">✦</span>
-        <span>Peregrino APP</span>
+    <div class="shell nav-shell">
+      <a class="brand" href="#inicio" aria-label="Peregrino APP, volver al inicio">
+        <span class="brand-logo">
+          <img
+            src="assets/peregrino-app-icon.png"
+            alt=""
+            width="56"
+            height="56"
+            onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+          >
+          <span class="brand-fallback" hidden aria-hidden="true">P</span>
+        </span>
+        <span class="brand-copy">
+          <strong>Peregrino</strong>
+          <small>El Cuarto Día, vivo cada día</small>
+        </span>
       </a>
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a href="index.html#app">La app</a>
-        <a href="index.html#planes">Planes</a>
-        <a href="index.html#apoyar">Apoyar</a>
-        <a href="index.html#biblioteca">Biblioteca</a>
-        <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="#app">La app</a>
+        <a href="#experiencias">Oración y comunidad</a>
+        <a href="#cursillo">Descubre el Cursillo</a>
+        <a href="#miembros">Miembros</a>
+        <a href="#proyecto">El proyecto</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
+
+      <div class="member-demo" aria-label="Vista de demostración">
+        <span class="member-demo-label">Vista</span>
+        <button class="mode-switch" type="button" role="switch" aria-checked="false">
+          <span class="mode-switch-track"><span class="mode-switch-thumb"></span></span>
+          <span class="mode-switch-text">Visitante</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="contenido">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-media" aria-hidden="true"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="wrap hero-inner">
-        <div class="hero-copy" data-reveal-group>
-          <span class="eyebrow" data-reveal><a class="nav-cta2" href="historieta.html">Mira la Historieta de la creación de la APP</a> </span>
-          <div class="hero-title-wrap" data-reveal>
-            <h1 id="hero-title" data-split-words>El Cuarto Día, vivo cada día.</h1>
-          </div>
-          <p class="lead" data-reveal>Todo lo esencial está dentro de Peregrino APP: oración, Trípode, comunidad y un camino claro para seguir avanzando a tu ritmo. Empieza gratis y, si lo necesitas, da el siguiente paso con Palmero, Bordón o Apóstol.</p>
-          <div class="hero-points" aria-label="Puntos clave de Peregrino APP" data-reveal-group>
-            <span data-reveal>Trípode diario</span>
-            <span data-reveal>Rosario y oraciones</span>
-            <span data-reveal>Candidatos</span>
-            
-          </div>
-          <div class="download-section" style="margin-bottom: 20px;">
-  <p style="font-size: 1.1rem; margin-bottom: 15px; color: #333;">
-    Consigue la aplicación oficial para tu dispositivo Android:
-  </p>
-  
-  <div class="cta-row" data-reveal>
-    <!-- Opción recomendada (Play Store) con clase principal -->
-    <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
-      Descargar en Google Play
-    </a>            
-    
-    <!-- Opción respaldo (APK) con clase secundaria para que no compitan visualmente -->
-    <a class="btn btn-secondary" href="https://github.com/madeprat/peregrino-app-web/releases/download/v1.0.32/app-release.apk">
-      Descargar aquí la ultima versión APK
-    </a>
-  </div>
+    <section id="inicio" class="hero">
+      <div class="hero-aura aura-one" aria-hidden="true"></div>
+      <div class="hero-aura aura-two" aria-hidden="true"></div>
 
-  <p style="font-size: 0.85rem; margin-top: 10px; color: #333; font-style: italic; ">
-    *Nota: Si descargas el APK, recuerda permitir la instalación desde fuentes desconocidas en tu teléfono.
-  </p>
-</div>
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Una guía digital para el Cuarto Día</p>
+          <h1>La fe se vive.<br><em>El camino se comparte.</em></h1>
+          <p class="hero-lead">
+            Peregrino reúne oración, Trípode, comunidad y recursos en un espacio sereno,
+            pensado para ayudarte a volver cada día a lo esencial.
+          </p>
 
-          <p class="microcopy" data-reveal>Lo esencial es gratis para siempre. Disponible actualmente para Android.</p>
-          <div class="cta-row" data-reveal>
-            <a class="btn btn-primary" href="mundo-cursillo.html">
-              Ver «El mundo está de Cursillo»
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
+              Descargar Peregrino
+              <span aria-hidden="true">→</span>
             </a>
-            <a class="btn btn-secondary" href="#planes">Ver niveles</a>
+            <a class="button button-quiet" href="mundo-cursillo.html">
+              Ver el mundo de Cursillo
+            </a>
           </div>
-          
+
+          <div class="trust-row" aria-label="Principios de Peregrino">
+            <span>Lo esencial, gratis</span>
+            <span>Sin analíticas espirituales</span>
+            <span>Hecha con propósito</span>
+          </div>
         </div>
 
-        <aside class="demo-stage" aria-label="Demostración del producto" data-reveal-group>
-          <div class="device-feature" data-reveal>
-            <div class="device-frame video-frame">
-              <div class="device-notch" aria-hidden="true"></div>
-              <video class="device-screen" autoplay muted loop playsinline preload="none" width="390" height="844" poster="assets/demo-auto-poster.webp" aria-label="Demostración del Modo Auto leyendo el Rosario">
-              </video>
-              <div class="device-caption">Modo Auto · Rosario en voz alta</div>
+        <div class="hero-visual reveal" aria-label="Vista de Peregrino APP">
+          <div class="visual-orbit orbit-one" aria-hidden="true"></div>
+          <div class="visual-orbit orbit-two" aria-hidden="true"></div>
+
+          <figure class="phone-card">
+            <div class="phone-frame">
+              <div class="phone-speaker" aria-hidden="true"></div>
+              <img
+                src="assets/demo-fan-1.webp" onerror="this.onerror=null;this.src='https://madeprat.github.io/peregrino-app-web/assets/demo-fan-1.webp';"
+                alt="Pantalla principal de Peregrino APP"
+                width="390"
+                height="844"
+              >
             </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="surface" id="vistazo" data-section>
-      <div class="wrap" data-reveal-group>
-        <div class="section-head" data-reveal>
-          <h2>Así se ve por dentro</h2>
-          <p>Un vistazo a Peregrino: tu día de un golpe de vista, los rezos guiados y la vida de tu grupo, siempre a mano.</p>
-        </div>
-        <div class="shots-row">
-          <figure class="shot-phone" data-reveal>
-            <div class="device-frame"><div class="device-notch" aria-hidden="true"></div><img class="device-screen" src="assets/demo-fan-1.webp" width="390" height="844" alt="Pantalla de inicio de Peregrino APP con el resumen del día" loading="lazy" /></div>
-            <figcaption>Tu día, claro desde el inicio</figcaption>
           </figure>
-          <figure class="shot-phone" data-reveal>
-            <div class="device-frame"><div class="device-notch" aria-hidden="true"></div><img class="device-screen" src="assets/demo-fan-2.webp" width="390" height="844" alt="Pantalla del Rosario guiado en Peregrino APP" loading="lazy" /></div>
-            <figcaption>Rezos guiados, paso a paso</figcaption>
-          </figure>
-          <figure class="shot-phone" data-reveal>
-            <div class="device-frame"><div class="device-notch" aria-hidden="true"></div><img class="device-screen" src="assets/demo-fan-3.webp" width="390" height="844" alt="Pantalla de la Reunión de Grupo en Peregrino APP" loading="lazy" /></div>
-            <figcaption>La vida de tu grupo, contigo</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
 
-    <section id="app" data-section>
-      <div class="wrap two-col app-showcase">
-        <div data-reveal-group>
-          <div class="section-head" data-reveal>
-            <h2>Una app pensada para acompañar de verdad</h2>
-            <p>No es una colección de pantallas: es una ayuda real para sostener la oración, el hábito y la comunidad en medio del ritmo normal de la vida.</p>
-          </div>
-          <div class="stack" data-reveal-group>
-            <article class="card" data-reveal>
-              <div class="icon-chip">☀️</div>
-              <h3>Trípode diario</h3>
-              <p>Oración, estudio y acción organizados de forma clara para que el camino no se quede en intención.</p>
-            </article>
-            <article class="card" data-reveal>
-              <div class="icon-chip">🔊</div>
-              <h3>Modo Auto</h3>
-              <p>Lectura en voz alta y manos libres: reza el Rosario, el Vía Crucis o la Hora Apostólica mientras conduces, caminas o descansas, sin pelearte con la pantalla.</p>
-            </article>
-            <article class="card" data-reveal>
-              <div class="icon-chip">🤝</div>
-              <h3>Camino compartido</h3>
-              <p>Candidatos y Reunión de Grupo para recordar que este camino también se sostiene en comunidad.</p>
-            </article>
-          </div>
-        </div>
+          <a class="floating-card card-world" href="mundo-cursillo.html">
+            <span class="floating-icon">🌍</span>
+            <span><strong>El mundo está de Cursillo</strong><small>Palancas vivas</small></span>
+          </a>
 
-        <div class="support-panel" data-reveal-group>
-          <article class="feature-card highlight" data-reveal>
-            <h3>Hecha para tu vida real</h3>
-            <p>Peregrino no te pide más tiempo del que tienes. Te acompaña en el coche, en la cocina o antes de dormir, para que rezar no sea una tarea más, sino un respiro al que volver.</p>
-          </article>
-          <article class="feature-card" data-reveal>
-            <h3>Sencilla, para que vuelvas</h3>
-            <p>Sin ruido y sin distracciones: solo lo que necesitas para no perder el hilo del Cuarto Día y volver cada día con un poco más de paz.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+          <a class="floating-card card-light" href="rincon-de-la-luz.html">
+            <span class="floating-icon">🕯️</span>
+            <span><strong>Rincón de la Luz</strong><small>Oración que se regala</small></span>
+          </a>
 
-    <section id="planes" class="surface" data-section>
-      <div class="wrap" data-reveal-group>
-        <div class="section-head" data-reveal>
-          <h2>Camina a tu ritmo</h2>
-          <p>Lo esencial es gratis para siempre. Y si quieres una experiencia más acompañada, estos son los tres niveles que desbloquean funciones concretas dentro de la app.</p>
-        </div>
-
-        <div class="plan-grid" data-reveal-group>
-          <article class="plan-card" data-reveal>
-            <div class="plan-badge">Palmero</div>
-            <div class="plan-price"><strong>4,99 €</strong> <span>pago único</span></div>
-            <h3>Tu Rosario, guiado con voz</h3>
-            <p>El primer paso: tu aportación ayuda a que Peregrino llegue más lejos.</p>
-            <ul class="plan-list">
-              <li>🌈 Distintivo de colores en tu perfil</li>
-              <li>📿 Rosario guiado con voz, paso a paso</li>
-            </ul>
-          </article>
-
-          <article class="plan-card" data-reveal>
-            <div class="plan-badge">Bordón</div>
-            <div class="plan-price"><strong>9,99 €</strong> <span>pago único</span></div>
-            <h3>Constancia y comunidad</h3>
-            <p>El apoyo para no perder el hilo del Cuarto Día y cuidar a tu grupo.</p>
-            <ul class="plan-list">
-              <li>✓ Todo lo del nivel Palmero</li>
-              <li>🔔 Recordatorios de oración, mañana y noche</li>
-              <li>🎙️ Reunión de Grupo con voz guiada</li>
-              <li>🌐 Modo online en tu Reunión Activa</li>
-              <li>🤝 Contacto directo con tus candidatos</li>
-              <li>📲 Comparte tus hitos del Cuarto Día</li>
-            </ul>
-          </article>
-
-          <article class="plan-card featured recommended" data-reveal>
-            <div class="plan-badge">Apóstol · Recomendado</div>
-            <div class="plan-price"><strong>11,99 €</strong> <span><s>14,99 €</s> precio de lanzamiento</span></div>
-            <h3>Todo Peregrino, para siempre</h3>
-            <p>Por muy poco más que Bordón, tienes la app entera —hoy y todo lo que venga— con las dos grandes devociones del Cursillo en voz.</p>
-            <ul class="plan-list">
-              <li>✓ Todo lo del nivel Bordón</li>
-              <li>✝️ Vía Crucis con voz guiada</li>
-              <li>🕊️ Hora Apostólica con voz guiada</li>
-              <li>📥 Importa, exporta y comparte tus propias oraciones, con copia de seguridad</li>
-              <li>📅 Reunión de Grupo en tu calendario</li>
-              <li>✨ Todas las funciones futuras, incluidas</li>
-            </ul>
-          </article>
-        </div>
-
-        <p class="plan-footnote" data-reveal>Son compras únicas (pago único), no suscripciones, gestionadas por Google Play. Si cambias de dispositivo, usa «Restaurar compras».</p>
-
-        <div class="cta-row" data-reveal>
-          <a class="btn btn-primary" href="plan-apostol.html">Comparar niveles</a>
-          <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Empezar gratis</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="surface" id="apoyar" data-section>
-      <div class="wrap two-col">
-        <div data-reveal-group>
-          <div class="section-head" data-reveal>
-            <h2>Apoya el proyecto</h2>
-            <p>Si Peregrino APP te ayuda, puedes sostener su desarrollo con una aportación libre. Es un gesto voluntario y separado de los niveles de la app.</p>
-          </div>
-          <div class="stack" data-reveal-group>
-            <div class="note" data-reveal><strong>Aportación libre:</strong> apoyo voluntario para sostener el proyecto, cuando te nazca.</div>
-            <div class="note" data-reveal><strong>No es comprar funciones:</strong> es sembrar para que Peregrino llegue a quien aún no la conoce.</div>
-          </div>
-        </div>
-        <aside class="pricing-card" data-reveal-group>
-          <div data-reveal>
-            <h3>Hacer una aportación</h3>
-            <p>Elige una cantidad orientativa y abre PayPal en una pestaña nueva. Después recibirás una pequeña bendición.</p>
-          </div>
-          <div class="range-wrap" style="margin-top:20px;" data-reveal>
-            <div class="amount" id="amount">10 €</div>
-            <label for="slider" class="small">Cantidad orientativa</label>
-            <input type="range" min="1" max="50" value="10" id="slider" />
-            <button class="btn btn-primary" type="button" onclick="donar()">Abrir PayPal</button>
-          </div>
-          <p class="small" style="margin-top:16px;" data-reveal>Tu aportación ayuda a sostener el desarrollo y la continuidad del proyecto.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section id="biblioteca" data-section>
-      <div class="wrap cta-band" data-reveal-group>
-        <div data-reveal>
-          <h2>Biblioteca de oraciones</h2>
-          <p>Descubre nuevas oraciones para Peregrino APP, descárgalas e impórtalas en tu móvil para llevarlas siempre contigo.</p>
-        </div>
-        <div class="cta-row" style="margin:0;" data-reveal>
-          <a class="btn btn-primary" href="biblioteca-oraciones.html">
-            Explorar la biblioteca
+          <a class="floating-card card-library" href="biblioteca-oraciones.html">
+            <span class="floating-icon">✦</span>
+            <span><strong>Biblioteca</strong><small>Hazla tuya</small></span>
           </a>
         </div>
       </div>
     </section>
 
-    <section id="recursos" data-section>
-      <div class="wrap" data-reveal-group>
-        <div class="section-head" data-reveal>
-          <h2>Recursos y lecturas</h2>
-          <p>Contenido complementario para conocer mejor la app, el proyecto y su contexto.</p>
+    <section class="intro-band">
+      <div class="shell intro-band-grid">
+        <p class="section-kicker">Una sola casa digital</p>
+        <p>
+          La nueva web organiza todo lo que Peregrino ya ofrece en tres caminos claros:
+          vivir la app, participar en la oración compartida y descubrir el Movimiento de Cursillos.
+        </p>
+      </div>
+    </section>
+
+    <section id="app" class="section section-light">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Peregrino APP</p>
+          <h2>Una ayuda real para la vida cotidiana</h2>
+          <p>
+            No es una colección de pantallas. Es una forma sencilla de sostener la oración,
+            cuidar el Trípode y permanecer unido a tu comunidad.
+          </p>
         </div>
-        <div class="resource-grid" data-reveal-group>
-          <article class="resource-card" data-reveal><h3>Manual oficial</h3><p>Guía práctica para empezar a usar Peregrino APP.</p><a href="manual-usuario-peregrino.html">Abrir manual</a></article>
-          <article class="resource-card" data-reveal><h3>Manifiesto</h3><p>La visión de fondo del proyecto y el sentido del Cuarto Día.</p><a href="manifiesto.html">Leer manifiesto</a></article>
-          <article class="resource-card" data-reveal><h3>Apostolado digital</h3><p>Una invitación a compartir la fe también en el entorno digital.</p><a href="apostolado-digital.html">Ver página</a></article>
-          <article class="resource-card" data-reveal><h3>Qué es el MCC</h3><p>Una explicación breve para quienes se acercan por primera vez.</p><a href="que-es-el-mcc.html">Abrir contenido</a></article>
-          <article class="resource-card" data-reveal><h3>Reunión de Grupo</h3><p>Una ayuda para reforzar la dimensión comunitaria del camino.</p><a href="reunion-de-grupo.html">Abrir contenido</a></article>
-          <article class="resource-card" data-reveal><h3>Quiero vivir un Cursillo</h3><p>Una puerta de entrada para quienes desean dar ese paso.</p><a href="quiero-vivir-un-cursillo.html">Abrir contenido</a></article>
+
+        <div class="feature-layout">
+          <article class="feature-main reveal">
+            <div>
+              <span class="feature-number">01</span>
+              <h3>Vuelve a lo esencial</h3>
+              <p>Tu día, tus oraciones y tu camino aparecen ordenados sin ruido ni distracciones.</p>
+            </div>
+            <img
+              src="assets/demo-fan-2.webp" onerror="this.onerror=null;this.src='https://madeprat.github.io/peregrino-app-web/assets/demo-fan-2.webp';"
+              alt="Rosario guiado en Peregrino APP"
+              loading="lazy"
+              width="390"
+              height="844"
+            >
+          </article>
+
+          <div class="feature-stack">
+            <article class="feature-small reveal">
+              <span class="feature-symbol">☀</span>
+              <h3>Trípode diario</h3>
+              <p>Oración, estudio y acción para que el Cuarto Día no se quede en intención.</p>
+            </article>
+            <article class="feature-small reveal">
+              <span class="feature-symbol">◉</span>
+              <h3>Oración guiada</h3>
+              <p>Rosario, Vía Crucis y Hora Apostólica con una experiencia clara y acompañada.</p>
+            </article>
+            <article class="feature-small reveal">
+              <span class="feature-symbol">∞</span>
+              <h3>Camino compartido</h3>
+              <p>Reunión de Grupo, candidatos y oración en comunidad cuando más lo necesitas.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="center-actions">
+          <a class="text-link" href="plan-apostol.html">Conocer los planes de la app <span>→</span></a>
+          <a class="text-link" href="manual-usuario-peregrino.html">Abrir el manual <span>→</span></a>
         </div>
       </div>
     </section>
 
-    <section data-section>
-      <div class="wrap cta-band" data-reveal-group>
-        <div data-reveal>
-          <h2>Empieza gratis</h2>
-          <p>Descarga Peregrino APP y empieza por lo esencial. Si con el tiempo quieres una experiencia más acompañada, ya tendrás claro cuál es tu siguiente paso.</p>
+    <section id="experiencias" class="section section-warm">
+      <div class="shell">
+        <div class="section-heading split-heading reveal">
+          <div>
+            <p class="section-kicker">Oración y comunidad</p>
+            <h2>Experiencias que ya están vivas</h2>
+          </div>
+          <p>
+            Cada espacio conserva su función actual. La nueva portada los presenta como una
+            familia coherente, en lugar de páginas aisladas.
+          </p>
         </div>
-        <div class="cta-row" style="margin:0;" data-reveal>
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
-          <a class="btn btn-secondary" href="plan-apostol.html">Comparar niveles</a>
+
+        <div class="experience-grid">
+          <a class="experience-card experience-world reveal" href="mundo-cursillo.html">
+            <span class="experience-tag">Palancas</span>
+            <div class="experience-icon">🌍</div>
+            <h3>El mundo está de Cursillo</h3>
+            <p>Consulta Cursillos, contempla las palancas y ofrece tu oración desde cualquier lugar.</p>
+            <span class="card-link">Entrar al mapa <b>→</b></span>
+          </a>
+
+          <a class="experience-card experience-light reveal" href="rincon-de-la-luz.html">
+            <span class="experience-tag">Oración compartida</span>
+            <div class="experience-icon">🕯️</div>
+            <h3>Rincón de la Luz</h3>
+            <p>Enciende una velita, regala una oración, recibe una luz o deja una intención.</p>
+            <span class="card-link">Entrar al Rincón <b>→</b></span>
+          </a>
+
+          <a class="experience-card experience-library reveal" href="biblioteca-oraciones.html">
+            <span class="experience-tag">Mis devociones</span>
+            <div class="experience-icon">✦</div>
+            <h3>Biblioteca de oraciones</h3>
+            <p>Busca una oración, descárgala y consérvala en Peregrino para usarla sin conexión.</p>
+            <span class="card-link">Explorar biblioteca <b>→</b></span>
+          </a>
+
+          <a class="experience-card experience-gift reveal" href="regalo-de-oracion.html">
+            <span class="experience-tag">Para compartir</span>
+            <div class="experience-icon">🎁</div>
+            <h3>Regala una oración</h3>
+            <p>Convierte un gesto sencillo en una experiencia que otra persona puede recibir y compartir.</p>
+            <span class="card-link">Preparar un regalo <b>→</b></span>
+          </a>
         </div>
+      </div>
+    </section>
+
+    <section id="miembros" class="section member-section">
+      <div class="shell">
+        <div class="member-heading reveal">
+          <div>
+            <p class="section-kicker">Experiencia de miembro · maqueta</p>
+            <h2>Más personalización, memoria y formas de compartir</h2>
+          </div>
+          <p>
+            La oración esencial permanece abierta. La membresía puede distinguir las herramientas
+            que permiten crear, conservar o presentar algo propio.
+          </p>
+        </div>
+
+        <div class="member-notice reveal">
+          <span class="notice-dot"></span>
+          <p>
+            <strong>Demostración visual:</strong> todavía no hay cobro, cuenta ni bloqueo real.
+            Cambia la vista del encabezado para comprobar cómo se comunicaría a un visitante o a un miembro.
+          </p>
+        </div>
+
+        <div class="member-grid">
+          <article class="member-card reveal">
+            <div class="member-card-top">
+              <span class="member-icon">✉</span>
+              <span class="member-badge"><span class="lock-icon">◇</span> Miembros</span>
+            </div>
+            <h3>Tarjeta de oración personalizada</h3>
+            <p>Crea una tarjeta cuidada con nombre, tono y una presentación lista para compartir.</p>
+            <a class="member-action" data-member-action href="rincon-de-la-luz.html#regala">
+              <span class="visitor-copy">Descubrir la ventaja</span>
+              <span class="member-copy">Crear una tarjeta</span>
+              <b>→</b>
+            </a>
+          </article>
+
+          <article class="member-card reveal">
+            <div class="member-card-top">
+              <span class="member-icon">♡</span>
+              <span class="member-badge"><span class="lock-icon">◇</span> Miembros</span>
+            </div>
+            <h3>Invitación «Alguien reza por ti»</h3>
+            <p>Prepara una experiencia personal para acercar a alguien al Cursillo con delicadeza.</p>
+            <a class="member-action" data-member-action href="alguien-reza-por-ti.html">
+              <span class="visitor-copy">Descubrir la ventaja</span>
+              <span class="member-copy">Crear invitación</span>
+              <b>→</b>
+            </a>
+          </article>
+
+          <article class="member-card reveal">
+            <div class="member-card-top">
+              <span class="member-icon">◎</span>
+              <span class="member-badge"><span class="lock-icon">◇</span> Miembros</span>
+            </div>
+            <h3>Recuerdo de un Cursillo</h3>
+            <p>Conserva una presentación visual del Cursillo y de las palancas que lo sostuvieron.</p>
+            <a class="member-action" data-member-action href="mundo-cursillo.html">
+              <span class="visitor-copy">Descubrir la ventaja</span>
+              <span class="member-copy">Guardar recuerdo</span>
+              <b>→</b>
+            </a>
+          </article>
+
+          <article class="member-card reveal">
+            <div class="member-card-top">
+              <span class="member-icon">✦</span>
+              <span class="member-badge"><span class="lock-icon">◇</span> Miembros</span>
+            </div>
+            <h3>Colecciones especiales</h3>
+            <p>Recorre selecciones editoriales de oraciones por tiempos litúrgicos y momentos de vida.</p>
+            <a class="member-action" data-member-action href="biblioteca-oraciones.html">
+              <span class="visitor-copy">Descubrir la ventaja</span>
+              <span class="member-copy">Ver colecciones</span>
+              <b>→</b>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cursillo" class="section section-blue">
+      <div class="shell cursillo-grid">
+        <div class="cursillo-copy reveal">
+          <p class="section-kicker">Descubre el Cursillo</p>
+          <h2>Una puerta abierta para quien todavía no conoce el MCC</h2>
+          <p>
+            Explicaciones sencillas, una invitación personal y caminos claros para acercarse
+            al Movimiento sin formularios invasivos ni intermediaciones confusas.
+          </p>
+          <div class="cursillo-actions">
+            <a class="button button-white" href="que-es-el-mcc.html">Qué es el MCC</a>
+            <a class="button button-blue-quiet" href="quiero-vivir-un-cursillo.html">Quiero vivir un Cursillo</a>
+          </div>
+        </div>
+
+        <div class="cursillo-links reveal">
+          <a href="alguien-reza-por-ti.html">
+            <span>01</span>
+            <div><strong>Alguien está rezando por ti</strong><small>Una invitación que se recibe con el corazón.</small></div>
+            <b>→</b>
+          </a>
+          <a href="reunion-de-grupo.html">
+            <span>02</span>
+            <div><strong>Reunión de Grupo</strong><small>La amistad, la revisión y el camino compartido.</small></div>
+            <b>→</b>
+          </a>
+          <a href="apostolado-digital.html">
+            <span>03</span>
+            <div><strong>Apostolado digital</strong><small>La fe también puede sembrarse en el entorno digital.</small></div>
+            <b>→</b>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="planes" class="section section-light">
+      <div class="shell plans-summary">
+        <div class="plans-copy reveal">
+          <p class="section-kicker">Planes de la app</p>
+          <h2>Empieza gratis. Avanza a tu ritmo.</h2>
+          <p>
+            Gratis, Palmero, Bordón y Apóstol acompañan niveles distintos de experiencia
+            dentro de la aplicación. La web los explica, pero no confunde la membresía web
+            con las compras de la app.
+          </p>
+          <a class="button button-primary" href="plan-apostol.html">Comparar planes</a>
+        </div>
+
+        <div class="plan-steps reveal" aria-label="Niveles de Peregrino APP">
+          <div><span>Gratis</span><strong>Lo esencial</strong></div>
+          <div><span>Palmero</span><strong>Oración guiada</strong></div>
+          <div><span>Bordón</span><strong>Constancia y comunidad</strong></div>
+          <div class="plan-featured"><span>Apóstol</span><strong>Experiencia completa</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyecto" class="section project-section">
+      <div class="shell">
+        <div class="section-heading split-heading reveal">
+          <div>
+            <p class="section-kicker">El proyecto</p>
+            <h2>Una tecnología con principios</h2>
+          </div>
+          <p>
+            Peregrino nace como una iniciativa personal al servicio de la oración,
+            la comunidad y la dignidad de cada persona.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <a href="manifiesto.html" class="project-card reveal">
+            <span>01</span><h3>Manifiesto</h3><p>La visión de fondo y las decisiones éticas del proyecto.</p><b>Leer →</b>
+          </a>
+          <a href="historieta.html" class="project-card reveal">
+            <span>02</span><h3>La historieta</h3><p>Cómo nació Peregrino y por qué existe.</p><b>Descubrir →</b>
+          </a>
+          <a href="manual-usuario-peregrino.html" class="project-card reveal">
+            <span>03</span><h3>Manual</h3><p>Una guía práctica para comenzar y aprovechar la app.</p><b>Abrir →</b>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell final-cta-inner reveal">
+        <div>
+          <p class="section-kicker">Tu Cuarto Día continúa</p>
+          <h2>Una ayuda pequeña para un camino que dura toda la vida.</h2>
+        </div>
+        <a class="button button-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
+          Descargar Peregrino <span>→</span>
+        </a>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer-grid">
-      <div>
-        <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="#inicio">
+          <span class="brand-logo">
+            <img
+              src="assets/peregrino-app-icon.png"
+              alt=""
+              width="52"
+              height="52"
+              onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+            >
+            <span class="brand-fallback" hidden aria-hidden="true">P</span>
+          </span>
+          <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
+        </a>
+        <p>Guía digital para acompañar la oración, la constancia y la comunidad.</p>
       </div>
-      <div class="footer-links">
-        <a href="plan-apostol.html">Planes</a>
+
+      <div>
+        <h3>Vive Peregrino</h3>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
-        <a href="biblioteca-oraciones.html">Biblioteca de oraciones</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+
+      <div>
+        <h3>Descubre</h3>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+      </div>
+
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
         <a href="aviso-legal.html">Aviso legal</a>
         <a href="privacidad.html">Privacidad</a>
         <a href="cookies.html">Cookies</a>
-        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
+    </div>
+
+    <div class="shell footer-bottom">
+      <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
+      <a href="#inicio">Volver arriba ↑</a>
     </div>
   </footer>
 
-  <div class="modal" id="donationModal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="donationModalTitle">
-      <h3 id="donationModalTitle">Gracias por sostener Peregrino</h3>
-      <p>Se ha abierto PayPal en una pestaña nueva. Cuando termines, hay una bendición esperándote.</p>
-      <div class="modal-actions">
-        <a class="btn btn-primary" href="gracias.html">Recibir tu bendición</a>
-        <button class="btn btn-secondary" type="button" id="closeDonationModal">Cerrar</button>
-      </div>
+  <dialog class="member-dialog" aria-labelledby="member-dialog-title">
+    <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
+    <span class="dialog-symbol">◇</span>
+    <p class="section-kicker">Ventaja para miembros</p>
+    <h2 id="member-dialog-title">Esta experiencia formará parte de la zona de miembros</h2>
+    <p>
+      Todavía no existe un bloqueo real ni se está cobrando por ella. Esta maqueta permite
+      decidir cómo presentarla antes de implementar cuentas o pagos.
+    </p>
+    <div class="dialog-actions">
+      <button class="button button-primary dialog-enable-member" type="button">Ver como miembro</button>
+      <button class="button button-quiet dialog-continue" type="button">Continuar a la función actual</button>
     </div>
-  </div>
+  </dialog>
 
-  <a class="top-button" id="toTop" href="#contenido" aria-label="Volver arriba">↑</a>
-  <script src="assets/site.js"></script>
+  <script src="assets/site-v2.js"></script>
 </body>
 </html>

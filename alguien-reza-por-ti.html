@@ -1,780 +1,157 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Alguien está rezando por ti | Peregrino APP</title>
-  <meta name="description" content="Una invitación sencilla, respetuosa y sin compromiso para descubrir qué es un Cursillo de Cristiandad." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/alguien-reza-por-ti.html" />
-
-  <meta property="og:title" content="Alguien está rezando por ti | Peregrino APP" />
-  <meta property="og:description" content="Alguien te tiene presente y ha querido abrirte una puerta con cariño, sin presión y sin pedirte que decidas nada ahora." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/alguien-reza-por-ti.html" />
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Alguien está rezando por ti | Peregrino APP" />
-  <meta name="twitter:description" content="Una invitación sencilla y sin compromiso para descubrir algo que hizo bien a una persona que te quiere." />
-  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/site.css" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="favicon.ico" />
-
-  <style>
-    :root {
-      --editorial: "Cormorant Garamond", Georgia, serif;
-    }
-
-    .invitation-hero {
-      padding-bottom: 56px;
-    }
-
-    .invitation-hero .wrap {
-      align-items: center;
-    }
-
-    .invitation-hero h1 {
-      font-family: var(--editorial);
-      font-size: clamp(3.4rem, 7vw, 6.3rem);
-      font-weight: 600;
-      line-height: .92;
-      letter-spacing: -.045em;
-      max-width: 11ch;
-    }
-
-    .invitation-hero .lead {
-      max-width: 57ch;
-      font-size: clamp(1.08rem, 2vw, 1.28rem);
-      line-height: 1.75;
-    }
-
-    .invitation-hero .page-shot {
-      position: relative;
-      padding: 12px;
-      border-radius: 38px;
-      background: linear-gradient(145deg, rgba(212,175,55,.2), rgba(255,255,255,.06));
-    }
-
-    .invitation-hero .page-shot::before {
-      content: "";
-      position: absolute;
-      inset: -26px;
-      z-index: -1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212,175,55,.15), transparent 67%);
-      filter: blur(12px);
-    }
-
-    .invitation-hero .page-shot img {
-      aspect-ratio: 4 / 5;
-      border-radius: 28px;
-    }
-
-    .letter-section {
-      padding: 34px 0 96px;
-    }
-
-    .letter {
-      width: min(780px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .letter-opening {
-      max-width: 700px;
-      margin: 0 auto 92px;
-      text-align: center;
-    }
-
-    .letter-opening .small-star {
-      display: block;
-      margin-bottom: 22px;
-      color: var(--gold-2);
-      font-size: 1.05rem;
-    }
-
-    .letter-opening p {
-      margin: 0;
-      color: var(--muted);
-      font-family: var(--editorial);
-      font-size: clamp(1.7rem, 4vw, 2.6rem);
-      line-height: 1.35;
-    }
-
-    .letter-opening strong {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .chapter {
-      position: relative;
-      margin: 0 0 92px;
-      padding-top: 34px;
-    }
-
-    .chapter::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(212,175,55,.52), rgba(255,255,255,.08), transparent);
-    }
-
-    .chapter-label {
-      display: block;
-      margin-bottom: 16px;
-      color: var(--gold-2);
-      font-size: .76rem;
-      font-weight: 900;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .chapter h2 {
-      max-width: 14ch;
-      margin: 0 0 26px;
-      color: #fff;
-      font-family: var(--editorial);
-      font-size: clamp(2.5rem, 5vw, 4.4rem);
-      font-weight: 600;
-      line-height: .98;
-      letter-spacing: -.035em;
-    }
-
-    .chapter p {
-      margin: 0 0 1.35rem;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.92;
-    }
-
-    .chapter p:last-child {
-      margin-bottom: 0;
-    }
-
-    .dropcap::first-letter {
-      float: left;
-      margin: .07em .12em 0 0;
-      color: var(--gold-2);
-      font-family: var(--editorial);
-      font-size: 4.3rem;
-      font-weight: 600;
-      line-height: .72;
-    }
-
-    .soft-assurances {
-      margin: 38px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .soft-assurances li {
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 13px;
-      align-items: start;
-      padding: 14px 0;
-      color: #eef1f6;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      font-size: 1rem;
-      line-height: 1.65;
-    }
-
-    .soft-assurances li:last-child {
-      border-bottom: 0;
-    }
-
-    .soft-assurances span {
-      color: var(--gold-2);
-      font-weight: 900;
-    }
-
-    .full-quote {
-      position: relative;
-      width: min(980px, calc(100% - 32px));
-      margin: 8px auto 100px;
-      padding: clamp(54px, 8vw, 88px) clamp(28px, 7vw, 82px);
-      overflow: hidden;
-      border: 1px solid rgba(212,175,55,.2);
-      border-radius: 38px;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(212,175,55,.2), transparent 30rem),
-        linear-gradient(135deg, rgba(29,46,122,.32), rgba(255,255,255,.055));
-      text-align: center;
-    }
-
-    .full-quote::before {
-      content: "“";
-      position: absolute;
-      top: -42px;
-      left: 34px;
-      color: rgba(212,175,55,.12);
-      font-family: var(--editorial);
-      font-size: 13rem;
-      line-height: 1;
-    }
-
-    .full-quote blockquote {
-      position: relative;
-      max-width: 720px;
-      margin: 0 auto;
-      color: #fff;
-      font-family: var(--editorial);
-      font-size: clamp(2rem, 5vw, 4rem);
-      font-style: italic;
-      font-weight: 500;
-      line-height: 1.16;
-    }
-
-    .full-quote p {
-      position: relative;
-      max-width: 630px;
-      margin: 24px auto 0;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.75;
-    }
-
-    .paths {
-      margin-top: 30px;
-      counter-reset: path;
-    }
-
-    .path {
-      counter-increment: path;
-      display: grid;
-      grid-template-columns: 72px 1fr auto;
-      gap: 24px;
-      align-items: start;
-      padding: 30px 0;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-
-    .path:first-child {
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-
-    .path::before {
-      content: "0" counter(path);
-      color: var(--gold-2);
-      font-family: var(--editorial);
-      font-size: 2.6rem;
-      line-height: 1;
-    }
-
-    .path h3 {
-      margin: 0 0 8px;
-      color: #fff;
-      font-size: 1.24rem;
-    }
-
-    .path p {
-      margin: 0;
-      color: var(--muted);
-      font-size: .99rem;
-      line-height: 1.72;
-    }
-
-    .path a {
-      align-self: center;
-      color: var(--gold-2);
-      text-decoration: none;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .path a:hover,
-    .path a:focus-visible {
-      color: #fff;
-    }
-
-    .answers {
-      margin-top: 30px;
-    }
-
-    .answer {
-      position: relative;
-      margin: 0;
-      padding: 28px 0 28px 42px;
-      border-bottom: 1px solid rgba(255,255,255,.09);
-    }
-
-    .answer:first-child {
-      border-top: 1px solid rgba(255,255,255,.09);
-    }
-
-    .answer::before {
-      content: "“";
-      position: absolute;
-      top: 13px;
-      left: 0;
-      color: var(--gold-2);
-      font-family: var(--editorial);
-      font-size: 3.4rem;
-      line-height: 1;
-    }
-
-    .answer strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--gold-2);
-      font-size: .78rem;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-    }
-
-    .answer p {
-      margin: 0;
-      color: #f4f6fa;
-      font-family: var(--editorial);
-      font-size: clamp(1.35rem, 3vw, 1.85rem);
-      font-style: italic;
-      line-height: 1.45;
-    }
-
-    .closing-letter {
-      width: min(980px, calc(100% - 32px));
-      margin: 0 auto 84px;
-      padding: clamp(48px, 8vw, 82px);
-      border-radius: 38px;
-      background:
-        radial-gradient(circle at 15% 0%, rgba(212,175,55,.2), transparent 32rem),
-        linear-gradient(135deg, rgba(29,46,122,.38), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.11);
-      text-align: center;
-    }
-
-    .closing-letter h2 {
-      max-width: 13ch;
-      margin: 0 auto 22px;
-      color: #fff;
-      font-family: var(--editorial);
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 600;
-      line-height: .95;
-    }
-
-    .closing-letter h2 em {
-      color: var(--gold-2);
-      font-weight: 500;
-    }
-
-    .closing-letter > p {
-      max-width: 660px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.82;
-    }
-
-    .closing-letter .cta-row {
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .privacy-note {
-      max-width: 720px !important;
-      margin: 30px auto 0 !important;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,.1);
-      color: var(--muted-2) !important;
-      font-size: .82rem !important;
-      line-height: 1.65 !important;
-    }
-
-    @media (max-width: 760px) {
-      .invitation-hero h1 {
-        max-width: none;
-      }
-
-      .chapter {
-        margin-bottom: 72px;
-      }
-
-      .path {
-        grid-template-columns: 56px 1fr;
-      }
-
-      .path a {
-        grid-column: 2;
-        justify-self: start;
-        margin-top: 4px;
-      }
-
-      .full-quote,
-      .closing-letter {
-        border-radius: 26px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .letter-opening {
-        margin-bottom: 70px;
-      }
-
-      .letter-opening p {
-        font-size: 1.65rem;
-      }
-
-      .chapter h2 {
-        max-width: none;
-      }
-
-      .path {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .path::before {
-        font-size: 2rem;
-      }
-
-      .path a {
-        grid-column: 1;
-      }
-
-      .answer {
-        padding-left: 30px;
-      }
-    }
-  </style>
+  <meta name="description" content="Una invitación sencilla, respetuosa y sin compromiso para descubrir qué es un Cursillo de Cristiandad.">
+  <meta name="theme-color" content="#fffaf0">
+  <meta property="og:title" content="Alguien está rezando por ti | Peregrino APP">
+  <meta property="og:description" content="Alguien te tiene presente y ha querido abrirte una puerta con cariño.">
+  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/discover-v2.css">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
 </head>
+<body class="discover-page">
 
-<body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
-
-  <header class="site-header">
-    <div class="wrap site-nav">
+  <div class="decolores-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <header class="site-header compact-header">
+    <div class="shell nav-shell">
       <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
-        <span class="brand-mark">✦</span>
-        <span>Peregrino APP</span>
+        <span class="brand-logo">
+          <img src="assets/peregrino-app-icon.png" alt="" width="56" height="56"
+               onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+          <span class="brand-fallback" hidden aria-hidden="true">P</span>
+        </span>
+        <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
       </a>
-
-      <nav class="nav-links" aria-label="Navegación principal">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span><span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
-        <a href="index.html#planes">Planes</a>
-        <a href="index.html#apoyar">Apoyar</a>
-        <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+<a href="index.html#experiencias">Oración y comunidad</a>
+<a href="index.html#cursillo" aria-current="page">Descubre el Cursillo</a>
+<a href="index.html#miembros">Miembros</a>
+<a href="index.html#proyecto">El proyecto</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
     </div>
   </header>
+<main id="contenido">
+  <section class="editorial-hero">
+    <div class="shell editorial-hero-grid">
+      <div class="reveal"><p class="eyebrow">Una invitación sin compromiso</p><h1 id="hero-title">Alguien está <em>rezando por ti.</em></h1>
+        <p class="lead" id="hero-lead">Si has recibido esta página, probablemente alguien te quiere, te tiene presente y desea compartir contigo algo que a esa persona le hizo bien.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#leer">Leer con calma</a><a class="button button-quiet" href="#siguiente">Ver qué puedo hacer</a></div>
+        <div class="receiver-note">Esta página siempre permanece abierta para quien recibe el enlace. No pide datos, pago ni una decisión inmediata.</div>
+      </div>
+      <aside class="editorial-image reveal"><figure><img src="foto_app1.png" onerror="this.onerror=null;this.src='https://madeprat.github.io/peregrino-app-web/foto_app1.png';" alt="Imagen que acompaña una invitación personal"></figure><div class="image-note"><strong>Sin presión</strong><span>Una invitación verdadera no empuja. Acompaña.</span></div></aside>
+    </div>
+  </section>
 
-  <main id="contenido" class="page-shell">
-    <section class="prose-hero invitation-hero">
-      <div class="wrap">
-        <div>
-          <span class="eyebrow">Una invitación sin compromiso</span>
-          <h1 id="hero-title">Alguien está rezando por ti</h1>
+  <section class="editorial-section" id="leer">
+    <div class="editorial-narrow">
+      <div class="opening-statement reveal"><span class="opening-symbol">✦</span><p id="intro-name">Esta página no ha llegado a ti como un anuncio. <strong>Alguien ha pensado en ti.</strong></p></div>
 
-          <p class="lead" id="hero-lead">
-            Si has recibido esta página, probablemente alguien te quiere,
-            te tiene presente y desea compartir contigo algo que a esa persona
-            le hizo bien.
-          </p>
-
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#leer">Leer con calma</a>
-            <a class="btn btn-secondary" href="#siguiente">Ver qué puedo hacer</a>
-          </div>
+      <article class="story-block reveal"><span class="story-label">Antes de nada</span><h2>No tienes que decidir nada ahora</h2>
+        <p class="dropcap">Quizá ha sido un amigo, alguien de tu familia o una persona que te conoce bien. Alguien que ha querido abrirte una puerta.</p>
+        <p>No para presionarte. No para convencerte a la fuerza. Solo para decirte, con cariño: quizá esto también podría hacerte bien.</p>
+        <div class="editorial-cards">
+          <article class="editorial-card"><span class="card-number">SIN PRISA</span><h3>Puedes esperar</h3><p>No tienes que responder inmediatamente.</p></article>
+          <article class="editorial-card"><span class="card-number">SIN EXAMEN</span><h3>Puedes preguntar</h3><p>No necesitas tenerlo todo claro para seguir leyendo.</p></article>
+          <article class="editorial-card"><span class="card-number">SIN PERFECCIÓN</span><h3>Puedes acercarte</h3><p>No hace falta ser perfecto para acercarte a Dios.</p></article>
         </div>
+      </article>
 
-        <aside class="page-shot">
-          <img src="foto_app1.png" alt="Imagen que acompaña una invitación personal de Peregrino APP" />
-        </aside>
-      </div>
-    </section>
+      <article class="story-block reveal"><span class="story-label">Qué es un Cursillo</span><h2>Una experiencia de encuentro</h2>
+        <p class="dropcap">Un Cursillo de Cristiandad es un encuentro con Dios, contigo mismo y con otras personas que también intentan vivir la fe en medio de la vida real.</p>
+        <p>No es una clase, un examen de religión ni un lugar reservado para quien ya tiene todas las respuestas. Muchas personas llegan con dudas, cansancio, heridas, distancia o simple curiosidad.</p>
+        <p>A veces basta una pequeña inquietud y la disposición de dejarse sorprender.</p>
+      </article>
 
-    <section class="letter-section" id="leer">
-      <div class="letter">
-        <div class="letter-opening">
-          <span class="small-star">✦</span>
-          <p id="intro-name">
-            Esta página no ha llegado a ti como un anuncio.
-            <strong>Alguien ha pensado en ti.</strong>
-          </p>
+      <article class="story-block reveal"><span class="story-label">Por qué alguien te envía esto</span><h2>Porque te lleva en el corazón</h2>
+        <p class="dropcap">En Peregrino APP hay personas que guardan algunos nombres por los que rezan. No como una lista de objetivos, sino como una forma sencilla de cuidar espiritualmente a quien quieren.</p>
+        <p id="personal-line">Si esta invitación ha llegado hasta ti, quizá alguien está pidiendo a Dios que te acompañe, te ilumine y te muestre si este camino también puede ser para ti.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="editorial-section alt"><aside class="big-quote reveal"><blockquote>Una invitación verdadera no empuja. Acompaña.</blockquote><p>Puedes leer esta página y dejarla reposar. Puedes preguntar. También puedes no hacer nada por ahora.</p></aside></section>
+
+  <section class="editorial-section">
+    <div class="editorial-narrow">
+      <article class="story-block reveal" id="siguiente"><span class="story-label">Y ahora, ¿qué puedo hacer?</span><h2>Tres caminos sencillos</h2><p>No hay una única respuesta correcta. Puedes hablar con la persona que te mandó esta página o dar uno de estos pasos.</p>
+        <div class="path-list">
+          <article class="path-item"><div><h3>Solo quiero entender</h3><p>Descubre qué es el Movimiento y por qué tantas personas lo recuerdan como un despertar.</p></div><a href="que-es-el-mcc.html">Entender qué es →</a></article>
+          <article class="path-item"><div><h3>Me gustaría vivir uno</h3><p>Peregrino no organiza Cursillos, pero puede orientarte hacia la información oficial.</p></div><a href="quiero-vivir-un-cursillo.html">Buscar información →</a></article>
+          <article class="path-item"><div><h3>Prefiero hablarlo</h3><p>Puedes responder al mensaje recibido con algo tan simple como «Cuéntame un poco más».</p></div><a href="#mensaje">Ver respuestas →</a></article>
         </div>
+      </article>
 
-        <section class="chapter">
-          <span class="chapter-label">Antes de nada</span>
-          <h2>No tienes que decidir nada ahora</h2>
-
-          <p class="dropcap">
-            Quizá ha sido un amigo, alguien de tu familia o una persona que te
-            conoce bien. Alguien que, de alguna manera, ha querido abrirte una
-            puerta.
-          </p>
-
-          <p>
-            No para presionarte. No para convencerte a la fuerza. Solo para
-            decirte, con cariño: quizá esto también podría hacerte bien.
-          </p>
-
-          <ul class="soft-assurances">
-            <li><span>✓</span><div>No tienes que responder inmediatamente.</div></li>
-            <li><span>✓</span><div>No necesitas tenerlo todo claro para seguir leyendo.</div></li>
-            <li><span>✓</span><div>No hace falta ser perfecto para acercarte a Dios.</div></li>
-          </ul>
-        </section>
-
-        <section class="chapter">
-          <span class="chapter-label">Qué es un Cursillo</span>
-          <h2>Una experiencia de encuentro</h2>
-
-          <p class="dropcap">
-            Un Cursillo de Cristiandad es un encuentro con Dios, contigo mismo
-            y con otras personas que también intentan vivir la fe en medio de
-            la vida real.
-          </p>
-
-          <p>
-            No es una clase, un examen de religión ni un lugar reservado para
-            quien ya tiene todas las respuestas. Muchas personas llegan con
-            dudas, cansancio, heridas, distancia o simple curiosidad.
-          </p>
-
-          <p>
-            A veces basta una pequeña inquietud y la disposición de dejarse
-            sorprender.
-          </p>
-        </section>
-
-        <section class="chapter">
-          <span class="chapter-label">Por qué alguien te envía esto</span>
-          <h2>Porque te lleva en el corazón</h2>
-
-          <p class="dropcap">
-            En Peregrino APP hay personas que guardan algunos nombres por los
-            que rezan. No como una lista de objetivos ni como una agenda para
-            convencer a nadie, sino como una forma sencilla de cuidar
-            espiritualmente a quien quieren.
-          </p>
-
-          <p id="personal-line">
-            Si esta invitación ha llegado hasta ti, quizá alguien está pidiendo
-            a Dios que te acompañe, te ilumine y te muestre si este camino
-            también puede ser para ti.
-          </p>
-        </section>
-      </div>
-
-      <aside class="full-quote" aria-label="Idea principal">
-        <blockquote>Una invitación verdadera no empuja. Acompaña.</blockquote>
-        <p>
-          Puedes leer esta página y dejarla reposar. Puedes preguntar.
-          También puedes no hacer nada por ahora. Lo importante no es
-          responder deprisa, sino escuchar con verdad.
-        </p>
-      </aside>
-
-      <div class="letter">
-        <section class="chapter" id="siguiente">
-          <span class="chapter-label">Y ahora, ¿qué puedo hacer?</span>
-          <h2>Tres caminos sencillos</h2>
-
-          <p>
-            No hay una única respuesta correcta. Puedes hablar con la persona
-            que te mandó esta página o dar uno de estos pequeños pasos.
-          </p>
-
-          <div class="paths">
-            <article class="path">
-              <div>
-                <h3>Solo quiero entender</h3>
-                <p>
-                  Descubre qué es el Movimiento de Cursillos de Cristiandad y
-                  por qué tantas personas lo recuerdan como un despertar.
-                </p>
-              </div>
-              <a href="que-es-el-mcc.html">Entender qué es →</a>
-            </article>
-
-            <article class="path">
-              <div>
-                <h3>Me gustaría vivir uno</h3>
-                <p>
-                  Peregrino APP no organiza cursillos ni gestiona inscripciones,
-                  pero puede ayudarte a localizar la información oficial de tu
-                  país o diócesis.
-                </p>
-              </div>
-              <a href="quiero-vivir-un-cursillo.html">Buscar información →</a>
-            </article>
-
-            <article class="path">
-              <div>
-                <h3>Prefiero hablarlo</h3>
-                <p>
-                  Puedes responder al mensaje que recibiste con algo tan simple
-                  como «Cuéntame un poco más».
-                </p>
-              </div>
-              <a href="#mensaje">Ver respuestas →</a>
-            </article>
-          </div>
-        </section>
-
-        <section class="chapter" id="mensaje">
-          <span class="chapter-label">Si no sabes qué contestar</span>
-          <h2>No necesitas encontrar las palabras perfectas</h2>
-
-          <p>
-            Estas frases no son fórmulas. Solo pueden ayudarte a iniciar la
-            conversación con naturalidad.
-          </p>
-
-          <div class="answers">
-            <blockquote class="answer">
-              <strong>Si solo tienes curiosidad</strong>
-              <p>Lo he leído. Todavía no sé muy bien qué pensar, pero me gustaría que me contaras un poco más.</p>
-            </blockquote>
-
-            <blockquote class="answer">
-              <strong>Si te da algo de respeto</strong>
-              <p>Me da un poco de respeto, pero gracias por pensar en mí. ¿Qué significó para ti vivir un Cursillo?</p>
-            </blockquote>
-
-            <blockquote class="answer">
-              <strong>Si quieres dar un paso</strong>
-              <p>Creo que quiero informarme. ¿Me ayudas a saber con quién tendría que hablar?</p>
-            </blockquote>
-          </div>
-        </section>
-
-        <section class="chapter">
-          <span class="chapter-label">Una última cosa</span>
-          <h2>Las cosas importantes también saben esperar</h2>
-
-          <p class="dropcap">
-            No estás obligado a sentir algo especial. Hay invitaciones que se
-            comprenden enseguida y otras que necesitan tiempo.
-          </p>
-
-          <p>
-            Quizá hoy solo quieras leer. Quizá mañana quieras preguntar.
-            Quizá recuerdes esta página dentro de unos meses.
-          </p>
-
-          <p>
-            No tienes que correr. La persona que te la envió seguirá
-            deseándote el bien, respondas como respondas.
-          </p>
-        </section>
-      </div>
-    </section>
-
-    <section class="closing-letter">
-      <h2 id="closing-title">Quizá esta invitación ha llegado a ti <em>por algo</em></h2>
-
-      <p>
-        No necesitas dar una respuesta perfecta. Solo escuchar con calma,
-        hacer una pregunta si nace de ti y dejar que Dios haga el resto.
-      </p>
-
-      <div class="cta-row">
-        <a class="btn btn-primary" href="quiero-vivir-un-cursillo.html">Quiero saber cómo vivir uno</a>
-        <a class="btn btn-secondary" href="que-es-el-mcc.html">Entender qué es</a>
-      </div>
-
-      <p class="privacy-note">
-        Peregrino APP no organiza cursillos ni gestiona inscripciones.
-        Esta página es únicamente una invitación orientativa y no recoge tus
-        datos personales. El nombre que pueda aparecer se lee desde el enlace
-        únicamente en tu propio navegador.
-      </p>
-    </section>
-
-    <section>
-      <div class="wrap cta-band">
-        <div>
-          <h2>¿Quieres conocer Peregrino APP?</h2>
-          <p>
-            Es una herramienta creada por una familia cursillista para acompañar
-            el Cuarto Día con oración, constancia y comunidad.
-          </p>
+      <article class="story-block reveal" id="mensaje"><span class="story-label">Si no sabes qué contestar</span><h2>No necesitas las palabras perfectas</h2><p>Estas frases no son fórmulas. Solo pueden ayudarte a iniciar la conversación con naturalidad.</p>
+        <div class="answers">
+          <blockquote class="answer"><strong>Si solo tienes curiosidad</strong><p>Lo he leído. Todavía no sé muy bien qué pensar, pero me gustaría que me contaras un poco más.</p></blockquote>
+          <blockquote class="answer"><strong>Si te da algo de respeto</strong><p>Me da un poco de respeto, pero gracias por pensar en mí. ¿Qué significó para ti vivir un Cursillo?</p></blockquote>
+          <blockquote class="answer"><strong>Si quieres dar un paso</strong><p>Creo que quiero informarme. ¿Me ayudas a saber con quién tendría que hablar?</p></blockquote>
         </div>
+      </article>
 
-        <div class="cta-row" style="margin:0;">
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
-          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
-        </div>
+      <article class="story-block reveal"><span class="story-label">Una última cosa</span><h2>Las cosas importantes también saben esperar</h2>
+        <p class="dropcap">No estás obligado a sentir algo especial. Hay invitaciones que se comprenden enseguida y otras que necesitan tiempo.</p>
+        <p>Quizá hoy solo quieras leer. Quizá mañana quieras preguntar. Quizá recuerdes esta página dentro de unos meses.</p>
+        <p>No tienes que correr. La persona que te la envió seguirá deseándote el bien, respondas como respondas.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="closing-panel reveal"><h2 id="closing-title">Quizá esta invitación ha llegado a ti <em>por algo.</em></h2><p>No necesitas dar una respuesta perfecta. Solo escuchar con calma, hacer una pregunta si nace de ti y dejar que Dios haga el resto.</p>
+    <div class="hero-actions"><a class="button button-primary" href="quiero-vivir-un-cursillo.html">Quiero saber cómo vivir uno</a><a class="button button-quiet" href="que-es-el-mcc.html">Entender qué es</a></div>
+    <p class="independence-note">Esta página es únicamente una invitación orientativa y no recoge tus datos personales. El nombre se lee desde el enlace recibido únicamente en tu propio navegador.</p>
+  </section>
+</main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html">
+          <span class="brand-logo">
+            <img src="assets/peregrino-app-icon.png" alt="" width="52" height="52"
+                 onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+            <span class="brand-fallback" hidden aria-hidden="true">P</span>
+          </span>
+          <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
+        </a>
+        <p>Guía digital para acompañar la oración, la constancia y la comunidad.</p>
       </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap footer-grid">
       <div>
-        <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
-      </div>
-
-      <div class="footer-links">
-        <a href="plan-apostol.html">Planes</a>
+        <h3>Vive Peregrino</h3>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
         <a href="aviso-legal.html">Aviso legal</a>
         <a href="privacidad.html">Privacidad</a>
         <a href="cookies.html">Cookies</a>
-        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
+    <div class="shell footer-bottom">
+      <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
+      <a href="#contenido">Volver arriba ↑</a>
+    </div>
   </footer>
-
-  <script>
-    (function () {
-      function cleanName(value) {
-        if (!value) return "";
-
-        return value
-          .replace(/[<>]/g, "")
-          .replace(/\s+/g, " ")
-          .trim()
-          .slice(0, 42);
-      }
-
-      const params = new URLSearchParams(window.location.search);
-      const name = cleanName(
-        params.get("nombre") ||
-        params.get("para") ||
-        params.get("n")
-      );
-
-      if (!name) return;
-
-      document.title = name + ", alguien está rezando por ti | Peregrino APP";
-
-      document.getElementById("hero-title").textContent =
-        name + ", alguien está rezando por ti";
-
-      document.getElementById("hero-lead").textContent =
-        "Si has recibido esta página, probablemente alguien te quiere, te tiene presente y desea compartir contigo algo que a esa persona le hizo bien.";
-
-      const intro = document.getElementById("intro-name");
-      intro.textContent = "";
-      intro.appendChild(document.createTextNode(name + ", esta página no ha llegado a ti como un anuncio. "));
-      const strong = document.createElement("strong");
-      strong.textContent = "Alguien ha pensado en ti.";
-      intro.appendChild(strong);
-
-      document.getElementById("personal-line").textContent =
-        name + ", si esta invitación ha llegado hasta ti, quizá alguien está pidiendo a Dios que te acompañe, te ilumine y te muestre si este camino también puede ser para ti.";
-
-      const closing = document.getElementById("closing-title");
-      closing.textContent = "";
-      closing.appendChild(document.createTextNode(name + ", quizá esta invitación ha llegado a ti "));
-      const emphasis = document.createElement("em");
-      emphasis.textContent = "por algo";
-      closing.appendChild(emphasis);
-    })();
-  </script>
-</body>
-</html>
+<script src="assets/community-v2.js"></script><script src="assets/invitacion-v2.js"></script>
+</body></html>

@@ -1,90 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacidad | Peregrino APP</title>
-  <meta name="description" content="Política de privacidad de Peregrino APP." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/privacidad.html" />
-  <meta property="og:title" content="Privacidad | Peregrino APP" />
-  <meta property="og:description" content="Política de privacidad de Peregrino APP." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://madeprat.github.io/peregrino-app-web/privacidad.html" />
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Privacidad | Peregrino APP" />
-  <meta name="twitter:description" content="Política de privacidad de Peregrino APP." />
-  <meta name="twitter:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/site.css" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="favicon.ico" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Política de privacidad | Peregrino APP</title>
+  <meta name="description" content="Información clara sobre los datos que puede tratar esta web y las decisiones de privacidad aplicadas al proyecto.">
+  <meta name="theme-color" content="#fffaf0">
+  <meta property="og:title" content="Política de privacidad | Peregrino APP">
+  <meta property="og:description" content="Información clara sobre los datos que puede tratar esta web y las decisiones de privacidad aplicadas al proyecto.">
+  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/legal-v2.css">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
 </head>
 <body>
+
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="decolores-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   <header class="site-header">
-    <div class="wrap site-nav">
+    <div class="shell nav-shell">
       <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
-        <span class="brand-mark">✦</span>
-        <span>Peregrino APP</span>
+        <span class="brand-logo">
+          <img src="assets/peregrino-app-icon.png" alt="" width="56" height="56"
+               onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+          <span class="brand-fallback" hidden aria-hidden="true">P</span>
+        </span>
+        <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
       </a>
-      <nav class="nav-links" aria-label="Navegación principal">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span><span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
-        <a href="index.html#planes">Planes</a>
-        <a href="index.html#apoyar">Apoyar</a>
-        <a href="index.html#recursos">Recursos</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+<a href="index.html#experiencias">Oración y comunidad</a>
+<a href="index.html#cursillo">Descubre el Cursillo</a>
+<a href="index.html#miembros">Miembros</a>
+<a href="index.html#proyecto">El proyecto</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
     </div>
   </header>
-  <main id="contenido" class="page-shell">
-    <section class="prose-hero">
-      <div class="wrap">
-        <div>
-          <span class="eyebrow">Peregrino APP</span>
-          <h1>Política de privacidad</h1>
-          <p class="lead">Información sobre los datos que puede tratar esta web y cómo se gestionan en esta versión del proyecto.</p>
-          
-        </div>
-        <aside class="page-shot"><img src="hero-peregrino.jpg" alt="Imagen de apoyo para Política de privacidad" /></aside>
+<main id="contenido">
+  <section class="legal-hero"><div class="shell legal-hero-grid"><div><p class="section-kicker">Información y transparencia</p><h1>Política de privacidad</h1><p>Información clara sobre los datos que puede tratar esta web y las decisiones de privacidad aplicadas al proyecto.</p></div><div class="legal-symbol" aria-hidden="true">◉</div></div></section>
+  <section class="legal-section"><div class="shell legal-layout">
+    <nav class="legal-index" aria-label="Contenido de la página"><strong>En esta página</strong><a href="#principio">Principio general</a><a href="#local">Datos guardados en el navegador</a><a href="#enlaces">Nombres incluidos en enlaces</a><a href="#fuentes">Fuentes de datos y herramientas</a><a href="#terceros">Servicios de terceros</a><a href="#derechos">Consultas y derechos</a></nav>
+    <div class="legal-content"><article class="legal-card" id="principio"><h2>Principio general</h2><p>La navegación ordinaria por esta web no exige crear una cuenta ni facilitar datos personales obligatorios.</p><p>Peregrino no utiliza la actividad espiritual para elaborar perfiles personales o puntuaciones de fe.</p></article><article class="legal-card" id="local"><h2>Datos guardados en el navegador</h2><p>Algunas funciones pueden utilizar almacenamiento local del navegador. En la maqueta actual se guarda, por ejemplo, el alias del muro del Rincón de la Luz y la preferencia ficticia de vista Visitante o Miembro.</p><p>Estos datos permanecen en el dispositivo hasta que se borran desde la web o desde la configuración del navegador.</p></article><article class="legal-card" id="enlaces"><h2>Nombres incluidos en enlaces</h2><p>Las páginas de invitación o regalo pueden recibir un nombre mediante parámetros como <code>nombre</code>, <code>para</code> o <code>n</code>. El navegador utiliza ese valor para personalizar el texto.</p><p>La versión actual no envía ese nombre a un servidor de Peregrino.</p></article><article class="legal-card" id="fuentes"><h2>Fuentes de datos y herramientas</h2><p>La Biblioteca y El mundo está de Cursillo pueden consultar fuentes publicadas para mostrar oraciones, Cursillos y palancas. La información técnica necesaria para esas consultas se limita a la comunicación normal entre el navegador y dichos servicios.</p></article><article class="legal-card" id="terceros"><h2>Servicios de terceros</h2><p>Google Play, App Store, PayPal, WhatsApp y otros servicios enlazados aplican sus propias políticas de privacidad.</p></article><article class="legal-card" id="derechos"><h2>Consultas y derechos</h2><p>Puedes plantear consultas relacionadas con privacidad escribiendo a <a href="mailto:peregrinoapp@outlook.es">peregrinoapp@outlook.es</a>.</p></article><p class="legal-update">Última revisión de esta presentación: julio de 2026.</p></div>
+  </div></section>
+</main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html">
+          <span class="brand-logo">
+            <img src="assets/peregrino-app-icon.png" alt="" width="52" height="52"
+                 onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+            <span class="brand-fallback" hidden aria-hidden="true">P</span>
+          </span>
+          <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
+        </a>
+        <p>Guía digital para acompañar la oración, la constancia y la comunidad.</p>
       </div>
-    </section>
-    <section>
-      <div class="wrap prose-grid"><article class="prose-card"><h2>Qué datos puede tratar esta web</h2><p>La navegación ordinaria no solicita datos personales obligatorios.</p><p>En el Rincón de la Luz, algunos datos como el correo de acceso o el alias del muro se guardan únicamente en el navegador mediante almacenamiento local.</p></article><article class="prose-card"><h2>Finalidades</h2><p>Permitir la navegación por la web y el acceso a sus contenidos.</p><p>Facilitar el uso local del Rincón de la Luz y responder consultas recibidas por correo electrónico.</p></article><article class="prose-card"><h2>Conservación y terceros</h2><p>Los datos guardados en el navegador permanecen hasta que los borres o limpies el almacenamiento local.</p><p>Al pulsar enlaces externos como PayPal, WhatsApp o Google Play pasarás a servicios de terceros con sus propias políticas.</p></article><article class="prose-card"><h2>Derechos</h2><p>Puedes solicitar acceso, rectificación, supresión, oposición o limitación escribiendo a peregrinoapp@outlook.es.</p></article></div>
-    </section>
-    <section>
-      <div class="wrap cta-band">
-        <div>
-          <h2>Descubre Peregrino APP</h2>
-          <p>Si quieres seguir profundizando, vuelve a la app, conoce sus recursos o comparte esta página con alguien a quien pueda hacer bien.</p>
-        </div>
-        <div class="cta-row" style="margin:0;">
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
-          <a class="btn btn-secondary" href="index.html#recursos">Volver a recursos</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <div class="wrap footer-grid">
       <div>
-        <strong>Peregrino APP</strong>
-        <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
-      </div>
-      <div class="footer-links">
-        <a href="plan-apostol.html">Planes</a>
+        <h3>Vive Peregrino</h3>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
         <a href="aviso-legal.html">Aviso legal</a>
         <a href="privacidad.html">Privacidad</a>
         <a href="cookies.html">Cookies</a>
-        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
-    
+    <div class="shell footer-bottom">
+      <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
+      <a href="#contenido">Volver arriba ↑</a>
+    </div>
   </footer>
-</body>
-</html>
+<script src="assets/community-v2.js"></script>
+</body></html>

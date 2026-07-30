@@ -1,102 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Gracias | Peregrino APP</title>
-  <meta name="description" content="Gracias por sostener Peregrino APP. Una bendición para ti." />
-  <meta name="robots" content="noindex, follow" />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/site.css" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="favicon.ico" />
-  <style>
-    .thanks-wrap{min-height:calc(100vh - 76px);display:grid;place-items:center;padding:64px 0}
-    .thanks-card{width:min(680px,100%);text-align:center}
-    .thanks-mark{width:84px;height:84px;margin:0 auto 26px;border-radius:50%;display:grid;place-items:center;font-size:2.4rem;
-      background:radial-gradient(circle at 35% 25%,#fff4bf,#d8ac34 60%,#a6720b);color:#33210a;box-shadow:0 22px 60px rgba(212,175,55,.28),0 0 0 10px rgba(212,175,55,.08)}
-    .thanks-eyebrow{display:inline-block;color:var(--gold-2);text-transform:uppercase;letter-spacing:.14em;font-weight:900;font-size:.78rem;margin-bottom:14px}
-    .thanks-card h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;letter-spacing:-.04em;margin:0 0 20px}
-    .thanks-lead{color:var(--muted);font-size:1.12rem;max-width:48ch;margin:0 auto 36px}
-    .blessing{position:relative;border-radius:28px;padding:38px clamp(24px,5vw,48px);text-align:left;
-      background:linear-gradient(160deg,rgba(212,175,55,.13),rgba(255,255,255,.05));border:1px solid rgba(212,175,55,.22);box-shadow:var(--shadow)}
-    .blessing::before{content:"✦";position:absolute;top:20px;right:26px;color:rgba(241,210,122,.5);font-size:1.1rem}
-    .blessing .label{color:var(--gold-2);text-transform:uppercase;letter-spacing:.12em;font-weight:900;font-size:.74rem;margin-bottom:16px}
-    .blessing p{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(1.35rem,2.6vw,1.7rem);line-height:1.5;color:#f5f1e2;margin:0 0 14px}
-    .blessing .amen{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--gold-2);font-size:1.3rem;margin-top:6px}
-    .thanks-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
-    .thanks-soft{margin-top:30px;color:var(--muted-2);font-size:.96rem}
-    .thanks-soft a{color:var(--gold-2);font-weight:800;text-decoration:none}
-  </style>
+  <meta name="description" content="Gracias por sostener Peregrino APP.">
+  <meta name="robots" content="noindex,follow"><meta name="theme-color" content="#fffaf0">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/thanks-v2.css">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
 </head>
 <body>
+
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="decolores-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   <header class="site-header">
-    <div class="wrap site-nav">
+    <div class="shell nav-shell">
       <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
-        <span class="brand-mark">✦</span><span>Peregrino APP</span>
+        <span class="brand-logo">
+          <img src="assets/peregrino-app-icon.png" alt="" width="56" height="56"
+               onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+          <span class="brand-fallback" hidden aria-hidden="true">P</span>
+        </span>
+        <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
       </a>
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a href="index.html">Inicio</a>
-        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
-        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span><span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="index.html#app">La app</a>
+<a href="index.html#experiencias">Oración y comunidad</a>
+<a href="index.html#cursillo">Descubre el Cursillo</a>
+<a href="index.html#miembros">Miembros</a>
+<a href="index.html#proyecto">El proyecto</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
     </div>
   </header>
+<main id="contenido" class="thanks-page">
+  <div class="shell">
+    <section class="thanks-card">
+      <div class="thanks-mark" aria-hidden="true">🕊️</div>
+      <p class="section-kicker">Tu aportación ha llegado</p>
+      <h1>Gracias.</h1>
+      <p class="thanks-lead">Tu gesto ayuda a sostener el desarrollo, la publicación y los servicios de Peregrino. No desbloquea funciones ni compra una recompensa espiritual.</p>
 
-  <main id="contenido">
-    <section class="wrap thanks-wrap">
-      <div class="thanks-card">
-        <div class="thanks-mark" aria-hidden="true">🕊️</div>
-        <span class="thanks-eyebrow">Tu donación ha llegado</span>
-        <h1>Gracias.</h1>
-        <p class="thanks-lead">Tu gesto sostiene este camino y ayuda a que Peregrino llegue a quien todavía no lo conoce. No tienes que hacer nada más: solo recibir esta bendición.</p>
-
-        <div class="blessing">
-          <div class="label">Una bendición para ti</div>
-          <p>Que el Señor te devuelva multiplicado el bien que hoy has sembrado.</p>
-          <p>Que cuide tus pasos, sostenga a los tuyos y ponga paz en lo que llevas en silencio.</p>
-          <p>Que nunca te falte la luz que tú hoy ayudas a encender en otros.</p>
-          <div class="amen">Amén.</div>
-        </div>
-
-        <div class="thanks-actions">
-          <button class="btn btn-secondary" type="button" id="copyBless">Guardar la bendición</button>
-          <a class="btn btn-primary" href="index.html">Volver al inicio</a>
-        </div>
-
-        <p class="thanks-soft">Cuando te apetezca —hoy o cualquier día— hay un espacio luminoso esperándote: el <a href="rincon-de-la-luz.html">Rincón de la Luz</a>.</p>
+      <div class="blessing">
+        <div class="label">Una oración de agradecimiento</div>
+        <p>Que el Señor te devuelva multiplicado el bien que hoy has sembrado.</p>
+        <p>Que cuide tus pasos, sostenga a los tuyos y ponga paz en lo que llevas en silencio.</p>
+        <p>Que nunca te falte la luz que tú hoy ayudas a encender en otros.</p>
+        <div class="amen">Amén.</div>
       </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <div class="wrap footer-grid">
-      <div><strong>Peregrino APP</strong><p>Guía digital para acompañar el Cuarto Día.</p></div>
-      <div class="footer-links">
-        <a href="index.html">Inicio</a>
+      <div class="thanks-actions">
+        <button class="button button-quiet" type="button" id="copyBless">Copiar la oración</button>
+        <a class="button button-primary" href="index.html">Volver al inicio</a>
+      </div>
+
+      <p class="thanks-note"><strong>Esta oración no es una contraprestación por la aportación.</strong> Expresa gratitud y podría compartirse igualmente sin realizar ninguna donación.</p>
+      <p class="thanks-soft">Hay un espacio luminoso esperándote en el <a href="rincon-de-la-luz.html">Rincón de la Luz</a>.</p>
+    </section>
+  </div>
+</main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html">
+          <span class="brand-logo">
+            <img src="assets/peregrino-app-icon.png" alt="" width="52" height="52"
+                 onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+            <span class="brand-fallback" hidden aria-hidden="true">P</span>
+          </span>
+          <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
+        </a>
+        <p>Guía digital para acompañar la oración, la constancia y la comunidad.</p>
+      </div>
+      <div>
+        <h3>Vive Peregrino</h3>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
         <a href="aviso-legal.html">Aviso legal</a>
         <a href="privacidad.html">Privacidad</a>
-        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+        <a href="cookies.html">Cookies</a>
       </div>
     </div>
+    <div class="shell footer-bottom">
+      <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
+      <a href="#contenido">Volver arriba ↑</a>
+    </div>
   </footer>
-
-  <div class="toast" id="toast" style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;background:#101827;color:#f5f7fb;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:12px 18px;z-index:80;font-weight:900;transition:.22s">Guardado</div>
-  <script>
-    (function(){
-      var bless = "Que el Señor te devuelva multiplicado el bien que hoy has sembrado.\nQue cuide tus pasos, sostenga a los tuyos y ponga paz en lo que llevas en silencio.\nQue nunca te falte la luz que tú hoy ayudas a encender en otros.\n\nAmén.";
-      var toast = document.getElementById('toast');
-      function showToast(m){ toast.textContent=m||'Guardado'; toast.style.opacity='1'; toast.style.transform='translateX(-50%) translateY(0)'; setTimeout(function(){toast.style.opacity='0';toast.style.transform='translateX(-50%) translateY(16px)';},1700); }
-      document.getElementById('copyBless').addEventListener('click', function(){
-        if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(bless).then(function(){showToast('Bendición copiada');}); }
-        else { var ta=document.createElement('textarea'); ta.value=bless; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); showToast('Bendición copiada'); }
-      });
-    })();
-  </script>
-</body>
-</html>
+<div class="toast" id="toast">Copiado</div>
+<script src="assets/community-v2.js"></script><script src="assets/thanks-v2.js"></script>
+</body></html>
