@@ -220,3 +220,312 @@ body[data-world-member="member"] .world-v2-member-badge{
   .world-v2-home,.world-v2-mode{font-size:.69rem}
   .map-shell{min-height:610px!important}
 }
+
+/* Cabecera y pie que ya contiene el archivo funcional publicado. */
+.peregrino-site-header{
+  top:4px!important;
+  border-bottom-color:rgba(19,36,58,.10)!important;
+  background:rgba(255,250,240,.90)!important;
+  backdrop-filter:blur(18px)!important
+}
+.peregrino-site-brand{color:var(--text)!important}
+.peregrino-site-brand-mark{
+  overflow:hidden!important;
+  color:var(--blue)!important;
+  background:#fff!important;
+  border:1px solid var(--line)!important;
+  box-shadow:0 10px 25px rgba(23,63,122,.13)!important
+}
+.peregrino-site-brand-mark img{width:100%;height:100%;object-fit:cover}
+.peregrino-nav-links a{color:var(--muted)!important}
+.peregrino-nav-links a:hover,
+.peregrino-nav-links a:focus-visible{
+  color:var(--blue)!important;
+  background:rgba(23,63,122,.07)!important
+}
+.peregrino-nav-links .peregrino-nav-cta{
+  color:#fff!important;
+  background:var(--blue)!important
+}
+.peregrino-footer{
+  color:#65758a!important;
+  background:#fffaf0!important
+}
+.peregrino-footer-grid{border-top-color:var(--line)!important}
+.peregrino-footer a{color:#65758a!important}
+.peregrino-footer a:hover{color:var(--blue)!important}
+.site-top-button{
+  color:#fff!important;
+  background:var(--blue)!important;
+  box-shadow:0 18px 28px rgba(23,63,122,.22)!important
+}
+.loading-cover{
+  color:var(--text)!important;
+  background:rgba(255,250,240,.90)!important
+}
+.loader{color:var(--muted)!important}
+.demo-reveal{background:rgba(10,20,34,.64)!important}
+
+/* ==============================================================
+   CORRECCIÓN FINAL DEL ENCABEZADO DE EL MUNDO ESTÁ DE CURSILLO
+   ============================================================== */
+
+.peregrino-site-header{
+  position:sticky!important;
+  top:0!important;
+  z-index:5000!important;
+  border-bottom:1px solid rgba(19,36,58,.08)!important;
+  background:rgba(255,250,240,.94)!important;
+  -webkit-backdrop-filter:blur(18px)!important;
+  backdrop-filter:blur(18px)!important;
+  box-shadow:0 4px 18px rgba(31,52,81,.04)!important
+}
+
+.peregrino-site-nav{
+  position:relative!important;
+  width:min(1180px,calc(100% - 36px))!important;
+  min-height:88px!important;
+  margin-inline:auto!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:24px!important
+}
+
+.peregrino-site-brand{
+  flex:0 0 auto!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:12px!important;
+  color:#13243a!important;
+  text-decoration:none!important;
+  white-space:nowrap!important
+}
+
+.peregrino-site-brand-mark{
+  position:relative!important;
+  isolation:auto!important;
+  width:54px!important;
+  height:54px!important;
+  flex:0 0 54px!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:18px!important;
+  color:#fff!important;
+  background:#fff!important;
+  box-shadow:0 10px 26px rgba(23,63,122,.14)!important
+}
+
+.peregrino-site-brand-mark::after{display:none!important}
+
+.peregrino-site-brand-mark img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important
+}
+
+.peregrino-site-brand-fallback{
+  width:100%;height:100%;display:grid;place-items:center;
+  color:#fff;font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:2rem;font-weight:700;
+  background:conic-gradient(from 30deg,#173f7a,#d84f61,#e0aa2b,#2a9b6c,#173f7a)
+}
+
+.peregrino-site-brand-copy{
+  display:flex!important;
+  flex-direction:column!important;
+  line-height:1.15!important
+}
+
+.peregrino-site-brand-copy strong{
+  color:#13243a!important;
+  font-family:"Cormorant Garamond",Georgia,serif!important;
+  font-size:1.65rem!important;
+  font-weight:700!important;
+  letter-spacing:-.03em!important
+}
+
+.peregrino-site-brand-copy small{
+  margin-top:4px!important;
+  color:#536176!important;
+  font-size:.68rem!important;
+  font-weight:700!important;
+  letter-spacing:.03em!important
+}
+
+.peregrino-nav-links{
+  margin-left:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-wrap:nowrap!important;
+  gap:3px!important
+}
+
+.peregrino-nav-links a{
+  padding:10px 10px!important;
+  border-radius:999px!important;
+  color:#33445a!important;
+  background:transparent!important;
+  text-decoration:none!important;
+  font-size:.86rem!important;
+  font-weight:700!important;
+  white-space:nowrap!important;
+  transform:none!important
+}
+
+.peregrino-nav-links a:hover,
+.peregrino-nav-links a:focus-visible,
+.peregrino-nav-links a[aria-current="page"]{
+  color:#173f7a!important;
+  background:rgba(23,63,122,.07)!important;
+  transform:none!important
+}
+
+.peregrino-nav-links .peregrino-nav-cta{
+  padding-inline:16px!important;
+  color:#fff!important;
+  background:#173f7a!important;
+  box-shadow:0 12px 25px rgba(23,63,122,.17)!important
+}
+
+.peregrino-nav-links .peregrino-nav-cta:hover,
+.peregrino-nav-links .peregrino-nav-cta:focus-visible{
+  color:#fff!important;
+  background:#102b55!important
+}
+
+.world-header-member{
+  flex:0 0 auto;
+  padding-left:14px;
+  border-left:1px solid rgba(19,36,58,.12);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:2px
+}
+
+.world-header-member-label{
+  color:#728096;
+  font-size:.61rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.12em
+}
+
+.world-header-switch{
+  border:0;
+  background:transparent;
+  padding:0;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#13243a;
+  cursor:pointer
+}
+
+.world-header-switch-track{
+  position:relative;
+  width:34px;
+  height:19px;
+  border-radius:999px;
+  background:#cfd5dd;
+  transition:.25s
+}
+
+.world-header-switch-thumb{
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 2px 5px rgba(0,0,0,.2);
+  transition:.25s
+}
+
+.world-header-switch-text{font-size:.72rem;font-weight:800}
+body[data-world-member="member"] .world-header-switch-track{background:#2a9b6c}
+body[data-world-member="member"] .world-header-switch-thumb{transform:translateX(15px)}
+
+.peregrino-site-menu-toggle{
+  display:none;
+  width:44px;
+  height:44px;
+  margin-left:auto;
+  padding:10px;
+  border:0;
+  background:transparent;
+  cursor:pointer
+}
+
+.peregrino-site-menu-toggle span{
+  display:block;
+  height:2px;
+  margin:5px 0;
+  border-radius:4px;
+  background:#13243a
+}
+
+.world-v2-home,.world-v2-mode{display:none!important}
+.app{padding-top:22px!important}
+
+.peregrino-footer{
+  color:#5c697b!important;
+  background:#fff!important;
+  margin-top:34px!important;
+  padding:40px 0 55px!important;
+  border-top:1px solid rgba(19,36,58,.10)!important
+}
+.peregrino-footer-grid{border-top:0!important;padding-top:0!important}
+.peregrino-footer strong{color:#13243a!important}
+.peregrino-footer a{color:#536176!important}
+.peregrino-footer a:hover,.peregrino-footer a:focus-visible{color:#173f7a!important}
+
+@media(max-width:1120px){
+  .peregrino-nav-links a{padding-inline:7px!important;font-size:.79rem!important}
+  .world-header-member{display:none!important}
+}
+
+@media(max-width:900px){
+  .peregrino-site-nav{min-height:76px!important}
+  .peregrino-site-brand-mark{
+    width:48px!important;height:48px!important;flex-basis:48px!important;border-radius:16px!important
+  }
+  .peregrino-site-brand-copy small{display:none!important}
+  .peregrino-site-menu-toggle{display:block!important}
+  .peregrino-nav-links{
+    display:none!important;
+    position:absolute!important;
+    left:0!important;right:0!important;top:calc(100% + 8px)!important;
+    z-index:5100!important;
+    margin-left:0!important;
+    padding:14px!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:3px!important;
+    border:1px solid rgba(19,36,58,.12)!important;
+    border-radius:20px!important;
+    background:rgba(255,255,255,.99)!important;
+    box-shadow:0 22px 60px rgba(31,52,81,.16)!important
+  }
+  .peregrino-nav-links.is-open{display:flex!important}
+  .peregrino-nav-links a{padding:12px 14px!important;font-size:.9rem!important}
+  .world-header-member{
+    display:flex!important;
+    order:2!important;
+    margin-left:0!important;
+    padding-left:10px!important
+  }
+  .world-header-member-label{display:none!important}
+}
+
+@media(max-width:520px){
+  .peregrino-site-nav{width:calc(100% - 24px)!important;gap:10px!important}
+  .peregrino-site-brand-copy strong{font-size:1.43rem!important}
+  .world-header-switch-text{display:none!important}
+}
