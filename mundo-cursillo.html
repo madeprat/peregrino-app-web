@@ -1479,24 +1479,129 @@
     .map-legend .dot.next   { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
     .map-legend .dot.done   { background: var(--done); }
 
-    /* [v3] ── Mural más compacto (estilo canal directo) ── */
-    .palanca-card { padding: 11px 13px; gap: 9px; }
-    .palanca-card .palanca-top { gap: 10px; }
-    .palanca-card .palanca-name { font-size: .86rem; line-height: 1.18; }
-    .palanca-card .palanca-place { font-size: .72rem; }
-    .palanca-card .palanca-detail { font-size: .74rem; margin-top: 5px; }
-    .palanca-card .palanca-message { margin-top: 6px; padding: 7px 10px; font-size: .78rem; line-height: 1.32; }
-    .palanca-card .palanca-target { margin-top: 7px; padding: 7px 9px; font-size: .68rem; }
-    .palanca-card .mural-card-actions { margin-top: 7px; }
-    .palanca-card.now  { border-left: 3px solid var(--green); }
-    .palanca-card.next { border-left: 3px solid var(--purple); }
-    /* [v3.2] En .done sólo atenuamos elementos decorativos, no el texto legible */
-    .palanca-card.done { border-left: 3px solid var(--done); background: rgba(139,150,173,.06); }
-    .palanca-card.done .palanca-name,
-    .palanca-card.done .palanca-detail,
-    .palanca-card.done .palanca-place,
-    .palanca-card.done .palanca-message { opacity: 1; }
-    .palanca-card.done .palanca-status { opacity: .85; }
+    /* [v4] ── Tira mini de KPIs sobre el mural ── */
+    .mural-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 8px;
+      padding: 12px 14px 10px;
+      border-bottom: 1px solid rgba(11,18,32,.08);
+      background: linear-gradient(180deg, rgba(212,175,55,.06), transparent);
+    }
+    .mural-kpis .mkpi {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 6px 4px;
+      border-radius: 10px;
+      background: rgba(11,18,32,.03);
+      border: 1px solid rgba(11,18,32,.06);
+      min-height: 62px;
+      text-align: center;
+    }
+    .mural-kpis .mkpi-icon { font-size: .95rem; line-height: 1; }
+    .mural-kpis .mkpi-value {
+      font-size: 1.35rem; line-height: 1;
+      font-weight: 850; letter-spacing: -.03em;
+      color: #13243a;
+    }
+    .mural-kpis .mkpi-label {
+      font-size: .58rem; text-transform: uppercase; letter-spacing: .09em;
+      color: #5c697b; font-weight: 700;
+    }
+    .mural-kpis .mkpi-now {
+      background: rgba(62,207,142,.09);
+      border-color: rgba(62,207,142,.25);
+    }
+    .mural-kpis .mkpi-now .mkpi-value { color: #0b3d24; }
+    .mural-kpis .mkpi-pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 0 rgba(62,207,142,.6);
+      animation: mkpiPulse 1.6s ease-out infinite;
+    }
+    @keyframes mkpiPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(62,207,142,.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(62,207,142,0); }
+      100% { box-shadow: 0 0 0 0 rgba(62,207,142,0); }
+    }
+    .mural-hidden-note { display: none; }
+
+    /* [v4] ── Badge EN DIRECTO con punto latiendo ── */
+    .live-badge { display: inline-flex; align-items: center; gap: 6px; }
+    .live-badge .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #0b3d24;
+      animation: mkpiPulse 1.6s ease-out infinite;
+    }
+
+    /* [v4] ── Mural real "stream": una línea por palanca (~44px) ── */
+    .mural-stream { padding: 4px 0; }
+    .palanca-line {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      gap: 10px; align-items: center;
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(11,18,32,.05);
+      cursor: pointer;
+      transition: background .15s ease;
+    }
+    .palanca-line:hover { background: rgba(212,175,55,.06); }
+    .palanca-line:last-child { border-bottom: 0; }
+    .palanca-line .avatar {
+      width: 26px; height: 26px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      font-size: .78rem;
+      background: rgba(11,18,32,.06);
+      flex: 0 0 auto;
+    }
+    .palanca-line .p-body { min-width: 0; }
+    .palanca-line .p-title {
+      display: block; font-weight: 700; font-size: .82rem;
+      color: #13243a;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .palanca-line .p-meta {
+      display: block; font-size: .68rem; color: #5c697b;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .palanca-line .p-badge {
+      font-size: .58rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .06em;
+      padding: 3px 7px; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .palanca-line.now .avatar   { background: rgba(62,207,142,.18); }
+    .palanca-line.now .p-badge  { color: #0b3d24; background: rgba(62,207,142,.24); }
+    .palanca-line.next .avatar  { background: rgba(167,139,250,.18); }
+    .palanca-line.next .p-badge { color: #2d1a55; background: rgba(167,139,250,.24); }
+    .palanca-line.done .avatar  { background: rgba(139,150,173,.14); }
+    .palanca-line.done .p-badge { color: #2a3040; background: rgba(139,150,173,.22); }
+    .palanca-line.now  { box-shadow: inset 3px 0 0 var(--green); }
+    .palanca-line.next { box-shadow: inset 3px 0 0 var(--purple); }
+    .palanca-line.done { box-shadow: inset 3px 0 0 var(--done); }
+    /* Detalle desplegable al expandir (opcional, mismo id) */
+    .palanca-line[data-expanded="true"] .p-expand { display: block; }
+    .palanca-line .p-expand {
+      display: none;
+      grid-column: 2 / -1;
+      margin-top: 6px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(11,18,32,.04);
+      font-size: .74rem; color: #33445a; line-height: 1.4;
+    }
+
+    /* Compat: si el JS antiguo sigue emitiendo .palanca-card, hazla compacta */
+    .palanca-card { padding: 9px 12px; gap: 6px; }
+    .palanca-card .palanca-name { font-size: .82rem; line-height: 1.15; }
+    .palanca-card .palanca-place { font-size: .7rem; }
+    .palanca-card .palanca-detail { font-size: .72rem; margin-top: 4px; }
+    .palanca-card .palanca-message { display: none; }
+    .palanca-card.done { background: rgba(139,150,173,.06); }
 
     /* [v3] ── Footer coherente con el sitio ── */
     .site-footer {
@@ -1881,40 +1986,6 @@
           <button id="printBtn" class="btn" type="button">⌁ Guardar recuerdo</button>
         </div>
 
-        <section class="kpis" aria-label="Indicadores">
-          <article class="kpi">
-            <span class="kpi-icon" aria-hidden="true">👥</span>
-            <div class="kpi-content">
-              <strong id="kpiCursillos" class="kpi-value">—</strong>
-              <div class="kpi-label">Cursillos visibles</div>
-              <div id="kpiCursillosNote" class="kpi-note">Según los filtros activos</div>
-            </div>
-          </article>
-          <article class="kpi">
-            <span class="kpi-icon" aria-hidden="true">🌐</span>
-            <div class="kpi-content">
-              <strong id="kpiCountries" class="kpi-value">—</strong>
-              <div class="kpi-label">Países</div>
-              <div class="kpi-note">Presencia internacional</div>
-            </div>
-          </article>
-          <article class="kpi">
-            <span class="kpi-icon" aria-hidden="true">⊕</span>
-            <div class="kpi-content">
-              <strong id="kpiPalancas" class="kpi-value">—</strong>
-              <div class="kpi-label">Palancas registradas</div>
-              <div class="kpi-note">Para los Cursillos visibles</div>
-            </div>
-          </article>
-          <article class="kpi">
-            <span class="kpi-icon" aria-hidden="true">◷</span>
-            <div class="kpi-content">
-              <strong id="kpiNow" class="kpi-value">—</strong>
-              <div class="kpi-label">Rezando ahora</div>
-              <div class="kpi-note">Según las franjas declaradas</div>
-            </div>
-          </article>
-        </section>
       </div>
     </section>
 
@@ -1948,29 +2019,42 @@
       </section>
 
       <aside class="mural">
+        <!-- [v4] Tira mini de KPIs como cabecera del mural, no encima del mundo -->
+        <div class="mural-kpis" aria-label="Indicadores globales">
+          <div class="mkpi">
+            <span class="mkpi-icon" aria-hidden="true">👥</span>
+            <span class="mkpi-value" id="kpiCursillos">—</span>
+            <span class="mkpi-label">Cursillos</span>
+          </div>
+          <div class="mkpi">
+            <span class="mkpi-icon" aria-hidden="true">🌐</span>
+            <span class="mkpi-value" id="kpiCountries">—</span>
+            <span class="mkpi-label">Países</span>
+          </div>
+          <div class="mkpi">
+            <span class="mkpi-icon" aria-hidden="true">🕊️</span>
+            <span class="mkpi-value" id="kpiPalancas">—</span>
+            <span class="mkpi-label">Palancas</span>
+          </div>
+          <div class="mkpi mkpi-now">
+            <span class="mkpi-pulse" aria-hidden="true"></span>
+            <span class="mkpi-value" id="kpiNow">—</span>
+            <span class="mkpi-label">rezando ahora</span>
+          </div>
+          <div class="mural-hidden-note" id="kpiCursillosNote" hidden></div>
+        </div>
+
         <div class="panel-head">
           <div>
             <h2>Mural de palancas</h2>
-            <p id="muralSubtitle">
-              Palancas que están sosteniendo Cursillos en todo el mundo.
-            </p>
+            <p id="muralSubtitle">Palancas que están sosteniendo Cursillos en todo el mundo.</p>
           </div>
-        
           <div class="mural-head-actions">
-            <button
-              id="showAllPalancasBtn"
-              class="btn mural-all-btn"
-              type="button"
-              onclick="showAllPalancas()"
-              hidden
-            >
-              🌍 Ver todas
-            </button>
-        
-            <span class="live-badge">PALANCA VIVA</span>
+            <button id="showAllPalancasBtn" class="btn mural-all-btn" type="button" onclick="showAllPalancas()" hidden>🌍 Ver todas</button>
+            <span class="live-badge"><span class="live-dot" aria-hidden="true"></span>EN DIRECTO</span>
           </div>
         </div>
-        <div id="muralList" class="mural-list">
+        <div id="muralList" class="mural-list mural-stream">
           <div class="empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>
         </div>
       </aside>
@@ -2905,96 +2989,36 @@ function renderMural() {
         ? encodeURIComponent(destino.cursillo_id)
         : "";
 
-      const bloqueDestino =
-        modoGlobal && destino
-          ? `
-            <div class="palanca-target">
-              <span>Hacia</span>
-              <strong>
-                ${escapeHtml(destino.bandera || "🌍")}
-                ${escapeHtml(nombreDestino)}
-              </strong>
-              ${
-                lugarDestino
-                  ? `<small>${escapeHtml(lugarDestino)}</small>`
-                  : ""
-              }
-            </div>
-          `
-          : "";
+      // [v4] Formato "stream": una línea compacta por palanca (~44px)
+      const emoji = cssStatus === "now" ? "🕊️"
+                  : cssStatus === "next" ? "🕒"
+                  : "✓";
 
-      const botonDestino =
-        modoGlobal && destino
-          ? `
-            <div class="mural-card-actions">
-              <button
-                class="btn"
-                type="button"
-                onclick="openCursilloFromMural('${destinoCodificado}')"
-              >
-                Ver este Cursillo →
-              </button>
-            </div>
-          `
-          : "";
+      const lugarOrigen = [
+        palanca.ciudad_origen,
+        palanca.pais_origen
+      ].filter(Boolean).join(", ") || "—";
+
+      const nombrePalanca = escapeHtml(palanca.nombre_publico || "Palanca anónima");
+      const tipoPalanca  = escapeHtml(palanca.tipo_palanca || "Oración");
+
+      const metaCorta = modoGlobal && destino
+        ? `${tipoPalanca} · ${escapeHtml(lugarOrigen)} → ${escapeHtml(nombreDestino)}`
+        : `${tipoPalanca} · ${escapeHtml(lugarOrigen)} · ${start}`;
+
+      const onclick = destino
+        ? `onclick="openCursilloFromMural('${destinoCodificado}')"`
+        : "";
 
       return `
-        <article class="palanca-card" tabindex="0">
-          <div class="palanca-top">
-            <div>
-              <div class="palanca-name">
-                ${escapeHtml(
-                  palanca.nombre_publico
-                  || "Palanca anónima"
-                )}
-              </div>
-
-              <div class="palanca-place">
-                ${escapeHtml(
-                  palanca.ciudad_origen || ""
-                )}
-                ${
-                  palanca.pais_origen
-                    ? ` · ${escapeHtml(
-                        palanca.pais_origen
-                      )}`
-                    : ""
-                }
-              </div>
-            </div>
-
-            <span class="palanca-status ${cssStatus}">
-              ${statusText}
-            </span>
+        <div class="palanca-line ${cssStatus}" tabindex="0" ${onclick} title="${nombrePalanca} — ${statusText}">
+          <span class="avatar" aria-hidden="true">${emoji}</span>
+          <div class="p-body">
+            <span class="p-title">${nombrePalanca}</span>
+            <span class="p-meta">${metaCorta}</span>
           </div>
-
-          <div class="palanca-detail">
-            ${escapeHtml(
-              palanca.tipo_palanca || "Oración"
-            )}
-            · ${start}
-            ${
-              palanca.fin_palanca_utc
-                ? `–${end.split(", ").pop()}`
-                : ""
-            }
-          </div>
-
-          ${
-            palanca.mensaje_predefinido
-              ? `
-                <div class="palanca-message">
-                  “${escapeHtml(
-                    palanca.mensaje_predefinido
-                  )}”
-                </div>
-              `
-              : ""
-          }
-
-          ${bloqueDestino}
-          ${botonDestino}
-        </article>
+          <span class="p-badge">${statusText}</span>
+        </div>
       `;
     })
     .join("");
