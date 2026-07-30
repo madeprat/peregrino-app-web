@@ -1,59 +1,50 @@
 <!DOCTYPE html>
-<!-- peregrino-app-web/bordon/index.html
-     Página de aterrizaje del enlace de Bordón (Plan Comunidad).
-     Si Peregrino APP está instalada, Android abre la app directamente
-     (App Links) y esta página nunca se ve. Si NO está instalada,
-     el peregrino aterriza aquí: le llevamos a Play Store y le
-     recordamos que vuelva a pulsar su enlace después de instalar. -->
+<!--
+  Página fallback del App Link /bordon/.
+  Android abre Peregrino directamente cuando la app está instalada.
+  Esta página aparece únicamente cuando el enlace no puede abrir la app.
+  No elimina, transforma ni redirige los parámetros del enlace.
+-->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tu Bordón te espera — Peregrino APP</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      background: linear-gradient(160deg, #1A2C6B 0%, #0e1a45 100%);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .caja { padding: 40px 28px; max-width: 420px; }
-    .regalo { font-size: 64px; }
-    h1 { font-size: 26px; letter-spacing: 1px; color: #E8C468; margin: 18px 0 10px; }
-    p { font-size: 15px; line-height: 1.6; color: #e8e8f0; }
-    .paso { color: #bfc6e0; font-size: 13.5px; }
-    a.boton {
-      display: inline-block;
-      margin-top: 22px;
-      background: #C9A227;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-size: 16px;
-    }
-    .colores { margin-top: 26px; font-size: 14px; color: #bfc6e0; }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tu Bordón te espera | Peregrino APP</title>
+  <meta name="description" content="Instala Peregrino APP y vuelve a abrir el enlace que te ha enviado tu comunidad para activar el Plan Bordón.">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#fffaf0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bordon-v2.css">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
 </head>
 <body>
-  <div class="caja">
-    <div class="regalo">🎁</div>
-    <h1>Tu comunidad te regala el Bordón</h1>
-    <p>Para recibirlo necesitas tener instalada <strong>Peregrino APP</strong>.</p>
-    <p class="paso">1. Instala la app desde Google Play<br>
-       2. Vuelve a este chat y pulsa tu enlace otra vez<br>
-       3. Tu Bordón se activará al instante</p>
-    <a class="boton"
-       href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
-       Instalar Peregrino APP
+  <div class="decolores" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <main class="card">
+    <div class="logo">
+      <img src="../assets/peregrino-app-icon.png" alt=""
+           onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+      <span class="logo-fallback" hidden aria-hidden="true">P</span>
+    </div>
+    <div class="gift" aria-hidden="true">🎁</div>
+    <p class="eyebrow">Un regalo de tu comunidad</p>
+    <h1>Tu Bordón te espera</h1>
+    <p class="lead">Para recibirlo necesitas tener instalada Peregrino APP en tu dispositivo Android.</p>
+
+    <ol class="steps">
+      <li>Instala Peregrino desde Google Play.</li>
+      <li>Vuelve al mensaje o chat donde recibiste este enlace.</li>
+      <li>Pulsa otra vez el mismo enlace. La app lo reconocerá y activará tu Bordón.</li>
+    </ol>
+
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
+      Instalar Peregrino APP
     </a>
-    <div class="colores">¡De Colores! 🌈</div>
-  </div>
+
+    <p class="note">No copies un enlace distinto ni cierres el mensaje original: después de instalar la app necesitarás pulsarlo de nuevo.</p>
+    <a class="back" href="../index.html">Conocer Peregrino APP →</a>
+    <div class="colors">¡De Colores! 🌈</div>
+  </main>
 </body>
 </html>
