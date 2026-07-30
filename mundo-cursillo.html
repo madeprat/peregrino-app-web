@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#fffaf0" />
   <title>El mundo está de Cursillo · Peregrino App</title>
-  <meta name="description" content="Mapa experimental de Cursillos y palancas de oración conectado con Peregrino APP." />
+  <meta name="description" content="Mapa mundial de Cursillos y palancas de oración conectado con Peregrino APP." />
   <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="favicon.ico" />
 
@@ -1869,6 +1869,195 @@
       border-color: rgba(19,36,58,.16) !important;
     }
 
+    /* [v5] Aviso de estado dentro de .selection-card */
+    .selection-notice {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: .82rem;
+      line-height: 1.35;
+      color: #33445a;
+      background: #eef2f7;
+      border: 1px solid rgba(19,36,58,.16);
+    }
+    .selection-notice strong { display: block; margin-bottom: 4px; color: #13243a; }
+    .selection-notice.done   { background: rgba(139,150,173,.14); border-color: rgba(139,150,173,.35); }
+    .selection-notice.cancel { background: rgba(255,125,145,.14); border-color: rgba(255,125,145,.35); color: #6b1220; }
+    .selection-notice.cancel strong { color: #6b1220; }
+    .selection-notice.info   { background: rgba(111,179,255,.14); border-color: rgba(111,179,255,.35); }
+
+    /* [v5] Botón Reintentar dentro del status-strip */
+    .status-strip .btn-retry {
+      margin-left: 10px;
+      padding: 4px 10px;
+      font-size: .74rem;
+      background: rgba(255,255,255,.1);
+      color: #f5f7fb;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 8px;
+    }
+    .status-strip.error .btn-retry {
+      background: rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.35);
+    }
+
+    /* [v5] Diálogo claro y aislado del modal de demostración */
+    .palanca-dialog-overlay {
+      position: fixed; inset: 0;
+      z-index: 5000;
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 24px;
+      background: rgba(11,18,32,.55);
+      backdrop-filter: blur(4px);
+    }
+    .palanca-dialog-overlay.visible { display: flex; }
+    .palanca-dialog {
+      position: relative;
+      width: min(600px, calc(100vw - 32px));
+      padding: 30px 28px 22px;
+      border-radius: 16px;
+      background: #fffaf0;
+      color: #13243a;
+      border: 1px solid rgba(19,36,58,.12);
+      box-shadow: 0 24px 60px rgba(0,0,0,.28);
+      overflow: hidden;
+    }
+    .palanca-dialog-ribbon {
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #ff5f6d, #ff9a3d, #ffd76d, #3ecf8e, #6fb3ff, #a78bfa);
+    }
+    .palanca-dialog-kicker {
+      margin: 0 0 6px;
+      font-size: .74rem; text-transform: uppercase; letter-spacing: .12em;
+      color: #5c697b; font-weight: 700;
+    }
+    .palanca-dialog h2 {
+      margin: 0 0 12px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      line-height: 1.15;
+      color: #13243a;
+      letter-spacing: -.01em;
+    }
+    .palanca-dialog p { color: #33445a; font-size: .95rem; line-height: 1.5; }
+    .palanca-dialog-actions {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 18px; align-items: center;
+    }
+    .palanca-dialog .btn.primary {
+      background: #173f7a; color: #fffaf0;
+      border-color: #173f7a;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    .palanca-dialog .btn.primary:hover { background: #0f2c5c; }
+    .palanca-dialog .btn.ghost {
+      background: transparent; color: #173f7a;
+      border: 1px solid rgba(23,63,122,.35);
+      padding: 10px 16px;
+      border-radius: 10px;
+    }
+    .palanca-dialog .btn.link {
+      background: transparent; border: 0;
+      color: #5c697b; padding: 10px 4px;
+      margin-left: auto;
+      text-decoration: underline;
+    }
+
+    /* [v5] Cabecera de una sola línea, con "Más" plegado */
+    .experience-controls .actions { flex-wrap: nowrap; gap: 6px; }
+    .experience-controls .actions .btn.icon-only {
+      width: 40px; padding: 8px 0; justify-content: center;
+    }
+    .experience-controls .actions .btn.icon-only span:not(.btn-glyph) { display: none; }
+    .actions-more {
+      position: relative;
+    }
+    .actions-more-menu {
+      position: absolute; right: 0; top: calc(100% + 6px);
+      min-width: 200px;
+      display: none;
+      flex-direction: column;
+      padding: 6px;
+      border-radius: 12px;
+      background: rgba(9,14,25,.95);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 20px 50px rgba(0,0,0,.4);
+      z-index: 800;
+    }
+    .actions-more.open .actions-more-menu { display: flex; }
+    .actions-more-menu .btn {
+      justify-content: flex-start;
+      background: transparent;
+      border: 0; color: #f5f7fb;
+      padding: 9px 12px;
+      border-radius: 8px;
+    }
+    .actions-more-menu .btn:hover { background: rgba(255,255,255,.08); }
+    @media (min-width: 1080px) {
+      .experience-controls { align-items: center; }
+    }
+
+    /* [v5] Recalcular altura del mapa con la nueva cabecera compacta */
+    .map-shell, .mural {
+      height: clamp(650px, calc(100vh - 180px), 850px) !important;
+    }
+
+    /* [v5] Tira KPIs más compacta (52-58px) sin emojis */
+    .mural-kpis {
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 0;
+      padding: 8px 4px 8px;
+      background: transparent;
+    }
+    .mural-kpis .mkpi {
+      background: transparent;
+      border: 0;
+      border-right: 1px solid rgba(11,18,32,.08);
+      border-radius: 0;
+      min-height: 44px;
+      padding: 4px 6px;
+      flex-direction: row;
+      justify-content: center;
+      gap: 6px;
+    }
+    .mural-kpis .mkpi:last-child { border-right: 0; }
+    .mural-kpis .mkpi-icon { display: none; }
+    .mural-kpis .mkpi-value {
+      font-size: 1.15rem;
+      color: #13243a;
+    }
+    .mural-kpis .mkpi-label {
+      font-size: .62rem;
+      text-transform: none;
+      letter-spacing: .01em;
+      color: #5c697b;
+      font-weight: 500;
+    }
+    .mural-kpis .mkpi-now { background: transparent; }
+    .mural-kpis .mkpi-pulse { display: none; }
+    /* Pulso sólo cuando hay actividad, activado desde JS con data-active */
+    .mural-kpis .mkpi-now[data-active="true"] .mkpi-pulse {
+      display: inline-block;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+    }
+    .mural-kpis .mkpi-now[data-active="true"] .mkpi-value { color: #0b3d24; }
+
+    /* Badge condicional: por defecto "Mural actualizado", cambia a EN DIRECTO */
+    .live-badge { display: none; }
+    .live-badge[data-active="true"] { display: inline-flex; }
+    .mural-badge-static {
+      padding: 5px 9px; border-radius: 999px;
+      color: #5c697b; background: rgba(11,18,32,.05);
+      border: 1px solid rgba(11,18,32,.08);
+      font-size: .66rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .mural-badge-static[data-active="true"] { display: none; }
+
     /* Pie coherente con el diseño claro de Peregrino */
     .site-footer {
       color: #5c697b !important;
@@ -1894,6 +2083,156 @@
 
     .site-footer .footer-meta {
       border-top-color: rgba(19,36,58,.08) !important;
+    }
+  </style>
+
+  <style>
+    /* [v6] Integración final con el sistema visual claro de Peregrino */
+    .title-row h1,
+    .panel-head h2,
+    .worldwide h2,
+    .footer-brand strong {
+      font-family: "Cormorant Garamond", Georgia, serif !important;
+    }
+
+    /* Fuera del globo, todos los paneles emergentes son claros. */
+    .filters-popover {
+      color: #13243a !important;
+      background: rgba(255,255,255,.98) !important;
+      border-color: rgba(19,36,58,.13) !important;
+      box-shadow: 0 24px 65px rgba(31,52,81,.18) !important;
+    }
+    .filters-popover,
+    .filters-popover * { color: inherit; }
+    .filters-popover .filters-head strong { color: #13243a !important; }
+    .filters-popover .filters-head span,
+    .filters-popover label,
+    .filters-popover legend,
+    .filters-popover .filter-title { color: #5c697b !important; }
+    .filters-popover .control {
+      color: #13243a !important;
+      background: #f7f9fc !important;
+      border-color: rgba(19,36,58,.13) !important;
+    }
+    .filters-popover .control::placeholder { color: #7a8798 !important; }
+    .filters-popover select.control option { color: #13243a !important; background: #fff !important; }
+    .filters-popover .btn {
+      color: #13243a !important;
+      background: #fff !important;
+      border-color: rgba(19,36,58,.14) !important;
+    }
+    .filters-popover .btn.primary {
+      color: #fff !important;
+      background: #173f7a !important;
+      border-color: #173f7a !important;
+    }
+
+    .actions-more-menu {
+      color: #13243a;
+      background: rgba(255,255,255,.99);
+      border-color: rgba(19,36,58,.13);
+      box-shadow: 0 20px 50px rgba(31,52,81,.18);
+    }
+    .actions-more-menu .btn {
+      color: #13243a !important;
+      background: transparent !important;
+    }
+    .actions-more-menu .btn:hover,
+    .actions-more-menu .btn:focus-visible { background: #f3f6fa !important; }
+
+    .status-strip .btn-retry {
+      color: #173f7a !important;
+      background: #fff !important;
+      border-color: rgba(23,63,122,.28) !important;
+      font-weight: 750;
+    }
+
+    .palanca-dialog-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: #33445a;
+      background: #f1f4f8;
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+    .palanca-dialog-close:hover,
+    .palanca-dialog-close:focus-visible { background: #e7edf4; }
+
+    .footer-brand-mark { overflow: hidden; background: #fff !important; }
+    .footer-brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Las filas del mural son botones reales, con foco visible. */
+    button.palanca-line {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid rgba(11,18,32,.05);
+      color: #13243a;
+      background: transparent;
+      font: inherit;
+      text-align: left;
+    }
+    button.palanca-line:focus-visible {
+      outline: 3px solid rgba(23,63,122,.24);
+      outline-offset: -3px;
+      background: rgba(23,63,122,.06);
+    }
+
+    @media (max-width: 760px) {
+      .experience-controls .actions {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+      }
+      .mural-kpis { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .mural-kpis .mkpi:nth-child(2) { border-right: 0; }
+      .mural-kpis .mkpi:nth-child(-n+2) { border-bottom: 1px solid rgba(11,18,32,.08); }
+    }
+
+    @media (max-width: 560px) {
+      .map-side-controls {
+        top: 12px !important;
+        left: 12px !important;
+        right: auto !important;
+        bottom: auto !important;
+        display: flex !important;
+        transform: none !important;
+      }
+      .map-tool {
+        width: 40px !important;
+        height: 40px !important;
+        border-right: 1px solid rgba(255,255,255,.085) !important;
+        border-bottom: 0 !important;
+      }
+      .map-tool:last-child { border-right: 0 !important; }
+      .map-legend { display: none !important; }
+      .selection-card {
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 62px !important;
+        width: auto !important;
+        max-height: 44%;
+        overflow: auto;
+      }
+      .status-strip.map-status {
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+      }
+      .palanca-dialog {
+        max-height: calc(100vh - 24px);
+        overflow: auto;
+        padding: 28px 20px 20px;
+      }
+      .palanca-dialog-actions { align-items: stretch; }
+      .palanca-dialog-actions .btn { width: 100%; justify-content: center; }
+      .palanca-dialog .btn.link { margin-left: 0; }
     }
   </style>
 </head>
@@ -1943,7 +2282,7 @@
                 <span class="filter-chevron" aria-hidden="true">⌄</span>
               </button>
             </div>
-            <p id="pageModeText">Palancas vivas · Peregrino App · Datos experimentales</p>
+            <p id="pageModeText">Palancas vivas · El mundo unido en oración</p>
           </div>
         </div>
 
@@ -1980,10 +2319,15 @@
 
       <div class="experience-controls">
         <div class="actions">
-          <button id="refreshBtn" class="btn" type="button">↻ Actualizar</button>
-          <button id="demoBtn" class="btn primary" type="button">▶ Modo demostración</button>
-          <button id="fullscreenBtn" class="btn" type="button">⛶ Pantalla completa</button>
-          <button id="printBtn" class="btn" type="button">⌁ Guardar recuerdo</button>
+          <button id="refreshBtn" class="btn icon-only" type="button" aria-label="Actualizar" title="Actualizar"><span class="btn-glyph" aria-hidden="true">↻</span><span>Actualizar</span></button>
+          <button id="demoBtn" class="btn primary" type="button">▶ Modo presentación</button>
+          <button id="fullscreenBtn" class="btn icon-only" type="button" aria-label="Pantalla completa" title="Pantalla completa"><span class="btn-glyph" aria-hidden="true">⛶</span><span>Pantalla completa</span></button>
+          <div class="actions-more" id="actionsMore">
+            <button id="actionsMoreBtn" class="btn" type="button" aria-haspopup="true" aria-expanded="false">Más ▾</button>
+            <div class="actions-more-menu" role="menu">
+              <button id="printBtn" class="btn" type="button" role="menuitem">⌁ Guardar recuerdo</button>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -2012,9 +2356,9 @@
           Selecciona un Cursillo en el mapa o en el mural para descubrir sus palancas.
         </div>
 
-        <div id="dataStatus" class="status-strip map-status">
+        <div id="dataStatus" class="status-strip map-status" role="status" aria-live="polite">
           <span class="status-dot"></span>
-          <span id="statusText">Preparando la conexión con BD de Cursillos…</span>
+          <span id="statusText">Actualizando los Cursillos…</span>
         </div>
       </section>
 
@@ -2051,7 +2395,8 @@
           </div>
           <div class="mural-head-actions">
             <button id="showAllPalancasBtn" class="btn mural-all-btn" type="button" onclick="showAllPalancas()" hidden>🌍 Ver todas</button>
-            <span class="live-badge"><span class="live-dot" aria-hidden="true"></span>EN DIRECTO</span>
+            <span id="liveBadge" class="live-badge" data-active="false"><span class="live-dot" aria-hidden="true"></span>EN DIRECTO</span>
+            <span id="staticBadge" class="mural-badge-static" data-active="false">Mural actualizado</span>
           </div>
         </div>
         <div id="muralList" class="mural-list mural-stream">
@@ -2064,7 +2409,7 @@
       <div>
         <div class="worldwide-eyebrow">Próxima palanca mundial</div>
         <h2 id="worldTitle">Consultando la configuración…</h2>
-        <p id="worldDescription">La pestaña CONFIGURACION alimenta automáticamente este bloque.</p>
+        <p id="worldDescription">Próximamente anunciaremos una nueva palanca mundial.</p>
       </div>
       <div id="countdown" class="countdown">
         <div class="count-unit"><strong id="countDays">—</strong><span>días</span></div>
@@ -2078,7 +2423,7 @@
   <footer class="site-footer">
     <div class="site-wrap footer-grid">
       <div class="footer-brand">
-        <span class="footer-brand-mark" aria-hidden="true">✦</span>
+        <span class="footer-brand-mark" aria-hidden="true"><img src="assets/peregrino-app-icon.png" alt=""></span>
         <div>
           <strong>Peregrino APP</strong>
           <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
@@ -2100,21 +2445,24 @@
 
   <a class="site-top-button" id="toTop" href="#contenido" aria-label="Volver arriba">↑</a>
 
-  <div id="palancaInvite" class="demo-reveal" role="dialog" aria-modal="true" aria-labelledby="palancaInviteTitle" style="pointer-events:auto">
-    <div class="demo-box">
-      <div class="demo-kicker">Hacer palanca</div>
+  <!-- [v5] Diálogo de palanca aislado del modal de demostración -->
+  <div id="palancaInvite" class="palanca-dialog-overlay" role="dialog" aria-modal="true" aria-labelledby="palancaInviteTitle" aria-describedby="palancaInviteText" aria-hidden="true">
+    <section class="palanca-dialog" tabindex="-1">
+      <button class="palanca-dialog-close" type="button" id="palancaInviteDismiss" aria-label="Cerrar">×</button>
+      <span class="palanca-dialog-ribbon" aria-hidden="true"></span>
+      <p class="palanca-dialog-kicker">Hacer palanca</p>
       <h2 id="palancaInviteTitle">Tu oración puede sostener este Cursillo</h2>
       <p id="palancaInviteText">
-        Con Peregrino APP tu palanca se envía sola al terminar tu rezo, sin escribir nada.
-        Y si no tienes la app, también puedes ofrecerla desde la web en unos toques.
-        Para algo más personal, escribe al secretariado de tu diócesis.
+        Puedes ofrecer tu palanca en unos toques desde la web. Si prefieres,
+        con Peregrino APP se envía sola al terminar tu rezo. Para algo más
+        personal, escribe al secretariado de tu diócesis.
       </p>
-      <div class="demo-origins" style="margin-top:22px">
-        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino APP</a>
-        <a class="btn" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Ofrecer desde la web</a>
-        <button class="btn" type="button" id="palancaInviteClose">Seguir explorando</button>
+      <div class="palanca-dialog-actions">
+        <a class="btn primary" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Ofrecer desde la web</a>
+        <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Hacerlo con Peregrino APP</a>
+        <button class="btn link" type="button" id="palancaInviteClose">Cancelar</button>
       </div>
-    </div>
+    </section>
   </div>
 
   <div id="demoReveal" class="demo-reveal">
@@ -2250,7 +2598,31 @@ function cursilloEsVisiblePublicamente(cursillo) {
       }).format(date);
     }
 
+    function normalizeStatusText(value) {
+      return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim()
+        .toLowerCase();
+    }
+
+    function declaredCursilloStatus(cursillo) {
+      const declared = normalizeStatusText(
+        cursillo.estado_dinamico
+        || cursillo.estado_snapshot
+        || cursillo.estado
+        || ""
+      );
+
+      if (/cancel|suspend|anulad/.test(declared)) return "Cancelado";
+      if (/aplaz|pospuest|posterg/.test(declared)) return "Aplazado";
+      return "";
+    }
+
     function cursilloStatus(cursillo) {
+      const declared = declaredCursilloStatus(cursillo);
+      if (declared) return declared;
+
       const now = new Date();
       const start = toDate(cursillo.inicio_utc) || toDate(cursillo.inicio_local);
       const end = toDate(cursillo.fin_utc) || toDate(cursillo.fin_local);
@@ -2278,7 +2650,7 @@ function cursilloEsVisiblePublicamente(cursillo) {
           const query = new google.visualization.Query(url);
           query.send((response) => {
             if (response.isError()) {
-              reject(new Error(response.getMessage() || "BD de Cursillos no devolvió datos."));
+              reject(new Error(response.getMessage() || "La fuente de Cursillos no devolvió datos."));
               return;
             }
 
@@ -2319,91 +2691,6 @@ function cursilloEsVisiblePublicamente(cursillo) {
         }
       }
       throw lastError || new Error("No fue posible consultar la hoja.");
-    }
-
-    function fallbackData() {
-      const now = new Date();
-      const hour = 60 * 60 * 1000;
-      const day = 24 * hour;
-
-      const cursillos = [
-        { cursillo_id:"ES-VAL-169-DEMO", continente:"Europa", codigo_pais:"ES", pais:"España", bandera:"🇪🇸", diocesis:"Archidiócesis de Valencia", ciudad_referencia:"Valencia", latitud:39.4699, longitud:-0.3763, tipo_evento:"Cursillo", modalidad:"Mixto", numero:169, nombre_corto:"Cursillo Mixto Nº169", inicio_utc:new Date(now-day), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" },
-        { cursillo_id:"PE-ARE-081-DEMO", continente:"América del Sur", codigo_pais:"PE", pais:"Perú", bandera:"🇵🇪", diocesis:"Arquidiócesis de Arequipa", ciudad_referencia:"Arequipa", latitud:-16.409, longitud:-71.5375, tipo_evento:"Cursillo", modalidad:"Mujeres", numero:81, nombre_corto:"Cursillo de Mujeres Nº81", inicio_utc:new Date(now-12*hour), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" },
-        { cursillo_id:"BR-POA-183-DEMO", continente:"América del Sur", codigo_pais:"BR", pais:"Brasil", bandera:"🇧🇷", diocesis:"Arquidiócesis de Porto Alegre", ciudad_referencia:"Porto Alegre", latitud:-30.0346, longitud:-51.2177, tipo_evento:"Cursillo", modalidad:"Hombres", numero:183, nombre_corto:"Cursillo de Hombres Nº183", inicio_utc:new Date(now+day), fin_utc:new Date(now+4*day), estado_snapshot:"Próximo" },
-        { cursillo_id:"AU-CAI-035-DEMO", continente:"Oceanía", codigo_pais:"AU", pais:"Australia", bandera:"🇦🇺", diocesis:"Diócesis de Cairns", ciudad_referencia:"Cairns", latitud:-16.9186, longitud:145.7781, tipo_evento:"Cursillo", modalidad:"Mixto", numero:35, nombre_corto:"Cursillo Mixto Nº35", inicio_utc:new Date(now-4*day), fin_utc:new Date(now-day), estado_snapshot:"Finalizado" },
-        { cursillo_id:"MX-COL-056-DEMO", continente:"América del Norte", codigo_pais:"MX", pais:"México", bandera:"🇲🇽", diocesis:"Diócesis de Colima", ciudad_referencia:"Colima", latitud:19.2452, longitud:-103.7241, tipo_evento:"Cursillo", modalidad:"Mujeres", numero:56, nombre_corto:"Cursillo de Mujeres Nº56", inicio_utc:new Date(now+2*day), fin_utc:new Date(now+5*day), estado_snapshot:"Próximo" },
-        { cursillo_id:"PH-MAN-144-DEMO", continente:"Asia", codigo_pais:"PH", pais:"Filipinas", bandera:"🇵🇭", diocesis:"Arquidiócesis de Manila", ciudad_referencia:"Manila", latitud:14.5995, longitud:120.9842, tipo_evento:"Cursillo", modalidad:"Jóvenes", numero:144, nombre_corto:"Cursillo de Jóvenes Nº144", inicio_utc:new Date(now-6*hour), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" }
-      ];
-
-      const origins = [
-        ["María","Valencia","España",39.4699,-0.3763],
-        ["Ultreya San José","Ciudad de Guatemala","Guatemala",14.6349,-90.5069],
-        ["Familia López","Ciudad de México","México",19.4326,-99.1332],
-        ["Parroquia Santa María","Porto","Portugal",41.1579,-8.6291],
-        ["José","Bogotá","Colombia",4.711,-74.0721],
-        ["Grupo Cuarto Día","Los Ángeles","Estados Unidos",34.0522,-118.2437],
-        ["Carmen","Lima","Perú",-12.0464,-77.0428],
-        ["Ultreya De Colores","São Paulo","Brasil",-23.5505,-46.6333]
-      ];
-
-      const palancas = [];
-      let counter = 1;
-      for (const cursillo of cursillos.slice(0, 3)) {
-        for (const origin of origins) {
-          const start = new Date(now + ((counter % 5) - 2) * 30 * 60 * 1000);
-          palancas.push({
-            palanca_id:`DEMO-${counter++}`,
-            cursillo_id:cursillo.cursillo_id,
-            inicio_palanca_utc:start,
-            fin_palanca_utc:new Date(start.getTime()+30*60*1000),
-            nombre_publico:origin[0],
-            tipo_remitente:origin[0].includes("Ultreya") ? "Ultreya" : "Individual",
-            ciudad_origen:origin[1],
-            pais_origen:origin[2],
-            latitud_origen:origin[3],
-            longitud_origen:origin[4],
-            tipo_palanca:["Rosario","Eucaristía","Oración personal","Reunión de grupo"][counter%4],
-            mensaje_predefinido:"Rezo por vosotros. De colores.",
-            consentimiento_publico:true,
-            verificada:true
-          });
-        }
-      }
-
-      return {
-        cursillos,
-        palancas,
-        configuracion:[{
-          palanca_mundial_id:"DEMO-MUNDIAL",
-          titulo:"Palanca mundial por los Cursillos activos",
-          inicio_utc:new Date(now.getTime()+3*hour),
-          fin_utc:new Date(now.getTime()+3*hour+15*60*1000),
-          tipo_oracion:"Decena del rosario",
-          intencion:"Por quienes están viviendo un Cursillo y por sus equipos."
-        }]
-      };
-    }
-
-    const STATUS_COLORS = {
-      activo: "#3ecf8e",
-      proximo: "#a78bfa",
-      finalizado: "#8b96ad"
-    };
-
-    const DECOLORES = ["#ff5f6d", "#ff9a3d", "#ffd76d", "#3ecf8e", "#6fb3ff", "#a78bfa"];
-
-    function hexToRgbStr(hex) {
-      const n = parseInt(hex.slice(1), 16);
-      return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
-    }
-
-    function holdRotation(ms = 6000) {
-      if (!appState.globe) return;
-      const controls = appState.globe.controls();
-      controls.autoRotate = false;
-      $("mapRotateBtn")?.classList.remove("active");
-      clearTimeout(appState.rotateResumeTimer);
-      appState.rotateResumeTimer = setTimeout(() => { controls.autoRotate = true; $("mapRotateBtn")?.classList.add("active"); }, ms);
     }
 
     function initGlobe() {
@@ -2548,14 +2835,20 @@ function cursilloEsVisiblePublicamente(cursillo) {
       }
     }
 
-    function palancaEsVisiblePublicamente(palanca) {
-      const pruebaPermitida =
-        MOSTRAR_PALANCAS_DE_PRUEBA || !bool(palanca.es_prueba);
+    // [v5] Autorización única: qué estados aceptan nuevas palancas
+    function cursilloAceptaPalancas(cursillo) {
+      if (!cursillo) return false;
+      const s = cursilloStatus(cursillo);
+      return s === "Activo" || s === "Próximo";
+    }
 
-      const consentimientoPermitido =
-        palanca.consentimiento_publico === null
-        || palanca.consentimiento_publico === undefined
-        || bool(palanca.consentimiento_publico);
+    function palancaEsVisiblePublicamente(palanca) {
+      // [v5] Endurecido: mismo criterio que cursilloEsVisiblePublicamente,
+      // sólo publica cuando es_prueba está expresamente marcado como FALSE.
+      const pruebaPermitida =
+        MOSTRAR_PALANCAS_DE_PRUEBA || esValorFalseExplicito(palanca.es_prueba);
+
+      const consentimientoPermitido = bool(palanca.consentimiento_publico);
 
       return pruebaPermitida && consentimientoPermitido;
     }
@@ -2596,7 +2889,19 @@ function cursilloEsVisiblePublicamente(cursillo) {
       animateNumber($("kpiCountries"), countries.size);
       animateNumber($("kpiPalancas"), palancas.length);
       animateNumber($("kpiNow"), nowCount);
-      $("kpiCursillosNote").textContent = `${activeCount} activos según la fecha actual`;
+      const note = $("kpiCursillosNote");
+      if (note) note.textContent = `${activeCount} activos según la fecha actual`;
+
+      // [v5] Pulso y badge condicionales al nowCount > 0
+      const nowCell = document.querySelector(".mural-kpis .mkpi-now");
+      if (nowCell) nowCell.setAttribute("data-active", nowCount > 0 ? "true" : "false");
+      const liveBadge = $("liveBadge");
+      const staticBadge = $("staticBadge");
+      if (liveBadge && staticBadge) {
+        const active = nowCount > 0;
+        liveBadge.setAttribute("data-active", active ? "true" : "false");
+        staticBadge.setAttribute("data-active", active ? "true" : "false");
+      }
     }
 
     function renderMapMarkers() {
@@ -2726,6 +3031,10 @@ window.openCursilloFromMural =
       const nowCount = palancas.filter((p) => palancaStatus(p) === "En curso").length;
       const countries = new Set(palancas.map((p) => p.pais_origen).filter(Boolean));
       const status = cursilloStatus(cursillo);
+      const statusPillClass =
+        status === "Activo" ? "pill-active" :
+        status === "Próximo" || status === "Aplazado" ? "pill-next" :
+        status === "Finalizado" || status === "Cancelado" ? "pill-done" : "";
 
       card.className = "selection-card";
       card.innerHTML = `
@@ -2737,15 +3046,26 @@ window.openCursilloFromMural =
               ${formatDate(cursillo.inicio_utc || cursillo.inicio_local)} — ${formatDate(cursillo.fin_utc || cursillo.fin_local)}
             </div>
             <div class="selection-stats">
-              <span class="pill">${escapeHtml(status)}</span>
+              <span class="pill ${statusPillClass}">${escapeHtml(status)}</span>
               <span class="pill">${palancas.length} palancas</span>
               <span class="pill">${countries.size} países</span>
               <span class="pill">${nowCount} ahora</span>
             </div>
           </div>
           <div class="selection-actions">
-            <a class="btn primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
-            <button class="btn" type="button" onclick="showSingleReveal()">Presentar</button>
+            ${
+              cursilloAceptaPalancas(cursillo)
+                ? `<a class="btn primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
+                   <button class="btn" type="button" onclick="showSingleReveal()">Presentar</button>`
+                : status === "Finalizado"
+                  ? `<div class="selection-notice done">
+                      <strong>Cursillo finalizado</strong>
+                      <span>Ya no admite nuevas palancas. Puedes ver las que recibió durante su celebración en el mural.</span>
+                    </div>`
+                  : status === "Cancelado"
+                    ? `<div class="selection-notice cancel"><strong>Cursillo cancelado.</strong></div>`
+                    : `<div class="selection-notice info"><strong>${escapeHtml(status)}</strong><span>Todavía no se admiten palancas para este Cursillo.</span></div>`
+            }
           </div>
         </div>
       `;
@@ -3011,14 +3331,14 @@ function renderMural() {
         : "";
 
       return `
-        <div class="palanca-line ${cssStatus}" tabindex="0" ${onclick} title="${nombrePalanca} — ${statusText}">
+        <button type="button" class="palanca-line ${cssStatus}" ${onclick} title="${nombrePalanca} — ${statusText}">
           <span class="avatar" aria-hidden="true">${emoji}</span>
-          <div class="p-body">
+          <span class="p-body">
             <span class="p-title">${nombrePalanca}</span>
             <span class="p-meta">${metaCorta}</span>
-          </div>
+          </span>
           <span class="p-badge">${statusText}</span>
-        </div>
+        </button>
       `;
     })
     .join("");
@@ -3224,11 +3544,63 @@ function renderMural() {
       renderFlows();
     }
 
+    let palancaDialogLastFocus = null;
+
+    function dialogFocusableElements() {
+      return [...$("palancaInvite").querySelectorAll(
+        'a[href]:not([hidden]), button:not([disabled]):not([hidden]), [tabindex]:not([tabindex="-1"])'
+      )];
+    }
+
+    function openPalancaDialog() {
+      const overlay = $("palancaInvite");
+      const dialog = overlay.querySelector(".palanca-dialog");
+      palancaDialogLastFocus = document.activeElement;
+      overlay.classList.add("visible");
+      overlay.setAttribute("aria-hidden", "false");
+      requestAnimationFrame(() => dialogFocusableElements()[0]?.focus() || dialog.focus());
+    }
+
+    function closePalancaDialog() {
+      const overlay = $("palancaInvite");
+      overlay.classList.remove("visible");
+      overlay.setAttribute("aria-hidden", "true");
+      if (palancaDialogLastFocus instanceof HTMLElement) palancaDialogLastFocus.focus();
+      palancaDialogLastFocus = null;
+    }
+
+    function trapPalancaDialogFocus(event) {
+      const overlay = $("palancaInvite");
+      if (!overlay.classList.contains("visible") || event.key !== "Tab") return;
+
+      const focusable = dialogFocusableElements();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
     function maybeShowPalancaInvite() {
       const url = new URL(window.location.href);
       if (url.searchParams.get("accion") !== "palanca") return;
 
       const cursillo = selectedCursillo();
+
+      // [v5] Autorización única: URLs antiguas o manipuladas
+      // no pueden abrir el formulario si el Cursillo no acepta palancas.
+      if (!cursilloAceptaPalancas(cursillo)) {
+        url.searchParams.delete("accion");
+        window.history.replaceState({}, "", url);
+        return;
+      }
+
       if (cursillo) {
         $("palancaInviteTitle").textContent =
           `Tu oración puede sostener el ${cursillo.nombre_corto || "Cursillo"}`;
@@ -3242,7 +3614,7 @@ function renderMural() {
         formBtn.hidden = true;
       }
 
-      $("palancaInvite").classList.add("visible");
+      openPalancaDialog();
 
       // No repetir la invitación al recargar
       url.searchParams.delete("accion");
@@ -3286,8 +3658,8 @@ function renderMural() {
       const description = $("worldDescription");
 
       if (!event) {
-        title.textContent = "No hay una palanca mundial futura configurada";
-        description.textContent = "Añade una fila futura en la pestaña CONFIGURACION para activar la cuenta atrás.";
+        title.textContent = "Próxima palanca mundial";
+        description.textContent = "Próximamente anunciaremos una nueva intención para unirnos en oración.";
         ["countDays","countHours","countMinutes","countSeconds"].forEach((id) => $(id).textContent = "0");
         return;
       }
@@ -3321,9 +3693,21 @@ function renderMural() {
       $("countSeconds").textContent = String(secs).padStart(2, "0");
     }
 
-    function setDataStatus(message, error = false) {
-      $("statusText").textContent = message;
-      $("dataStatus").classList.toggle("error", error);
+    function setDataStatus(message, error = false, retryAction = null) {
+      const statusText = $("statusText");
+      const statusBox = $("dataStatus");
+
+      statusText.replaceChildren(document.createTextNode(message));
+      statusBox.classList.toggle("error", error);
+
+      if (typeof retryAction === "function") {
+        const retryButton = document.createElement("button");
+        retryButton.type = "button";
+        retryButton.className = "btn-retry";
+        retryButton.textContent = "Reintentar";
+        retryButton.addEventListener("click", retryAction, { once: true });
+        statusText.append(" ", retryButton);
+      }
     }
 
     function latestUpdateText() {
@@ -3332,15 +3716,14 @@ function renderMural() {
         .filter(Boolean)
         .sort((a, b) => b - a);
       if (!dates.length) return "";
-      return ` · Última actualización de datos: ${formatDate(dates[0], { time:true, utc:true })} UTC`;
+      return ` · Actualizado: ${formatDate(dates[0], { time:true, utc:true })} UTC`;
     }
 
     async function loadData() {
-      $("loadingCover").classList.remove("hidden");
-      $("pageModeText").textContent = MOSTRAR_PALANCAS_DE_PRUEBA
-        ? "Palancas vivas · Peregrino App · Fase experimental: pruebas visibles"
-        : "Palancas vivas · Peregrino App · Producción";
-      setDataStatus("Sincronizando con BD de Cursillos…");
+      const loadingCover = $("loadingCover");
+      loadingCover.classList.remove("hidden");
+      $("pageModeText").textContent = "Palancas vivas · El mundo unido en oración";
+      setDataStatus("Actualizando los Cursillos…");
 
       try {
         const [cursillos, palancas, configuracion] = await Promise.all([
@@ -3350,63 +3733,64 @@ function renderMural() {
         ]);
 
         if (!cursillos.length) {
-          throw new Error("La pestaña CURSILLOS no devolvió filas.");
+          throw new Error("La fuente de Cursillos no devolvió filas.");
         }
-        
-        const cursillosVisibles = cursillos.filter(
-          cursilloEsVisiblePublicamente
-        );
-        
+
+        const cursillosVisibles = cursillos.filter(cursilloEsVisiblePublicamente);
         if (!cursillosVisibles.length) {
-          throw new Error(
-            "No hay Cursillos reales publicados. Revisa la columna es_prueba."
-          );
+          throw new Error("No hay Cursillos publicados en este momento.");
         }
-        
+
         appState.cursillos = cursillosVisibles;
         appState.palancas = palancas;
         appState.configuracion = configuracion;
         appState.sourceMode = "google";
 
         const palancasVisibles = palancas.filter(palancaEsVisiblePublicamente);
-        const detallePruebas = MOSTRAR_PALANCAS_DE_PRUEBA
-          ? " · incluye registros de prueba"
-          : " · pruebas excluidas";
-
         setDataStatus(
-         `Conectado a BD de Cursillos · ${cursillosVisibles.length} Cursillos · ${palancasVisibles.length} palancas visibles${detallePruebas}${latestUpdateText()}`
+          `Información actualizada · ${cursillosVisibles.length} Cursillos · ${palancasVisibles.length} palancas visibles${latestUpdateText()}`
         );
       } catch (error) {
-        const demo = fallbackData();
-        appState.cursillos = demo.cursillos;
-        appState.palancas = demo.palancas;
-        appState.configuracion = demo.configuracion;
-        appState.sourceMode = "demo";
+        console.error("No fue posible actualizar Mundo Cursillo:", error);
+        appState.cursillos = [];
+        appState.palancas = [];
+        appState.configuracion = [];
+        appState.sourceMode = "error";
 
         setDataStatus(
-          `No fue posible leer la hoja pública. Se muestran datos locales de demostración. Detalle: ${error.message}`,
-          true
+          "No pudimos actualizar los Cursillos en este momento.",
+          true,
+          loadData
         );
       }
 
-      populateFilters();
-      appState.filteredCursillos = [...appState.cursillos];
-      appState.selectedCursilloId = chooseInitialCursillo();
-      appState.muralPage = 1;
-      appState.muralTotalPages = 1;
-      appState.muralCursilloId = null;
-      renderAll();
-      maybeShowPalancaInvite();
-      updateCountdown();
-
-      clearInterval(appState.countdownTimer);
-      appState.countdownTimer = setInterval(() => {
+      try {
+        populateFilters();
+        appState.filteredCursillos = [...appState.cursillos];
+        appState.selectedCursilloId = chooseInitialCursillo();
+        appState.muralPage = 1;
+        appState.muralTotalPages = 1;
+        appState.muralCursilloId = null;
+        renderAll();
+        maybeShowPalancaInvite();
         updateCountdown();
-        updateKpis();
-        renderMural();
-      }, 1000);
 
-      $("loadingCover").classList.add("hidden");
+        clearInterval(appState.countdownTimer);
+        appState.countdownTimer = setInterval(() => {
+          updateCountdown();
+          updateKpis();
+          renderMural();
+        }, 1000);
+      } catch (renderError) {
+        console.error("No fue posible mostrar Mundo Cursillo:", renderError);
+        setDataStatus(
+          "Los datos llegaron, pero no pudimos mostrarlos correctamente.",
+          true,
+          loadData
+        );
+      } finally {
+        loadingCover.classList.add("hidden");
+      }
     }
 
     function demoCandidates() {
@@ -3464,7 +3848,7 @@ function renderMural() {
     function toggleDemo() {
       appState.demoRunning = !appState.demoRunning;
       $("demoBtn").classList.toggle("active", appState.demoRunning);
-      $("demoBtn").textContent = appState.demoRunning ? "■ Detener demostración" : "▶ Modo demostración";
+      $("demoBtn").textContent = appState.demoRunning ? "■ Detener presentación" : "▶ Modo presentación";
 
       clearInterval(appState.demoTimer);
       clearTimeout(appState.demoHideTimer);
@@ -3627,42 +4011,71 @@ function renderMural() {
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
+          if ($("palancaInvite")?.classList.contains("visible")) {
+            closePalancaDialog();
+            return;
+          }
           if ($("filtersPanel")?.classList.contains("open")) {
             setFiltersOpen(false);
             return;
           }
+          if ($("actionsMore")?.classList.contains("open")) {
+            $("actionsMore").classList.remove("open");
+            $("actionsMoreBtn")?.setAttribute("aria-expanded", "false");
+            return;
+          }
           if (appState.demoRunning) toggleDemo();
         }
+        trapPalancaDialogFocus(event);
         if (event.key.toLowerCase() === "d" && !["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName)) toggleDemo();
       });
     }
 
     initGlobe();
     bindEvents();
-    $("palancaInviteClose").addEventListener("click", () => $("palancaInvite").classList.remove("visible"));
+    ["palancaInviteClose", "palancaInviteDismiss"].forEach((id) => {
+      $(id)?.addEventListener("click", closePalancaDialog);
+    });
+    $("palancaInvite")?.addEventListener("pointerdown", (event) => {
+      if (event.target === $("palancaInvite")) closePalancaDialog();
+    });
 
-    // [v3.1] Fallback: si Google Charts no carga (offline, bloqueo, error de red),
-    // ocultamos igualmente la cortina para que la página no se quede pillada.
-    if (typeof google !== "undefined" && google.charts) {
-      google.charts.load("current", { packages: ["table"] });
-      google.charts.setOnLoadCallback(loadData);
-
-      // Watchdog: si en 8 s no ha llegado ningún dato, forzamos fallback demo.
-      setTimeout(function () {
-        if (!appState.cursillos || appState.cursillos.length === 0) {
-          try { fallbackData("tiempo de espera agotado"); } catch (e) { console.warn(e); }
-          var cover = document.getElementById("loadingCover");
-          if (cover) cover.classList.add("hidden");
+    // [v5] Menu "Más" plegable en la cabecera
+    (function () {
+      const more = document.getElementById("actionsMore");
+      const btn  = document.getElementById("actionsMoreBtn");
+      if (!more || !btn) return;
+      btn.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        const open = more.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      document.addEventListener("click", (ev) => {
+        if (!more.contains(ev.target)) {
+          more.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
         }
-      }, 8000);
-    } else {
-      console.warn("Google Charts no está disponible — usando datos de demostración.");
-      try { fallbackData("Google Charts no disponible"); } catch (e) { console.warn(e); }
-      var cover = document.getElementById("loadingCover");
-      if (cover) cover.classList.add("hidden");
+      });
+    })();
+
+    function startDataLoading() {
+      if (typeof google !== "undefined" && google.charts) {
+        google.charts.load("current", { packages: ["table"] });
+        google.charts.setOnLoadCallback(loadData);
+        return;
+      }
+
+      console.warn("Google Charts no está disponible.");
+      setDataStatus(
+        "No pudimos iniciar la actualización de los Cursillos.",
+        true,
+        () => window.location.reload()
+      );
+      $("loadingCover").classList.add("hidden");
     }
+
+    startDataLoading();
   </script>
   <script src="assets/mundo-cursillo-v2.js"></script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
 </body>
 </html>
