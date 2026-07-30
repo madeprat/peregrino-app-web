@@ -1,0 +1,3600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fffaf0" />
+  <title>El mundo está de Cursillo · Peregrino App</title>
+  <meta name="description" content="Mapa experimental de Cursillos y palancas de oración conectado con Peregrino APP." />
+  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="favicon.ico" />
+
+  <style>
+    :root {
+      /* Paleta Peregrino APP (site.css) */
+      --bg: #0b1220;
+      --panel: rgba(17, 26, 46, 0.78);
+      --panel-solid: #111a2e;
+      --panel-soft: rgba(255,255,255,.055);
+      --text: #f5f7fb;
+      --muted: #c8d0df;
+      --gold: #d4af37;
+      --gold-2: #f1d27a;
+      --green: #3ecf8e;
+      --blue: #6fb3ff;
+      --danger: #ff7d91;
+      --line: rgba(255,255,255,.14);
+      --shadow: 0 24px 60px rgba(0,0,0,.28);
+      --radius: 22px;
+      /* Arcoíris "De Colores" */
+      --dc-rojo: #ff5f6d;
+      --dc-naranja: #ff9a3d;
+      --dc-amarillo: #ffd76d;
+      --dc-verde: #3ecf8e;
+      --dc-azul: #6fb3ff;
+      --dc-violeta: #a78bfa;
+      --done: #8b96ad;
+      --purple: var(--dc-violeta);
+      --pink: var(--dc-rojo);
+      --decolores: linear-gradient(90deg, var(--dc-rojo), var(--dc-naranja), var(--dc-amarillo), var(--dc-verde), var(--dc-azul), var(--dc-violeta));
+    }
+
+    /* Cinta "De Colores" — la alegría del arcoíris, discreta y presente */
+    .decolores-ribbon {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--decolores);
+      z-index: 999;
+      opacity: .95;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(212,175,55,.12), transparent 30%),
+        linear-gradient(180deg, #0b1220 0%, #0a1020 45%, #080d18 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black, transparent 88%);
+      z-index: -1;
+    }
+
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+
+    .app {
+      width: min(1600px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 18px 0 30px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      box-shadow: 0 14px 38px rgba(212,175,55,.28);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.22rem, 2.4vw, 2rem);
+      line-height: 1.05;
+      letter-spacing: -.025em;
+    }
+
+    .brand p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 9px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 10px 13px;
+      color: var(--text);
+      background: rgba(255,255,255,.065);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.11);
+      border-color: rgba(255,255,255,.2);
+    }
+
+    .btn.primary {
+      border-color: rgba(212,175,55,.55);
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      color: #09111d;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(212,175,55,.25);
+    }
+
+    .btn.active {
+      background: var(--decolores);
+      color: #09111d;
+      font-weight: 700;
+      border-color: transparent;
+    }
+
+    .status-strip {
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      background: rgba(9,14,25,.6);
+      backdrop-filter: blur(14px);
+    }
+
+    .status-strip.error {
+      border-color: rgba(255,125,145,.5);
+      color: #ffd8df;
+      background: rgba(120,20,42,.25);
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 16px var(--green);
+      flex: 0 0 auto;
+    }
+
+    .status-strip.error .status-dot {
+      background: var(--danger);
+      box-shadow: 0 0 16px var(--danger);
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .kpi {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025)),
+        var(--panel);
+      border-radius: 18px;
+      padding: 17px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      min-height: 110px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      right: -48px;
+      top: -58px;
+      background: radial-gradient(circle, rgba(255,255,255,.08), transparent 68%);
+    }
+
+    .kpi-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: .72rem;
+      font-weight: 750;
+      letter-spacing: .12em;
+    }
+
+    .kpi-value {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(1.65rem, 3vw, 2.45rem);
+      font-weight: 850;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .kpi-note {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    /* Cada KPI lleva un color del arcoíris */
+    .kpi:nth-child(1) { border-top: 3px solid var(--dc-rojo); }
+    .kpi:nth-child(2) { border-top: 3px solid var(--dc-amarillo); }
+    .kpi:nth-child(3) { border-top: 3px solid var(--dc-verde); }
+    .kpi:nth-child(4) { border-top: 3px solid var(--dc-azul); }
+
+    .filters {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(4, minmax(140px, .75fr)) auto;
+      gap: 9px;
+      margin-bottom: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .control {
+      width: 100%;
+      min-width: 0;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 12px;
+      background: rgba(8,5,18,.68);
+      outline: none;
+    }
+
+    .control:focus {
+      border-color: rgba(212,175,55,.68);
+      box-shadow: 0 0 0 3px rgba(212,175,55,.14);
+    }
+
+    select.control option {
+      background: #111a2e;
+      color: white;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: minmax(0, 1.85fr) minmax(330px, .7fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .map-shell, .mural, .worldwide {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .map-shell {
+      min-height: 650px;
+      position: relative;
+    }
+
+    #map {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #0e1526 0%, #080d18 100%);
+      cursor: grab;
+    }
+    #map:active { cursor: grabbing; }
+    #map canvas { outline: none; }
+
+    .map-top {
+      position: absolute;
+      z-index: 500;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .map-card {
+      pointer-events: auto;
+      max-width: 520px;
+      padding: 13px 15px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      background: rgba(13,20,36,.85);
+      box-shadow: 0 18px 50px rgba(0,0,0,.34);
+      backdrop-filter: blur(16px);
+    }
+
+    .map-card h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .map-card p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.35;
+    }
+
+    .legend {
+      pointer-events: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 14px;
+      background: rgba(13,20,36,.85);
+      backdrop-filter: blur(16px);
+      font-size: .76rem;
+      color: var(--muted);
+    }
+
+    .legend i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .legend .active { background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .legend .next { background: var(--purple); box-shadow: 0 0 12px var(--purple); }
+    .legend .done { background: var(--done); box-shadow: 0 0 10px var(--done); }
+
+    .selection-card {
+      position: absolute;
+      z-index: 500;
+      left: 14px;
+      bottom: 14px;
+      width: min(560px, calc(100% - 28px));
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 19px;
+      padding: 15px;
+      background: rgba(13,20,36,.92);
+      box-shadow: 0 18px 55px rgba(0,0,0,.4);
+      backdrop-filter: blur(18px);
+    }
+
+    .selection-card.empty {
+      color: var(--muted);
+    }
+
+    .selection-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .selection-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .selection-actions .btn { justify-content: center; }
+
+    .selection-title {
+      font-weight: 830;
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+
+    .selection-sub {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: .83rem;
+    }
+
+    .selection-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 11px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      font-size: .72rem;
+      color: #e6ebf4;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+    }
+
+    .mural {
+      min-height: 650px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-head {
+      padding: 17px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .panel-head p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.35;
+    }
+
+    .live-badge {
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: #d9ffed;
+      background: rgba(100,230,167,.1);
+      border: 1px solid rgba(100,230,167,.24);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+    .mural-head-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mural-all-btn {
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: .68rem;
+  font-weight: 800;
+}
+
+.palanca-target {
+  margin-top: 10px;
+  padding: 9px 10px;
+  border-left: 3px solid var(--dc-violeta);
+  border-radius: 10px;
+  color: var(--muted);
+  background: rgba(167,139,250,.08);
+  font-size: .72rem;
+  line-height: 1.35;
+}
+
+.palanca-target span {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--dc-violeta);
+  text-transform: uppercase;
+  font-size: .59rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+}
+
+.palanca-target strong {
+  display: block;
+  color: var(--text);
+  font-size: .78rem;
+}
+
+.palanca-target small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: .68rem;
+}
+
+.mural-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 9px;
+}
+
+.mural-card-actions .btn {
+  padding: 7px 9px;
+  font-size: .7rem;
+}
+
+    .mural-list {
+      flex: 1;
+      overflow: auto;
+      padding: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,.3) transparent;
+    }
+
+    .palanca-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      border-radius: 15px;
+      padding: 12px;
+      margin-bottom: 9px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .palanca-card:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.26);
+      background: rgba(255,255,255,.065);
+    }
+
+    .palanca-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .palanca-name {
+      font-weight: 780;
+      line-height: 1.25;
+    }
+
+    .palanca-place {
+      color: var(--muted);
+      font-size: .75rem;
+      margin-top: 3px;
+    }
+
+    .palanca-status {
+      flex: 0 0 auto;
+      font-size: .64rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: 5px 7px;
+      border-radius: 999px;
+    }
+
+    .palanca-status.now {
+      color: #d9ffed;
+      background: rgba(100,230,167,.12);
+      border: 1px solid rgba(100,230,167,.28);
+    }
+
+    .palanca-status.next {
+      color: #f0e6ff;
+      background: rgba(168,115,255,.12);
+      border: 1px solid rgba(168,115,255,.28);
+    }
+
+    .palanca-status.done {
+      color: #d7deea;
+      background: rgba(139,150,173,.14);
+      border: 1px solid rgba(139,150,173,.32);
+    }
+
+    .palanca-detail {
+      margin-top: 9px;
+      font-size: .8rem;
+      color: #dfe5f0;
+    }
+
+    .palanca-message {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.35;
+      font-style: italic;
+    }
+
+    .empty-state {
+      color: var(--muted);
+      text-align: center;
+      padding: 36px 18px;
+      line-height: 1.5;
+    }
+
+    .mural-pagination {
+      position: sticky;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 18px 0 2px;
+      background: linear-gradient(
+        180deg,
+        rgba(17,26,46,0),
+        rgba(17,26,46,.98) 35%
+      );
+    }
+
+    .mural-pagination .btn {
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .mural-page-label {
+      color: var(--muted);
+      font-size: .75rem;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .worldwide {
+      margin-top: 14px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .worldwide-eyebrow {
+      background: var(--decolores);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-weight: 820;
+      font-size: .7rem;
+    }
+
+    .worldwide h2 {
+      margin: 7px 0 6px;
+      font-size: clamp(1.25rem, 2.3vw, 2rem);
+    }
+
+    .worldwide p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .count-unit {
+      padding: 13px 8px;
+      text-align: center;
+      border-radius: 15px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+    }
+
+    .count-unit strong {
+      display: block;
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      line-height: 1;
+    }
+
+    .count-unit span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: .59rem;
+      letter-spacing: .08em;
+    }
+
+    /* Tooltip del globo (Globe.gl) */
+    .scene-tooltip {
+      color: var(--text) !important;
+      background: rgba(13,20,36,.94);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 12px 35px rgba(0,0,0,.35);
+      border-radius: 10px;
+      padding: 8px 11px;
+      font-family: inherit !important;
+      font-size: .8rem !important;
+      line-height: 1.4;
+    }
+
+    .demo-reveal {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,.06), transparent 52%),
+        rgba(5,8,16,.6);
+      backdrop-filter: blur(8px);
+      transition: opacity .5s ease, visibility .5s ease;
+    }
+
+    .demo-reveal.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .demo-box {
+      width: min(760px, 94vw);
+      padding: 34px;
+      text-align: center;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.17);
+      background: linear-gradient(145deg, rgba(17,26,46,.96), rgba(9,14,25,.97));
+      box-shadow: 0 35px 100px rgba(0,0,0,.55);
+      transform: translateY(20px) scale(.97);
+      transition: transform .55s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .demo-reveal.visible .demo-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .demo-kicker {
+      background: var(--decolores);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .72rem;
+    }
+
+    .demo-box h2 {
+      margin: 14px 0 8px;
+      font-size: clamp(1.8rem, 5vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .demo-box p {
+      margin: 0 auto;
+      max-width: 620px;
+      color: #c8d0df;
+      font-size: clamp(.95rem, 1.8vw, 1.2rem);
+      line-height: 1.5;
+    }
+
+    .demo-origins {
+      margin-top: 19px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .demo-origins span {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      font-size: .78rem;
+    }
+
+    .loading-cover {
+      position: fixed;
+      inset: 0;
+      z-index: 6000;
+      display: grid;
+      place-items: center;
+      background: rgba(8,13,24,.86);
+      backdrop-filter: blur(12px);
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+
+    .loading-cover.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader {
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .loader-ring {
+      width: 58px;
+      height: 58px;
+      border: 4px solid rgba(255,255,255,.1);
+      border-top-color: var(--dc-amarillo);
+      border-right-color: var(--dc-verde);
+      border-bottom-color: var(--dc-azul);
+      border-left-color: var(--dc-rojo);
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      animation: spin .9s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+
+    /* Encabezado y pie comunes de Peregrino APP.
+       Se incluyen aquí de forma aislada para no importar las reglas globales de site.css,
+       que colisionan con .kpi, .btn y otros componentes propios de este cuadro de mando. */
+    .site-wrap {
+      width: min(1160px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .site-skip-link {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .site-skip-link:focus {
+      left: 12px;
+      top: 12px;
+      z-index: 7000;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #000;
+      background: #fff;
+    }
+
+    .peregrino-site-header {
+      position: sticky;
+      top: 4px;
+      z-index: 1200;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(9,14,25,.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .peregrino-site-nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .peregrino-site-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .peregrino-site-brand-mark {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #0b1220;
+      background: linear-gradient(180deg, var(--gold), #c19317);
+      box-shadow: 0 16px 30px rgba(212,175,55,.24);
+    }
+
+    .peregrino-site-brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      pointer-events: none;
+      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.75) 50%, transparent 65%);
+      transform: translateX(-180%) rotate(10deg);
+      animation: brandSheen 5.8s ease-in-out infinite;
+    }
+
+    .peregrino-nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .peregrino-nav-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color .22s ease, background .22s ease, transform .22s ease;
+    }
+
+    .peregrino-nav-links a:hover,
+    .peregrino-nav-links a:focus-visible {
+      color: #fff;
+      background: rgba(255,255,255,.06);
+      transform: translateY(-1px);
+    }
+
+    .peregrino-nav-links .peregrino-nav-cta {
+      color: #09111d;
+      background: var(--gold);
+    }
+
+    .peregrino-nav-links .peregrino-nav-cta:hover,
+    .peregrino-nav-links .peregrino-nav-cta:focus-visible {
+      color: #09111d;
+      background: var(--gold-2);
+    }
+
+    .peregrino-footer {
+      padding: 40px 0 60px;
+      color: #9da8bf;
+    }
+
+    .peregrino-footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .peregrino-footer p {
+      margin: 8px 0 0;
+    }
+
+    .peregrino-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-content: flex-start;
+      gap: 12px;
+    }
+
+    .peregrino-footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .peregrino-footer a:hover,
+    .peregrino-footer a:focus-visible {
+      color: #fff;
+    }
+
+    .site-top-button {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 1250;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #0b1220;
+      background: rgba(212,175,55,.94);
+      box-shadow: 0 18px 28px rgba(0,0,0,.24);
+      text-decoration: none;
+      font-weight: 900;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .site-top-button.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    @keyframes brandSheen {
+      0%, 14%, 100% { transform: translateX(-180%) rotate(10deg); }
+      22%, 36% { transform: translateX(180%) rotate(10deg); }
+    }
+
+    @media (max-width: 1050px) {
+      .filters {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+      .map-shell { min-height: 590px; }
+      .mural { min-height: 520px; }
+      .worldwide { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .peregrino-site-nav {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+      .peregrino-nav-links { gap: 6px; }
+      .peregrino-nav-links a { padding: 9px 12px; font-size: .92rem; }
+      .peregrino-footer-grid { grid-template-columns: 1fr; }
+      .peregrino-footer-links { justify-content: flex-start; }
+      .app { width: min(100% - 18px, 1600px); padding-top: 10px; }
+      .topbar { grid-template-columns: 1fr; }
+      .actions { justify-content: flex-start; }
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .filters { grid-template-columns: 1fr 1fr; }
+      .filters .wide { grid-column: 1 / -1; }
+      .map-shell { min-height: 610px; }
+      .map-top { flex-direction: column; }
+      .legend { align-self: flex-start; }
+      .selection-grid { grid-template-columns: 1fr; }
+      .countdown { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .peregrino-site-nav { flex-direction: column; }
+      .peregrino-nav-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 440px) {
+      .brand-mark { width: 46px; height: 46px; border-radius: 15px; }
+      .actions .btn { flex: 1 1 auto; justify-content: center; }
+      .kpis { gap: 8px; }
+      .kpi { min-height: 98px; padding: 13px; }
+      .filters { grid-template-columns: 1fr; }
+      .filters .wide { grid-column: auto; }
+      .map-shell { min-height: 660px; }
+      .map-card { max-width: 100%; }
+      .legend { display: none; }
+    }
+
+    @media print {
+      body { background: white; color: #18111f; }
+      body::before, .actions, .filters, .status-strip, .worldwide,
+      .peregrino-site-header, .peregrino-footer, .site-top-button, .site-skip-link { display: none !important; }
+      .app { width: 100%; padding: 0; }
+      .topbar { margin-bottom: 10px; }
+      .brand p { color: #555; }
+      .kpis { grid-template-columns: repeat(4, 1fr); }
+      .kpi, .map-shell, .mural {
+        background: white !important;
+        color: #18111f !important;
+        border: 1px solid #ddd;
+        box-shadow: none;
+      }
+      .kpi-label, .kpi-note, .panel-head p, .selection-sub, .palanca-place, .palanca-message { color: #555 !important; }
+      .dashboard { grid-template-columns: 1.7fr .8fr; }
+      .map-shell, .mural { min-height: 620px; }
+    }
+  
+
+    /* ==============================================================
+       REDISEÑO: EL MUNDO COMO PROTAGONISTA
+       ============================================================== */
+    .peregrino-site-nav { min-height: 76px; }
+
+    .app {
+      width: min(1660px, calc(100% - 28px));
+      padding: 12px 0 30px;
+    }
+
+    .experience-hero {
+      position: relative;
+      z-index: 900;
+      display: grid;
+      grid-template-columns: minmax(430px, 1.08fr) minmax(620px, .92fr);
+      gap: 22px;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .title-zone {
+      position: relative;
+      min-width: 0;
+      padding: 7px 0 0;
+    }
+
+    .title-zone .brand {
+      align-items: center;
+      gap: 18px;
+    }
+
+    .title-zone .brand-mark {
+      width: 74px;
+      height: 74px;
+      flex: 0 0 74px;
+      border-radius: 50%;
+      border: 2px solid rgba(212,175,55,.82);
+      outline: 1px solid rgba(212,175,55,.28);
+      outline-offset: 6px;
+      font-size: 34px;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.35), transparent 18%),
+        linear-gradient(180deg, var(--gold-2), var(--gold));
+      box-shadow: 0 0 42px rgba(212,175,55,.18);
+    }
+
+    .title-copy { min-width: 0; }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .title-row h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 2.55vw, 2.55rem);
+      line-height: 1;
+      letter-spacing: -.038em;
+    }
+
+    .title-zone .brand p {
+      margin-top: 10px;
+      font-size: .92rem;
+    }
+
+    .filter-trigger {
+      min-height: 40px;
+      padding: 0 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(212,175,55,.72);
+      background: rgba(8,13,24,.62);
+      color: var(--text);
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+    }
+
+    .filter-trigger:hover,
+    .filter-trigger[aria-expanded="true"] {
+      background: rgba(212,175,55,.12);
+      border-color: var(--gold-2);
+    }
+
+    .filter-trigger svg,
+    .filter-close svg { width: 18px; height: 18px; flex: 0 0 auto; }
+
+    .filter-count {
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #09111d;
+      background: var(--gold-2);
+      font-size: .68rem;
+      font-weight: 900;
+    }
+
+    .filter-count[hidden] { display: none; }
+
+    .filter-chevron {
+      font-size: .8rem;
+      transition: transform .2s ease;
+    }
+
+    .filter-trigger[aria-expanded="true"] .filter-chevron {
+      transform: rotate(180deg);
+    }
+
+    .filters-popover {
+      position: absolute;
+      z-index: 1800;
+      top: calc(100% + 14px);
+      left: 92px;
+      width: min(790px, calc(100vw - 58px));
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.018)),
+        rgba(9,14,25,.72);
+      box-shadow: 0 30px 90px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(24px) saturate(130%);
+      -webkit-backdrop-filter: blur(24px) saturate(130%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-12px) scale(.985);
+      transform-origin: top left;
+      transition: opacity .2s ease, transform .22s ease, visibility .2s ease;
+    }
+
+    .filters-popover.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .filters-popover::before {
+      display: none;
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 42px;
+      width: 14px;
+      height: 14px;
+      border-left: 1px solid rgba(255,255,255,.16);
+      border-top: 1px solid rgba(255,255,255,.16);
+      background: rgba(18,25,39,.9);
+      transform: rotate(45deg);
+    }
+
+    .filters-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .filters-head strong { font-size: .94rem; }
+    .filters-head span { color: var(--muted); font-size: .78rem; }
+
+    .filter-close {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      justify-content: center;
+      border-radius: 10px;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .filters-grid .wide { grid-column: 1 / -1; }
+
+    .filters-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 9px;
+      margin-top: 3px;
+    }
+
+    .filters-actions .btn { min-height: 42px; }
+
+    .experience-controls {
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .experience-controls .actions {
+      gap: 9px;
+      justify-content: flex-end;
+    }
+
+    .experience-controls .actions .btn {
+      min-height: 42px;
+      padding: 9px 13px;
+      background: rgba(9,14,25,.55);
+      backdrop-filter: blur(14px);
+    }
+
+    .experience-controls .actions .btn.primary {
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+    }
+
+    .kpis {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+    }
+
+    .kpi {
+      min-height: 98px;
+      padding: 14px 14px 12px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 11px;
+      align-items: center;
+      border-top-width: 1px !important;
+      border-radius: 15px;
+      background: linear-gradient(145deg, rgba(17,26,46,.82), rgba(8,13,24,.78));
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+    }
+
+    .kpi::after { display: none; }
+
+    .kpi-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      border-radius: 13px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .kpi:nth-child(1) .kpi-icon { color: var(--dc-amarillo); text-shadow: 0 0 18px rgba(255,215,109,.45); }
+    .kpi:nth-child(2) .kpi-icon { color: var(--dc-verde); text-shadow: 0 0 18px rgba(62,207,142,.4); }
+    .kpi:nth-child(3) .kpi-icon { color: var(--dc-violeta); text-shadow: 0 0 18px rgba(167,139,250,.45); }
+    .kpi:nth-child(4) .kpi-icon { color: var(--dc-azul); text-shadow: 0 0 18px rgba(111,179,255,.45); }
+
+    .kpi-content { min-width: 0; }
+
+    .kpi-value {
+      margin: 0;
+      font-size: clamp(2rem, 2.8vw, 3rem);
+      line-height: .88;
+      letter-spacing: -.055em;
+    }
+
+    .kpi-label {
+      margin-top: 8px;
+      font-size: .66rem;
+      letter-spacing: .055em;
+      line-height: 1.15;
+    }
+
+    .kpi-note {
+      margin-top: 3px;
+      font-size: .64rem;
+      line-height: 1.2;
+      opacity: .72;
+    }
+
+    .dashboard {
+      grid-template-columns: minmax(0, 2.05fr) minmax(390px, .95fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .map-shell,
+    .mural {
+      height: clamp(650px, calc(100vh - 245px), 790px);
+      min-height: 650px;
+      border-color: rgba(255,255,255,.11);
+      background: rgba(5,10,19,.7);
+    }
+
+    .map-shell {
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.36), inset 0 0 90px rgba(212,175,55,.035);
+    }
+
+    #map {
+      background:
+        radial-gradient(circle at 50% 44%, rgba(212,175,55,.08), transparent 43%),
+        radial-gradient(ellipse at center, #0e1526 0%, #050914 100%);
+    }
+
+    .map-top { display: none; }
+
+    /* [v2] ── Oculta el emoji duplicado de la cabecera interna ── */
+    .title-zone .brand-mark { display: none !important; }
+
+    /* [v2] ── Leyenda flotante del mapa ── */
+    .map-legend {
+      position: absolute;
+      z-index: 560;
+      right: 16px;
+      bottom: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 11px 14px 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 13px;
+      background: rgba(7,12,22,.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(0,0,0,.32);
+      font-size: .72rem;
+      color: var(--muted);
+      min-width: 184px;
+    }
+    .map-legend .legend-title {
+      display: block;
+      color: var(--text);
+      font-size: .76rem;
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+    .map-legend .row { display: flex; align-items: center; gap: 8px; }
+    .map-legend .dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      display: inline-block; flex: 0 0 auto;
+    }
+    .map-legend .dot.active { background: var(--green); box-shadow: 0 0 10px var(--green); }
+    .map-legend .dot.next   { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
+    .map-legend .dot.done   { background: var(--done); }
+    @media (max-width: 760px) {
+      .map-legend { right: 10px; bottom: 60px; padding: 9px 12px; min-width: 0; }
+    }
+
+    /* [v2] ── Dashboard 3-col: Kpi-rail + Mundo + Mural ── */
+    .dashboard {
+      grid-template-columns: minmax(200px, .28fr) minmax(0, 1.6fr) minmax(320px, .72fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+    .kpi-rail {
+      display: grid;
+      grid-auto-rows: min-content;
+      gap: 10px;
+      align-content: start;
+      min-width: 0;
+    }
+    .kpi-rail .kpi { min-height: 92px; padding: 13px 14px; }
+    .kpi-rail .kpi-value { font-size: clamp(1.5rem, 2.1vw, 2rem); }
+    .kpi-rail .kpi-icon { width: 30px; height: 30px; font-size: 1.05rem; }
+    .kpi-rail .kpi-note { font-size: .66rem; }
+    .kpi-rail .kpi-label { font-size: .68rem; letter-spacing: .08em; }
+    @media (max-width: 1300px) {
+      .dashboard { grid-template-columns: minmax(0, 1.7fr) minmax(320px, .8fr); }
+      .kpi-rail { display: none; }
+    }
+    @media (max-width: 1080px) {
+      .dashboard { grid-template-columns: 1fr; }
+    }
+
+    /* [v2] ── Mural: estilo canal en directo ── */
+    .palanca-row {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 11px;
+      align-items: center;
+      padding: 9px 11px;
+      margin-bottom: 7px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255,255,255,.045);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      cursor: pointer;
+    }
+    .palanca-row:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+    .palanca-row .avatar {
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      font-size: 1.05rem;
+    }
+    .palanca-row .palanca-body { min-width: 0; }
+    .palanca-row .palanca-name { font-weight: 800; font-size: .82rem; line-height: 1.15; }
+    .palanca-row .palanca-place { color: var(--muted); font-size: .7rem; margin-top: 2px; }
+    .palanca-row .palanca-msg {
+      color: var(--text);
+      font-size: .74rem;
+      font-style: italic;
+      margin-top: 4px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .palanca-row .palanca-target {
+      color: var(--muted);
+      font-size: .66rem;
+      margin-top: 3px;
+      text-transform: none;
+    }
+    .palanca-row .palanca-status {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: .6rem;
+      font-weight: 850;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .palanca-row.now  { border-left: 3px solid var(--green); }
+    .palanca-row.next { border-left: 3px solid var(--purple); }
+    .palanca-row.done { border-left: 3px solid var(--done); opacity: .78; }
+    .palanca-row.now  .palanca-status { background: rgba(62,207,142,.16); color: var(--green); }
+    .palanca-row.next .palanca-status { background: rgba(167,139,250,.16); color: var(--purple); }
+    .palanca-row.done .palanca-status { background: rgba(139,150,173,.18); color: var(--done); }
+
+
+    .map-side-controls {
+      position: absolute;
+      z-index: 560;
+      top: 50%;
+      left: 16px;
+      display: grid;
+      transform: translateY(-50%);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 15px;
+      overflow: hidden;
+      background: rgba(7,12,22,.66);
+      box-shadow: 0 18px 48px rgba(0,0,0,.32);
+      backdrop-filter: blur(18px);
+    }
+
+    .map-tool {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-bottom: 1px solid rgba(255,255,255,.085);
+      color: #e8edf6;
+      background: transparent;
+      font-size: 1.28rem;
+      transition: background .18s ease, color .18s ease;
+    }
+
+    .map-tool:last-child { border-bottom: 0; }
+    .map-tool:hover,
+    .map-tool.active { color: var(--gold-2); background: rgba(212,175,55,.11); }
+
+    .map-tool::after {
+      content: attr(data-label);
+      position: absolute;
+      left: calc(100% + 10px);
+      top: 50%;
+      transform: translate(5px, -50%);
+      padding: 7px 9px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 9px;
+      color: var(--text);
+      background: rgba(8,13,24,.94);
+      font-size: .7rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+
+    .map-tool:hover::after,
+    .map-tool:focus-visible::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(0, -50%);
+    }
+
+    .selection-card {
+      left: 78px;
+      bottom: 66px;
+      width: min(410px, calc(100% - 98px));
+      padding: 13px 14px;
+      border-left: 3px solid var(--dc-violeta);
+      border-radius: 16px;
+      background: rgba(9,15,27,.86);
+    }
+
+    .selection-title { font-size: .96rem; }
+    .selection-sub { font-size: .76rem; }
+    .selection-stats { margin-top: 8px; }
+    .selection-actions .btn { min-height: 38px; padding: 8px 11px; font-size: .76rem; }
+
+    .status-strip.map-status {
+      position: absolute;
+      z-index: 550;
+      left: 16px;
+      right: 16px;
+      bottom: 12px;
+      min-height: 40px;
+      margin: 0;
+      padding: 8px 13px;
+      border-radius: 13px;
+      color: rgba(220,227,239,.82);
+      background: rgba(7,12,22,.76);
+      box-shadow: 0 14px 38px rgba(0,0,0,.28);
+      backdrop-filter: blur(18px);
+      font-size: .72rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status-strip.map-status .status-dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    .mural {
+      border-color: rgba(212,175,55,.22);
+      box-shadow: 0 30px 82px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.035);
+    }
+
+    .panel-head {
+      padding: 24px 25px 20px;
+      border-bottom-color: rgba(212,175,55,.28);
+    }
+
+    .panel-head h2 {
+      font-size: clamp(1.35rem, 1.8vw, 1.8rem);
+      letter-spacing: -.025em;
+    }
+
+    .panel-head p {
+      margin-top: 10px;
+      font-size: .88rem;
+      line-height: 1.5;
+    }
+
+    .live-badge { margin-top: 2px; }
+
+    .mural-list {
+      padding: 18px 20px 20px;
+    }
+
+    .empty-state {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      padding: 38px 24px;
+      font-size: 1rem;
+    }
+
+    .palanca-card {
+      padding: 15px;
+      margin-bottom: 11px;
+      border-radius: 16px;
+    }
+
+    .worldwide { margin-top: 16px; }
+
+    @media (max-width: 1300px) {
+      .experience-hero { grid-template-columns: minmax(380px, .9fr) minmax(580px, 1.1fr); }
+      .title-zone .brand-mark { width: 62px; height: 62px; flex-basis: 62px; font-size: 29px; }
+      .dashboard { grid-template-columns: minmax(0, 1.75fr) minmax(350px, .85fr); }
+      .kpi { padding-inline: 11px; column-gap: 8px; }
+      .kpi-icon { width: 34px; height: 34px; }
+    }
+
+    @media (max-width: 1080px) {
+      .experience-hero { grid-template-columns: 1fr; }
+      .experience-controls .actions { justify-content: flex-start; }
+      .dashboard { grid-template-columns: 1fr; }
+      .map-shell, .mural { height: auto; min-height: 650px; }
+      .mural { min-height: 520px; }
+      .filters-popover { left: 0; }
+    }
+
+    @media (max-width: 760px) {
+      .peregrino-site-nav { min-height: auto; }
+      .experience-hero { gap: 14px; }
+      .title-zone .brand { align-items: flex-start; }
+      .title-zone .brand-mark { width: 52px; height: 52px; flex-basis: 52px; font-size: 24px; outline-offset: 3px; }
+      .title-row { gap: 9px; }
+      .filter-trigger { min-height: 36px; padding-inline: 11px; }
+      .experience-controls .actions { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .experience-controls .actions .btn { justify-content: center; }
+      .kpis { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .filters-popover { width: calc(100vw - 22px); left: -2px; }
+      .filters-grid { grid-template-columns: 1fr 1fr; }
+      .filters-grid .wide, .filters-actions { grid-column: 1 / -1; }
+      .map-shell { min-height: 610px; }
+      .map-side-controls { left: 10px; }
+      .map-tool { width: 42px; height: 42px; }
+      .selection-card { left: 62px; width: calc(100% - 74px); bottom: 68px; }
+      .status-strip.map-status { left: 10px; right: 10px; font-size: .65rem; }
+    }
+
+    @media (max-width: 480px) {
+      .app { width: calc(100% - 14px); }
+      .title-zone .brand-mark { display: none; }
+      .title-row h1 { font-size: 1.55rem; }
+      .filters-grid { grid-template-columns: 1fr; }
+      .filters-grid .wide, .filters-actions { grid-column: 1; }
+      .filters-actions { justify-content: stretch; }
+      .filters-actions .btn { flex: 1; justify-content: center; }
+      .kpi { min-height: 88px; }
+      .kpi-value { font-size: 2.05rem; }
+      .kpi-note { display: none; }
+      .map-shell { min-height: 650px; }
+      .selection-card { left: 10px; width: calc(100% - 20px); bottom: 68px; }
+      .map-side-controls { top: auto; bottom: 120px; transform: none; }
+    }
+
+    @media print {
+      .filters-popover, .filter-trigger, .map-side-controls { display: none !important; }
+      .status-strip.map-status { position: static; margin: 8px; white-space: normal; }
+      .map-shell, .mural { height: 620px; }
+    }
+
+    /* [v2] ── Footer del sitio, coherente con el resto ── */
+    .site-footer {
+      margin-top: 32px;
+      padding: 28px 0 22px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(212,175,55,.07), transparent 40%),
+        rgba(9,14,25,.6);
+      backdrop-filter: blur(14px);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding-inline: 18px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-brand-mark {
+      width: 38px; height: 38px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      color: #0b1220;
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      box-shadow: 0 14px 30px rgba(212,175,55,.22);
+      font-size: 1.1rem;
+    }
+    .footer-brand strong { display: block; color: var(--text); font-size: .98rem; }
+    .footer-brand p { margin: 3px 0 0; color: var(--muted); font-size: .78rem; max-width: 38ch; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: flex-end;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .82rem;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+      transition: color .18s ease, border-color .18s ease;
+    }
+    .footer-links a:hover { color: var(--gold-2); border-color: rgba(212,175,55,.4); }
+    .footer-meta {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+    }
+    .footer-meta small { color: var(--muted); opacity: .76; font-size: .72rem; }
+    @media (max-width: 760px) {
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-brand { justify-content: center; }
+      .footer-links { justify-content: center; }
+    }
+
+  </style>
+  <link rel="stylesheet" href="assets/mundo-cursillo-v2.css" />
+</head>
+
+<body>
+  <a class="site-skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="decolores-ribbon" aria-hidden="true"></div>
+
+  <header class="peregrino-site-header">
+    <div class="site-wrap peregrino-site-nav">
+      <a class="peregrino-site-brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+        <span class="peregrino-site-brand-mark" aria-hidden="true">✦</span>
+        <span>Peregrino APP</span>
+      </a>
+      <nav class="peregrino-nav-links" aria-label="Navegación principal">
+        <a href="index.html#app">La app</a>
+        <a href="index.html#planes">Planes</a>
+        <a href="index.html#apoyar">Apoyar</a>
+        <a href="index.html#recursos">Recursos</a>
+        <a class="peregrino-nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="loadingCover" class="loading-cover">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <strong>Sincronizando con el mundo…</strong>
+      <div style="margin-top:7px;font-size:.82rem">Leyendo los Cursillos y sus palancas</div>
+    </div>
+  </div>
+
+  <div id="contenido" class="app">
+    <section class="experience-hero" aria-label="Cabecera de la experiencia mundial">
+      <div class="title-zone">
+        <div class="brand title-only">
+          <div class="title-copy">
+            <div class="title-row">
+              <h1>El mundo está de Cursillo</h1>
+              <button id="filterToggleBtn" class="btn filter-trigger" type="button" aria-expanded="false" aria-controls="filtersPanel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 5h18l-7 8v5l-4 2v-7L3 5z"></path>
+                </svg>
+                <span>Filtros</span>
+                <span id="activeFilterCount" class="filter-count" hidden>0</span>
+                <span class="filter-chevron" aria-hidden="true">⌄</span>
+              </button>
+            </div>
+            <p id="pageModeText">Palancas vivas · Peregrino App · Datos experimentales</p>
+          </div>
+        </div>
+
+        <section id="filtersPanel" class="filters-popover" aria-label="Filtros del cuadro de mando" aria-hidden="true">
+          <div class="filters-head">
+            <div>
+              <strong>Filtrar el mundo</strong><br>
+              <span>Encuentra un Cursillo sin quitar protagonismo al mapa.</span>
+            </div>
+            <button id="filterCloseBtn" class="btn filter-close" type="button" aria-label="Cerrar filtros">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="filters-grid">
+            <input id="searchFilter" class="control wide" type="search" placeholder="Buscar diócesis, ciudad, país o número…" />
+            <select id="statusFilter" class="control">
+              <option value="">Todos los estados</option>
+              <option value="Activo">Activos</option>
+              <option value="Próximo">Próximos</option>
+              <option value="Finalizado">Finalizados</option>
+            </select>
+            <select id="countryFilter" class="control"><option value="">Todos los países</option></select>
+            <select id="modalityFilter" class="control"><option value="">Todas las modalidades</option></select>
+            <select id="eventTypeFilter" class="control"><option value="">Todos los encuentros</option></select>
+            <div class="filters-actions">
+              <button id="clearFiltersBtn" class="btn" type="button">↻ Limpiar</button>
+              <button id="applyFiltersBtn" class="btn primary" type="button">Aplicar filtros</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="experience-controls">
+        <div class="actions">
+          <button id="refreshBtn" class="btn" type="button">↻ Actualizar</button>
+          <button id="demoBtn" class="btn primary" type="button">▶ Modo demostración</button>
+          <button id="fullscreenBtn" class="btn" type="button">⛶ Pantalla completa</button>
+          <button id="printBtn" class="btn" type="button">⌁ Guardar recuerdo</button>
+        </div>
+
+      </div>
+    </section>
+
+    <main class="dashboard">
+      <aside class="kpi-rail" aria-label="Indicadores globales">
+        <article class="kpi">
+          <span class="kpi-icon" aria-hidden="true">👥</span>
+          <div class="kpi-content">
+            <strong id="kpiCursillos" class="kpi-value">—</strong>
+            <div class="kpi-label">Cursillos visibles</div>
+            <div id="kpiCursillosNote" class="kpi-note">Según los filtros activos</div>
+          </div>
+        </article>
+        <article class="kpi">
+          <span class="kpi-icon" aria-hidden="true">🌐</span>
+          <div class="kpi-content">
+            <strong id="kpiCountries" class="kpi-value">—</strong>
+            <div class="kpi-label">Países</div>
+            <div class="kpi-note">Presencia internacional</div>
+          </div>
+        </article>
+        <article class="kpi">
+          <span class="kpi-icon" aria-hidden="true">⊕</span>
+          <div class="kpi-content">
+            <strong id="kpiPalancas" class="kpi-value">—</strong>
+            <div class="kpi-label">Palancas registradas</div>
+            <div class="kpi-note">Para los Cursillos visibles</div>
+          </div>
+        </article>
+        <article class="kpi">
+          <span class="kpi-icon" aria-hidden="true">◷</span>
+          <div class="kpi-content">
+            <strong id="kpiNow" class="kpi-value">—</strong>
+            <div class="kpi-label">Rezando ahora</div>
+            <div class="kpi-note">Según las franjas declaradas</div>
+          </div>
+        </article>
+      </aside>
+
+      <section class="map-shell" aria-label="Mapa mundial de Cursillos y palancas">
+        <div id="map"></div>
+
+        <div class="map-legend" aria-label="Leyenda de los puntos del mapa">
+          <strong class="legend-title">Leyenda del mapa</strong>
+          <div class="row"><span class="dot active"></span> Cursillo activo ahora</div>
+          <div class="row"><span class="dot next"></span> Próximo Cursillo</div>
+          <div class="row"><span class="dot done"></span> Cursillo finalizado</div>
+        </div>
+
+        <nav class="map-side-controls" aria-label="Controles del mundo">
+          <button id="mapZoomInBtn" class="map-tool" type="button" data-label="Acercar" aria-label="Acercar el mundo">+</button>
+          <button id="mapZoomOutBtn" class="map-tool" type="button" data-label="Alejar" aria-label="Alejar el mundo">−</button>
+          <button id="mapFocusBtn" class="map-tool" type="button" data-label="Cursillo seleccionado" aria-label="Centrar el Cursillo seleccionado">⌾</button>
+          <button id="mapResetBtn" class="map-tool" type="button" data-label="Vista mundial" aria-label="Recuperar la vista mundial">◎</button>
+          <button id="mapRotateBtn" class="map-tool active" type="button" data-label="Giro automático" aria-label="Activar o detener el giro automático">✥</button>
+        </nav>
+
+        <div id="selectionCard" class="selection-card empty">
+          Selecciona un Cursillo en el mapa o en el mural para descubrir sus palancas.
+        </div>
+
+        <div id="dataStatus" class="status-strip map-status">
+          <span class="status-dot"></span>
+          <span id="statusText">Preparando la conexión con BD de Cursillos…</span>
+        </div>
+      </section>
+
+      <aside class="mural">
+        <div class="panel-head">
+          <div>
+            <h2>Mural de palancas</h2>
+            <p id="muralSubtitle">
+              Palancas que están sosteniendo Cursillos en todo el mundo.
+            </p>
+          </div>
+        
+          <div class="mural-head-actions">
+            <button
+              id="showAllPalancasBtn"
+              class="btn mural-all-btn"
+              type="button"
+              onclick="showAllPalancas()"
+              hidden
+            >
+              🌍 Ver todas
+            </button>
+        
+            <span class="live-badge">PALANCA VIVA</span>
+          </div>
+        </div>
+        <div id="muralList" class="mural-list">
+          <div class="empty-state">Aquí aparecerán las palancas del Cursillo seleccionado.</div>
+        </div>
+      </aside>
+    </main>
+
+    <section class="worldwide">
+      <div>
+        <div class="worldwide-eyebrow">Próxima palanca mundial</div>
+        <h2 id="worldTitle">Consultando la configuración…</h2>
+        <p id="worldDescription">La pestaña CONFIGURACION alimenta automáticamente este bloque.</p>
+      </div>
+      <div id="countdown" class="countdown">
+        <div class="count-unit"><strong id="countDays">—</strong><span>días</span></div>
+        <div class="count-unit"><strong id="countHours">—</strong><span>horas</span></div>
+        <div class="count-unit"><strong id="countMinutes">—</strong><span>minutos</span></div>
+        <div class="count-unit"><strong id="countSeconds">—</strong><span>segundos</span></div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <span class="footer-brand-mark" aria-hidden="true">✦</span>
+        <div>
+          <strong>Peregrino APP</strong>
+          <p>Guía digital para acompañar el Cuarto Día con oración, constancia y comunidad.</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Enlaces del pie">
+        <a href="index.html#planes">Planes</a>
+        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="index.html#apoyar">Apoyar</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </nav>
+    </div>
+    <div class="shell footer-meta">
+      <small>© Peregrino APP · Hecho con oración junto al Secretariado Nacional del Cursillo de Cristiandad.</small>
+    </div>
+  </footer>
+
+  <a class="site-top-button" id="toTop" href="#contenido" aria-label="Volver arriba">↑</a>
+
+  <div id="palancaInvite" class="demo-reveal" role="dialog" aria-modal="true" aria-labelledby="palancaInviteTitle" style="pointer-events:auto">
+    <div class="demo-box">
+      <div class="demo-kicker">Hacer palanca</div>
+      <h2 id="palancaInviteTitle">Tu oración puede sostener este Cursillo</h2>
+      <p id="palancaInviteText">
+        Con Peregrino APP tu palanca se envía sola al terminar tu rezo, sin escribir nada.
+        Y si no tienes la app, también puedes ofrecerla desde la web en unos toques.
+        Para algo más personal, escribe al secretariado de tu diócesis.
+      </p>
+      <div class="demo-origins" style="margin-top:22px">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino APP</a>
+        <a class="btn" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Ofrecer desde la web</a>
+        <button class="btn" type="button" id="palancaInviteClose">Seguir explorando</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="demoReveal" class="demo-reveal">
+    <div class="demo-box">
+      <div class="demo-kicker">Mientras vivís vuestro Cursillo…</div>
+      <h2 id="demoTitle">El mundo reza por vosotros</h2>
+      <p id="demoText"></p>
+      <div id="demoOrigins" class="demo-origins"></div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://unpkg.com/globe.gl@2"></script>
+
+  <script>
+    "use strict";
+
+    const SHEET_ID = "15QgR0mqjT-IKZK4BNI916Eylg3P1QICfgfDgQWNryL4";
+    const PUBLISHED_ID = "2PACX-1vRaCHm2r-sXGwtSV8mI7F03hyVxh_GNKiKX6zTdq7J6KiLI2Nf9RyAxlHcAM9RKl0vjyoZWxs9RrwSn";
+
+    // Plantilla del Google Form prefijado para palancas desde la web.
+    // Pega aquí la "PLANTILLA PREFIJADA" que te dio crearFormularioWeb()
+    // (contiene CURSILLO_ID_AQUI como marcador). Si se deja vacía,
+    // la invitación solo ofrece descargar la app.
+const FORM_PALANCA_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfQoRhqiqOGyPGLOxOLhG7rYLQdSk4b7SulXNKzVj4mYMTLrw/viewform?usp=pp_url&entry.127073981=CURSILLO_ID_AQUI";
+    // INTERRUPTOR ÚNICO DE FASE:
+    // true  = fase experimental: muestra palancas reales y de prueba.
+    // false = producción: oculta únicamente las filas marcadas como es_prueba.
+  // Producción: solo se muestran Cursillos y palancas reales.
+const MOSTRAR_CURSILLOS_DE_PRUEBA = false;
+const MOSTRAR_PALANCAS_DE_PRUEBA = false;
+
+    // Mural: histórico visible de palancas ya ofrecidas y tamaño de página.
+    // MURAL_DIAS_VISIBLES bajo + MURAL_POR_PAGINA alto = sensación de
+    // canal de oración en directo.
+    const MURAL_DIAS_VISIBLES = 3;
+    const MURAL_POR_PAGINA = 14;
+
+    const GIDS = {
+      cursillos: "1993426283",
+      palancas: "1764826694",
+      configuracion: "1471356041"
+    };
+
+    const appState = {
+      cursillos: [],
+      palancas: [],
+      configuracion: [],
+      filteredCursillos: [],
+      selectedCursilloId: null,
+      sourceMode: "google",
+      globe: null,
+      rotateResumeTimer: null,
+      countdownTimer: null,
+      demoTimer: null,
+      demoHideTimer: null,
+      demoRunning: false,
+      demoIndex: 0,
+      muralPage: 1,
+      muralTotalPages: 1,
+      muralCursilloId: null
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    function normalizeHeader(value) {
+      return String(value || "")
+        .replace(/^\uFEFF/, "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_|_$/g, "");
+    }
+
+    function num(value) {
+      if (typeof value === "number") return value;
+      if (value === null || value === undefined || value === "") return null;
+      const n = Number(String(value).replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function bool(value) {
+      if (typeof value === "boolean") return value;
+      const text = String(value ?? "").trim().toLowerCase();
+      return ["true", "verdadero", "1", "si", "sí", "yes"].includes(text);
+    }
+    function esValorFalseExplicito(value) {
+  if (value === false) return true;
+
+  const text = String(value ?? "")
+    .trim()
+    .toLowerCase();
+
+  return ["false", "falso", "0", "no"].includes(text);
+}
+
+function cursilloEsVisiblePublicamente(cursillo) {
+  if (MOSTRAR_CURSILLOS_DE_PRUEBA) {
+    return true;
+  }
+
+  // En producción solo se muestra si es_prueba está
+  // expresamente marcado como FALSE.
+  return esValorFalseExplicito(cursillo.es_prueba);
+}
+
+    function toDate(value) {
+      if (!value) return null;
+      if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatDate(value, options = {}) {
+      const date = toDate(value);
+      if (!date) return "Sin fecha";
+      return new Intl.DateTimeFormat("es-ES", {
+        day: "2-digit",
+        month: "short",
+        year: options.year === false ? undefined : "numeric",
+        hour: options.time ? "2-digit" : undefined,
+        minute: options.time ? "2-digit" : undefined,
+        timeZone: options.utc ? "UTC" : undefined
+      }).format(date);
+    }
+
+    function cursilloStatus(cursillo) {
+      const now = new Date();
+      const start = toDate(cursillo.inicio_utc) || toDate(cursillo.inicio_local);
+      const end = toDate(cursillo.fin_utc) || toDate(cursillo.fin_local);
+
+      if (start && now < start) return "Próximo";
+      if (end && now > end) return "Finalizado";
+      if (start && end) return "Activo";
+      return cursillo.estado_dinamico || cursillo.estado_snapshot || "Próximo";
+    }
+
+    function palancaStatus(palanca) {
+      const now = new Date();
+      const start = toDate(palanca.inicio_palanca_utc);
+      const end = toDate(palanca.fin_palanca_utc);
+
+      if (start && now < start) return "Programada";
+      if (end && now > end) return "Ofrecida";
+      if (start && end) return "En curso";
+      return palanca.estado_dinamico || palanca.estado_snapshot || "Programada";
+    }
+
+    function queryViaGoogleVisualization(url) {
+      return new Promise((resolve, reject) => {
+        try {
+          const query = new google.visualization.Query(url);
+          query.send((response) => {
+            if (response.isError()) {
+              reject(new Error(response.getMessage() || "BD de Cursillos no devolvió datos."));
+              return;
+            }
+
+            const table = response.getDataTable();
+            const headers = [];
+            for (let col = 0; col < table.getNumberOfColumns(); col += 1) {
+              headers.push(normalizeHeader(table.getColumnLabel(col) || table.getColumnId(col)));
+            }
+
+            const rows = [];
+            for (let row = 0; row < table.getNumberOfRows(); row += 1) {
+              const item = {};
+              for (let col = 0; col < table.getNumberOfColumns(); col += 1) {
+                item[headers[col]] = table.getValue(row, col);
+              }
+              rows.push(item);
+            }
+            resolve(rows);
+          });
+        } catch (error) {
+          reject(error);
+        }
+      });
+    }
+
+    async function querySheet(gid) {
+      const urls = [
+        `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?gid=${gid}&headers=1`,
+        `https://docs.google.com/spreadsheets/d/e/${PUBLISHED_ID}/gviz/tq?gid=${gid}&headers=1`
+      ];
+
+      let lastError = null;
+      for (const url of urls) {
+        try {
+          return await queryViaGoogleVisualization(url);
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      throw lastError || new Error("No fue posible consultar la hoja.");
+    }
+
+    function fallbackData() {
+      const now = new Date();
+      const hour = 60 * 60 * 1000;
+      const day = 24 * hour;
+
+      const cursillos = [
+        { cursillo_id:"ES-VAL-169-DEMO", continente:"Europa", codigo_pais:"ES", pais:"España", bandera:"🇪🇸", diocesis:"Archidiócesis de Valencia", ciudad_referencia:"Valencia", latitud:39.4699, longitud:-0.3763, tipo_evento:"Cursillo", modalidad:"Mixto", numero:169, nombre_corto:"Cursillo Mixto Nº169", inicio_utc:new Date(now-day), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" },
+        { cursillo_id:"PE-ARE-081-DEMO", continente:"América del Sur", codigo_pais:"PE", pais:"Perú", bandera:"🇵🇪", diocesis:"Arquidiócesis de Arequipa", ciudad_referencia:"Arequipa", latitud:-16.409, longitud:-71.5375, tipo_evento:"Cursillo", modalidad:"Mujeres", numero:81, nombre_corto:"Cursillo de Mujeres Nº81", inicio_utc:new Date(now-12*hour), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" },
+        { cursillo_id:"BR-POA-183-DEMO", continente:"América del Sur", codigo_pais:"BR", pais:"Brasil", bandera:"🇧🇷", diocesis:"Arquidiócesis de Porto Alegre", ciudad_referencia:"Porto Alegre", latitud:-30.0346, longitud:-51.2177, tipo_evento:"Cursillo", modalidad:"Hombres", numero:183, nombre_corto:"Cursillo de Hombres Nº183", inicio_utc:new Date(now+day), fin_utc:new Date(now+4*day), estado_snapshot:"Próximo" },
+        { cursillo_id:"AU-CAI-035-DEMO", continente:"Oceanía", codigo_pais:"AU", pais:"Australia", bandera:"🇦🇺", diocesis:"Diócesis de Cairns", ciudad_referencia:"Cairns", latitud:-16.9186, longitud:145.7781, tipo_evento:"Cursillo", modalidad:"Mixto", numero:35, nombre_corto:"Cursillo Mixto Nº35", inicio_utc:new Date(now-4*day), fin_utc:new Date(now-day), estado_snapshot:"Finalizado" },
+        { cursillo_id:"MX-COL-056-DEMO", continente:"América del Norte", codigo_pais:"MX", pais:"México", bandera:"🇲🇽", diocesis:"Diócesis de Colima", ciudad_referencia:"Colima", latitud:19.2452, longitud:-103.7241, tipo_evento:"Cursillo", modalidad:"Mujeres", numero:56, nombre_corto:"Cursillo de Mujeres Nº56", inicio_utc:new Date(now+2*day), fin_utc:new Date(now+5*day), estado_snapshot:"Próximo" },
+        { cursillo_id:"PH-MAN-144-DEMO", continente:"Asia", codigo_pais:"PH", pais:"Filipinas", bandera:"🇵🇭", diocesis:"Arquidiócesis de Manila", ciudad_referencia:"Manila", latitud:14.5995, longitud:120.9842, tipo_evento:"Cursillo", modalidad:"Jóvenes", numero:144, nombre_corto:"Cursillo de Jóvenes Nº144", inicio_utc:new Date(now-6*hour), fin_utc:new Date(now+2*day), estado_snapshot:"Activo" }
+      ];
+
+      const origins = [
+        ["María","Valencia","España",39.4699,-0.3763],
+        ["Ultreya San José","Ciudad de Guatemala","Guatemala",14.6349,-90.5069],
+        ["Familia López","Ciudad de México","México",19.4326,-99.1332],
+        ["Parroquia Santa María","Porto","Portugal",41.1579,-8.6291],
+        ["José","Bogotá","Colombia",4.711,-74.0721],
+        ["Grupo Cuarto Día","Los Ángeles","Estados Unidos",34.0522,-118.2437],
+        ["Carmen","Lima","Perú",-12.0464,-77.0428],
+        ["Ultreya De Colores","São Paulo","Brasil",-23.5505,-46.6333]
+      ];
+
+      const palancas = [];
+      let counter = 1;
+      for (const cursillo of cursillos.slice(0, 3)) {
+        for (const origin of origins) {
+          const start = new Date(now + ((counter % 5) - 2) * 30 * 60 * 1000);
+          palancas.push({
+            palanca_id:`DEMO-${counter++}`,
+            cursillo_id:cursillo.cursillo_id,
+            inicio_palanca_utc:start,
+            fin_palanca_utc:new Date(start.getTime()+30*60*1000),
+            nombre_publico:origin[0],
+            tipo_remitente:origin[0].includes("Ultreya") ? "Ultreya" : "Individual",
+            ciudad_origen:origin[1],
+            pais_origen:origin[2],
+            latitud_origen:origin[3],
+            longitud_origen:origin[4],
+            tipo_palanca:["Rosario","Eucaristía","Oración personal","Reunión de grupo"][counter%4],
+            mensaje_predefinido:"Rezo por vosotros. De colores.",
+            consentimiento_publico:true,
+            verificada:true
+          });
+        }
+      }
+
+      return {
+        cursillos,
+        palancas,
+        configuracion:[{
+          palanca_mundial_id:"DEMO-MUNDIAL",
+          titulo:"Palanca mundial por los Cursillos activos",
+          inicio_utc:new Date(now.getTime()+3*hour),
+          fin_utc:new Date(now.getTime()+3*hour+15*60*1000),
+          tipo_oracion:"Decena del rosario",
+          intencion:"Por quienes están viviendo un Cursillo y por sus equipos."
+        }]
+      };
+    }
+
+    const STATUS_COLORS = {
+      activo: "#3ecf8e",
+      proximo: "#a78bfa",
+      finalizado: "#8b96ad"
+    };
+
+    const DECOLORES = ["#ff5f6d", "#ff9a3d", "#ffd76d", "#3ecf8e", "#6fb3ff", "#a78bfa"];
+
+    function hexToRgbStr(hex) {
+      const n = parseInt(hex.slice(1), 16);
+      return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
+    }
+
+    function holdRotation(ms = 6000) {
+      if (!appState.globe) return;
+      const controls = appState.globe.controls();
+      controls.autoRotate = false;
+      $("mapRotateBtn")?.classList.remove("active");
+      clearTimeout(appState.rotateResumeTimer);
+      appState.rotateResumeTimer = setTimeout(() => { controls.autoRotate = true; $("mapRotateBtn")?.classList.add("active"); }, ms);
+    }
+
+    function initGlobe() {
+      if (typeof Globe === "undefined") {
+        setDataStatus("No se pudo cargar el visor 3D del globo (unpkg.com bloqueado o sin conexión).", true);
+        return;
+      }
+
+      const el = $("map");
+
+      const globe = Globe()(el)
+        .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
+        .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
+        .backgroundColor("rgba(0,0,0,0)")
+        .showAtmosphere(true)
+        .atmosphereColor("#d4af37")
+        .atmosphereAltitude(0.22)
+        .pointsData([])
+        .pointColor((d) => d.color)
+        .pointAltitude((d) => d.selected ? 0.08 : 0.03)
+        .pointRadius((d) => d.selected ? 0.85 : 0.55)
+        .pointLabel((d) => d.label)
+        .onPointClick((d) => selectCursillo(d.id, true))
+        .ringsData([])
+        .ringColor((d) => (t) => `rgba(${d.rgb},${Math.max(0, 1 - t)})`)
+        .ringMaxRadius((d) => d.selected ? 6 : 3.5)
+        .ringPropagationSpeed(1.6)
+        .ringRepeatPeriod(1400)
+        .arcsData([])
+        .arcStartLat((d) => d.slat)
+        .arcStartLng((d) => d.slng)
+        .arcEndLat((d) => d.elat)
+        .arcEndLng((d) => d.elng)
+        .arcColor((d) => d.colors)
+        .arcAltitudeAutoScale(0.45)
+        .arcStroke((d) => d.stroke)
+        .arcDashLength(0.45)
+        .arcDashGap(0.25)
+        .arcDashAnimateTime(1600)
+        .arcLabel((d) => d.label);
+
+      globe.pointOfView({ lat: 18, lng: -5, altitude: 2.1 }, 0);
+
+      const controls = globe.controls();
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.55;
+      controls.enableZoom = true;
+      controls.minDistance = 135;
+      controls.maxDistance = 480;
+
+      el.addEventListener("pointerdown", () => holdRotation(6000));
+      el.addEventListener("wheel", () => holdRotation(6000), { passive: true });
+
+      const fit = () => globe.width(el.clientWidth).height(el.clientHeight);
+      appState.globe = globe;
+      fit();
+      new ResizeObserver(fit).observe(el);
+      window.addEventListener("resize", fit);
+    }
+
+    function fillSelect(selectId, values) {
+      const select = $(selectId);
+      const current = select.value;
+      const firstOption = select.options[0].outerHTML;
+      select.innerHTML = firstOption;
+
+      [...new Set(values.filter(Boolean))]
+        .sort((a, b) => String(a).localeCompare(String(b), "es"))
+        .forEach((value) => {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = value;
+          select.appendChild(option);
+        });
+
+      if ([...select.options].some((option) => option.value === current)) {
+        select.value = current;
+      }
+    }
+
+    function populateFilters() {
+      fillSelect("countryFilter", appState.cursillos.map((c) => c.pais));
+      fillSelect("modalityFilter", appState.cursillos.map((c) => c.modalidad));
+      fillSelect("eventTypeFilter", appState.cursillos.map((c) => c.tipo_evento));
+    }
+
+    function applyFilters() {
+      const search = $("searchFilter").value.trim().toLowerCase();
+      const status = $("statusFilter").value;
+      const country = $("countryFilter").value;
+      const modality = $("modalityFilter").value;
+      const eventType = $("eventTypeFilter").value;
+
+      appState.filteredCursillos = appState.cursillos.filter((c) => {
+        const haystack = [
+          c.cursillo_id, c.pais, c.diocesis, c.ciudad_referencia,
+          c.nombre_corto, c.numero, c.modalidad, c.tipo_evento
+        ].join(" ").toLowerCase();
+
+        return (!search || haystack.includes(search))
+          && (!status || cursilloStatus(c) === status)
+          && (!country || c.pais === country)
+          && (!modality || c.modalidad === modality)
+          && (!eventType || c.tipo_evento === eventType);
+      });
+
+      const seleccionSigueVisible =
+        appState.selectedCursilloId &&
+        appState.filteredCursillos.some(
+          (c) => c.cursillo_id === appState.selectedCursilloId
+        );
+
+      if (!seleccionSigueVisible) {
+        appState.selectedCursilloId =
+          appState.filteredCursillos.length === 1
+            ? appState.filteredCursillos[0].cursillo_id
+            : null;
+      }
+
+      renderAll();
+
+      // Si el filtro deja un único Cursillo, lo centra y actualiza la URL.
+      if (
+        appState.filteredCursillos.length === 1 &&
+        appState.selectedCursilloId
+      ) {
+        const cursillo = appState.filteredCursillos[0];
+        const lat = num(cursillo.latitud);
+        const lon = num(cursillo.longitud);
+
+        if (lat !== null && lon !== null && appState.globe) {
+          appState.globe.pointOfView(
+            { lat, lng: lon, altitude: 1.55 },
+            1200
+          );
+          holdRotation(6800);
+        }
+
+        const url = new URL(window.location.href);
+        url.searchParams.set("cursillo", cursillo.cursillo_id);
+        window.history.replaceState({}, "", url);
+      }
+    }
+
+    function palancaEsVisiblePublicamente(palanca) {
+      const pruebaPermitida =
+        MOSTRAR_PALANCAS_DE_PRUEBA || !bool(palanca.es_prueba);
+
+      const consentimientoPermitido =
+        palanca.consentimiento_publico === null
+        || palanca.consentimiento_publico === undefined
+        || bool(palanca.consentimiento_publico);
+
+      return pruebaPermitida && consentimientoPermitido;
+    }
+
+    function relevantPalancas(cursilloIds) {
+      const ids = new Set(cursilloIds);
+      return appState.palancas
+        .filter((p) => ids.has(p.cursillo_id))
+        .filter(palancaEsVisiblePublicamente);
+    }
+
+    function animateNumber(element, target) {
+      const startValue = Number(element.dataset.value || 0);
+      const finalValue = Number(target || 0);
+      const startTime = performance.now();
+      const duration = 550;
+
+      function frame(now) {
+        const progress = Math.min(1, (now - startTime) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(startValue + (finalValue - startValue) * eased);
+        element.textContent = new Intl.NumberFormat("es-ES").format(value);
+        if (progress < 1) requestAnimationFrame(frame);
+        else element.dataset.value = String(finalValue);
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    function updateKpis() {
+      const cursillos = appState.filteredCursillos;
+      const palancas = relevantPalancas(cursillos.map((c) => c.cursillo_id));
+      const countries = new Set(cursillos.map((c) => c.pais).filter(Boolean));
+      const nowCount = palancas.filter((p) => palancaStatus(p) === "En curso").length;
+      const activeCount = cursillos.filter((c) => cursilloStatus(c) === "Activo").length;
+
+      animateNumber($("kpiCursillos"), cursillos.length);
+      animateNumber($("kpiCountries"), countries.size);
+      animateNumber($("kpiPalancas"), palancas.length);
+      animateNumber($("kpiNow"), nowCount);
+      $("kpiCursillosNote").textContent = `${activeCount} activos según la fecha actual`;
+    }
+
+    function renderMapMarkers() {
+      if (!appState.globe) return;
+
+      const points = [];
+      const rings = [];
+
+      for (const cursillo of appState.filteredCursillos) {
+        const lat = num(cursillo.latitud);
+        const lon = num(cursillo.longitud);
+        if (lat === null || lon === null) continue;
+
+        const selected = cursillo.cursillo_id === appState.selectedCursilloId;
+        const statusClass = normalizeHeader(cursilloStatus(cursillo));
+        const color = STATUS_COLORS[statusClass] || "#8b96ad";
+
+        points.push({
+          id: cursillo.cursillo_id,
+          lat,
+          lng: lon,
+          color,
+          selected,
+          label:
+            `<strong>${escapeHtml(cursillo.nombre_corto || cursillo.tipo_evento || "Cursillo")}</strong><br>` +
+            `${escapeHtml(cursillo.ciudad_referencia || "")}, ${escapeHtml(cursillo.pais || "")}<br>` +
+            `<span style="opacity:.72">${escapeHtml(cursilloStatus(cursillo))}</span>`
+        });
+
+        if (statusClass !== "finalizado" || selected) {
+          rings.push({ lat, lng: lon, rgb: hexToRgbStr(color), selected });
+        }
+      }
+
+      appState.globe.pointsData(points).ringsData(rings);
+    }
+
+    function selectCursillo(cursilloId, fly = false) {
+      appState.selectedCursilloId = cursilloId;
+
+      const cursillo = appState.cursillos.find((c) => c.cursillo_id === cursilloId);
+      if (cursillo && fly) {
+        const lat = num(cursillo.latitud);
+        const lon = num(cursillo.longitud);
+        if (lat !== null && lon !== null && appState.globe) {
+          appState.globe.pointOfView({ lat, lng: lon, altitude: 1.55 }, 1400);
+          holdRotation(6800);
+        }
+      }
+
+      const url = new URL(window.location.href);
+      if (cursilloId) url.searchParams.set("cursillo", cursilloId);
+      else url.searchParams.delete("cursillo");
+      window.history.replaceState({}, "", url);
+
+      renderMapMarkers();
+      renderSelection();
+      renderMural();
+      renderFlows();
+    }
+window.showAllPalancas = function showAllPalancas() {
+  selectCursillo(null, false);
+
+  if (appState.globe) {
+    appState.globe.pointOfView(
+      {
+        lat: 18,
+        lng: -5,
+        altitude: 2.1
+      },
+      850
+    );
+  }
+
+  const list = $("muralList");
+
+  if (list) {
+    list.scrollTop = 0;
+  }
+};
+
+
+window.openCursilloFromMural =
+  function openCursilloFromMural(encodedCursilloId) {
+    const cursilloId = decodeURIComponent(
+      encodedCursilloId
+    );
+
+    selectCursillo(cursilloId, true);
+
+    const list = $("muralList");
+
+    if (list) {
+      list.scrollTop = 0;
+    }
+  };
+    function selectedCursillo() {
+      return appState.cursillos.find((c) => c.cursillo_id === appState.selectedCursilloId) || null;
+    }
+
+    function visiblePublicPalancas(cursilloId) {
+      return appState.palancas
+        .filter((p) => p.cursillo_id === cursilloId)
+        .filter(palancaEsVisiblePublicamente);
+    }
+
+    function renderSelection() {
+      const card = $("selectionCard");
+      const cursillo = selectedCursillo();
+
+      if (!cursillo) {
+        card.className = "selection-card empty";
+      
+        card.innerHTML = `
+          <strong>Vista mundial activa</strong><br>
+          <span style="display:block;margin-top:5px">
+            El mural reúne las palancas que están viajando
+            hacia todos los Cursillos visibles. Selecciona
+            un punto para concentrarte en uno de ellos.
+          </span>
+        `;
+      
+        return;
+      }
+
+      const palancas = visiblePublicPalancas(cursillo.cursillo_id);
+      const nowCount = palancas.filter((p) => palancaStatus(p) === "En curso").length;
+      const countries = new Set(palancas.map((p) => p.pais_origen).filter(Boolean));
+      const status = cursilloStatus(cursillo);
+
+      card.className = "selection-card";
+      card.innerHTML = `
+        <div class="selection-grid">
+          <div>
+            <div class="selection-title">${escapeHtml(cursillo.bandera || "🌍")} ${escapeHtml(cursillo.nombre_corto || cursillo.tipo_evento || "Cursillo")}</div>
+            <div class="selection-sub">
+              ${escapeHtml(cursillo.diocesis || "")} · ${escapeHtml(cursillo.ciudad_referencia || "")}, ${escapeHtml(cursillo.pais || "")}<br>
+              ${formatDate(cursillo.inicio_utc || cursillo.inicio_local)} — ${formatDate(cursillo.fin_utc || cursillo.fin_local)}
+            </div>
+            <div class="selection-stats">
+              <span class="pill">${escapeHtml(status)}</span>
+              <span class="pill">${palancas.length} palancas</span>
+              <span class="pill">${countries.size} países</span>
+              <span class="pill">${nowCount} ahora</span>
+            </div>
+          </div>
+          <div class="selection-actions">
+            <a class="btn primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
+            <button class="btn" type="button" onclick="showSingleReveal()">Presentar</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function palancaLink(cursilloId) {
+      return "https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" +
+        "?cursillo=" + encodeURIComponent(cursilloId) + "&accion=palanca";
+    }
+
+    function palancaSortWeight(status) {
+      return status === "En curso" ? 0 : status === "Programada" ? 1 : 2;
+    }
+
+    function palancaFechaReferencia(palanca) {
+      return toDate(palanca.inicio_palanca_utc)
+        || toDate(palanca.fecha_registro_utc)
+        || toDate(palanca.fin_palanca_utc);
+    }
+
+function palancasVisiblesEnMural(cursilloId = null) {
+  const ahora = new Date();
+
+  const limite = new Date(
+    ahora.getTime()
+    - MURAL_DIAS_VISIBLES * 24 * 60 * 60 * 1000
+  );
+
+  const palancasBase = cursilloId
+    ? visiblePublicPalancas(cursilloId)
+    : relevantPalancas(
+        appState.filteredCursillos.map(
+          (cursillo) => cursillo.cursillo_id
+        )
+      );
+
+  return palancasBase
+    .filter((palanca) => {
+      const estado = palancaStatus(palanca);
+
+      // Las que están ocurriendo o están programadas
+      // siempre permanecen visibles.
+      if (
+        estado === "En curso" ||
+        estado === "Programada"
+      ) {
+        return true;
+      }
+
+      // Las ya ofrecidas permanecen durante la última semana.
+      const fecha = palancaFechaReferencia(palanca);
+
+      return fecha !== null && fecha >= limite;
+    })
+    .sort((a, b) => {
+      const diferenciaEstado =
+        palancaSortWeight(palancaStatus(a))
+        - palancaSortWeight(palancaStatus(b));
+
+      if (diferenciaEstado !== 0) {
+        return diferenciaEstado;
+      }
+
+      const fechaA =
+        palancaFechaReferencia(a)?.getTime() || 0;
+
+      const fechaB =
+        palancaFechaReferencia(b)?.getTime() || 0;
+
+      // Las más recientes aparecen primero.
+      return fechaB - fechaA;
+    });
+}
+
+    window.changeMuralPage = function changeMuralPage(delta) {
+      appState.muralPage = Math.min(
+        appState.muralTotalPages,
+        Math.max(1, appState.muralPage + delta)
+      );
+
+      renderMural();
+
+      const list = $("muralList");
+      if (list) list.scrollTop = 0;
+    };
+
+function renderMural() {
+  const list = $("muralList");
+  const subtitle = $("muralSubtitle");
+  const cursillo = selectedCursillo();
+
+  const modoGlobal = !cursillo;
+
+  const identificadorMural = modoGlobal
+    ? "__GLOBAL__"
+    : cursillo.cursillo_id;
+
+  const showAllButton = $("showAllPalancasBtn");
+
+  if (showAllButton) {
+    showAllButton.hidden = modoGlobal;
+  }
+
+  // Al cambiar entre vista global y un Cursillo,
+  // recuperamos la primera página.
+  if (
+    appState.muralCursilloId !== identificadorMural
+  ) {
+    appState.muralCursilloId = identificadorMural;
+    appState.muralPage = 1;
+  }
+
+  const palancas = palancasVisiblesEnMural(
+    modoGlobal
+      ? null
+      : cursillo.cursillo_id
+  );
+
+  appState.muralTotalPages = Math.max(
+    1,
+    Math.ceil(
+      palancas.length / MURAL_POR_PAGINA
+    )
+  );
+
+  if (
+    appState.muralPage >
+    appState.muralTotalPages
+  ) {
+    appState.muralPage =
+      appState.muralTotalPages;
+  }
+
+  if (modoGlobal) {
+    const destinos = new Set(
+      palancas
+        .map((palanca) => palanca.cursillo_id)
+        .filter(Boolean)
+    );
+
+    subtitle.textContent =
+      `${palancas.length} palanca`
+      + `${palancas.length === 1 ? "" : "s"} `
+      + `hacia ${destinos.size} Cursillo`
+      + `${destinos.size === 1 ? "" : "s"} del mundo`;
+
+  } else {
+    subtitle.textContent =
+      `${cursillo.nombre_corto || "Cursillo"} · `
+      + `${cursillo.ciudad_referencia || cursillo.pais || ""} · `
+      + `${palancas.length} palanca`
+      + `${palancas.length === 1 ? "" : "s"} visibles`;
+  }
+
+  if (!palancas.length) {
+    list.innerHTML = modoGlobal
+      ? `
+        <div class="empty-state">
+          No hay palancas públicas recientes para los
+          Cursillos actualmente visibles.
+        </div>
+      `
+      : `
+        <div class="empty-state">
+          No hay palancas públicas de los últimos
+          ${MURAL_DIAS_VISIBLES} días para este Cursillo.
+        </div>
+      `;
+
+    return;
+  }
+
+  const inicio =
+    (appState.muralPage - 1)
+    * MURAL_POR_PAGINA;
+
+  const palancasPagina = palancas.slice(
+    inicio,
+    inicio + MURAL_POR_PAGINA
+  );
+
+  const tarjetas = palancasPagina
+    .map((palanca) => {
+      const status = palancaStatus(palanca);
+
+      const cssStatus =
+        status === "En curso"
+          ? "now"
+          : status === "Programada"
+            ? "next"
+            : "done";
+
+      const statusText =
+        status === "En curso"
+          ? "Ahora"
+          : status === "Programada"
+            ? "Próxima"
+            : "Ofrecida";
+
+      const start = formatDate(
+        palanca.inicio_palanca_utc,
+        {
+          time: true,
+          year: false,
+          utc: true
+        }
+      );
+
+      const end = formatDate(
+        palanca.fin_palanca_utc,
+        {
+          time: true,
+          year: false,
+          utc: true
+        }
+      );
+
+      const destino = appState.cursillos.find(
+        (item) =>
+          item.cursillo_id === palanca.cursillo_id
+      );
+
+      const nombreDestino = destino
+        ? (
+            destino.nombre_corto
+            || destino.tipo_evento
+            || "Cursillo"
+          )
+        : "Cursillo";
+
+      const lugarDestino = destino
+        ? [
+            destino.ciudad_referencia,
+            destino.pais
+          ]
+            .filter(Boolean)
+            .join(", ")
+        : "";
+
+      const destinoCodificado = destino
+        ? encodeURIComponent(destino.cursillo_id)
+        : "";
+
+      const bloqueDestino =
+        modoGlobal && destino
+          ? `
+            <div class="palanca-target">
+              <span>Hacia</span>
+              <strong>
+                ${escapeHtml(destino.bandera || "🌍")}
+                ${escapeHtml(nombreDestino)}
+              </strong>
+              ${
+                lugarDestino
+                  ? `<small>${escapeHtml(lugarDestino)}</small>`
+                  : ""
+              }
+            </div>
+          `
+          : "";
+
+      const bloqueDestino =
+        modoGlobal && destino
+          ? `<div class="palanca-target">→ ${escapeHtml(destino.bandera || "🌍")} ${escapeHtml(nombreDestino)}${
+              lugarDestino ? " · " + escapeHtml(lugarDestino) : ""
+            }</div>`
+          : "";
+
+      const avatar = cssStatus === "now"
+        ? "🌿"
+        : cssStatus === "next"
+          ? "🕊"
+          : "✓";
+
+      return `
+        <article class="palanca-row ${cssStatus}" tabindex="0"${
+          destino ? ` onclick="openCursilloFromMural('${destinoCodificado}')"` : ""
+        }>
+          <span class="avatar" aria-hidden="true">${avatar}</span>
+          <div class="palanca-body">
+            <div class="palanca-name">${escapeHtml(palanca.nombre_publico || "Palanca anónima")}</div>
+            <div class="palanca-place">${escapeHtml(palanca.ciudad_origen || "")}${
+              palanca.pais_origen ? " · " + escapeHtml(palanca.pais_origen) : ""
+            } · ${escapeHtml(palanca.tipo_palanca || "Oración")}</div>
+            ${
+              palanca.mensaje_predefinido
+                ? `<div class="palanca-msg">“${escapeHtml(palanca.mensaje_predefinido)}”</div>`
+                : ""
+            }
+            ${bloqueDestino}
+          </div>
+          <span class="palanca-status">${statusText}</span>
+        </article>
+      `;
+    })
+    .join("");
+
+  const paginacion =
+    appState.muralTotalPages > 1
+      ? `
+        <nav
+          class="mural-pagination"
+          aria-label="Paginación de palancas"
+        >
+          <button
+            class="btn"
+            type="button"
+            onclick="changeMuralPage(-1)"
+            ${
+              appState.muralPage === 1
+                ? "disabled"
+                : ""
+            }
+          >
+            ← Más recientes
+          </button>
+
+          <span class="mural-page-label">
+            ${appState.muralPage}
+            de
+            ${appState.muralTotalPages}
+          </span>
+
+          <button
+            class="btn"
+            type="button"
+            onclick="changeMuralPage(1)"
+            ${
+              appState.muralPage ===
+              appState.muralTotalPages
+                ? "disabled"
+                : ""
+            }
+          >
+            Más antiguas →
+          </button>
+        </nav>
+      `
+      : "";
+
+  list.innerHTML = tarjetas + paginacion;
+}
+
+ function renderFlows() {
+  if (!appState.globe) {
+    return;
+  }
+
+  const cursilloSeleccionado =
+    selectedCursillo();
+
+  const cursillosPorId = new Map(
+    appState.cursillos.map(
+      (cursillo) => [
+        cursillo.cursillo_id,
+        cursillo
+      ]
+    )
+  );
+
+  const palancas =
+    palancasVisiblesEnMural(
+      cursilloSeleccionado
+        ? cursilloSeleccionado.cursillo_id
+        : null
+    );
+
+  const agrupadas = new Map();
+
+  for (const palanca of palancas) {
+    const destino = cursilloSeleccionado
+      || cursillosPorId.get(
+        palanca.cursillo_id
+      );
+
+    if (!destino) {
+      continue;
+    }
+
+    const origenLat =
+      num(palanca.latitud_origen);
+
+    const origenLon =
+      num(palanca.longitud_origen);
+
+    const destinoLat =
+      num(destino.latitud);
+
+    const destinoLon =
+      num(destino.longitud);
+
+    if (
+      origenLat === null ||
+      origenLon === null ||
+      destinoLat === null ||
+      destinoLon === null
+    ) {
+      continue;
+    }
+
+    const clave = [
+      origenLat.toFixed(3),
+      origenLon.toFixed(3),
+      destinoLat.toFixed(3),
+      destinoLon.toFixed(3)
+    ].join("|");
+
+    if (!agrupadas.has(clave)) {
+      agrupadas.set(clave, {
+        origenLat,
+        origenLon,
+        destinoLat,
+        destinoLon,
+        ciudadOrigen:
+          palanca.ciudad_origen || "",
+        paisOrigen:
+          palanca.pais_origen || "",
+        destinoNombre:
+          destino.nombre_corto
+          || destino.tipo_evento
+          || "Cursillo",
+        destinoLugar:
+          destino.ciudad_referencia
+          || destino.pais
+          || "",
+        count: 0
+      });
+    }
+
+    agrupadas.get(clave).count += 1;
+  }
+
+  const arcs = [...agrupadas.values()]
+    .slice(0, 120)
+    .map((flujo, index) => {
+      const colorInicio =
+        DECOLORES[
+          index % DECOLORES.length
+        ];
+
+      const colorFin =
+        DECOLORES[
+          (index + 2) % DECOLORES.length
+        ];
+
+      const origenTexto = [
+        flujo.ciudadOrigen,
+        flujo.paisOrigen
+      ]
+        .filter(Boolean)
+        .join(", ");
+
+      const destinoTexto = [
+        flujo.destinoNombre,
+        flujo.destinoLugar
+      ]
+        .filter(Boolean)
+        .join(" · ");
+
+      return {
+        slat: flujo.origenLat,
+        slng: flujo.origenLon,
+        elat: flujo.destinoLat,
+        elng: flujo.destinoLon,
+        colors: [
+          colorInicio,
+          colorFin
+        ],
+        stroke: Math.min(
+          1.6,
+          0.45
+          + Math.log2(
+              flujo.count + 1
+            ) * 0.3
+        ),
+        label:
+          `${escapeHtml(
+            origenTexto || "Origen"
+          )}`
+          + ` → `
+          + `${escapeHtml(destinoTexto)}`
+          + ` · `
+          + `${flujo.count} palanca`
+          + `${flujo.count === 1 ? "" : "s"}`
+      };
+    });
+
+  appState.globe.arcsData(arcs);
+}
+
+    function renderAll() {
+      updateKpis();
+      renderMapMarkers();
+      renderSelection();
+      renderMural();
+      renderFlows();
+    }
+
+    function maybeShowPalancaInvite() {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("accion") !== "palanca") return;
+
+      const cursillo = selectedCursillo();
+      if (cursillo) {
+        $("palancaInviteTitle").textContent =
+          `Tu oración puede sostener el ${cursillo.nombre_corto || "Cursillo"}`;
+      }
+
+      const formBtn = $("palancaInviteForm");
+      if (FORM_PALANCA_URL && cursillo) {
+        formBtn.href = FORM_PALANCA_URL.replace("CURSILLO_ID_AQUI", encodeURIComponent(cursillo.cursillo_id));
+        formBtn.hidden = false;
+      } else {
+        formBtn.hidden = true;
+      }
+
+      $("palancaInvite").classList.add("visible");
+
+      // No repetir la invitación al recargar
+      url.searchParams.delete("accion");
+      window.history.replaceState({}, "", url);
+    }
+
+    function chooseInitialCursillo() {
+      const requested = new URL(window.location.href)
+        .searchParams
+        .get("cursillo");
+    
+      // Se conserva la selección solamente cuando la URL pide
+      // expresamente un Cursillo concreto.
+      if (
+        requested &&
+        appState.cursillos.some(
+          (c) => c.cursillo_id === requested
+        )
+      ) {
+        return requested;
+      }
+    
+      // La vista normal comienza mostrando el mundo completo.
+      return null;
+    }
+
+    function nextWorldwideEvent() {
+      const now = new Date();
+      return [...appState.configuracion]
+        .filter((item) => {
+          const start = toDate(item.inicio_utc);
+          const end = toDate(item.fin_utc);
+          return start && (!end || end >= now);
+        })
+        .sort((a, b) => toDate(a.inicio_utc) - toDate(b.inicio_utc))[0] || null;
+    }
+
+    function updateCountdown() {
+      const event = nextWorldwideEvent();
+      const title = $("worldTitle");
+      const description = $("worldDescription");
+
+      if (!event) {
+        title.textContent = "No hay una palanca mundial futura configurada";
+        description.textContent = "Añade una fila futura en la pestaña CONFIGURACION para activar la cuenta atrás.";
+        ["countDays","countHours","countMinutes","countSeconds"].forEach((id) => $(id).textContent = "0");
+        return;
+      }
+
+      const start = toDate(event.inicio_utc);
+      const end = toDate(event.fin_utc);
+      const now = new Date();
+
+      title.textContent = event.titulo || "Palanca mundial";
+      description.textContent = [
+        event.tipo_oracion,
+        event.intencion,
+        start ? formatDate(start, { time:true, utc:true }) + " UTC" : ""
+      ].filter(Boolean).join(" · ");
+
+      let diff = Math.max(0, start.getTime() - now.getTime());
+      if (start <= now && (!end || now <= end)) {
+        title.textContent = `Ahora: ${event.titulo || "Palanca mundial"}`;
+        diff = 0;
+      }
+
+      const seconds = Math.floor(diff / 1000);
+      const days = Math.floor(seconds / 86400);
+      const hours = Math.floor((seconds % 86400) / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const secs = seconds % 60;
+
+      $("countDays").textContent = String(days).padStart(2, "0");
+      $("countHours").textContent = String(hours).padStart(2, "0");
+      $("countMinutes").textContent = String(minutes).padStart(2, "0");
+      $("countSeconds").textContent = String(secs).padStart(2, "0");
+    }
+
+    function setDataStatus(message, error = false) {
+      $("statusText").textContent = message;
+      $("dataStatus").classList.toggle("error", error);
+    }
+
+    function latestUpdateText() {
+      const dates = appState.cursillos
+        .map((c) => toDate(c.fecha_actualizacion_utc))
+        .filter(Boolean)
+        .sort((a, b) => b - a);
+      if (!dates.length) return "";
+      return ` · Última actualización de datos: ${formatDate(dates[0], { time:true, utc:true })} UTC`;
+    }
+
+    async function loadData() {
+      $("loadingCover").classList.remove("hidden");
+      $("pageModeText").textContent = MOSTRAR_PALANCAS_DE_PRUEBA
+        ? "Palancas vivas · Peregrino App · Fase experimental: pruebas visibles"
+        : "Palancas vivas · Peregrino App · Producción";
+      setDataStatus("Sincronizando con BD de Cursillos…");
+
+      try {
+        const [cursillos, palancas, configuracion] = await Promise.all([
+          querySheet(GIDS.cursillos),
+          querySheet(GIDS.palancas),
+          querySheet(GIDS.configuracion)
+        ]);
+
+        if (!cursillos.length) {
+          throw new Error("La pestaña CURSILLOS no devolvió filas.");
+        }
+        
+        const cursillosVisibles = cursillos.filter(
+          cursilloEsVisiblePublicamente
+        );
+        
+        if (!cursillosVisibles.length) {
+          throw new Error(
+            "No hay Cursillos reales publicados. Revisa la columna es_prueba."
+          );
+        }
+        
+        appState.cursillos = cursillosVisibles;
+        appState.palancas = palancas;
+        appState.configuracion = configuracion;
+        appState.sourceMode = "google";
+
+        const palancasVisibles = palancas.filter(palancaEsVisiblePublicamente);
+        const detallePruebas = MOSTRAR_PALANCAS_DE_PRUEBA
+          ? " · incluye registros de prueba"
+          : " · pruebas excluidas";
+
+        setDataStatus(
+         `Conectado a BD de Cursillos · ${cursillosVisibles.length} Cursillos · ${palancasVisibles.length} palancas visibles${detallePruebas}${latestUpdateText()}`
+        );
+      } catch (error) {
+        const demo = fallbackData();
+        appState.cursillos = demo.cursillos;
+        appState.palancas = demo.palancas;
+        appState.configuracion = demo.configuracion;
+        appState.sourceMode = "demo";
+
+        setDataStatus(
+          `No fue posible leer la hoja pública. Se muestran datos locales de demostración. Detalle: ${error.message}`,
+          true
+        );
+      }
+
+      populateFilters();
+      appState.filteredCursillos = [...appState.cursillos];
+      appState.selectedCursilloId = chooseInitialCursillo();
+      appState.muralPage = 1;
+      appState.muralTotalPages = 1;
+      appState.muralCursilloId = null;
+      renderAll();
+      maybeShowPalancaInvite();
+      updateCountdown();
+
+      clearInterval(appState.countdownTimer);
+      appState.countdownTimer = setInterval(() => {
+        updateCountdown();
+        updateKpis();
+        renderMural();
+      }, 1000);
+
+      $("loadingCover").classList.add("hidden");
+    }
+
+    function demoCandidates() {
+      const filtered = appState.filteredCursillos.length ? appState.filteredCursillos : appState.cursillos;
+      const withCounts = filtered.map((c) => ({
+        cursillo: c,
+        count: visiblePublicPalancas(c.cursillo_id).length,
+        active: cursilloStatus(c) === "Activo"
+      }));
+
+      return withCounts
+        .sort((a, b) => Number(b.active) - Number(a.active) || b.count - a.count)
+        .map((item) => item.cursillo);
+    }
+
+    function revealForCursillo(cursillo) {
+      if (!cursillo) return;
+      const palancas = visiblePublicPalancas(cursillo.cursillo_id);
+      const uniqueOrigins = [];
+      const seen = new Set();
+
+      for (const p of palancas) {
+        const label = [p.ciudad_origen, p.pais_origen].filter(Boolean).join(", ");
+        if (label && !seen.has(label)) {
+          seen.add(label);
+          uniqueOrigins.push(label);
+        }
+      }
+
+      $("demoTitle").textContent = cursillo.nombre_corto || "El mundo reza por vosotros";
+      $("demoText").textContent =
+        `${cursillo.diocesis || cursillo.ciudad_referencia || cursillo.pais}. ` +
+        `${palancas.length} palancas registradas desde ${new Set(palancas.map((p) => p.pais_origen).filter(Boolean)).size} países.`;
+
+      $("demoOrigins").innerHTML = uniqueOrigins
+        .slice(0, 8)
+        .map((origin) => `<span>${escapeHtml(origin)}</span>`)
+        .join("");
+
+      $("demoReveal").classList.add("visible");
+      clearTimeout(appState.demoHideTimer);
+      appState.demoHideTimer = setTimeout(() => $("demoReveal").classList.remove("visible"), 3300);
+    }
+
+    function demoStep() {
+      const candidates = demoCandidates();
+      if (!candidates.length) return;
+
+      const cursillo = candidates[appState.demoIndex % candidates.length];
+      appState.demoIndex += 1;
+      selectCursillo(cursillo.cursillo_id, true);
+      revealForCursillo(cursillo);
+    }
+
+    function toggleDemo() {
+      appState.demoRunning = !appState.demoRunning;
+      $("demoBtn").classList.toggle("active", appState.demoRunning);
+      $("demoBtn").textContent = appState.demoRunning ? "■ Detener demostración" : "▶ Modo demostración";
+
+      clearInterval(appState.demoTimer);
+      clearTimeout(appState.demoHideTimer);
+      $("demoReveal").classList.remove("visible");
+
+      if (appState.demoRunning) {
+        demoStep();
+        appState.demoTimer = setInterval(demoStep, 7200);
+      }
+    }
+
+    window.showSingleReveal = function showSingleReveal() {
+      revealForCursillo(selectedCursillo());
+    };
+
+    function setFiltersOpen(open, focusFirst = false) {
+      const panel = $("filtersPanel");
+      const trigger = $("filterToggleBtn");
+      if (!panel || !trigger) return;
+
+      panel.classList.toggle("open", open);
+      panel.setAttribute("aria-hidden", String(!open));
+      trigger.setAttribute("aria-expanded", String(open));
+
+      if (open && focusFirst) {
+        setTimeout(() => $("searchFilter")?.focus(), 80);
+      }
+    }
+
+    function updateActiveFilterCount() {
+      const count = [
+        $("searchFilter").value.trim(),
+        $("statusFilter").value,
+        $("countryFilter").value,
+        $("modalityFilter").value,
+        $("eventTypeFilter").value
+      ].filter(Boolean).length;
+
+      const badge = $("activeFilterCount");
+      badge.textContent = String(count);
+      badge.hidden = count === 0;
+    }
+
+    function applyAndCloseFilters() {
+      applyFilters();
+      updateActiveFilterCount();
+      setFiltersOpen(false);
+    }
+
+    function currentPointOfView() {
+      try {
+        return appState.globe?.pointOfView() || { lat:18, lng:-5, altitude:2.1 };
+      } catch (_) {
+        return { lat:18, lng:-5, altitude:2.1 };
+      }
+    }
+
+    function zoomGlobe(delta) {
+      if (!appState.globe) return;
+      const pov = currentPointOfView();
+      const altitude = Math.min(4.2, Math.max(.72, Number(pov.altitude || 2.1) + delta));
+      appState.globe.pointOfView({ lat:pov.lat || 0, lng:pov.lng || 0, altitude }, 450);
+      holdRotation(5000);
+    }
+
+    function focusSelectedCursillo() {
+      const cursillo = selectedCursillo();
+      if (!cursillo || !appState.globe) return;
+      const lat = num(cursillo.latitud);
+      const lon = num(cursillo.longitud);
+      if (lat === null || lon === null) return;
+      appState.globe.pointOfView({ lat, lng:lon, altitude:1.45 }, 900);
+      holdRotation(6500);
+    }
+
+    function resetWorldView() {
+      if (!appState.globe) return;
+      appState.globe.pointOfView({ lat:18, lng:-5, altitude:2.1 }, 850);
+      holdRotation(4500);
+    }
+
+    function toggleWorldRotation() {
+      if (!appState.globe) return;
+      const controls = appState.globe.controls();
+      controls.autoRotate = !controls.autoRotate;
+      clearTimeout(appState.rotateResumeTimer);
+      $("mapRotateBtn")?.classList.toggle("active", controls.autoRotate);
+      $("mapRotateBtn")?.setAttribute(
+        "aria-label",
+        controls.autoRotate ? "Detener el giro automático" : "Activar el giro automático"
+      );
+    }
+
+    function bindEvents() {
+      const filterIds = ["searchFilter","statusFilter","countryFilter","modalityFilter","eventTypeFilter"];
+
+      filterIds.forEach((id) => {
+        const eventName = id === "searchFilter" ? "input" : "change";
+        $(id).addEventListener(eventName, updateActiveFilterCount);
+      });
+
+      $("searchFilter").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") applyAndCloseFilters();
+      });
+
+      $("filterToggleBtn").addEventListener("click", () => {
+        const open = $("filterToggleBtn").getAttribute("aria-expanded") !== "true";
+        setFiltersOpen(open, open);
+      });
+      $("filterCloseBtn").addEventListener("click", () => setFiltersOpen(false));
+      $("applyFiltersBtn").addEventListener("click", applyAndCloseFilters);
+
+      $("clearFiltersBtn").addEventListener("click", () => {
+        $("searchFilter").value = "";
+        $("statusFilter").value = "";
+        $("countryFilter").value = "";
+        $("modalityFilter").value = "";
+        $("eventTypeFilter").value = "";
+        applyFilters();
+        updateActiveFilterCount();
+        setFiltersOpen(false);
+      });
+
+      document.addEventListener("pointerdown", (event) => {
+        const panel = $("filtersPanel");
+        const trigger = $("filterToggleBtn");
+        if (panel?.classList.contains("open") && !panel.contains(event.target) && !trigger.contains(event.target)) {
+          setFiltersOpen(false);
+        }
+      });
+
+      $("refreshBtn").addEventListener("click", loadData);
+      $("demoBtn").addEventListener("click", toggleDemo);
+
+      $("fullscreenBtn").addEventListener("click", async () => {
+        try {
+          if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+          else await document.exitFullscreen();
+        } catch (error) {
+          console.warn("Pantalla completa no disponible:", error);
+        }
+      });
+
+      $("printBtn").addEventListener("click", () => window.print());
+
+      $("mapZoomInBtn").addEventListener("click", () => zoomGlobe(-.3));
+      $("mapZoomOutBtn").addEventListener("click", () => zoomGlobe(.3));
+      $("mapFocusBtn").addEventListener("click", focusSelectedCursillo);
+      $("mapResetBtn").addEventListener("click", resetWorldView);
+      $("mapRotateBtn").addEventListener("click", toggleWorldRotation);
+
+      const toTop = $("toTop");
+      if (toTop) {
+        const updateTopButton = () => {
+          toTop.classList.toggle("visible", window.scrollY > 500);
+        };
+        window.addEventListener("scroll", updateTopButton, { passive: true });
+        updateTopButton();
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          if ($("filtersPanel")?.classList.contains("open")) {
+            setFiltersOpen(false);
+            return;
+          }
+          if (appState.demoRunning) toggleDemo();
+        }
+        if (event.key.toLowerCase() === "d" && !["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName)) toggleDemo();
+      });
+    }
+
+    initGlobe();
+    bindEvents();
+    $("palancaInviteClose").addEventListener("click", () => $("palancaInvite").classList.remove("visible"));
+
+    google.charts.load("current", { packages: ["table"] });
+    google.charts.setOnLoadCallback(loadData);
+  </script>
+  <script src="assets/mundo-cursillo-v2.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
