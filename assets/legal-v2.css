@@ -1,0 +1,46 @@
+
+.legal-hero{
+  padding:72px 0 64px;
+  background:
+    radial-gradient(circle at 90% 5%,rgba(224,170,43,.16),transparent 26rem),
+    linear-gradient(135deg,#fffdf8,#f4f8ff)
+}
+.legal-hero-grid{display:grid;grid-template-columns:1fr .65fr;gap:60px;align-items:center}
+.legal-hero h1{
+  margin:0;font-family:"Cormorant Garamond",serif;
+  font-size:clamp(3.45rem,7vw,6.1rem);line-height:.87;letter-spacing:-.052em
+}
+.legal-hero p:not(.section-kicker){max-width:650px;color:var(--ink-soft);font-size:1.08rem}
+.legal-symbol{
+  width:190px;height:190px;margin-inline:auto;border-radius:50%;
+  display:grid;place-items:center;font-family:"Cormorant Garamond",serif;
+  font-size:4rem;color:var(--blue);background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-md)
+}
+.legal-section{padding:88px 0;background:#fff}
+.legal-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:48px;align-items:start}
+.legal-index{
+  position:sticky;top:calc(var(--header-h) + 25px);padding:21px;
+  border:1px solid var(--line);border-radius:21px;background:var(--cream)
+}
+.legal-index strong{display:block;margin-bottom:10px;font-size:.73rem;text-transform:uppercase;letter-spacing:.12em;color:var(--blue)}
+.legal-index a{display:block;padding:8px 0;color:var(--ink-soft);font-size:.85rem;text-decoration:none}
+.legal-index a:hover{color:var(--blue)}
+.legal-content{display:grid;gap:15px}
+.legal-card{
+  padding:clamp(25px,4vw,38px);border:1px solid var(--line);
+  border-radius:25px;background:#fff;box-shadow:var(--shadow-sm)
+}
+.legal-card h2{
+  margin:0 0 13px;font-family:"Cormorant Garamond",serif;
+  font-size:2.25rem;line-height:1
+}
+.legal-card p{margin:0 0 12px;color:var(--ink-soft)}
+.legal-card p:last-child{margin-bottom:0}
+.legal-card a{color:var(--blue);font-weight:800}
+.legal-highlight{
+  padding:21px;border-radius:20px;background:linear-gradient(135deg,#f3f8ff,#fff);
+  border-left:4px solid var(--blue);color:var(--ink-soft)
+}
+.legal-update{margin-top:25px;color:#7a8798;font-size:.78rem}
+@media(max-width:850px){.legal-hero-grid,.legal-layout{grid-template-columns:1fr}.legal-symbol{width:140px;height:140px}.legal-index{position:static}}

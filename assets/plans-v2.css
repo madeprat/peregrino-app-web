@@ -1,0 +1,139 @@
+
+.plans-hero-card{
+  background:linear-gradient(145deg,#fff,#fff8ea)
+}
+.plans-hero-card .hero-card-symbol{
+  background:linear-gradient(135deg,var(--gold),var(--red))
+}
+.platform-note{
+  display:flex;gap:12px;align-items:flex-start;margin-top:22px;padding:16px 18px;
+  border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.77);
+  color:var(--ink-soft);font-size:.84rem
+}
+.platform-note strong{color:var(--ink)}
+.plan-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:15px
+}
+.plan-card{
+  min-height:470px;display:flex;flex-direction:column;padding:25px;
+  border:1px solid var(--line);border-radius:25px;background:#fff;
+  box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s
+}
+.plan-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.plan-card.featured{
+  color:#fff;background:linear-gradient(145deg,var(--blue-deep),var(--blue));
+  border-color:transparent;box-shadow:0 24px 60px rgba(23,63,122,.22)
+}
+.plan-badge{
+  align-self:flex-start;padding:7px 10px;border-radius:999px;background:var(--cream);
+  color:var(--blue);font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.09em
+}
+.featured .plan-badge{background:rgba(255,255,255,.13);color:#f3d179}
+.plan-price{margin-top:26px}
+.plan-price strong{
+  display:block;font-family:"Cormorant Garamond",serif;font-size:3.1rem;line-height:.9
+}
+.plan-price span{display:block;margin-top:7px;color:var(--ink-soft);font-size:.75rem}
+.featured .plan-price span,.featured .plan-description,.featured .plan-list{color:rgba(255,255,255,.68)}
+.plan-card h3{
+  margin:30px 0 9px;font-family:"Cormorant Garamond",serif;font-size:2rem;line-height:1
+}
+.plan-description{margin:0;color:var(--ink-soft);font-size:.88rem}
+.plan-list{margin:24px 0 0;padding:0;list-style:none;color:var(--ink-soft);font-size:.84rem}
+.plan-list li{position:relative;padding:8px 0 8px 23px;border-bottom:1px solid var(--line)}
+.plan-list li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:900}
+.featured .plan-list li{border-color:rgba(255,255,255,.10)}
+.featured .plan-list li::before{color:#f3d179}
+.plan-card .button{margin-top:auto}
+.upgrade-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:30px
+}
+.upgrade-card{
+  padding:21px;border:1px solid var(--line);border-radius:20px;background:var(--cream)
+}
+.upgrade-card span{display:block;color:var(--red);font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
+.upgrade-card strong{
+  display:block;margin-top:13px;font-family:"Cormorant Garamond",serif;font-size:1.8rem
+}
+.upgrade-card p{margin:5px 0 0;color:var(--ink-soft);font-size:.8rem}
+.platform-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:20px
+}
+.platform-card{
+  padding:32px;border:1px solid var(--line);border-radius:27px;background:#fff;box-shadow:var(--shadow-sm)
+}
+.platform-card.platform-ios{background:linear-gradient(145deg,#fff,#f5f7fb)}
+.platform-card .platform-label{
+  display:inline-flex;padding:7px 10px;border-radius:999px;background:var(--cream);
+  color:var(--blue);font-size:.67rem;font-weight:900;text-transform:uppercase;letter-spacing:.09em
+}
+.platform-card h2{
+  margin:25px 0 9px;font-family:"Cormorant Garamond",serif;font-size:2.65rem;line-height:.95
+}
+.platform-card>p{color:var(--ink-soft)}
+.platform-card ul{padding-left:20px;color:var(--ink-soft)}
+.community-plan{
+  display:grid;grid-template-columns:1fr auto;gap:35px;align-items:center;
+  padding:38px;border-radius:30px;background:linear-gradient(135deg,#ecf8f2,#fff);
+  border:1px solid rgba(42,155,108,.18);box-shadow:var(--shadow-sm)
+}
+.community-plan h2{
+  margin:9px 0;font-family:"Cormorant Garamond",serif;font-size:3rem;line-height:.95
+}
+.community-plan p{max-width:720px;margin:0;color:var(--ink-soft)}
+.community-price{text-align:right}
+.community-price strong{
+  display:block;font-family:"Cormorant Garamond",serif;font-size:3.4rem;line-height:.9;color:#14764f
+}
+.community-price span{font-size:.75rem;color:var(--ink-soft)}
+.three-models{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:17px
+}
+.model-card{
+  min-height:315px;padding:27px;border:1px solid var(--line);border-radius:25px;background:#fff
+}
+.model-card .model-state{
+  display:inline-flex;padding:7px 10px;border-radius:999px;font-size:.65rem;
+  font-weight:900;text-transform:uppercase;letter-spacing:.08em
+}
+.model-app .model-state{background:rgba(42,155,108,.12);color:#14764f}
+.model-web .model-state{background:rgba(116,87,200,.12);color:#6041b7}
+.model-gift .model-state{background:rgba(224,170,43,.14);color:#8b6104}
+.model-card h3{
+  margin:42px 0 9px;font-family:"Cormorant Garamond",serif;font-size:2.15rem;line-height:1
+}
+.model-card p{margin:0;color:var(--ink-soft)}
+.model-card strong{display:block;margin-top:20px;font-size:.82rem}
+.promise-box{
+  padding:30px;border-radius:27px;background:var(--ink);color:#fff
+}
+.promise-box h2{
+  margin:0;font-family:"Cormorant Garamond",serif;font-size:2.8rem;line-height:1
+}
+.promise-box p{color:rgba(255,255,255,.68)}
+.promise-text{
+  margin-top:22px;padding:20px;border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;background:rgba(255,255,255,.06);
+  font-family:"Cormorant Garamond",serif;font-size:1.45rem;line-height:1.4
+}
+.plans-faq details{border-bottom:1px solid var(--line)}
+.plans-faq details:first-child{border-top:1px solid var(--line)}
+.plans-faq summary{
+  position:relative;padding:23px 42px 23px 0;font-weight:800;cursor:pointer;list-style:none
+}
+.plans-faq summary::-webkit-details-marker{display:none}
+.plans-faq summary::after{
+  content:"+";position:absolute;right:2px;top:14px;color:var(--blue);
+  font-family:"Cormorant Garamond",serif;font-size:2rem
+}
+.plans-faq details[open] summary::after{content:"−"}
+.plans-faq details p{margin:-3px 0 23px;color:var(--ink-soft)}
+@media(max-width:1050px){
+  .plan-grid{grid-template-columns:repeat(2,1fr)}
+  .three-models{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .plan-grid,.platform-grid,.upgrade-strip{grid-template-columns:1fr}
+  .community-plan{grid-template-columns:1fr}
+  .community-price{text-align:left}
+}
