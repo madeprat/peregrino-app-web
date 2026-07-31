@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/biblioteca-v2.css">
 <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
-</head><body data-member-mode="visitor">
+</head><body>
 
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="decolores-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
@@ -33,13 +33,6 @@
 <a href="index.html#proyecto">El proyecto</a>
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
-      <div class="member-demo" aria-label="Vista de demostración">
-        <span class="member-demo-label">Vista</span>
-        <button class="mode-switch" type="button" role="switch" aria-checked="false">
-          <span class="mode-switch-track"><span class="mode-switch-thumb"></span></span>
-          <span class="mode-switch-text">Visitante</span>
-        </button>
-      </div>
     </div>
   </header>
 <main id="contenido">
@@ -55,20 +48,7 @@
 
 <section class="section section-white" id="explorar">
 <div class="shell library-layout">
-  <article class="member-collection reveal">
-    <div><span class="member-pill"><span class="member-visitor">◇ Próxima ventaja para miembros</span><span class="member-copy">✓ Colecciones desbloqueadas</span></span>
-      <h2>Colecciones especiales</h2><p>Selecciones editoriales por tiempo litúrgico o momento de vida. Esta zona es ficticia por ahora; las oraciones individuales siguen abiertas para todos.</p>
-    </div>
-    <a class="button button-primary" data-member-action href="#colecciones"><span class="member-visitor">Descubrir</span><span class="member-copy">Ver colecciones</span></a>
-  </article>
-
-  <section class="collection-preview reveal" id="colecciones" aria-label="Colecciones especiales en preparación">
-    <article><span>Tiempo litúrgico</span><h3>Adviento y Navidad</h3><p>Una selección editorial para preparar y celebrar la venida de Cristo.</p><b>En preparación</b></article>
-    <article><span>Camino interior</span><h3>Cuaresma y Pascua</h3><p>Oraciones para la conversión, la Semana Santa y la alegría pascual.</p><b>En preparación</b></article>
-    <article><span>Vida cotidiana</span><h3>Familia y hogar</h3><p>Oraciones para agradecer, acompañar y poner la vida familiar en manos de Dios.</p><b>En preparación</b></article>
-  </section>
-
-  <div class="section-heading reveal"><p class="section-kicker">Biblioteca abierta</p><h2>Explora las oraciones</h2><p>Busca por nombre o recorre las categorías. Solo aparecen las entradas publicables de la hoja actual.</p></div>
+  <div class="section-heading reveal"><p class="section-kicker">Biblioteca abierta</p><h2>Explora las oraciones</h2><p>Busca por nombre o recorre las categorías para encontrar una oración.</p></div>
 
   <div class="library-panel reveal">
     <div class="library-toolbar">
@@ -81,7 +61,7 @@
       <div class="result-count" id="resultCount" aria-live="polite">Preparando la biblioteca…</div>
     </div>
     <div class="category-strip" id="categoryStrip" aria-label="Filtrar por categoría"></div>
-    <div class="library-status" id="libraryStatus"><div class="status-card"><div class="spinner"></div><strong>Cargando las oraciones</strong><span>Estamos leyendo la biblioteca publicada.</span></div></div>
+    <div class="library-status" id="libraryStatus"><div class="status-card"><div class="spinner"></div><strong>Cargando las oraciones</strong><span>Preparando la biblioteca…</span></div></div>
     <div class="prayer-grid" id="prayerGrid" hidden></div>
     <div class="library-note"><strong>En el móvil:</strong> abre el archivo descargado, pulsa Compartir y elige Peregrino APP. <strong>En el ordenador:</strong> envíatelo al móvil por WhatsApp, correo o Drive.</div>
   </div>
@@ -113,16 +93,5 @@
 <dialog class="library-dialog" id="downloadDialog"><div class="dialog-body"><div class="dialog-icon">✓</div><h2>Oración preparada</h2><p id="dialogPrayerName">El archivo compatible con Peregrino se ha descargado.</p><ol class="dialog-instructions" id="dialogInstructions"><li>Abre las descargas del navegador.</li><li>Toca el archivo terminado en <strong>.json</strong>.</li><li>Elige Peregrino APP y confirma la importación.</li></ol><div class="dialog-actions"><button class="button button-primary" id="closeDialog" type="button">Entendido</button></div></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <dialog class="member-dialog" aria-labelledby="member-dialog-title">
-    <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
-    <span class="dialog-symbol">◇</span>
-    <p class="section-kicker" style="margin-top:25px">Ventaja para miembros</p>
-    <h2 id="member-dialog-title">Una experiencia más personal, todavía sin bloqueo real</h2>
-    <p>La función continúa abierta durante esta fase. Esta maqueta permite decidir cómo se presentará antes de implementar cuentas o pagos.</p>
-    <div class="dialog-actions">
-      <button class="button button-primary dialog-enable-member" type="button">Ver como miembro</button>
-      <button class="button button-quiet dialog-continue" type="button">Continuar a la función</button>
-    </div>
-  </dialog>
 <script src="assets/community-v2.js"></script><script src="assets/biblioteca-v2.js"></script>
 </body></html>
