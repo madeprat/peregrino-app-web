@@ -8,6 +8,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/biblioteca-v2.css">
 <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem("gTranslateLang");
+      
+      if (savedLang && savedLang !== "es") {
+        window.addEventListener("load", function() {
+          setTimeout(function() {
+            const selectElement = document.querySelector(".goog-te-combo");
+            if (selectElement) {
+              selectElement.value = savedLang;
+              selectElement.dispatchEvent(new Event("change"));
+            }
+          }, 300);
+        });
+      }
+      
+      const observer = new MutationObserver(function() {
+        const selectElement = document.querySelector(".goog-te-combo");
+        if (selectElement) {
+          selectElement.removeEventListener("change", handleLanguageChange);
+          selectElement.addEventListener("change", handleLanguageChange);
+        }
+      });
+      
+      function handleLanguageChange(e) {
+        const selectedLang = e.target.value;
+        localStorage.setItem("gTranslateLang", selectedLang);
+      }
+      
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+
 </head><body>
 
   <a class="skip-link" href="#contenido">Saltar al contenido</a>

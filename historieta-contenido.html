@@ -9,6 +9,42 @@
     .wrap{min-height:100%;display:grid;place-items:center;padding:24px;text-align:center;box-sizing:border-box}
     a{color:#173f7a;font-weight:800}
   </style>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem("gTranslateLang");
+      
+      if (savedLang && savedLang !== "es") {
+        window.addEventListener("load", function() {
+          setTimeout(function() {
+            const selectElement = document.querySelector(".goog-te-combo");
+            if (selectElement) {
+              selectElement.value = savedLang;
+              selectElement.dispatchEvent(new Event("change"));
+            }
+          }, 300);
+        });
+      }
+      
+      const observer = new MutationObserver(function() {
+        const selectElement = document.querySelector(".goog-te-combo");
+        if (selectElement) {
+          selectElement.removeEventListener("change", handleLanguageChange);
+          selectElement.addEventListener("change", handleLanguageChange);
+        }
+      });
+      
+      function handleLanguageChange(e) {
+        const selectedLang = e.target.value;
+        localStorage.setItem("gTranslateLang", selectedLang);
+      }
+      
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+
 </head>
 <body>
   <div class="wrap">

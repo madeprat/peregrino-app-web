@@ -1802,6 +1802,42 @@
 
   </style>
   <link rel="stylesheet" href="assets/mundo-cursillo-v2.css" />
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem("gTranslateLang");
+      
+      if (savedLang && savedLang !== "es") {
+        window.addEventListener("load", function() {
+          setTimeout(function() {
+            const selectElement = document.querySelector(".goog-te-combo");
+            if (selectElement) {
+              selectElement.value = savedLang;
+              selectElement.dispatchEvent(new Event("change"));
+            }
+          }, 300);
+        });
+      }
+      
+      const observer = new MutationObserver(function() {
+        const selectElement = document.querySelector(".goog-te-combo");
+        if (selectElement) {
+          selectElement.removeEventListener("change", handleLanguageChange);
+          selectElement.addEventListener("change", handleLanguageChange);
+        }
+      });
+      
+      function handleLanguageChange(e) {
+        const selectedLang = e.target.value;
+        localStorage.setItem("gTranslateLang", selectedLang);
+      }
+      
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+
 </head>
 
 <body>
