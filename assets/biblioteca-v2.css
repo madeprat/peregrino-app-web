@@ -1,14 +1,8 @@
 
+.page-hero-grid,.library-layout,.library-panel,.library-toolbar,.search-box,.category-strip,.prayer-grid{min-width:0;max-width:100%}
 .library-hero-card{background:linear-gradient(145deg,#fff,#f4fbf7)}
 .library-hero-card .hero-card-symbol{background:linear-gradient(135deg,var(--green),var(--blue))}
 .library-layout{display:grid;grid-template-columns:1fr;gap:24px}
-.member-collection{
-  display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:28px 31px;
-  border:1px solid rgba(116,87,200,.18);border-radius:var(--radius-md);
-  background:linear-gradient(135deg,#f5f1ff,#fff);box-shadow:var(--shadow-sm)
-}
-.member-collection h2{margin:8px 0 6px;font-family:"Cormorant Garamond",serif;font-size:2.25rem;line-height:1}
-.member-collection p{margin:0;color:var(--ink-soft)}
 .library-panel{padding:25px;border:1px solid var(--line);border-radius:var(--radius-lg);background:#fff;box-shadow:var(--shadow-sm)}
 .library-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center}
 .search-box{position:relative}
@@ -19,7 +13,7 @@
 .clear-search:hover{background:#edf1f5}
 .result-count{min-width:145px;color:var(--ink-soft);font-size:.9rem;text-align:right;white-space:nowrap}
 .result-count strong{color:var(--blue)}
-.category-strip{display:flex;gap:9px;margin-top:16px;padding-bottom:5px;overflow-x:auto}
+.category-strip{display:flex;width:100%;gap:9px;margin-top:16px;padding-bottom:5px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .category-button{flex:0 0 auto;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink-soft);font-size:.84rem;font-weight:800;cursor:pointer}
 .category-button:hover{color:var(--blue);border-color:rgba(23,63,122,.25)}
 .category-button[aria-pressed="true"]{border-color:var(--blue);background:var(--blue);color:#fff;box-shadow:0 10px 24px rgba(23,63,122,.17)}
@@ -54,17 +48,30 @@
 .library-cta p{margin:0;color:rgba(255,255,255,.68)}
 @media(max-width:920px){.prayer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){
-  .member-collection,.library-toolbar{grid-template-columns:1fr}
-  .result-count{text-align:left;min-width:0}
-  .prayer-grid{grid-template-columns:1fr}
-  .library-panel{padding:16px}
-  .library-cta{display:block}.library-cta .button{margin-top:22px}
+  .library-hero-card{display:none}
+  .library-layout{gap:16px}
+  .library-layout>.section-heading{margin-bottom:6px}
+  .library-layout>.section-heading h2{font-size:2.55rem}
+  .library-layout>.section-heading p{margin-top:11px;font-size:.92rem;line-height:1.5}
+  .library-toolbar{display:block}
+  .search-input{min-height:50px;padding-left:44px;font-size:16px}
+  .result-count{margin:8px 2px 0;text-align:left;min-width:0;font-size:.78rem}
+  .library-panel{padding:12px;border-radius:20px}
+  .category-strip{margin-inline:-12px;width:calc(100% + 24px);padding:11px 12px 7px;scroll-padding-inline:12px}
+  .category-button{min-height:38px;padding-inline:13px;font-size:.78rem}
+  .library-status{margin-top:14px}
+  .status-card{padding:30px 16px}
+  .prayer-grid{grid-template-columns:1fr;gap:11px;margin-top:14px}
+  .prayer-card{min-height:0;padding:17px;border-radius:18px}
+  .prayer-card:hover{transform:none}
+  .prayer-category{margin-bottom:10px;padding:5px 8px;font-size:.62rem}
+  .prayer-card h2{font-size:1.55rem}
+  .prayer-subtitle{font-size:.82rem}
+  .prayer-source{margin:15px 0 11px;padding-top:0}
+  .prayer-download{min-height:44px}
+  .library-note{margin-top:14px;padding:14px 15px;font-size:.8rem}
+  .library-cta{display:block;padding:25px 20px;border-radius:22px}
+  .library-cta h2{font-size:2rem}
+  .library-cta .button{width:100%;margin-top:18px}
+  .dialog-body{padding:22px}
 }
-
-.collection-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.collection-preview article{min-height:235px;display:flex;flex-direction:column;padding:24px;border:1px solid rgba(116,87,200,.16);border-radius:22px;background:linear-gradient(145deg,#fff,#f8f5ff);box-shadow:var(--shadow-sm)}
-.collection-preview span{color:var(--violet);font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.09em}
-.collection-preview h3{margin:34px 0 9px;font-family:"Cormorant Garamond",serif;font-size:2rem;line-height:1}
-.collection-preview p{margin:0;color:var(--ink-soft);font-size:.88rem}
-.collection-preview b{margin-top:auto;color:#8b6c00;font-size:.75rem}
-@media(max-width:820px){.collection-preview{grid-template-columns:1fr}}

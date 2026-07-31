@@ -160,7 +160,7 @@
   }
   async function loadLibrary() {
     elements.grid.hidden=true; elements.status.hidden=false;
-    elements.status.innerHTML='<div class="status-card"><div class="spinner"></div><strong>Cargando las oraciones</strong><span>Estamos leyendo la biblioteca publicada.</span></div>';
+    elements.status.innerHTML='<div class="status-card"><div class="spinner"></div><strong>Cargando las oraciones</strong><span>Preparando la biblioteca…</span></div>';
     try {
       const response = await fetch(CSV_URL,{cache:"no-store",credentials:"omit"});
       if (!response.ok) throw new Error(`Respuesta HTTP ${response.status}`);
