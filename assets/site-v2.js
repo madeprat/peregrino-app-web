@@ -90,4 +90,45 @@
   } else {
     revealItems.forEach((item) => item.classList.add('is-visible'));
   }
+
+  // GitHub redirige este enlace al APK de la release marcada como “Latest”.
+  // Para que siga funcionando, cada release debe incluir un archivo llamado:
+  // app-release.apk
+  const latestApkUrl =
+    'https://github.com/madeprat/peregrino-app-web/releases/latest/download/app-release.apk';
+
+  const heroActions = document.querySelector('.hero-actions');
+
+  if (heroActions && !heroActions.querySelector('[data-direct-apk]')) {
+    const directApkLink = document.createElement('a');
+    directApkLink.className = 'button button-quiet';
+    directApkLink.href = latestApkUrl;
+    directApkLink.setAttribute('data-direct-apk', '');
+    directApkLink.setAttribute('download', 'Peregrino-APP.apk');
+    directApkLink.setAttribute(
+      'aria-label',
+      'Descargar directamente la versión APK más reciente de Peregrino'
+    );
+    directApkLink.innerHTML =
+      'Descargar APK directo <span aria-hidden="true">↓</span>';
+
+    const playStoreLink = heroActions.querySelector('a[href*="play.google.com"]');
+    if (playStoreLink) {
+      playStoreLink.insertAdjacentElement('afterend', directApkLink);
+    } else {
+      heroActions.prepend(directApkLink);
+    }
+
+    const apkNote = document.createElement('p');
+    apkNote.setAttribute('data-direct-apk-note', '');
+    apkNote.style.margin = '0.85rem 0 0';
+    apkNote.style.maxWidth = '42rem';
+    apkNote.style.fontSize = '0.86rem';
+    apkNote.style.lineHeight = '1.5';
+    apkNote.style.opacity = '0.78';
+    apkNote.textContent =
+      'La descarga directa ofrece primero la versión publicada por Peregrino. Android puede pedir permiso para instalar aplicaciones desde el navegador.';
+
+    heroActions.insertAdjacentElement('afterend', apkNote);
+  }
 })();
