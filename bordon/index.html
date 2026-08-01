@@ -1,50 +1,83 @@
 <!DOCTYPE html>
-<!--
-  Página fallback del App Link /bordon/.
-  Android abre Peregrino directamente cuando la app está instalada.
-  Esta página aparece únicamente cuando el enlace no puede abrir la app.
-  No elimina, transforma ni redirige los parámetros del enlace.
--->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Tu Bordón te espera | Peregrino APP</title>
-  <meta name="description" content="Instala Peregrino APP y vuelve a abrir el enlace que te ha enviado tu comunidad para activar el Plan Bordón.">
+  <meta name="description" content="Instala Peregrino APP y activa el Bordón que te han regalado.">
   <meta name="robots" content="noindex,follow">
   <meta name="theme-color" content="#fffaf0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="bordon-v2.css">
-  <link rel="icon" href="https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480">
+  <link rel="icon" href="../assets/peregrino-app-icon.png">
+  <style>
+    .button.secondary{margin-top:12px;background:#fff;color:#1d2e7a;border:2px solid #1d2e7a}
+    .status{margin:14px 0 0;padding:11px 13px;border-radius:12px;background:#f4f6ff;color:#1d2e7a;font:600 13px/1.45 Inter,sans-serif}
+    .status.error{background:#fff0ef;color:#9c2c27}
+  </style>
 </head>
 <body>
   <div class="decolores" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   <main class="card">
     <div class="logo">
       <img src="../assets/peregrino-app-icon.png" alt=""
-           onerror="if(!this.dataset.official){this.dataset.official='1';this.src='https://play-lh.googleusercontent.com/zxnkQzVfq-zfMqRzUr1fJdmdvuTdtVWFjar-XkfA68eD3WDqd7iZa3tmrrp0WjIydhhq5R0S6Wpj1BVD1a5ZZA=w240-h480';}else{this.hidden=true;if(this.nextElementSibling)this.nextElementSibling.hidden=false;}">
+           onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
       <span class="logo-fallback" hidden aria-hidden="true">P</span>
     </div>
     <div class="gift" aria-hidden="true">🎁</div>
-    <p class="eyebrow">Un regalo de tu comunidad</p>
+    <p class="eyebrow">Un Bordón para acompañar tu camino</p>
     <h1>Tu Bordón te espera</h1>
-    <p class="lead">Para recibirlo necesitas tener instalada Peregrino APP en tu dispositivo Android.</p>
+    <p class="lead">El regalo queda vinculado a este enlace. Puedes instalar Peregrino sin perderlo.</p>
 
     <ol class="steps">
-      <li>Instala Peregrino desde Google Play.</li>
-      <li>Vuelve al mensaje o chat donde recibiste este enlace.</li>
-      <li>Pulsa otra vez el mismo enlace. La app lo reconocerá y activará tu Bordón.</li>
+      <li>Pulsa <strong>Instalar Peregrino</strong>.</li>
+      <li>Al terminar, abre la app desde Google Play.</li>
+      <li>Peregrino recuperará este Bordón y mostrará la pantalla de activación.</li>
     </ol>
 
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">
-      Instalar Peregrino APP
-    </a>
+    <a class="button" id="installButton" href="#">Instalar Peregrino y conservar mi Bordón</a>
+    <a class="button secondary" id="openButton" href="#">Ya la tengo: abrir mi Bordón</a>
 
-    <p class="note">No copies un enlace distinto ni cierres el mensaje original: después de instalar la app necesitarás pulsarlo de nuevo.</p>
+    <p class="status" id="status">Preparando tu enlace seguro…</p>
+    <p class="note">El enlace solo puede activar un Bordón. No necesitas copiar códigos ni volver a comprar nada.</p>
     <a class="back" href="../index.html">Conocer Peregrino APP →</a>
     <div class="colors">¡De Colores! 🌈</div>
   </main>
+
+  <script>
+    (() => {
+      const packageName = 'com.cursillistas.peregrino_mcc';
+      const params = new URLSearchParams(window.location.search);
+      const token = (params.get('p') || '').trim();
+      const valid = /^[A-Za-z0-9]{20,40}$/.test(token);
+      const installButton = document.getElementById('installButton');
+      const openButton = document.getElementById('openButton');
+      const status = document.getElementById('status');
+
+      if (!valid) {
+        installButton.href = `https://play.google.com/store/apps/details?id=${packageName}`;
+        openButton.hidden = true;
+        status.textContent = 'Este enlace está incompleto. Pide a quien te lo envió que vuelva a compartirlo.';
+        status.classList.add('error');
+        return;
+      }
+
+      const referrer = new URLSearchParams({ bordon_token: token }).toString();
+      const playUrl = new URL('https://play.google.com/store/apps/details');
+      playUrl.searchParams.set('id', packageName);
+      playUrl.searchParams.set('referrer', referrer);
+
+      const customUrl = `peregrino://bordon?p=${encodeURIComponent(token)}`;
+      installButton.href = playUrl.toString();
+      openButton.href = customUrl;
+      status.textContent = 'Tu Bordón está preparado. Google Play conservará el enlace durante la instalación.';
+
+      try {
+        sessionStorage.setItem('peregrino_bordon_pending', token);
+      } catch (_) {}
+    })();
+  </script>
 </body>
 </html>
