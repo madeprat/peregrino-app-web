@@ -438,3 +438,8 @@ body[data-member-mode="member"] .lock-icon::after { content: "✓"; font-size: .
   color: var(--muted) !important;
   font-size: .9rem !important;
 }
+
+/* Ocultar la barra automática de Google Translate */
+.goog-te-banner-frame {
+  display: none !important;
+}
