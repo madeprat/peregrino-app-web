@@ -40,6 +40,7 @@
           <a href="index.html#miembros">Miembros</a>
           <a href="index.html#proyecto">El proyecto</a>
           <a class="peregrino-nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+          <div id="google_translate_element"></div>
         </nav>
 
         <div class="world-header-member" aria-label="Vista de demostración">
