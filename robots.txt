@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tripodapp.prat-cas.com/sitemap.xml
