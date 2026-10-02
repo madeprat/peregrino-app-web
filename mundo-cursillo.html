@@ -3304,8 +3304,10 @@ window.openCursilloFromMural =
     }
 
     function palancaLink(cursilloId) {
-      return "https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" +
-        "?cursillo=" + encodeURIComponent(cursilloId) + "&accion=palanca";
+      const url = new URL(window.location.href);
+      url.searchParams.set("cursillo", cursilloId);
+      url.searchParams.set("accion", "palanca");
+      return url.toString();
     }
 
     function palancaSortWeight(status) {
