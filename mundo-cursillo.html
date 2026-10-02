@@ -2942,10 +2942,20 @@ function cursilloEsVisiblePublicamente(cursillo) {
         .atmosphereAltitude(0.22)
         .pointsData([])
         .pointColor((d) => d.color)
-        .pointAltitude((d) => d.selected ? 0.08 : 0.03)
-        .pointRadius((d) => d.selected ? 0.85 : 0.55)
+        
+        .pointAltitude((d) => d.selected ? 0.10 : 0.05)
+        .pointRadius((d) => d.selected ? 1.15 : 0.85)
         .pointLabel((d) => d.label)
-        .onPointClick((d) => selectCursillo(d.id, true))
+        
+        .onPointClick((d, event) => {
+          if (!d || !d.id) return;
+        
+          if (event) {
+            event.stopPropagation?.();
+          }
+        
+          selectCursillo(String(d.id), true);
+        })
         .ringsData([])
         .ringColor((d) => (t) => `rgba(${d.rgb},${Math.max(0, 1 - t)})`)
         .ringMaxRadius((d) => d.selected ? 6 : 3.5)
@@ -3172,23 +3182,47 @@ function cursilloEsVisiblePublicamente(cursillo) {
     }
 
     function selectCursillo(cursilloId, fly = false) {
-      appState.selectedCursilloId = cursilloId;
-
-      const cursillo = appState.cursillos.find((c) => c.cursillo_id === cursilloId);
+    
+      const id = String(cursilloId ?? "");
+    
+      appState.selectedCursilloId = id;
+    
+      const cursillo = appState.cursillos.find(
+        (c) => String(c.cursillo_id) === id
+      );
+    
       if (cursillo && fly) {
         const lat = num(cursillo.latitud);
         const lon = num(cursillo.longitud);
-        if (lat !== null && lon !== null && appState.globe) {
-          appState.globe.pointOfView({ lat, lng: lon, altitude: 1.55 }, 1400);
+    
+        if (
+          lat !== null &&
+          lon !== null &&
+          appState.globe
+        ) {
+          appState.globe.pointOfView(
+            {
+              lat,
+              lng: lon,
+              altitude: 1.55
+            },
+            1400
+          );
+    
           holdRotation(6800);
         }
       }
-
+    
       const url = new URL(window.location.href);
-      if (cursilloId) url.searchParams.set("cursillo", cursilloId);
-      else url.searchParams.delete("cursillo");
+    
+      if (id) {
+        url.searchParams.set("cursillo", id);
+      } else {
+        url.searchParams.delete("cursillo");
+      }
+    
       window.history.replaceState({}, "", url);
-
+    
       renderMapMarkers();
       renderSelection();
       renderMural();
