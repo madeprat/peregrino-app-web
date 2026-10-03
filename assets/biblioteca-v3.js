@@ -7,6 +7,9 @@
 //   revisión no marca error;
 // - en cada idioma solo aparecen las oraciones con título y texto.
 //
+// La lectura de la hoja, las etiquetas de oración y la protección de solo
+// lectura viven en assets/oracion-v1.js, compartido con la portada.
+//
 // Aquí la oración solo se lee y se reza: no se descarga, ni se comparte, ni
 // se copia. El texto usa las etiquetas semánticas de la app
 // ([heading], [rubric], [V], [R], [speaker=Coro A]…), interpretadas igual
@@ -14,19 +17,9 @@
 (() => {
   "use strict";
 
-  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRP8CBTj_hONpVId_i6C_qaKRR4eOM0my7oJ8OvB3f_TAi5OTymTeMu99L5JTnJOQlBqvJSv-1UZjVB/pub?gid=833946696&single=true&output=csv";
-  const LANG_KEY = "peregrinoBibliotecaIdioma";
+  const O = window.PeregrinoOracion;
+  const { LANGS, LANG_CODES, LANG_KEY, langInfo, normalize, el, storageGet, storageSet, hasLang, bestLang, parseBlocks, renderBlock, renderBlockList } = O;
   const SIZE_KEY = "peregrinoBibliotecaLetra";
-
-  // Mismo orden y nombres que PrayerLanguage.supported en la app.
-  const LANGS = [
-    { code: "es", label: "Español", badge: "ES" },
-    { code: "pt", label: "Português", badge: "PT" },
-    { code: "en", label: "English", badge: "EN" },
-    { code: "la", label: "Latín", badge: "LA" }
-  ];
-  const LANG_CODES = LANGS.map((l) => l.code);
-  const langInfo = (code) => LANGS.find((l) => l.code === code) || LANGS[0];
 
   const $ = (id) => document.getElementById(id);
   const elements = {
@@ -44,213 +37,14 @@
     reader: { prayer: null, lang: "es", compare: "" }, size: readSize()
   };
 
-  // ---------- utilidades ----------
-  const normalize = (value) => String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
-  const clean = (value) => String(value ?? "").replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n").trim();
-  const el = (tag, className, text) => {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    return node;
-  };
-  function storageGet(key) { try { return localStorage.getItem(key); } catch (_) { return null; } }
-  function storageSet(key, value) { try { localStorage.setItem(key, value); } catch (_) { /* sin almacenamiento */ } }
-
   function initialLanguage() {
     const fromHash = parseHash();
     if (fromHash && LANG_CODES.includes(fromHash.lang)) return fromHash.lang;
-    const saved = storageGet(LANG_KEY);
-    if (LANG_CODES.includes(saved)) return saved;
-    // Si la persona ya eligió portugués o inglés en el traductor de la web,
-    // la biblioteca arranca en ese idioma con su traducción propia.
-    const translated = String(storageGet("gTranslateLang") || "").slice(0, 2);
-    if (["pt", "en"].includes(translated)) return translated;
-    return "es";
+    return O.preferredLang();
   }
   function readSize() {
     const value = Number.parseFloat(storageGet(SIZE_KEY));
     return Number.isFinite(value) && value >= 0.85 && value <= 1.6 ? value : 1;
-  }
-
-  // ---------- CSV ----------
-  function detectDelimiter(text) {
-    const firstLine = text.split(/\r?\n/, 1)[0] || "";
-    let best = ",", bestCount = -1;
-    for (const candidate of [",", ";", "\t"]) {
-      let count = 0, quoted = false;
-      for (let i = 0; i < firstLine.length; i++) {
-        const char = firstLine[i];
-        if (char === '"') {
-          if (quoted && firstLine[i + 1] === '"') i++;
-          else quoted = !quoted;
-        } else if (!quoted && char === candidate) count++;
-      }
-      if (count > bestCount) { best = candidate; bestCount = count; }
-    }
-    return best;
-  }
-  function parseDelimited(text) {
-    const delimiter = detectDelimiter(text), rows = [];
-    let row = [], field = "", quoted = false;
-    for (let i = 0; i < text.length; i++) {
-      const char = text[i];
-      if (quoted) {
-        if (char === '"') {
-          if (text[i + 1] === '"') { field += '"'; i++; } else quoted = false;
-        } else field += char;
-      } else if (char === '"') quoted = true;
-      else if (char === delimiter) { row.push(field); field = ""; }
-      else if (char === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
-      else if (char !== "\r") field += char;
-    }
-    if (field.length || row.length) { row.push(field); rows.push(row); }
-    const nonEmpty = rows.filter((item) => item.some((value) => clean(value) !== ""));
-    if (nonEmpty.length < 2) return [];
-    const headers = nonEmpty[0].map((header) => clean(header).toLowerCase());
-    return nonEmpty.slice(1).map((values) => {
-      const record = {};
-      headers.forEach((header, index) => { record[header] = clean(values[index] ?? ""); });
-      return record;
-    });
-  }
-
-  // ---------- catálogo (mismas reglas que BibliotecaOnlineService) ----------
-  function isPublishable(row) {
-    const include = normalize(row.incluir), confidence = normalize(row.confianza_idioma), revision = normalize(row.revision);
-    if (["no", "false", "0"].includes(include)) return false;
-    if (!clean(row.id)) return false;
-    if (confidence === "baja" || revision.includes("error")) return false;
-    return true;
-  }
-  const parseOrder = (value) => {
-    const number = Number.parseInt(String(value ?? "").trim(), 10);
-    return Number.isFinite(number) ? number : Number.MAX_SAFE_INTEGER;
-  };
-  function titleFor(row, lang) {
-    switch (lang) {
-      case "la": return clean(row.titulo_latin);
-      case "pt": return clean(row.titulo_portuges || row.titulo_portugues);
-      case "en": return clean(row.titulo_ingles);
-      default: return clean(row.titulo);
-    }
-  }
-  function subtitleFor(row, lang) {
-    switch (lang) {
-      case "la": return clean(row.subtitulo_latin);
-      case "pt": return clean(row.subtitulo_portuges || row.subtitulo_portugues);
-      case "en": return clean(row.subtitulo_ingles);
-      default: return clean(row.subtitulo);
-    }
-  }
-  function textFor(row, lang) {
-    switch (lang) {
-      case "la": return clean(row.texto_latin);
-      case "pt": return clean(row.texto_portugues);
-      case "en": return clean(row.texto_ingles);
-      default: return clean(row.texto_es) || clean(row.texto);
-    }
-  }
-  function toPrayer(row) {
-    const variants = {};
-    for (const code of LANG_CODES) {
-      const title = titleFor(row, code), text = textFor(row, code);
-      if (title && text) variants[code] = { title, subtitle: subtitleFor(row, code), text };
-    }
-    if (!Object.keys(variants).length) return null;
-    const category = clean(row.categoria) || "Otras oraciones";
-    const source = clean(row.fuente) || "Biblioteca Peregrino";
-    return {
-      id: clean(row.id), category, source, order: parseOrder(row.orden), variants,
-      searchText: normalize([...LANG_CODES.map((code) => titleFor(row, code)), ...LANG_CODES.map((code) => subtitleFor(row, code)), category, source].join(" "))
-    };
-  }
-  const hasLang = (prayer, lang) => Boolean(prayer.variants[lang]);
-  const bestLang = (prayer, wanted) => hasLang(prayer, wanted) ? wanted : (LANG_CODES.find((code) => hasLang(prayer, code)) || "es");
-
-  // ---------- etiquetas de oración (DevotionMarkupParser) ----------
-  const TAG_LINE = /^\s*\[([^\]]+)\]\s*(.*)$/;
-  const SPEAKER_SHORTCUTS = new Set(["v", "r", "antifona", "invitatorio", "coro a", "coro b", "todos", "lector", "sacerdote", "guia", "asamblea"]);
-  const token = (value) => normalize(value);
-
-  function parseTag(rawTag) {
-    const raw = rawTag.trim();
-    if (!raw) return null;
-    const lower = token(raw);
-    if (["heading", "title", "titulo"].includes(lower)) return { type: "heading" };
-    if (["text", "texto"].includes(lower)) return { type: "text" };
-    if (["rubric", "rubrica"].includes(lower)) return { type: "rubric" };
-    if (["reference", "referencia"].includes(lower)) return { type: "reference" };
-    if (["silence", "silencio", "pause", "pausa"].includes(lower)) return { type: "silence" };
-    const equals = raw.indexOf("=");
-    if (equals > 0) {
-      const key = token(raw.slice(0, equals)), value = raw.slice(equals + 1).trim();
-      return (key === "speaker" || key === "locutor") && value ? { type: "dialogue", speaker: value } : null;
-    }
-    return SPEAKER_SHORTCUTS.has(lower) ? { type: "dialogue", speaker: raw } : null;
-  }
-
-  function parseBlocks(raw) {
-    const result = [];
-    let current = null, buffer = [];
-    const flush = () => {
-      const text = buffer.join("\n").trim();
-      if (current) {
-        if (current.type === "silence") result.push({ type: "silence", text });
-        else if (text) result.push({ type: current.type, text, speaker: current.speaker });
-      } else if (text) result.push({ type: "text", text });
-      current = null; buffer = [];
-    };
-    for (const line of String(raw).replace(/\r\n?/g, "\n").split("\n")) {
-      const match = TAG_LINE.exec(line);
-      if (match) {
-        const tag = parseTag(match[1]);
-        if (tag) {
-          flush(); current = tag;
-          const inline = (match[2] || "").trim();
-          if (inline) buffer.push(inline);
-          continue;
-        }
-      }
-      if (!line.trim()) { if (buffer.length || current) flush(); continue; }
-      buffer.push(line);
-    }
-    if (buffer.length || current) flush();
-    return result;
-  }
-
-  function speakerKind(speaker) {
-    const value = token(speaker);
-    if (value === "v") return "v";
-    if (value === "r") return "r";
-    if (/^\d+$/.test(value)) return "number";
-    if (/^(coro|chorus|choir)\s*b$/.test(value)) return "choir-b";
-    if (/^(coro|chorus|choir)\s*a$/.test(value)) return "choir-a";
-    if (/^(todos|all|omnes|asamblea|pueblo|people|povo)/.test(value)) return "all";
-    if (/^antiph|^antif|^invitator/.test(value)) return "antiphon";
-    return "other";
-  }
-
-  function renderBlock(block) {
-    switch (block.type) {
-      case "heading": return el("h3", "pb-heading", block.text);
-      case "rubric": return el("p", "pb-rubric", block.text);
-      case "reference": return el("p", "pb-reference", block.text);
-      case "silence": { const node = el("div", "pb-silence", "· · ·"); node.setAttribute("aria-hidden", "true"); return node; }
-      case "dialogue": {
-        const kind = speakerKind(block.speaker);
-        const line = el("div", `pb-line pb-${kind}`);
-        const label = kind === "v" ? "℣" : kind === "r" ? "℟" : block.speaker;
-        const who = el("span", "pb-who", label);
-        if (kind === "v" || kind === "r") who.setAttribute("aria-label", kind === "v" ? "Versículo" : "Respuesta");
-        line.append(who, el("p", "pb-said", block.text));
-        return line;
-      }
-      default: return el("p", "pb-text", block.text);
-    }
-  }
-  function renderBlockList(blocks, container) {
-    blocks.forEach((block) => container.appendChild(renderBlock(block)));
-    return container;
   }
 
   // ---------- listado ----------
@@ -545,9 +339,7 @@
     elements.grid.hidden = true; elements.status.hidden = false;
     elements.status.innerHTML = '<div class="status-card"><div class="spinner"></div><strong>Cargando las oraciones</strong><span>Preparando la biblioteca…</span></div>';
     try {
-      const response = await fetch(CSV_URL, { cache: "no-store", credentials: "omit" });
-      if (!response.ok) throw new Error(`Respuesta HTTP ${response.status}`);
-      const prayers = parseDelimited(await response.text()).filter(isPublishable).map(toPrayer).filter(Boolean);
+      const prayers = await O.loadPrayers();
       if (!prayers.length) throw new Error("La hoja no contiene entradas publicables.");
       state.prayers = prayers; state.category = "Todas";
       renderCategories(); applyFilters(); openFromHash();
@@ -563,8 +355,9 @@
   elements.readerBigger.addEventListener("click", () => setSize(0.1));
   elements.readerPrev.addEventListener("click", () => goTo(neighbours().prev));
   elements.readerNext.addEventListener("click", () => goTo(neighbours().next));
-  // Solo lectura: sin copiar ni arrastrar el texto de las oraciones.
-  ["copy", "cut", "dragstart"].forEach((type) => elements.readerBody.addEventListener(type, (event) => event.preventDefault()));
+  // Solo lectura: con la oración abierta no se copia, ni se guarda, ni se
+  // imprime, ni se inspecciona; cada intento muestra un aviso de gracias.
+  O.protect({ zone: elements.reader, isActive: () => elements.reader.open, blockCopyEverywhere: true });
   window.addEventListener("popstate", () => { if (state.prayers.length) openFromHash(); });
 
   renderLanguageSwitch();

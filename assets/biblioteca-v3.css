@@ -102,24 +102,10 @@ html.reader-open{overflow:hidden}
 .reader-compare select{min-height:42px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit}
 
 /* Texto de la oración: solo lectura */
-.reader-body{padding-top:26px;font-family:"Cormorant Garamond",Georgia,serif;font-size:calc(1.3rem * var(--reader-scale));line-height:1.55;color:var(--ink);-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.reader-body{padding-top:26px;font-family:"Cormorant Garamond",Georgia,serif;font-size:calc(1.3rem * var(--reader-scale));line-height:1.55;color:var(--ink)}
 .reader-body p{margin:0}
 .reader-body>*+*,.parallel-column>*+*{margin-top:.85em}
-.pb-text,.pb-said{white-space:pre-line}
-.pb-heading{margin:1.4em 0 .2em;font-family:inherit;font-size:.82em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
 .reader-body>.pb-heading:first-child,.parallel-column>.parallel-label+.pb-heading,.parallel-row:nth-child(2) .pb-heading{margin-top:0}
-.pb-rubric{color:#b23a48;font-style:italic;font-size:.86em}
-.pb-reference{color:var(--ink-soft);font-style:italic;font-size:.86em}
-.pb-silence{color:#a3acba;text-align:center;letter-spacing:.4em}
-.pb-line{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.55em;align-items:baseline}
-.pb-who{font-family:Inter,system-ui,sans-serif;font-size:.6em;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
-.pb-v .pb-who,.pb-r .pb-who{font-family:inherit;font-size:1.05em;color:#b23a48;text-transform:none}
-.pb-r .pb-said,.pb-all .pb-said{font-weight:700}
-.pb-number .pb-who{min-width:1.6em;font-size:.55em;color:var(--gold);text-align:right}
-.pb-choir-a{padding-left:.7em;border-left:3px solid rgba(23,63,122,.35)}
-.pb-choir-b{padding-left:.7em;border-left:3px solid rgba(224,170,43,.65)}
-.pb-choir-b .pb-said{color:#3d4a5f}
-.pb-antiphon .pb-who{color:var(--green)}
 
 /* Comparar dos idiomas */
 .parallel-label{font-family:Inter,system-ui,sans-serif;font-size:.62rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}

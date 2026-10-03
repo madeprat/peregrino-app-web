@@ -11,49 +11,16 @@
   <meta property="og:image" content="https://tripodapp.prat-cas.com/og-peregrino-home.png">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="assets/site-v2.css">
+  <link rel="stylesheet" href="assets/oracion-v1.css">
   <link rel="stylesheet" href="assets/revista-v1.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="assets/idioma-v1.js"></script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
   }
 </script>
-  <script>
-    (function() {
-      const savedLang = localStorage.getItem("gTranslateLang");
-      
-      if (savedLang && savedLang !== "es") {
-        window.addEventListener("load", function() {
-          setTimeout(function() {
-            const selectElement = document.querySelector(".goog-te-combo");
-            if (selectElement) {
-              selectElement.value = savedLang;
-              selectElement.dispatchEvent(new Event("change"));
-            }
-          }, 300);
-        });
-      }
-      
-      const observer = new MutationObserver(function() {
-        const selectElement = document.querySelector(".goog-te-combo");
-        if (selectElement) {
-          selectElement.removeEventListener("change", handleLanguageChange);
-          selectElement.addEventListener("change", handleLanguageChange);
-        }
-      });
-      
-      function handleLanguageChange(e) {
-        const selectedLang = e.target.value;
-        localStorage.setItem("gTranslateLang", selectedLang);
-      }
-      
-      observer.observe(document.documentElement, {
-        childList: true,
-        subtree: true
-      });
-    })();
-  </script>
 
 </head>
 <body>
@@ -118,16 +85,18 @@
 
           <p class="rv-entradilla">
             Peregrino reúne oración, vida de gracia, amistad y recursos en un espacio sereno,
-            pensado para ayudarte a volver cada día a lo esencial.
+            pensado para ayudarte a volver cada día a lo esencial. Y sus oraciones ya se rezan
+            en cuatro idiomas: español, latín, portugués e inglés.
           </p>
 
           <div class="rv-acciones">
             <a class="rv-boton" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino <span aria-hidden="true">→</span></a>
-            <a class="rv-enlace" href="#hoy">¿Tienes un código? Únete a una oración <span aria-hidden="true">↓</span></a>
+            <a class="rv-enlace" href="#rezar">Rezar ahora en tu idioma <span aria-hidden="true">↓</span></a>
           </div>
 
           <ul class="rv-principios" aria-label="Principios de Peregrino">
             <li>Lo esencial, gratis</li>
+            <li>Oraciones en cuatro idiomas</li>
             <li>Sin publicidad ni analíticas</li>
             <li>Hecha con propósito</li>
           </ul>
@@ -150,15 +119,19 @@
       <div class="rv-shell">
         <header class="rv-seccion-cabecera">
           <p class="rv-antetitulo">Hoy</p>
-          <h2 id="rv-hoy-titulo" class="rv-seccion-titulo">La página de hoy</h2>
+          <h2 id="rv-hoy-titulo" class="rv-seccion-titulo">Para rezar hoy</h2>
         </header>
 
         <div class="rv-hoy-grid">
-          <article class="rv-hoy-oracion reveal" aria-live="polite">
+          <article id="rvOracion" class="rv-hoy-oracion reveal">
             <p class="rv-etiqueta">Oración del día <span id="rvOracionCategoria" class="rv-etiqueta-sec"></span></p>
-            <h3 id="rvOracionTitulo">Ofrecimiento del día</h3>
-            <p id="rvOracionTexto" class="rv-oracion-texto">Señor, te ofrezco este día: mis pensamientos, mis palabras y mis obras. Que todo lo que haga sea para tu gloria y para el bien de quienes me rodean. Amén.</p>
-            <a class="rv-mas" href="biblioteca-oraciones.html">Más oraciones en la Biblioteca <span aria-hidden="true">→</span></a>
+            <div id="rvOracionIdiomas" class="rv-oracion-idiomas notranslate" translate="no" role="group" aria-label="Idioma de la oración" hidden></div>
+            <div aria-live="polite">
+              <h3 id="rvOracionTitulo" class="notranslate" translate="no" lang="es">Ofrecimiento del día</h3>
+              <div id="rvOracionTexto" class="rv-oracion-texto notranslate" translate="no" lang="es"><p class="pb-text">Señor, te ofrezco este día: mis pensamientos, mis palabras y mis obras. Que todo lo que haga sea para tu gloria y para el bien de quienes me rodean. Amén.</p></div>
+            </div>
+            <a id="rvOracionEnlace" class="rv-mas" href="biblioteca-oraciones.html">Más oraciones en la Biblioteca <span aria-hidden="true">→</span></a>
+            <p class="rv-oracion-nota">Cada día, una oración distinta de la Biblioteca.</p>
           </article>
 
           <article class="rv-hoy-tarjeta rv-hoy-grupo reveal">
@@ -184,13 +157,36 @@
       </div>
     </section>
 
+    <!-- REZA EN TU IDIOMA -->
+    <section id="rezar" class="rv-idiomas" aria-labelledby="rv-idiomas-titulo">
+      <div class="rv-shell">
+        <header class="rv-seccion-cabecera">
+          <p class="rv-antetitulo">Biblioteca de oraciones</p>
+          <h2 id="rv-idiomas-titulo" class="rv-seccion-titulo">Una misma oración, <em>cuatro idiomas</em></h2>
+          <p class="rv-seccion-entradilla">Más de cien oraciones de la tradición católica, preparadas una a una en español, latín, portugués e inglés. Se rezan aquí mismo, desde cualquier móvil u ordenador, también en iPhone, sin instalar nada y sin registrarte. La app todavía se está traduciendo; la oración ya habla tu idioma.</p>
+        </header>
+
+        <ol class="rv-idiomas-lista notranslate" translate="no">
+          <li class="reveal"><a href="biblioteca-oraciones.html#rezar/biblioteca-padre-nuestro/es" lang="es"><span class="rv-idioma-sigla">ES</span><span class="rv-idioma-nombre">Español</span><span class="rv-idioma-verso">Padre nuestro, que estás en el cielo, santificado sea tu Nombre…</span></a></li>
+          <li class="reveal"><a href="biblioteca-oraciones.html#rezar/biblioteca-padre-nuestro/pt" lang="pt"><span class="rv-idioma-sigla">PT</span><span class="rv-idioma-nombre">Português</span><span class="rv-idioma-verso">Pai nosso, que estais nos céus, santificado seja o vosso nome…</span></a></li>
+          <li class="reveal"><a href="biblioteca-oraciones.html#rezar/biblioteca-padre-nuestro/en" lang="en"><span class="rv-idioma-sigla">EN</span><span class="rv-idioma-nombre">English</span><span class="rv-idioma-verso">Our Father, who art in heaven, hallowed be thy name…</span></a></li>
+          <li class="reveal"><a href="biblioteca-oraciones.html#rezar/biblioteca-padre-nuestro/la" lang="la"><span class="rv-idioma-sigla">LA</span><span class="rv-idioma-nombre">Latina</span><span class="rv-idioma-verso">Pater noster, qui es in cælis, sanctificétur nomen tuum…</span></a></li>
+        </ol>
+
+        <div class="rv-acciones">
+          <a class="rv-boton rv-boton-claro" href="biblioteca-oraciones.html">Abrir la Biblioteca <span aria-hidden="true">→</span></a>
+          <a class="rv-enlace" href="sala/">¿Tienes un código? Reza en grupo <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
     <!-- ÍNDICE -->
     <section id="experiencias" class="rv-indice" aria-labelledby="rv-indice-titulo">
       <div class="rv-shell">
         <header class="rv-seccion-cabecera rv-indice-cabecera">
           <p class="rv-antetitulo">En este número</p>
-          <h2 id="rv-indice-titulo" class="rv-seccion-titulo">Todo Peregrino, ordenado como el Trípode</h2>
-          <p class="rv-seccion-entradilla">Piedad, Estudio y Acción: la forma en que el Cursillo enseña a vivir el Cuarto Día es también la forma de recorrer esta web.</p>
+          <h2 id="rv-indice-titulo" class="rv-seccion-titulo">Piedad, Estudio y Acción</h2>
+          <p class="rv-seccion-entradilla">Todo lo que encontrarás en Peregrino, agrupado según el Trípode con el que el Cursillo enseña a vivir el Cuarto Día: rezar, formarse y llevar a otros.</p>
         </header>
 
         <div class="rv-tripode">
@@ -198,7 +194,7 @@
             <p class="rv-pata-nombre">Piedad</p>
             <p class="rv-pata-lema">Rezar cada día</p>
             <ol class="rv-lista" start="1">
-              <li><a href="biblioteca-oraciones.html"><span class="rv-num">01</span><span><strong>Biblioteca de oraciones</strong><small>Busca una oración y consérvala en Peregrino para rezarla sin conexión.</small></span></a></li>
+              <li><a href="biblioteca-oraciones.html"><span class="rv-num">01</span><span><strong>Biblioteca de oraciones</strong><small>Más de cien oraciones en español, latín, portugués e inglés, para rezar aquí mismo.</small></span></a></li>
               <li><a href="sala/"><span class="rv-num">02</span><span><strong>Rezar en grupo</strong><small>Sigue en directo la oración que guía otra persona.</small></span></a></li>
               <li><a href="rincon-de-la-luz.html"><span class="rv-num">03</span><span><strong>Rincón de la Luz</strong><small>Enciende una velita, deja una intención o recibe una luz.</small></span></a></li>
               <li><a href="regalo-de-oracion.html"><span class="rv-num">04</span><span><strong>Regala una oración</strong><small>Una tarjeta con su nombre, lista para enviar por WhatsApp.</small></span></a></li>
@@ -396,6 +392,7 @@
       }
     })();
   </script>
+  <script src="assets/oracion-v1.js" defer></script>
   <script src="assets/revista-v1.js" defer></script>
   <script src="assets/compartir-v1.js" defer></script>
   <script src="assets/iphone-v1.js" defer></script>

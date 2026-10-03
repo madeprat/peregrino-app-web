@@ -11,41 +11,7 @@
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/legal-v2.css"><link rel="stylesheet" href="assets/edicion-v1.css">
   <link rel="icon" href="assets/peregrino-app-icon.png">
-  <script>
-    (function() {
-      const savedLang = localStorage.getItem("gTranslateLang");
-      
-      if (savedLang && savedLang !== "es") {
-        window.addEventListener("load", function() {
-          setTimeout(function() {
-            const selectElement = document.querySelector(".goog-te-combo");
-            if (selectElement) {
-              selectElement.value = savedLang;
-              selectElement.dispatchEvent(new Event("change"));
-            }
-          }, 300);
-        });
-      }
-      
-      const observer = new MutationObserver(function() {
-        const selectElement = document.querySelector(".goog-te-combo");
-        if (selectElement) {
-          selectElement.removeEventListener("change", handleLanguageChange);
-          selectElement.addEventListener("change", handleLanguageChange);
-        }
-      });
-      
-      function handleLanguageChange(e) {
-        const selectedLang = e.target.value;
-        localStorage.setItem("gTranslateLang", selectedLang);
-      }
-      
-      observer.observe(document.documentElement, {
-        childList: true,
-        subtree: true
-      });
-    })();
-  </script>
+  <script src="assets/idioma-v1.js"></script>
 
 </head>
 <body>
@@ -83,8 +49,10 @@
     <nav class="legal-index" aria-label="Contenido de la página"><strong>En esta página</strong><a href="#resumen">Resumen</a><a href="#almacenamiento">Qué se guarda en tu navegador</a><a href="#externos">Servicios externos</a><a href="#borrado">Cómo borrar estos datos</a></nav>
     <div class="legal-content"><article class="legal-card" id="resumen"><h2>Resumen</h2><p>Esta web no usa cookies de publicidad ni de analítica: no hay Google Analytics, Meta Pixel, Hotjar ni herramientas similares.</p>
 <p>Solo se guardan los datos técnicos y de preferencia que se describen abajo, y casi todos se quedan en tu dispositivo. Por eso no se muestra un banner de consentimiento.</p></article><article class="legal-card" id="almacenamiento"><h2>Qué se guarda en tu navegador</h2><ul>
-<li><code>googtrans</code> (cookie de Google Translate): el idioma de traducción que eliges. Solo se crea si usas el traductor.</li>
+<li><code>googtrans</code> (cookie de Google Translate): el idioma en que ves la web. Se crea si eliges un idioma en el traductor o si, en tu primera visita, tu dispositivo está en un idioma distinto del español; desaparece si vuelves al español.</li>
 <li><code>gTranslateLang</code> (almacenamiento local): el mismo idioma, para mantenerlo al cambiar de página.</li>
+<li><code>peregrinoIdiomaAuto</code> (almacenamiento local): indica que ya se tuvo en cuenta el idioma de tu dispositivo, para no volver a cambiarlo después de que elijas otro.</li>
+<li><code>peregrinoBibliotecaIdioma</code> y <code>peregrinoBibliotecaLetra</code> (almacenamiento local): el idioma en que rezas las oraciones y el tamaño de letra del lector de la Biblioteca.</li>
 <li><code>peregrino_luz_alias</code> (almacenamiento local): tu alias en el muro del Rincón de la Luz.</li>
 <li><code>peregrino_bordon_pending</code> (almacenamiento de sesión): el código de un Bordón regalado mientras instalas la app. Se borra al cerrar la pestaña.</li>
 </ul>
