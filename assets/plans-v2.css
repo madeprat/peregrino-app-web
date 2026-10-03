@@ -157,3 +157,6 @@
 .featured .plan-includes p{color:#f3d179}
 .featured .plan-includes li{color:rgba(255,255,255,.82)}
 .featured .plan-includes li::before{color:#f3d179}
+/* Sin importes: el precio se consulta en la app, en la moneda de cada país */
+.plan-price-text strong{font-family:Inter,system-ui,sans-serif;font-size:1.05rem;font-weight:800;line-height:1.3;color:var(--blue)}
+.featured .plan-price-text strong{color:#f3d179}
