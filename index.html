@@ -8,12 +8,12 @@
   <meta name="theme-color" content="#fffaf0">
   <meta property="og:title" content="Peregrino APP · El Cuarto Día, vivo cada día">
   <meta property="og:description" content="Una app y una comunidad digital para acompañar la oración, la constancia y el camino compartido.">
-  <meta property="og:image" content="https://madeprat.github.io/peregrino-app-web/og-peregrino-home.png">
+  <meta property="og:image" content="https://tripodapp.prat-cas.com/og-peregrino-home.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site-v2.css">
-  <link rel="icon" href="https://madeprat.github.io/peregrino-app-web/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
   function googleTranslateElementInit() {
@@ -49,7 +49,7 @@
         localStorage.setItem("gTranslateLang", selectedLang);
       }
       
-      observer.observe(document.body, {
+      observer.observe(document.documentElement, {
         childList: true,
         subtree: true
       });
@@ -92,8 +92,8 @@
         <a href="#app">La app</a>
         <a href="#experiencias">Oración y comunidad</a>
         <a href="#cursillo">Descubre el Cursillo</a>
-        <a href="#mas-peregrino">Más Peregrino</a>
         <a href="#proyecto">El proyecto</a>
+        <a class="nav-sala" href="sala/">Rezar en grupo</a>
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
         <div id="google_translate_element"></div>
       </nav>
@@ -139,7 +139,7 @@
             <div class="phone-frame">
               <div class="phone-speaker" aria-hidden="true"></div>
               <img
-                src="https://madeprat.github.io/peregrino-app-web/assets/demo-fan-1.webp"
+                src="assets/demo-fan-1.webp"
                 alt="Pantalla principal de Peregrino APP"
                 width="390"
                 height="844"
@@ -162,6 +162,23 @@
             <span><strong>Biblioteca</strong><small>Hazla tuya</small></span>
           </a>
         </div>
+      </div>
+    </section>
+
+    <section class="join-band" aria-labelledby="join-title">
+      <div class="shell join-band-grid">
+        <div class="join-band-copy">
+          <p class="section-kicker">Rezar en grupo</p>
+          <h2 id="join-title">¿Te han enviado un código de oración?</h2>
+          <p>Únete desde el navegador y sigue la oración en directo, sin instalar nada ni registrarte. Funciona también en iPhone.</p>
+        </div>
+        <form class="join-form" action="sala/" method="get">
+          <label class="sr-only" for="joinCode">Código de la sala</label>
+          <input id="joinCode" name="c" maxlength="4" placeholder="ABCD" autocomplete="off"
+                 autocapitalize="characters" spellcheck="false" required
+                 pattern="[A-Za-z0-9]{4}" title="El código tiene 4 letras o números">
+          <button class="button button-primary" type="submit">Unirme</button>
+        </form>
       </div>
     </section>
 
@@ -194,7 +211,7 @@
               <p>Tu día, tus oraciones y tu camino aparecen ordenados sin ruido ni distracciones.</p>
             </div>
             <img
-              src="https://madeprat.github.io/peregrino-app-web/assets/demo-fan-2.webp"
+              src="assets/demo-fan-2.webp"
               alt="Rosario guiado en Peregrino APP"
               loading="lazy"
               width="390"
@@ -463,27 +480,30 @@
 
       <div>
         <h3>Vive Peregrino</h3>
+        <a href="sala/">Rezar en grupo</a>
         <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
         <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="regalo-de-oracion.html">Regala una oración</a>
         <a href="plan-apostol.html">Planes</a>
       </div>
-
       <div>
         <h3>Descubre</h3>
         <a href="que-es-el-mcc.html">Qué es el MCC</a>
         <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
         <a href="reunion-de-grupo.html">Reunión de Grupo</a>
         <a href="apostolado-digital.html">Apostolado digital</a>
-        <a href="gestion-boletines.html" rel="nofollow">Gestión de boletines</a>
+        <a href="alguien-reza-por-ti.html">Alguien reza por ti</a>
       </div>
-
       <div>
         <h3>Información</h3>
         <a href="manifiesto.html">Manifiesto</a>
-        <a href="https://madeprat.github.io/peregrino-app-web/aviso-legal.html">Aviso legal</a>
-        <a href="https://madeprat.github.io/peregrino-app-web/privacidad.html">Privacidad</a>
-        <a href="https://madeprat.github.io/peregrino-app-web/cookies.html">Cookies</a>
+        <a href="historieta.html">Historieta</a>
+        <a href="manual-usuario-peregrino.html">Manual</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
 
@@ -526,5 +546,6 @@
       }
     })();
   </script>
+  <script src="assets/iphone-v1.js" defer></script>
 </body>
 </html>

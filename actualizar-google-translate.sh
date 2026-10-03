@@ -46,7 +46,7 @@ SCRIPT_CONTENT='  <script>
         localStorage.setItem("gTranslateLang", selectedLang);
       }
       
-      observer.observe(document.body, {
+      observer.observe(document.documentElement, {
         childList: true,
         subtree: true
       });

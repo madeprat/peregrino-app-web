@@ -235,3 +235,7 @@ body[data-member-mode="member"] .member-copy{display:inline}
   .brand-copy{display:none}
   .hero-actions .button{width:100%}
 }
+
+/* Rezar en grupo en el menú */
+.main-nav .nav-sala{color:var(--blue);box-shadow:inset 0 0 0 1.5px rgba(23,63,122,.28)}
+.main-nav .nav-sala:hover{box-shadow:inset 0 0 0 1.5px var(--blue)}

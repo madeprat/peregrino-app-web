@@ -1,0 +1,9 @@
+# Archivos de trabajo que se guardan en el repositorio pero no se publican en la web.
+exclude:
+  - README.md
+  - LICENSE.md
+  - MAPA_FUNCIONAL.md
+  - MUNDO_CURSILLO_INTEGRACION.md
+  - APLICAR_TEMA_MUNDO.py
+  - DESHACER_TEMA_MUNDO.py
+  - actualizar-google-translate.sh

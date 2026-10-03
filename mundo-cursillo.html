@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#fffaf0" />
   <title>El mundo está de Cursillo · Peregrino App</title>
   <meta name="description" content="Mapa mundial de Cursillos y palancas de oración conectado con Peregrino APP." />
-  <link rel="canonical" href="https://madeprat.github.io/peregrino-app-web/mundo-cursillo.html" />
+  <link rel="canonical" href="mundo-cursillo.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -2383,7 +2383,7 @@
         localStorage.setItem("gTranslateLang", selectedLang);
       }
       
-      observer.observe(document.body, {
+      observer.observe(document.documentElement, {
         childList: true,
         subtree: true
       });
@@ -2411,13 +2411,13 @@
       </a>
       <nav class="peregrino-nav-links" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
-        <a href="index.html#planes">Planes</a>
-        <a href="index.html#apoyar">Apoyar</a>
-        <a href="index.html#recursos">Recursos</a>
+        <a href="index.html#experiencias">Oración y comunidad</a>
+        <a href="index.html#cursillo">Descubre el Cursillo</a>
+        <a href="index.html#proyecto">El proyecto</a>
+        <a href="sala/">Rezar en grupo</a>
         <a class="peregrino-nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
         <div id="google_translate_element"></div>
       </nav>
-</nav>
     </div>
   </header>
 
@@ -2608,27 +2608,30 @@
 
       <div>
         <h3>Vive Peregrino</h3>
+        <a href="sala/">Rezar en grupo</a>
         <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
         <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="regalo-de-oracion.html">Regala una oración</a>
         <a href="plan-apostol.html">Planes</a>
       </div>
-
       <div>
         <h3>Descubre</h3>
         <a href="que-es-el-mcc.html">Qué es el MCC</a>
         <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
         <a href="reunion-de-grupo.html">Reunión de Grupo</a>
         <a href="apostolado-digital.html">Apostolado digital</a>
-        <a href="gestion-boletines.html" rel="nofollow">Gestión de boletines</a>
+        <a href="alguien-reza-por-ti.html">Alguien reza por ti</a>
       </div>
-
       <div>
         <h3>Información</h3>
         <a href="manifiesto.html">Manifiesto</a>
+        <a href="historieta.html">Historieta</a>
+        <a href="manual-usuario-peregrino.html">Manual</a>
         <a href="aviso-legal.html">Aviso legal</a>
         <a href="privacidad.html">Privacidad</a>
         <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
 
@@ -4347,5 +4350,6 @@ function renderMural() {
   <script src="assets/mundo-cursillo-v2.js"></script>
 
 
+  <script src="assets/iphone-v1.js" defer></script>
 </body>
 </html>

@@ -37,7 +37,7 @@
         localStorage.setItem("gTranslateLang", selectedLang);
       }
       
-      observer.observe(document.body, {
+      observer.observe(document.documentElement, {
         childList: true,
         subtree: true
       });
@@ -63,19 +63,12 @@
       </button>
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
-<a href="index.html#experiencias" aria-current="page">Oración y comunidad</a>
-<a href="index.html#cursillo">Descubre el Cursillo</a>
-<a href="index.html#miembros">Miembros</a>
-<a href="index.html#proyecto">El proyecto</a>
+        <a href="index.html#experiencias" aria-current="page">Oración y comunidad</a>
+        <a href="index.html#cursillo">Descubre el Cursillo</a>
+        <a href="index.html#proyecto">El proyecto</a>
+        <a class="nav-sala" href="sala/">Rezar en grupo</a>
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
-      <div class="member-demo" aria-label="Vista de demostración">
-        <span class="member-demo-label">Vista</span>
-        <button class="mode-switch" type="button" role="switch" aria-checked="false">
-          <span class="mode-switch-track"><span class="mode-switch-thumb"></span></span>
-          <span class="mode-switch-text">Visitante</span>
-        </button>
-      </div>
     </div>
   
       <div id="google_translate_element"></div>
@@ -97,7 +90,7 @@
 </section>
 <section class="gift-story"><div class="shell">
   <div class="gift-story-grid reveal"><article class="story-card"><strong>Recibir es gratuito</strong><p>Quien recibe el enlace nunca encuentra un muro de pago.</p></article><article class="story-card"><strong>El nombre no se almacena</strong><p>Se lee únicamente desde el enlace en el navegador.</p></article><article class="story-card"><strong>Compartir con delicadeza</strong><p>La tarjeta puede copiarse, enviarse por WhatsApp o prepararse como imagen.</p></article></div>
-  <div class="gift-cta reveal"><div><h2>Caminar, rezar, acompañar.</h2><p>Peregrino nace para ayudar a vivir el Cuarto Día con oración, constancia y comunidad.</p></div><a class="button button-gold" href="index.html">Conocer Peregrino APP</a></div>
+  <div class="gift-cta reveal"><div><h2>Caminar, rezar, acompañar.</h2><p>Peregrino nace para ayudar a vivir el Cuarto Día con oración, constancia y comunidad.</p></div><div class="gift-cta-actions"><a class="button button-gold" href="rincon-de-la-luz.html#regalar">Regalar yo también una oración</a><a class="button button-quiet" href="index.html">Conocer Peregrino APP</a></div></div>
   <p class="micro">El nombre visible se lee únicamente desde el enlace recibido, en tu propio navegador.</p>
 </div></section>
 </main>
@@ -115,9 +108,33 @@
         </a>
         <p>Guía digital para acompañar la oración, la constancia y la comunidad.</p>
       </div>
-      <div><h3>Vive Peregrino</h3><a href="mundo-cursillo.html">El mundo está de Cursillo</a><a href="rincon-de-la-luz.html">Rincón de la Luz</a><a href="biblioteca-oraciones.html">Biblioteca</a><a href="plan-apostol.html">Planes</a></div>
-      <div><h3>Descubre</h3><a href="que-es-el-mcc.html">Qué es el MCC</a><a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a><a href="reunion-de-grupo.html">Reunión de Grupo</a><a href="apostolado-digital.html">Apostolado digital</a></div>
-      <div><h3>Información</h3><a href="manifiesto.html">Manifiesto</a><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a></div>
+      <div>
+        <h3>Vive Peregrino</h3>
+        <a href="sala/">Rezar en grupo</a>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
+        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="regalo-de-oracion.html">Regala una oración</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+        <a href="alguien-reza-por-ti.html">Alguien reza por ti</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
+        <a href="historieta.html">Historieta</a>
+        <a href="manual-usuario-peregrino.html">Manual</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </div>
     </div>
     <div class="shell footer-bottom"><span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span><a href="#contenido">Volver arriba ↑</a></div>
   </footer>
@@ -131,4 +148,5 @@
       new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
     }
   </script>
+  <script src="assets/iphone-v1.js" defer></script>
 </body></html>

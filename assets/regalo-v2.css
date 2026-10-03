@@ -32,3 +32,5 @@
 .micro{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:22px}
 @media(max-width:900px){.gift-grid{grid-template-columns:1fr}.gift-story-grid{grid-template-columns:1fr}.gift-cta{display:block}.gift-cta .button{margin-top:22px}}
 @media(max-width:560px){.gift-main{padding-top:45px}.paper{min-height:0;padding:28px 20px}.gift-actions .button{width:100%}.gift-cta .button{width:100%}}
+.gift-cta-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+@media(max-width:900px){.gift-cta-actions{justify-content:flex-start}}
