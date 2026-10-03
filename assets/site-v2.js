@@ -15,11 +15,10 @@
     body.dataset.memberMode = isMember ? 'member' : 'visitor';
     modeSwitch?.setAttribute('aria-checked', String(isMember));
     if (modeText) modeText.textContent = isMember ? 'Miembro' : 'Visitante';
-    try { localStorage.setItem('peregrino-demo-mode', isMember ? 'member' : 'visitor'); } catch (_) {}
   };
 
   let initialMode = 'visitor';
-  try { initialMode = localStorage.getItem('peregrino-demo-mode') || 'visitor'; } catch (_) {}
+  try { localStorage.removeItem('peregrino-demo-mode'); } catch (_) {}
   applyMode(initialMode);
 
   modeSwitch?.addEventListener('click', () => {

@@ -137,3 +137,23 @@
   .community-plan{grid-template-columns:1fr}
   .community-price{text-align:left}
 }
+
+/* Qué incluye cada plan */
+.plan-includes{margin:18px 0 22px;padding-top:16px;border-top:1px solid var(--line);text-align:left}
+.plan-includes p{margin:0 0 8px;color:var(--ink);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.plan-includes ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.plan-includes li{position:relative;padding-left:22px;color:var(--ink-soft);font-size:.88rem;line-height:1.45}
+.plan-includes li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:900}
+
+/* Plan Comunidad en tres pasos */
+.community-steps{margin:0 0 28px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:paso}
+.community-steps li{counter-increment:paso;padding:22px 20px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.community-steps li::before{content:counter(paso);display:grid;place-items:center;width:34px;height:34px;margin-bottom:12px;border-radius:50%;background:rgba(224,170,43,.18);color:var(--blue-deep);font-weight:900}
+.community-steps strong{display:block;color:var(--ink);font-size:1.02rem}
+.community-steps span{display:block;margin-top:6px;color:var(--ink-soft);font-size:.9rem;line-height:1.5}
+.community-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+@media(max-width:900px){.community-steps{grid-template-columns:1fr}}
+.featured .plan-includes{border-color:rgba(255,255,255,.14)}
+.featured .plan-includes p{color:#f3d179}
+.featured .plan-includes li{color:rgba(255,255,255,.82)}
+.featured .plan-includes li::before{color:#f3d179}

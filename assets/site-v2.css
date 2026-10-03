@@ -463,3 +463,6 @@ body[data-member-mode="member"] .lock-icon::after { content: "✓"; font-size: .
   .join-form { justify-content: stretch; }
   .join-form input { flex: 1; width: auto; min-width: 0; }
 }
+.plans-community { margin: 22px 0 0; padding: 14px 16px; border-radius: var(--radius-sm); background: var(--cream); border: 1px solid rgba(224, 170, 43, .3); color: var(--ink-soft); font-size: .92rem; }
+.plans-community strong { color: var(--ink); }
+.plans-community a { color: var(--blue); font-weight: 800; text-decoration: none; white-space: nowrap; }
