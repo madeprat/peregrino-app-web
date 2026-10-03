@@ -91,3 +91,4 @@ body[data-seccion] :is(.editorial-hero, .project-hero, .page-hero, .comic-intro)
   .ed-seguir-tarjetas, .ed-seguir-tarjetas.ed-tres { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .ed-tarjeta { transition: none; } }
+@media (max-width: 520px) { .ed-folio-num { display: none; } }

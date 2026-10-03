@@ -17,9 +17,9 @@
 - Consultar el mapa y los Cursillos.
 - Ver palancas.
 - Ofrecer una palanca.
-- Encender una velita.
-- Dejar una intención.
-- Recibir una luz.
+- Inicio (`inicio.html`): la pantalla diaria que se abre desde el icono del móvil, con la oración del día, una luz para hoy y las puertas a Biblioteca, velita, regalo y rezar en grupo.
+- Encender una velita (Rincón de la Luz). La intención se queda en el dispositivo.
+- Regalar una oración (`regalo-de-oracion.html`): sin parámetros se crea la tarjeta; con `?nombre=…&tono=…` se recibe.
 - Rezar en la Biblioteca, en español, latín, portugués o inglés (solo lectura: sin copiar, guardar ni imprimir).
 - Oración del día en la portada, en el idioma de cada persona.
 - Recibir una tarjeta o invitación.
@@ -59,6 +59,13 @@ Estas puertas deben permanecer abiertas para quien llega por primera vez.
 - Enlaces a una oración de la biblioteca (`biblioteca-oraciones.html#rezar/<id>/<idioma>`).
 - Formularios y fuentes de datos.
 - Páginas de confirmación y agradecimiento.
+
+## Web instalable
+
+- `manifest.webmanifest` e iconos en `assets/icon/`: se instala como app (pantalla completa) y abre en `inicio.html`.
+- En iPhone se añade desde Safari → Compartir → «Añadir a pantalla de inicio»; la portada y el Inicio lo explican (`assets/instalar-v1.js`).
+- Si se abre como app en la portada, se pasa directamente al Inicio.
+- La oración del mes por quienes sostienen Peregrino está en la página de apoyo (`plan-apostol.html#oracion-del-mes`).
 
 ## Idioma
 

@@ -2,6 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Peregrino">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Planes | Peregrino APP</title>
   <meta name="description" content="Elige cómo apoyar Peregrino APP y ayuda a que este apostolado digital pueda seguir llegando gratuitamente a más personas.">
   <meta name="theme-color" content="#fffaf0">
@@ -9,6 +15,7 @@
   <meta property="og:description" content="Tu apoyo sostiene Peregrino y ayuda a que más personas puedan encontrar gratuitamente un espacio de oración y Cuarto Día.">
   <meta property="og:image" content="https://tripodapp.prat-cas.com/og-peregrino-home.png">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <script src="assets/idioma-v1.js"></script>
   <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/plans-v2.css"><link rel="stylesheet" href="assets/edicion-v1.css">
   <link rel="icon" href="assets/peregrino-app-icon.png">
 </head>
@@ -38,6 +45,8 @@
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
     </div>
+
+      <div id="google_translate_element"></div>
   </header>
 <main id="contenido">
   <section class="page-hero">
@@ -230,6 +239,22 @@
     </div>
   </section>
 
+  <section class="section section-white" id="oracion-del-mes">
+    <div class="shell">
+      <div class="plans-oracion-mes reveal">
+        <div>
+          <p class="section-kicker">Cada mes</p>
+          <h2>Rezamos por quienes sostienen Peregrino</h2>
+          <p>Cada mes encomendamos a quienes hacen posible este proyecto, a sus familias y a las intenciones que llevan en el corazón. Si apoyas Peregrino, también rezamos por ti.</p>
+        </div>
+        <blockquote class="plans-oracion-texto">Señor Jesús,
+este mes te encomendamos a quienes sostienen Peregrino, a sus familias y a las intenciones que llevan en silencio.
+Bendice sus caminos, multiplica el bien que siembran y concédeles paz, fortaleza y esperanza para vivir cada día con amor.
+<span>Amén.</span></blockquote>
+      </div>
+    </div>
+  </section>
+
   <section class="section section-white">
     <div class="shell">
       <div class="section-heading reveal">
@@ -327,4 +352,10 @@
   <script src="assets/edicion-v1.js" defer></script>
   <script src="assets/compartir-v1.js" defer></script>
   <script src="assets/iphone-v1.js" defer></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
+    }
+  </script>
 </body></html>

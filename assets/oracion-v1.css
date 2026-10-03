@@ -38,3 +38,17 @@
 .aviso-gracias-acciones a{border:1px solid rgba(23,63,122,.25);background:#fff;color:var(--blue,#173f7a)}
 @keyframes avisoEntra{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.aviso-gracias{animation:none}}
+
+/* ---------- Oración del día (assets/oracion-del-dia-v1.js) ---------- */
+.odd-idiomas{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.odd-idiomas[hidden]{display:none}
+.odd-idioma{min-width:42px;min-height:34px;padding:0 10px;border:1px solid var(--line,rgba(19,36,58,.12));border-radius:999px;background:#fff;color:var(--ink-soft,#42526a);font:800 .72rem/1 Inter,system-ui,sans-serif;letter-spacing:.08em;cursor:pointer}
+.odd-idioma:hover{border-color:var(--blue,#173f7a);color:var(--blue,#173f7a)}
+.odd-idioma[aria-pressed="true"]{border-color:#0e2347;background:#0e2347;color:#fff}
+.odd-texto{margin-top:14px;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.32rem;line-height:1.5;color:var(--ink,#13243a)}
+.odd-texto p{margin:0}
+.odd-texto>*+*{margin-top:.55em}
+.odd-texto .pb-heading{margin:.9em 0 .1em;font-size:.72em}
+.odd-texto>.pb-text:first-child::first-letter{float:left;margin:6px 10px 0 0;font-size:3.6em;line-height:.8;font-weight:700;color:var(--gold,#e0aa2b)}
+.odd-texto .odd-sigue{color:var(--ink-soft,#42526a);letter-spacing:.3em}
+.odd-nota{margin:6px 0 0;color:var(--ink-soft,#42526a);font-size:.82rem}

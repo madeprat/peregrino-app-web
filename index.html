@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Peregrino">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Peregrino APP · El Cuarto Día, vivo cada día</title>
   <meta name="description" content="Peregrino acompaña el Cuarto Día con oración, comunidad, recursos y herramientas para compartir la fe.">
   <meta name="theme-color" content="#fffaf0">
@@ -14,6 +20,11 @@
   <link rel="stylesheet" href="assets/oracion-v1.css">
   <link rel="stylesheet" href="assets/revista-v1.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    // Abierta desde el icono de la pantalla de inicio: directamente al Inicio
+    // (si se llega desde otra página de la app, se queda en la portada).
+    if (((window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone) && !document.referrer) location.replace("inicio.html");
+  </script>
   <script src="assets/idioma-v1.js"></script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
@@ -75,24 +86,23 @@
           <p class="rv-fechero">
             <span class="rv-cabecera">Peregrino</span>
             <span class="rv-sep" aria-hidden="true">·</span>
-            <span>Edición del Cuarto Día</span>
-            <span class="rv-sep" aria-hidden="true">·</span>
-            <time id="rvFecha" class="rv-fecha"></time>
+            <span>La app del Cuarto Día</span>
             <button class="rv-compartir" type="button" data-compartir aria-label="Compartir esta página con un código QR">Compartir</button>
           </p>
 
           <h1 id="rv-titular" class="rv-titular">La fe se vive.<br><em>El camino se comparte.</em></h1>
 
           <p class="rv-entradilla">
-            Peregrino reúne oración, vida de gracia, amistad y recursos en un espacio sereno,
-            pensado para ayudarte a volver cada día a lo esencial. Y sus oraciones ya se rezan
-            en cuatro idiomas: español, latín, portugués e inglés.
+            Peregrino es una app para vivir el Cuarto Día: rezar cada día, cuidar tu grupo
+            y acompañar a otros. Lo esencial también está aquí, en la web: gratis, en cualquier
+            móvil y en cuatro idiomas.
           </p>
 
           <div class="rv-acciones">
-            <a class="rv-boton" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino <span aria-hidden="true">→</span></a>
-            <a class="rv-enlace" href="#rezar">Rezar ahora en tu idioma <span aria-hidden="true">↓</span></a>
+            <a class="rv-boton" href="inicio.html">Entrar y rezar <span aria-hidden="true">→</span></a>
+            <a class="rv-enlace" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app para Android <span aria-hidden="true">→</span></a>
           </div>
+          <p class="rv-iphone">¿Tienes iPhone? Úsala gratis desde aquí y <a href="#instalar">añádela a tu pantalla de inicio</a>.</p>
 
           <ul class="rv-principios" aria-label="Principios de Peregrino">
             <li>Lo esencial, gratis</li>
@@ -106,7 +116,6 @@
           <img src="assets/foto_app1.webp" width="736" height="1408"
                alt="Unas manos sostienen el móvil con Peregrino abierto, a la luz de unas velas">
           <figcaption>
-            <span class="rv-pie-etiqueta">En portada</span>
             Una pausa para rezar, estés donde estés.
           </figcaption>
         </figure>
@@ -123,15 +132,15 @@
         </header>
 
         <div class="rv-hoy-grid">
-          <article id="rvOracion" class="rv-hoy-oracion reveal">
-            <p class="rv-etiqueta">Oración del día <span id="rvOracionCategoria" class="rv-etiqueta-sec"></span></p>
-            <div id="rvOracionIdiomas" class="rv-oracion-idiomas notranslate" translate="no" role="group" aria-label="Idioma de la oración" hidden></div>
+          <article class="rv-hoy-oracion reveal" data-oracion-del-dia data-app-href="#app">
+            <p class="rv-etiqueta">Oración del día <span data-odd="categoria" class="rv-etiqueta-sec"></span></p>
+            <div data-odd="idiomas" class="odd-idiomas notranslate" translate="no" role="group" aria-label="Idioma de la oración" hidden></div>
             <div aria-live="polite">
-              <h3 id="rvOracionTitulo" class="notranslate" translate="no" lang="es">Ofrecimiento del día</h3>
-              <div id="rvOracionTexto" class="rv-oracion-texto notranslate" translate="no" lang="es"><p class="pb-text">Señor, te ofrezco este día: mis pensamientos, mis palabras y mis obras. Que todo lo que haga sea para tu gloria y para el bien de quienes me rodean. Amén.</p></div>
+              <h3 data-odd="titulo" class="notranslate" translate="no" lang="es">Ofrecimiento del día</h3>
+              <div data-odd="texto" class="odd-texto notranslate" translate="no" lang="es"><p class="pb-text">Señor, te ofrezco este día: mis pensamientos, mis palabras y mis obras. Que todo lo que haga sea para tu gloria y para el bien de quienes me rodean. Amén.</p></div>
             </div>
-            <a id="rvOracionEnlace" class="rv-mas" href="biblioteca-oraciones.html">Más oraciones en la Biblioteca <span aria-hidden="true">→</span></a>
-            <p class="rv-oracion-nota">Cada día, una oración distinta de la Biblioteca.</p>
+            <a data-odd="enlace" class="rv-mas" href="biblioteca-oraciones.html">Más oraciones en la Biblioteca <span aria-hidden="true">→</span></a>
+            <p class="odd-nota">Cada día, una oración distinta de la Biblioteca.</p>
           </article>
 
           <article class="rv-hoy-tarjeta rv-hoy-grupo reveal">
@@ -149,9 +158,9 @@
 
           <article class="rv-hoy-tarjeta rv-hoy-luz reveal">
             <p class="rv-etiqueta">Rincón de la Luz</p>
-            <h3>Enciende una velita por alguien</h3>
-            <p>Deja una intención, regala una oración o recibe una luz para tu día.</p>
-            <a class="rv-mas" href="rincon-de-la-luz.html">Entrar al Rincón <span aria-hidden="true">→</span></a>
+            <h3>Enciende una velita</h3>
+            <p>Pon ante Dios a una persona o una intención y reza por ella una oración breve.</p>
+            <a class="rv-mas" href="rincon-de-la-luz.html">Encender una velita <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
@@ -180,11 +189,43 @@
       </div>
     </section>
 
+    <!-- EN TU MÓVIL -->
+    <section id="instalar" class="rv-instalar" aria-labelledby="rv-instalar-titulo">
+      <div class="rv-shell">
+        <header class="rv-seccion-cabecera">
+          <p class="rv-antetitulo">En tu móvil</p>
+          <h2 id="rv-instalar-titulo" class="rv-seccion-titulo">Peregrino, <em>a un toque</em></h2>
+          <p class="rv-seccion-entradilla">Añade Peregrino a la pantalla de inicio y ábrelo como una app más: la oración del día, la Biblioteca, rezar en grupo, la velita y las oraciones para regalar. Gratis y sin registrarte.</p>
+        </header>
+
+        <div class="rv-instalar-grid">
+          <article class="rv-instalar-caso reveal" data-plataforma="ios">
+            <p class="rv-etiqueta">iPhone y iPad</p>
+            <h3>Añádela a tu pantalla de inicio</h3>
+            <ol class="rv-pasos">
+              <li>Abre esta web en <strong>Safari</strong>.</li>
+              <li>Pulsa <strong>Compartir</strong> <span class="rv-icono-compartir" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></span>, abajo en la pantalla.</li>
+              <li>Elige <strong>«Añadir a pantalla de inicio»</strong> y pulsa <strong>Añadir</strong>.</li>
+            </ol>
+            <p class="rv-instalar-nota">La app de Peregrino para iPhone está en camino. Mientras tanto, lo esencial ya lo tienes aquí.</p>
+          </article>
+
+          <article class="rv-instalar-caso reveal" data-plataforma="android">
+            <p class="rv-etiqueta">Android</p>
+            <h3>La app completa, en Google Play</h3>
+            <p>Con voz, sin conexión, tu Trípode y la Reunión de Grupo guiada.</p>
+            <a class="rv-boton" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino <span aria-hidden="true">→</span></a>
+            <p class="rv-instalar-nota">¿Prefieres solo la web? <button class="rv-instalar-boton" type="button" data-instalar hidden>Instalarla ahora</button><span data-instalar-manual>Menú <strong>⋮</strong> del navegador → <strong>Instalar aplicación</strong>.</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ÍNDICE -->
     <section id="experiencias" class="rv-indice" aria-labelledby="rv-indice-titulo">
       <div class="rv-shell">
         <header class="rv-seccion-cabecera rv-indice-cabecera">
-          <p class="rv-antetitulo">En este número</p>
+          <p class="rv-antetitulo">Todo Peregrino</p>
           <h2 id="rv-indice-titulo" class="rv-seccion-titulo">Piedad, Estudio y Acción</h2>
           <p class="rv-seccion-entradilla">Todo lo que encontrarás en Peregrino, agrupado según el Trípode con el que el Cursillo enseña a vivir el Cuarto Día: rezar, formarse y llevar a otros.</p>
         </header>
@@ -196,8 +237,8 @@
             <ol class="rv-lista" start="1">
               <li><a href="biblioteca-oraciones.html"><span class="rv-num">01</span><span><strong>Biblioteca de oraciones</strong><small>Más de cien oraciones en español, latín, portugués e inglés, para rezar aquí mismo.</small></span></a></li>
               <li><a href="sala/"><span class="rv-num">02</span><span><strong>Rezar en grupo</strong><small>Sigue en directo la oración que guía otra persona.</small></span></a></li>
-              <li><a href="rincon-de-la-luz.html"><span class="rv-num">03</span><span><strong>Rincón de la Luz</strong><small>Enciende una velita, deja una intención o recibe una luz.</small></span></a></li>
-              <li><a href="regalo-de-oracion.html"><span class="rv-num">04</span><span><strong>Regala una oración</strong><small>Una tarjeta con su nombre, lista para enviar por WhatsApp.</small></span></a></li>
+              <li><a href="rincon-de-la-luz.html"><span class="rv-num">03</span><span><strong>Rincón de la Luz</strong><small>Enciende una velita y pon ante Dios una intención.</small></span></a></li>
+              <li><a href="regalo-de-oracion.html"><span class="rv-num">04</span><span><strong>Regala una oración</strong><small>Escribe un nombre y envíale una tarjeta con una oración.</small></span></a></li>
             </ol>
           </div>
 
@@ -230,7 +271,7 @@
     <section id="app" class="rv-reportaje" aria-labelledby="rv-app-titulo">
       <div class="rv-shell rv-reportaje-grid">
         <div class="rv-reportaje-texto reveal">
-          <p class="rv-antetitulo">Reportaje</p>
+          <p class="rv-antetitulo">La app</p>
           <h2 id="rv-app-titulo" class="rv-seccion-titulo">El Trípode, en tu bolsillo</h2>
           <p class="rv-seccion-entradilla">Peregrino ordena tu día de fe sin ruido ni distracciones, y te acompaña cuando más lo necesitas.</p>
 
@@ -393,7 +434,8 @@
     })();
   </script>
   <script src="assets/oracion-v1.js" defer></script>
-  <script src="assets/revista-v1.js" defer></script>
+  <script src="assets/oracion-del-dia-v1.js" defer></script>
+  <script src="assets/instalar-v1.js" defer></script>
   <script src="assets/compartir-v1.js" defer></script>
   <script src="assets/iphone-v1.js" defer></script>
 </body>

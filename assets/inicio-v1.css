@@ -1,0 +1,109 @@
+/* Inicio de Peregrino en la web (inicio.html): pensado primero para el móvil
+   y para abrirse como app desde la pantalla de inicio. */
+
+.inicio { background: linear-gradient(180deg, #fffaf0 0%, #fbf3e3 60%, #fffaf0 100%); }
+
+/* ---------- Barra superior ---------- */
+.in-barra {
+  position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: calc(10px + env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+  background: rgba(255, 250, 240, .92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.in-marca { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+.in-marca img { width: 40px; height: 40px; border-radius: 12px; flex: 0 0 auto; }
+.in-marca strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 1.35rem; line-height: 1; }
+.in-marca small { display: block; margin-top: 2px; color: var(--ink-soft); font-size: .68rem; font-weight: 700; letter-spacing: .03em; }
+.in-barra #google_translate_element { display: flex; align-items: center; min-width: 0; }
+.in-barra .goog-te-gadget { font-size: 0 !important; color: transparent !important; }
+.in-barra .goog-te-gadget > span { display: none !important; }
+.in-barra .goog-te-combo {
+  max-width: 132px; min-height: 36px; margin: 0 !important; padding: 0 8px; border: 1px solid var(--line); border-radius: 999px;
+  background: #fff; color: var(--ink); font: 700 .78rem Inter, system-ui, sans-serif;
+}
+
+/* ---------- Contenido ---------- */
+.in-main {
+  width: min(680px, 100%); margin: 0 auto; display: grid; gap: 16px;
+  padding: 18px max(16px, env(safe-area-inset-right)) 24px max(16px, env(safe-area-inset-left));
+}
+.in-saludo { padding: 10px 2px 2px; }
+.in-fecha { margin: 0; color: var(--ink-soft); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.in-saludo h1 { margin: 4px 0 0; font-family: "Cormorant Garamond", serif; font-size: clamp(2.4rem, 9vw, 3.2rem); line-height: 1; letter-spacing: -.02em; }
+.in-saludo p:last-child { margin: 8px 0 0; color: var(--ink-soft); }
+
+.in-tarjeta { padding: 20px; border: 1px solid var(--line); border-radius: 24px; background: #fff; box-shadow: var(--shadow-sm); }
+.in-etiqueta { margin: 0; color: var(--blue); font-size: .7rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+.in-etiqueta-sec { color: var(--ink-soft); font-weight: 600; letter-spacing: .04em; text-transform: none; }
+.in-etiqueta-sec:not(:empty)::before { content: "· "; }
+.in-oracion h2 { margin: 12px 0 0; font-family: "Cormorant Garamond", serif; font-size: clamp(1.9rem, 7vw, 2.4rem); line-height: 1.05; }
+.in-oracion .odd-texto { font-size: 1.24rem; }
+.in-enlace { display: inline-block; margin-top: 16px; color: var(--blue); font-weight: 800; font-size: .92rem; text-decoration: none; }
+.in-enlace:hover { text-decoration: underline; }
+
+/* Una luz para hoy */
+.in-luz { background: radial-gradient(circle at 92% 8%, rgba(224, 170, 43, .2), transparent 55%), #fff; }
+.in-luz-texto { margin: 10px 0 0; font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-style: italic; line-height: 1.3; }
+.in-luz-texto.is-nueva { animation: inLuz .35s ease; }
+@keyframes inLuz { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.in-luz-otra {
+  margin-top: 12px; min-height: 38px; padding: 0 14px; border: 1px solid rgba(224, 170, 43, .55); border-radius: 999px;
+  background: #fffaf0; color: #7a5a13; font-weight: 800; font-size: .84rem; cursor: pointer;
+}
+
+/* Puertas */
+.in-puertas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.in-puerta {
+  display: flex; flex-direction: column; gap: 4px; min-height: 150px; padding: 18px 16px; border: 1px solid var(--line);
+  border-radius: 22px; background: #fff; box-shadow: var(--shadow-sm); color: var(--ink); text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+a.in-puerta:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+a.in-puerta:active { transform: scale(.98); }
+.in-puerta-icono { font-size: 1.7rem; line-height: 1; margin-bottom: 6px; }
+.in-puerta strong { font-size: 1.02rem; line-height: 1.2; }
+.in-puerta small { color: var(--ink-soft); font-size: .8rem; line-height: 1.35; }
+.in-grupo { grid-column: 1 / -1; min-height: 0; }
+.in-puertas > .in-puerta:first-child { grid-column: 1 / -1; min-height: 0; }
+.in-codigo { display: flex; gap: 8px; margin-top: 10px; }
+.in-codigo input {
+  flex: 1; min-width: 0; min-height: 48px; padding: 0 12px; border: 2px solid var(--line); border-radius: 14px;
+  background: var(--cream); color: var(--ink); font: 800 1.25rem/1 Inter, sans-serif; letter-spacing: .26em; text-align: center; text-transform: uppercase; outline: none;
+}
+.in-codigo input:focus { border-color: var(--blue); background: #fff; }
+.in-codigo button { min-height: 48px; padding: 0 18px; border: 0; border-radius: 14px; background: var(--blue); color: #fff; font-weight: 800; cursor: pointer; }
+
+/* Instalar (se oculta cuando ya está abierta como app) */
+.in-instalar h2 { margin: 8px 0 0; font-family: "Cormorant Garamond", serif; font-size: 1.7rem; line-height: 1.1; }
+.in-instalar p { margin: 10px 0 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.55; }
+.in-instalar a { color: var(--blue); font-weight: 800; }
+.in-icono-compartir { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; border: 1px solid var(--line); color: #1a73e8; vertical-align: middle; }
+.in-boton { min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--blue); color: #fff; font-weight: 800; cursor: pointer; }
+.in-instalar-otros { display: none; }
+html:not([data-plataforma="ios"]) .in-instalar-ios { display: none; }
+html:not([data-plataforma="ios"]) .in-instalar-otros { display: block; }
+.es-app .in-instalar { display: none; }
+
+/* Descubre */
+.in-mas { padding: 4px 2px; }
+.in-mas h2 { margin: 6px 0 8px; font-family: "Cormorant Garamond", serif; font-size: 1.6rem; }
+.in-mas ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.in-mas li { border-bottom: 1px solid var(--line); }
+.in-mas a { display: flex; justify-content: space-between; padding: 13px 2px; color: var(--ink); font-weight: 700; text-decoration: none; }
+.in-mas a::after { content: "→"; color: var(--blue); }
+
+/* Pie */
+.in-pie { padding: 8px 16px calc(24px + env(safe-area-inset-bottom)); color: var(--ink-soft); font-size: .8rem; text-align: center; }
+.in-pie p { margin: 4px 0; }
+.in-pie a, .in-compartir { color: var(--ink-soft); font-weight: 700; }
+.in-compartir { padding: 0; border: 0; background: none; font: inherit; text-decoration: underline; cursor: pointer; }
+
+@media (min-width: 720px) {
+  .in-main { padding-top: 32px; gap: 20px; }
+  .in-tarjeta { padding: 26px 28px; }
+  .in-puertas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .in-puertas > .in-puerta:first-child { grid-column: auto; min-height: 150px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .in-puerta, .in-luz-texto.is-nueva { transition: none; animation: none; }
+}

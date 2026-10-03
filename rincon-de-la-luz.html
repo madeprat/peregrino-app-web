@@ -2,11 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Peregrino">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Rincón de la Luz | Peregrino APP</title>
-  <meta name="description" content="Enciende una velita, regala una oración, recibe una luz y deja tu intención en el Rincón de la Luz de Peregrino.">
+  <meta name="description" content="Enciende una velita en el Rincón de la Luz de Peregrino: pon ante Dios a una persona o una intención y reza una oración breve.">
   <meta name="theme-color" content="#fffaf0">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/rincon-v2.css"><link rel="stylesheet" href="assets/edicion-v1.css">
+  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/rincon-v3.css"><link rel="stylesheet" href="assets/edicion-v1.css">
   <link rel="icon" href="assets/peregrino-app-icon.png">
   <script src="assets/idioma-v1.js"></script>
 
@@ -40,103 +46,47 @@
   
       <div id="google_translate_element"></div>
   </header>
-<main id="contenido">
-  <section class="page-hero">
-    <div class="shell page-hero-grid">
-      <div class="reveal">
-        <p class="eyebrow">Oración que se regala</p>
-        <h1>Un patio de luz <em>para compartir.</em></h1>
-        <p class="lead">Aquí no se compra una oración ni se compite por atención. Se enciende una luz, se comparte una intención y se ofrece una palabra buena.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#velita">Encender una velita</a><a class="button button-quiet" href="#regalar">Regalar una oración</a></div>
+<main id="contenido" class="rincon">
+  <section class="velita-escena">
+    <div class="shell velita-grid">
+      <div class="velita-intro reveal">
+        <p class="eyebrow">Rincón de la Luz</p>
+        <h1>Enciende una velita <em>y reza.</em></h1>
+        <p class="lead">Un momento para poner ante Dios a una persona o lo que llevas dentro. Elige por quién rezas, enciende la vela y reza una oración breve.</p>
+        <p class="velita-privado"><span aria-hidden="true">🔒</span> Lo que escribas no sale de tu dispositivo: queda entre tú y Dios.</p>
       </div>
-      <aside class="hero-card rincon-hero-card reveal">
-        <div class="hero-card-symbol">🕯️</div>
-        <h2>Recibir, ofrecer, acompañar</h2>
-        <p>Cinco experiencias sencillas reunidas en un espacio más luminoso y ordenado.</p>
-        <div class="steps-row"><span>Sin rankings</span><span>Sin seguimiento</span><span>Con delicadeza</span></div>
-      </aside>
+
+      <div class="velita-panel reveal" id="velita">
+        <div id="velitaElegir">
+          <h2>¿Por quién o por qué la enciendes?</h2>
+          <div class="velita-temas" id="velitaTemas" role="group" aria-label="Intenciones"></div>
+          <label class="velita-label" for="velitaPropia">O escríbelo con tus palabras</label>
+          <input class="velita-input" id="velitaPropia" maxlength="80" autocomplete="off" placeholder="Por mi madre, por un examen, por la paz…">
+          <button class="button button-primary velita-encender" id="velitaEncender" type="button" disabled>Encender la velita</button>
+        </div>
+
+        <div class="velita-encendida" id="velitaEncendida" hidden>
+          <div class="vela" aria-hidden="true"><span class="vela-halo"></span><span class="vela-llama"></span><span class="vela-mecha"></span><span class="vela-cirio"></span></div>
+          <p class="velita-por" id="velitaPor"></p>
+          <div class="velita-oracion" id="velitaOracion"></div>
+          <p class="velita-arde" id="velitaArde"></p>
+          <div class="action-row">
+            <a class="button button-whatsapp button-small" id="velitaWhats" target="_blank" rel="noopener">Invitar a alguien a rezar conmigo</a>
+            <button class="button button-quiet button-small" id="velitaOtra" type="button">Encender otra velita</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <div class="shell rincon-shortcuts reveal" aria-label="Accesos del Rincón">
-    <a class="rincon-shortcut" href="#velita"><span class="icon">🕯️</span><strong>Enciende una velita</strong><small>por una intención</small></a>
-    <a class="rincon-shortcut" href="#regalar"><span class="icon">🎁</span><strong>Regala una oración</strong><small>tarjeta personalizada</small></a>
-    <a class="rincon-shortcut" href="#azar"><span class="icon">✨</span><strong>Una luz al azar</strong><small>una palabra para hoy</small></a>
-    <a class="rincon-shortcut" href="#mes"><span class="icon">🌙</span><strong>Oración del mes</strong><small>recemos juntos</small></a>
-    <a class="rincon-shortcut" href="#muro"><span class="icon">▦</span><strong>Muro de intenciones</strong><small>deja la tuya</small></a>
-  </div>
-
   <section class="section section-white">
-    <div class="shell rincon-panels">
-      <section class="light-panel reveal" id="velita" style="--panel-accent:var(--red)">
-        <div class="light-panel-grid">
-          <div><span class="panel-label">🕯️ Velita</span><h2>Una pequeña luz por una gran intención</h2><p class="sub">Elige una causa y Peregrino prepara una oración breve, lista para compartir.</p></div>
-          <div>
-            <div class="opts" id="topicOptions"></div>
-            <div class="result" id="velitaResult">
-              <div class="gtitle">Velita encendida</div>
-              <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span class="flame">🕯️</span><strong id="velitaTitle"></strong></div>
-              <div class="gtext" id="velitaText"></div>
-              <div class="action-row"><button class="button button-quiet button-small" data-copy="velitaText">Copiar oración</button><a class="button button-whatsapp button-small" id="velitaWhats" target="_blank" rel="noopener">Compartir por WhatsApp</a></div>
-            </div>
-            <div class="give"><p>Cada velita se ofrece gratuitamente.</p><a class="button button-gold button-small" href="https://paypal.me/ingresoucha?locale.x=es_ES&country.x=ES" target="_blank" rel="noopener">Sostener el proyecto</a></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="light-panel member-panel reveal" id="regalar" style="--panel-accent:var(--violet)">
-        <div class="light-panel-grid">
-          <div>
-            <h2>Un nombre basta</h2>
-            <p class="sub">Escribe el nombre de la persona, elige el tono y envíale una tarjeta con una oración. Es gratis y quien la recibe no necesita instalar nada.</p>
-          </div>
-          <div>
-            <label for="nombreRegalo">Nombre o alias de la persona</label>
-            <input class="input" id="nombreRegalo" maxlength="34" placeholder="Ana, mamá, una amiga...">
-            <div class="hint">Evita apellidos o datos íntimos.</div>
-            <h3 style="margin:18px 0 8px;font-family:'Cormorant Garamond',serif;font-size:1.55rem">Elige el tono</h3>
-            <div class="opts" id="toneOptions"></div>
-            <div class="action-row"><button class="button button-primary" id="crearTarjeta" type="button">Crear tarjeta para enviar</button></div>
-            <div class="result" id="tarjetaResult">
-              <div class="gtitle">Tarjeta lista</div><div class="gtext" id="tarjetaPreview"></div>
-              <div class="action-row"><a class="button button-primary button-small" id="verTarjeta" target="_blank" rel="noopener">Ver tarjeta</a><a class="button button-whatsapp button-small" id="tarjetaWhats" target="_blank" rel="noopener">Enviar por WhatsApp</a></div>
-            </div>
-            <div class="give"><p>Regalar oraciones es gratis. Si quieres, puedes apoyar el proyecto con una aportación voluntaria.</p><a class="button button-gold button-small" href="https://paypal.me/ingresoucha?locale.x=es_ES&country.x=ES" target="_blank" rel="noopener">Apoyar Peregrino</a></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="light-panel reveal" id="azar" style="--panel-accent:var(--violet)">
-        <div class="light-panel-grid">
-          <div><span class="panel-label">✨ Luz al azar</span><h2>Recibe una palabra que no esperabas</h2><p class="sub">Pulsa la luz y recibe una frase breve para detenerte un momento.</p></div>
-          <div class="azar-stage">
-            <button class="lamp" id="lamp" aria-label="Encender una luz al azar">✨</button>
-            <div class="azar-text" id="azarText">Pulsa la luz…</div>
-            <div class="action-row" id="azarActions" style="display:none;justify-content:center"><button class="button button-quiet button-small" data-copy="azarText">Copiar</button><a class="button button-whatsapp button-small" id="azarWhats" target="_blank" rel="noopener">Compartir</a><button class="button button-primary button-small" id="otraLuz">Otra luz</button></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="light-panel reveal" id="mes" style="--panel-accent:var(--green)">
-        <div class="light-panel-grid">
-          <div><span class="panel-label">🌙 Oración del mes</span><h2 id="monthLabel">Oración de este mes</h2><p class="sub">Cada mes encomendamos a quienes sostienen Peregrino, a sus familias y a las intenciones que llevan en el corazón.</p></div>
-          <div>
-            <div class="gtext" id="monthlyText" style="background:var(--cream);border-radius:20px;padding:20px"></div>
-            <div class="action-row"><button class="button button-green" id="unirmeMes">Me uno a esta oración</button><button class="button button-quiet button-small" data-copy="monthlyText">Copiar</button><a class="button button-whatsapp button-small" id="monthlyWhats" target="_blank" rel="noopener">Compartir</a></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="light-panel reveal" id="muro" style="--panel-accent:var(--blue)">
-        <div class="light-panel-grid">
-          <div><span class="panel-label">▦ Muro de intenciones</span><h2>Deja tu luz en el muro</h2><p class="sub">Sin importes, rankings ni comparaciones. Puedes usar un alias o permanecer en el anonimato.</p></div>
-          <div>
-            <label for="aliasMuro">Tu intención o alias</label><input class="input" id="aliasMuro" maxlength="40" placeholder="Por mi familia, una amiga en camino...">
-            <div class="action-row"><button class="button button-primary button-small" id="guardarAlias">Pegar en el muro</button><button class="button button-quiet button-small" id="aliasAnonimo">Prefiero anónimo</button></div>
-            <div class="wall" id="wallNames"></div>
-          </div>
-        </div>
-      </section>
+    <div class="shell">
+      <div class="rincon-mas reveal">
+        <a class="rincon-mas-tarjeta" href="regalo-de-oracion.html"><span aria-hidden="true">💌</span><strong>Regala una oración</strong><small>Escribe un nombre y envíale una tarjeta con una oración.</small></a>
+        <a class="rincon-mas-tarjeta" href="inicio.html"><span aria-hidden="true">☀️</span><strong>La oración del día</strong><small>Cada día una oración distinta, en tu idioma.</small></a>
+        <a class="rincon-mas-tarjeta" href="biblioteca-oraciones.html"><span aria-hidden="true">📖</span><strong>Biblioteca de oraciones</strong><small>Más de cien oraciones en cuatro idiomas.</small></a>
+      </div>
+      <div class="rincon-apoyo reveal"><p>Cada velita es gratis. Si quieres, puedes ayudar a sostener este proyecto.</p><a class="button button-gold button-small" href="https://paypal.me/ingresoucha?locale.x=es_ES&country.x=ES" target="_blank" rel="noopener">Sostener el proyecto</a></div>
     </div>
   </section>
 </main>
@@ -184,8 +134,7 @@
     </div>
     <div class="shell footer-bottom"><span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span><a href="#contenido">Volver arriba ↑</a></div>
   </footer>
-<div class="toast" id="toast">Copiado</div>
-<script src="assets/community-v2.js"></script><script src="assets/rincon-v2.js"></script>
+<script src="assets/community-v2.js"></script><script src="assets/rincon-v3.js"></script>
 
 
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

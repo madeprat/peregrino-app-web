@@ -160,3 +160,11 @@
 /* Sin importes: el precio se consulta en la app, en la moneda de cada país */
 .plan-price-text strong{font-family:Inter,system-ui,sans-serif;font-size:1.05rem;font-weight:800;line-height:1.3;color:var(--blue)}
 .featured .plan-price-text strong{color:#f3d179}
+
+/* Oración del mes por quienes sostienen Peregrino */
+.plans-oracion-mes{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,56px);align-items:center;padding:clamp(26px,5vw,46px);border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(145deg,#fff,#fbf5e8);box-shadow:var(--shadow-sm)}
+.plans-oracion-mes h2{margin:10px 0 12px;font-family:"Cormorant Garamond",serif;font-size:clamp(2.1rem,4vw,3.2rem);line-height:1;letter-spacing:-.03em}
+.plans-oracion-mes p{margin:0;color:var(--ink-soft)}
+.plans-oracion-texto{margin:0;padding:24px 26px;border-left:4px solid var(--gold);border-radius:0 22px 22px 0;background:#fff;font-family:"Cormorant Garamond",serif;font-size:1.32rem;line-height:1.5;white-space:pre-line;color:var(--ink)}
+.plans-oracion-texto span{display:block;margin-top:8px;color:#b8860b;font-style:italic}
+@media(max-width:860px){.plans-oracion-mes{grid-template-columns:minmax(0,1fr)}}
