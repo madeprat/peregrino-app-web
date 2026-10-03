@@ -9,21 +9,16 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Peregrino">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>Peregrino · La app del Cuarto Día</title>
-  <meta name="description" content="Peregrino es la app para vivir el Cuarto Día cada día: rezar, cuidar tu grupo y acompañar a otros. Lo esencial, gratis y también desde la web, en cuatro idiomas.">
+  <title>La app · Peregrino</title>
+  <meta name="description" content="Peregrino, la app del Cuarto Día: oración guiada y con voz, la Reunión de Grupo, candidatos y palancas. Gratis en Google Play; en iPhone, desde la web.">
   <meta name="theme-color" content="#fffaf0">
-  <meta property="og:title" content="Peregrino · La app del Cuarto Día">
-  <meta property="og:description" content="Peregrino es la app para vivir el Cuarto Día cada día: rezar, cuidar tu grupo y acompañar a otros. Lo esencial, gratis y también desde la web, en cuatro idiomas.">
+  <meta property="og:title" content="La app · Peregrino">
+  <meta property="og:description" content="Peregrino, la app del Cuarto Día: oración guiada y con voz, la Reunión de Grupo, candidatos y palancas. Gratis en Google Play; en iPhone, desde la web.">
   <meta property="og:image" content="https://tripodapp.prat-cas.com/og-peregrino-camino.jpg">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="assets/site-v2.css">
   <link rel="stylesheet" href="assets/revista-v1.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script>
-    // Abierta desde el icono de la pantalla de inicio: directamente al Inicio
-    // (si se llega desde otra página de la app, se queda en la portada).
-    if (((window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone) && !document.referrer) location.replace("inicio.html");
-  </script>
   <script>
     // Plataforma antes de pintar: decide qué acción va primero (Android: Google Play; resto: rezar en la web).
     (function () { var u = navigator.userAgent || ""; document.documentElement.dataset.plataforma = /iPhone|iPad|iPod/.test(u) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ? "ios" : /Android/i.test(u) ? "android" : "otra"; })();
@@ -46,7 +41,7 @@
 
   <header class="site-header">
     <div class="shell nav-shell">
-      <a class="brand" href="#inicio" aria-label="Peregrino APP, volver al inicio">
+      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
         <span class="brand-logo">
           <img
             src="assets/peregrino-app-icon.png"
@@ -70,7 +65,7 @@
 
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="inicio.html">Rezar</a>
-        <a href="la-app.html">La app</a>
+        <a href="la-app.html" aria-current="page">La app</a>
         <a href="descubre.html">Descubre</a>
         <a href="manifiesto.html">El proyecto</a>
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
@@ -79,22 +74,14 @@
     </div>
   </header>
 
-  <main id="contenido" class="revista portada">
+  <main id="contenido" class="revista">
 
-    <!-- PORTADA: UNA IDEA, UNA ACCIÓN -->
-    <section id="inicio" class="pt-hero" aria-labelledby="pt-titular">
-      <picture class="pt-hero-imagen">
-        <source media="(max-width: 760px)" srcset="assets/camino-movil.webp">
-        <img src="assets/camino-2000.webp" srcset="assets/camino-1200.webp 1200w, assets/camino-2000.webp 2000w" sizes="100vw"
-             width="2000" height="667" fetchpriority="high"
-             alt="Jesús camina con un grupo de peregrinos por un sendero entre olivos, hacia una ciudad llena de luz">
-      </picture>
-      <div class="pt-hero-velo" aria-hidden="true"></div>
-      <div class="rv-shell pt-hero-texto">
-        <p class="pt-marca">Peregrino · La app del Cuarto Día</p>
-        <h1 id="pt-titular">La fe se vive.<br><em>El camino se comparte.</em></h1>
-        <p class="pt-sub">Reza cada día, cuida tu grupo y acompaña a otros. Lo esencial, gratis.</p>
-      <div class="pt-accion">
+    <section class="rv-pagina" aria-labelledby="rv-pagina-titulo">
+      <div class="rv-shell">
+        <p class="rv-antetitulo">La app</p>
+        <h1 id="rv-pagina-titulo" class="rv-pagina-titulo">Peregrino, <em>la app del Cuarto Día</em></h1>
+        <p class="rv-seccion-entradilla">Oración guiada y con voz, sin conexión, tu Trípode de cada semana y la Reunión de Grupo paso a paso. Empieza gratis.</p>
+      <div class="pt-accion pt-accion-pagina">
         <div class="pt-accion-web">
           <a class="pt-boton" href="inicio.html">Empezar a rezar <span aria-hidden="true">→</span></a>
           <p class="pt-alt">Gratis y sin instalar nada. ¿iPhone? <a href="la-app.html#instalar">Añádela a tu pantalla de inicio</a>.</p>
@@ -108,77 +95,86 @@
       </div>
     </section>
 
-    <!-- QUÉ ES PERGRINO -->
-    <section class="pt-que" aria-labelledby="pt-que-titulo">
+    <!-- REPORTAJE: LA APP -->
+    <section id="tripode" class="rv-reportaje" aria-labelledby="rv-app-titulo">
+      <div class="rv-shell rv-reportaje-grid">
+        <div class="rv-reportaje-texto reveal">
+          <p class="rv-antetitulo">Lo que hace</p>
+          <h2 id="rv-app-titulo" class="rv-seccion-titulo">El Trípode, en tu bolsillo</h2>
+          <p class="rv-seccion-entradilla">Peregrino ordena tu día de fe sin ruido ni distracciones, y te acompaña cuando más lo necesitas.</p>
+
+          <dl class="rv-claves">
+            <div class="rv-piedad"><dt>Piedad</dt><dd>Rosario, Vía Crucis, Hora Apostólica y tus oraciones de siempre, para leer o escuchar.</dd></div>
+            <div class="rv-estudio"><dt>Estudio</dt><dd>Reunión de Grupo guiada: Tríptico, Plan Apostólico, temporizador y resumen.</dd></div>
+            <div class="rv-accion"><dt>Acción</dt><dd>Candidatos en oración y palancas para quien está viviendo su Cursillo.</dd></div>
+          </dl>
+
+          <div class="rv-acciones">
+            <a class="pt-badge" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play" width="646" height="250" loading="lazy" onerror="this.parentNode.classList.add(&#39;sin-imagen&#39;)"><span>Disponible en Google Play</span></a>
+            <a class="rv-enlace" href="plan-apostol.html">Comparar planes <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <figure class="rv-movil reveal">
+          <div class="rv-movil-marco">
+            <img src="assets/demo-fan-1.webp" width="390" height="844" loading="lazy"
+                 alt="Pantalla de inicio de Peregrino APP con el Trípode de la semana: Piedad, Estudio y Acción">
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- EN TU MÓVIL -->
+    <section id="instalar" class="rv-instalar" aria-labelledby="rv-instalar-titulo">
       <div class="rv-shell">
         <header class="rv-seccion-cabecera">
-          <p class="rv-antetitulo">Qué es Peregrino</p>
-          <h2 id="pt-que-titulo" class="rv-seccion-titulo">Tu Cuarto Día, <em>cada día</em></h2>
-          <p class="rv-seccion-entradilla">Un proyecto personal al servicio del Cuarto Día, ordenado como el Cursillo enseña a vivirlo: con Piedad, Estudio y Acción.</p>
+          <p class="rv-antetitulo">En tu móvil</p>
+          <h2 id="rv-instalar-titulo" class="rv-seccion-titulo">Peregrino, <em>a un toque</em></h2>
+          <p class="rv-seccion-entradilla">Añade Peregrino a la pantalla de inicio y ábrelo como una app más: la oración del día, la Biblioteca, rezar en grupo, la velita y las oraciones para regalar. Gratis y sin registrarte.</p>
         </header>
-        <div class="pt-tripode">
-          <a class="pt-pata rv-piedad reveal" href="inicio.html">
-            <span class="pt-pata-nombre">Piedad</span>
-            <strong>Rezar cada día</strong>
-            <span class="pt-pata-texto">La oración del día, la Biblioteca en cuatro idiomas, rezar en grupo, encender una velita y regalar una oración.</span>
-            <span class="pt-pata-ir">Empezar a rezar <span aria-hidden="true">→</span></span>
-          </a>
-          <a class="pt-pata rv-estudio reveal" href="descubre.html#estudio">
-            <span class="pt-pata-nombre">Estudio</span>
-            <strong>Conocer y formarse</strong>
-            <span class="pt-pata-texto">Qué es el Movimiento de Cursillos, la Reunión de Grupo y cómo sacar partido a la app.</span>
-            <span class="pt-pata-ir">Descubrir <span aria-hidden="true">→</span></span>
-          </a>
-          <a class="pt-pata rv-accion reveal" href="descubre.html#accion">
-            <span class="pt-pata-nombre">Acción</span>
-            <strong>Llevar a otros</strong>
-            <span class="pt-pata-texto">Cursillos de todo el mundo, palancas e invitaciones para acercar a alguien a vivir un Cursillo.</span>
-            <span class="pt-pata-ir">Descubrir <span aria-hidden="true">→</span></span>
-          </a>
+
+        <div class="rv-instalar-grid">
+          <article class="rv-instalar-caso reveal" data-plataforma="ios">
+            <p class="rv-etiqueta">iPhone y iPad</p>
+            <h3>Añádela a tu pantalla de inicio</h3>
+            <ol class="rv-pasos">
+              <li>Abre esta web en <strong>Safari</strong>.</li>
+              <li>Pulsa <strong>Compartir</strong> <span class="rv-icono-compartir" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></span>, abajo en la pantalla.</li>
+              <li>Elige <strong>«Añadir a pantalla de inicio»</strong> y pulsa <strong>Añadir</strong>.</li>
+            </ol>
+            <p class="rv-instalar-nota">La app de Peregrino para iPhone está en camino. Mientras tanto, lo esencial ya lo tienes aquí.</p>
+          </article>
+
+          <article class="rv-instalar-caso reveal" data-plataforma="android">
+            <p class="rv-etiqueta">Android</p>
+            <h3>La app completa, en Google Play</h3>
+            <p>Con voz, sin conexión, tu Trípode y la Reunión de Grupo guiada.</p>
+            <a class="pt-badge" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play" width="646" height="250" loading="lazy" onerror="this.parentNode.classList.add(&#39;sin-imagen&#39;)"><span>Disponible en Google Play</span></a>
+            <p class="rv-instalar-nota">¿Prefieres solo la web? <button class="rv-instalar-boton" type="button" data-instalar hidden>Instalarla ahora</button><span data-instalar-manual>Menú <strong>⋮</strong> del navegador → <strong>Instalar aplicación</strong>.</span></p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- REZA EN TU IDIOMA -->
-    <section id="rezar" class="rv-idiomas" aria-labelledby="rv-idiomas-titulo">
-      <div class="rv-shell">
-        <header class="rv-seccion-cabecera">
-          <p class="rv-antetitulo">Biblioteca de oraciones</p>
-          <h2 id="rv-idiomas-titulo" class="rv-seccion-titulo">Una misma oración, <em>cuatro idiomas</em></h2>
-          <p class="rv-seccion-entradilla">Más de cien oraciones de la tradición católica, preparadas una a una en español, latín, portugués e inglés. Se rezan aquí mismo, desde cualquier móvil u ordenador, también en iPhone, sin instalar nada y sin registrarte. La app todavía se está traduciendo; la oración ya habla tu idioma.</p>
-        </header>
-
-        <ol class="rv-idiomas-lista notranslate" translate="no">
-          <li class="reveal"><a href="biblioteca-oraciones.html#rezar/biblioteca-padre-nuestro/es" lang="es"><span class="rv-idioma-sigla">ES</span><span class="rv-idioma-nombre">Español</span><span class="rv-idioma-verso">Padre nuestro, que estás en el cielo, santificado sea tu Nombre…</span></a></li>
-          <li class="reveal"><a href="biblioteca-oraciones.html#rezar/biblioteca-padre-nuestro/pt" lang="pt"><span class="rv-idioma-sigla">PT</span><span class="rv-idioma-nombre">Português</span><span class="rv-idioma-verso">Pai nosso, que estais nos céus, santificado seja o vosso nome…</span></a></li>
-          <li class="reveal"><a href="biblioteca-oraciones.html#rezar/biblioteca-padre-nuestro/en" lang="en"><span class="rv-idioma-sigla">EN</span><span class="rv-idioma-nombre">English</span><span class="rv-idioma-verso">Our Father, who art in heaven, hallowed be thy name…</span></a></li>
-          <li class="reveal"><a href="biblioteca-oraciones.html#rezar/biblioteca-padre-nuestro/la" lang="la"><span class="rv-idioma-sigla">LA</span><span class="rv-idioma-nombre">Latina</span><span class="rv-idioma-verso">Pater noster, qui es in cælis, sanctificétur nomen tuum…</span></a></li>
-        </ol>
-
-        <div class="rv-acciones">
-          <a class="rv-boton rv-boton-claro" href="biblioteca-oraciones.html">Abrir la Biblioteca <span aria-hidden="true">→</span></a>
-          <a class="rv-enlace" href="sala/">¿Tienes un código? Reza en grupo <span aria-hidden="true">→</span></a>
+    <!-- COMUNIDADES Y PLANES -->
+    <section id="planes" class="rv-comunidad" aria-labelledby="rv-comunidad-titulo">
+      <div class="rv-shell rv-comunidad-grid">
+        <div class="reveal">
+          <p class="rv-antetitulo">Para parroquias y Ultreyas</p>
+          <h2 id="rv-comunidad-titulo" class="rv-seccion-titulo">Peregrino para todo tu grupo</h2>
+          <p class="rv-seccion-entradilla">Con el Plan Comunidad regaláis el plan Bordón a todos vuestros miembros: un pago único y un enlace para cada persona.</p>
+          <a class="rv-enlace" href="plan-apostol.html#comunidad">Conocer el Plan Comunidad <span aria-hidden="true">→</span></a>
         </div>
-      </div>
-    </section>
-
-    <!-- CIERRE -->
-    <section class="rv-contraportada pt-cierre" aria-labelledby="rv-final">
-      <div class="rv-shell">
-        <h2 id="rv-final">Tu Cuarto Día continúa.</h2>
-        <p>Una ayuda pequeña para un camino que dura toda la vida.</p>
-      <div class="pt-accion pt-accion-clara">
-        <div class="pt-accion-web">
-          <a class="pt-boton" href="inicio.html">Empezar a rezar <span aria-hidden="true">→</span></a>
-          <p class="pt-alt">Gratis y sin instalar nada. ¿iPhone? <a href="la-app.html#instalar">Añádela a tu pantalla de inicio</a>.</p>
-          <a class="pt-badge pt-badge-peq" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play" width="646" height="250" loading="lazy" onerror="this.parentNode.classList.add('sin-imagen')"><span>Disponible en Google Play</span></a>
+        <div class="rv-planes reveal" aria-label="Planes personales">
+          <p class="rv-etiqueta">Planes personales</p>
+          <ol>
+            <li><strong>Gratis</strong><span>Lo esencial</span></li>
+            <li><strong>Palmero</strong><span>Oración guiada</span></li>
+            <li><strong>Bordón</strong><span>Constancia y amistad</span></li>
+            <li><strong>Apóstol</strong><span>Experiencia completa</span></li>
+          </ol>
+          <a class="rv-mas" href="plan-apostol.html">Qué incluye cada plan <span aria-hidden="true">→</span></a>
         </div>
-        <div class="pt-accion-android">
-          <a class="pt-badge" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play" width="646" height="250" onerror="this.parentNode.classList.add('sin-imagen')"><span>Disponible en Google Play</span></a>
-          <p class="pt-alt">o <a href="inicio.html">reza ahora desde la web</a>, sin instalar nada.</p>
-        </div>
-      </div>
-        <p class="rv-colores">¡De Colores! 🌈</p>
       </div>
     </section>
 
@@ -187,7 +183,7 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div class="footer-brand">
-        <a class="brand brand-footer" href="#inicio">
+        <a class="brand brand-footer" href="index.html">
           <span class="brand-logo">
             <img
               src="assets/peregrino-app-icon.png"
@@ -237,7 +233,7 @@
 
     <div class="shell footer-bottom">
       <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
-      <a href="#inicio">Volver arriba ↑</a>
+      <a href="#contenido">Volver arriba ↑</a>
     </div>
   </footer>
 

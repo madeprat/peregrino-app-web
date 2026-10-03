@@ -6,7 +6,7 @@
 // - "Seguir descubriendo" al final: página anterior y siguiente, y vuelta a
 //   la lista completa de la portada.
 //
-// El orden es el de "Todo Peregrino" en index.html.
+// El orden es el de "Todo Peregrino" en descubre.html.
 (() => {
   "use strict";
 
@@ -29,6 +29,7 @@
   const OTRAS = {
     "manifiesto.html": "El proyecto",
     "plan-apostol.html": "Planes",
+    "la-app.html": "La app",
     "aviso-legal.html": "Información",
     "privacidad.html": "Información",
     "cookies.html": "Información",
@@ -63,7 +64,7 @@
   cabecera.append(crear("span", "ed-folio-marca", "Peregrino"), crear("span", "ed-folio-edicion", "La app del Cuarto Día"));
 
   const seccion = crear("a", "ed-folio-seccion");
-  seccion.href = "index.html#experiencias";
+  seccion.href = actual ? `descubre.html#${actual.seccion}` : "descubre.html";
   if (actual) {
     seccion.append(
       crear("span", "ed-folio-nombre", NOMBRES[actual.seccion]),
@@ -116,7 +117,7 @@
   }
 
   const volver = crear("a", "ed-seguir-indice", "Ver todo Peregrino");
-  volver.href = "index.html#experiencias";
+  volver.href = "descubre.html";
   caja.append(tarjetas, volver);
   bloque.append(caja);
 

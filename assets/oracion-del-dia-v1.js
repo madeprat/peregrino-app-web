@@ -102,7 +102,7 @@
   }
 
   // Solo lectura, como en la Biblioteca.
-  O.protect({ zone: raiz, isActive: () => false, appHref: raiz.dataset.appHref || "index.html#app" });
+  O.protect({ zone: raiz, isActive: () => false, appHref: raiz.dataset.appHref || "la-app.html" });
 
   if (!("fetch" in window)) return;
   const control = "AbortController" in window ? new AbortController() : null;

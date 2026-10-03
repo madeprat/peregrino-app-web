@@ -34,10 +34,10 @@
         </button>
 
         <nav id="peregrino-world-nav" class="peregrino-nav-links" aria-label="Navegación principal">
-          <a href="index.html#app">La app</a>
-          <a href="index.html#experiencias" aria-current="page">Oración y comunidad</a>
-          <a href="index.html#cursillo">Descubre el Cursillo</a>
-          <a href="index.html#proyecto">El proyecto</a>
+          <a href="inicio.html">Rezar</a>
+          <a href="la-app.html">La app</a>
+          <a href="descubre.html" aria-current="page">Descubre</a>
+          <a href="manifiesto.html">El proyecto</a>
           <a class="peregrino-nav-sala" href="sala/">Rezar en grupo</a>
           <a class="peregrino-nav-cta" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
           <div id="google_translate_element"></div>
