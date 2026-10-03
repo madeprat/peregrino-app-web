@@ -121,3 +121,5 @@ h1.title-sm{font-size:clamp(2rem,6.5vw,2.9rem);line-height:1.02;letter-spacing:-
 .next-step .next-title{margin:0;color:var(--ink);font-weight:800;font-size:1rem}
 .next-step .button{margin-top:14px}
 @media(max-width:460px){.next-step .button{width:100%}}
+.qr-sala{margin-top:18px}
+.rezo-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}

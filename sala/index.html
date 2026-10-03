@@ -57,6 +57,7 @@
       <div class="spinner" aria-hidden="true"></div>
       <p class="lead">Esperando a que comience <span data-guia>quien guía</span>…</p>
       <p class="note">Cuando empiece, tu pantalla seguirá la lectura automáticamente. Puedes dejar esta página abierta.</p>
+      <button class="button secondary small qr-sala" type="button" data-compartir data-compartir-titulo="Únete a esta oración">Mostrar QR de la sala</button>
     </section>
 
     <!-- 4. Rezando -->
@@ -77,6 +78,7 @@
 
       <div class="rezo-actions">
         <button class="button secondary small" type="button" id="btnEscuchar" hidden aria-pressed="false">🔈 Escuchar</button>
+        <button class="button secondary small" type="button" data-compartir data-compartir-titulo="Únete a esta oración">Mostrar QR</button>
       </div>
       <p class="status error" id="rezoError" hidden></p>
       <p class="hint">Es <span data-guia>quien guía</span> quien avanza la oración. No tienes que tocar nada.</p>
@@ -111,6 +113,7 @@
   </main>
 
   <script type="module" src="sala.js"></script>
+  <script src="../assets/compartir-v1.js" defer></script>
   <script src="../assets/iphone-v1.js" defer></script>
 </body>
 </html>
