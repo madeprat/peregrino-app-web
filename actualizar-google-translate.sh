@@ -5,7 +5,8 @@
 # 
 # Este script:
 # 1. Crea backups de todos los HTMLs
-# 2. Inserta el script de persistencia en el <head> de TODOS los archivos .html
+# 2. Inserta assets/idioma-v1.js en el <head> de TODOS los archivos .html
+#    (antes del traductor, que debe cargarse después)
 # 3. Te permite revertir si algo sale mal
 
 set -e
@@ -17,41 +18,9 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # El script a insertar
-SCRIPT_CONTENT='  <script>
-    (function() {
-      const savedLang = localStorage.getItem("gTranslateLang");
-      
-      if (savedLang && savedLang !== "es") {
-        window.addEventListener("load", function() {
-          setTimeout(function() {
-            const selectElement = document.querySelector(".goog-te-combo");
-            if (selectElement) {
-              selectElement.value = savedLang;
-              selectElement.dispatchEvent(new Event("change"));
-            }
-          }, 300);
-        });
-      }
-      
-      const observer = new MutationObserver(function() {
-        const selectElement = document.querySelector(".goog-te-combo");
-        if (selectElement) {
-          selectElement.removeEventListener("change", handleLanguageChange);
-          selectElement.addEventListener("change", handleLanguageChange);
-        }
-      });
-      
-      function handleLanguageChange(e) {
-        const selectedLang = e.target.value;
-        localStorage.setItem("gTranslateLang", selectedLang);
-      }
-      
-      observer.observe(document.documentElement, {
-        childList: true,
-        subtree: true
-      });
-    })();
-  </script>'
+# Toda la lógica de idioma vive en assets/idioma-v1.js (idioma del sistema en
+# la primera visita, preferencia entre páginas y botón para volver al español).
+SCRIPT_CONTENT='  <script src="assets/idioma-v1.js"></script>'
 
 echo -e "${YELLOW}🚀 Actualizando Google Translate en todos los HTMLs...${NC}\n"
 
@@ -79,7 +48,7 @@ for html_file in *.html; do
     temp_file="${html_file}.tmp"
     
     # Verificar si ya tiene el script (para evitar duplicados)
-    if grep -q "gTranslateLang" "$html_file"; then
+    if grep -q "idioma-v1.js" "$html_file"; then
       echo -e "${YELLOW}(ya tiene el script)${NC}"
       rm "$temp_file" 2>/dev/null || true
       continue

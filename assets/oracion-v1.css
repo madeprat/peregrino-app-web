@@ -1,0 +1,40 @@
+/* Oraciones de Peregrino: bloques de oración y aviso de solo lectura.
+   Compartido por la Biblioteca y la portada (assets/oracion-v1.js). */
+
+/* ---------- Bloques ---------- */
+.pb-text,.pb-said{white-space:pre-line}
+.pb-heading{margin:1.4em 0 .2em;font-family:inherit;font-size:.82em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.pb-rubric{color:#b23a48;font-style:italic;font-size:.86em}
+.pb-reference{color:var(--ink-soft);font-style:italic;font-size:.86em}
+.pb-silence{color:#a3acba;text-align:center;letter-spacing:.4em}
+.pb-line{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.55em;align-items:baseline}
+.pb-who{font-family:Inter,system-ui,sans-serif;font-size:.6em;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.pb-v .pb-who,.pb-r .pb-who{font-family:inherit;font-size:1.05em;color:#b23a48;text-transform:none}
+.pb-r .pb-said,.pb-all .pb-said{font-weight:700}
+.pb-number .pb-who{min-width:1.6em;font-size:.55em;color:var(--gold);text-align:right}
+.pb-choir-a{padding-left:.7em;border-left:3px solid rgba(23,63,122,.35)}
+.pb-choir-b{padding-left:.7em;border-left:3px solid rgba(224,170,43,.65)}
+.pb-choir-b .pb-said{color:#3d4a5f}
+.pb-antiphon .pb-who{color:var(--green)}
+
+/* ---------- Solo lectura ---------- */
+.solo-lectura,.solo-lectura *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.solo-lectura img{-webkit-user-drag:none;pointer-events:none}
+@media print{
+  .solo-lectura .reader-body,.solo-lectura .rv-oracion-texto{display:none!important}
+  .solo-lectura::after{content:"Las oraciones de Peregrino se rezan en la web o en la app: no se imprimen. ¡Gracias por apoyar el proyecto!";display:block;padding:2em;font:1rem/1.5 Inter,system-ui,sans-serif}
+}
+
+/* ---------- Aviso de gracias ---------- */
+.aviso-gracias{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:16px;background:rgba(16,43,85,.38);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);animation:avisoEntra .18s ease-out}
+.aviso-gracias[hidden]{display:none}
+.aviso-gracias-card{width:min(440px,100%);padding:26px 24px 22px;border-radius:24px;background:#fffaf0;color:#13243a;box-shadow:0 30px 80px rgba(16,43,85,.28);text-align:center;font-family:Inter,system-ui,sans-serif;-webkit-user-select:none;user-select:none}
+.aviso-gracias-icono{display:block;font-size:2.1rem;line-height:1}
+.aviso-gracias-card strong{display:block;margin:12px 0 8px;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.75rem;line-height:1.1}
+.aviso-gracias-card p{margin:0 0 10px;color:#42526a;font-size:.95rem;line-height:1.5}
+.aviso-gracias-acciones{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}
+.aviso-gracias-acciones button,.aviso-gracias-acciones a{min-height:44px;padding:0 18px;border-radius:14px;font:800 .92rem/44px Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.aviso-gracias-acciones button{border:0;background:var(--blue,#173f7a);color:#fff}
+.aviso-gracias-acciones a{border:1px solid rgba(23,63,122,.25);background:#fff;color:var(--blue,#173f7a)}
+@keyframes avisoEntra{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.aviso-gracias{animation:none}}

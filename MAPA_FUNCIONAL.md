@@ -20,7 +20,8 @@
 - Encender una velita.
 - Dejar una intención.
 - Recibir una luz.
-- Descargar una oración individual.
+- Rezar en la Biblioteca, en español, latín, portugués o inglés (solo lectura: sin copiar, guardar ni imprimir).
+- Oración del día en la portada, en el idioma de cada persona.
 - Recibir una tarjeta o invitación.
 
 ### Posible ventaja de miembro
@@ -58,6 +59,12 @@ Estas puertas deben permanecer abiertas para quien llega por primera vez.
 - Enlaces a una oración de la biblioteca (`biblioteca-oraciones.html#rezar/<id>/<idioma>`).
 - Formularios y fuentes de datos.
 - Páginas de confirmación y agradecimiento.
+
+## Idioma
+
+- La web está en español y se traduce con el traductor de Google (`assets/idioma-v1.js`).
+- En la primera visita se aplica el idioma del sistema de la persona; después manda lo que elija, y siempre hay un botón «ES Español» para volver al original.
+- Las oraciones nunca se traducen a máquina: se rezan en sus cuatro idiomas revisados (`assets/oracion-v1.js`), y quien no habla ninguno de ellos empieza en inglés o, si su lengua es cercana al español, en español.
 
 ## Navegación principal
 

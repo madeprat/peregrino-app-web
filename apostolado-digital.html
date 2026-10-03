@@ -11,41 +11,7 @@
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/discover-v2.css"><link rel="stylesheet" href="assets/edicion-v1.css">
   <link rel="icon" href="assets/peregrino-app-icon.png">
-  <script>
-    (function() {
-      const savedLang = localStorage.getItem("gTranslateLang");
-      
-      if (savedLang && savedLang !== "es") {
-        window.addEventListener("load", function() {
-          setTimeout(function() {
-            const selectElement = document.querySelector(".goog-te-combo");
-            if (selectElement) {
-              selectElement.value = savedLang;
-              selectElement.dispatchEvent(new Event("change"));
-            }
-          }, 300);
-        });
-      }
-      
-      const observer = new MutationObserver(function() {
-        const selectElement = document.querySelector(".goog-te-combo");
-        if (selectElement) {
-          selectElement.removeEventListener("change", handleLanguageChange);
-          selectElement.addEventListener("change", handleLanguageChange);
-        }
-      });
-      
-      function handleLanguageChange(e) {
-        const selectedLang = e.target.value;
-        localStorage.setItem("gTranslateLang", selectedLang);
-      }
-      
-      observer.observe(document.documentElement, {
-        childList: true,
-        subtree: true
-      });
-    })();
-  </script>
+  <script src="assets/idioma-v1.js"></script>
 
 </head>
 <body class="discover-page">
