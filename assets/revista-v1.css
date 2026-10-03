@@ -1,4 +1,4 @@
-/* Portada en formato revista: "Edición del Cuarto Día".
+/* Portada, «La app» y «Descubre».
    Se apoya en las variables y la cabecera/pie de site-v2.css. */
 
 .revista {
@@ -48,94 +48,6 @@
 .rv-enlace:hover, .rv-mas:hover { background-size: 100% 2px; }
 .rv-mas { display: inline-block; margin-top: 18px; font-size: .92rem; }
 
-/* ── Portada ───────────────────────────────────────────────────────── */
-.rv-portada { position: relative; padding: clamp(36px, 6vw, 70px) 0 0; overflow: hidden; }
-.rv-portada::before {
-  content: ""; position: absolute; inset: -20% -10% auto auto; width: 60vw; height: 60vw;
-  background: radial-gradient(circle, rgba(224, 170, 43, .22), transparent 62%); pointer-events: none;
-}
-.rv-portada-grid {
-  position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-  gap: clamp(28px, 5vw, 70px); align-items: center; padding-bottom: clamp(40px, 6vw, 70px);
-}
-.rv-fechero {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0;
-  padding: 0 0 14px; border-bottom: 1px solid var(--regla);
-  color: var(--ink-soft); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-}
-.rv-cabecera { font-family: var(--serif); font-size: 1.25rem; letter-spacing: .02em; text-transform: none; color: var(--ink); }
-.rv-fecha:first-letter { text-transform: uppercase; }
-.rv-sep { color: var(--gold); }
-.rv-compartir {
-  margin-left: auto; min-height: 30px; padding: 0 12px; border: 1px solid var(--regla); border-radius: 999px;
-  background: #fff; color: var(--ink); font: 800 .7rem Inter, system-ui, sans-serif; letter-spacing: .08em;
-  text-transform: uppercase; cursor: pointer;
-}
-.rv-compartir:hover { border-color: var(--blue); color: var(--blue); }
-.rv-titular {
-  margin: 30px 0 0; font-family: var(--serif); font-weight: 700;
-  font-size: clamp(3.4rem, 8.4vw, 7.4rem); line-height: .88; letter-spacing: -.045em; color: var(--ink);
-}
-.rv-titular em { font-style: italic; font-weight: 600; color: var(--blue); }
-.rv-entradilla {
-  max-width: 520px; margin: 26px 0 0; padding-left: 18px; border-left: 3px solid var(--gold);
-  color: var(--ink-soft); font-size: 1.12rem; line-height: 1.6;
-}
-.rv-principios { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 30px 0 0; padding: 0; list-style: none; }
-.rv-principios li { color: var(--ink-soft); font-size: .8rem; font-weight: 700; }
-.rv-principios li::before { content: "✦"; margin-right: 8px; color: var(--gold); }
-
-.rv-portada-foto { position: relative; margin: 0; }
-.rv-portada-foto img {
-  display: block; width: 100%; height: auto; max-height: 640px; aspect-ratio: 736 / 1000; object-fit: cover;
-  object-position: 50% 40%; border-radius: 6px 120px 6px 6px; box-shadow: 0 40px 90px rgba(14, 35, 71, .28);
-}
-.rv-portada-foto figcaption {
-  position: absolute; left: -26px; bottom: 34px; max-width: 250px; padding: 16px 18px;
-  background: #fff; border-radius: 4px; box-shadow: 0 20px 50px rgba(14, 35, 71, .18);
-  font-family: var(--serif); font-size: 1.2rem; font-style: italic; line-height: 1.25; color: var(--ink);
-}
-.rv-pie-etiqueta {
-  display: block; margin-bottom: 6px; font-family: Inter, system-ui, sans-serif; font-style: normal;
-  font-size: .62rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
-}
-.rv-decolores { display: grid; grid-template-columns: repeat(4, 1fr); height: 6px; }
-.rv-decolores span:nth-child(1) { background: var(--blue); }
-.rv-decolores span:nth-child(2) { background: var(--red); }
-.rv-decolores span:nth-child(3) { background: var(--gold); }
-.rv-decolores span:nth-child(4) { background: var(--green); }
-
-/* ── Hoy ───────────────────────────────────────────────────────────── */
-.rv-hoy { padding: clamp(56px, 8vw, 96px) 0; background: #fff; }
-.rv-hoy-grid {
-  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
-  margin-top: 34px;
-}
-.rv-hoy-grid > article { padding: 6px 30px 8px; border-left: 1px solid var(--regla); }
-.rv-hoy-grid > article:first-child { padding-left: 0; border-left: 0; }
-.rv-hoy-grid > article:last-child { padding-right: 0; }
-.rv-hoy-grid h3 {
-  margin: 12px 0 0; font-family: var(--serif); font-size: 1.85rem; line-height: 1.05; color: var(--ink);
-}
-.rv-hoy-grid p:not(.rv-etiqueta) { margin: 12px 0 0; color: var(--ink-soft); line-height: 1.6; }
-.rv-hoy-oracion h3 { font-size: clamp(2rem, 3.4vw, 2.7rem); }
-/* La tarjeta de la oración del día usa los estilos de oracion-v1.css (.odd-*). */
-.rv-hoy-grid .odd-texto p { margin: 0; color: var(--ink); line-height: inherit; }
-.rv-hoy-grid .odd-texto .odd-sigue { color: var(--ink-soft); }
-.rv-hoy-grid .odd-nota { margin-top: 6px; }
-.rv-codigo { display: flex; gap: 8px; margin-top: 18px; }
-.rv-codigo input {
-  flex: 1; min-width: 0; min-height: 50px; padding: 0 12px; border: 2px solid var(--regla); border-radius: 12px;
-  background: var(--papel); color: var(--noche); font: 800 1.3rem/1 Inter, sans-serif;
-  letter-spacing: .26em; text-align: center; text-transform: uppercase; outline: none;
-}
-.rv-codigo input:focus { border-color: var(--blue); background: #fff; }
-.rv-codigo button {
-  min-height: 50px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--noche); color: #fff;
-  font: 800 .92rem Inter, sans-serif; cursor: pointer;
-}
-.rv-codigo button:hover { background: var(--blue); }
-
 /* ── Reza en tu idioma ─────────────────────────────────────────────── */
 .rv-idiomas { padding: clamp(56px, 8vw, 100px) 0; background: var(--noche); color: #fff; }
 .rv-idiomas .rv-antetitulo { color: var(--gold); }
@@ -160,10 +72,6 @@
 .rv-idioma-nombre { margin-top: 14px; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: rgba(255, 255, 255, .7); }
 .rv-idioma-verso { margin-top: 8px; font-family: var(--serif); font-size: 1.4rem; font-style: italic; line-height: 1.3; }
 .rv-idiomas .rv-enlace { color: #fff; }
-
-/* ── Portada: iPhone ─────────────────────────────────────────────── */
-.rv-iphone { margin: 16px 0 0; color: var(--ink-soft); font-size: .92rem; }
-.rv-iphone a { color: var(--blue); font-weight: 800; }
 
 /* ── En tu móvil ───────────────────────────────────────────────────── */
 .rv-instalar { padding: clamp(56px, 8vw, 96px) 0; background: #fff; }
@@ -265,27 +173,105 @@ html[data-plataforma="android"] .rv-instalar-caso[data-plataforma="android"] { o
 .rv-contraportada p { margin: 16px 0 30px; color: rgba(255, 255, 255, .72); font-size: 1.08rem; }
 .rv-contraportada .rv-colores { margin: 30px 0 0; font-size: .9rem; }
 
+/* ── Portada: imagen a pantalla completa ────────────────────────── */
+.pt-hero {
+  position: relative; display: grid; align-items: end; min-height: calc(100svh - var(--header-h, 88px));
+  overflow: hidden; background: var(--noche); color: #fff; isolation: isolate;
+}
+.pt-hero-imagen, .pt-hero-imagen img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pt-hero-imagen { z-index: -2; }
+.pt-hero-imagen img { object-fit: cover; object-position: 22% 55%; }
+.pt-hero-velo {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(14, 35, 71, .82) 0%, rgba(14, 35, 71, .55) 38%, rgba(14, 35, 71, 0) 68%),
+    linear-gradient(0deg, rgba(14, 35, 71, .7) 0%, rgba(14, 35, 71, 0) 45%);
+}
+.pt-hero-texto { padding: clamp(60px, 10vh, 120px) 0 clamp(48px, 9vh, 96px); }
+.pt-marca { margin: 0; color: var(--gold); font-size: .74rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.pt-hero h1 {
+  max-width: 11ch; margin: 14px 0 0; font-family: var(--serif); font-weight: 700; color: #fff;
+  font-size: clamp(3.2rem, 7.4vw, 6.4rem); line-height: .92; letter-spacing: -.035em; text-shadow: 0 2px 30px rgba(0, 0, 0, .35);
+}
+.pt-hero h1 em { color: #ffe3a3; font-weight: 600; }
+.pt-sub { max-width: 34ch; margin: 22px 0 0; color: rgba(255, 255, 255, .88); font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.5; }
+
+/* Una sola acción: en Android, Google Play; en el resto, rezar en la web. */
+.pt-accion { margin-top: 30px; }
+.pt-accion-android { display: none; }
+html[data-plataforma="android"] .pt-accion-android { display: block; }
+html[data-plataforma="android"] .pt-accion-web { display: none; }
+.pt-boton {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 60px; padding: 0 32px; border-radius: 999px;
+  background: var(--gold); color: var(--noche); font-weight: 900; font-size: 1.08rem; text-decoration: none;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .28); transition: transform .2s, background .2s;
+}
+.pt-boton:hover { background: #f0c25a; transform: translateY(-2px); }
+.pt-alt { margin: 14px 0 0; color: rgba(255, 255, 255, .82); font-size: .92rem; }
+.pt-alt a { color: #fff; font-weight: 800; }
+.pt-badge { display: inline-block; line-height: 0; }
+.pt-badge img { height: 82px; width: auto; margin: -12px; }
+.pt-badge span { display: none; }
+.pt-badge-peq { margin-top: 18px; }
+.pt-badge-peq img { height: 58px; margin: -9px; }
+.pt-badge.sin-imagen img { display: none; }
+.pt-badge.sin-imagen span {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 12px;
+  background: #000; color: #fff; font: 800 .95rem/1 Inter, sans-serif; border: 1px solid rgba(255, 255, 255, .4);
+}
+.pt-accion-clara { display: flex; flex-direction: column; align-items: center; }
+.pt-accion-clara .pt-accion-web, .pt-accion-clara .pt-accion-android { text-align: center; }
+html[data-plataforma="android"] .pt-accion-clara .pt-accion-android { display: block; }
+
+/* ── Portada: qué es Peregrino ─────────────────────────────────────── */
+.pt-que { padding: clamp(56px, 8vw, 100px) 0; background: var(--papel); }
+.pt-que .rv-seccion-titulo em { color: var(--gold); }
+.pt-tripode { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 34px; }
+.pt-pata {
+  --color: var(--piedad); display: flex; flex-direction: column; gap: 6px; padding: 24px 22px 22px;
+  border-top: 6px solid var(--color); border-radius: 6px 6px 22px 22px; background: #fff; color: var(--ink);
+  text-decoration: none; box-shadow: 0 14px 34px rgba(31, 52, 81, .07); transition: transform .2s, box-shadow .2s;
+}
+.pt-pata.rv-estudio { --color: var(--estudio); }
+.pt-pata.rv-accion { --color: var(--accion); }
+.pt-pata:hover { transform: translateY(-3px); box-shadow: 0 22px 50px rgba(31, 52, 81, .12); }
+.pt-pata-nombre { font-family: var(--serif); font-size: 2.3rem; font-weight: 700; line-height: 1; color: var(--color); }
+.pt-pata strong { font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.pt-pata-texto { margin-top: 8px; color: var(--ink-soft); line-height: 1.55; }
+.pt-pata-ir { margin-top: auto; padding-top: 14px; color: var(--color); font-weight: 800; }
+.pt-cierre .pt-accion { margin-top: 0; }
+
+/* ── Páginas «La app» y «Descubre» ─────────────────────────────────── */
+.rv-pagina { padding: clamp(46px, 7vw, 90px) 0 clamp(36px, 5vw, 60px); background: var(--noche); color: #fff; }
+.rv-pagina .rv-antetitulo { color: var(--gold); }
+.rv-pagina-titulo { margin: 12px 0 0; font-family: var(--serif); font-weight: 700; font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: .95; letter-spacing: -.03em; }
+.rv-pagina-titulo em { color: #ffe3a3; font-weight: 600; }
+.rv-pagina .rv-seccion-entradilla { color: rgba(255, 255, 255, .8); }
+.rv-indice-pagina { padding-top: clamp(30px, 5vw, 60px); }
+.rv-indice-pagina .rv-tripode { margin-top: 0; }
+.rv-instalar-caso .pt-badge { margin-top: 18px; }
+.rv-reportaje-texto .pt-badge { margin-top: 30px; }
+
 /* ── Adaptación a pantallas ────────────────────────────────────────── */
 @media (max-width: 980px) {
-  .rv-portada-grid { grid-template-columns: minmax(0, 1fr); }
-  .rv-portada-foto { max-width: 460px; justify-self: center; width: 100%; }
-  .rv-portada-foto img { aspect-ratio: 4 / 5; }
-  .rv-hoy-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); row-gap: 34px; }
-  .rv-hoy-oracion { grid-column: 1 / -1; padding: 0 0 30px !important; border-bottom: 1px solid var(--regla); }
-  .rv-hoy-grupo { padding-left: 0 !important; border-left: 0 !important; }
+  .pt-tripode { grid-template-columns: minmax(0, 1fr); }
   .rv-tripode { grid-template-columns: minmax(0, 1fr); }
   .rv-idiomas-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rv-instalar-grid { grid-template-columns: minmax(0, 1fr); }
   .rv-reportaje-grid, .rv-comunidad-grid { grid-template-columns: minmax(0, 1fr); }
 }
+@media (max-width: 760px) {
+  .pt-hero { min-height: 0; align-items: stretch; grid-template-rows: auto auto; }
+  .pt-hero-imagen { position: relative; inset: auto; height: auto; }
+  .pt-hero-imagen img { position: relative; height: auto; aspect-ratio: 3 / 2; object-position: 50% 50%; }
+  .pt-hero-velo { display: none; }
+  .pt-hero-imagen::after { content: ""; position: absolute; inset: auto 0 -1px 0; height: 45%; background: linear-gradient(0deg, var(--noche) 0%, rgba(14, 35, 71, 0) 100%); }
+  .pt-hero-texto { padding: 6px 0 44px; }
+  .pt-hero h1 { max-width: none; font-size: clamp(2.7rem, 12vw, 3.6rem); }
+  .pt-boton { width: 100%; justify-content: center; }
+}
 @media (max-width: 640px) {
-  .rv-titular { margin-top: 22px; }
-  .rv-entradilla { font-size: 1.02rem; }
   .rv-boton { width: 100%; justify-content: center; }
-  .rv-portada-foto figcaption { left: 12px; right: 12px; bottom: 14px; max-width: none; }
-  .rv-hoy-grid { grid-template-columns: minmax(0, 1fr); }
-  .rv-hoy-grid > article { padding: 0 0 28px !important; border-left: 0 !important; border-bottom: 1px solid var(--regla); }
-  .rv-hoy-grid > article:last-child { border-bottom: 0; }
   .rv-claves > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .rv-idiomas-lista { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .rv-idiomas-lista a { padding: 16px 18px 18px; }
@@ -296,5 +282,12 @@ html[data-plataforma="android"] .rv-instalar-caso[data-plataforma="android"] { o
   .rv-movil-marco img { border-radius: 31px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .rv-boton, .rv-lista a, .rv-lista a::after, .rv-enlace, .rv-mas, .rv-idiomas-lista a { transition: none; }
+  .rv-boton, .rv-lista a, .rv-lista a::after, .rv-enlace, .rv-mas, .rv-idiomas-lista a, .pt-boton, .pt-pata { transition: none; }
+}
+
+/* Cierre de la portada: la misma imagen, para cerrar el camino. */
+.pt-cierre {
+  background:
+    linear-gradient(0deg, rgba(14, 35, 71, .92), rgba(14, 35, 71, .72)),
+    url("camino-1200.webp") 22% 60% / cover no-repeat;
 }

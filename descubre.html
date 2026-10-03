@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Peregrino">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Descubre · Peregrino</title>
+  <meta name="description" content="Todo Peregrino ordenado según el Trípode del Cursillo: rezar, conocer y formarse, y llevar a otros.">
+  <meta name="theme-color" content="#fffaf0">
+  <meta property="og:title" content="Descubre · Peregrino">
+  <meta property="og:description" content="Todo Peregrino ordenado según el Trípode del Cursillo: rezar, conocer y formarse, y llevar a otros.">
+  <meta property="og:image" content="https://tripodapp.prat-cas.com/og-peregrino-camino.jpg">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="assets/site-v2.css">
+  <link rel="stylesheet" href="assets/revista-v1.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    // Plataforma antes de pintar: decide qué acción va primero (Android: Google Play; resto: rezar en la web).
+    (function () { var u = navigator.userAgent || ""; document.documentElement.dataset.plataforma = /iPhone|iPad|iPod/.test(u) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ? "ios" : /Android/i.test(u) ? "android" : "otra"; })();
+  </script>
+  <script src="assets/idioma-v1.js"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
+  }
+</script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <div class="decolores-line" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="site-header">
+    <div class="shell nav-shell">
+      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+        <span class="brand-logo">
+          <img
+            src="assets/peregrino-app-icon.png"
+            alt=""
+            width="56"
+            height="56"
+            onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+          >
+          <span class="brand-fallback" hidden aria-hidden="true">P</span>
+        </span>
+        <span class="brand-copy">
+          <strong>Peregrino</strong>
+          <small>El Cuarto Día, vivo cada día</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="inicio.html">Rezar</a>
+        <a href="la-app.html">La app</a>
+        <a href="descubre.html" aria-current="page">Descubre</a>
+        <a href="manifiesto.html">El proyecto</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+        <div id="google_translate_element"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="revista">
+
+    <section class="rv-pagina" aria-labelledby="rv-pagina-titulo">
+      <div class="rv-shell">
+        <p class="rv-antetitulo">Todo Peregrino</p>
+        <h1 id="rv-pagina-titulo" class="rv-pagina-titulo">Piedad, Estudio <em>y Acción</em></h1>
+        <p class="rv-seccion-entradilla">Todo lo que encontrarás en Peregrino, agrupado según el Trípode con el que el Cursillo enseña a vivir el Cuarto Día: rezar, formarse y llevar a otros.</p>
+      </div>
+    </section>
+
+    <!-- ÍNDICE -->
+    <section id="experiencias" class="rv-indice rv-indice-pagina" aria-label="Todo Peregrino">
+      <div class="rv-shell">
+
+        <div class="rv-tripode">
+          <div class="rv-pata rv-piedad reveal" id="piedad">
+            <p class="rv-pata-nombre">Piedad</p>
+            <p class="rv-pata-lema">Rezar cada día</p>
+            <ol class="rv-lista" start="1">
+              <li><a href="biblioteca-oraciones.html"><span class="rv-num">01</span><span><strong>Biblioteca de oraciones</strong><small>Más de cien oraciones en español, latín, portugués e inglés, para rezar aquí mismo.</small></span></a></li>
+              <li><a href="sala/"><span class="rv-num">02</span><span><strong>Rezar en grupo</strong><small>Sigue en directo la oración que guía otra persona.</small></span></a></li>
+              <li><a href="rincon-de-la-luz.html"><span class="rv-num">03</span><span><strong>Rincón de la Luz</strong><small>Enciende una velita y pon ante Dios una intención.</small></span></a></li>
+              <li><a href="regalo-de-oracion.html"><span class="rv-num">04</span><span><strong>Regala una oración</strong><small>Escribe un nombre y envíale una tarjeta con una oración.</small></span></a></li>
+            </ol>
+          </div>
+
+          <div class="rv-pata rv-estudio reveal" id="estudio">
+            <p class="rv-pata-nombre">Estudio</p>
+            <p class="rv-pata-lema">Conocer y formarse</p>
+            <ol class="rv-lista" start="5">
+              <li><a href="que-es-el-mcc.html"><span class="rv-num">05</span><span><strong>Qué es el MCC</strong><small>El Movimiento de Cursillos, explicado con sencillez.</small></span></a></li>
+              <li><a href="reunion-de-grupo.html"><span class="rv-num">06</span><span><strong>Reunión de Grupo</strong><small>La amistad, la revisión y el camino compartido.</small></span></a></li>
+              <li><a href="manual-usuario-peregrino.html"><span class="rv-num">07</span><span><strong>Manual de Peregrino</strong><small>Una guía práctica para empezar y aprovechar la app.</small></span></a></li>
+              <li><a href="historieta.html"><span class="rv-num">08</span><span><strong>La historieta</strong><small>Cómo nació Peregrino y por qué existe.</small></span></a></li>
+            </ol>
+          </div>
+
+          <div class="rv-pata rv-accion reveal" id="accion">
+            <p class="rv-pata-nombre">Acción</p>
+            <p class="rv-pata-lema">Llevar a otros</p>
+            <ol class="rv-lista" start="9">
+              <li><a href="mundo-cursillo.html"><span class="rv-num">09</span><span><strong>El mundo está de Cursillo</strong><small>Cursillos de todo el mundo y las palancas que los sostienen.</small></span></a></li>
+              <li><a href="alguien-reza-por-ti.html"><span class="rv-num">10</span><span><strong>Alguien reza por ti</strong><small>Una invitación personal para acercar a alguien al Cursillo.</small></span></a></li>
+              <li><a href="quiero-vivir-un-cursillo.html"><span class="rv-num">11</span><span><strong>Quiero vivir un Cursillo</strong><small>Caminos claros para dar el primer paso.</small></span></a></li>
+              <li><a href="apostolado-digital.html"><span class="rv-num">12</span><span><strong>Apostolado digital</strong><small>La fe también se siembra en el entorno digital.</small></span></a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITA: EL PROYECTO -->
+    <section id="proyecto" class="rv-cita" aria-labelledby="rv-cita-texto">
+      <div class="rv-shell">
+        <figure class="reveal">
+          <blockquote id="rv-cita-texto">
+            <p>La tecnología debe estar al servicio de la persona. <em>Nunca la persona al servicio de la tecnología.</em></p>
+          </blockquote>
+          <figcaption>Del Manifiesto de Peregrino</figcaption>
+        </figure>
+        <div class="rv-cita-enlaces">
+          <a href="manifiesto.html">Leer el Manifiesto <span aria-hidden="true">→</span></a>
+          <a href="historieta.html">Ver la historieta <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html">
+          <span class="brand-logo">
+            <img
+              src="assets/peregrino-app-icon.png"
+              alt=""
+              width="52"
+              height="52"
+              onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+            >
+            <span class="brand-fallback" hidden aria-hidden="true">P</span>
+          </span>
+          <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
+        </a>
+        <p>Guía digital para acompañar la oración, la constancia y la amistad</p>
+      </div>
+
+      <div>
+        <h3>Vive Peregrino</h3>
+        <a href="inicio.html">Rezar hoy</a>
+        <a href="sala/">Rezar en grupo</a>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
+        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="regalo-de-oracion.html">Regala una oración</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="la-app.html">La app</a>
+        <a href="descubre.html">Todo Peregrino</a>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+        <a href="alguien-reza-por-ti.html">Alguien reza por ti</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
+        <a href="historieta.html">Historieta</a>
+        <a href="manual-usuario-peregrino.html">Manual</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </div>
+    </div>
+
+    <div class="shell footer-bottom">
+      <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
+      <a href="#contenido">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.main-nav');
+
+      menuToggle?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('is-open') || false;
+        menuToggle.setAttribute('aria-expanded', String(open));
+      });
+
+      nav?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('is-open');
+          menuToggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+      }
+    })();
+  </script>
+  <script src="assets/instalar-v1.js" defer></script>
+  <script src="assets/compartir-v1.js" defer></script>
+  <script src="assets/iphone-v1.js" defer></script>
+</body>
+</html>

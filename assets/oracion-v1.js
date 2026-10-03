@@ -281,7 +281,7 @@
   }
 
   function protect(options) {
-    const { zone, host = zone, isActive = () => true, appHref = "index.html#app" } = options;
+    const { zone, host = zone, isActive = () => true, appHref = "la-app.html" } = options;
     let notice = null, timer = 0;
     const show = () => {
       if (!notice) { notice = createNotice(appHref); host.appendChild(notice); }

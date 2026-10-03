@@ -75,13 +75,14 @@ Estas puertas deben permanecer abiertas para quien llega por primera vez.
 
 ## Navegación principal
 
-La navegación nueva no enumera todas las páginas. Las agrupa en cinco entradas:
+La portada tiene una sola idea y una sola acción. El menú, cuatro entradas y la descarga:
 
-1. La app.
-2. Oración y comunidad.
-3. Descubre el Cursillo.
-4. Miembros.
-5. El proyecto.
+1. Rezar (`inicio.html`).
+2. La app (`la-app.html`): qué hace la app, cómo instalarla y los planes.
+3. Descubre (`descubre.html`): todo Peregrino ordenado por el Trípode.
+4. El proyecto (`manifiesto.html`).
+
+En la portada, la acción principal depende del dispositivo: en Android, el distintivo oficial de Google Play; en iPhone y ordenador, «Empezar a rezar» (la web). El distintivo de App Store solo se usará cuando la app esté publicada.
 
 ## Principio visual
 
