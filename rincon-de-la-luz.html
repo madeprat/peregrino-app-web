@@ -38,7 +38,7 @@
         localStorage.setItem("gTranslateLang", selectedLang);
       }
       
-      observer.observe(document.body, {
+      observer.observe(document.documentElement, {
         childList: true,
         subtree: true
       });
@@ -65,19 +65,12 @@
       </button>
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
-<a href="index.html#experiencias" aria-current="page">Oración y comunidad</a>
-<a href="index.html#cursillo">Descubre el Cursillo</a>
-<a href="index.html#miembros">Miembros</a>
-<a href="index.html#proyecto">El proyecto</a>
+        <a href="index.html#experiencias" aria-current="page">Oración y comunidad</a>
+        <a href="index.html#cursillo">Descubre el Cursillo</a>
+        <a href="index.html#proyecto">El proyecto</a>
+        <a class="nav-sala" href="sala/">Rezar en grupo</a>
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
-      <div class="member-demo" aria-label="Vista de demostración">
-        <span class="member-demo-label">Vista</span>
-        <button class="mode-switch" type="button" role="switch" aria-checked="false">
-          <span class="mode-switch-track"><span class="mode-switch-thumb"></span></span>
-          <span class="mode-switch-text">Visitante</span>
-        </button>
-      </div>
     </div>
   
       <div id="google_translate_element"></div>
@@ -129,9 +122,8 @@
       <section class="light-panel member-panel reveal" id="regalar" style="--panel-accent:var(--violet)">
         <div class="light-panel-grid">
           <div>
-            <span class="member-pill"><span class="member-visitor">◇ Ventaja para miembros</span><span class="member-copy">✓ Miembro</span></span>
             <h2>Un nombre basta</h2>
-            <p class="sub">La recepción de la oración siempre queda abierta. La creación personalizada es la experiencia que puede distinguirse como ventaja de miembro.</p>
+            <p class="sub">Escribe el nombre de la persona, elige el tono y envíale una tarjeta con una oración. Es gratis y quien la recibe no necesita instalar nada.</p>
           </div>
           <div>
             <label for="nombreRegalo">Nombre o alias de la persona</label>
@@ -197,25 +189,37 @@
         </a>
         <p>Guía digital para acompañar la oración, la constancia y la comunidad.</p>
       </div>
-      <div><h3>Vive Peregrino</h3><a href="mundo-cursillo.html">El mundo está de Cursillo</a><a href="rincon-de-la-luz.html">Rincón de la Luz</a><a href="biblioteca-oraciones.html">Biblioteca</a><a href="plan-apostol.html">Planes</a></div>
-      <div><h3>Descubre</h3><a href="que-es-el-mcc.html">Qué es el MCC</a><a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a><a href="reunion-de-grupo.html">Reunión de Grupo</a><a href="apostolado-digital.html">Apostolado digital</a></div>
-      <div><h3>Información</h3><a href="manifiesto.html">Manifiesto</a><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a></div>
+      <div>
+        <h3>Vive Peregrino</h3>
+        <a href="sala/">Rezar en grupo</a>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
+        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="regalo-de-oracion.html">Regala una oración</a>
+        <a href="plan-apostol.html">Planes</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+        <a href="alguien-reza-por-ti.html">Alguien reza por ti</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
+        <a href="historieta.html">Historieta</a>
+        <a href="manual-usuario-peregrino.html">Manual</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
+      </div>
     </div>
     <div class="shell footer-bottom"><span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span><a href="#contenido">Volver arriba ↑</a></div>
   </footer>
 <div class="toast" id="toast">Copiado</div>
-
-  <dialog class="member-dialog" aria-labelledby="member-dialog-title">
-    <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
-    <span class="dialog-symbol">◇</span>
-    <p class="section-kicker" style="margin-top:25px">Ventaja para miembros</p>
-    <h2 id="member-dialog-title">Una experiencia más personal, todavía sin bloqueo real</h2>
-    <p>La función continúa abierta durante esta fase. Esta maqueta permite decidir cómo se presentará antes de implementar cuentas o pagos.</p>
-    <div class="dialog-actions">
-      <button class="button button-primary dialog-enable-member" type="button">Ver como miembro</button>
-      <button class="button button-quiet dialog-continue" type="button">Continuar a la función</button>
-    </div>
-  </dialog>
 <script src="assets/community-v2.js"></script><script src="assets/rincon-v2.js"></script>
 
 
@@ -225,4 +229,5 @@
       new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
     }
   </script>
+  <script src="assets/iphone-v1.js" defer></script>
 </body></html>

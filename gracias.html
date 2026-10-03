@@ -38,7 +38,7 @@
         localStorage.setItem("gTranslateLang", selectedLang);
       }
       
-      observer.observe(document.body, {
+      observer.observe(document.documentElement, {
         childList: true,
         subtree: true
       });
@@ -65,10 +65,10 @@
       </button>
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="index.html#app">La app</a>
-<a href="index.html#experiencias">Oración y comunidad</a>
-<a href="index.html#cursillo">Descubre el Cursillo</a>
-<a href="index.html#miembros">Miembros</a>
-<a href="index.html#proyecto">El proyecto</a>
+        <a href="index.html#experiencias">Oración y comunidad</a>
+        <a href="index.html#cursillo">Descubre el Cursillo</a>
+        <a href="index.html#proyecto">El proyecto</a>
+        <a class="nav-sala" href="sala/">Rezar en grupo</a>
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
     </div>
@@ -117,9 +117,11 @@
       </div>
       <div>
         <h3>Vive Peregrino</h3>
+        <a href="sala/">Rezar en grupo</a>
         <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
         <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="regalo-de-oracion.html">Regala una oración</a>
         <a href="plan-apostol.html">Planes</a>
       </div>
       <div>
@@ -128,13 +130,17 @@
         <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
         <a href="reunion-de-grupo.html">Reunión de Grupo</a>
         <a href="apostolado-digital.html">Apostolado digital</a>
+        <a href="alguien-reza-por-ti.html">Alguien reza por ti</a>
       </div>
       <div>
         <h3>Información</h3>
         <a href="manifiesto.html">Manifiesto</a>
+        <a href="historieta.html">Historieta</a>
+        <a href="manual-usuario-peregrino.html">Manual</a>
         <a href="aviso-legal.html">Aviso legal</a>
         <a href="privacidad.html">Privacidad</a>
         <a href="cookies.html">Cookies</a>
+        <a href="mailto:peregrinoapp@outlook.es">Contacto</a>
       </div>
     </div>
     <div class="shell footer-bottom">
@@ -152,4 +158,5 @@
       new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
     }
   </script>
+  <script src="assets/iphone-v1.js" defer></script>
 </body></html>

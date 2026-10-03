@@ -200,3 +200,17 @@
   .project-closing,.manifest-quote{border-radius:27px}
   .legacy-comic-frame{height:72vh;min-height:610px;border-width:5px;border-radius:17px}
 }
+
+/* Historieta como imagen (sustituye al antiguo marco) */
+.comic-sheet{
+  width:min(860px,calc(100% - 24px));margin:0 auto;padding:0;
+  border:10px solid rgba(255,255,255,.94);border-radius:28px;overflow:hidden;
+  background:#f7f1e5;box-shadow:var(--shadow-lg)
+}
+.comic-sheet a{display:block;cursor:zoom-in}
+.comic-sheet img{display:block;width:100%;height:auto}
+.comic-sheet figcaption{
+  padding:16px 18px;background:#fff;color:var(--ink-soft);font-size:.9rem;text-align:center
+}
+.comic-sheet figcaption strong{color:var(--ink)}
+@media(max-width:650px){.comic-sheet{border-width:6px;border-radius:20px}}

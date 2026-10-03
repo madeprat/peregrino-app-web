@@ -114,3 +114,10 @@ h1.title-sm{font-size:clamp(2rem,6.5vw,2.9rem);line-height:1.02;letter-spacing:-
   .code-input{width:100%}
   .section-card{padding:18px 15px 6px}
 }
+
+/* Siguiente paso al terminar */
+.next-step{margin-top:24px;padding:18px 16px;border-radius:20px;background:var(--cream);border:1px solid rgba(224,170,43,.3)}
+.next-step p{margin:6px 0 0;color:var(--soft);font-size:.9rem;line-height:1.5}
+.next-step .next-title{margin:0;color:var(--ink);font-weight:800;font-size:1rem}
+.next-step .button{margin-top:14px}
+@media(max-width:460px){.next-step .button{width:100%}}
