@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rezar en grupo | Peregrino APP</title>
+  <meta name="description" content="Sigue desde el navegador la oración que guía otra persona en Peregrino APP. Solo necesitas el código de la sala.">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#fffaf0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sala.css">
+  <link rel="icon" href="../assets/peregrino-app-icon.png">
+</head>
+<body>
+  <div class="decolores" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+  <main class="card" id="app">
+
+    <!-- 1. Introducir el código -->
+    <section class="view" id="viewCodigo" hidden>
+      <div class="logo">
+        <img src="../assets/peregrino-app-icon.png" alt=""
+             onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
+        <span class="logo-fallback" hidden aria-hidden="true">P</span>
+      </div>
+      <p class="eyebrow">Rezar en grupo</p>
+      <h1>Únete a la oración</h1>
+      <p class="lead">Escribe el código que te han enviado. Tu pantalla seguirá la oración de quien la guía, sin instalar nada y sin registrarte.</p>
+
+      <form class="code-form" id="formCodigo" autocomplete="off" novalidate>
+        <label class="sr-only" for="inputCodigo">Código de la sala</label>
+        <input id="inputCodigo" class="code-input" type="text" inputmode="text"
+               maxlength="4" placeholder="ABCD" autocapitalize="characters"
+               spellcheck="false" aria-describedby="codigoAyuda">
+        <button class="button" type="submit" id="btnUnirme">Unirme</button>
+      </form>
+      <p class="status" id="codigoAyuda" hidden></p>
+
+      <p class="note">El código tiene 4 caracteres, por ejemplo <strong>K7QM</strong>. Lo encontrarás en la invitación que recibiste.</p>
+      <a class="back" href="../index.html">Conocer Peregrino APP →</a>
+    </section>
+
+    <!-- 2. Cargando -->
+    <section class="view" id="viewCargando" hidden>
+      <div class="spinner" aria-hidden="true"></div>
+      <p class="lead" id="cargandoTexto">Buscando la sala…</p>
+    </section>
+
+    <!-- 3. Sala de espera -->
+    <section class="view" id="viewEspera" hidden>
+      <div class="gift" aria-hidden="true">🙏</div>
+      <p class="eyebrow">Sala <span data-codigo></span></p>
+      <h1 class="title-sm" data-titulo></h1>
+      <p class="meta" data-fecha hidden></p>
+      <p class="meta" data-idioma hidden></p>
+      <p class="intention" data-intencion hidden></p>
+      <div class="spinner" aria-hidden="true"></div>
+      <p class="lead">Esperando a que comience <span data-guia>quien guía</span>…</p>
+      <p class="note">Cuando empiece, tu pantalla seguirá la lectura automáticamente. Puedes dejar esta página abierta.</p>
+    </section>
+
+    <!-- 4. Rezando -->
+    <section class="view view-rezo" id="viewRezo" hidden>
+      <header class="rezo-head">
+        <p class="eyebrow">Sala <span data-codigo></span> · <span data-guia>quien guía</span> guía la oración</p>
+        <h1 class="title-sm" data-titulo></h1>
+        <p class="intention" data-intencion hidden></p>
+      </header>
+
+      <div class="progress" aria-hidden="true"><div class="progress-bar" id="barra"></div></div>
+      <p class="progress-label" id="progresoTexto"></p>
+
+      <article class="section-card" id="seccion" aria-live="polite">
+        <h2 class="section-title" id="seccionTitulo"></h2>
+        <div class="section-body" id="seccionCuerpo"></div>
+      </article>
+
+      <div class="rezo-actions">
+        <button class="button secondary small" type="button" id="btnEscuchar" hidden aria-pressed="false">🔈 Escuchar</button>
+      </div>
+      <p class="status error" id="rezoError" hidden></p>
+      <p class="hint">Es <span data-guia>quien guía</span> quien avanza la oración. No tienes que tocar nada.</p>
+    </section>
+
+    <!-- 5. Rosario: solo en la app -->
+    <section class="view" id="viewRosario" hidden>
+      <div class="gift" aria-hidden="true">📿</div>
+      <p class="eyebrow">Sala <span data-codigo></span></p>
+      <h1 class="title-sm">Santo Rosario en grupo</h1>
+      <p class="lead">El Rosario en grupo es una experiencia pensada para rezarse desde la app Peregrino en el móvil, y no se puede seguir desde la web.</p>
+      <a class="button" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" rel="noopener">Descargar Peregrino APP</a>
+      <p class="note">Desde la web puedes unirte a las demás oraciones en grupo que te compartan con un código.</p>
+      <button class="link" type="button" data-otro-codigo>Probar con otro código</button>
+    </section>
+
+    <!-- 6. Fin / error -->
+    <section class="view" id="viewFin" hidden>
+      <div class="gift" aria-hidden="true" id="finIcono">🕊️</div>
+      <h1 class="title-sm" id="finTitulo">La oración ha terminado</h1>
+      <p class="lead" id="finTexto">Gracias por rezar en comunidad.</p>
+      <button class="button" type="button" data-otro-codigo>Unirme a otra sala</button>
+      <a class="back" href="../index.html">Conocer Peregrino APP →</a>
+    </section>
+
+    <div class="colors">¡De Colores! 🌈</div>
+  </main>
+
+  <script type="module" src="sala.js"></script>
+</body>
+</html>
