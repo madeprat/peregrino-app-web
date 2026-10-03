@@ -1,0 +1,86 @@
+/* Páginas interiores como parte de la revista "Edición del Cuarto Día".
+   Lo usa assets/edicion-v1.js, que marca <body data-seccion="..."> y añade
+   el folio y el bloque "Seguir leyendo". */
+
+body {
+  --ed-piedad: #1d3f8a;
+  --ed-estudio: #b23a48;
+  --ed-accion: #23845c;
+  --ed-general: #b07d12;
+  --ed-papel: #fbf6ec;
+  --ed-tinta: #13243a;
+  --ed-suave: #5b687b;
+  --ed-regla: rgba(19, 36, 58, .16);
+  --ed-serif: "Cormorant Garamond", Georgia, serif;
+  --seccion: var(--ed-general);
+}
+body[data-seccion="piedad"] { --seccion: var(--ed-piedad); }
+body[data-seccion="estudio"] { --seccion: var(--ed-estudio); }
+body[data-seccion="accion"] { --seccion: var(--ed-accion); }
+
+/* El antetítulo de cada portada interior toma el color de su sección. */
+body[data-seccion] :is(.editorial-hero, .project-hero, .page-hero, .legal-hero, .gift-main, .comic-intro) :is(.eyebrow, .section-kicker) {
+  color: var(--seccion);
+}
+body[data-seccion] :is(.editorial-hero, .project-hero, .page-hero, .comic-intro) h1 em { color: var(--seccion); }
+
+/* ── Folio ─────────────────────────────────────────────────────────── */
+.ed-folio {
+  position: relative; z-index: 2; background: var(--ed-papel);
+  border-bottom: 1px solid var(--ed-regla);
+  box-shadow: inset 0 -3px 0 var(--seccion);
+}
+.ed-folio-interior {
+  width: min(1180px, calc(100% - 32px)); margin-inline: auto; min-height: 44px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.ed-folio a { text-decoration: none; }
+.ed-folio-cabecera { display: flex; align-items: baseline; gap: 10px; color: var(--ed-tinta); }
+.ed-folio-marca { font-family: var(--ed-serif); font-size: 1.15rem; font-weight: 700; }
+.ed-folio-edicion {
+  color: var(--ed-suave); font-size: .68rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+}
+.ed-folio-seccion {
+  display: inline-flex; align-items: baseline; gap: 10px; padding: 4px 0;
+  color: var(--seccion); font-size: .7rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+}
+.ed-folio-num { color: var(--ed-suave); letter-spacing: .08em; }
+.ed-folio-seccion:hover .ed-folio-nombre { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── Seguir leyendo ────────────────────────────────────────────────── */
+.ed-seguir { padding: clamp(48px, 7vw, 80px) 0; background: var(--ed-papel); border-top: 2px solid var(--ed-tinta); }
+.ed-seguir-interior { width: min(1180px, calc(100% - 32px)); margin-inline: auto; }
+.ed-seguir-titulo {
+  margin: 0; color: var(--ed-tinta); font-family: var(--ed-serif);
+  font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; line-height: 1; letter-spacing: -.02em;
+}
+.ed-seguir-tarjetas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
+.ed-seguir-tarjetas.ed-tres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ed-tarjeta {
+  --c: var(--ed-piedad);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 16px;
+  padding: 22px 24px; background: #fff; border-top: 5px solid var(--c); border-radius: 2px;
+  box-shadow: 0 18px 44px rgba(14, 35, 71, .08); color: var(--ed-tinta); text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.ed-tarjeta.ed-estudio { --c: var(--ed-estudio); }
+.ed-tarjeta.ed-accion { --c: var(--ed-accion); }
+.ed-tarjeta:hover { transform: translateY(-3px); box-shadow: 0 24px 54px rgba(14, 35, 71, .14); }
+.ed-tarjeta.ed-siguiente { text-align: left; }
+.ed-tarjeta-meta {
+  grid-column: 1 / -1; margin-bottom: 10px; color: var(--c);
+  font-size: .68rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+}
+.ed-tarjeta-num { font-family: var(--ed-serif); font-size: 2.3rem; font-weight: 700; line-height: .9; color: var(--c); }
+.ed-tarjeta-titulo { align-self: center; font-family: var(--ed-serif); font-size: 1.55rem; line-height: 1.1; }
+.ed-seguir-indice {
+  display: inline-block; margin-top: 24px; color: var(--ed-tinta); font-weight: 800; text-decoration: none;
+  border-bottom: 2px solid var(--seccion); padding-bottom: 2px;
+}
+.ed-seguir-indice::after { content: " →"; }
+
+@media (max-width: 760px) {
+  .ed-folio-edicion { display: none; }
+  .ed-seguir-tarjetas, .ed-seguir-tarjetas.ed-tres { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .ed-tarjeta { transition: none; } }
