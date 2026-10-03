@@ -66,6 +66,12 @@
 .rv-cabecera { font-family: var(--serif); font-size: 1.25rem; letter-spacing: .02em; text-transform: none; color: var(--ink); }
 .rv-fecha:first-letter { text-transform: uppercase; }
 .rv-sep { color: var(--gold); }
+.rv-compartir {
+  margin-left: auto; min-height: 30px; padding: 0 12px; border: 1px solid var(--regla); border-radius: 999px;
+  background: #fff; color: var(--ink); font: 800 .7rem Inter, system-ui, sans-serif; letter-spacing: .08em;
+  text-transform: uppercase; cursor: pointer;
+}
+.rv-compartir:hover { border-color: var(--blue); color: var(--blue); }
 .rv-titular {
   margin: 30px 0 0; font-family: var(--serif); font-weight: 700;
   font-size: clamp(3.4rem, 8.4vw, 7.4rem); line-height: .88; letter-spacing: -.045em; color: var(--ink);

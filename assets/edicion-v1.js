@@ -71,7 +71,14 @@
   } else {
     seccion.append(crear("span", "ed-folio-nombre", otra));
   }
-  interior.append(cabecera, seccion);
+  const compartir = crear("button", "ed-compartir");
+  compartir.type = "button";
+  compartir.setAttribute("data-compartir", "");
+  compartir.setAttribute("aria-label", "Compartir esta página con un código QR");
+  compartir.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" width="15" height="15"><path fill="currentColor" d="M3 3h8v8H3zm2 2v4h4V5zm8-2h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zm8-2h2v2h-2zm2 2h2v2h-2zm2-2h2v2h-2zm2 2h2v2h-2zm-6 2h2v2h-2zm4 0h2v2h-2zm-2 2h2v2h-2zm4 0h2v2h-2z"/></svg><span>Compartir</span>';
+  const derecha = crear("div", "ed-folio-derecha");
+  derecha.append(compartir, seccion);
+  interior.append(cabecera, derecha);
   folio.append(interior);
 
   const header = document.querySelector(".site-header, .peregrino-site-header");

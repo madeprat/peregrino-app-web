@@ -45,6 +45,13 @@ body[data-seccion] :is(.editorial-hero, .project-hero, .page-hero, .comic-intro)
   color: var(--seccion); font-size: .7rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
 }
 .ed-folio-num { color: var(--ed-suave); letter-spacing: .08em; }
+.ed-folio-derecha { display: flex; align-items: center; gap: 18px; }
+.ed-compartir {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 12px;
+  border: 1px solid var(--ed-regla); border-radius: 999px; background: #fff; color: var(--ed-tinta);
+  font: 800 .72rem Inter, system-ui, sans-serif; cursor: pointer;
+}
+.ed-compartir:hover { border-color: var(--seccion); color: var(--seccion); }
 .ed-folio-seccion:hover .ed-folio-nombre { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ── Seguir leyendo ────────────────────────────────────────────────── */
