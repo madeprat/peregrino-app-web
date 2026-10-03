@@ -44,13 +44,15 @@
 .pi-acciones{display:grid;gap:4px;margin-top:14px}
 .pi-boton{min-height:48px;display:flex;align-items:center;justify-content:center;border:0;border-radius:999px;background:#173f7a;color:#fff;font:800 .95rem Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer}
 .pi-boton.pi-sec{background:transparent;color:#173f7a}
+.pi-instalar{margin:12px 0 0!important;padding:10px 12px;border-radius:14px;background:#fff6df;color:#5c4510!important}
 @media(min-width:700px){.pi-capa{place-items:center}}`;
 
   const opciones = [
-    ['🙏', 'Unirme a una oración en grupo', 'Con el código que te han enviado', 'sala/'],
-    ['🕯️', 'Rincón de la Luz', 'Enciende una velita o regala una oración', 'rincon-de-la-luz.html'],
-    ['📖', 'Biblioteca de oraciones', 'Busca y lee oraciones', 'biblioteca-oraciones.html'],
-    ['🌍', 'El mundo está de Cursillo', 'Cursillos y palancas en el mapa', 'mundo-cursillo.html'],
+    ['☀️', 'La oración del día', 'En tu idioma, cada día una distinta', 'inicio.html'],
+    ['📖', 'Biblioteca de oraciones', 'Más de cien oraciones en cuatro idiomas', 'biblioteca-oraciones.html'],
+    ['🙏', 'Rezar en grupo', 'Con el código que te han enviado', 'sala/'],
+    ['🕯️', 'Enciende una velita', 'Pon ante Dios una intención', 'rincon-de-la-luz.html'],
+    ['💌', 'Regala una oración', 'Una tarjeta con su nombre', 'regalo-de-oracion.html'],
   ];
 
   let capa = null;
@@ -69,13 +71,15 @@
         <button class="pi-x" type="button" data-pi-cerrar aria-label="Cerrar">×</button>
         <p class="pi-etiqueta">Peregrino para iPhone</p>
         <h2 id="pi-titulo">Llega a App Store el ${FECHA_IOS}</h2>
-        <p>Mientras tanto, puedes vivir gran parte de Peregrino desde el navegador:</p>
+        <p>Mientras tanto, lo esencial de Peregrino ya funciona aquí, gratis:</p>
         <ul class="pi-lista">
           ${opciones.map(([icono, titulo, texto, ruta]) => `
             <li><a href="${enlace(ruta)}"><span aria-hidden="true">${icono}</span><span><strong>${titulo}</strong><small>${texto}</small></span></a></li>`).join('')}
         </ul>
+        <p class="pi-instalar"><strong>Tenlo a un toque:</strong> en Safari pulsa <strong>Compartir</strong> y elige <strong>«Añadir a pantalla de inicio»</strong>.</p>
         <div class="pi-acciones">
-          <a class="pi-boton" href="${avisame}">Avísame cuando esté en App Store</a>
+          <a class="pi-boton" href="${enlace('inicio.html')}">Entrar a Peregrino</a>
+          <a class="pi-boton pi-sec" href="${avisame}">Avísame cuando esté en App Store</a>
           <button class="pi-boton pi-sec" type="button" data-pi-cerrar>Cerrar</button>
         </div>
       </div>`;

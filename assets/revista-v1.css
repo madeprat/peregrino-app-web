@@ -119,25 +119,10 @@
 }
 .rv-hoy-grid p:not(.rv-etiqueta) { margin: 12px 0 0; color: var(--ink-soft); line-height: 1.6; }
 .rv-hoy-oracion h3 { font-size: clamp(2rem, 3.4vw, 2.7rem); }
-.rv-oracion-idiomas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-.rv-oracion-idiomas[hidden] { display: none; }
-.rv-oracion-idioma {
-  min-width: 42px; min-height: 34px; padding: 0 10px; border: 1px solid var(--regla); border-radius: 999px;
-  background: #fff; color: var(--ink-soft); font: 800 .72rem/1 Inter, sans-serif; letter-spacing: .08em; cursor: pointer;
-}
-.rv-oracion-idioma:hover { border-color: var(--blue); color: var(--blue); }
-.rv-oracion-idioma[aria-pressed="true"] { border-color: var(--noche); background: var(--noche); color: #fff; }
-.rv-oracion-texto {
-  margin-top: 14px; font-family: var(--serif); font-size: 1.32rem; line-height: 1.5; color: var(--ink);
-}
-.rv-hoy-grid .rv-oracion-texto p { margin: 0; color: var(--ink); line-height: inherit; }
-.rv-oracion-texto > * + * { margin-top: .55em; }
-.rv-oracion-texto .pb-heading { margin: .9em 0 .1em; font-size: .72em; }
-.rv-oracion-texto > .pb-text:first-child::first-letter {
-  float: left; margin: 6px 10px 0 0; font-size: 3.6em; line-height: .8; font-weight: 700; color: var(--gold);
-}
-.rv-hoy-grid .rv-oracion-texto .rv-oracion-sigue { color: var(--ink-soft); letter-spacing: .3em; }
-.rv-hoy-grid .rv-oracion-nota { margin-top: 6px; font-size: .82rem; }
+/* La tarjeta de la oración del día usa los estilos de oracion-v1.css (.odd-*). */
+.rv-hoy-grid .odd-texto p { margin: 0; color: var(--ink); line-height: inherit; }
+.rv-hoy-grid .odd-texto .odd-sigue { color: var(--ink-soft); }
+.rv-hoy-grid .odd-nota { margin-top: 6px; }
 .rv-codigo { display: flex; gap: 8px; margin-top: 18px; }
 .rv-codigo input {
   flex: 1; min-width: 0; min-height: 50px; padding: 0 12px; border: 2px solid var(--regla); border-radius: 12px;
@@ -175,6 +160,29 @@
 .rv-idioma-nombre { margin-top: 14px; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: rgba(255, 255, 255, .7); }
 .rv-idioma-verso { margin-top: 8px; font-family: var(--serif); font-size: 1.4rem; font-style: italic; line-height: 1.3; }
 .rv-idiomas .rv-enlace { color: #fff; }
+
+/* ── Portada: iPhone ─────────────────────────────────────────────── */
+.rv-iphone { margin: 16px 0 0; color: var(--ink-soft); font-size: .92rem; }
+.rv-iphone a { color: var(--blue); font-weight: 800; }
+
+/* ── En tu móvil ───────────────────────────────────────────────────── */
+.rv-instalar { padding: clamp(56px, 8vw, 96px) 0; background: #fff; }
+.rv-instalar .rv-seccion-titulo em { color: var(--gold); }
+.rv-instalar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 34px; }
+.rv-instalar-caso { display: flex; flex-direction: column; align-items: flex-start; padding: 26px; border: 1px solid var(--regla); border-radius: 24px; background: var(--papel); }
+.rv-instalar-caso h3 { margin: 10px 0 0; font-family: var(--serif); font-size: 1.85rem; line-height: 1.05; color: var(--ink); }
+.rv-instalar-caso > p:not(.rv-etiqueta) { margin: 10px 0 0; color: var(--ink-soft); line-height: 1.55; }
+.rv-instalar-caso .rv-boton { margin-top: 18px; }
+.rv-pasos { margin: 16px 0 0; padding: 0; list-style: none; counter-reset: paso; display: grid; gap: 12px; }
+.rv-pasos li { position: relative; padding-left: 44px; color: var(--ink); line-height: 1.5; counter-increment: paso; }
+.rv-pasos li::before {
+  content: counter(paso); position: absolute; left: 0; top: -2px; width: 30px; height: 30px; display: grid; place-items: center;
+  border-radius: 50%; background: var(--noche); color: #fff; font: 800 .85rem/1 Inter, sans-serif;
+}
+.rv-icono-compartir { display: inline-grid; place-items: center; width: 26px; height: 26px; margin: 0 2px; border-radius: 7px; background: #fff; border: 1px solid var(--regla); color: #1a73e8; vertical-align: middle; }
+.rv-instalar-nota { margin-top: auto !important; padding-top: 16px; font-size: .88rem; }
+.rv-instalar-boton { padding: 0; border: 0; background: none; color: var(--blue); font: inherit; font-weight: 800; text-decoration: underline; cursor: pointer; }
+html[data-plataforma="android"] .rv-instalar-caso[data-plataforma="android"] { order: -1; }
 
 /* ── Índice por el Trípode ─────────────────────────────────────────── */
 .rv-indice { padding: clamp(56px, 8vw, 100px) 0; background: var(--papel); }
@@ -267,6 +275,7 @@
   .rv-hoy-grupo { padding-left: 0 !important; border-left: 0 !important; }
   .rv-tripode { grid-template-columns: minmax(0, 1fr); }
   .rv-idiomas-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rv-instalar-grid { grid-template-columns: minmax(0, 1fr); }
   .rv-reportaje-grid, .rv-comunidad-grid { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 640px) {

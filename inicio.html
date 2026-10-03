@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Peregrino">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Inicio | Peregrino</title>
+<meta name="description" content="Reza cada día con Peregrino: la oración del día en tu idioma, la Biblioteca, rezar en grupo, encender una velita y regalar una oración. Gratis, en cualquier móvil.">
+<meta name="theme-color" content="#fffaf0">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/community-v2.css">
+<link rel="stylesheet" href="assets/oracion-v1.css">
+<link rel="stylesheet" href="assets/inicio-v1.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="assets/idioma-v1.js"></script>
+</head>
+<body class="inicio">
+
+  <header class="in-barra">
+    <a class="in-marca" href="index.html" aria-label="Qué es Peregrino">
+      <img src="assets/icon/icon-192.png" alt="" width="40" height="40">
+      <span><strong>Peregrino</strong><small>La app del Cuarto Día</small></span>
+    </a>
+    <div id="google_translate_element"></div>
+  </header>
+
+  <main id="contenido" class="in-main">
+
+    <section class="in-saludo" aria-labelledby="inSaludo">
+      <p class="in-fecha" id="inFecha"></p>
+      <h1 id="inSaludo">Hola</h1>
+      <p>Un momento para rezar, estés donde estés.</p>
+    </section>
+
+    <article class="in-tarjeta in-oracion" data-oracion-del-dia data-app-href="index.html#app">
+      <p class="in-etiqueta">Oración del día <span data-odd="categoria" class="in-etiqueta-sec"></span></p>
+      <div data-odd="idiomas" class="odd-idiomas notranslate" translate="no" role="group" aria-label="Idioma de la oración" hidden></div>
+      <div aria-live="polite">
+        <h2 data-odd="titulo" class="notranslate" translate="no" lang="es">Ofrecimiento del día</h2>
+        <div data-odd="texto" class="odd-texto notranslate" translate="no" lang="es"><p class="pb-text">Señor, te ofrezco este día: mis pensamientos, mis palabras y mis obras. Que todo lo que haga sea para tu gloria y para el bien de quienes me rodean. Amén.</p></div>
+      </div>
+      <a data-odd="enlace" class="in-enlace" href="biblioteca-oraciones.html">Más oraciones en la Biblioteca <span aria-hidden="true">→</span></a>
+    </article>
+
+    <article class="in-tarjeta in-luz" aria-labelledby="inLuzTitulo">
+      <p class="in-etiqueta" id="inLuzTitulo">✨ Una luz para hoy</p>
+      <p class="in-luz-texto" id="inLuz" aria-live="polite"></p>
+      <button class="in-luz-otra" id="inOtraLuz" type="button">Otra luz</button>
+    </article>
+
+    <nav class="in-puertas" aria-label="Rezar con Peregrino">
+      <a class="in-puerta" href="biblioteca-oraciones.html">
+        <span class="in-puerta-icono" aria-hidden="true">📖</span>
+        <strong>Biblioteca</strong>
+        <small>Más de cien oraciones en español, latín, portugués e inglés</small>
+      </a>
+      <a class="in-puerta" href="rincon-de-la-luz.html">
+        <span class="in-puerta-icono" aria-hidden="true">🕯️</span>
+        <strong>Enciende una velita</strong>
+        <small>Pon ante Dios una intención y reza por ella</small>
+      </a>
+      <a class="in-puerta" href="regalo-de-oracion.html">
+        <span class="in-puerta-icono" aria-hidden="true">💌</span>
+        <strong>Regala una oración</strong>
+        <small>Una tarjeta con su nombre, por WhatsApp</small>
+      </a>
+      <div class="in-puerta in-grupo">
+        <span class="in-puerta-icono" aria-hidden="true">🙏</span>
+        <strong>Rezar en grupo</strong>
+        <small>¿Te han enviado un código? Síguela en directo.</small>
+        <form class="in-codigo" action="sala/" method="get">
+          <label class="sr-only" for="inCodigo">Código de la sala</label>
+          <input id="inCodigo" name="c" maxlength="4" placeholder="ABCD" autocomplete="off"
+                 autocapitalize="characters" spellcheck="false" required
+                 pattern="[A-Za-z0-9]{4}" title="El código tiene 4 letras o números">
+          <button type="submit">Unirme</button>
+        </form>
+      </div>
+    </nav>
+
+    <section class="in-tarjeta in-instalar" aria-labelledby="inInstalarTitulo">
+      <p class="in-etiqueta">En tu móvil</p>
+      <h2 id="inInstalarTitulo">Ten Peregrino a un toque</h2>
+      <div class="in-instalar-ios">
+        <p>En iPhone: abre esta página en <strong>Safari</strong>, pulsa <strong>Compartir</strong> <span class="in-icono-compartir" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></span> y elige <strong>«Añadir a pantalla de inicio»</strong>.</p>
+      </div>
+      <div class="in-instalar-otros">
+        <p><button class="in-boton" type="button" data-instalar hidden>Instalar Peregrino</button><span data-instalar-manual>En Android: menú <strong>⋮</strong> del navegador → <strong>Instalar aplicación</strong>. O mejor, <a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">descarga la app completa</a>.</span></p>
+      </div>
+    </section>
+
+    <section class="in-mas" aria-labelledby="inMasTitulo">
+      <h2 id="inMasTitulo">Descubre</h2>
+      <ul>
+        <li><a href="index.html">Qué es Peregrino</a></li>
+        <li><a href="que-es-el-mcc.html">Qué es el MCC</a></li>
+        <li><a href="quiero-vivir-un-cursillo.html">Quiero vivir un Cursillo</a></li>
+        <li><a href="reunion-de-grupo.html">Reunión de Grupo</a></li>
+        <li><a href="mundo-cursillo.html">El mundo está de Cursillo</a></li>
+        <li><a href="plan-apostol.html">Apoya el proyecto</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="in-pie">
+    <p>Peregrino · Gratis, sin publicidad ni analíticas</p>
+    <p><button class="in-compartir" type="button" data-compartir data-compartir-titulo="Comparte Peregrino">Compartir Peregrino</button> · <a href="privacidad.html">Privacidad</a> · <a href="mailto:peregrinoapp@outlook.es">Contacto</a></p>
+  </footer>
+
+  <script src="assets/oracion-v1.js" defer></script>
+  <script src="assets/oracion-del-dia-v1.js" defer></script>
+  <script src="assets/inicio-v1.js" defer></script>
+  <script src="assets/instalar-v1.js" defer></script>
+  <script src="assets/compartir-v1.js" defer></script>
+  <script src="assets/iphone-v1.js" defer></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
+    }
+  </script>
+</body>
+</html>

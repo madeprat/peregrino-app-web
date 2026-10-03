@@ -1,39 +1,36 @@
-// Portada revista: fecha de la edición y oración del día.
+// Oración del día de Peregrino (portada e Inicio).
 //
-// La oración del día sale de la misma hoja publicada que usa la Biblioteca
-// (assets/oracion-v1.js) y cambia cada día: la misma para todas las personas
-// ese día. Si la hoja no responde, se queda la oración escrita en la portada.
+// Sale de la misma hoja publicada que la Biblioteca (assets/oracion-v1.js) y
+// cambia cada día: la misma para todas las personas ese día. Se reza en el
+// idioma de cada persona (es, pt, en o la) con las mismas etiquetas que la
+// Biblioteca, y se puede cambiar de idioma en la tarjeta. Si la hoja no
+// responde, se queda la oración escrita en la página.
+//
+// Marcado: un contenedor [data-oracion-del-dia] con [data-odd="idiomas"],
+// "titulo", "texto", "categoria" y "enlace".
 (() => {
   "use strict";
 
   const MAX_CARACTERES = 340;
 
-  const hoy = new Date();
-
-  // ── Fecha de la edición ────────────────────────────────────────────────
-  const fecha = document.getElementById("rvFecha");
-  if (fecha) {
-    try {
-      fecha.textContent = new Intl.DateTimeFormat("es-ES", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(hoy);
-      fecha.dateTime = hoy.toISOString().slice(0, 10);
-    } catch (_) {
-      fecha.hidden = true;
-    }
-  }
-
   // ── Oración del día ────────────────────────────────────────────────────
   // Se reza en el idioma de cada persona (es, pt, en o la) con las mismas
   // etiquetas que la Biblioteca, y se puede cambiar de idioma en la tarjeta.
   const O = window.PeregrinoOracion;
+  const raiz = document.querySelector("[data-oracion-del-dia]");
+  if (!O || !raiz) return;
+  const parte = (nombre) => raiz.querySelector(`[data-odd="${nombre}"]`);
   const el = {
-    tarjeta: document.getElementById("rvOracion"),
-    idiomas: document.getElementById("rvOracionIdiomas"),
-    titulo: document.getElementById("rvOracionTitulo"),
-    texto: document.getElementById("rvOracionTexto"),
-    categoria: document.getElementById("rvOracionCategoria"),
-    enlace: document.getElementById("rvOracionEnlace"),
+    tarjeta: raiz,
+    idiomas: parte("idiomas"),
+    titulo: parte("titulo"),
+    texto: parte("texto"),
+    categoria: parte("categoria"),
+    enlace: parte("enlace"),
   };
-  if (!O || !el.titulo || !el.texto) return;
+  if (!el.titulo || !el.texto) return;
+
+  const hoy = new Date();
 
   // Número de día estable (mismo valor para todo el día, en hora local).
   const numeroDeDia = Math.floor(Date.UTC(hoy.getFullYear(), hoy.getMonth(), hoy.getDate()) / 86400000);
@@ -67,9 +64,10 @@
   let idioma = O.preferredLang();
 
   function pintarIdiomas() {
+    if (!el.idiomas) return;
     el.idiomas.innerHTML = "";
     O.LANGS.filter((l) => O.hasLang(oracion, l.code)).forEach((l) => {
-      const boton = O.el("button", "rv-oracion-idioma", l.badge);
+      const boton = O.el("button", "odd-idioma", l.badge);
       boton.type = "button";
       boton.title = l.label;
       boton.setAttribute("aria-label", l.label);
@@ -95,7 +93,7 @@
     el.texto.innerHTML = "";
     const { elegidos, cortado } = extracto(O.parseBlocks(variante.text));
     O.renderBlockList(elegidos, el.texto);
-    if (cortado) el.texto.appendChild(O.el("p", "rv-oracion-sigue", "…"));
+    if (cortado) el.texto.appendChild(O.el("p", "odd-sigue", "…"));
     if (el.categoria) el.categoria.textContent = oracion.category;
     if (el.enlace) {
       el.enlace.href = O.prayerHref(oracion, idioma);
@@ -104,7 +102,7 @@
   }
 
   // Solo lectura, como en la Biblioteca.
-  O.protect({ zone: el.tarjeta || el.texto, isActive: () => false, appHref: "#app" });
+  O.protect({ zone: raiz, isActive: () => false, appHref: raiz.dataset.appHref || "index.html#app" });
 
   if (!("fetch" in window)) return;
   const control = "AbortController" in window ? new AbortController() : null;

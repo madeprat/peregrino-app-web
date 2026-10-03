@@ -11,28 +11,84 @@
     consuelo:{label:"consuelo",text:"Que el Señor te abrace con ternura en todo lo que hoy pesa. Que encuentres consuelo, compañía y una paz suave que no borra la historia, pero ayuda a respirar.\n\nQue la Virgen te cubra con su manto y te acompañe."},
     gratitud:{label:"gratitud",text:"Gracias, Señor, por su vida, por el bien que ha sembrado y por la luz que deja en quienes le quieren.\n\nBendice su camino, sus alegrías, sus luchas y todo lo que guarda en el corazón."}
   };
-  const selected = templates[tono] || templates.esperanza;
-  const fullPrayer = `${nombre},\n\nalguien ha querido regalarte una oración.\n\n${selected.text}\n\nAmén.`;
-  document.title = `${nombre}, una oración para ti | Peregrino APP`;
-  document.getElementById("headline").innerHTML = `${nombre}, hay una oración preparada <em>para ti.</em>`;
-  document.getElementById("cardTitle").innerHTML = `${nombre}<span>una oración para ti</span>`;
-  document.getElementById("subtitle").textContent = `Hoy alguien quiso regalarte esta oración con ${selected.label}.`;
-  document.getElementById("prayerText").textContent = selected.text;
-  const shareMessage = `Hoy pensé en ti y quise dejarte una pequeña luz. La preparé para ti aquí: ${location.href}`;
-  document.getElementById("shareWhats").href = "https://wa.me/?text=" + encodeURIComponent(shareMessage);
+  const TONOS = {
+    paz: "para un corazón cansado", fortaleza: "para seguir adelante", esperanza: "para mirar con luz",
+    consuelo: "para una etapa difícil", gratitud: "para bendecir su vida"
+  };
+  const creando = document.body.dataset.modo === "crear";
+  let nombreActual = nombre, tonoActual = templates[tono] ? tono : "esperanza";
+  let selected = templates[tonoActual];
+  let fullPrayer = "";
+
+  function pintar() {
+    selected = templates[tonoActual];
+    fullPrayer = `${nombreActual},\n\nalguien ha querido regalarte una oración.\n\n${selected.text}\n\nAmén.`;
+    const titulo = document.getElementById("cardTitle");
+    titulo.textContent = nombreActual;
+    titulo.appendChild(Object.assign(document.createElement("span"), { textContent: "una oración para ti" }));
+    document.getElementById("subtitle").textContent = `Hoy alguien quiso regalarte esta oración con ${selected.label}.`;
+    document.getElementById("prayerText").textContent = selected.text;
+  }
+
+  if (!creando) {
+    document.title = `${nombre}, una oración para ti | Peregrino APP`;
+    const headline = document.getElementById("headline");
+    headline.textContent = `${nombre}, hay una oración preparada `;
+    headline.appendChild(Object.assign(document.createElement("em"), { textContent: "para ti." }));
+    pintar();
+    const shareMessage = `Hoy pensé en ti y quise dejarte una pequeña luz. La preparé para ti aquí: ${location.href}`;
+    document.getElementById("shareWhats").href = "https://wa.me/?text=" + encodeURIComponent(shareMessage);
+  } else {
+    // Crear: la tarjeta de la derecha se actualiza mientras se escribe.
+    const input = document.getElementById("nombreRegalo");
+    const caja = document.getElementById("tonos");
+    nombreActual = "alguien especial";
+    const enlace = () => {
+      const url = new URL("regalo-de-oracion.html", location.href);
+      url.search = "";
+      url.searchParams.set("nombre", input.value.trim() ? nombreActual : "alguien especial");
+      url.searchParams.set("tono", tonoActual);
+      return url.href;
+    };
+    const actualizar = () => {
+      nombreActual = clean(input.value, "alguien especial");
+      pintar();
+      const link = enlace();
+      document.getElementById("crearVer").href = link;
+      document.getElementById("crearWhats").href = "https://wa.me/?text=" + encodeURIComponent(`Hoy pensé en ti y quise dejarte una pequeña luz:\n${link}`);
+    };
+    Object.entries(TONOS).forEach(([clave, sub]) => {
+      const boton = document.createElement("button");
+      boton.type = "button";
+      boton.className = "gift-tono";
+      boton.setAttribute("aria-pressed", String(clave === tonoActual));
+      boton.innerHTML = "<strong></strong><small></small>";
+      boton.querySelector("strong").textContent = clave.charAt(0).toUpperCase() + clave.slice(1);
+      boton.querySelector("small").textContent = sub;
+      boton.addEventListener("click", () => {
+        tonoActual = clave;
+        [...caja.children].forEach((b) => b.setAttribute("aria-pressed", String(b === boton)));
+        actualizar();
+      });
+      caja.appendChild(boton);
+    });
+    input.addEventListener("input", actualizar);
+    document.getElementById("crearCopiar").addEventListener("click", () => copyText(enlace(), "Enlace copiado"));
+    actualizar();
+  }
 
   function showToast(message) {
     const toast = document.getElementById("toast"); toast.textContent=message || "Copiado"; toast.classList.add("show");
     setTimeout(() => toast.classList.remove("show"),1700);
   }
-  function copy(text) {
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(() => showToast("Oración copiada"));
+  function copyText(text, aviso) {
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(() => showToast(aviso));
     else {
       const area=document.createElement("textarea"); area.value=text; area.style.position="fixed"; area.style.left="-9999px";
-      document.body.appendChild(area); area.focus(); area.select(); document.execCommand("copy"); area.remove(); showToast("Oración copiada");
+      document.body.appendChild(area); area.focus(); area.select(); document.execCommand("copy"); area.remove(); showToast(aviso);
     }
   }
-  document.getElementById("copyPrayer").addEventListener("click",() => copy(fullPrayer));
+  document.getElementById("copyPrayer").addEventListener("click",() => copyText(fullPrayer, "Oración copiada"));
 
   function wrap(ctx,text,x,y,maxWidth,lineHeight) {
     const words=text.split(" "); let line="",currentY=y;
@@ -51,7 +107,7 @@
     const seal=ctx.createRadialGradient(515,188,8,540,210,62); seal.addColorStop(0,"#fff4bf"); seal.addColorStop(.6,"#d8ac34"); seal.addColorStop(1,"#a6720b");
     ctx.fillStyle=seal; ctx.fill(); ctx.fillStyle="#33210a"; ctx.font="64px Georgia, serif"; ctx.textAlign="center"; ctx.fillText("✝",540,234);
     ctx.fillStyle="#c8941a"; ctx.font="700 26px Arial, sans-serif"; ctx.fillText("U N A   O R A C I Ó N   P A R A",540,330);
-    ctx.fillStyle="#102b55"; ctx.font="600 84px Georgia, serif"; ctx.fillText(nombre.length>16?nombre.slice(0,16)+"…":nombre,540,430);
+    ctx.fillStyle="#102b55"; ctx.font="600 84px Georgia, serif"; ctx.fillText(nombreActual.length>16?nombreActual.slice(0,16)+"…":nombreActual,540,430);
     ctx.strokeStyle="rgba(200,148,26,.5)";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(420,478);ctx.lineTo(660,478);ctx.stroke();
     ctx.fillStyle="#1f3327";ctx.font="italic 40px Georgia, serif";const endY=wrap(ctx,selected.text.replace(/\n+/g," "),540,560,820,58);
     ctx.fillStyle="#c8941a";ctx.font="italic 600 44px Georgia, serif";ctx.fillText("Amén.",540,Math.min(endY+30,1180));

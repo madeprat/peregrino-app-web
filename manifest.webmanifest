@@ -1,0 +1,24 @@
+{
+  "name": "Peregrino",
+  "short_name": "Peregrino",
+  "description": "Reza cada día con Peregrino: oración del día, Biblioteca en cuatro idiomas, oración en grupo, velitas y oraciones para regalar.",
+  "lang": "es",
+  "dir": "ltr",
+  "id": "./inicio.html",
+  "start_url": "./inicio.html?origen=app",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#fffaf0",
+  "categories": ["lifestyle", "books"],
+  "icons": [
+    { "src": "assets/icon/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Biblioteca de oraciones", "short_name": "Biblioteca", "url": "./biblioteca-oraciones.html", "icons": [{ "src": "assets/icon/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Rezar en grupo", "short_name": "En grupo", "url": "./sala/", "icons": [{ "src": "assets/icon/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Encender una velita", "short_name": "Velita", "url": "./rincon-de-la-luz.html", "icons": [{ "src": "assets/icon/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

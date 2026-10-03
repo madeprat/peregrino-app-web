@@ -1,12 +1,12 @@
-// Páginas interiores como parte de la misma revista que la portada.
+// Páginas interiores: dónde estás dentro de Peregrino.
 //
-// - Folio bajo la cabecera: "Peregrino · Edición del Cuarto Día" y la
-//   sección del Trípode a la que pertenece la página (Piedad, Estudio,
-//   Acción) con su número en el índice.
-// - "Seguir leyendo" al final: página anterior y siguiente del índice y
-//   vuelta al índice de la portada.
+// - Franja bajo la cabecera: "Peregrino" (vuelve a la portada), la parte del
+//   Trípode a la que pertenece la página (Piedad, Estudio, Acción) y el botón
+//   de compartir.
+// - "Seguir descubriendo" al final: página anterior y siguiente, y vuelta a
+//   la lista completa de la portada.
 //
-// El orden y los números son los de "En este número" en index.html.
+// El orden es el de "Todo Peregrino" en index.html.
 (() => {
   "use strict";
 
@@ -25,7 +25,7 @@
     { archivo: "apostolado-digital.html", titulo: "Apostolado digital", seccion: "accion" },
   ];
 
-  // Páginas que no están en el índice pero forman parte de la revista.
+  // Páginas que no están en la lista pero también llevan la franja.
   const OTRAS = {
     "manifiesto.html": "El proyecto",
     "plan-apostol.html": "Planes",
@@ -35,6 +35,7 @@
   };
 
   const NOMBRES = { piedad: "Piedad", estudio: "Estudio", accion: "Acción" };
+  const LEMAS = { piedad: "Rezar cada día", estudio: "Conocer y formarse", accion: "Llevar a otros" };
 
   const archivo = (location.pathname.split("/").pop() || "index.html").toLowerCase();
   const posicion = INDICE.findIndex((p) => p.archivo === archivo);
@@ -54,19 +55,19 @@
 
   // ── Folio ──────────────────────────────────────────────────────────────
   const folio = crear("div", "ed-folio");
-  folio.setAttribute("aria-label", "Sección de la revista");
+  folio.setAttribute("aria-label", "Sección de Peregrino");
   const interior = crear("div", "ed-folio-interior");
 
   const cabecera = crear("a", "ed-folio-cabecera");
   cabecera.href = "index.html";
-  cabecera.append(crear("span", "ed-folio-marca", "Peregrino"), crear("span", "ed-folio-edicion", "Edición del Cuarto Día"));
+  cabecera.append(crear("span", "ed-folio-marca", "Peregrino"), crear("span", "ed-folio-edicion", "La app del Cuarto Día"));
 
   const seccion = crear("a", "ed-folio-seccion");
   seccion.href = "index.html#experiencias";
   if (actual) {
     seccion.append(
       crear("span", "ed-folio-nombre", NOMBRES[actual.seccion]),
-      crear("span", "ed-folio-num", `${numero(posicion)} / ${String(INDICE.length).padStart(2, "0")}`),
+      crear("span", "ed-folio-num", LEMAS[actual.seccion]),
     );
   } else {
     seccion.append(crear("span", "ed-folio-nombre", otra));
@@ -86,9 +87,9 @@
 
   // ── Seguir leyendo ─────────────────────────────────────────────────────
   const bloque = crear("nav", "ed-seguir");
-  bloque.setAttribute("aria-label", "Seguir leyendo");
+  bloque.setAttribute("aria-label", "Seguir descubriendo");
   const caja = crear("div", "ed-seguir-interior");
-  caja.append(crear("p", "ed-seguir-titulo", "Seguir leyendo"));
+  caja.append(crear("p", "ed-seguir-titulo", "Seguir descubriendo"));
 
   const tarjetas = crear("div", "ed-seguir-tarjetas");
   const tarjeta = (i, sentido) => {
@@ -114,7 +115,7 @@
     tarjetas.querySelectorAll(".ed-tarjeta-meta").forEach((m, k) => { m.textContent = NOMBRES[INDICE[[0, 4, 8][k]].seccion]; });
   }
 
-  const volver = crear("a", "ed-seguir-indice", "Ver todo el índice");
+  const volver = crear("a", "ed-seguir-indice", "Ver todo Peregrino");
   volver.href = "index.html#experiencias";
   caja.append(tarjetas, volver);
   bloque.append(caja);
