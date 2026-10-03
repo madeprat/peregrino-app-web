@@ -142,7 +142,7 @@ body[data-member-mode="member"] .mode-switch-thumb { transform: translateX(15px)
   padding: 10px; border-radius: 48px; background: #142237; box-shadow: var(--shadow-lg);
   border: 1px solid rgba(255,255,255,.55);
 }
-.phone-frame img { width: 100%; border-radius: 39px; aspect-ratio: 390 / 844; object-fit: cover; }
+.phone-frame img { width: 100%; height: auto; border-radius: 39px; aspect-ratio: 390 / 844; object-fit: cover; }
 .phone-speaker { position: absolute; z-index: 2; top: 19px; left: 50%; transform: translateX(-50%); width: 84px; height: 19px; border-radius: 0 0 14px 14px; background: #142237; }
 .visual-orbit { position: absolute; border: 1px solid rgba(23,63,122,.12); border-radius: 50%; }
 .orbit-one { width: 480px; height: 480px; }
@@ -158,9 +158,14 @@ body[data-member-mode="member"] .mode-switch-thumb { transform: translateX(15px)
 .floating-card span:last-child { display: flex; flex-direction: column; }
 .floating-card strong { font-size: .82rem; line-height: 1.25; }
 .floating-card small { margin-top: 4px; color: var(--ink-soft); font-size: .7rem; }
-.card-world { left: -14px; top: 95px; }
-.card-light { right: -24px; top: 205px; }
-.card-library { left: 3px; bottom: 70px; }
+.card-world { left: -48px; top: 70px; }
+.card-light { right: -28px; top: 215px; }
+.card-library { left: -40px; bottom: 40px; }
+@media (max-width: 1280px) {
+  .card-world { left: 0; }
+  .card-light { right: 0; }
+  .card-library { left: 0; }
+}
 .hero-aura { position: absolute; border-radius: 50%; filter: blur(3px); opacity: .55; }
 .aura-one { width: 260px; height: 260px; right: -90px; top: 90px; background: rgba(216,79,97,.12); }
 .aura-two { width: 220px; height: 220px; left: -120px; bottom: 20px; background: rgba(23,63,122,.10); }
@@ -192,7 +197,7 @@ body[data-member-mode="member"] .mode-switch-thumb { transform: translateX(15px)
 .feature-main p { color: rgba(255,255,255,.78); }
 .feature-number { color: #bcd2ff; font-size: .76rem; font-weight: 800; letter-spacing: .14em; }
 .feature-main img {
-  position: absolute; width: 310px; right: 30px; bottom: -190px; transform: rotate(5deg);
+  position: absolute; width: 310px; height: auto; right: 30px; bottom: -190px; transform: rotate(5deg);
   border-radius: 40px; box-shadow: 0 35px 80px rgba(0,0,0,.35);
 }
 .feature-stack { display: grid; gap: 18px; }
