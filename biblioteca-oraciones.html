@@ -2,10 +2,10 @@
 <html lang="es"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Biblioteca de oraciones | Peregrino APP</title>
-<meta name="description" content="Busca una oración, descárgala y guárdala en Mis devociones de Peregrino APP.">
+<meta name="description" content="Más de cien oraciones católicas en español, portugués, inglés y latín para leer y rezar desde cualquier móvil u ordenador.">
 <meta name="theme-color" content="#fffaf0">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/biblioteca-v2.css"><link rel="stylesheet" href="assets/edicion-v1.css">
+<link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/biblioteca-v3.css"><link rel="stylesheet" href="assets/edicion-v1.css">
 <link rel="icon" href="assets/peregrino-app-icon.png">
   <script>
     (function() {
@@ -75,17 +75,17 @@
 <main id="contenido">
 <section class="page-hero">
   <div class="shell page-hero-grid">
-    <div class="reveal"><p class="eyebrow">Mis devociones</p><h1>Una biblioteca <em>para hacerla tuya.</em></h1>
-      <p class="lead">Busca la oración que quieras conservar, descárgala y ábrela con Peregrino. Quedará guardada en Mis devociones para volver a ella incluso sin conexión.</p>
-      <div class="hero-actions"><a class="button button-primary" href="#explorar">Explorar oraciones</a><a class="button button-quiet" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a></div>
+    <div class="reveal"><p class="eyebrow">Biblioteca de oraciones</p><h1>Reza en tu lengua <em>o en la de la Iglesia.</em></h1>
+      <p class="lead">Más de cien oraciones de la tradición católica en español, portugués, inglés y latín. Ábrelas y rézalas aquí mismo, desde cualquier móvil u ordenador, sin instalar nada.</p>
+      <div class="hero-actions"><a class="button button-primary" href="#explorar">Empezar a rezar</a><a class="button button-quiet" href="index.html#app">Conocer la app</a></div>
     </div>
-    <aside class="hero-card library-hero-card reveal"><div class="hero-card-symbol">✦</div><h2>Elige solo lo que te ayuda a rezar</h2><p>La biblioteca no llena la app de contenido. Cada archivo se prepara únicamente cuando decides guardarlo.</p><div class="steps-row"><span>1 · Busca</span><span>2 · Descarga</span><span>3 · Abre con Peregrino</span></div></aside>
+    <aside class="hero-card library-hero-card reveal"><div class="hero-card-symbol">✦</div><h2>Una misma oración, cuatro idiomas</h2><p>Cambia de idioma cuando quieras o pon dos versiones lado a lado: el Pange lingua en latín junto a su traducción, o el Padre nuestro como lo reza tu familia.</p><div class="steps-row notranslate" translate="no"><span lang="es">Español</span><span lang="pt">Português</span><span lang="en">English</span><span lang="la">Latín</span></div></aside>
   </div>
 </section>
 
 <section class="section section-white" id="explorar">
 <div class="shell library-layout">
-  <div class="section-heading reveal"><p class="section-kicker">Biblioteca abierta</p><h2>Explora las oraciones</h2><p>Busca por nombre o recorre las categorías para encontrar una oración.</p></div>
+  <div class="section-heading reveal"><p class="section-kicker">Biblioteca abierta</p><h2>Explora las oraciones</h2><p>Elige el idioma, busca por su nombre en cualquiera de las cuatro lenguas y pulsa una oración para rezarla.</p></div>
 
   <div class="library-panel reveal">
     <div class="library-toolbar">
@@ -97,13 +97,13 @@
       </div>
       <div class="result-count" id="resultCount" aria-live="polite">Preparando la biblioteca…</div>
     </div>
+    <div class="library-langs"><span class="library-langs-label" id="languageLabel">Rezar en</span><div class="lang-switch" id="languageSwitch" role="group" aria-labelledby="languageLabel"></div></div>
     <div class="category-strip" id="categoryStrip" aria-label="Filtrar por categoría"></div>
     <div class="library-status" id="libraryStatus"><div class="status-card"><div class="spinner"></div><strong>Cargando las oraciones</strong><span>Preparando la biblioteca…</span></div></div>
     <div class="prayer-grid" id="prayerGrid" hidden></div>
-    <div class="library-note"><strong>En el móvil:</strong> abre el archivo descargado, pulsa Compartir y elige Peregrino APP. <strong>En el ordenador:</strong> envíatelo al móvil por WhatsApp, correo o Drive.</div>
   </div>
 
-  <div class="library-cta reveal"><div><h2>Tu biblioteca vive en Mis devociones</h2><p>Una vez importada, puedes editar la oración, marcarla como favorita o compartirla.</p></div><a class="button button-gold" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino</a></div>
+  <div class="library-cta reveal"><div><h2>¿Quieres llevarla contigo?</h2><p>En la app Peregrino estas oraciones se rezan con voz, sin conexión y dentro de tu rutina de cada día.</p></div><a class="button button-gold" href="index.html#app">Conocer Peregrino</a></div>
 </div>
 </section>
 </main>
@@ -151,10 +151,38 @@
     </div>
     <div class="shell footer-bottom"><span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span><a href="#contenido">Volver arriba ↑</a></div>
   </footer>
-<dialog class="library-dialog" id="downloadDialog"><div class="dialog-body"><div class="dialog-icon">✓</div><h2>Oración preparada</h2><p id="dialogPrayerName">El archivo compatible con Peregrino se ha descargado.</p><ol class="dialog-instructions" id="dialogInstructions"><li>Abre las descargas del navegador.</li><li>Toca el archivo terminado en <strong>.json</strong>.</li><li>Elige Peregrino APP y confirma la importación.</li></ol><div class="dialog-actions"><button class="button button-primary" id="closeDialog" type="button">Entendido</button></div></div></dialog>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<dialog class="prayer-reader" id="prayerReader" aria-labelledby="readerTitle">
+  <div class="reader-shell">
+    <div class="reader-bar">
+      <button class="reader-close" id="readerClose" type="button"><span aria-hidden="true">←</span> Biblioteca</button>
+      <div class="reader-size" role="group" aria-label="Tamaño del texto">
+        <button id="readerSmaller" type="button" aria-label="Letra más pequeña">A−</button>
+        <button id="readerBigger" type="button" aria-label="Letra más grande">A+</button>
+      </div>
+    </div>
+    <div class="reader-scroll" id="readerScroll">
+      <article class="reader-page">
+        <header class="reader-head">
+          <span class="prayer-category" id="readerCategory"></span>
+          <h2 class="notranslate" id="readerTitle" translate="no"></h2>
+          <p class="prayer-aka notranslate" id="readerAka" translate="no"></p>
+          <p class="reader-subtitle" id="readerSubtitle" hidden></p>
+          <div class="reader-tools">
+            <div class="lang-switch" id="readerLanguages" role="group" aria-label="Idioma de la oración"></div>
+            <label class="reader-compare"><span>Comparar con</span><select id="readerCompare"></select></label>
+          </div>
+        </header>
+        <div class="reader-body notranslate" id="readerBody" translate="no"></div>
+        <nav class="reader-nav" aria-label="Otras oraciones">
+          <button class="reader-step" id="readerPrev" type="button" hidden><small>← Anterior</small><span class="notranslate" data-title translate="no"></span></button>
+          <button class="reader-step is-next" id="readerNext" type="button" hidden><small>Siguiente →</small><span class="notranslate" data-title translate="no"></span></button>
+        </nav>
+      </article>
+    </div>
+  </div>
+</dialog>
 
-<script src="assets/community-v2.js"></script><script src="assets/biblioteca-v2.js"></script>
+<script src="assets/community-v2.js"></script><script src="assets/biblioteca-v3.js"></script>
 
 
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

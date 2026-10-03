@@ -55,7 +55,7 @@ Estas puertas deben permanecer abiertas para quien llega por primera vez.
 - `bordon/index.html`
 - Enlaces profundos de la app.
 - Parámetros de invitaciones.
-- Descargas JSON de la biblioteca.
+- Enlaces a una oración de la biblioteca (`biblioteca-oraciones.html#rezar/<id>/<idioma>`).
 - Formularios y fuentes de datos.
 - Páginas de confirmación y agradecimiento.
 
