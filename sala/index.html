@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../assets/fonts/fonts.css">
   <link rel="stylesheet" href="sala.css">
   <link rel="icon" href="../assets/peregrino-app-icon.png">
+  <script src="../assets/idioma-v1.js"></script>
 </head>
 <body>
   <div class="decolores" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
@@ -55,8 +56,8 @@
     <!-- 3. Sala de espera -->
     <section class="view" id="viewEspera" hidden>
       <div class="gift" aria-hidden="true">🙏</div>
-      <p class="eyebrow">Sala <span data-codigo></span></p>
-      <h1 class="title-sm" data-titulo></h1>
+      <p class="eyebrow">Sala <span class="notranslate" data-codigo translate="no"></span></p>
+      <h1 class="title-sm notranslate" data-titulo translate="no"></h1>
       <p class="meta" data-fecha hidden></p>
       <p class="meta" data-idioma hidden></p>
       <p class="intention" data-intencion hidden></p>
@@ -69,15 +70,15 @@
     <!-- 4. Rezando -->
     <section class="view view-rezo" id="viewRezo" hidden>
       <header class="rezo-head">
-        <p class="eyebrow">Sala <span data-codigo></span> · <span data-guia>quien guía</span> guía la oración</p>
-        <h1 class="title-sm" data-titulo></h1>
+        <p class="eyebrow">Sala <span class="notranslate" data-codigo translate="no"></span> · <span data-guia>quien guía</span> guía la oración</p>
+        <h1 class="title-sm notranslate" data-titulo translate="no"></h1>
         <p class="intention" data-intencion hidden></p>
       </header>
 
       <div class="progress" aria-hidden="true"><div class="progress-bar" id="barra"></div></div>
       <p class="progress-label" id="progresoTexto"></p>
 
-      <article class="section-card" id="seccion" aria-live="polite">
+      <article class="section-card notranslate" id="seccion" aria-live="polite" translate="no">
         <h2 class="section-title" id="seccionTitulo"></h2>
         <div class="section-body" id="seccionCuerpo"></div>
       </article>
@@ -93,7 +94,7 @@
     <!-- 5. Rosario: solo en la app -->
     <section class="view" id="viewRosario" hidden>
       <div class="gift" aria-hidden="true">📿</div>
-      <p class="eyebrow">Sala <span data-codigo></span></p>
+      <p class="eyebrow">Sala <span class="notranslate" data-codigo translate="no"></span></p>
       <h1 class="title-sm">Santo Rosario en grupo</h1>
       <p class="lead">El Rosario en grupo es una experiencia pensada para rezarse desde la app Peregrino en el móvil, y no se puede seguir desde la web.</p>
       <a class="button" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc" rel="noopener">Descargar Peregrino APP</a>
@@ -117,6 +118,18 @@
 
     <div class="colors">¡De Colores! 🌈</div>
   </main>
+  <div id="google_translate_element" class="traductor"></div>
+  <style>
+    .traductor{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:14px auto 22px;font:500 12px/1.3 Inter,system-ui,sans-serif}
+    .traductor .goog-te-combo{padding:7px 9px;border:1px solid rgba(23,63,122,.22);border-radius:8px;background:#fff;color:#173f7a;font:600 13px Inter,system-ui,sans-serif}
+    .goog-te-banner-frame{display:none!important}
+  </style>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
+    }
+  </script>
 
   <script type="module" src="sala.js"></script>
   <script src="../assets/compartir-v1.js" defer></script>
