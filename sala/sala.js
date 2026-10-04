@@ -224,6 +224,13 @@ function pintarCabecera(data, documento) {
   rellenar('[data-codigo]', estado.codigo);
   rellenar('[data-titulo]', titulo);
   rellenar('[data-guia]', guia || 'quien guía');
+  // El apodo de quien guía es un nombre: no se traduce. El texto por
+  // defecto ("quien guía") sí.
+  for (const el of document.querySelectorAll('[data-guia]')) {
+    el.classList.toggle('notranslate', Boolean(guia));
+    if (guia) el.setAttribute('translate', 'no');
+    else el.removeAttribute('translate');
+  }
 
   const intencion = texto(data.intention);
   rellenar('[data-intencion]', intencion ? `Intención: ${intencion}` : '');

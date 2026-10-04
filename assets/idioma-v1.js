@@ -108,7 +108,81 @@
     observador.observe(document.documentElement, { childList: true, subtree: true });
   }
 
+  // 5. Palabras que el traductor no debe tocar: nombres propios del
+  //    Movimiento y de la app ("Cursillo" no es "short course", "palanca" no
+  //    es "lever", "Peregrino APP" no es "Pilgrim APP"). Se envuelven en
+  //    <pg-nt translate="no" class="notranslate">, que el traductor respeta.
+  //    Es un elemento propio (en línea, sin estilos) para que las reglas CSS
+  //    de tipo ".bloque span" no le afecten. También se aplica al contenido
+  //    que las páginas añaden después.
+  var LETRA = "A-Za-z0-9ÁÉÍÓÚÜÑáéíóúüñÀ-ÿ";
+  var TERMINOS = new RegExp(
+    "(^|[^" + LETRA + "])(" + [
+      "Peregrino APP", "Peregrino App", "Peregrino",
+      "Movimiento de Cursillos de Cristiandad", "Cursillos de Cristiandad",
+      "Cursillo de Cristiandad", "[Cc]ursillos?", "[Cc]ursillistas?",
+      "[Pp]alancas?", "Bordón", "Bordones", "Palmero",
+      "[Uu]ltreyas?", "¡?De Colores!?"
+    ].join("|") + ")(?=$|[^" + LETRA + "])", "g");
+  var SALTAR = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1, INPUT: 1, SELECT: 1, OPTION: 1, CODE: 1, PRE: 1 };
+
+  function protegido(nodo) {
+    for (var el = nodo.parentNode; el && el.nodeType === 1; el = el.parentNode) {
+      if (SALTAR[el.nodeName]) return true;
+      if (el.getAttribute("translate") === "no" || el.classList.contains("notranslate")) return true;
+      if (el.isContentEditable) return true;
+    }
+    return false;
+  }
+
+  function envolverTexto(nodo) {
+    var texto = nodo.nodeValue;
+    if (!texto || !/[CcPpBUuD]/.test(texto)) return;
+    TERMINOS.lastIndex = 0;
+    if (!TERMINOS.test(texto) || protegido(nodo)) return;
+    TERMINOS.lastIndex = 0;
+    // Todo el texto va dentro de un único elemento en línea: si el padre es
+    // flex o grid (botones, pastillas…), sigue siendo un solo elemento y no
+    // se pierden los espacios entre palabras.
+    var fragmento = document.createElement("pg-tx"), ultimo = 0, m;
+    while ((m = TERMINOS.exec(texto))) {
+      var inicio = m.index + m[1].length;
+      if (inicio > ultimo) fragmento.appendChild(document.createTextNode(texto.slice(ultimo, inicio)));
+      var marca = document.createElement("pg-nt");
+      marca.className = "notranslate";
+      marca.setAttribute("translate", "no");
+      marca.textContent = m[2];
+      fragmento.appendChild(marca);
+      ultimo = inicio + m[2].length;
+    }
+    if (ultimo < texto.length) fragmento.appendChild(document.createTextNode(texto.slice(ultimo)));
+    nodo.parentNode.replaceChild(fragmento, nodo);
+  }
+
+  function proteger(raiz) {
+    if (!raiz) return;
+    if (raiz.nodeType === 3) { envolverTexto(raiz); return; }
+    if (raiz.nodeType !== 1 || SALTAR[raiz.nodeName]) return;
+    var recorrido = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, null), nodos = [], n;
+    while ((n = recorrido.nextNode())) nodos.push(n);
+    nodos.forEach(envolverTexto);
+  }
+
+  function vigilarContenido() {
+    var observador = new MutationObserver(function (cambios) {
+      cambios.forEach(function (cambio) {
+        for (var i = 0; i < cambio.addedNodes.length; i++) proteger(cambio.addedNodes[i]);
+      });
+    });
+    observador.observe(document.body, { childList: true, subtree: true });
+  }
+
+  // Para que otras páginas protejan un nodo concreto (por ejemplo un nombre).
+  window.PeregrinoIdioma = { proteger: proteger };
+
   function alCargar() {
+    proteger(document.body);
+    vigilarContenido();
     if (preferido && preferido !== ORIGINAL) botonOriginal();
     vigilarSelector();
   }
