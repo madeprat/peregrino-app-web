@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "id": "reunion_fundamental",
+  "stages": [
+    {
+      "id": "reunion:opening_prayer",
+      "kind": "communal",
+      "durationMinutes": 5
+    },
+    {
+      "id": "reunion:sharing",
+      "kind": "roundRobin",
+      "durationMinutes": 45
+    },
+    {
+      "id": "reunion:group_life",
+      "kind": "groupDecision",
+      "durationMinutes": 5
+    },
+    {
+      "id": "reunion:closing_prayer",
+      "kind": "communal",
+      "durationMinutes": 5
+    }
+  ],
+  "languages": {
+    "es": {
+      "stages": {
+        "reunion:opening_prayer": {
+          "title": "Ven, Espíritu Santo",
+          "description": "Ponemos la reunión en manos del Espíritu Santo. La reunión no la preside nadie: somos amigos que comparten su vida.",
+          "voice": "Comenzamos invocando al Espíritu Santo.",
+          "prayer": "Ven, Espíritu Santo, llena los corazones de tus fieles y enciende en ellos el fuego de tu amor.\n\nV. Envía tu Espíritu y serán creados.\nR. Y renovarás la faz de la tierra.\n\nOremos. Oh Dios, que has instruido los corazones de tus fieles con la luz del Espíritu Santo, concédenos, según el mismo Espíritu, conocer las cosas rectas y gozar siempre de sus divinos consuelos. Por Jesucristo nuestro Señor. Amén."
+        },
+        "reunion:sharing": {
+          "title": "Compartimos nuestra semana",
+          "description": "Cada uno, a su turno y sin prisa, cuenta cómo ha vivido su semana. No es una rendición de cuentas ni un control mutuo: es un compartir gozoso entre amigos.",
+          "voice": "Compartimos nuestra semana. Cada uno, sin prisa y desde la amistad, cuenta cómo ha vivido su relación con Dios, qué le está ayudando a conocer mejor a Cristo y qué ha pasado con las personas de su ambiente.",
+          "parts": [
+            {
+              "id": "piety",
+              "icon": "✝️",
+              "title": "Piedad · mi relación con Dios",
+              "questions": [
+                "¿Cómo estoy viviendo mi vida de gracia?",
+                "Durante esta semana, ¿cuál ha sido el momento en que me he sentido más cerca de Cristo?"
+              ],
+              "hint": "Puede haber sido en la oración o en la Eucaristía, pero también en el trabajo, con un amigo o en medio de una dificultad."
+            },
+            {
+              "id": "study",
+              "icon": "📖",
+              "title": "Estudio · conocer mejor a Cristo",
+              "questions": [
+                "¿Qué me está ayudando a conocer mejor a Cristo?",
+                "¿Qué estoy descubriendo o comprendiendo mejor para vivir cristianamente mi realidad?"
+              ],
+              "hint": "No se trata solo de qué he leído, sino de cómo va creciendo mi comprensión de la fe."
+            },
+            {
+              "id": "action",
+              "icon": "🌱",
+              "title": "Acción · las personas de mi ambiente",
+              "questions": [
+                "¿Qué éxito apostólico ha querido tener el Señor por mi medio?",
+                "¿Con qué fracaso ha querido el Señor templarme?",
+                "¿Qué pasó con mi plan de la semana pasada y qué me propongo para esta?"
+              ],
+              "hint": "Mi ambiente es mi familia, mi trabajo, mis amigos y mis aficiones. No hace falta sumar actividades nuevas."
+            }
+          ]
+        },
+        "reunion:group_life": {
+          "title": "Vida del grupo",
+          "description": "La amistad no termina cuando acaba la reunión. Si queréis, podéis quedar en algo para vivirlo juntos. Es opcional.",
+          "voice": "Vida del grupo. ¿Hay algo que queramos vivir juntos?",
+          "questions": [
+            "¿Hay algo que queramos vivir juntos?"
+          ],
+          "hint": "Si lo decidís, escribidlo aquí para recordarlo (opcional)."
+        },
+        "reunion:closing_prayer": {
+          "title": "Oramos juntos",
+          "description": "Ponemos en manos de Dios nuestros fallos, nuestros planes y a los hermanos que lo necesitan.",
+          "voice": "Oramos juntos.",
+          "steps": [
+            {
+              "title": "Padrenuestro",
+              "detail": "Por nuestros fallos y por los planes apostólicos de todos.",
+              "prayer": "Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén."
+            },
+            {
+              "title": "Por el hermano que lo necesite",
+              "detail": "Si alguno está pasando por una dificultad, el más amigo le acompañará esta semana, y todos le encomendamos en la oración."
+            },
+            {
+              "title": "Ave María",
+              "detail": "En acción de gracias.",
+              "prayer": "Dios te salve, María, llena eres de gracia; el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén."
+            }
+          ]
+        }
+      },
+      "labels": {
+        "privacyNote": "Lo que se comparte aquí no se guarda en ningún sitio.",
+        "yourPreparation": "Tu preparación personal",
+        "nothingPrepared": "Aún no has anotado nada esta semana.",
+        "elapsed": "{elapsed} de unos {total} min",
+        "roomTitle": "Reunión de Grupo en línea",
+        "roomCode": "Sala {code}",
+        "roomChooseName": "¿Cómo quieres llamarte hoy?",
+        "roomChooseNameHelp": "En la sala nadie usa su nombre real: cada persona recibe el nombre de un apóstol o de una mujer del Evangelio. Nada de lo que se comparte se guarda.",
+        "roomApostle": "Un apóstol",
+        "roomWoman": "Una mujer del Evangelio",
+        "roomYouAre": "Hoy eres {name}",
+        "roomPresent": "En la sala",
+        "roomWaiting": "La reunión empezará cuando estéis todos.",
+        "roomStart": "Empezar la reunión",
+        "roomSharing": "Comparte {name}",
+        "roomYourTurn": "Te toca compartir",
+        "roomNext": "Siguiente",
+        "roomBack": "Atrás",
+        "roomFinish": "Terminar la reunión",
+        "roomAnyone": "Cualquiera puede pasar al momento siguiente: la reunión no la preside nadie.",
+        "roomFinished": "La reunión ha terminado",
+        "roomFinishedText": "¡De Colores! Gracias por compartir vuestra semana.",
+        "roomFull": "Ya no quedan nombres libres en esta sala.",
+        "roomCreate": "Crear sala online",
+        "roomCreateHelp": "Cada uno entra con el enlace desde su móvil o su ordenador, sin instalar nada. Usad vuestra videollamada de siempre y seguid la reunión en la sala.",
+        "roomInvite": "Te invito a nuestra Reunión de Grupo. Entra desde tu móvil o tu ordenador, sin instalar nada:",
+        "roomExpired": "Esta sala ha caducado."
+      },
+      "names": {
+        "apostles": [
+          "Pedro",
+          "Andrés",
+          "Santiago",
+          "Juan",
+          "Felipe",
+          "Bartolomé",
+          "Tomás",
+          "Mateo",
+          "Santiago el Menor",
+          "Tadeo",
+          "Simón",
+          "Matías",
+          "Bernabé",
+          "Pablo",
+          "Lucas",
+          "Marcos",
+          "Timoteo",
+          "Tito",
+          "Silas",
+          "Esteban"
+        ],
+        "women": [
+          "María Magdalena",
+          "Marta",
+          "María de Betania",
+          "Juana",
+          "Susana",
+          "Salomé",
+          "Lidia",
+          "Priscila",
+          "Febe",
+          "Tabita",
+          "Isabel",
+          "Ana",
+          "Loida",
+          "Eunice",
+          "Junia",
+          "Evodia",
+          "Síntique",
+          "Dámaris",
+          "Cloe",
+          "Ninfa"
+        ]
+      },
+      "guide": {
+        "tagline": "Amigos que comparten su vida para vivir mejor lo fundamental cristiano",
+        "intro": "La Reunión de Grupo es la amistad vivida en torno a Cristo. Lo importante no es la mecánica de la reunión, sino compartir.",
+        "keys": [
+          "No la preside nadie: somos amigos, no una junta con cargos.",
+          "Piedad, Estudio y Acción son tres dimensiones de una misma vida, no tres informes.",
+          "No es una rendición de cuentas ni un control mutuo, sino un compartir gozoso.",
+          "La Acción se vive en los ambientes de cada uno: familia, trabajo, amigos y aficiones.",
+          "Lo que se comparte en el grupo, en el grupo se queda."
+        ],
+        "source": "Núcleo fundamental de la Reunión de Grupo, según el Manual de Dirigentes del MCC."
+      }
+    },
+    "pt": {
+      "stages": {
+        "reunion:opening_prayer": {
+          "title": "Vinde, Espírito Santo",
+          "description": "Colocamos a reunião nas mãos do Espírito Santo. Ninguém preside a reunião: somos amigos que partilham a vida.",
+          "voice": "Começamos invocando o Espírito Santo.",
+          "prayer": "Vinde, Espírito Santo, enchei os corações dos vossos fiéis e acendei neles o fogo do vosso amor.\n\nV. Enviai o vosso Espírito e tudo será criado.\nR. E renovareis a face da terra.\n\nOremos. Ó Deus, que instruístes os corações dos vossos fiéis com a luz do Espírito Santo, concedei-nos, no mesmo Espírito, saborear o que é reto e gozar sempre da sua consolação. Por Cristo, nosso Senhor. Amém."
+        },
+        "reunion:sharing": {
+          "title": "Partilhamos a nossa semana",
+          "description": "Cada um, na sua vez e sem pressa, conta como viveu a sua semana. Não é uma prestação de contas nem um controle mútuo: é uma partilha alegre entre amigos.",
+          "voice": "Partilhamos a nossa semana. Cada um, sem pressa e na amizade, conta como viveu a sua relação com Deus, o que o está ajudando a conhecer melhor a Cristo e o que aconteceu com as pessoas do seu ambiente.",
+          "parts": [
+            {
+              "id": "piety",
+              "icon": "✝️",
+              "title": "Piedade · a minha relação com Deus",
+              "questions": [
+                "Como estou vivendo a minha vida de graça?",
+                "Durante esta semana, qual foi o momento em que me senti mais perto de Cristo?"
+              ],
+              "hint": "Pode ter sido na oração ou na Eucaristia, mas também no trabalho, com um amigo ou no meio de uma dificuldade."
+            },
+            {
+              "id": "study",
+              "icon": "📖",
+              "title": "Estudo · conhecer melhor a Cristo",
+              "questions": [
+                "O que está me ajudando a conhecer melhor a Cristo?",
+                "O que estou descobrindo ou compreendendo melhor para viver cristãmente a minha realidade?"
+              ],
+              "hint": "Não se trata só do que li, mas de como vai crescendo a minha compreensão da fé."
+            },
+            {
+              "id": "action",
+              "icon": "🌱",
+              "title": "Ação · as pessoas do meu ambiente",
+              "questions": [
+                "Que sucesso apostólico o Senhor quis ter por meio de mim?",
+                "Com que fracasso o Senhor quis me temperar?",
+                "O que aconteceu com o meu plano da semana passada e o que me proponho para esta?"
+              ],
+              "hint": "O meu ambiente é a minha família, o meu trabalho, os meus amigos e os meus passatempos. Não é preciso somar atividades novas."
+            }
+          ]
+        },
+        "reunion:group_life": {
+          "title": "Vida do grupo",
+          "description": "A amizade não termina quando acaba a reunião. Se quiserem, podem combinar algo para viver juntos. É opcional.",
+          "voice": "Vida do grupo. Há algo que queremos viver juntos?",
+          "questions": [
+            "Há algo que queremos viver juntos?"
+          ],
+          "hint": "Se decidirem, escrevam aqui para lembrar (opcional)."
+        },
+        "reunion:closing_prayer": {
+          "title": "Rezamos juntos",
+          "description": "Colocamos nas mãos de Deus as nossas falhas, os nossos planos e os irmãos que precisam.",
+          "voice": "Rezamos juntos.",
+          "steps": [
+            {
+              "title": "Pai-Nosso",
+              "detail": "Pelas nossas falhas e pelos planos apostólicos de todos.",
+              "prayer": "Pai nosso que estais nos céus, santificado seja o vosso nome; venha a nós o vosso reino; seja feita a vossa vontade, assim na terra como no céu. O pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém."
+            },
+            {
+              "title": "Pelo irmão que precisar",
+              "detail": "Se alguém está passando por uma dificuldade, o mais amigo o acompanhará nesta semana, e todos o confiamos na oração."
+            },
+            {
+              "title": "Ave-Maria",
+              "detail": "Em ação de graças.",
+              "prayer": "Ave Maria, cheia de graça, o Senhor é convosco. Bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Amém."
+            }
+          ]
+        }
+      },
+      "labels": {
+        "privacyNote": "O que se partilha aqui não fica guardado em lugar nenhum.",
+        "yourPreparation": "A sua preparação pessoal",
+        "nothingPrepared": "Você ainda não anotou nada nesta semana.",
+        "elapsed": "{elapsed} de cerca de {total} min",
+        "roomTitle": "Reunião de Grupo on-line",
+        "roomCode": "Sala {code}",
+        "roomChooseName": "Como você quer se chamar hoje?",
+        "roomChooseNameHelp": "Na sala ninguém usa o nome verdadeiro: cada pessoa recebe o nome de um apóstolo ou de uma mulher do Evangelho. Nada do que se partilha fica guardado.",
+        "roomApostle": "Um apóstolo",
+        "roomWoman": "Uma mulher do Evangelho",
+        "roomYouAre": "Hoje você é {name}",
+        "roomPresent": "Na sala",
+        "roomWaiting": "A reunião começará quando todos estiverem aqui.",
+        "roomStart": "Começar a reunião",
+        "roomSharing": "Partilha {name}",
+        "roomYourTurn": "É a sua vez de partilhar",
+        "roomNext": "Seguinte",
+        "roomBack": "Voltar",
+        "roomFinish": "Terminar a reunião",
+        "roomAnyone": "Qualquer um pode passar ao momento seguinte: ninguém preside a reunião.",
+        "roomFinished": "A reunião terminou",
+        "roomFinishedText": "De Colores! Obrigado por partilharem a sua semana.",
+        "roomFull": "Já não há nomes livres nesta sala.",
+        "roomCreate": "Criar sala on-line",
+        "roomCreateHelp": "Cada um entra pelo link no celular ou no computador, sem instalar nada. Usem a videochamada de sempre e acompanhem a reunião na sala.",
+        "roomInvite": "Convido você para a nossa Reunião de Grupo. Entre pelo celular ou pelo computador, sem instalar nada:",
+        "roomExpired": "Esta sala expirou."
+      },
+      "names": {
+        "apostles": [
+          "Pedro",
+          "André",
+          "Tiago",
+          "João",
+          "Filipe",
+          "Bartolomeu",
+          "Tomé",
+          "Mateus",
+          "Tiago Menor",
+          "Tadeu",
+          "Simão",
+          "Matias",
+          "Barnabé",
+          "Paulo",
+          "Lucas",
+          "Marcos",
+          "Timóteo",
+          "Tito",
+          "Silas",
+          "Estêvão"
+        ],
+        "women": [
+          "Maria Madalena",
+          "Marta",
+          "Maria de Betânia",
+          "Joana",
+          "Susana",
+          "Salomé",
+          "Lídia",
+          "Priscila",
+          "Febe",
+          "Tabita",
+          "Isabel",
+          "Ana",
+          "Loide",
+          "Eunice",
+          "Júnia",
+          "Evódia",
+          "Síntique",
+          "Dâmaris",
+          "Cloé",
+          "Ninfa"
+        ]
+      },
+      "guide": {
+        "tagline": "Amigos que partilham a vida para viver melhor o fundamental cristão",
+        "intro": "A Reunião de Grupo é a amizade vivida em torno de Cristo. O importante não é a mecânica da reunião, mas partilhar.",
+        "keys": [
+          "Ninguém a preside: somos amigos, não uma diretoria com cargos.",
+          "Piedade, Estudo e Ação são três dimensões de uma mesma vida, não três relatórios.",
+          "Não é uma prestação de contas nem um controle mútuo, mas uma partilha alegre.",
+          "A Ação se vive nos ambientes de cada um: família, trabalho, amigos e passatempos.",
+          "O que se partilha no grupo, no grupo fica."
+        ],
+        "source": "Núcleo fundamental da Reunião de Grupo, segundo o Manual de Dirigentes do MCC."
+      }
+    },
+    "en": {
+      "stages": {
+        "reunion:opening_prayer": {
+          "title": "Come, Holy Spirit",
+          "description": "We place the meeting in the hands of the Holy Spirit. No one presides over the meeting: we are friends sharing our lives.",
+          "voice": "We begin by calling on the Holy Spirit.",
+          "prayer": "Come, Holy Spirit, fill the hearts of your faithful and kindle in them the fire of your love.\n\nV. Send forth your Spirit and they shall be created.\nR. And you shall renew the face of the earth.\n\nLet us pray. O God, who by the light of the Holy Spirit instructed the hearts of the faithful, grant that by the same Spirit we may be truly wise and ever rejoice in his consolation. Through Christ our Lord. Amen."
+        },
+        "reunion:sharing": {
+          "title": "We share our week",
+          "description": "Each person, in turn and without hurry, tells how they have lived their week. It is not an account to be rendered or a check on one another: it is a joyful sharing among friends.",
+          "voice": "We share our week. Each of us, without hurry and as friends, tells how we have lived our relationship with God, what is helping us to know Christ better, and what has happened with the people around us.",
+          "parts": [
+            {
+              "id": "piety",
+              "icon": "✝️",
+              "title": "Piety · my relationship with God",
+              "questions": [
+                "How am I living my life of grace?",
+                "This week, when was the moment I felt closest to Christ?"
+              ],
+              "hint": "It may have been in prayer or at Mass, but also at work, with a friend or in the middle of a difficulty."
+            },
+            {
+              "id": "study",
+              "icon": "📖",
+              "title": "Study · knowing Christ better",
+              "questions": [
+                "What is helping me to know Christ better?",
+                "What am I discovering or understanding better so I can live my reality as a Christian?"
+              ],
+              "hint": "It is not only about what I have read, but about how my understanding of the faith is growing."
+            },
+            {
+              "id": "action",
+              "icon": "🌱",
+              "title": "Action · the people in my environment",
+              "questions": [
+                "What apostolic success has the Lord wanted to have through me?",
+                "With what failure has the Lord wanted to temper me?",
+                "What happened with last week's plan, and what do I propose for this week?"
+              ],
+              "hint": "My environment is my family, my work, my friends and my hobbies. There is no need to add new activities."
+            }
+          ]
+        },
+        "reunion:group_life": {
+          "title": "Life of the group",
+          "description": "Friendship does not end when the meeting ends. If you wish, you can agree on something to live together. It is optional.",
+          "voice": "Life of the group. Is there something we would like to live together?",
+          "questions": [
+            "Is there something we would like to live together?"
+          ],
+          "hint": "If you decide on something, write it here to remember it (optional)."
+        },
+        "reunion:closing_prayer": {
+          "title": "We pray together",
+          "description": "We place in God's hands our failures, our plans and the brothers and sisters who need it.",
+          "voice": "We pray together.",
+          "steps": [
+            {
+              "title": "Our Father",
+              "detail": "For our failures and for everyone's apostolic plans.",
+              "prayer": "Our Father, who art in heaven, hallowed be thy name; thy kingdom come, thy will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen."
+            },
+            {
+              "title": "For anyone who needs it",
+              "detail": "If someone is going through a difficulty, their closest friend will walk with them this week, and we all entrust them to God in prayer."
+            },
+            {
+              "title": "Hail Mary",
+              "detail": "In thanksgiving.",
+              "prayer": "Hail Mary, full of grace, the Lord is with thee. Blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."
+            }
+          ]
+        }
+      },
+      "labels": {
+        "privacyNote": "What is shared here is not saved anywhere.",
+        "yourPreparation": "Your personal preparation",
+        "nothingPrepared": "You have not noted anything this week yet.",
+        "elapsed": "{elapsed} of about {total} min",
+        "roomTitle": "Online Group Reunion",
+        "roomCode": "Room {code}",
+        "roomChooseName": "What would you like to be called today?",
+        "roomChooseNameHelp": "In the room nobody uses their real name: each person receives the name of an apostle or of a woman of the Gospel. Nothing that is shared is saved.",
+        "roomApostle": "An apostle",
+        "roomWoman": "A woman of the Gospel",
+        "roomYouAre": "Today you are {name}",
+        "roomPresent": "In the room",
+        "roomWaiting": "The reunion will begin when everyone is here.",
+        "roomStart": "Start the reunion",
+        "roomSharing": "{name} is sharing",
+        "roomYourTurn": "It is your turn to share",
+        "roomNext": "Next",
+        "roomBack": "Back",
+        "roomFinish": "End the reunion",
+        "roomAnyone": "Anyone can move on to the next moment: no one presides over the reunion.",
+        "roomFinished": "The reunion has ended",
+        "roomFinishedText": "De Colores! Thank you for sharing your week.",
+        "roomFull": "There are no free names left in this room.",
+        "roomCreate": "Create online room",
+        "roomCreateHelp": "Everyone joins with the link from their phone or computer, with nothing to install. Use your usual video call and follow the reunion in the room.",
+        "roomInvite": "I invite you to our Group Reunion. Join from your phone or computer, with nothing to install:",
+        "roomExpired": "This room has expired."
+      },
+      "names": {
+        "apostles": [
+          "Peter",
+          "Andrew",
+          "James",
+          "John",
+          "Philip",
+          "Bartholomew",
+          "Thomas",
+          "Matthew",
+          "James the Less",
+          "Jude Thaddeus",
+          "Simon",
+          "Matthias",
+          "Barnabas",
+          "Paul",
+          "Luke",
+          "Mark",
+          "Timothy",
+          "Titus",
+          "Silas",
+          "Stephen"
+        ],
+        "women": [
+          "Mary Magdalene",
+          "Martha",
+          "Mary of Bethany",
+          "Joanna",
+          "Susanna",
+          "Salome",
+          "Lydia",
+          "Priscilla",
+          "Phoebe",
+          "Tabitha",
+          "Elizabeth",
+          "Anna",
+          "Lois",
+          "Eunice",
+          "Junia",
+          "Euodia",
+          "Syntyche",
+          "Damaris",
+          "Chloe",
+          "Nympha"
+        ]
+      },
+      "guide": {
+        "tagline": "Friends who share their lives to live the Christian essentials better",
+        "intro": "The Group Reunion is friendship lived around Christ. What matters is not the mechanics of the meeting, but sharing.",
+        "keys": [
+          "No one presides: we are friends, not a committee with officers.",
+          "Piety, Study and Action are three dimensions of one life, not three reports.",
+          "It is not an account to be rendered or a check on one another, but a joyful sharing.",
+          "Action is lived in each person's own environments: family, work, friends and hobbies.",
+          "What is shared in the group stays in the group."
+        ],
+        "source": "The fundamental core of the Group Reunion, following the MCC Leaders' Manual."
+      }
+    }
+  }
+}

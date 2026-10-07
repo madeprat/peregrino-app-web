@@ -7,6 +7,9 @@
 //
 // Solo se siguen oraciones universales (prayerType == 'oracion'). El Santo
 // Rosario en grupo es una experiencia exclusiva de la app.
+//
+// Los códigos de 6 caracteres son salas de Reunión de Grupo: las gestiona
+// `reunion/reunion.js`, que se carga solo cuando hace falta.
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
 import {
@@ -30,6 +33,7 @@ const db = getFirestore(initializeApp(firebaseConfig));
 
 // Mismo alfabeto que genera la app (sin I, O, 0 ni 1).
 const CODIGO_VALIDO = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{4}$/;
+const CODIGO_REUNION = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/;
 
 const IDIOMAS = {
   es: { label: 'Español', voz: 'es-ES' },
@@ -39,7 +43,7 @@ const IDIOMAS = {
 };
 
 const $ = (id) => document.getElementById(id);
-const vistas = ['viewCodigo', 'viewCargando', 'viewEspera', 'viewRezo', 'viewRosario', 'viewFin'];
+const vistas = ['viewCodigo', 'viewCargando', 'viewEspera', 'viewRezo', 'viewRosario', 'viewNombre', 'viewReunion', 'viewFin'];
 
 const estado = {
   codigo: '',
@@ -332,8 +336,12 @@ function aplicar(data) {
 
 async function unirse(codigoBruto) {
   const codigo = texto(codigoBruto).toUpperCase().replace(/\s+/g, '');
+  if (CODIGO_REUNION.test(codigo)) {
+    await unirseAReunion(codigo);
+    return;
+  }
   if (!CODIGO_VALIDO.test(codigo)) {
-    mostrarCodigo('El código tiene 4 caracteres (letras y números). Revísalo e inténtalo de nuevo.');
+    mostrarCodigo('El código tiene 4 o 6 caracteres (letras y números). Revísalo e inténtalo de nuevo.');
     return;
   }
 
@@ -381,6 +389,39 @@ async function unirse(codigoBruto) {
       error.hidden = false;
     },
   );
+}
+
+// ── Reunión de Grupo ──────────────────────────────────────────────────────
+
+async function unirseAReunion(codigo) {
+  detener();
+  estado.codigo = codigo;
+  $('cargandoTexto').textContent = 'Buscando la sala…';
+  mostrar('viewCargando');
+
+  let modulo;
+  try {
+    modulo = await import('./reunion/reunion.js');
+  } catch (_) {
+    mostrarCodigo('No hemos podido abrir la sala. Comprueba tu conexión e inténtalo de nuevo.');
+    return;
+  }
+  if (estado.codigo !== codigo) return;
+
+  const cancelar = await modulo.abrirReunion({
+    codigo,
+    $,
+    mostrar,
+    mostrarCodigo,
+    mostrarFin,
+    actualizarUrl,
+    sigueActiva: () => estado.codigo === codigo,
+  });
+  if (estado.codigo !== codigo) {
+    if (cancelar) cancelar();
+    return;
+  }
+  estado.cancelar = cancelar;
 }
 
 function detener() {
@@ -465,7 +506,7 @@ $('formCodigo').addEventListener('submit', (e) => {
 });
 
 $('inputCodigo').addEventListener('input', (e) => {
-  const limpio = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 4);
+  const limpio = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
   if (limpio !== e.target.value) e.target.value = limpio;
 });
 
@@ -484,7 +525,7 @@ if (voz) {
 const params = new URLSearchParams(window.location.search);
 const inicial = params.get('c') || params.get('sala') || '';
 if (inicial) {
-  $('inputCodigo').value = inicial.toUpperCase().slice(0, 4);
+  $('inputCodigo').value = inicial.toUpperCase().slice(0, 6);
   unirse(inicial);
 } else {
   mostrarCodigo();

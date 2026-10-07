@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="Peregrino">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Rezar en grupo | Peregrino APP</title>
-  <meta name="description" content="Sigue desde el navegador la oración que guía otra persona en Peregrino APP. Solo necesitas el código de la sala.">
+  <meta name="description" content="Sigue desde el navegador una oración en grupo o vuestra Reunión de Grupo de Peregrino APP. Solo necesitas el código de la sala.">
   <meta name="robots" content="noindex,follow">
   <meta name="theme-color" content="#fffaf0">
   <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -30,20 +30,20 @@
              onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
         <span class="logo-fallback" hidden aria-hidden="true">P</span>
       </div>
-      <p class="eyebrow">Rezar en grupo</p>
-      <h1>Únete a la oración</h1>
-      <p class="lead">Escribe el código que te han enviado. Tu pantalla seguirá la oración de quien la guía, sin instalar nada y sin registrarte.</p>
+      <p class="eyebrow">Rezar en grupo · Reunión de Grupo</p>
+      <h1>Únete a la sala</h1>
+      <p class="lead">Escribe el código que te han enviado. Tu pantalla seguirá la oración o la reunión, sin instalar nada y sin registrarte.</p>
 
       <form class="code-form" id="formCodigo" autocomplete="off" novalidate>
         <label class="sr-only" for="inputCodigo">Código de la sala</label>
         <input id="inputCodigo" class="code-input" type="text" inputmode="text"
-               maxlength="4" placeholder="ABCD" autocapitalize="characters"
+               maxlength="6" placeholder="ABCD" autocapitalize="characters"
                spellcheck="false" aria-describedby="codigoAyuda">
         <button class="button" type="submit" id="btnUnirme">Unirme</button>
       </form>
       <p class="status" id="codigoAyuda" hidden></p>
 
-      <p class="note">El código tiene 4 caracteres, por ejemplo <strong>K7QM</strong>. Lo encontrarás en la invitación que recibiste.</p>
+      <p class="note">El código de una oración tiene 4 caracteres, por ejemplo <strong>K7QM</strong>; el de una Reunión de Grupo, 6, por ejemplo <strong>K7QM2X</strong>. Lo encontrarás en la invitación que recibiste.</p>
       <a class="back" href="../index.html">Conocer Peregrino APP →</a>
     </section>
 
@@ -102,7 +102,55 @@
       <button class="link" type="button" data-otro-codigo>Probar con otro código</button>
     </section>
 
-    <!-- 6. Fin / error -->
+    <!-- 6. Reunión de Grupo: elegir el nombre de hoy -->
+    <section class="view" id="viewNombre" hidden>
+      <div class="gift" aria-hidden="true">🤝</div>
+      <p class="eyebrow notranslate" translate="no" id="nombreSala"></p>
+      <h1 class="title-sm notranslate" translate="no" id="nombreTitulo"></h1>
+      <p class="lead notranslate" translate="no" id="nombreAyuda"></p>
+      <div class="eleccion notranslate" translate="no">
+        <button class="button" type="button" data-conjunto="apostles"></button>
+        <button class="button secondary" type="button" data-conjunto="women"></button>
+      </div>
+      <p class="status error" id="nombreEstado" hidden></p>
+    </section>
+
+    <!-- 7. Reunión de Grupo en curso -->
+    <section class="view view-rezo" id="viewReunion" hidden>
+      <header class="rezo-head notranslate" translate="no">
+        <p class="eyebrow" id="reunionSala"></p>
+        <p class="soy" id="reunionSoy"></p>
+      </header>
+
+      <div class="progress" aria-hidden="true"><div class="progress-bar" id="reunionBarra"></div></div>
+      <p class="progress-label notranslate" translate="no" id="reunionPaso"></p>
+
+      <p class="turno-propio notranslate" translate="no" id="reunionTuTurno" role="status" hidden></p>
+
+      <article class="section-card notranslate" id="reunionMomento" aria-live="polite" translate="no">
+        <h2 class="section-title" id="reunionTitulo"></h2>
+        <div class="section-body" id="reunionCuerpo"></div>
+      </article>
+
+      <div class="presentes notranslate" translate="no">
+        <p class="presentes-titulo" id="reunionPresentesTitulo"></p>
+        <ul class="presentes-lista" id="reunionPresentes"></ul>
+      </div>
+
+      <div class="reunion-acciones notranslate" translate="no">
+        <button class="button secondary small" type="button" id="reunionAtras"></button>
+        <button class="button" type="button" id="reunionSiguiente"></button>
+      </div>
+      <p class="hint notranslate" translate="no" id="reunionNadiePreside"></p>
+
+      <div class="rezo-actions">
+        <button class="button secondary small" type="button" id="reunionEscuchar" hidden aria-pressed="false">🔈 Escuchar</button>
+        <button class="button secondary small" type="button" data-compartir data-compartir-titulo="Únete a nuestra Reunión de Grupo">Mostrar QR</button>
+      </div>
+      <p class="status error" id="reunionError" hidden></p>
+    </section>
+
+    <!-- 8. Fin / error -->
     <section class="view" id="viewFin" hidden>
       <div class="gift" aria-hidden="true" id="finIcono">🕊️</div>
       <h1 class="title-sm" id="finTitulo">La oración ha terminado</h1>
