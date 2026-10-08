@@ -123,3 +123,26 @@ h1.title-sm{font-size:clamp(2rem,6.5vw,2.9rem);line-height:1.02;letter-spacing:-
 @media(max-width:460px){.next-step .button{width:100%}}
 .qr-sala{margin-top:18px}
 .rezo-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+
+/* Reunión de Grupo en línea */
+.eleccion{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.soy{margin:4px 0 0;font-family:"Cormorant Garamond",serif;font-size:clamp(1.9rem,6vw,2.5rem);font-weight:700;line-height:1.05;color:var(--blue-deep)}
+.turno-propio{
+  margin:18px 0 0;padding:12px 16px;border-radius:16px;text-align:center;
+  background:rgba(224,170,43,.16);border:1.5px solid var(--gold);color:#6e5923;font-weight:800
+}
+.section-body .momento-desc{color:var(--soft);font-size:.98rem}
+.section-body .parte{margin:18px 0 6px;color:var(--blue);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+.section-body .pregunta{font-size:1.06rem}
+.section-body .ayuda{color:var(--soft);font-style:italic;font-size:.92rem}
+.section-body .oracion{font-style:italic;color:var(--blue-deep)}
+.presentes{margin-top:18px;text-align:center}
+.presentes-titulo{margin:0 0 8px;color:var(--soft);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+.presentes-lista{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.presentes-lista li{padding:6px 12px;border-radius:999px;background:rgba(23,63,122,.07);color:var(--blue-deep);font-size:.85rem;font-weight:700}
+.presentes-lista li.hecho{opacity:.45}
+.presentes-lista li.ahora{background:var(--gold);color:#3d2c05}
+.presentes-lista li.yo{outline:2px solid var(--blue);outline-offset:1px}
+.reunion-acciones{margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.reunion-acciones .button:not(.small){flex:1 1 200px}
+@media(max-width:460px){.eleccion .button{width:100%}}

@@ -55,6 +55,7 @@ Estas puertas deben permanecer abiertas para quien llega por primera vez.
 
 - `bordon/index.html`
 - Enlaces profundos de la app.
+- Salas (`sala/?c=CÓDIGO`): 4 caracteres para una oración en grupo y 6 para una Reunión de Grupo en línea (`sala/reunion/`). El archivo `sala/reunion/reunion_fundamental_v1.json` es copia exacta del de la app.
 - Parámetros de invitaciones.
 - Enlaces a una oración de la biblioteca (`biblioteca-oraciones.html#rezar/<id>/<idioma>`).
 - Formularios y fuentes de datos.
