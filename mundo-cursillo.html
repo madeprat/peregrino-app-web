@@ -2931,6 +2931,12 @@ function cursilloEsVisiblePublicamente(cursillo) {
           }
         
           selectCursillo(String(d.id), true);
+
+          // Tocar el icono de un Cursillo que admite palancas abre
+          // directamente la invitación; si no, se muestra su ficha.
+          if (!openPalancaInvite(selectedCursillo())) {
+            $("selectionCard")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
         })
         .ringsData([])
         .ringColor((d) => (t) => `rgba(${d.rgb},${Math.max(0, 1 - t)})`)
@@ -3297,7 +3303,7 @@ window.openCursilloFromMural =
           <div class="selection-actions">
             ${
               cursilloAceptaPalancas(cursillo)
-                ? `<a class="btn primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
+                ? `<a class="btn primary" href="${palancaLink(cursillo.cursillo_id)}" onclick="return !openPalancaInvite(selectedCursillo())">🙏 Hacer palanca</a>
                    <button class="btn" type="button" onclick="showSingleReveal()">Presentar</button>`
                 : status === "Finalizado"
                   ? `<div class="selection-notice done">
@@ -3835,23 +3841,25 @@ function renderMural() {
       const url = new URL(window.location.href);
       if (url.searchParams.get("accion") !== "palanca") return;
 
-      const cursillo = selectedCursillo();
+      openPalancaInvite(selectedCursillo());
 
+      // No repetir la invitación al recargar
+      url.searchParams.delete("accion");
+      window.history.replaceState({}, "", url);
+    }
+
+    // Abre la invitación a hacer palanca para un Cursillo.
+    // Devuelve false si el Cursillo no admite palancas.
+    function openPalancaInvite(cursillo) {
       // [v5] Autorización única: URLs antiguas o manipuladas
       // no pueden abrir el formulario si el Cursillo no acepta palancas.
-      if (!cursilloAceptaPalancas(cursillo)) {
-        url.searchParams.delete("accion");
-        window.history.replaceState({}, "", url);
-        return;
-      }
+      if (!cursilloAceptaPalancas(cursillo)) return false;
 
-      if (cursillo) {
-        $("palancaInviteTitle").textContent =
-          `Tu oración puede sostener el ${cursillo.nombre_corto || "Cursillo"}`;
-      }
+      $("palancaInviteTitle").textContent =
+        `Tu oración puede sostener el ${cursillo.nombre_corto || "Cursillo"}`;
 
       const formBtn = $("palancaInviteForm");
-      if (FORM_PALANCA_URL && cursillo) {
+      if (FORM_PALANCA_URL) {
         formBtn.href = FORM_PALANCA_URL.replace("CURSILLO_ID_AQUI", encodeURIComponent(cursillo.cursillo_id));
         formBtn.hidden = false;
       } else {
@@ -3859,11 +3867,10 @@ function renderMural() {
       }
 
       openPalancaDialog();
-
-      // No repetir la invitación al recargar
-      url.searchParams.delete("accion");
-      window.history.replaceState({}, "", url);
+      return true;
     }
+    window.openPalancaInvite = openPalancaInvite;
+    window.selectedCursillo = selectedCursillo;
 
     function chooseInitialCursillo() {
       const requested = new URL(window.location.href)
