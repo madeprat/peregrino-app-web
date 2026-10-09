@@ -66,6 +66,8 @@ Estas puertas deben permanecer abiertas para quien llega por primera vez.
 - `manifest.webmanifest` e iconos en `assets/icon/`: se instala como app (pantalla completa) y abre en `inicio.html`.
 - En iPhone se añade desde Safari → Compartir → «Añadir a pantalla de inicio»; la portada y el Inicio lo explican (`assets/instalar-v1.js`).
 - Si se abre como app en la portada, se pasa directamente al Inicio.
+- Abierta como app (`assets/app-v1.js` y `app-v1.css`), Inicio, Biblioteca, Rincón de la Luz, Regalo y la sala muestran navegación de app: barra inferior en el móvil y barra lateral en pantallas anchas, sin el menú de la web. No guarda nada. Para verlo sin instalar, añadir `?app=1` a la dirección.
+- Inicio tiene la tarjeta «Palabra de Dios» con los mismos enlaces que Peregrinar en la app (Evangelio del día en Vatican News y los Evangelios en vatican.va), avisando de que se abren fuera de Peregrino.
 - La oración del mes por quienes sostienen Peregrino está en la página de apoyo (`plan-apostol.html#oracion-del-mes`).
 
 ## Idioma
