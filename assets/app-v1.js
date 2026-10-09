@@ -79,7 +79,7 @@
         PALABRA.map((p) =>
           `<a class="app-lateral-fuera" href="${p.href}" target="_blank" rel="noopener">` +
           `<span>${p.texto}</span>${icono("fuera")}</a>`).join("") +
-        `<p class="app-lateral-nota">Se abren en la web del Vaticano, fuera de Peregrino.</p>` +
+        `<p class="app-lateral-nota">Se abren en la web del Vaticano.</p>` +
       `</div>` +
       `<a class="app-lateral-conocer" href="${url("index.html")}">Conocer Peregrino APP</a>`;
 
