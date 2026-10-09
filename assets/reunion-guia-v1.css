@@ -1,0 +1,40 @@
+/* Reunión de Grupo en la web: guion de la reunión (assets/reunion-guia-v1.js). */
+.rg-seccion { padding-top: 40px; }
+.rg-tarjeta {
+  padding: clamp(22px, 5vw, 40px); border: 1px solid var(--line); border-radius: var(--radius-md, 24px);
+  background: #fff; box-shadow: var(--shadow-md); scroll-margin-top: 90px;
+}
+.rg-kicker { margin: 0; color: var(--blue); font-size: .72rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+.rg-titulo { margin: 8px 0 0; font-family: "Cormorant Garamond", serif; font-size: clamp(1.9rem, 6vw, 2.5rem); line-height: 1.05; }
+.rg-desc { margin: 12px 0 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.6; }
+.rg-claves { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.rg-claves li { position: relative; padding-left: 26px; line-height: 1.5; }
+.rg-claves li::before { content: "✦"; position: absolute; left: 4px; color: var(--gold); }
+.rg-fuente { margin: 16px 0 22px; color: var(--ink-soft); font-size: .8rem; font-style: italic; }
+.rg-progreso { height: 6px; border-radius: 999px; background: rgba(23, 63, 122, .09); overflow: hidden; }
+.rg-progreso > div { height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--green)); transition: width .35s ease; }
+.rg-paso { margin: 10px 0 0; color: var(--ink-soft); font-size: .78rem; font-weight: 800; letter-spacing: .04em; }
+.rg-cuerpo { margin-top: 6px; }
+.rg-parte { margin: 22px 0 6px; color: var(--blue); font-size: .78rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.rg-pregunta { margin: 8px 0 0; font-size: 1.08rem; line-height: 1.5; }
+.rg-ayuda { margin: 8px 0 0; color: var(--ink-soft); font-size: .92rem; font-style: italic; line-height: 1.5; }
+.rg-oracion { margin: 14px 0 0; padding: 16px 18px; border-left: 3px solid var(--gold); border-radius: 0 14px 14px 0; background: #fffaf0;
+  font-family: "Cormorant Garamond", serif; font-size: 1.28rem; line-height: 1.45; white-space: pre-line; }
+.rg-acciones { display: flex; gap: 10px; margin-top: 28px; }
+.rg-acciones .button { flex: 1; }
+.rg-escuchar { display: block; margin: 16px auto 0; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff;
+  color: var(--ink); font-weight: 700; font-size: .85rem; cursor: pointer; }
+.rg-fin { text-align: center; }
+.rg-fin-icono { margin: 0; font-size: 2.6rem; }
+.rg-fin .button { margin-top: 20px; }
+.rg-error { margin: 0; color: var(--ink-soft); }
+.rg-unirme { text-align: center; }
+.rg-unirme h2 { margin: 0; font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 5vw, 2.3rem); }
+.rg-unirme p { margin: 8px 0 0; color: var(--ink-soft); }
+.rg-codigo { display: flex; gap: 8px; max-width: 420px; margin: 18px auto 0; }
+.rg-codigo input {
+  flex: 1; min-width: 0; min-height: 50px; padding: 0 12px; border: 2px solid var(--line); border-radius: 14px; background: #fff;
+  color: var(--ink); font: 800 1.2rem/1 Inter, sans-serif; letter-spacing: .22em; text-align: center; text-transform: uppercase;
+}
+.rg-codigo input:focus { outline: none; border-color: var(--blue); }
+@media (prefers-reduced-motion: reduce) { .rg-progreso > div { transition: none; } }

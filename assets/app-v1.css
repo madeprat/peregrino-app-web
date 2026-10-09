@@ -104,3 +104,7 @@
 
 /* Biblioteca dentro de la app: se entra directamente a las oraciones. */
 .es-app main:has(#explorar) > .page-hero { display: none; }
+
+/* El mundo está de Cursillo dentro de la app: sin la cabecera de la web. */
+.es-app .peregrino-site-header { display: none !important; }
+.es-app body.peregrino-world-v2 { padding-top: env(safe-area-inset-top); }

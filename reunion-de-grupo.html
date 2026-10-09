@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -9,16 +9,18 @@
 <meta name="apple-mobile-web-app-title" content="Peregrino">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Reunión de Grupo | Peregrino APP</title>
-  <meta name="description" content="Una ayuda para comprender la Reunión de Grupo dentro del camino del Cuarto Día.">
+  <meta name="description" content="El guion de la Reunión de Grupo de Peregrino APP: los cuatro momentos, sus oraciones y las preguntas del Trípode, gratis y desde cualquier móvil.">
   <meta name="theme-color" content="#fffaf0">
   <meta property="og:title" content="Reunión de Grupo | Peregrino APP">
   <meta property="og:description" content="No es una reunión más. Es amistad concreta que sostiene la fe.">
   <meta property="og:image" content="https://tripodapp.prat-cas.com/og-peregrino-home.png">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/discover-v2.css"><link rel="stylesheet" href="assets/edicion-v1.css">
+  <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/discover-v2.css"><link rel="stylesheet" href="assets/edicion-v1.css"><link rel="stylesheet" href="assets/reunion-guia-v1.css">
   <link rel="icon" href="assets/peregrino-app-icon.png">
   <script src="assets/idioma-v1.js"></script>
 
+<link rel="stylesheet" href="assets/app-v1.css">
+<script src="assets/app-v1.js"></script>
 </head>
 <body class="discover-page">
 
@@ -39,9 +41,9 @@
       </button>
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="inicio.html">Rezar</a>
-        <a href="la-app.html">La app</a>
+        <a href="reunion-de-grupo.html" aria-current="page">Reunión de Grupo</a>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
         <a href="descubre.html" aria-current="page">Descubre</a>
-        <a href="manifiesto.html">El proyecto</a>
         <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
       </nav>
     </div>
@@ -51,36 +53,58 @@
 <main id="contenido">
   <section class="editorial-hero">
     <div class="shell editorial-hero-grid">
-      <div class="reveal"><p class="eyebrow">El Cuarto Día compartido</p><h1>Reunión <em>de Grupo.</em></h1><p class="lead">No es una reunión más. Es amistad concreta que sostiene la fe, permite revisar la vida y ayuda a perseverar.</p><div class="hero-actions"><a class="button button-primary" href="#comprender">Comprenderla</a><a class="button button-quiet" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Verla en la app</a></div></div>
+      <div class="reveal"><p class="eyebrow">El Cuarto Día compartido</p><h1>Reunión <em>de Grupo.</em></h1><p class="lead">Amigos que comparten su vida para vivir mejor lo fundamental cristiano. Seguid aquí el guion, juntos, desde un solo móvil.</p><div class="hero-actions"><a class="button button-primary" href="#guion">Empezar la reunión</a><a class="button button-quiet" href="#unirme">Tengo un código</a></div></div>
       <aside class="editorial-image reveal"><figure><img src="assets/foto_gracia2.webp" loading="lazy" decoding="async" alt="Imagen de apoyo para la Reunión de Grupo"></figure><div class="image-note"><strong>Amistad concreta</strong><span>Compartir la vida cristiana con sinceridad.</span></div></aside>
     </div>
   </section>
 
-  <section class="editorial-section" id="comprender">
-    <div class="shell">
-      <div class="opening-statement reveal"><span class="opening-symbol">∞</span><p>El Cuarto Día no se sostiene solo. <strong>Todos necesitamos que alguien nos pregunte cómo estamos viviendo la fe.</strong></p></div>
-      <div class="principle-grid">
-        <article class="principle-card reveal"><span class="principle-icon">01</span><h2>Qué es realmente</h2><p>Un pequeño grupo de amigos que comparten su vida cristiana con sinceridad. No es una clase, una charla ni una estructura fría.</p><a class="small-link" href="#tripode">Ver el Trípode →</a></article>
-        <article class="principle-card reveal"><span class="principle-icon">02</span><h2>Qué se comparte</h2><p>Piedad, estudio y acción. No para impresionar, sino para ayudarse a perseverar y mirar la vida con verdad.</p><a class="small-link" href="#tripode">Conocer las tres partes →</a></article>
-        <article class="principle-card reveal"><span class="principle-icon">03</span><h2>Por qué importa</h2><p>No sustituye la gracia, pero ayuda a no olvidarla. La amistad concreta protege la continuidad del Cuarto Día.</p><a class="small-link" href="que-es-el-mcc.html">Entender el Cuarto Día →</a></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="editorial-section alt" id="tripode">
+  <section class="editorial-section rg-seccion" id="guion">
     <div class="editorial-narrow">
-      <div class="section-heading reveal"><p class="section-kicker">El Trípode compartido</p><h2>Tres dimensiones de una misma vida</h2><p>No son resultados para comparar. Son una forma de hablar con sinceridad sobre el camino recorrido.</p></div>
-      <div class="tripod-grid reveal">
-        <article class="tripod-card"><span>Piedad</span><h3>La relación con Dios</h3><p>Cómo se está viviendo la oración, los sacramentos y la presencia de Dios en la vida ordinaria.</p></article>
-        <article class="tripod-card"><span>Estudio</span><h3>Comprender mejor</h3><p>Qué ayuda a conocer la fe, iluminar la realidad y crecer con profundidad.</p></article>
-        <article class="tripod-card"><span>Acción</span><h3>La fe hecha vida</h3><p>Cómo se concreta el amor en la familia, el trabajo, las amistades y los ambientes.</p></article>
+      <div class="rg-tarjeta notranslate" translate="no" id="rgApp" aria-live="polite">
+        <div id="rgInicio">
+          <p class="rg-kicker" id="rgKicker">Guion de la reunión</p>
+          <h2 class="rg-titulo" id="rgTagline">Cargando el guion…</h2>
+          <p class="rg-desc" id="rgIntro"></p>
+          <ul class="rg-claves" id="rgClaves"></ul>
+          <p class="rg-fuente" id="rgFuente"></p>
+          <button class="button button-primary" type="button" id="rgEmpezar">Empezar la reunión</button>
+        </div>
+        <div id="rgMomento" hidden>
+          <div class="rg-progreso" aria-hidden="true"><div id="rgBarra"></div></div>
+          <p class="rg-paso" id="rgPaso"></p>
+          <h2 class="rg-titulo" id="rgTitulo"></h2>
+          <div class="rg-cuerpo" id="rgCuerpo"></div>
+          <div class="rg-acciones">
+            <button class="button button-quiet" type="button" id="rgAtras">Atrás</button>
+            <button class="button button-primary" type="button" id="rgSiguiente">Siguiente</button>
+          </div>
+          <button class="rg-escuchar" type="button" id="rgEscuchar" aria-pressed="false" hidden>🔈 Escuchar</button>
+        </div>
+        <div id="rgFin" class="rg-fin" hidden>
+          <p class="rg-fin-icono" aria-hidden="true">🌈</p>
+          <h2 class="rg-titulo" id="rgFinTitulo"></h2>
+          <p class="rg-desc" id="rgFinTexto"></p>
+          <button class="button button-quiet" type="button" id="rgOtra">Volver al guion</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="editorial-section"><aside class="big-quote reveal"><blockquote>No se trata de presentar una vida perfecta. Se trata de caminar acompañado.</blockquote><p>La Reunión de Grupo ofrece un espacio estable para hablar con verdad, escuchar y ayudarse a continuar.</p></aside></section>
+  <section class="editorial-section alt" id="unirme">
+    <div class="editorial-narrow">
+      <div class="rg-unirme reveal">
+        <h2>¿Os reunís en línea?</h2>
+        <p>Entra con el enlace o el código que te han enviado.</p>
+        <form class="rg-codigo" action="sala/" method="get">
+          <label class="sr-only" for="rgCodigo">Código de la sala</label>
+          <input id="rgCodigo" name="c" maxlength="6" placeholder="K7QM2X" autocomplete="off" autocapitalize="characters" spellcheck="false" required pattern="[A-Za-z0-9]{6}" title="El código tiene 6 letras o números">
+          <button class="button button-primary" type="submit">Unirme</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-  <section class="closing-panel reveal"><h2>La amistad también puede <em>sostener la fe.</em></h2><p>Peregrino incorpora una experiencia de Reunión de Grupo para acompañar este camino sin sustituir el encuentro personal.</p><div class="hero-actions"><a class="button button-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino</a><a class="button button-quiet" href="que-es-el-mcc.html">Conocer el MCC</a></div></section>
+  <section class="closing-panel reveal"><h2>La amistad también puede <em>sostener la fe.</em></h2><p>En Peregrino APP la reunión tiene además temporizador, turnos y sala en línea para todo el grupo.</p><div class="hero-actions"><a class="button button-primary" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar Peregrino APP</a><a class="button button-quiet" href="que-es-el-mcc.html">Conocer el MCC</a></div></section>
 </main>
 
   <footer class="site-footer">
@@ -141,6 +165,7 @@
       new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
     }
   </script>
+  <script src="assets/reunion-guia-v1.js" defer></script>
   <script src="assets/edicion-v1.js" defer></script>
   <script src="assets/compartir-v1.js" defer></script>
   <script src="assets/iphone-v1.js" defer></script>

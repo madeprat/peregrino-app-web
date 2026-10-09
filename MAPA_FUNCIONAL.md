@@ -23,6 +23,7 @@
 - Rezar en la Biblioteca, en español, latín, portugués o inglés (solo lectura: sin copiar, guardar ni imprimir).
 - Oración del día en la portada, en el idioma de cada persona.
 - Recibir una tarjeta o invitación.
+- Reunión de Grupo (`reunion-de-grupo.html`): el guion gratuito de la app (la guía y los cuatro momentos de `sala/reunion/reunion_fundamental_v1.json`), para seguirlo en persona desde un solo móvil, y la entrada con código a la sala en línea. La sala en línea se crea desde la app.
 
 ### Posible ventaja de miembro
 
