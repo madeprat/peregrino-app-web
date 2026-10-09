@@ -55,6 +55,8 @@
     <div class="gift-form">
       <label for="nombreRegalo">Nombre o alias de la persona</label>
       <input class="gift-input" id="nombreRegalo" maxlength="34" autocomplete="off" placeholder="Ana, mamá, una amiga…">
+      <label for="remitenteRegalo">Tu nombre <span class="gift-opcional">(opcional)</span></label>
+      <input class="gift-input" id="remitenteRegalo" maxlength="34" autocomplete="off" placeholder="Alguien que te quiere bien">
       <p class="gift-form-label" id="tonosLabel">Elige el tono</p>
       <div class="gift-tonos" id="tonos" role="group" aria-labelledby="tonosLabel"></div>
       <div class="gift-crear-acciones">
@@ -69,7 +71,7 @@
     <h2 class="card-title" id="cardTitle">Alguien especial<span>una oración para ti</span></h2>
     <p class="subtitle" id="subtitle">Hoy tu nombre fue pronunciado con cariño ante Dios.</p>
     <div class="blessing" id="prayerText"></div><div class="amen">Amén.</div>
-    <div class="from">Con cariño,<strong>alguien que te quiere bien</strong></div>
+    <div class="from">Con cariño,<strong id="cardFrom">alguien que te quiere bien</strong></div>
   </div></article>
 </div>
 <div class="shell" data-solo="recibir"><div class="gift-actions reveal"><button class="button button-gold" id="shareImg">Enviar con imagen 💌</button><button class="button button-primary" id="copyPrayer">Copiar oración</button><a class="button button-whatsapp" id="shareWhats" target="_blank" rel="noopener">WhatsApp</a><a class="button button-quiet" href="index.html">Descubrir Peregrino</a></div></div>
