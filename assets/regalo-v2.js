@@ -3,6 +3,8 @@
   const params = new URLSearchParams(location.search);
   const clean = (value,fallback) => String(value || "").replace(/[<>"'`]/g,"").replace(/\s+/g," ").trim().slice(0,42) || fallback;
   const nombre = clean(params.get("nombre") || params.get("para") || params.get("n"),"alguien especial");
+  const FIRMA = "alguien que te quiere bien";
+  const de = clean(params.get("de"), "");
   const tono = clean(params.get("tono") || params.get("luz"),"esperanza").toLowerCase();
   const templates = {
     paz:{label:"paz",text:"Que el Señor ponga paz en tu corazón, serenidad en tus pensamientos y descanso en todo lo que hoy llevas por dentro.\n\nQue, en medio del ruido, puedas sentir una luz pequeña pero fiel acompañando tu camino."},
@@ -16,17 +18,20 @@
     consuelo: "para una etapa difícil", gratitud: "para bendecir su vida"
   };
   const creando = document.body.dataset.modo === "crear";
+  let deActual = de;
   let nombreActual = nombre, tonoActual = templates[tono] ? tono : "esperanza";
   let selected = templates[tonoActual];
   let fullPrayer = "";
 
   function pintar() {
     selected = templates[tonoActual];
-    fullPrayer = `${nombreActual},\n\nalguien ha querido regalarte una oración.\n\n${selected.text}\n\nAmén.`;
+    fullPrayer = `${nombreActual},\n\n${deActual || "alguien"} ha querido regalarte una oración.\n\n${selected.text}\n\nAmén.` +
+      (deActual ? `\n\nCon cariño, ${deActual}` : "");
     const titulo = document.getElementById("cardTitle");
     titulo.textContent = nombreActual;
     titulo.appendChild(Object.assign(document.createElement("span"), { textContent: "una oración para ti" }));
-    document.getElementById("subtitle").textContent = `Hoy alguien quiso regalarte esta oración con ${selected.label}.`;
+    document.getElementById("subtitle").textContent = `Hoy ${deActual || "alguien"} quiso regalarte esta oración con ${selected.label}.`;
+    document.getElementById("cardFrom").textContent = deActual || FIRMA;
     document.getElementById("prayerText").textContent = selected.text;
   }
 
@@ -35,6 +40,7 @@
     const headline = document.getElementById("headline");
     headline.textContent = `${nombre}, hay una oración preparada `;
     headline.appendChild(Object.assign(document.createElement("em"), { textContent: "para ti." }));
+    if (de) document.getElementById("introText").textContent = `${de} te tiene presente y quiso prepararte esta oración, con cariño, solo para ti.`;
     pintar();
     const shareMessage = `Hoy pensé en ti y quise dejarte una pequeña luz. La preparé para ti aquí: ${location.href}`;
     document.getElementById("shareWhats").href = "https://wa.me/?text=" + encodeURIComponent(shareMessage);
@@ -42,16 +48,19 @@
     // Crear: la tarjeta de la derecha se actualiza mientras se escribe.
     const input = document.getElementById("nombreRegalo");
     const caja = document.getElementById("tonos");
+    const remitente = document.getElementById("remitenteRegalo");
     nombreActual = "alguien especial";
     const enlace = () => {
       const url = new URL("regalo-de-oracion.html", location.href);
       url.search = "";
       url.searchParams.set("nombre", input.value.trim() ? nombreActual : "alguien especial");
       url.searchParams.set("tono", tonoActual);
+      if (deActual) url.searchParams.set("de", deActual);
       return url.href;
     };
     const actualizar = () => {
       nombreActual = clean(input.value, "alguien especial");
+      deActual = clean(remitente.value, "");
       pintar();
       const link = enlace();
       document.getElementById("crearVer").href = link;
@@ -73,6 +82,7 @@
       caja.appendChild(boton);
     });
     input.addEventListener("input", actualizar);
+    remitente.addEventListener("input", actualizar);
     document.getElementById("crearCopiar").addEventListener("click", () => copyText(enlace(), "Enlace copiado"));
     actualizar();
   }
@@ -111,7 +121,8 @@
     ctx.strokeStyle="rgba(200,148,26,.5)";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(420,478);ctx.lineTo(660,478);ctx.stroke();
     ctx.fillStyle="#1f3327";ctx.font="italic 40px Georgia, serif";const endY=wrap(ctx,selected.text.replace(/\n+/g," "),540,560,820,58);
     ctx.fillStyle="#c8941a";ctx.font="italic 600 44px Georgia, serif";ctx.fillText("Amén.",540,Math.min(endY+30,1180));
-    ctx.fillStyle="rgba(27,33,27,.55)";ctx.font="700 28px Arial, sans-serif";ctx.fillText("✦  Peregrino APP",540,1250);
+    if (deActual) { ctx.fillStyle="#536176";ctx.font="italic 34px Georgia, serif";ctx.fillText(`Con cariño, ${deActual}`,540,Math.min(endY+92,1212)); }
+    ctx.fillStyle="rgba(27,33,27,.55)";ctx.font="700 28px Arial, sans-serif";ctx.fillText("✦  Peregrino APP",540,1262);
     return canvas;
   }
   function shareImage() {
