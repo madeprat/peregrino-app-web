@@ -9,7 +9,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Regala una oración | Peregrino APP</title>
 <meta name="description" content="Escribe un nombre, elige el tono y regala una tarjeta con una oración. Gratis, por WhatsApp y sin instalar nada.">
-<meta name="robots" content="noindex,follow"><meta name="theme-color" content="#fffaf0">
+<meta name="robots" content="noindex,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Peregrino APP">
+<meta property="og:title" content="Una oración para ti">
+<meta property="og:description" content="Alguien te tiene presente y ha querido regalarte una oración.">
+<meta property="og:image" content="https://tripodapp.prat-cas.com/og-regalo.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#fffaf0">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/community-v2.css"><link rel="stylesheet" href="assets/regalo-v2.css"><link rel="stylesheet" href="assets/edicion-v1.css">
 <link rel="icon" href="assets/peregrino-app-icon.png">
@@ -47,10 +54,17 @@
       <div id="google_translate_element"></div>
   </header>
 <main id="contenido">
-<section class="gift-main"><div class="shell gift-grid">
-  <div class="gift-intro reveal" data-solo="recibir"><p class="eyebrow">Una oración para ti</p><h1 id="headline">Una oración ha sido preparada <em>para ti.</em></h1><p id="introText">Una persona que te tiene presente quiso prepararte esta oración, con cariño, solo para ti.</p>
-    <div class="soft-note"><strong>🕯️</strong><div><span>Lee con calma.</span>No tienes que responder ahora. A veces basta recibir una palabra buena en el momento justo.</div></div>
+<section class="gift-sobre" id="sobre" data-solo="recibir" aria-labelledby="sobreNombre">
+  <div class="sobre-interior">
+    <div class="sobre-luz" aria-hidden="true"></div>
+    <div class="seal sobre-sello" aria-hidden="true">✝</div>
+    <p class="sobre-para">Para</p>
+    <h1 class="sobre-nombre" id="sobreNombre">Alguien especial</h1>
+    <p class="sobre-de" id="sobreDe">Alguien te ha regalado una oración</p>
+    <button class="button button-gold sobre-abrir" type="button" id="abrirSobre">Abrir</button>
   </div>
+</section>
+<section class="gift-main"><div class="shell gift-grid">
   <div class="gift-intro gift-crear reveal" data-solo="crear"><p class="eyebrow">Regala una oración</p><h1>Un nombre <em>basta.</em></h1><p>Escribe el nombre de la persona, elige el tono y envíale esta tarjeta con una oración.</p>
     <div class="gift-form">
       <label for="nombreRegalo">Nombre o alias de la persona</label>
@@ -67,18 +81,24 @@
     </div>
   </div>
   <article class="prayer-card reveal" aria-label="Tarjeta de oración personalizada"><div class="paper" id="cardToCopy">
-    <div class="ornament"></div><div class="seal">✝</div><div class="label">Una oración preparada para</div>
-    <h2 class="card-title" id="cardTitle">Alguien especial<span>una oración para ti</span></h2>
-    <p class="subtitle" id="subtitle">Hoy tu nombre fue pronunciado con cariño ante Dios.</p>
+    <div class="ornament"></div><div class="seal">✝</div><div class="label">Una oración para</div>
+    <h2 class="card-title" id="cardTitle">Alguien especial</h2>
     <div class="blessing" id="prayerText"></div><div class="amen">Amén.</div>
     <div class="from">Con cariño,<strong id="cardFrom">alguien que te quiere bien</strong></div>
   </div></article>
 </div>
-<div class="shell" data-solo="recibir"><div class="gift-actions reveal"><button class="button button-gold" id="shareImg">Enviar con imagen 💌</button><button class="button button-primary" id="copyPrayer">Copiar oración</button><a class="button button-whatsapp" id="shareWhats" target="_blank" rel="noopener">WhatsApp</a><a class="button button-quiet" href="index.html">Descubrir Peregrino</a></div></div>
+<div class="shell gift-despues" data-solo="recibir">
+  <p class="gift-calma">Lee con calma. No tienes que responder ahora.</p>
+  <div class="gift-actions">
+    <a class="button button-gold" id="devolver" href="regalo-de-oracion.html">Regalar una oración</a>
+    <div class="gift-actions-sec">
+      <button class="button button-quiet" type="button" id="shareImg">Guardar imagen</button>
+      <button class="button button-quiet" type="button" id="copyPrayer">Copiar oración</button>
+    </div>
+  </div>
+  <a class="gift-marca" href="index.html">✦ Peregrino APP</a>
+</div>
 </section>
-<section class="gift-story" data-solo="recibir"><div class="shell">
-  <div class="gift-cta reveal" data-solo="recibir"><div><h2>Caminar, rezar, acompañar.</h2><p>Peregrino nace para ayudar a vivir el Cuarto Día con oración, constancia y comunidad.</p></div><div class="gift-cta-actions"><a class="button button-gold" href="regalo-de-oracion.html">Regalar yo también una oración</a><a class="button button-quiet" href="index.html">Conocer Peregrino APP</a></div></div>
-</div></section>
 </main>
 
   <footer class="site-footer">

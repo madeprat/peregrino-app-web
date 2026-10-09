@@ -27,28 +27,41 @@
     selected = templates[tonoActual];
     fullPrayer = `${nombreActual},\n\n${deActual || "alguien"} ha querido regalarte una oración.\n\n${selected.text}\n\nAmén.` +
       (deActual ? `\n\nCon cariño, ${deActual}` : "");
-    const titulo = document.getElementById("cardTitle");
-    titulo.textContent = nombreActual;
-    titulo.appendChild(Object.assign(document.createElement("span"), { textContent: "una oración para ti" }));
-    document.getElementById("subtitle").textContent = `Hoy ${deActual || "alguien"} quiso regalarte esta oración con ${selected.label}.`;
+    document.getElementById("cardTitle").textContent = nombreActual;
     document.getElementById("cardFrom").textContent = deActual || FIRMA;
     document.getElementById("prayerText").textContent = selected.text;
   }
 
   if (!creando) {
     document.title = `${nombre}, una oración para ti | Peregrino APP`;
-    const headline = document.getElementById("headline");
-    headline.textContent = `${nombre}, hay una oración preparada `;
-    headline.appendChild(Object.assign(document.createElement("em"), { textContent: "para ti." }));
-    if (de) document.getElementById("introText").textContent = `${de} te tiene presente y quiso prepararte esta oración, con cariño, solo para ti.`;
+    document.getElementById("sobreNombre").textContent = nombre;
+    document.getElementById("sobreDe").textContent = `${de || "Alguien"} te ha regalado una oración`;
     pintar();
-    const shareMessage = `Hoy pensé en ti y quise dejarte una pequeña luz. La preparé para ti aquí: ${location.href}`;
-    document.getElementById("shareWhats").href = "https://wa.me/?text=" + encodeURIComponent(shareMessage);
+
+    // Abrir el sobre: la tarjeta aparece con calma.
+    document.getElementById("abrirSobre").addEventListener("click", () => {
+      document.body.classList.add("sobre-abierto");
+      window.scrollTo(0, 0);
+      document.querySelector(".prayer-card")?.focus({ preventScroll: true });
+    });
+
+    // Responder con otra oración: la página de crear, ya rellenada.
+    const devolver = document.getElementById("devolver");
+    if (de) {
+      devolver.textContent = `Regalarle una oración a ${de}`;
+      const url = new URL("regalo-de-oracion.html", location.href);
+      url.searchParams.set("a", de);
+      if (nombre !== "alguien especial") url.searchParams.set("yo", nombre);
+      devolver.href = url.href;
+    }
   } else {
     // Crear: la tarjeta de la derecha se actualiza mientras se escribe.
     const input = document.getElementById("nombreRegalo");
     const caja = document.getElementById("tonos");
     const remitente = document.getElementById("remitenteRegalo");
+    // Al devolver una oración llegan rellenados el destinatario y la firma.
+    input.value = clean(params.get("a"), "");
+    remitente.value = clean(params.get("yo"), "");
     nombreActual = "alguien especial";
     const enlace = () => {
       const url = new URL("regalo-de-oracion.html", location.href);
@@ -117,25 +130,23 @@
     const seal=ctx.createRadialGradient(515,188,8,540,210,62); seal.addColorStop(0,"#fff4bf"); seal.addColorStop(.6,"#d8ac34"); seal.addColorStop(1,"#a6720b");
     ctx.fillStyle=seal; ctx.fill(); ctx.fillStyle="#33210a"; ctx.font="64px Georgia, serif"; ctx.textAlign="center"; ctx.fillText("✝",540,234);
     ctx.fillStyle="#c8941a"; ctx.font="700 26px Arial, sans-serif"; ctx.fillText("U N A   O R A C I Ó N   P A R A",540,330);
-    ctx.fillStyle="#102b55"; ctx.font="600 84px Georgia, serif"; ctx.fillText(nombreActual.length>16?nombreActual.slice(0,16)+"…":nombreActual,540,430);
+    ctx.fillStyle="#102b55"; ctx.font="600 92px \"Cormorant Garamond\", Georgia, serif"; ctx.fillText(nombreActual.length>16?nombreActual.slice(0,16)+"…":nombreActual,540,430);
     ctx.strokeStyle="rgba(200,148,26,.5)";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(420,478);ctx.lineTo(660,478);ctx.stroke();
-    ctx.fillStyle="#1f3327";ctx.font="italic 40px Georgia, serif";const endY=wrap(ctx,selected.text.replace(/\n+/g," "),540,560,820,58);
-    ctx.fillStyle="#c8941a";ctx.font="italic 600 44px Georgia, serif";ctx.fillText("Amén.",540,Math.min(endY+30,1180));
-    if (deActual) { ctx.fillStyle="#536176";ctx.font="italic 34px Georgia, serif";ctx.fillText(`Con cariño, ${deActual}`,540,Math.min(endY+92,1212)); }
+    ctx.fillStyle="#1f3327";ctx.font="italic 44px \"Cormorant Garamond\", Georgia, serif";const endY=wrap(ctx,selected.text.replace(/\n+/g," "),540,560,820,58);
+    ctx.fillStyle="#c8941a";ctx.font="italic 600 50px \"Cormorant Garamond\", Georgia, serif";ctx.fillText("Amén.",540,Math.min(endY+30,1180));
+    if (deActual) { ctx.fillStyle="#536176";ctx.font="italic 600 40px \"Cormorant Garamond\", Georgia, serif";ctx.fillText(`Con cariño, ${deActual}`,540,Math.min(endY+92,1212)); }
     ctx.fillStyle="rgba(27,33,27,.55)";ctx.font="700 28px Arial, sans-serif";ctx.fillText("✦  Peregrino APP",540,1262);
     return canvas;
   }
-  function shareImage() {
+  async function shareImage() {
+    try { await document.fonts.ready; } catch (_) { /* sin API de fuentes */ }
     buildCard().toBlob((blob) => {
       if (!blob) { showToast("No se pudo crear la imagen"); return; }
       const file=new File([blob],"oracion-peregrino.png",{type:"image/png"});
-      const text="Hoy pensé en ti y quise dejarte una pequeña luz. "+location.href;
-      if (navigator.canShare && navigator.canShare({files:[file]})) navigator.share({files:[file],text,title:"Una oración para ti"}).catch(()=>{});
-      else {
-        const anchor=document.createElement("a");anchor.href=URL.createObjectURL(blob);anchor.download="oracion-peregrino.png";anchor.click();
-        setTimeout(() => { URL.revokeObjectURL(anchor.href); window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank","noopener"); },400);
-        showToast("Imagen descargada · se abre WhatsApp");
-      }
+      if (navigator.canShare && navigator.canShare({files:[file]})) { navigator.share({files:[file]}).catch(()=>{}); return; }
+      const anchor=document.createElement("a");anchor.href=URL.createObjectURL(blob);anchor.download="oracion-peregrino.png";anchor.click();
+      setTimeout(() => URL.revokeObjectURL(anchor.href),400);
+      showToast("Imagen guardada");
     },"image/png");
   }
   document.getElementById("shareImg").addEventListener("click",shareImage);
