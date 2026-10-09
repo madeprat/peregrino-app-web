@@ -1,0 +1,103 @@
+/* Peregrino abierto como app (assets/app-v1.js pone <html class="es-app">).
+   Fuera de la app nada de esto se aplica: la web se ve como siempre.
+   - Móvil: barra inferior con las cinco puertas.
+   - Pantalla ancha (≥ 900 px): barra lateral, como una app de escritorio.
+   - Páginas con cabecera de la web: queda solo una barra fina con el idioma. */
+
+.app-lateral, .app-inferior { display: none; }
+
+.es-app {
+  --app-tinta: #13243a;
+  --app-suave: #5b687b;
+  --app-azul: #173f7a;
+  --app-linea: rgba(19, 36, 58, .12);
+  --app-fondo: #fffaf0;
+  --app-inferior-h: 64px;
+  --app-lateral-w: 256px;
+}
+
+.app-icono { width: 24px; height: 24px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Cabecera de la web dentro de la app ---------- */
+.es-app .site-header .nav-shell,
+.es-app .site-footer { display: none !important; }
+/* Queda una barra fina con el selector de idioma (la sección ya dice dónde estás). */
+.es-app .site-header {
+  display: flex; align-items: center; justify-content: flex-end; min-height: calc(56px + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+}
+.es-app .site-header #google_translate_element { margin: 0; }
+
+/* Sala (rezar en grupo): no tiene cabecera, se respeta la zona del notch. */
+.es-app body:has(> main#app) { padding-top: calc(32px + env(safe-area-inset-top)); }
+
+/* ---------- Móvil: barra inferior ---------- */
+@media (max-width: 899.98px) {
+  .es-app body { padding-bottom: calc(var(--app-inferior-h) + env(safe-area-inset-bottom)); }
+  .es-app .app-inferior {
+    position: fixed; inset: auto 0 0 0; z-index: 900; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+    height: calc(var(--app-inferior-h) + env(safe-area-inset-bottom));
+    padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    background: rgba(255, 250, 240, .94); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    border-top: 1px solid var(--app-linea);
+  }
+  .app-inferior-item {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 0;
+    color: var(--app-suave); font: 700 .66rem/1.1 Inter, system-ui, sans-serif; text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .app-inferior-item span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .app-inferior-item .app-icono { width: 44px; height: 28px; padding: 2px 10px; border-radius: 999px; transition: background .15s; }
+  .app-inferior-item[aria-current="page"] { color: var(--app-azul); }
+  .app-inferior-item[aria-current="page"] .app-icono { background: rgba(23, 63, 122, .1); stroke-width: 2; }
+  .app-inferior-item:active .app-icono { background: rgba(23, 63, 122, .16); }
+  /* Los avisos flotantes quedan por encima de la barra. */
+  .es-app .toast { bottom: calc(var(--app-inferior-h) + 16px + env(safe-area-inset-bottom)); }
+  /* El pie de Inicio ya no necesita margen para la barra del sistema. */
+  .es-app .in-pie { padding-bottom: 16px; }
+}
+
+/* ---------- Pantalla ancha: barra lateral ---------- */
+@media (min-width: 900px) {
+  .es-app body { padding-left: var(--app-lateral-w); }
+  .es-app .decolores-line, .es-app .decolores { left: var(--app-lateral-w); }
+  .es-app .app-lateral {
+    position: fixed; inset: 0 auto 0 0; z-index: 900; width: var(--app-lateral-w); display: flex; flex-direction: column; gap: 22px;
+    padding: 26px 18px 22px; overflow-y: auto; background: rgba(255, 250, 240, .97);
+    border-right: 1px solid var(--app-linea); font-family: Inter, system-ui, sans-serif; color: var(--app-tinta);
+  }
+  .app-marca { display: flex; align-items: center; gap: 12px; padding: 0 8px; color: inherit; text-decoration: none; }
+  .app-marca img { width: 44px; height: 44px; border-radius: 13px; box-shadow: 0 8px 20px rgba(23, 63, 122, .14); }
+  .app-marca strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 1.5rem; line-height: 1; }
+  .app-marca small { display: block; margin-top: 3px; color: var(--app-suave); font-size: .7rem; font-weight: 700; letter-spacing: .02em; }
+
+  .app-lateral-lista { display: grid; gap: 4px; }
+  .app-lateral-item {
+    display: flex; align-items: center; gap: 12px; min-height: 46px; padding: 0 14px; border-radius: 14px;
+    color: var(--app-tinta); font-size: .95rem; font-weight: 600; text-decoration: none; transition: background .15s;
+  }
+  .app-lateral-item .app-icono { width: 21px; height: 21px; color: var(--app-suave); }
+  .app-lateral-item:hover { background: rgba(23, 63, 122, .06); }
+  .app-lateral-item[aria-current="page"] { background: rgba(23, 63, 122, .1); color: var(--app-azul); font-weight: 800; }
+  .app-lateral-item[aria-current="page"] .app-icono { color: var(--app-azul); }
+
+  .app-lateral-palabra { display: grid; gap: 2px; padding-top: 18px; border-top: 1px solid var(--app-linea); }
+  .app-lateral-titulo { margin: 0 0 6px; padding: 0 14px; color: var(--app-azul); font-size: .68rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+  .app-lateral-fuera {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 12px;
+    color: var(--app-tinta); font-size: .9rem; font-weight: 600; text-decoration: none;
+  }
+  .app-lateral-fuera .app-icono { width: 16px; height: 16px; color: var(--app-suave); }
+  .app-lateral-fuera:hover { background: rgba(23, 63, 122, .06); }
+  .app-lateral-nota { margin: 6px 0 0; padding: 0 14px; color: var(--app-suave); font-size: .72rem; line-height: 1.4; }
+
+  .app-lateral-conocer { margin-top: auto; padding: 0 14px; color: var(--app-suave); font-size: .82rem; font-weight: 700; }
+
+  /* La marca ya está en la barra lateral. */
+  .es-app .in-marca { display: none; }
+  .es-app .in-barra { justify-content: flex-end; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-inferior-item .app-icono, .app-lateral-item { transition: none; }
+}

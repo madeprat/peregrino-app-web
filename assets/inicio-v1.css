@@ -107,3 +107,16 @@ html:not([data-plataforma="ios"]) .in-instalar-otros { display: block; }
 @media (prefers-reduced-motion: reduce) {
   .in-puerta, .in-luz-texto.is-nueva { transition: none; animation: none; }
 }
+
+/* Palabra de Dios (enlaces a la web del Vaticano, como en Peregrino APP) */
+.in-palabra-lista { margin: 10px 0 0; padding: 0; list-style: none; }
+.in-palabra-lista li + li { border-top: 1px solid var(--line); }
+.in-palabra-lista a {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 12px; padding: 12px 2px;
+  color: var(--ink); text-decoration: none;
+}
+.in-palabra-lista strong { font-size: 1.02rem; }
+.in-palabra-lista small { grid-column: 1; color: var(--ink-soft); font-size: .8rem; }
+.in-palabra-lista svg { grid-column: 2; grid-row: 1 / span 2; color: var(--blue); }
+.in-palabra-lista a:hover strong { text-decoration: underline; }
+.in-palabra-nota { margin: 6px 0 0; color: var(--ink-soft); font-size: .78rem; line-height: 1.45; }
