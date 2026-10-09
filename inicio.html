@@ -101,13 +101,21 @@
     </nav>
 
     <section class="in-tarjeta in-instalar" aria-labelledby="inInstalarTitulo">
-      <p class="in-etiqueta">En tu móvil</p>
       <h2 id="inInstalarTitulo">Ten Peregrino a un toque</h2>
-      <div class="in-instalar-ios">
-        <p>En iPhone: abre esta página en <strong>Safari</strong>, pulsa <strong>Compartir</strong> <span class="in-icono-compartir" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></span> y elige <strong>«Añadir a pantalla de inicio»</strong>.</p>
+
+      <div class="in-instalar-caso" data-para="android">
+        <a class="in-boton" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar la app</a>
+        <p class="in-instalar-alt">O úsala sin descargar nada: <button class="in-enlace-boton" type="button" data-instalar hidden>instalar la web app</button><span data-instalar-manual>menú <strong>⋮</strong> del navegador → <strong>Instalar aplicación</strong></span>.</p>
       </div>
-      <div class="in-instalar-otros">
-        <p><button class="in-boton" type="button" data-instalar hidden>Instalar Peregrino</button><span data-instalar-manual>En Android: menú <strong>⋮</strong> del navegador → <strong>Instalar aplicación</strong>. O mejor, <a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">descarga la app completa</a>.</span></p>
+
+      <div class="in-instalar-caso" data-para="ios">
+        <p>Abre esta página en <strong>Safari</strong>, pulsa <strong>Compartir</strong> <span class="in-icono-compartir" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></span> y elige <strong>«Añadir a pantalla de inicio»</strong>.</p>
+      </div>
+
+      <div class="in-instalar-caso" data-para="otra">
+        <button class="in-boton" type="button" data-instalar hidden>Instalar Peregrino</button>
+        <p data-instalar-manual>En Chrome o Edge, pulsa el icono de instalar de la barra de direcciones.</p>
+        <p class="in-instalar-alt">¿Tienes un móvil Android? <a href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descarga la app</a>.</p>
       </div>
     </section>
 

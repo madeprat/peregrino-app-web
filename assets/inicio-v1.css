@@ -73,15 +73,22 @@ a.in-puerta:active { transform: scale(.98); }
 .in-codigo input:focus { border-color: var(--blue); background: #fff; }
 .in-codigo button { min-height: 48px; padding: 0 18px; border: 0; border-radius: 14px; background: var(--blue); color: #fff; font-weight: 800; cursor: pointer; }
 
-/* Instalar (se oculta cuando ya está abierta como app) */
-.in-instalar h2 { margin: 8px 0 0; font-family: "Cormorant Garamond", serif; font-size: 1.7rem; line-height: 1.1; }
-.in-instalar p { margin: 10px 0 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.55; }
+/* Instalar (se oculta cuando ya está abierta como app).
+   Android: la app de Google Play primero y la web app como alternativa.
+   iPhone/iPad: añadir a la pantalla de inicio desde Safari.
+   Ordenador y demás: instalar la web app. */
+.in-instalar h2 { margin: 0; font-family: "Cormorant Garamond", serif; font-size: 1.7rem; line-height: 1.1; }
+.in-instalar p { margin: 12px 0 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.55; }
 .in-instalar a { color: var(--blue); font-weight: 800; }
+.in-instalar .in-boton { display: inline-flex; align-items: center; margin-top: 14px; text-decoration: none; color: #fff; }
 .in-icono-compartir { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; border: 1px solid var(--line); color: #1a73e8; vertical-align: middle; }
 .in-boton { min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--blue); color: #fff; font-weight: 800; cursor: pointer; }
-.in-instalar-otros { display: none; }
-html:not([data-plataforma="ios"]) .in-instalar-ios { display: none; }
-html:not([data-plataforma="ios"]) .in-instalar-otros { display: block; }
+.in-enlace-boton { padding: 0; border: 0; background: none; color: var(--blue); font: inherit; font-weight: 800; text-decoration: underline; cursor: pointer; }
+.in-instalar-caso { display: none; }
+html[data-plataforma="android"] .in-instalar-caso[data-para="android"],
+html[data-plataforma="ios"] .in-instalar-caso[data-para="ios"],
+html:not([data-plataforma="android"]):not([data-plataforma="ios"]) .in-instalar-caso[data-para="otra"] { display: block; }
+.in-instalar [hidden] { display: none !important; }
 .es-app .in-instalar { display: none; }
 
 /* Descubre */
