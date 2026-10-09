@@ -34,17 +34,22 @@
     velita: '<path d="M12 2.8c1.4 2 3.2 3.4 3.2 5.9a3.2 3.2 0 0 1-6.4 0c0-1.3.6-2.3 1.4-3.1.2 1 .7 1.7 1.3 1.9-.2-1.7.1-3.2.5-4.7z"/><path d="M8.5 14h7v7h-7z"/>',
     regalo: '<path d="M3.5 6.5h17v12h-17z"/><path d="m3.5 7.5 8.5 6 8.5-6"/>',
     grupo: '<circle cx="9" cy="8" r="3.3"/><path d="M2.8 20a6.2 6.2 0 0 1 12.4 0"/><path d="M15.5 4.9a3.3 3.3 0 0 1 0 6.2M17.6 14.2A6.2 6.2 0 0 1 21.2 20"/>',
+    reunion: '<path d="M4 4.5h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1z"/><path d="M16 8.5h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-1v3l-4-3h-3a1 1 0 0 1-1-1v-1.5"/>',
+    mundo: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/>',
     fuera: '<path d="M14 4h6v6M20 4l-8.5 8.5"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
   };
   const icono = (nombre) =>
     `<svg class="app-icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICONOS[nombre]}</svg>`;
 
+  // movil: false → solo en la barra lateral (en el móvil se llega desde Inicio).
   const SECCIONES = [
     { id: "inicio", texto: "Inicio", ruta: "inicio.html" },
     { id: "biblioteca", texto: "Biblioteca", ruta: "biblioteca-oraciones.html" },
-    { id: "velita", texto: "Velita", largo: "Enciende una velita", ruta: "rincon-de-la-luz.html" },
+    { id: "reunion", texto: "Reunión", largo: "Reunión de Grupo", ruta: "reunion-de-grupo.html" },
+    { id: "mundo", texto: "Mundo", largo: "El mundo está de Cursillo", ruta: "mundo-cursillo.html" },
     { id: "regalo", texto: "Regalar", largo: "Regala una oración", ruta: "regalo-de-oracion.html" },
-    { id: "grupo", texto: "En grupo", largo: "Rezar en grupo", ruta: "sala/" },
+    { id: "velita", texto: "Velita", largo: "Enciende una velita", ruta: "rincon-de-la-luz.html", movil: false },
+    { id: "grupo", texto: "En grupo", largo: "Rezar en grupo", ruta: "sala/", movil: false },
   ];
 
   // Mismos enlaces que la sección Peregrinar de Peregrino APP.
@@ -86,7 +91,7 @@
     const inferior = document.createElement("nav");
     inferior.className = "app-inferior";
     inferior.setAttribute("aria-label", "Peregrino");
-    inferior.innerHTML = SECCIONES.map((s) => enlace(s, "app-inferior-item")).join("");
+    inferior.innerHTML = SECCIONES.filter((s) => s.movil !== false).map((s) => enlace(s, "app-inferior-item")).join("");
 
     document.body.prepend(lateral);
     document.body.append(inferior);
