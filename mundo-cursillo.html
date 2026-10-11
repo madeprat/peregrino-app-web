@@ -753,6 +753,54 @@
       letter-spacing: .08em;
     }
 
+    /* Listado de Cursillos que admiten palancas */
+    .worldwide.cursillos-hoy { display: block; }
+    .cursillos-hoy-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .cursillos-hoy-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 520px;
+      overflow: auto;
+      display: grid;
+      gap: 8px;
+    }
+    .cursillo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .cursillo-row-info { flex: 1 1 260px; min-width: 0; }
+    .cursillo-row-title { font-weight: 700; }
+    .cursillo-row-sub { font-size: .82rem; color: var(--muted); margin-top: 2px; }
+    .cursillo-row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cursillo-row-actions .btn { min-height: 36px; padding: 7px 12px; font-size: .8rem; }
+    .cursillo-row .pill-mini {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 8px;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 600;
+      vertical-align: middle;
+      border: 1px solid var(--line);
+    }
+
+    .pill-mini.pill-active { color: #0b3d24; background: rgba(62,207,142,.28); border-color: rgba(62,207,142,.5); }
+    .pill-mini.pill-next   { color: #2d1a55; background: rgba(167,139,250,.28); border-color: rgba(167,139,250,.5); }
+
     /* Tooltip del globo (Globe.gl) */
     .scene-tooltip {
       color: var(--text) !important;
@@ -2561,18 +2609,16 @@
       </aside>
     </main>
 
-    <section class="worldwide">
-      <div>
-        <div class="worldwide-eyebrow">Próxima palanca mundial</div>
-        <h2 id="worldTitle">Consultando la configuración…</h2>
-        <p id="worldDescription">Próximamente anunciaremos una nueva palanca mundial.</p>
+    <section class="worldwide cursillos-hoy" aria-labelledby="cursillosHoyTitle">
+      <div class="cursillos-hoy-head">
+        <div>
+          <div class="worldwide-eyebrow">Uno a uno</div>
+          <h2 id="cursillosHoyTitle">Cursillos que esperan tu palanca</h2>
+          <p id="cursillosHoyCount">Cargando Cursillos…</p>
+        </div>
+        <button class="btn" type="button" id="cursillosCsvBtn">⤓ Descargar listado (CSV)</button>
       </div>
-      <div id="countdown" class="countdown">
-        <div class="count-unit"><strong id="countDays">—</strong><span>días</span></div>
-        <div class="count-unit"><strong id="countHours">—</strong><span>horas</span></div>
-        <div class="count-unit"><strong id="countMinutes">—</strong><span>minutos</span></div>
-        <div class="count-unit"><strong id="countSeconds">—</strong><span>segundos</span></div>
-      </div>
+      <ol id="cursillosHoyList" class="cursillos-hoy-list"></ol>
     </section>
   </div>
 
@@ -3815,6 +3861,85 @@ function renderMural() {
       renderSelection();
       renderMural();
       renderFlows();
+      renderCursillosHoy();
+    }
+
+    // Cursillos que admiten palancas (activos primero, luego próximos),
+    // respetando los filtros aplicados al mapa.
+    function cursillosQueAdmitenPalancas() {
+      const fecha = (c) => toDate(c.inicio_utc) || toDate(c.inicio_local) || new Date(8.64e15);
+      return (appState.filteredCursillos || [])
+        .filter(cursilloAceptaPalancas)
+        .sort((a, b) => {
+          const sa = cursilloStatus(a) === "Activo" ? 0 : 1;
+          const sb = cursilloStatus(b) === "Activo" ? 0 : 1;
+          return sa - sb || fecha(a) - fecha(b);
+        });
+    }
+
+    function renderCursillosHoy() {
+      const list = $("cursillosHoyList");
+      if (!list) return;
+      const cursillos = cursillosQueAdmitenPalancas();
+      const activos = cursillos.filter((c) => cursilloStatus(c) === "Activo").length;
+
+      $("cursillosHoyCount").textContent = cursillos.length
+        ? `${activos} en curso · ${cursillos.length - activos} próximos`
+        : "Ahora mismo no hay Cursillos que admitan palancas con estos filtros.";
+      $("cursillosCsvBtn").hidden = !cursillos.length;
+
+      const target = FORM_PALANCA_URL ? ' target="_blank" rel="noopener"' : "";
+      list.innerHTML = cursillos.map((c) => {
+        const status = cursilloStatus(c);
+        const id = escapeHtml(c.cursillo_id);
+        return `
+          <li class="cursillo-row">
+            <div class="cursillo-row-info">
+              <div class="cursillo-row-title">${escapeHtml(c.bandera || "🌍")} ${escapeHtml(c.nombre_corto || c.tipo_evento || "Cursillo")}
+                <span class="pill-mini ${status === "Activo" ? "pill-active" : "pill-next"}">${escapeHtml(status)}</span>
+              </div>
+              <div class="cursillo-row-sub">
+                ${escapeHtml([c.diocesis, [c.ciudad_referencia, c.pais].filter(Boolean).join(", ")].filter(Boolean).join(" · "))}
+                · ${formatDate(c.inicio_utc || c.inicio_local)} — ${formatDate(c.fin_utc || c.fin_local)}
+              </div>
+            </div>
+            <div class="cursillo-row-actions">
+              <button class="btn" type="button" data-ver-cursillo="${id}">Ver en el globo</button>
+              <a class="btn primary" href="${escapeHtml(palancaHref(c.cursillo_id))}"${target}>🙏 Hacer palanca</a>
+            </div>
+          </li>`;
+      }).join("");
+    }
+
+    function fechaCsv(value) {
+      const d = toDate(value);
+      return d ? d.toISOString().slice(0, 10) : "";
+    }
+
+    function descargarCursillosCsv() {
+      const cursillos = cursillosQueAdmitenPalancas();
+      const cabecera = ["Cursillo", "Tipo", "Diócesis", "Ciudad", "País", "Inicio", "Fin", "Estado", "Enlace para hacer palanca"];
+      const filas = cursillos.map((c) => [
+        c.nombre_corto || "",
+        c.tipo_evento || "",
+        c.diocesis || "",
+        c.ciudad_referencia || "",
+        c.pais || "",
+        fechaCsv(c.inicio_utc || c.inicio_local),
+        fechaCsv(c.fin_utc || c.fin_local),
+        cursilloStatus(c),
+        new URL(palancaHref(c.cursillo_id), window.location.href).toString()
+      ]);
+      const celda = (v) => `"${String(v).replace(/"/g, '""')}"`;
+      const csv = "\uFEFF" + [cabecera, ...filas].map((f) => f.map(celda).join(";")).join("\r\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `cursillos-palancas-${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     }
 
     let palancaDialogLastFocus = null;
@@ -3914,58 +4039,6 @@ function renderMural() {
       return null;
     }
 
-    function nextWorldwideEvent() {
-      const now = new Date();
-      return [...appState.configuracion]
-        .filter((item) => {
-          const start = toDate(item.inicio_utc);
-          const end = toDate(item.fin_utc);
-          return start && (!end || end >= now);
-        })
-        .sort((a, b) => toDate(a.inicio_utc) - toDate(b.inicio_utc))[0] || null;
-    }
-
-    function updateCountdown() {
-      const event = nextWorldwideEvent();
-      const title = $("worldTitle");
-      const description = $("worldDescription");
-
-      if (!event) {
-        title.textContent = "Próxima palanca mundial";
-        description.textContent = "Próximamente anunciaremos una nueva intención para unirnos en oración.";
-        ["countDays","countHours","countMinutes","countSeconds"].forEach((id) => $(id).textContent = "0");
-        return;
-      }
-
-      const start = toDate(event.inicio_utc);
-      const end = toDate(event.fin_utc);
-      const now = new Date();
-
-      title.textContent = event.titulo || "Palanca mundial";
-      description.textContent = [
-        event.tipo_oracion,
-        event.intencion,
-        start ? formatDate(start, { time:true, utc:true }) + " UTC" : ""
-      ].filter(Boolean).join(" · ");
-
-      let diff = Math.max(0, start.getTime() - now.getTime());
-      if (start <= now && (!end || now <= end)) {
-        title.textContent = `Ahora: ${event.titulo || "Palanca mundial"}`;
-        diff = 0;
-      }
-
-      const seconds = Math.floor(diff / 1000);
-      const days = Math.floor(seconds / 86400);
-      const hours = Math.floor((seconds % 86400) / 3600);
-      const minutes = Math.floor((seconds % 3600) / 60);
-      const secs = seconds % 60;
-
-      $("countDays").textContent = String(days).padStart(2, "0");
-      $("countHours").textContent = String(hours).padStart(2, "0");
-      $("countMinutes").textContent = String(minutes).padStart(2, "0");
-      $("countSeconds").textContent = String(secs).padStart(2, "0");
-    }
-
     function setDataStatus(message, error = false, retryAction = null) {
       const statusText = $("statusText");
       const statusBox = $("dataStatus");
@@ -4046,11 +4119,9 @@ function renderMural() {
         appState.muralCursilloId = null;
         renderAll();
         maybeShowPalancaInvite();
-        updateCountdown();
 
         clearInterval(appState.countdownTimer);
         appState.countdownTimer = setInterval(() => {
-          updateCountdown();
           updateKpis();
           renderMural();
         }, 1000);
@@ -4277,6 +4348,14 @@ function renderMural() {
       $("mapZoomOutBtn").addEventListener("click", () => zoomGlobe(.3));
       $("mapFocusBtn").addEventListener("click", focusSelectedCursillo);
       $("mapResetBtn").addEventListener("click", resetWorldView);
+
+      $("cursillosCsvBtn")?.addEventListener("click", descargarCursillosCsv);
+      $("cursillosHoyList")?.addEventListener("click", (event) => {
+        const btn = event.target.closest("[data-ver-cursillo]");
+        if (!btn) return;
+        selectCursillo(btn.dataset.verCursillo, true);
+        document.querySelector(".map-shell")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
       $("mapRotateBtn").addEventListener("click", toggleWorldRotation);
 
       const toTop = $("toTop");
