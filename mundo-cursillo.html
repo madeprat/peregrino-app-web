@@ -2582,12 +2582,12 @@
           <div class="mkpi">
             <span class="mkpi-icon" aria-hidden="true">🕊️</span>
             <span class="mkpi-value" id="kpiPalancas">—</span>
-            <span class="mkpi-label">Palancas</span>
+            <span class="mkpi-label" id="kpiPalancasLabel">Palancas</span>
           </div>
           <div class="mkpi mkpi-now">
             <span class="mkpi-pulse" aria-hidden="true"></span>
             <span class="mkpi-value" id="kpiNow">—</span>
-            <span class="mkpi-label">rezando ahora</span>
+            <span class="mkpi-label" id="kpiNowLabel">rezando ahora</span>
           </div>
           <div class="mural-hidden-note" id="kpiCursillosNote" hidden></div>
         </div>
@@ -3162,6 +3162,19 @@ function cursilloEsVisiblePublicamente(cursillo) {
       requestAnimationFrame(frame);
     }
 
+    function kpiOSilencio(id, valor, etiqueta, simbolo, etiquetaSilencio) {
+      const el = $(id);
+      const label = $(id + "Label");
+      if (valor > 0) {
+        if (label) label.textContent = etiqueta;
+        animateNumber(el, valor);
+      } else {
+        el.dataset.value = "0";
+        el.textContent = simbolo;
+        if (label) label.textContent = etiquetaSilencio;
+      }
+    }
+
     function updateKpis() {
       const cursillos = appState.filteredCursillos;
       const palancas = relevantPalancas(cursillos.map((c) => c.cursillo_id));
@@ -3171,8 +3184,10 @@ function cursilloEsVisiblePublicamente(cursillo) {
 
       animateNumber($("kpiCursillos"), cursillos.length);
       animateNumber($("kpiCountries"), countries.size);
-      animateNumber($("kpiPalancas"), palancas.length);
-      animateNumber($("kpiNow"), nowCount);
+      // Que no aparezcan palancas en el mural no significa que nadie rece:
+      // en lugar de un 0, se reconoce la oración en silencio.
+      kpiOSilencio("kpiPalancas", palancas.length, "Palancas", "🕊️", "en silencio");
+      kpiOSilencio("kpiNow", nowCount, "rezando ahora", "🙏", "en oración");
       const note = $("kpiCursillosNote");
       if (note) note.textContent = `${activeCount} activos según la fecha actual`;
 
@@ -3356,9 +3371,11 @@ window.openCursilloFromMural =
             </div>
             <div class="selection-stats">
               <span class="pill ${statusPillClass}">${escapeHtml(status)}</span>
-              <span class="pill">${palancas.length} palancas</span>
-              <span class="pill">${countries.size} países</span>
-              <span class="pill">${nowCount} ahora</span>
+              ${palancas.length
+                ? `<span class="pill">${palancas.length} ${palancas.length === 1 ? "palanca" : "palancas"}</span>
+                   ${countries.size ? `<span class="pill">${countries.size} ${countries.size === 1 ? "país" : "países"}</span>` : ""}
+                   ${nowCount ? `<span class="pill">${nowCount} ahora</span>` : ""}`
+                : `<span class="pill">🕊️ Sostenido en oración</span>`}
             </div>
           </div>
           <div class="selection-actions">
@@ -3525,32 +3542,34 @@ function renderMural() {
         .filter(Boolean)
     );
 
-    subtitle.textContent =
-      `${palancas.length} palanca`
-      + `${palancas.length === 1 ? "" : "s"} `
-      + `hacia ${destinos.size} Cursillo`
-      + `${destinos.size === 1 ? "" : "s"} del mundo`;
+    subtitle.textContent = palancas.length
+      ? `${palancas.length} palanca`
+        + `${palancas.length === 1 ? "" : "s"} `
+        + `hacia ${destinos.size} Cursillo`
+        + `${destinos.size === 1 ? "" : "s"} del mundo`
+      : "El mundo reza en silencio por sus Cursillos";
 
   } else {
     subtitle.textContent =
       `${cursillo.nombre_corto || "Cursillo"} · `
       + `${cursillo.ciudad_referencia || cursillo.pais || ""} · `
-      + `${palancas.length} palanca`
-      + `${palancas.length === 1 ? "" : "s"} visibles`;
+      + (palancas.length
+        ? `${palancas.length} palanca${palancas.length === 1 ? "" : "s"} visible${palancas.length === 1 ? "" : "s"}`
+        : "sostenido en oración");
   }
 
   if (!palancas.length) {
     list.innerHTML = modoGlobal
       ? `
         <div class="empty-state">
-          No hay palancas públicas recientes para los
-          Cursillos actualmente visibles.
+          Muchas palancas se ofrecen en silencio.
+          Dios ya está obrando sus milagros en estos Cursillos.
         </div>
       `
       : `
         <div class="empty-state">
-          No hay palancas públicas de los últimos
-          ${MURAL_DIAS_VISIBLES} días para este Cursillo.
+          Las palancas de este Cursillo se están ofreciendo en silencio.
+          Dios ya está obrando en él.
         </div>
       `;
 
@@ -4165,9 +4184,14 @@ function renderMural() {
       }
 
       $("demoTitle").textContent = cursillo.nombre_corto || "El mundo reza por vosotros";
-      $("demoText").textContent =
-        `${cursillo.diocesis || cursillo.ciudad_referencia || cursillo.pais}. ` +
-        `${palancas.length} palancas registradas desde ${new Set(palancas.map((p) => p.pais_origen).filter(Boolean)).size} países.`;
+      const paises = new Set(palancas.map((p) => p.pais_origen).filter(Boolean)).size;
+      const lugar = cursillo.diocesis || cursillo.ciudad_referencia || cursillo.pais || "";
+      const sostén = palancas.length
+        ? `${palancas.length} ${palancas.length === 1 ? "palanca" : "palancas"} a la vista`
+          + (paises > 1 ? ` desde ${paises} países` : "")
+          + ", y muchas más ofrecidas en silencio. Dios está obrando sus milagros."
+        : "Muchos rezan por vosotros en silencio. Dios está obrando sus milagros.";
+      $("demoText").textContent = (lugar ? `${lugar}. ` : "") + sostén;
 
       $("demoOrigins").innerHTML = uniqueOrigins
         .slice(0, 8)
