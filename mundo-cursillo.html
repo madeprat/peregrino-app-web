@@ -2626,13 +2626,10 @@
       <p class="palanca-dialog-kicker">Hacer palanca</p>
       <h2 id="palancaInviteTitle">Tu oración puede sostener este Cursillo</h2>
       <p id="palancaInviteText">
-        Puedes ofrecer tu palanca en unos toques desde la web. Si prefieres,
-        con Peregrino APP se envía sola al terminar tu rezo. Para algo más
-        personal, escribe al secretariado de tu diócesis.
+        Ofrece tu palanca en unos toques.
       </p>
       <div class="palanca-dialog-actions">
-        <a class="btn primary" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Ofrecer desde la web</a>
-        <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Hacerlo con Peregrino APP</a>
+        <a class="btn primary" id="palancaInviteForm" href="#" target="_blank" rel="noopener" hidden>🕊️ Hacer palanca</a>
         <button class="btn link" type="button" id="palancaInviteClose">Cancelar</button>
       </div>
     </section>
@@ -3299,7 +3296,7 @@ window.openCursilloFromMural =
           <div class="selection-actions">
             ${
               cursilloAceptaPalancas(cursillo)
-                ? `<a class="btn primary" href="${palancaLink(cursillo.cursillo_id)}">🙏 Hacer palanca</a>
+                ? `<a class="btn primary" href="${palancaHref(cursillo.cursillo_id)}"${FORM_PALANCA_URL ? ' target="_blank" rel="noopener"' : ''}>🙏 Hacer palanca</a>
                    <button class="btn" type="button" onclick="showSingleReveal()">Presentar</button>`
                 : status === "Finalizado"
                   ? `<div class="selection-notice done">
@@ -3320,6 +3317,14 @@ window.openCursilloFromMural =
       url.searchParams.set("cursillo", cursilloId);
       url.searchParams.set("accion", "palanca");
       return url.toString();
+    }
+
+    // El botón "Hacer palanca" abre directamente el formulario web.
+    // El diálogo intermedio queda solo para quien llega con ?accion=palanca.
+    function palancaHref(cursilloId) {
+      return FORM_PALANCA_URL
+        ? FORM_PALANCA_URL.replace("CURSILLO_ID_AQUI", encodeURIComponent(cursilloId))
+        : palancaLink(cursilloId);
     }
 
     function palancaSortWeight(status) {
@@ -4279,6 +4284,9 @@ function renderMural() {
 
     initGlobe();
     bindEvents();
+    // Al abrir el formulario, cerrar el diálogo para que al volver no siga ahí
+    $("palancaInviteForm")?.addEventListener("click", () => closePalancaDialog());
+
     ["palancaInviteClose", "palancaInviteDismiss"].forEach((id) => {
       $(id)?.addEventListener("click", closePalancaDialog);
     });
