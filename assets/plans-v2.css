@@ -168,3 +168,9 @@
 .plans-oracion-texto{margin:0;padding:24px 26px;border-left:4px solid var(--gold);border-radius:0 22px 22px 0;background:#fff;font-family:"Cormorant Garamond",serif;font-size:1.32rem;line-height:1.5;white-space:pre-line;color:var(--ink)}
 .plans-oracion-texto span{display:block;margin-top:8px;color:#b8860b;font-style:italic}
 @media(max-width:860px){.plans-oracion-mes{grid-template-columns:minmax(0,1fr)}}
+
+.plan-aportacion{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:34px;padding:28px 32px;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--radius-md);background:var(--cream)}
+.plan-aportacion h3{margin:0 0 8px;font-family:"Cormorant Garamond",serif;font-size:clamp(1.5rem,2.6vw,1.9rem);line-height:1.1;color:var(--ink)}
+.plan-aportacion p{margin:0;max-width:640px;color:var(--ink-soft)}
+.plan-aportacion .button{flex-shrink:0}
+@media(max-width:700px){.plan-aportacion{flex-direction:column;align-items:flex-start;padding:24px 22px}}
