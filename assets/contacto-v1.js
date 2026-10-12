@@ -9,7 +9,7 @@
 (() => {
   "use strict";
 
-  const ENDPOINT = "";
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbyBSwLpgTctTIgj37iJFwUOiJ_4e-FmggbzGENyaoKzByaHgxuJG20LoofFeJuEVU5X/exec";
   const CORREO = "peregrinoapp@outlook.es";
 
   const TIPOS = [
