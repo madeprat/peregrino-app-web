@@ -7,3 +7,4 @@ exclude:
   - APLICAR_TEMA_MUNDO.py
   - DESHACER_TEMA_MUNDO.py
   - actualizar-google-translate.sh
+  - herramientas
