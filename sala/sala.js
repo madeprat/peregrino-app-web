@@ -170,6 +170,8 @@ function leerDocumento(raw) {
         locutor: texto(b.speaker ?? b.locutor),
         habla: booleano(b.speak, tipo !== 'rubric' && tipo !== 'silence'),
         visible: booleano(b.visible, tipo !== 'silence'),
+        // Silencio de la plantilla de sala (app v51): se muestra la estampita.
+        silencio: Boolean(b.metadata && typeof b.metadata === 'object' && b.metadata.salaSilencio === true),
       };
     });
 
@@ -260,7 +262,24 @@ function pintarSeccion(indice) {
   const cuerpo = $('seccionCuerpo');
   cuerpo.replaceChildren();
 
-  for (const bloque of bloquesVisibles(seccion)) {
+  const esSilencio = seccion.bloques.some((b) => b.silencio);
+  $('seccion').classList.toggle('silencio', esSilencio);
+  if (esSilencio) {
+    const figura = document.createElement('figure');
+    figura.className = 'estampita';
+    const img = document.createElement('img');
+    img.src = '../cristo_peregrino.jpeg';
+    img.alt = '';
+    img.width = 197;
+    img.height = 256;
+    figura.append(img);
+    const nota = document.createElement('p');
+    nota.className = 'silencio-nota';
+    nota.textContent = 'Silencio para meditar';
+    cuerpo.append(figura, nota);
+  }
+
+  for (const bloque of esSilencio ? [] : bloquesVisibles(seccion)) {
     const p = document.createElement('p');
     p.className = `b-${bloque.tipo}`;
     if (bloque.tipo === 'dialogue' && bloque.locutor) {
@@ -275,6 +294,10 @@ function pintarSeccion(indice) {
     }
     cuerpo.append(p);
   }
+
+  const siguiente = estado.secciones[seguro + 1];
+  $('seccionSiguiente').textContent = siguiente ? `Siguiente: ${siguiente.titulo}` : '';
+  $('seccionSiguiente').hidden = !siguiente;
 
   $('progresoTexto').textContent = `Parte ${seguro + 1} de ${total}`;
   $('barra').style.width = `${((seguro + 1) / total) * 100}%`;

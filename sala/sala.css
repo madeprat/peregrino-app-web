@@ -146,3 +146,10 @@ h1.title-sm{font-size:clamp(2rem,6.5vw,2.9rem);line-height:1.02;letter-spacing:-
 .reunion-acciones{margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .reunion-acciones .button:not(.small){flex:1 1 200px}
 @media(max-width:460px){.eleccion .button{width:100%}}
+
+/* Silencio para meditar (plantilla de sala) */
+.section-card.silencio{text-align:center;padding-bottom:22px}
+.estampita{margin:6px auto 0;width:min(190px,62%);padding:6px;background:#fff;border:1.5px solid var(--gold);border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.12)}
+.estampita img{display:block;width:100%;height:auto;border-radius:9px}
+.silencio-nota{margin:16px 0 0;color:var(--soft);font-style:italic;letter-spacing:.02em}
+.next-part{margin:12px 0 0;text-align:center;color:var(--soft);font-size:.88rem;font-weight:700}
