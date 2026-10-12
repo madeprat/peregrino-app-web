@@ -71,7 +71,7 @@
         <button class="pi-x" type="button" data-pi-cerrar aria-label="Cerrar">×</button>
         <p class="pi-etiqueta">Peregrino para iPhone</p>
         <h2 id="pi-titulo">Llega a App Store el ${FECHA_IOS}</h2>
-        <p>Mientras tanto, lo esencial de Peregrino ya funciona aquí, gratis:</p>
+        <p>Mientras tanto, Peregrino ya funciona aquí, gratis:</p>
         <ul class="pi-lista">
           ${opciones.map(([icono, titulo, texto, ruta]) => `
             <li><a href="${enlace(ruta)}"><span aria-hidden="true">${icono}</span><span><strong>${titulo}</strong><small>${texto}</small></span></a></li>`).join('')}
