@@ -153,3 +153,10 @@ h1.title-sm{font-size:clamp(2rem,6.5vw,2.9rem);line-height:1.02;letter-spacing:-
 .estampita img{display:block;width:100%;height:auto;border-radius:9px}
 .silencio-nota{margin:16px 0 0;color:var(--soft);font-style:italic;letter-spacing:.02em}
 .next-part{margin:12px 0 0;text-align:center;color:var(--soft);font-size:.88rem;font-weight:700}
+.cuentas{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:2px 0 16px}
+.cuentas span{width:18px;height:18px;border-radius:50%;background:rgba(23,63,122,.14);transition:all .2s ease}
+.cuentas span.hecha{background:var(--gold)}
+.cuentas span.actual{width:22px;height:22px;background:#fff;border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(224,170,43,.18)}
+.contemplacion{display:flex;align-items:center;gap:14px;margin:18px 0 2px;padding:10px 14px;border:1px solid rgba(224,170,43,.5);border-radius:14px;background:rgba(224,170,43,.07);text-align:left}
+.contemplacion img{width:44px;height:auto;border-radius:7px;flex:none}
+.contemplacion span{color:var(--soft);font-style:italic}

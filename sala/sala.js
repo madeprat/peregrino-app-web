@@ -5,8 +5,10 @@
 // la sección actual. La única escritura es la señal anónima `guestJoined`,
 // la misma que envía la app al unirse.
 //
-// Solo se siguen oraciones universales (prayerType == 'oracion'). El Santo
-// Rosario en grupo es una experiencia exclusiva de la app.
+// Se siguen las oraciones universales (prayerType == 'oracion') y el Santo
+// Rosario (prayerType == 'rosario') cuando la sala trae su secuencia
+// (`rosarySequenceJson`, app 1.3+). Las salas de Rosario más antiguas solo se
+// pueden seguir desde la app.
 //
 // Los códigos de 6 caracteres son salas de Reunión de Grupo: las gestiona
 // `reunion/reunion.js`, que se carga solo cuando hace falta.
@@ -122,6 +124,10 @@ function esOracion(data) {
   return texto(data.prayerType) === 'oracion';
 }
 
+function esRosario(data) {
+  return texto(data.prayerType) === 'rosario';
+}
+
 function leerIndice(data) {
   const n = Number.parseInt(data.currentSectionIndex, 10);
   return Number.isFinite(n) ? n : 0;
@@ -149,6 +155,27 @@ function booleano(valor, porDefecto) {
   return porDefecto;
 }
 
+function leerBloques(crudos) {
+  if (!Array.isArray(crudos)) return [];
+  return crudos
+    .filter((b) => b && typeof b === 'object')
+    .map((b) => {
+      const tipo = tipoBloque(b.type ?? b.tipo);
+      const meta = b.metadata && typeof b.metadata === 'object' ? b.metadata : {};
+      return {
+        tipo,
+        texto: String(b.text ?? b.texto ?? ''),
+        locutor: texto(b.speaker ?? b.locutor),
+        habla: booleano(b.speak, tipo !== 'rubric' && tipo !== 'silence'),
+        visible: booleano(b.visible, tipo !== 'silence'),
+        // Silencio de la plantilla de sala (app v51): toda la parte es silencio.
+        silencio: meta.salaSilencio === true,
+        // Silencio para meditar al final de una estación o un misterio.
+        contemplacion: tipo === 'silence' && meta.contemplation === true,
+      };
+    });
+}
+
 function leerDocumento(raw) {
   if (!raw || !texto(raw)) return null;
   let json;
@@ -159,28 +186,49 @@ function leerDocumento(raw) {
   }
   if (!json || typeof json !== 'object') return null;
 
-  const crudos = Array.isArray(json.blocks) ? json.blocks : Array.isArray(json.bloques) ? json.bloques : [];
-  const bloques = crudos
-    .filter((b) => b && typeof b === 'object')
-    .map((b) => {
-      const tipo = tipoBloque(b.type ?? b.tipo);
-      return {
-        tipo,
-        texto: String(b.text ?? b.texto ?? ''),
-        locutor: texto(b.speaker ?? b.locutor),
-        habla: booleano(b.speak, tipo !== 'rubric' && tipo !== 'silence'),
-        visible: booleano(b.visible, tipo !== 'silence'),
-        // Silencio de la plantilla de sala (app v51): se muestra la estampita.
-        silencio: Boolean(b.metadata && typeof b.metadata === 'object' && b.metadata.salaSilencio === true),
-      };
-    });
-
+  const bloques = leerBloques(Array.isArray(json.blocks) ? json.blocks : json.bloques);
   const metadata = json.metadata && typeof json.metadata === 'object' ? json.metadata : {};
   return {
     titulo: texto(json.title ?? json.titulo) || 'Oración',
     idioma: texto(metadata.language).toLowerCase(),
     bloques,
   };
+}
+
+// Rosario: la sala trae la secuencia completa (RosarySequence.toJson) y
+// quien guía avanza `currentStepId`. Cada paso es una parte de la web.
+function leerRosario(raw, idioma) {
+  if (!raw || !texto(raw)) return null;
+  let json;
+  try {
+    json = JSON.parse(raw);
+  } catch (_) {
+    return null;
+  }
+  if (!json || typeof json !== 'object' || !Array.isArray(json.steps)) return null;
+
+  const pasos = json.steps
+    .filter((p) => p && typeof p === 'object')
+    .map((p) => {
+      const avemaria = Number.parseInt(p.hailMaryIndex, 10);
+      const misterio = Number.parseInt(p.mysteryIndex, 10);
+      return {
+        id: texto(p.id),
+        tipo: texto(p.kind),
+        titulo: texto(p.title) || 'Rosario',
+        bloques: leerBloques(p.blocks),
+        avemaria: Number.isFinite(avemaria) ? avemaria : null,
+        misterio: Number.isFinite(misterio) ? misterio : null,
+      };
+    });
+  if (!pasos.length) return null;
+
+  // Título: «Santo Rosario · Misterios …» desde el paso de introducción.
+  const intro = pasos[0];
+  const tipoMisterios = intro.bloques.find((b) => b.tipo === 'text' && b.texto.trim());
+  const titulo = tipoMisterios ? `${intro.titulo} · ${tipoMisterios.texto.trim()}` : intro.titulo;
+
+  return { titulo, idioma: texto(idioma).toLowerCase(), bloques: [], pasos };
 }
 
 function esSustantivo(b) {
@@ -251,6 +299,33 @@ function pintarCabecera(data, documento) {
   document.title = `${titulo} | Rezar en grupo`;
 }
 
+function pintarCuentas(paso) {
+  const cuentas = document.createElement('div');
+  cuentas.className = 'cuentas';
+  cuentas.setAttribute('aria-label', `Avemaría ${paso.avemaria + 1} de 10`);
+  for (let i = 0; i < 10; i++) {
+    const cuenta = document.createElement('span');
+    if (i < paso.avemaria) cuenta.className = 'hecha';
+    else if (i === paso.avemaria) cuenta.className = 'actual';
+    cuentas.append(cuenta);
+  }
+  return cuentas;
+}
+
+function pintarContemplacion() {
+  const caja = document.createElement('div');
+  caja.className = 'contemplacion';
+  const img = document.createElement('img');
+  img.src = '../cristo_peregrino.jpeg';
+  img.alt = '';
+  img.width = 44;
+  img.height = 57;
+  const nota = document.createElement('span');
+  nota.textContent = 'Silencio para meditar';
+  caja.append(img, nota);
+  return caja;
+}
+
 function pintarSeccion(indice) {
   const total = estado.secciones.length;
   const seguro = Math.min(Math.max(indice, 0), total - 1);
@@ -264,6 +339,9 @@ function pintarSeccion(indice) {
 
   const esSilencio = seccion.bloques.some((b) => b.silencio);
   $('seccion').classList.toggle('silencio', esSilencio);
+  if (seccion.avemaria != null && seccion.avemaria >= 0 && seccion.avemaria < 10) {
+    cuerpo.append(pintarCuentas(seccion));
+  }
   if (esSilencio) {
     const figura = document.createElement('figure');
     figura.className = 'estampita';
@@ -295,11 +373,17 @@ function pintarSeccion(indice) {
     cuerpo.append(p);
   }
 
+  if (!esSilencio && seccion.bloques.some((b) => b.contemplacion)) {
+    cuerpo.append(pintarContemplacion());
+  }
+
   const siguiente = estado.secciones[seguro + 1];
   $('seccionSiguiente').textContent = siguiente ? `Siguiente: ${siguiente.titulo}` : '';
   $('seccionSiguiente').hidden = !siguiente;
 
-  $('progresoTexto').textContent = `Parte ${seguro + 1} de ${total}`;
+  $('progresoTexto').textContent = seccion.misterio != null
+    ? `Misterio ${seccion.misterio + 1} de 5`
+    : `Parte ${seguro + 1} de ${total}`;
   $('barra').style.width = `${((seguro + 1) / total) * 100}%`;
 
   if (cambio) {
@@ -323,18 +407,31 @@ function aplicar(data) {
     mostrarFin('Esta sala ha caducado', 'Pide a quien guía que te envíe un código nuevo.', '⏳');
     return;
   }
-  if (!esOracion(data)) {
+  const rosario = esRosario(data);
+  const raw = texto(rosario ? data.rosarySequenceJson : data.prayerDocumentJson);
+  if (rosario && !raw) {
+    // Sala creada con una versión de la app anterior a la 1.3.
+    detener();
+    rellenar('[data-codigo]', estado.codigo);
+    mostrar('viewRosario');
+    return;
+  }
+  if (!rosario && !esOracion(data)) {
     detener();
     rellenar('[data-codigo]', estado.codigo);
     mostrar('viewRosario');
     return;
   }
 
-  const raw = texto(data.prayerDocumentJson);
   if (raw !== estado.documentoRaw) {
     estado.documentoRaw = raw;
-    estado.documento = leerDocumento(raw);
-    estado.secciones = estado.documento ? construirSecciones(estado.documento) : [];
+    if (rosario) {
+      estado.documento = leerRosario(raw, data.rosaryLanguage);
+      estado.secciones = estado.documento ? estado.documento.pasos : [];
+    } else {
+      estado.documento = leerDocumento(raw);
+      estado.secciones = estado.documento ? construirSecciones(estado.documento) : [];
+    }
     estado.indice = -1;
   }
   if (!estado.secciones.length) {
@@ -354,7 +451,15 @@ function aplicar(data) {
     estado.indice = -1;
   }
   $('rezoError').hidden = true;
-  pintarSeccion(leerIndice(data));
+  pintarSeccion(rosario ? indiceRosario(data) : leerIndice(data));
+}
+
+function indiceRosario(data) {
+  const id = texto(data.currentStepId);
+  const porId = id ? estado.secciones.findIndex((paso) => paso.id === id) : -1;
+  if (porId >= 0) return porId;
+  const n = Number.parseInt(data.rosaryStepIndex, 10);
+  return Number.isFinite(n) ? n : 0;
 }
 
 async function unirse(codigoBruto) {
@@ -395,7 +500,7 @@ async function unirse(codigoBruto) {
 
   actualizarUrl(codigo);
 
-  if (esOracion(data)) {
+  if (esOracion(data) || esRosario(data)) {
     // Señal de presencia anónima, igual que en la app. Si falla, se sigue igualmente.
     updateDoc(ref, { guestJoined: true }).catch(() => {});
   }
