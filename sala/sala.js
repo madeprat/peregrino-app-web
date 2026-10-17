@@ -21,6 +21,7 @@ import {
   updateDoc,
   onSnapshot,
 } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+import { tipoSala, TIPO_ORACION, TIPO_ROSARIO } from './tipo-sala.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA7xKVVL42LZFFu_J28xiGJBBh6lEjTVoY',
@@ -121,11 +122,11 @@ function caducada(data) {
 }
 
 function esOracion(data) {
-  return texto(data.prayerType) === 'oracion';
+  return tipoSala(data) === TIPO_ORACION;
 }
 
 function esRosario(data) {
-  return texto(data.prayerType) === 'rosario';
+  return tipoSala(data) === TIPO_ROSARIO;
 }
 
 function leerIndice(data) {
@@ -417,9 +418,8 @@ function aplicar(data) {
     return;
   }
   if (!rosario && !esOracion(data)) {
-    detener();
-    rellenar('[data-codigo]', estado.codigo);
-    mostrar('viewRosario');
+    // Tipo de sala no reconocido: nunca se muestra como Rosario.
+    mostrarFin('No reconocemos esta sala', 'Puede que se haya creado con una versión distinta de Peregrino APP. Pide a quien guía que actualice la app y te envíe un código nuevo.', '🧭');
     return;
   }
 
