@@ -2765,6 +2765,7 @@ const MOSTRAR_PALANCAS_DE_PRUEBA = false;
     const appState = {
       cursillos: [],
       palancas: [],
+      palancasPorCursillo: new Map(),
       configuracion: [],
       filteredCursillos: [],
       selectedCursilloId: null,
@@ -2925,6 +2926,7 @@ function cursilloEsVisiblePublicamente(cursillo) {
               }
               rows.push(item);
             }
+            rows.headers = headers;
             resolve(rows);
           });
         } catch (error) {
@@ -2933,10 +2935,11 @@ function cursilloEsVisiblePublicamente(cursillo) {
       });
     }
 
-    async function querySheet(gid) {
+    async function querySheet(gid, tq = "") {
+      const consulta = tq ? `&tq=${encodeURIComponent(tq)}` : "";
       const urls = [
-        `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?gid=${gid}&headers=1`,
-        `https://docs.google.com/spreadsheets/d/e/${PUBLISHED_ID}/gviz/tq?gid=${gid}&headers=1`
+        `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?gid=${gid}&headers=1${consulta}`,
+        `https://docs.google.com/spreadsheets/d/e/${PUBLISHED_ID}/gviz/tq?gid=${gid}&headers=1${consulta}`
       ];
 
       let lastError = null;
@@ -2948,6 +2951,45 @@ function cursilloEsVisiblePublicamente(cursillo) {
         }
       }
       throw lastError || new Error("No fue posible consultar la hoja.");
+    }
+
+    // Pide a Google solo las palancas publicables (consentimiento_publico,
+    // columna T, = TRUE y es_prueba, columna X, = FALSE) en lugar de la hoja
+    // entera. Si las columnas cambian de sitio o el filtro falla, se vuelve
+    // a la lectura completa: el filtro del navegador sigue aplicándose igual.
+    const PALANCAS_COLUMNAS_FILTRO = { 19: "consentimiento_publico", 23: "es_prueba" };
+
+    function columnasFiltroCorrectas(headers) {
+      return Object.entries(PALANCAS_COLUMNAS_FILTRO)
+        .every(([index, nombre]) => headers?.[Number(index)] === nombre);
+    }
+
+    async function queryPalancas() {
+      if (!MOSTRAR_PALANCAS_DE_PRUEBA) {
+        try {
+          const filtradas = await querySheet(
+            GIDS.palancas,
+            "select * where T = true and X = false"
+          );
+          if (columnasFiltroCorrectas(filtradas.headers)) return filtradas;
+          console.warn("Columnas de PALANCAS movidas: se lee la hoja completa.");
+        } catch (error) {
+          console.warn("Lectura filtrada de palancas no disponible:", error);
+        }
+      }
+      return querySheet(GIDS.palancas);
+    }
+
+    // Índice cursillo_id → palancas públicas, para no recorrer toda la
+    // lista cada vez que se pinta el mural, los KPI o el globo.
+    function indexarPalancas(palancas) {
+      const indice = new Map();
+      for (const palanca of palancas) {
+        const id = palanca.cursillo_id;
+        if (!indice.has(id)) indice.set(id, []);
+        indice.get(id).push(palanca);
+      }
+      return indice;
     }
 
     function hexToRgbStr(hex) {
@@ -3141,10 +3183,12 @@ function cursilloEsVisiblePublicamente(cursillo) {
     }
 
     function relevantPalancas(cursilloIds) {
-      const ids = new Set(cursilloIds);
-      return appState.palancas
-        .filter((p) => ids.has(p.cursillo_id))
-        .filter(palancaEsVisiblePublicamente);
+      const resultado = [];
+      for (const id of new Set(cursilloIds)) {
+        const lista = appState.palancasPorCursillo.get(id);
+        if (lista) resultado.push(...lista);
+      }
+      return resultado;
     }
 
     function animateNumber(element, target) {
@@ -3329,9 +3373,7 @@ window.openCursilloFromMural =
     }
 
     function visiblePublicPalancas(cursilloId) {
-      return appState.palancas
-        .filter((p) => p.cursillo_id === cursilloId)
-        .filter(palancaEsVisiblePublicamente);
+      return appState.palancasPorCursillo.get(cursilloId) || [];
     }
 
     function renderSelection() {
@@ -3588,6 +3630,10 @@ function renderMural() {
     inicio + MURAL_POR_PAGINA
   );
 
+  const cursillosPorId = new Map(
+    appState.cursillos.map((item) => [item.cursillo_id, item])
+  );
+
   const tarjetas = palancasPagina
     .map((palanca) => {
       const status = palancaStatus(palanca);
@@ -3624,10 +3670,7 @@ function renderMural() {
         }
       );
 
-      const destino = appState.cursillos.find(
-        (item) =>
-          item.cursillo_id === palanca.cursillo_id
-      );
+      const destino = cursillosPorId.get(palanca.cursillo_id);
 
       const nombreDestino = destino
         ? (
@@ -4096,7 +4139,7 @@ function renderMural() {
       try {
         const [cursillos, palancas, configuracion] = await Promise.all([
           querySheet(GIDS.cursillos),
-          querySheet(GIDS.palancas),
+          queryPalancas(),
           querySheet(GIDS.configuracion)
         ]);
 
@@ -4110,11 +4153,12 @@ function renderMural() {
         }
 
         appState.cursillos = cursillosVisibles;
-        appState.palancas = palancas;
+        const palancasVisibles = palancas.filter(palancaEsVisiblePublicamente);
+        appState.palancas = palancasVisibles;
+        appState.palancasPorCursillo = indexarPalancas(palancasVisibles);
         appState.configuracion = configuracion;
         appState.sourceMode = "google";
 
-        const palancasVisibles = palancas.filter(palancaEsVisiblePublicamente);
         setDataStatus(
           `Información actualizada · ${cursillosVisibles.length} Cursillos · ${palancasVisibles.length} palancas visibles${latestUpdateText()}`
         );
@@ -4122,6 +4166,7 @@ function renderMural() {
         console.error("No fue posible actualizar Mundo Cursillo:", error);
         appState.cursillos = [];
         appState.palancas = [];
+        appState.palancasPorCursillo = new Map();
         appState.configuracion = [];
         appState.sourceMode = "error";
 
@@ -4143,10 +4188,13 @@ function renderMural() {
         maybeShowPalancaInvite();
 
         clearInterval(appState.countdownTimer);
+        // Los estados (Programada / En curso / Ofrecida) cambian por minutos:
+        // basta con revisarlos una vez por minuto y solo con la pestaña visible.
         appState.countdownTimer = setInterval(() => {
+          if (document.hidden) return;
           updateKpis();
           renderMural();
-        }, 1000);
+        }, 60000);
       } catch (renderError) {
         console.error("No fue posible mostrar Mundo Cursillo:", renderError);
         setDataStatus(
@@ -4358,6 +4406,12 @@ function renderMural() {
       });
 
       $("refreshBtn").addEventListener("click", loadData);
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden || !appState.cursillos.length) return;
+        updateKpis();
+        renderMural();
+      });
       $("demoBtn").addEventListener("click", toggleDemo);
 
       $("fullscreenBtn").addEventListener("click", async () => {
