@@ -2980,6 +2980,56 @@ function cursilloEsVisiblePublicamente(cursillo) {
       return querySheet(GIDS.palancas);
     }
 
+    // Una oración por un continente o por el mundo llega como UNA fila con
+    // la lista de Cursillos en cursillos_destino. Para el globo, los KPI y
+    // cada Cursillo se reparte en copias ligeras (heredan todos los campos
+    // de la fila y solo cambian cursillo_id); _base apunta a la fila real.
+    const ALCANCE_NOMBRES = {
+      MUNDO: "todos los Cursillos del mundo",
+      "CONT-NA": "los Cursillos de Norteamérica",
+      "CONT-CA": "los Cursillos de Centroamérica y el Caribe",
+      "CONT-SA": "los Cursillos de Sudamérica",
+      "CONT-EU": "los Cursillos de Europa",
+      "CONT-AF": "los Cursillos de África",
+      "CONT-AS": "los Cursillos de Asia",
+      "CONT-OC": "los Cursillos de Oceanía"
+    };
+
+    function nombreAlcance(alcance) {
+      return ALCANCE_NOMBRES[String(alcance || "").trim().toUpperCase()]
+        || "muchos Cursillos del mundo";
+    }
+
+    function repartirPorDestino(palancas, idsVisibles) {
+      const salida = [];
+      for (const palanca of palancas) {
+        const destinos = String(palanca.cursillos_destino || "").trim();
+        if (!destinos) {
+          salida.push(palanca);
+          continue;
+        }
+        for (const id of new Set(destinos.split(",").map((x) => x.trim()))) {
+          if (!id || !idsVisibles.has(id)) continue;
+          const copia = Object.create(palanca);
+          copia.cursillo_id = id;
+          copia._base = palanca;
+          salida.push(copia);
+        }
+      }
+      return salida;
+    }
+
+    // Una oración cuenta una vez aunque llegue a varios Cursillos.
+    function unaPorOracion(palancas) {
+      const vistas = new Set();
+      return palancas.filter((palanca) => {
+        const base = palanca._base || palanca;
+        if (vistas.has(base)) return false;
+        vistas.add(base);
+        return true;
+      });
+    }
+
     // Índice cursillo_id → palancas públicas, para no recorrer toda la
     // lista cada vez que se pinta el mural, los KPI o el globo.
     function indexarPalancas(palancas) {
@@ -3224,7 +3274,7 @@ function cursilloEsVisiblePublicamente(cursillo) {
 
     function updateKpis() {
       const cursillos = appState.filteredCursillos;
-      const palancas = relevantPalancas(cursillos.map((c) => c.cursillo_id));
+      const palancas = unaPorOracion(relevantPalancas(cursillos.map((c) => c.cursillo_id)));
       const countries = new Set(cursillos.map((c) => c.pais).filter(Boolean));
       const nowCount = palancas.filter((p) => palancaStatus(p) === "En curso").length;
       const activeCount = cursillos.filter((c) => cursilloStatus(c) === "Activo").length;
@@ -3559,11 +3609,17 @@ function renderMural() {
     appState.muralPage = 1;
   }
 
-  const palancas = palancasVisiblesEnMural(
+  const palancasPorDestino = palancasVisiblesEnMural(
     modoGlobal
       ? null
       : cursillo.cursillo_id
   );
+
+  // En la vista mundial, una oración por un continente o por el mundo
+  // aparece una sola vez, no una por cada Cursillo al que llega.
+  const palancas = modoGlobal
+    ? unaPorOracion(palancasPorDestino)
+    : palancasPorDestino;
 
   appState.muralTotalPages = Math.max(
     1,
@@ -3582,7 +3638,7 @@ function renderMural() {
 
   if (modoGlobal) {
     const destinos = new Set(
-      palancas
+      palancasPorDestino
         .map((palanca) => palanca.cursillo_id)
         .filter(Boolean)
     );
@@ -3670,7 +3726,14 @@ function renderMural() {
         }
       );
 
-      const destino = cursillosPorId.get(palanca.cursillo_id);
+      // Oración por un continente o por el mundo, en la vista mundial.
+      const alcance = modoGlobal && palanca._base
+        ? palanca.palanca_mundial_id
+        : null;
+
+      const destino = alcance
+        ? null
+        : cursillosPorId.get(palanca.cursillo_id);
 
       const nombreDestino = destino
         ? (
@@ -3706,7 +3769,9 @@ function renderMural() {
       const nombrePalanca = escapeHtml(palanca.nombre_publico || "Palanca anónima");
       const tipoPalanca  = escapeHtml(palanca.tipo_palanca || "Oración");
 
-      const metaCorta = modoGlobal && destino
+      const metaCorta = alcance
+        ? `${tipoPalanca} · ${escapeHtml(lugarOrigen)} → ${escapeHtml(nombreAlcance(alcance))}`
+        : modoGlobal && destino
         ? `${tipoPalanca} · ${escapeHtml(lugarOrigen)} → ${escapeHtml(nombreDestino)}`
         : `${tipoPalanca} · ${escapeHtml(lugarOrigen)} · ${start}`;
 
@@ -4154,8 +4219,9 @@ function renderMural() {
 
         appState.cursillos = cursillosVisibles;
         const palancasVisibles = palancas.filter(palancaEsVisiblePublicamente);
-        appState.palancas = palancasVisibles;
-        appState.palancasPorCursillo = indexarPalancas(palancasVisibles);
+        const idsVisibles = new Set(cursillosVisibles.map((c) => c.cursillo_id));
+        appState.palancas = repartirPorDestino(palancasVisibles, idsVisibles);
+        appState.palancasPorCursillo = indexarPalancas(appState.palancas);
         appState.configuracion = configuracion;
         appState.sourceMode = "google";
 
