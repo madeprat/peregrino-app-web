@@ -45,12 +45,17 @@ body[data-modo="crear"] [data-solo="recibir"],body[data-modo="recibir"] [data-so
 .gift-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(224,170,43,.16)}
 .gift-hint{margin:7px 0 0;color:var(--ink-soft);font-size:.8rem}
 .gift-tonos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}
-.gift-tono{padding:11px 12px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);text-align:left;cursor:pointer}
+.gift-tono{min-width:0;padding:11px 12px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);text-align:left;cursor:pointer}
 .gift-tono strong{display:block;font-size:.9rem}
 .gift-tono small{display:block;color:var(--ink-soft);font-size:.76rem;line-height:1.3}
 .gift-tono[aria-pressed="true"]{border-color:transparent;background:#fff6df;box-shadow:0 0 0 2px var(--gold) inset}
+.gift-crear,.gift-form{min-width:0}
+.gift-momentos{display:flex;max-width:100%;gap:6px;margin-top:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gift-momentos::-webkit-scrollbar{display:none}
+.gift-momento{flex:0 0 auto;padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink-soft);font-weight:700;font-size:.8rem;cursor:pointer;white-space:nowrap}
+.gift-momento[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 .gift-crear-acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-@media(max-width:560px){.gift-tonos{grid-template-columns:1fr}.gift-crear-acciones .button{width:100%}}
+@media(max-width:560px){.gift-crear-acciones .button{width:100%}}
 .gift-form .gift-input+label{margin-top:18px}.gift-opcional{font-weight:600;color:var(--ink-soft)}
 
 /* ── Recibir: un sobre que se abre y una tarjeta sola, sin ruido ── */

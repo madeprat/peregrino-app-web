@@ -6,17 +6,45 @@
   const FIRMA = "alguien que te quiere bien";
   const de = clean(params.get("de"), "");
   const tono = clean(params.get("tono") || params.get("luz"),"esperanza").toLowerCase();
-  const templates = {
-    paz:{label:"paz",text:"Que el Señor ponga paz en tu corazón, serenidad en tus pensamientos y descanso en todo lo que hoy llevas por dentro.\n\nQue, en medio del ruido, puedas sentir una luz pequeña pero fiel acompañando tu camino."},
-    fortaleza:{label:"fortaleza",text:"Que el Señor te sostenga en lo difícil, te regale paciencia para atravesar cada paso y te recuerde que ningún esfuerzo hecho con amor se pierde.\n\nQue Cristo camine contigo y fortalezca tu corazón."},
-    esperanza:{label:"esperanza",text:"Que el Señor ilumine tu camino con esperanza. Que donde haya cansancio vuelva a nacer una pequeña alegría, y donde haya incertidumbre aparezca una señal de luz.\n\nNo caminas solo. Tu vida está en manos de Dios."},
-    consuelo:{label:"consuelo",text:"Que el Señor te abrace con ternura en todo lo que hoy pesa. Que encuentres consuelo, compañía y una paz suave que no borra la historia, pero ayuda a respirar.\n\nQue la Virgen te cubra con su manto y te acompañe."},
-    gratitud:{label:"gratitud",text:"Gracias, Señor, por su vida, por el bien que ha sembrado y por la luz que deja en quienes le quieren.\n\nBendice su camino, sus alegrías, sus luchas y todo lo que guarda en el corazón."}
-  };
-  const TONOS = {
-    paz: "para un corazón cansado", fortaleza: "para seguir adelante", esperanza: "para mirar con luz",
-    consuelo: "para una etapa difícil", gratitud: "para bendecir su vida"
-  };
+  // Catálogo: cuatro momentos de la vida; cada oración conserva su clave para los enlaces ya enviados.
+  const CATALOGO = [
+    { id: "alma", nombre: "Para el alma", tonos: [
+      { clave: "paz", nombre: "Paz", sub: "para un corazón cansado", text: "Que el Señor ponga paz en tu corazón, serenidad en tus pensamientos y descanso en todo lo que hoy llevas por dentro.\n\nQue, en medio del ruido, puedas sentir una luz pequeña pero fiel acompañando tu camino." },
+      { clave: "esperanza", nombre: "Esperanza", sub: "para mirar con luz", text: "Que el Señor ilumine tu camino con esperanza. Que donde haya cansancio vuelva a nacer una pequeña alegría, y donde haya incertidumbre aparezca una señal de luz.\n\nNo caminas solo. Tu vida está en manos de Dios." },
+      { clave: "fortaleza", nombre: "Fortaleza", sub: "para seguir adelante", text: "Que el Señor te sostenga en lo difícil, te regale paciencia para atravesar cada paso y te recuerde que ningún esfuerzo hecho con amor se pierde.\n\nQue Cristo camine contigo y fortalezca tu corazón." },
+      { clave: "alegria", nombre: "Alegría", sub: "para que nada la apague", text: "Que el Señor guarde tu alegría y la haga crecer. Que sepas reconocer sus regalos en lo pequeño de cada día: una mesa compartida, una risa, una mañana con luz.\n\nQue tu alegría sea contagiosa para quienes te rodean." },
+      { clave: "descanso", nombre: "Descanso", sub: "para las noches largas", text: "Que el Señor calme tus pensamientos cuando la noche se hace larga. Que puedas dejar en sus manos lo que no está en las tuyas y dormir confiando en que Él vela.\n\nMañana también estará contigo." },
+      { clave: "compania", nombre: "Compañía", sub: "para quien se siente a solas", text: "Que sientas hoy que no estás a solas. Que Dios, que conoce tu nombre, te haga notar su cercanía en un gesto, una voz o una llamada inesperada.\n\nY que sepas que alguien te lleva en el corazón y en la oración." },
+      { clave: "busqueda", nombre: "Búsqueda", sub: "para quien busca sentido", text: "Que el Dios que sale al encuentro te encuentre en tu búsqueda, sin prisas y sin presiones. Que halles respuestas, o al menos buenas preguntas, y personas que caminen a tu lado.\n\nLa puerta siempre está abierta." }
+    ]},
+    { id: "dificil", nombre: "En lo difícil", tonos: [
+      { clave: "consuelo", nombre: "Consuelo", sub: "para una etapa difícil", text: "Que el Señor te abrace con ternura en todo lo que hoy pesa. Que encuentres consuelo, compañía y una paz suave que no borra la historia, pero ayuda a respirar.\n\nQue la Virgen te cubra con su manto y te acompañe." },
+      { clave: "salud", nombre: "Salud", sub: "para cuerpo y ánimo", text: "Que el Señor, que pasó por el mundo curando y acompañando, se acerque a ti en este tiempo de enfermedad. Que te dé alivio, buenos cuidados y fuerza para cada día.\n\nNo lo llevas a solas: muchos rezamos contigo." },
+      { clave: "duelo", nombre: "Duelo", sub: "para quien echa de menos", text: "Que el Señor sostenga tu corazón en esta ausencia. Que el amor compartido siga vivo y se vuelva memoria agradecida.\n\nConfiamos a quien se ha ido a la misericordia de Dios, y a ti, a su consuelo. Que la Virgen, que también lloró, te acompañe." },
+      { clave: "reconciliacion", nombre: "Reconciliación", sub: "para sanar un vínculo", text: "Que el Señor sane lo que se ha herido y te regale un corazón capaz de perdonar y de dejarse perdonar. Que las palabras justas lleguen a su tiempo.\n\nQue la paz vuelva a tu casa y a tus vínculos." },
+      { clave: "decision", nombre: "Discernimiento", sub: "para una decisión", text: "Que el Espíritu Santo ilumine tu decisión. Que te dé calma para escuchar, claridad para ver y valentía para elegir el bien.\n\nQue la paz interior te confirme el camino y sepas que Dios va contigo." },
+      { clave: "trabajo", nombre: "Trabajo", sub: "para el pan de cada día", text: "Que san José, hombre trabajador y fiel, interceda por ti. Que encuentres un trabajo digno, puertas que se abran y personas que confíen en lo que vales.\n\nQue no te falten el pan ni la esperanza." }
+    ]},
+    { id: "etapa", nombre: "Para una etapa", tonos: [
+      { clave: "comienzo", nombre: "Nuevo comienzo", sub: "para lo que empieza", text: "Que el Señor bendiga este nuevo comienzo. Que lo nuevo no te dé miedo, que encuentres buenas personas en el camino y que lo vivido hasta hoy te sirva de raíz.\n\nQue Dios abra el camino delante de ti." },
+      { clave: "estudios", nombre: "Estudios", sub: "para exámenes y esfuerzo", text: "Que el Espíritu Santo te dé memoria serena, mente clara y constancia en el esfuerzo. Que estudies con calma y te presentes con confianza.\n\nY que, salga como salga, recuerdes que vales mucho más que una nota." },
+      { clave: "viaje", nombre: "Buen camino", sub: "para un viaje", text: "Que el Señor te acompañe en este viaje. Que tu ángel de la guarda vaya contigo, que el camino sea seguro y el regreso, alegre.\n\nComo a Tobías, que Dios te guíe y te devuelva a casa en paz." },
+      { clave: "cuidar", nombre: "Quien cuida", sub: "para quien cuida a otros", text: "Que el Señor cuide de ti, que tanto cuidas. Que te regale descanso, ternura para los días largos y personas que también te sostengan.\n\nCada gesto de cuidado que haces, Él lo recibe como hecho a sí mismo." },
+      { clave: "espera", nombre: "Dulce espera", sub: "para una vida que viene", text: "Que el Señor bendiga la vida que crece dentro de ti. Que este tiempo de espera esté lleno de paz, salud y ternura.\n\nQue la Virgen María, que también esperó con amor, acompañe cada día hasta el encuentro." },
+      { clave: "anos", nombre: "Años vividos", sub: "para una vida larga", text: "Que el Señor bendiga tus años y la sabiduría que has ido guardando. Que no te falten compañía, salud ni motivos para sonreír.\n\nQue tus manos sigan bendiciendo y tu historia siga dando fruto." }
+    ]},
+    { id: "celebrar", nombre: "Para celebrar", tonos: [
+      { clave: "gratitud", nombre: "Gratitud", sub: "para bendecir su vida", text: "Gracias, Señor, por su vida, por el bien que ha sembrado y por la luz que deja en quienes le quieren.\n\nBendice su camino, sus alegrías, sus luchas y todo lo que guarda en el corazón." },
+      { clave: "cumpleanos", nombre: "Cumpleaños", sub: "para un año más", text: "Que el Señor bendiga este nuevo año de tu vida. Que te regale salud, buenos amigos, sueños que se cumplan y la certeza de que eres un regalo.\n\n¡Feliz cumpleaños! Dios sigue contando contigo." },
+      { clave: "nacimiento", nombre: "Bienvenida", sub: "para una vida recién llegada", text: "Que el Señor bendiga tu vida recién estrenada. Que crezcas entre brazos que te quieran, con salud, alegría y una fe que te ilumine.\n\nQue tu ángel de la guarda nunca se aparte de tu lado." },
+      { clave: "boda", nombre: "Amor", sub: "para un sí para siempre", text: "Que el Señor bendiga este amor y lo haga fuerte en los días fáciles y en los difíciles. Que el hogar que nace sea lugar de perdón, de risa y de puertas abiertas.\n\nQue Dios sea el tercer hilo de este cordón que no se rompe." },
+      { clave: "sacramento", nombre: "Un gran día", sub: "bautizo, comunión, confirmación", text: "Que el Señor llene de gracia este día tan especial. Que lo que hoy recibes eche raíces y florezca toda tu vida.\n\nQue Jesús sea siempre tu mejor amigo y el Espíritu Santo, tu fuerza." },
+      { clave: "navidad", nombre: "Navidad", sub: "para estas fiestas", text: "Que el Niño Dios nazca en tu casa y en tu corazón. Que estas fiestas te traigan paz, reencuentros y una alegría sencilla, como la de Belén.\n\n¡Feliz Navidad! Que su luz te acompañe todo el año." }
+    ]}
+  ];
+  const templates = {};
+  const grupoDe = {};
+  CATALOGO.forEach((g) => g.tonos.forEach((t) => { templates[t.clave] = t; grupoDe[t.clave] = g.id; }));
   const creando = document.body.dataset.modo === "crear";
   let deActual = de;
   let nombreActual = nombre, tonoActual = templates[tono] ? tono : "esperanza";
@@ -79,21 +107,41 @@
       document.getElementById("crearVer").href = link;
       document.getElementById("crearWhats").href = "https://wa.me/?text=" + encodeURIComponent(`Hoy pensé en ti y quise dejarte una pequeña luz:\n${link}`);
     };
-    Object.entries(TONOS).forEach(([clave, sub]) => {
-      const boton = document.createElement("button");
-      boton.type = "button";
-      boton.className = "gift-tono";
-      boton.setAttribute("aria-pressed", String(clave === tonoActual));
-      boton.innerHTML = "<strong></strong><small></small>";
-      boton.querySelector("strong").textContent = clave.charAt(0).toUpperCase() + clave.slice(1);
-      boton.querySelector("small").textContent = sub;
-      boton.addEventListener("click", () => {
-        tonoActual = clave;
-        [...caja.children].forEach((b) => b.setAttribute("aria-pressed", String(b === boton)));
-        actualizar();
+    // Momentos arriba; dentro, solo las oraciones de ese momento.
+    const momentos = document.createElement("div");
+    momentos.className = "gift-momentos";
+    momentos.setAttribute("role", "tablist");
+    caja.before(momentos);
+    const pintarTonos = (grupoId) => {
+      caja.replaceChildren();
+      [...momentos.children].forEach((m) => m.setAttribute("aria-selected", String(m.dataset.grupo === grupoId)));
+      CATALOGO.find((g) => g.id === grupoId).tonos.forEach((t) => {
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "gift-tono";
+        boton.setAttribute("aria-pressed", String(t.clave === tonoActual));
+        boton.innerHTML = "<strong></strong><small></small>";
+        boton.querySelector("strong").textContent = t.nombre;
+        boton.querySelector("small").textContent = t.sub;
+        boton.addEventListener("click", () => {
+          tonoActual = t.clave;
+          [...caja.children].forEach((b) => b.setAttribute("aria-pressed", String(b === boton)));
+          actualizar();
+        });
+        caja.appendChild(boton);
       });
-      caja.appendChild(boton);
+    };
+    CATALOGO.forEach((g) => {
+      const m = document.createElement("button");
+      m.type = "button";
+      m.className = "gift-momento";
+      m.setAttribute("role", "tab");
+      m.dataset.grupo = g.id;
+      m.textContent = g.nombre;
+      m.addEventListener("click", () => pintarTonos(g.id));
+      momentos.appendChild(m);
     });
+    pintarTonos(grupoDe[tonoActual]);
     input.addEventListener("input", actualizar);
     remitente.addEventListener("input", actualizar);
     document.getElementById("crearCopiar").addEventListener("click", () => copyText(enlace(), "Enlace copiado"));
