@@ -8,3 +8,7 @@ exclude:
   - DESHACER_TEMA_MUNDO.py
   - actualizar-google-translate.sh
   - herramientas
+
+# Necesario para que Android verifique los enlaces de la app (App Links).
+include:
+  - .well-known

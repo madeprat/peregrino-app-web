@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Una oración para ti | Peregrino APP</title>
+  <meta name="description" content="Te han compartido una oración de la Biblioteca de Peregrino APP para que la reces.">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#fffaf0">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Peregrino APP">
+  <meta property="og:title" content="Una oración para ti">
+  <meta property="og:description" content="Te han compartido una oración para que la reces.">
+  <meta property="og:image" content="https://tripodapp.prat-cas.com/og-regalo.jpg">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <link rel="icon" href="../assets/peregrino-app-icon.png">
+  <script>
+    // Enlace que comparte la app: oracion/?id=ID&l=IDIOMA.
+    // Con Peregrino APP instalada, Android lo abre directamente en la app.
+    // Si no, se abre aquí y se lleva a la oración en la Biblioteca de la web.
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var id = (params.get("id") || "").trim();
+      var lang = (params.get("l") || "").trim().toLowerCase();
+      var destino = "../biblioteca-oraciones.html";
+      if (id) {
+        destino += "#rezar/" + encodeURIComponent(id) +
+          (/^(es|pt|en|la)$/.test(lang) ? "/" + lang : "");
+      }
+      location.replace(destino);
+    })();
+  </script>
+</head>
+<body>
+  <p><a href="../biblioteca-oraciones.html">Abrir la Biblioteca de oraciones de Peregrino APP</a></p>
+</body>
+</html>
