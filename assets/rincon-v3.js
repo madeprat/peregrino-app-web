@@ -11,16 +11,9 @@
   const $ = (id) => document.getElementById(id);
   const enlaceRincon = new URL("rincon-de-la-luz.html", location.href).href;
 
-  const TEMAS = [
-    { titulo: "Por los enfermos", sub: "sanación y compañía", oracion: "Señor Jesús, acompaña a quienes sienten dolor, miedo o cansancio. Lleva consuelo a sus cuerpos y paz a sus familias. Que nadie se sienta solo en la noche. Amén." },
-    { titulo: "Por mi familia", sub: "unidad y ternura", oracion: "Señor, bendice mi hogar y a los que quiero. Danos paciencia y paz, sana las heridas pequeñas y grandes, y enséñanos a cuidarnos mejor. Amén." },
-    { titulo: "Por quien vive un duelo", sub: "consuelo en la ausencia", oracion: "Señor de la Vida, abraza a quienes lloran una ausencia. Que tu luz entre despacio en su tristeza y que la esperanza no se apague. Amén." },
-    { titulo: "Por los jóvenes", sub: "sentido y esperanza", oracion: "Señor, acompaña sus búsquedas y sus heridas. Pon en su camino amistades buenas y una esperanza que no dependa del ruido del mundo. Amén." },
-    { titulo: "Por quien busca trabajo", sub: "puertas y dignidad", oracion: "Señor, abre caminos donde parece no haber salida. Sostén la dignidad de quien espera una oportunidad y bendice el esfuerzo de cada familia. Amén." },
-    { titulo: "Por los candidatos a Cursillo", sub: "corazones abiertos", oracion: "Señor, prepara sus corazones con delicadeza. Que se sepan amados y descubran una fe viva para caminar el Cuarto Día. Amén." },
-    { titulo: "Por la paz en el mundo", sub: "paz y misericordia", oracion: "Señor, mira a los pueblos que sufren violencia, pobreza o miedo. Despierta solidaridad y protege a los más vulnerables. Amén." },
-    { titulo: "En acción de gracias", sub: "por lo recibido", oracion: "Señor, gracias por los dones visibles e invisibles, por quienes sostienen mi camino y por la luz que vuelve incluso tras los días difíciles. Amén." },
-  ];
+  // Las intenciones viven en la hoja de la Biblioteca (filas con la columna
+  // «velita»), la misma fuente que usa la app.
+  let TEMAS = [];
   const oracionPropia = (intencion) =>
     `Señor, enciendo esta luz ante ti ${intencion.replace(/[.\s]+$/, "")}.\n\nTú conoces lo que llevo en el corazón: recíbelo, cuídalo y haz en todo tu voluntad. Que esta pequeña llama sea mi oración mientras arde. Amén.`;
 
@@ -43,22 +36,37 @@
   let tema = -1;
   function actualizarBoton() { el.encender.disabled = tema < 0 && !el.propia.value.trim(); }
 
-  TEMAS.forEach((t, i) => {
-    const boton = document.createElement("button");
-    boton.type = "button";
-    boton.className = "velita-tema";
-    boton.setAttribute("aria-pressed", "false");
-    boton.innerHTML = `<strong></strong><small></small>`;
-    boton.querySelector("strong").textContent = t.titulo;
-    boton.querySelector("small").textContent = t.sub;
-    boton.addEventListener("click", () => {
-      tema = tema === i ? -1 : i;
-      [...el.temas.children].forEach((b, k) => b.setAttribute("aria-pressed", String(k === tema)));
-      if (tema >= 0) el.propia.value = "";
-      actualizarBoton();
+  function pintarTemas() {
+    TEMAS.forEach((t, i) => {
+      const boton = document.createElement("button");
+      boton.type = "button";
+      boton.className = "velita-tema";
+      boton.setAttribute("aria-pressed", "false");
+      boton.innerHTML = `<strong></strong><small></small>`;
+      boton.querySelector("strong").textContent = t.titulo;
+      boton.querySelector("small").textContent = t.sub;
+      boton.addEventListener("click", () => {
+        tema = tema === i ? -1 : i;
+        [...el.temas.children].forEach((b, k) => b.setAttribute("aria-pressed", String(k === tema)));
+        if (tema >= 0) el.propia.value = "";
+        actualizarBoton();
+      });
+      el.temas.appendChild(boton);
     });
-    el.temas.appendChild(boton);
-  });
+  }
+  (async () => {
+    try {
+      const O = window.PeregrinoOracion;
+      const res = await fetch(O.CSV_URL, { cache: "no-store", credentials: "omit" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      TEMAS = O.parseDelimited(await res.text())
+        .filter((f) => O.clean(f.velita) && O.clean(f.titulo) && O.clean(f.texto))
+        .sort((x, y) => (parseInt(x.orden, 10) || 0) - (parseInt(y.orden, 10) || 0))
+        .map((f) => ({ titulo: O.clean(f.titulo), sub: O.clean(f.subtitulo), oracion: O.clean(f.texto_es) || O.clean(f.texto) }));
+    } catch (_) { TEMAS = []; /* sin conexión: queda escribirla con tus palabras */ }
+    pintarTemas();
+  })();
+
   el.propia.addEventListener("input", () => {
     if (el.propia.value.trim() && tema >= 0) {
       tema = -1;
