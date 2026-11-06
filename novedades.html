@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Peregrino">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Novedades · Peregrino</title>
+  <meta name="description" content="Lo nuevo de Peregrino APP: cada versión, contada sencilla, y la cuenta atrás para el próximo lanzamiento.">
+  <meta name="theme-color" content="#fffaf0">
+  <meta property="og:title" content="Novedades · Peregrino">
+  <meta property="og:description" content="Lo nuevo de Peregrino APP: cada versión, contada sencilla, y la cuenta atrás para el próximo lanzamiento.">
+  <meta property="og:image" content="https://tripodapp.prat-cas.com/og-peregrino-camino.jpg">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="assets/site-v2.css">
+  <link rel="stylesheet" href="assets/revista-v1.css">
+  <link rel="stylesheet" href="assets/novedades-v1.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    // Plataforma antes de pintar: decide qué acción va primero (Android: Google Play; resto: rezar en la web).
+    (function () { var u = navigator.userAgent || ""; document.documentElement.dataset.plataforma = /iPhone|iPad|iPod/.test(u) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ? "ios" : /Android/i.test(u) ? "android" : "otra"; })();
+  </script>
+  <script src="assets/idioma-v1.js"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'es'}, 'google_translate_element');
+  }
+</script>
+
+<script data-goatcounter="https://peregrinoapp.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script src="assets/estadisticas-v1.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <div class="decolores-line" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="site-header">
+    <div class="shell nav-shell">
+      <a class="brand" href="index.html" aria-label="Peregrino APP, volver al inicio">
+        <span class="brand-logo">
+          <img
+            src="assets/peregrino-app-icon.png"
+            alt=""
+            width="56"
+            height="56"
+            onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+          >
+          <span class="brand-fallback" hidden aria-hidden="true">P</span>
+        </span>
+        <span class="brand-copy">
+          <strong>Peregrino</strong>
+          <small>El Cuarto Día, vivo cada día</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="inicio.html">Rezar</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
+        <a href="descubre.html">Descubre</a>
+        <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc">Descargar</a>
+        <div id="google_translate_element"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="revista">
+
+    <section id="nv-portada" class="nv-portada" data-estado="cuenta" aria-labelledby="nv-titulo">
+      <canvas id="nv-cielo" class="nv-cielo" aria-hidden="true"></canvas>
+      <div class="rv-shell">
+        <p id="nv-etiqueta" class="nv-etiqueta">Novedades</p>
+        <h1 id="nv-titulo" class="nv-titulo">Novedades de Peregrino APP</h1>
+        <p id="nv-frase" class="nv-frase"></p>
+
+        <div class="nv-cuenta" role="timer" aria-live="off">
+          <div class="nv-unidad"><span id="nv-dias" class="nv-num notranslate">00</span><span class="nv-nombre-unidad">días</span></div>
+          <div class="nv-unidad"><span id="nv-horas" class="nv-num notranslate">00</span><span class="nv-nombre-unidad">horas</span></div>
+          <div class="nv-unidad"><span id="nv-minutos" class="nv-num notranslate">00</span><span class="nv-nombre-unidad">minutos</span></div>
+          <div class="nv-unidad"><span id="nv-segundos" class="nv-num notranslate">00</span><span class="nv-nombre-unidad">segundos</span></div>
+        </div>
+        <p class="nv-aviso">Entérate el primero en el <a href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" target="_blank" rel="noopener">canal de WhatsApp</a>.</p>
+
+        <div class="nv-llegado">
+          <div class="rv-acciones">
+            <a class="pt-badge" href="https://play.google.com/store/apps/details?id=com.cursillistas.peregrino_mcc"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play" width="646" height="250" onerror="this.parentNode.classList.add('sin-imagen')"><span>Disponible en Google Play</span></a>
+            <a class="rv-boton rv-boton-claro" href="sala/">Rezar desde la web <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nv-historia" aria-labelledby="nv-historia-titulo">
+      <div class="rv-shell">
+        <div class="rv-seccion-cabecera">
+          <p class="rv-antetitulo">Paso a paso</p>
+          <h2 id="nv-historia-titulo" class="rv-seccion-titulo">Lo que ha ido llegando</h2>
+        </div>
+        <ol id="nv-lista" class="nv-lista"></ol>
+        <noscript><p class="rv-seccion-entradilla">Activa JavaScript para ver las novedades.</p></noscript>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html">
+          <span class="brand-logo">
+            <img
+              src="assets/peregrino-app-icon.png"
+              alt=""
+              width="52"
+              height="52"
+              onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+            >
+            <span class="brand-fallback" hidden aria-hidden="true">P</span>
+          </span>
+          <span class="brand-copy"><strong>Peregrino</strong><small>El Cuarto Día, vivo cada día</small></span>
+        </a>
+        <p>Guía digital para acompañar la oración, la constancia y la amistad</p>
+      </div>
+
+      <div>
+        <h3>Vive Peregrino</h3>
+        <a href="inicio.html">Rezar hoy</a>
+        <a href="sala/">Rezar en grupo</a>
+        <a href="mundo-cursillo.html">El mundo está de Cursillo</a>
+        <a href="rincon-de-la-luz.html">Rincón de la Luz</a>
+        <a href="biblioteca-oraciones.html">Biblioteca</a>
+        <a href="regalo-de-oracion.html">Regala una oración</a>
+        <a href="plan-apostol.html">Me sumo</a>
+      </div>
+      <div>
+        <h3>Descubre</h3>
+        <a href="la-app.html">La app</a>
+        <a href="descubre.html">Todo Peregrino</a>
+        <a href="que-es-el-mcc.html">Qué es el MCC</a>
+        <a href="quiero-vivir-un-cursillo.html">Vivir un Cursillo</a>
+        <a href="reunion-de-grupo.html">Reunión de Grupo</a>
+        <a href="apostolado-digital.html">Apostolado digital</a>
+        <a href="alguien-reza-por-ti.html">Alguien reza por ti</a>
+      </div>
+      <div>
+        <h3>Información</h3>
+        <a href="manifiesto.html">Manifiesto</a>
+        <a href="historieta.html">Historieta</a>
+        <a href="manual-usuario-peregrino.html">Manual</a>
+        <a href="novedades.html">Novedades</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="https://whatsapp.com/channel/0029Vb7q751Jpe8pjOnuuW2q" target="_blank" rel="noopener">Canal de WhatsApp</a>
+        <a href="contacto.html">Escríbeme</a>
+      </div>
+    </div>
+
+    <div class="shell footer-bottom">
+      <span>Peregrino APP · Proyecto personal al servicio del Cuarto Día</span>
+      <a href="#contenido">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.main-nav');
+
+      menuToggle?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('is-open') || false;
+        menuToggle.setAttribute('aria-expanded', String(open));
+      });
+
+      nav?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('is-open');
+          menuToggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+      }
+    })();
+  </script>
+  <script src="assets/novedades-v1.js" defer></script>
+  <script src="assets/instalar-v1.js" defer></script>
+  <script src="assets/compartir-v1.js" defer></script>
+  <script src="assets/iphone-v1.js" defer></script>
+</body>
+</html>

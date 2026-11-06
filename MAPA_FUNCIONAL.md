@@ -8,6 +8,7 @@
 - Descarga.
 - Planes.
 - Manual.
+- Novedades (`novedades.html`): cada versión contada sencilla y, para los lanzamientos, una cuenta atrás que al llegar se ilumina «¡Ya está aquí!» durante una semana. Las versiones se editan al principio de `assets/novedades-v1.js`.
 
 ## 2. Oración y comunidad
 
